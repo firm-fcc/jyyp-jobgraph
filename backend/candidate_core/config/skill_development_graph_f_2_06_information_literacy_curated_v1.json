@@ -1,0 +1,158 @@
+{
+  "version": "stage2b2_f_2_06_information_literacy_curated_v1",
+  "team_skill_id": "F-2-06",
+  "team_skill_name": "信息管理与数字素养",
+  "scope": "覆盖信息需求的界定与检索式构造、来源可信度评估、信息的组织与留存、多源信息的整合与冲突处置，以及引用规范与合规使用核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "INFO-01",
+      "name_zh": "信息需求界定与检索式构造",
+      "type": "CORE",
+      "definition": "把待解决的问题转为可检索的表述，选择适配的检索渠道并构造能收敛结果的检索式。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一项技术问题构造检索式并依据结果迭代调整，说明每次调整的依据。",
+      "evidence_task": "就一项技术问题记录检索全过程，含初始检索式、结果评估与至少两轮调整及其依据。",
+      "validation_criteria": [
+        "检索式的调整依据来自上一轮结果",
+        "最终结果集与原始问题直接相关"
+      ],
+      "source_refs": [
+        "acrl_information_literacy"
+      ]
+    },
+    {
+      "subskill_id": "INFO-02",
+      "name_zh": "来源可信度评估",
+      "type": "CORE",
+      "definition": "依据来源性质、时效、利益关系与可核查程度判断一项信息的可信程度及其适用范围。",
+      "prerequisites": [
+        "INFO-01"
+      ],
+      "learning_outcome": "能够按固定准则评估信息来源，并指出不宜据以决策的情形。",
+      "evidence_task": "对一组来源不同的技术信息逐项评估可信度，给出判定理由，并指明其中不宜据以决策者。",
+      "validation_criteria": [
+        "评估逐项对应可复核的准则",
+        "不宜采信的判断有具体依据"
+      ],
+      "source_refs": [
+        "acrl_information_literacy"
+      ]
+    },
+    {
+      "subskill_id": "INFO-03",
+      "name_zh": "信息组织与留存",
+      "type": "CORE",
+      "definition": "按可检索的结构组织已获取的信息，使其在后续工作中能被本人与他人重新定位。",
+      "prerequisites": [
+        "INFO-01"
+      ],
+      "learning_outcome": "能够建立并维护信息的组织结构，使既有资料可按主题或时序重新检出。",
+      "evidence_task": "为一项持续性技术工作建立信息组织结构，说明分类依据，并演示按主题与时序两种方式的检出。",
+      "validation_criteria": [
+        "分类依据能覆盖已有资料且无歧义归属",
+        "两种检出方式均可实际执行"
+      ],
+      "source_refs": [
+        "acrl_information_literacy",
+        "iso_iec_ieee_15289"
+      ]
+    },
+    {
+      "subskill_id": "INFO-04",
+      "name_zh": "多源信息整合与冲突处置",
+      "type": "CORE",
+      "definition": "整合多个来源对同一问题的表述，指出彼此冲突之处并依据证据强弱给出取舍。",
+      "prerequisites": [
+        "INFO-02",
+        "INFO-03"
+      ],
+      "learning_outcome": "能够整合多源信息形成一致表述，对冲突之处说明取舍依据。",
+      "evidence_task": "就一项技术问题整合三个以上来源的表述，列出冲突点、取舍结论与依据的证据强弱比较。",
+      "validation_criteria": [
+        "冲突点逐项标明各来源的原始表述",
+        "取舍依据落在证据强弱而非来源偏好"
+      ],
+      "source_refs": [
+        "acrl_information_literacy"
+      ]
+    },
+    {
+      "subskill_id": "INFO-05",
+      "name_zh": "引用规范与合规使用",
+      "type": "CORE",
+      "definition": "按适用的引用规范标注信息出处，并在使用受限信息时遵循其授权与保密要求。",
+      "prerequisites": [
+        "INFO-04"
+      ],
+      "learning_outcome": "能够规范标注出处，并识别受限信息的使用边界。",
+      "evidence_task": "就一份技术产出完成出处标注，并列出其中受授权或保密约束的信息及其使用边界。",
+      "validation_criteria": [
+        "出处标注可据以定位原始来源",
+        "受限信息的使用边界有明确依据"
+      ],
+      "source_refs": [
+        "acrl_information_literacy",
+        "iso_iec_ieee_15289"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "INFO-VERIFY-01",
+    "objective": "验证当前信息管理与数字素养的能力证据。",
+    "task_description": "就一项真实技术问题完成检索、来源评估与多源整合，保留检索过程、评估准则与冲突取舍记录。",
+    "validation_criteria": [
+      "检索与调整过程可复现",
+      "来源评估对应可复核的准则",
+      "冲突取舍的依据落在证据强弱"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "INFO-CAPSTONE-01",
+    "objective": "完成一轮检索可复现、来源经评估、冲突有取舍的信息整合。",
+    "task_description": "围绕一项技术问题构造并迭代检索式，评估各来源可信度，组织留存资料，整合多源表述并处置冲突，规范标注出处。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "检索式的迭代依据完整",
+      "来源评估与冲突取舍均有准则支撑",
+      "出处标注可定位原始来源",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "acrl_information_literacy",
+      "title": "Framework for Information Literacy for Higher Education",
+      "authors_or_org": "Association of College and Research Libraries (ACRL)",
+      "source_type": "framework",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.ala.org/acrl/standards/ilframework",
+      "supports": [
+        "INFO-01",
+        "INFO-02",
+        "INFO-03",
+        "INFO-04",
+        "INFO-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15289",
+      "title": "ISO/IEC/IEEE 15289 Systems and software engineering — Content of life-cycle information items",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "INFO-03",
+        "INFO-05"
+      ]
+    }
+  ]
+}

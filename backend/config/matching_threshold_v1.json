@@ -1,0 +1,14 @@
+{
+  "schema_version": "matching_threshold_freeze_v1",
+  "status": "FROZEN",
+  "threshold": 0.380952,
+  "decision_rule": "verified_fit >= threshold -> MATCH",
+  "dev_case_count": 20,
+  "dev_accuracy": 0.80,
+  "dev_precision": 0.80,
+  "dev_recall": 0.571429,
+  "dev_f1": 0.666667,
+  "scope": "20 Dev cases only; not formal Matching accuracy",
+  "source_archive_sha256": "b7b667ddfb0e4f20a4275161b7be74afb2eb56458ca6ab31dde90f05284ddf6e",
+  "runtime_source": "MATCHING_DECISION_THRESHOLD environment variable; no implicit default"
+}

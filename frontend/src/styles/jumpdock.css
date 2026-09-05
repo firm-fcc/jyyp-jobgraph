@@ -1,0 +1,218 @@
+/* =========================================================
+   图上出口：贴着选中项浮出的一小块跨页入口
+
+   四个工具页都在正文末尾挂了“下一步”，但三张主图各自纵向都在一屏以上，
+   选中一个岗位之后的下一个动作就发生在图上，视线停在被选中的那一行，
+   离页尾还隔着一屏以上；实测中这一段距离足以让出口被整块略过。
+   这一块把同一份出口搬到选中项旁边，内容见 components/common/JumpDock.tsx。
+
+   落位由各页自理，三处的锚点各不相同：
+   · 全景图谱：主图里岗位条的条尾（JobCapabilityFlow 的 jumpAt）
+   · 职业探索：能力—岗位总览里岗位名列的右缘（SkillJobOverview 的 jumpAt）
+   · 岗位洞察：左列表中选中卡片的右缘（Jobs 的 jl-dock）
+
+   本文件只管三处共有的部分：浮窗本体的形制、朝向、出场与降级。
+   两个类配合使用 —— 外层 .jdk-at 是一个零尺寸锚点，由各页钉到该去的位置上；
+   内层 .jdk-wrap 贴着锚点右对齐，默认向上排，加 below 则翻到下方。
+   ========================================================= */
+
+.jdk-at {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 3;
+  /* 空处不拦事件：只有浮窗本体接管鼠标，锚点周围仍能点到下面的行 */
+  pointer-events: none;
+}
+/* 锚点到浮窗之间的空档，尾巴的高度落在这一段里。
+   各页按自身行距覆写：行距越密，让出的空档越小，压到的相邻行也越少 */
+.jdk-wrap {
+  position: absolute;
+  right: 0;
+  bottom: var(--jdk-gap, 14px);
+  transform-origin: 86% 100%;
+  animation: jdk-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.jdk-wrap.below {
+  bottom: auto;
+  top: var(--jdk-gap, 14px);
+  transform-origin: 86% 0;
+  animation-name: jdk-in-below;
+}
+/* 出场自锚点方向长出：位移 5px，另加一档缩放。
+   幅度够让余光捕捉到浮窗出现，又不至于在图上拉出一段轨迹 */
+@keyframes jdk-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes jdk-in-below {
+  from {
+    opacity: 0;
+    transform: translateY(-5px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.jdk {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  white-space: nowrap;
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lg);
+  pointer-events: auto;
+}
+/* 指向锚点的小尖角。靠右缘放，不放在浮窗中点：浮窗右缘与锚点在同一竖直线上，
+   尖角落在中点则指向该行的条身中段或卡片中段，读作在标注那一段，
+   而非给出这一行的去处。离右缘 15px 是圆角让出来的位置，再往右尖角就长在弧上。 */
+.jdk::after {
+  content: '';
+  position: absolute;
+  right: 15px;
+  bottom: -5px;
+  width: 9px;
+  height: 9px;
+  background: var(--panel);
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-bottom-right-radius: 2px;
+  transform: rotate(45deg);
+}
+.jdk-wrap.below .jdk::after {
+  bottom: auto;
+  top: -5px;
+  transform: rotate(225deg);
+}
+/* 出场时扩散一圈主色描边，只播一次。
+   循环播放会变成图上一处长期闪动的干扰，而这一处只需要在刚出现时被看见 */
+.jdk::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border: 1.5px solid var(--primary);
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  animation: jdk-ping 0.85s ease-out 0.08s 1;
+}
+@keyframes jdk-ping {
+  from {
+    opacity: 0.5;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+.jdk-b {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 25px;
+  padding: 0 5px;
+  border-radius: var(--radius-pill);
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: background 0.14s var(--ease), color 0.14s var(--ease);
+}
+.jdk-b:hover {
+  background: var(--fill);
+  color: var(--primary-deep);
+}
+.jdk-b:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+/* 主出口：三条里最常走的那一条，带短名与箭头；另两条只留图标。
+   三条都带名字要 220px 以上，在任何一页上都会越出它所在的那一列。 */
+.jdk-b.primary {
+  /* 与右边两枚图标之间留出分隔线的位置，间距本身不承担分组 */
+  margin-right: 4px;
+  padding: 0 8px;
+  background: var(--primary);
+  color: #fff;
+}
+.jdk-b.primary:hover {
+  background: var(--primary-deep);
+  color: #fff;
+}
+.jdk-b b {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.jdk-go {
+  margin-left: -1px;
+  transition: transform 0.16s var(--ease);
+}
+.jdk-b.primary:hover .jdk-go {
+  transform: translateX(2px);
+}
+/* 主出口与两个图标之间一条竖线：主次分组由分隔线交代，不靠间距 */
+.jdk-b.primary + .jdk-b::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: var(--line);
+}
+
+/* 短名之外的整句退到悬停提示。右对齐，避免在窄屏上溢出图的左缘；
+   浮窗翻到下方时提示跟着翻，否则它会压回刚选中的那一行。 */
+.jdk-tip {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px);
+  padding: 4px 8px;
+  font-size: var(--fs-2xs);
+  line-height: 1.35;
+  color: #fff;
+  background: var(--ink);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(3px);
+  transition: opacity 0.12s var(--ease), transform 0.12s var(--ease);
+  pointer-events: none;
+}
+.jdk-wrap.below .jdk-tip {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+.jdk-b:hover .jdk-tip,
+.jdk-b:focus-visible .jdk-tip {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jdk-wrap,
+  .jdk::before {
+    animation: none;
+  }
+  .jdk::before {
+    display: none;
+  }
+  .jdk-go,
+  .jdk-tip {
+    transition: none;
+  }
+}

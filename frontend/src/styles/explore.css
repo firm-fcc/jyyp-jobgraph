@@ -1,0 +1,1067 @@
+/* =========================================================
+   职业探索 —— 页面样式（JobViz 三视图复刻）
+
+   版面照论文 Figure 2：左列一块高面板（能力—岗位总览），右列上下两块
+   （岗位聚类 / 簇内分布、岗位详情）。左列是一张要从头读到尾的长图，
+   右列两块是"点一下看一眼"的短图，叠起来正好共用左列那一屏高度。
+
+   两条与全站一致的约定：
+     · 每张图各自装在 overflow-x 容器里横滚，不撑破页面（与 /jobs、/panorama 同）
+     · 图内密集标注按图形几何定字号，直接写 px，不走正文阶梯（tokens.css § D）
+   ========================================================= */
+
+.explore {
+  display: flex;
+  min-height: calc(100vh - var(--topbar-h));
+  flex-direction: column;
+
+  /* 字形折线与顶点的颜色。论文用一档中性灰压在簇色底上：
+     底色管"这是哪一簇"、折线管"形状是什么"，两件事不共用一个通道。 */
+  --jv-line: #5c5c5c;
+}
+
+.ex-wrap {
+  width: 100%;
+  max-width: var(--page-max-wide);
+  margin: 0 auto;
+  padding: 24px var(--gutter) 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+/* ---------------- 口径摘要 ---------------- */
+
+/* 与全景图谱页顶的规模摘要条同一构件，字号与容器一并取同一档（见 global.css） */
+/* 页首职责条以一条细线收尾，这一条摘要若再以一条细线开头，
+   两线之间那 18px 就成了一行没有内容的空行。故此处不取上边线。 */
+.ex-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px 26px;
+  font-size: var(--fs-md);
+  color: var(--ink-2);
+}
+.ex-meta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ex-meta svg {
+  color: var(--ink-3);
+}
+.ex-meta em {
+  font-style: normal;
+  color: var(--ink-3);
+  margin-left: 4px;
+}
+.ex-meta .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ---------------- 两列 ----------------
+   两栏并排的下限由两张图各自的最小宽度决定：总览图的三段并排至少要 810px，
+   聚类图的图例带（大字形 / 样例轴名 / 地平线读法 / 层色标尺 / 簇色对照五格）
+   至少要 508px；再加两块卡片的左右内边距、栏间 28px 与页面左右留白，共需约 1540px。
+
+   此前不论多宽都并排，于是 1440 上左栏 762px、右栏 456px，两张图各挂一条横滚条 ——
+   而这两张图要的都是一眼看全。现 1540 以下退回单列，两张图各得整幅页宽。
+   右栏下限 580 即由聚类图的 508 加卡片内边距与边框反推。 */
+.ex-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(580px, 34%, 640px);
+  gap: 28px;
+  align-items: start;
+}
+
+/* 右列的高度跟左列走，而不是跟自己的内容走。
+   左列是一张定高 980px 的长图，右列两块的高度却随选中的岗位数上下浮动：
+   详情空着时右列短一截，两列并排时又比左列高出一截，两种情形下版面都不齐。
+
+   height:0 让右列不参与行高计算（行高于是只由左列那张长图定），
+   min-height:100% 再把它拉回整行高 —— 拼不满的部分由详情面板撑开，
+   拼过了则由详情面板内部滚动。 */
+.ex-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  height: 0;
+  min-height: 100%;
+}
+/* 聚类那一块是定高的图，不参与伸缩 */
+.ex-b {
+  flex: none;
+}
+/* 详情吃掉右列剩下的高度，长过一栏时在栏内自己滚。 */
+.ex-c {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* 三块一律整框圈起。右栏是两块内容叠在一列，中间只隔 16px 留白，不圈起来读不出
+   上一块到哪里为止；左栏虽独占一列，但与右栏并排时若只有它没有框，两栏就成了
+   两套形制。三块同形，页面才只有一种"块"。
+
+   选择器写作 .ex-panel.ex-a 一类而不是单个类：global.css 的 .panel 把面板的边框、
+   圆角、底色与投影一并归零，两者特异度同为 (0,1,0)，胜负只由文件次序决定，
+   而页面样式的注入次序不由这里保证。叠一个类即稳定压过那一条。 */
+.ex-panel.ex-a,
+.ex-panel.ex-b,
+.ex-panel.ex-c {
+  padding: 18px 18px 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+/* 这一块此前套着两条竖滚条：外层面板一条、字段表自身一条，
+   同一栏内容因而有两处可拖，拖哪一处才动哪一半并不看得出来。
+   现由字段表独自滚：面板这一层只负责把高度让给它，不再自己滚。 */
+.ex-c .panel-bd {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-top: 12px;
+}
+.ex-c .pdv,
+.ex-c .pdv-empty {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ex-panel {
+  min-width: 0;
+}
+.ex-panel .panel-hd {
+  padding: 0 0 9px;
+}
+.ex-panel .panel-hd h2 {
+  font-size: var(--fs-xl);
+}
+
+/* 左右留白用 margin 而不是 padding：图宽由 useSize 读 clientWidth 得到，
+   而 clientWidth 含内边距 —— 用 padding 会让图按含边距的宽度画出来，
+   于是每张图都恰好多出一个边距的横滚。 */
+.ex-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* 左右留白此前由这一层的 margin 给（不能用 padding：图宽由 useSize 读 clientWidth
+   得到，而 clientWidth 含内边距，用 padding 会让图按含边距的宽度画出来，
+   于是每张图都恰好多出一个边距的横滚）。现由外层卡片的内边距承担，这里归零。 */
+.ex-a .ex-scroll {
+  margin: 0;
+}
+/* 省份行的城市下拉。锚点由图给出，浮窗贴在该行下方 */
+.sjo-citypop {
+  position: absolute;
+  z-index: 30;
+  /* 属性列是最右一列，浮窗向左开：向右开会顶出面板之外 */
+  transform: translateX(-100%);
+  width: 232px;
+  /* 一省最多十八座城市，一行二十六像素，全列出来要四百七十像素，
+     浮窗贴着图上那一行开，再高就顶出视口。故限高，超出的部分由城市清单自己滚 */
+  max-height: min(360px, 62vh);
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg, var(--shadow));
+  overflow: hidden;
+}
+/* 浮窗与城市清单之间还隔着一层。这一层此前没有样式，于是它按内容撑开自己的高度，
+   外层的限高只把超出的部分裁掉 —— 清单那一层的 flex:1 与 overflow-y 因而都落空，
+   十八座城市只看得到九座，指针停在上面滚的是整页。此处补上纵向 flex，
+   限高才传得下去。 */
+.ex-citypop {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* 头与尾都不参与滚动：省名与"全选本省"一类的动作要始终在手边 */
+.ex-citypop-hd {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+.ex-citypop-hd em {
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+.ex-citypop-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  /* 滚到端时不把余量传给页面：浮层按图上的坐标定位，页面一滚它就随图漂走 */
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding: 4px 0;
+}
+.ex-citypop-list label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 10px;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+}
+.ex-citypop-list label:hover {
+  background: var(--surface-2);
+}
+.ex-citypop-list label em {
+  margin-left: auto;
+  font-style: normal;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.ex-citypop-act {
+  flex: none;
+  display: flex;
+  gap: 6px;
+  padding: 7px 10px;
+  border-top: 1px solid var(--line);
+}
+
+/* 省份行的城市下拉钮。只在悬停的那一行与已展开的那一行出现，
+   贴着省名左缘；淡入一档，免得指针一过就闪一下 */
+.sjo-dd {
+  cursor: pointer;
+  animation: sjo-dd-in 0.12s ease-out;
+}
+@keyframes sjo-dd-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sjo-dd {
+    animation: none;
+  }
+}
+.sjo-dd-hit {
+  fill: var(--surface-2);
+}
+.sjo-dd:hover .sjo-dd-hit,
+.sjo-dd.on .sjo-dd-hit {
+  fill: var(--primary-soft, var(--surface-2));
+}
+.sjo-dd-caret {
+  fill: none;
+  stroke: var(--ink-3);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sjo-dd:hover .sjo-dd-caret,
+.sjo-dd.on .sjo-dd-caret {
+  stroke: var(--primary);
+}
+
+/* 属性列的组内滚动条。省份一组三十余行，视窗一次放得下十余行 */
+.sjo-sb {
+  cursor: grab;
+}
+.sjo-sb:active {
+  cursor: grabbing;
+}
+.sjo-sb-track {
+  fill: var(--line);
+  opacity: 0.5;
+}
+.sjo-sb-thumb {
+  fill: var(--line-strong);
+}
+.sjo-sb:hover .sjo-sb-thumb {
+  fill: var(--ink-3);
+}
+
+.ex-dd-none {
+  padding: 8px 10px;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+.ex-dd-pop label em {
+  margin-left: auto;
+  font-style: normal;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.ex-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.ex-scroll::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: var(--radius-pill);
+}
+
+/* ---------------- 论文原图的两组控件 ---------------- */
+
+.ex-ctl-lb {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  font-weight: 500;
+}
+.ex-a .pn-act .seg button {
+  padding: 5px 10px;
+  font-size: var(--fs-sm);
+}
+.ex-a .pn-act .seg button:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+.ex-anchor {
+  font-size: var(--fs-xs);
+  color: var(--primary-deep);
+  background: var(--primary-soft);
+  border-radius: var(--radius-pill);
+  padding: 3px 10px;
+}
+
+/* ---------------- 已选分档 ----------------
+   四维同屏之后，"属性栏显示哪一维"那一组单选没有了对象；同一个位置改挂
+   已选分档。空态也占这一行，版面高度才不随选中与否上下跳。 */
+
+/* 属性筛选条。此前铺一层浅灰底，与右侧聚类图的灰色画布底一并占去版面上部
+   一大片中性色斑，而这一条本身只是一行状态说明。现取页面同底，
+   仍以下边线与图分开；挂上条件之后转浅蓝底，"有没有挂着筛选"仍一眼可辨。 */
+/* 定高。空态是一行纯文字，挂上条件后换成带边框与内边距的胶囊，后者高出六像素，
+   单击一个属性时这一行会突然变高，下面整张图跟着往下跳一档。按胶囊那一档定死，
+   两种状态因而等高。条件多到换行时仍会长高，那是内容本身变多，不是抖动。 */
+.ex-picks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  padding: 9px 14px;
+  min-height: 44px;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  font-size: var(--fs-sm);
+}
+/* 空态提示是一句完整的操作说明，不是元信息：此前取最弱的一档字色叠 12px，
+   在这一行的浅灰底上读不出。改到次级正文一档，字号与同行的其余文字取齐。 */
+.ex-picks-empty {
+  color: var(--ink-2);
+  font-size: var(--fs-sm);
+}
+.ex-pick-grp {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.ex-pick-grp em {
+  font-style: normal;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+.ex-pick {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--primary);
+  background: var(--panel);
+  color: var(--primary-deep);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  transition: all 0.18s;
+}
+.ex-pick i {
+  font-style: normal;
+  font-size: var(--fs-sm);
+  line-height: 1;
+  color: var(--ink-3);
+}
+.ex-pick:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+.ex-pick:hover i {
+  color: var(--red);
+}
+/* “全部撤出”：这一行里唯一的文字动作，与胶囊分开一档 */
+.ex-more {
+  margin-left: 8px;
+  color: var(--primary);
+  font-size: var(--fs-xs);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.ex-more:hover {
+  color: var(--primary-deep);
+}
+.ex-picks-n {
+  margin-left: auto;
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+/* 省 → 市两级下拉 */
+.ex-dd-row {
+  display: flex;
+  gap: 6px;
+}
+.ex-dd {
+  position: relative;
+}
+.ex-dd-pop {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  z-index: 20;
+  min-width: 156px;
+  max-height: 232px;
+  overflow-y: auto;
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  padding: 5px;
+}
+.ex-dd-pop button,
+.ex-dd-pop label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding: 6px 9px;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  cursor: pointer;
+  text-align: left;
+}
+.ex-dd-pop button:hover,
+.ex-dd-pop label:hover {
+  background: var(--fill);
+}
+.ex-dd-pop button.on,
+.ex-dd-pop label.on {
+  color: var(--primary-deep);
+  font-weight: 600;
+}
+.ex-dd-pop button em {
+  margin-left: auto;
+  font-style: normal;
+  color: var(--ink-3);
+  font-size: var(--fs-xs);
+}
+.ex-dd-pop input {
+  accent-color: var(--primary);
+}
+.ex-dd-act {
+  display: flex;
+  gap: 6px;
+  padding: 6px 4px 2px;
+  border-top: 1px solid var(--line);
+  margin-top: 4px;
+}
+.ex-dd-act .btn {
+  flex: 1;
+}
+
+.btn.primary {
+  border-color: var(--primary);
+  color: var(--primary-deep);
+  background: var(--primary-soft);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.btn.primary:hover {
+  background: var(--panel);
+}
+
+/* ---------------- 图例与脚注 ---------------- */
+
+.ex-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  padding: 10px 14px 0;
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+.ex-lg-grp {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--ink-3);
+}
+.ex-lg-grp em {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-style: normal;
+  color: var(--ink-2);
+}
+.ex-lg-grp i {
+  width: 11px;
+  height: 11px;
+  border-radius: var(--radius-xs);
+  display: inline-block;
+}
+
+.ex-cmp-n {
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.ex-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 34px;
+  transform: translateX(-50%);
+  z-index: 60;
+  background: var(--ink);
+  color: #fff;
+  font-size: var(--fs-sm);
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lg);
+}
+
+/* =========================================================
+   A · 能力—岗位总览
+   ========================================================= */
+
+.sjo {
+  position: relative;
+}
+.sjo-svg {
+  display: block;
+}
+.sjo-colhead {
+  font-size: 11px;
+  fill: var(--ink-3);
+}
+
+/* 能力 ↔ 岗位连线。论文用一档半透明灰：连线本身是"有关系"，
+   粗细才是"关系有多强"，颜色不再多担一件事。 */
+.sjo-links path {
+  fill: none;
+  stroke: rgba(100, 100, 100, 0.32);
+}
+
+/* 树的连线。默认极淡，点一级维度名才整束点亮 */
+.sjo-tlink {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+.sjo-dim.on .sjo-tlink {
+  stroke: var(--primary);
+  stroke-width: 1.8;
+}
+.sjo-dimname,
+.sjo-grpname {
+  fill: var(--ink);
+  cursor: pointer;
+  font-weight: 500;
+}
+.sjo-dim.on .sjo-dimname {
+  fill: var(--primary-deep);
+  font-weight: 700;
+}
+.sjo-grpname {
+  fill: var(--ink-2);
+}
+.sjo-grp.open .sjo-grpname {
+  fill: var(--ink);
+}
+.sjo-grpname:hover,
+.sjo-dimname:hover {
+  fill: var(--primary);
+}
+/* 收起的组：名字前留一个小三角的位置由文字本身表达，不再另画图标 ——
+   九行里多九个三角只会把这一列变吵 */
+.sjo-grp:not(.open) .sjo-grpname {
+  fill: var(--ink-3);
+}
+
+.sjo-row {
+  cursor: pointer;
+}
+.sjo-hit {
+  fill: transparent;
+}
+.sjo-row:hover .sjo-hit {
+  fill: var(--surface-tint);
+}
+.sjo-itemname,
+.sjo-jobname,
+.sjo-attrname {
+  fill: var(--ink-2);
+  pointer-events: none;
+}
+.sjo-jobname,
+.sjo-attrname {
+  text-anchor: end;
+}
+.sjo-attrnum {
+  fill: var(--ink-3);
+  font-size: 9.5px;
+}
+
+/* 属性四组的组头。字重与颜色比行名重一档，横线划出该组的起点 ——
+   四组顺排在同一列里，仅靠间距不足以界定一行属于哪一组。 */
+.sjo-attrhead {
+  font-size: 11.5px;
+  font-weight: 600;
+  fill: var(--ink-2);
+}
+.sjo-attrgrp.on .sjo-attrhead {
+  fill: var(--primary-deep);
+}
+.sjo-attrhead-sc {
+  font-size: 9.5px;
+  font-weight: 400;
+  fill: var(--ink-3);
+}
+.sjo-attrhead-n {
+  font-size: 10px;
+  font-weight: 500;
+  fill: var(--primary);
+}
+/* 由补齐层给出的那几组。取与全站演示数据标同一支色相，
+   不加底色 —— 组头是一行 SVG 文本，加底色要另铺一个矩形 */
+.sjo-attrhead-demo {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  fill: var(--amber-ink, var(--amber));
+}
+.sjo-attrrule {
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+.sjo-attrgrp.on .sjo-attrrule {
+  stroke: var(--primary);
+  stroke-opacity: 0.45;
+}
+.sjo-row.lit .sjo-itemname,
+.sjo-row.lit .sjo-jobname {
+  fill: var(--ink);
+  font-weight: 600;
+}
+.sjo-row.on .sjo-itemname,
+.sjo-row.on .sjo-jobname,
+.sjo-row.on .sjo-attrname {
+  fill: var(--primary-deep);
+  font-weight: 700;
+}
+
+.sjo-seg {
+  stroke: var(--panel);
+  stroke-width: 0.6;
+}
+/* 条的描边就是论文的选中态：默认与底同色（等于没有），
+   选中或被连上时换成一圈灰框 */
+.sjo-barout {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 2;
+  pointer-events: none;
+}
+.sjo-row.lit .sjo-barout {
+  stroke: var(--ink-3);
+}
+.sjo-row.on .sjo-barout {
+  stroke: var(--ink-2);
+  stroke-width: 2.4;
+}
+
+/* 选定岗位旁的跨页浮窗：形制、朝向与出场见 styles/jumpdock.css，三页共用一套。
+   落位由图侧算（SkillJobOverview 的 jumpAt），横向锚在岗位名列的右缘。
+   岗位段行距只有二十余像素，空档随之收窄到 9px：浮窗连同空档压住的那一段
+   越短，被盖到的上一行越少。 */
+.sjo .jdk-at {
+  --jdk-gap: 9px;
+}
+
+/* =========================================================
+   B · 岗位探索（聚类字形 / 簇内分布 / 图例带）
+   ========================================================= */
+
+.pev-svg {
+  display: block;
+}
+/* 聚类图的画布。此前填浅灰、带一圈描边，于是整块面板是一片灰底，与左栏的白底图
+   并排时两栏像分属两套配色。现填页面同底；描边也一并撤去 —— 这一块整体已由卡片
+   圈起，图再套一圈框就成了框中之框。 */
+.pev-frame {
+  fill: var(--panel);
+  stroke: none;
+}
+.pev-empty {
+  text-anchor: middle;
+  font-size: var(--fs-sm);
+  fill: var(--ink-3);
+}
+.pev-clabel {
+  text-anchor: middle;
+  font-size: 10px;
+  fill: var(--ink-2);
+  pointer-events: none;
+}
+
+.arad.clickable {
+  cursor: pointer;
+}
+.arad.dim {
+  opacity: 0.4;
+}
+.arad.on .arad-bg {
+  stroke-width: 2;
+}
+.arad-hit {
+  cursor: inherit;
+}
+
+/* 簇内分布的格 */
+.pev-cell {
+  fill: var(--panel);
+  stroke: var(--line);
+  stroke-width: 0.8;
+}
+.pev-cell.on {
+  fill: var(--fill);
+}
+.pev-axis {
+  font-size: 9.5px;
+  fill: var(--ink-3);
+  pointer-events: none;
+}
+.pev-glyph {
+  cursor: pointer;
+}
+.pev-glyph:hover .pev-glyph-val {
+  stroke-width: 1.6;
+}
+.pev-glyph.on .pev-glyph-val {
+  stroke: var(--ink);
+}
+
+/* 图例带 */
+.pev-strip line {
+  stroke: var(--line);
+}
+.pev-striplb {
+  font-size: 10.5px;
+  fill: var(--ink-2);
+}
+.pev-sample path {
+  fill: none;
+  stroke: var(--line-strong);
+}
+.pev-sample line {
+  stroke: var(--line-strong);
+  stroke-width: 0.6;
+}
+.pev-axname {
+  text-anchor: middle;
+  font-size: 7.5px;
+  fill: var(--ink-3);
+}
+.pev-hzlb,
+.pev-scaletitle {
+  font-size: 9.5px;
+  fill: var(--ink-2);
+}
+.pev-hztri,
+.pev-hzbox {
+  fill: var(--panel);
+  stroke: var(--line-strong);
+  stroke-width: 0.8;
+}
+/* 折叠前那幅图上的层界：折叠这一步就是沿这两条线把上面的部分翻下来 */
+.pev-hzrule {
+  stroke: var(--line-strong);
+  stroke-width: 0.6;
+  stroke-dasharray: 2 2;
+}
+.pev-hztick {
+  font-size: 7.5px;
+  fill: var(--ink-3);
+}
+.pev-scalelb,
+.pev-legendlb {
+  font-size: 8.5px;
+  fill: var(--ink-3);
+}
+.pev-legendlb {
+  font-size: 10px;
+  fill: var(--ink-2);
+}
+.pev-legend g.on .pev-legendlb {
+  fill: var(--ink);
+  font-weight: 600;
+}
+
+/* =========================================================
+   C · 岗位详情
+   ========================================================= */
+
+/* 空态在拉高之后的面板里居中：贴着顶排会在下面留一大片没有着落的空白，
+   反倒把"这一栏是不是坏了"这个疑问提出来。 */
+.pdv-empty {
+  padding: 18px 4px 8px;
+  color: var(--ink-3);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.pdv-empty b {
+  display: block;
+  font-size: var(--fs-md);
+  color: var(--ink-2);
+  margin-bottom: 5px;
+}
+.pdv-empty p {
+  font-size: var(--fs-sm);
+  line-height: 1.75;
+}
+
+.pdv-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line);
+}
+/* 中间那一列的宽度。表头与每一行各是一个独立的栅格，中列取 auto 会逐行
+   各算各的宽度，行与行之间因此对不齐，故须给一个固定值，并由两处共用。
+   取 104px：最长的字段名是"本格招聘信息条数""岗位招聘信息总数"两条，
+   各 8 个汉字，在 12px 下占 96px —— 此前的 76px 容不下，而 nowrap
+   使溢出的部分直接压在右列的值上。 */
+.pdv.two {
+  --pdv-mid: 104px;
+}
+.pdv.two .pdv-head {
+  grid-template-columns: minmax(0, 1fr) var(--pdv-mid) minmax(0, 1fr);
+}
+.pdv-col {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.pdv-glyph {
+  flex-shrink: 0;
+}
+.pdv-col-text {
+  min-width: 0;
+}
+.pdv-col-text b {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pdv-col-text span {
+  font-size: var(--fs-2xs);
+  color: var(--ink-3);
+}
+.pdv-x {
+  margin-left: auto;
+  color: var(--ink-3);
+  font-size: var(--fs-lg);
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+.pdv-x:hover {
+  background: var(--fill);
+  color: var(--red);
+}
+.pdv-mid {
+  font-size: var(--fs-2xs);
+  color: var(--ink-3);
+  text-align: center;
+}
+
+/* 表身吃掉这一栏剩下的高度，字段长过一栏时只在这里滚 */
+.pdv-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  margin-top: 2px;
+}
+.pdv-body::-webkit-scrollbar {
+  width: 8px;
+}
+.pdv-body::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: var(--radius-pill);
+}
+.pdv-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: baseline;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-sm);
+}
+.pdv.two .pdv-row {
+  grid-template-columns: minmax(0, 1fr) var(--pdv-mid) minmax(0, 1fr);
+}
+.pdv-row.long {
+  cursor: pointer;
+}
+.pdv-row.long:hover {
+  background: var(--surface-tint);
+}
+/* 字段名允许折行：104px 已容得下现有的全部字段名，日后若添一条更长的，
+   折成两行也不会再压到值上。 */
+.pdv-lb {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  text-align: center;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.pdv:not(.two) .pdv-lb {
+  order: -1;
+  text-align: left;
+}
+.pdv-cell {
+  color: var(--ink);
+  min-width: 0;
+  word-break: break-word;
+}
+.pdv.two .pdv-cell:first-child {
+  text-align: right;
+}
+.pdv-cell.muted {
+  color: var(--ink-3);
+}
+.pdv-cell.fold {
+  color: var(--accent);
+}
+.pdv-cell.long {
+  color: var(--ink-2);
+  line-height: 1.75;
+  font-size: var(--fs-xs);
+}
+
+/* =========================================================
+   详情栏下方的跨页出口
+
+   岗位是在这一栏里选定的，去向也该在同一处给出：此前这一页
+   一条跨页链接都没有，选中一个合适的岗位之后无处可去。
+   ========================================================= */
+
+.ex-xlink {
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.ex-xlink-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  font-size: var(--fs-sm);
+}
+
+.ex-xlink-row b {
+  color: var(--ink);
+  font-weight: 600;
+  margin-right: 2px;
+  max-width: 42%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ex-xlink-row a {
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  color: var(--ink-2);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.18s;
+}
+
+.ex-xlink-row a:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+/* =========================================================
+   窄屏
+   ========================================================= */
+
+/* 见 .ex-grid 处的说明：1540 以下并排放不下两张图，退回单列 */
+@media (max-width: 1539px) {
+  .ex-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* 退回单列之后没有"另一列"可对齐，两块图各按自己的内容排开 */
+  .ex-side {
+    height: auto;
+    min-height: 0;
+  }
+  .ex-c {
+    flex: none;
+  }
+  .ex-c .panel-bd {
+    overflow-y: visible;
+  }
+}
+
+/* 图注里的"无法确定"：与图上同一种点阵画法 */
+.ex-lg-grp i.sw-unknown {
+  background-image: radial-gradient(#7d8798 0.85px, transparent 0.85px);
+  background-size: 4px 4px;
+  background-color: var(--panel);
+  border: 1px solid var(--line);
+}
+
+/* 轴位对照那一格：轴端各点一枚小点，与"有量可读"的字形在形制上分开 */
+.pev-axdot {
+  fill: var(--line-strong);
+}
+
+/* 图注末行的口径说明：与图注同处一行的末尾，字号降一档、不加色块 */
+.ex-lg-cap {
+  color: var(--ink-3);
+  font-size: 11px;
+  line-height: 1.6;
+}

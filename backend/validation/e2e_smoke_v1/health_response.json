@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "service": "challenge26-backend-handoff",
+  "candidate_runtime": "r4.3.4",
+  "target_job_schema": "target_job_profile_v1.1",
+  "matching_schema": "match_result_v1",
+  "matching_calibrated": true,
+  "llm_configured": true,
+  "window": "2022-10",
+  "limitations": {
+    "matching_decision": "CALIBRATED",
+    "learning_path_curated_graph_count": 6,
+    "job_window": "2022-10",
+    "matching_threshold_invalid": false
+  }
+}

@@ -1,0 +1,2822 @@
+/* =========================================================
+   人岗匹配
+
+   字号按 global.css 的口径走（正文 14–15px，最小 12.5px）。
+   报告部分刻意不做成一排等大白卡片 —— 那种版式在灰底上会显得
+   每一块都同样重要、也同样空洞。这里是一张“报告纸”：
+   页眉给结论，段与段之间用细线分隔，编号承担层级。
+   ========================================================= */
+
+/* 与全景图谱、岗位洞察同一口径：整页占满可用宽度，1720px 封顶。
+   报告不再是一张固定 1320px 的纸 —— 上传流程与报告都跟着视口走。 */
+.match-wrap {
+  max-width: var(--page-max-wide);
+  margin: 0 auto;
+  padding: 24px var(--gutter) 40px;
+}
+
+/* 上传与解析这两步是单栏的对话式流程，铺满整幅反而找不到落点，
+   所以只在这两步内部收窄，报告一到就放开。 */
+.match-wrap > .mflow {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   流程栏 —— 上传 → 解析 → 报告
+   ========================================================= */
+
+.mflow {
+  opacity: 1;
+  transform: none;
+  max-height: 3200px;
+  overflow: hidden;
+  transition:
+    opacity 0.46s var(--ease),
+    transform 0.46s var(--ease),
+    max-height 0.52s var(--ease);
+}
+.mflow.leaving {
+  opacity: 0;
+  transform: translateY(-14px);
+  max-height: 0;
+}
+
+.msteps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  padding: 6px 0 22px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.mstep {
+  position: relative;
+  display: grid;
+  grid-template-rows: 38px auto;
+  justify-items: center;
+  text-align: center;
+  min-width: 0;
+}
+/* 连线：底槽 + 按进度增长的填充条 */
+.mstep-line {
+  position: absolute;
+  top: 18px;
+  left: calc(50% + 26px);
+  width: calc(100% - 52px);
+  height: 2px;
+  background: var(--line);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.mstep-line i {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+  border-radius: var(--radius-pill);
+  transition: width 0.18s linear;
+}
+.mstep-dot {
+  position: relative;
+  z-index: 1;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--surface-2);
+  color: var(--ink-3);
+  border: 1px solid var(--line-strong);
+  font-family: var(--mono);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  transition: all 0.24s var(--ease);
+}
+.mstep.active .mstep-dot {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 0 0 5px var(--primary-soft);
+}
+.mstep.done .mstep-dot {
+  background: var(--green-soft);
+  border-color: var(--green-line);
+  color: var(--green);
+}
+.mstep-copy {
+  margin-top: 11px;
+  line-height: 1.45;
+  min-width: 0;
+}
+.mstep-copy b {
+  display: block;
+  font-size: var(--fs-lg);
+  color: var(--ink);
+}
+.mstep-copy small {
+  display: block;
+  margin-top: 3px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.mstep.active .mstep-copy b {
+  color: var(--primary-deep);
+}
+
+/* =========================================================
+   上传
+   ========================================================= */
+
+.mup {
+  display: grid;
+  grid-template-columns: minmax(0, 1.42fr) minmax(320px, 0.58fr);
+  gap: 18px;
+  align-items: start;
+}
+.mup-main,
+.mtarget {
+  border-left: 1px solid var(--line);
+}
+.mup-main {
+  padding: 26px 28px 24px;
+}
+.mup-main h2 {
+  font-size: var(--fs-4xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.mup-lead {
+  margin: 8px 0 20px;
+  font-size: var(--fs-md);
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+
+.mdrop {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 252px;
+  padding: 26px;
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface-tint);
+  cursor: pointer;
+  transition: all 0.18s var(--ease);
+}
+.mdrop:hover,
+.mdrop.drag {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+.mdrop input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.mdrop-ic {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-lg);
+  display: grid;
+  place-items: center;
+  background: var(--primary-soft);
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+.mdrop b {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+}
+.mdrop small {
+  margin-top: 7px;
+  font-size: var(--fs-md);
+  color: var(--ink-2);
+}
+.mdrop-btn {
+  margin-top: 17px;
+  padding: 8px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  color: var(--ink-2);
+}
+.mdrop:hover .mdrop-btn,
+.mdrop.drag .mdrop-btn {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.mdrop-privacy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+.mfile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 12px 15px;
+  border: 1px solid var(--primary-line);
+  border-radius: var(--radius-sm);
+  background: var(--primary-soft);
+}
+.mfile-ic {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--primary);
+}
+.mfile-text {
+  flex: 1;
+  min-width: 0;
+}
+.mfile-text b {
+  display: block;
+  font-size: var(--fs-md);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mfile-text small {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.msample {
+  margin-top: 20px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+}
+.msample-hd {
+  font-size: var(--fs-md);
+  color: var(--ink-2);
+  margin-right: 2px;
+}
+/* 提示语与三枚选项同处一行，基线对齐 */
+.msample-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+/* 未选中时无内容，但高度照占：min-height 取一行的行高，
+   选中前后的版面高度因而一致，下方各块不随点击上下移动 */
+.msample-note {
+  margin-top: 10px;
+  min-height: calc(var(--fs-sm) * 1.75);
+  font-size: var(--fs-sm);
+  line-height: 1.75;
+  color: var(--ink-3);
+}
+
+.mup-act {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+}
+.mup-act-hint {
+  font-size: var(--fs-md);
+  color: var(--ink-2);
+}
+.mup-act-hint b {
+  color: var(--ink);
+}
+.mup-act-hint em {
+  font-style: normal;
+  color: var(--ink-3);
+  font-size: var(--fs-sm);
+}
+.mup-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* 主按钮 / 虚线幽灵按钮 —— 全站只有本页用得到，就近定义 */
+.btn.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  padding: 9px 18px;
+  font-size: var(--fs-md);
+}
+.btn.primary:hover {
+  background: var(--primary-deep);
+  border-color: var(--primary-deep);
+  color: #fff;
+}
+.btn.primary:disabled {
+  background: var(--surface-2);
+  border-color: var(--line-strong);
+  color: var(--ink-3);
+  cursor: not-allowed;
+}
+.btn.ghost-dash {
+  border-style: dashed;
+  padding: 9px 16px;
+  font-size: var(--fs-md);
+}
+
+/* 意向岗位 */
+.mtarget {
+  padding: 22px 20px;
+  position: sticky;
+  top: calc(var(--topbar-h) + 16px);
+}
+.mtarget h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+}
+.mtarget > p {
+  margin: 7px 0 15px;
+  font-size: var(--fs-md);
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+/* 正文里的行内跳转：按钮做的，样式按链接来，不要看着像另一个操作按钮 */
+.mlink {
+  color: var(--primary);
+  font-size: inherit;
+  font-weight: 600;
+  padding: 0 2px;
+  border-bottom: 1px solid transparent;
+}
+.mlink:hover {
+  border-bottom-color: var(--primary);
+}
+.mtarget-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 11px;
+}
+.mtarget-search .ic {
+  position: absolute;
+  left: 11px;
+  color: var(--ink-3);
+  pointer-events: none;
+}
+.mtarget-search input {
+  width: 100%;
+  min-width: 0;
+  padding: 9px 12px 9px 35px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: all 0.18s;
+}
+.mtarget-search input:focus {
+  border-color: var(--primary);
+  box-shadow: var(--focus-ring);
+}
+.mtarget-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 430px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.mtg {
+  display: grid;
+  grid-template-columns: 17px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  text-align: left;
+  transition: all 0.15s var(--ease);
+}
+.mtg:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-tint);
+}
+.mtg.on {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+.mtg-radio {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink-3);
+  display: grid;
+  place-items: center;
+}
+.mtg.on .mtg-radio {
+  border-color: var(--primary);
+}
+.mtg.on .mtg-radio::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+.mtg-text {
+  min-width: 0;
+}
+.mtg-text b {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-md);
+  font-weight: 600;
+}
+.mtg.on .mtg-text b {
+  color: var(--primary-deep);
+}
+.mtg-new {
+  font-style: normal;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: var(--radius-pill);
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+.mtg-text small {
+  display: block;
+  margin-top: 3px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mtg-pay {
+  font-size: var(--fs-sm);
+  font-family: var(--mono);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.mtarget-empty {
+  padding: 22px 4px;
+  font-size: var(--fs-md);
+  color: var(--ink-3);
+}
+
+/* =========================================================
+   解析
+
+   一份竖排的工序单。四道工序耗时相差两个数量级，横排等宽会让人以为
+   四步各占四分之一，故改竖排：一行一步，正在跑的那一行自己带一条进度。
+   ========================================================= */
+
+.mparse {
+  max-width: 780px;
+  margin: 34px auto 12px;
+  padding: 26px 28px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  box-shadow: var(--shadow-sm);
+}
+
+.mparse-hd {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+.mparse-hd-t {
+  min-width: 0;
+}
+.mparse-hd h2 {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+/* 文件名与比对基准。两段之间以一枚圆点分隔，圆点由 <i> 画出 ——
+   写成字符会在中英混排时被判成标点，前后各挤出一个不等宽的间隙。 */
+.mparse-hd p {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 6px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  min-width: 0;
+}
+.mparse-hd p i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+/* 百分数与单位分开排：数字用等宽数位，跳动时不带动百分号左右晃 */
+.mparse-pct {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  flex-shrink: 0;
+  color: var(--primary);
+  font-family: var(--mono);
+  line-height: 1;
+}
+.mparse-pct b {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.mparse-pct em {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  font-style: normal;
+}
+.mparse-pct.failed {
+  color: var(--red);
+}
+
+/* 总进度：细线一条，贴在页眉下沿，不做成一根粗条 ——
+   每一步自己那条才是要读的，总进度只交代整体走到哪 */
+.mparse-track {
+  margin: 16px 0 4px;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.mparse-track i {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--primary), var(--cyan));
+  transition: width 0.14s linear;
+}
+.mparse-track.failed i {
+  background: var(--red);
+}
+
+/* ---------------- 工序单 ---------------- */
+.mparse-pipe {
+  list-style: none;
+  margin-top: 10px;
+}
+.mparse-pipe li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 2px 14px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-3);
+  transition: color 0.24s var(--ease);
+}
+.mparse-pipe li:last-child {
+  border-bottom: 0;
+  padding-bottom: 4px;
+}
+/* 工序之间的连线，自本行的记号垂到下一行的记号 */
+.mparse-pipe li:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 12.5px;
+  top: 36px;
+  bottom: -8px;
+  width: 1px;
+  background: var(--line);
+}
+.mparse-pipe li.done:not(:last-child)::before {
+  background: var(--green-line);
+}
+
+.mpp-ic {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink-3);
+  transition: all 0.24s var(--ease);
+}
+.mpp-t {
+  min-width: 0;
+}
+.mpp-t b {
+  display: block;
+  font-size: var(--fs-lg);
+  font-weight: 600;
+}
+/* 这一步在做什么。只在正在跑的那一行出现，跑完即收 */
+.mpp-t small {
+  display: block;
+  margin-top: 3px;
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.mpp-st {
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 本步的进度条横跨整行下沿：它量的是这一行，故与这一行同宽 */
+.mpp-bar {
+  grid-column: 1 / -1;
+  height: 2px;
+  margin-top: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--primary-soft);
+  overflow: hidden;
+}
+.mpp-bar i {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--primary);
+  transition: width 0.2s linear;
+}
+
+.mparse-pipe li.active {
+  color: var(--ink);
+}
+.mparse-pipe li.active .mpp-ic {
+  background: var(--primary-soft);
+  border-color: var(--primary-line);
+  color: var(--primary);
+  animation: mbreathe 2.2s var(--ease) infinite;
+}
+.mparse-pipe li.active .mpp-st {
+  color: var(--primary);
+  font-weight: 600;
+}
+.mparse-pipe li.done {
+  color: var(--ink-2);
+}
+.mparse-pipe li.done .mpp-ic {
+  background: var(--green-soft);
+  border-color: var(--green-line);
+  color: var(--green);
+}
+.mparse-pipe li.done .mpp-t b {
+  font-weight: 500;
+}
+.mparse-pipe li.failed {
+  color: var(--ink);
+}
+.mparse-pipe li.failed .mpp-ic {
+  background: var(--red-soft);
+  border-color: var(--red);
+  color: var(--red);
+}
+.mparse-pipe li.failed .mpp-st {
+  color: var(--red);
+  font-weight: 600;
+}
+
+@keyframes mbreathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.09);
+  }
+}
+
+/* =========================================================
+   解析中断的弹窗
+
+   出错与预检不过关两处共用。正文一句话说清发生了什么与下一步怎么办，
+   接口原文与解析器字段收在折叠项里 —— 它们对使用者没有意义，
+   但排障时缺了就无从判读故障位置。
+   ========================================================= */
+
+.mdlg-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.42);
+  backdrop-filter: blur(3px);
+  animation: mdlgFade 0.18s var(--ease) both;
+}
+.mdlg {
+  width: min(460px, 100%);
+  padding: 22px 24px 18px;
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  box-shadow: var(--shadow-lg);
+  animation: mdlgIn 0.2s var(--ease) both;
+}
+@keyframes mdlgFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes mdlgIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.mdlg-hd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mdlg-ic {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+.mdlg-hd h2 {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-xl);
+  font-weight: 700;
+}
+.mdlg-x {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-sm);
+  color: var(--ink-3);
+}
+.mdlg-x:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+.mdlg-lead {
+  margin-top: 12px;
+  font-size: var(--fs-md);
+  line-height: 1.8;
+  color: var(--ink-2);
+}
+.mdlg-items {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-tint);
+  list-style: none;
+}
+.mdlg-items li {
+  position: relative;
+  padding-left: 13px;
+  font-size: var(--fs-sm);
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+.mdlg-items li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 9px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+
+.mdlg-detail {
+  margin-top: 12px;
+  font-size: var(--fs-sm);
+}
+.mdlg-detail summary {
+  cursor: pointer;
+  color: var(--ink-3);
+  list-style: none;
+}
+.mdlg-detail summary::-webkit-details-marker {
+  display: none;
+}
+.mdlg-detail summary::before {
+  content: '▸ ';
+  color: var(--ink-3);
+}
+.mdlg-detail[open] summary::before {
+  content: '▾ ';
+}
+.mdlg-detail summary:hover {
+  color: var(--ink-2);
+}
+.mdlg-detail p {
+  margin-top: 7px;
+  padding: 9px 11px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  word-break: break-word;
+  max-height: 132px;
+  overflow: auto;
+}
+
+.mdlg-ft {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+/* =========================================================
+   报告纸
+   ========================================================= */
+
+/* 左简历 · 右分析。左栏 sticky 并自己滚：读分析的人随时要能瞟一眼原文，
+   把简历放在报告最上面或最下面都等于“看不到”。 */
+/* 左栏是简历原文，宽度只要够一行不折就行，多出来的宽度一律给报告。
+   1560px 以上给原文多 60px：那一栏里全是长句，再窄就每行都要折。 */
+.mreport {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  animation: mreportIn 0.52s var(--ease) both;
+}
+@media (min-width: 1560px) {
+  .mreport {
+    grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+    gap: 22px;
+  }
+}
+@keyframes mreportIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------- 左：简历原文 ---------------- */
+.rp-doc {
+  position: sticky;
+  top: calc(var(--topbar-h) + 14px);
+  max-height: calc(100vh - var(--topbar-h) - 28px);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding-right: 22px;
+  border-right: 1px solid var(--line);
+  overflow: hidden;
+}
+/* 页眉三件：返回上传、本次读的是哪一份简历、示例简历的切换器。
+   返回上传此前独占报告顶端的一整行，一行只放一枚小按钮，既占着首屏最先
+   被读到的位置，又因四周无物而看不出与谁相关；现与本栏的主语同处一行。 */
+.rp-doc-hd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 15px 13px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--surface-tint), var(--panel));
+  flex-wrap: wrap;
+}
+.rp-doc-back {
+  order: -1;
+  flex: 0 0 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  align-self: flex-start;
+  margin-bottom: 2px;
+  padding: 4px 11px 4px 8px;
+  border: 1px solid var(--primary-line);
+  border-radius: var(--radius-pill);
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  cursor: pointer;
+  width: fit-content;
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+.rp-doc-back:hover {
+  background: var(--panel);
+  border-color: var(--primary);
+}
+.rp-doc-back:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+.rp-doc-t {
+  flex: 1;
+  min-width: 0;
+}
+.rp-doc-t b {
+  display: block;
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+.rp-doc-t small {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  margin-top: 1px;
+}
+.rp-doc-hd select {
+  max-width: 118px;
+  padding: 5px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  font-size: var(--fs-sm);
+}
+/* 演示链路左栏的过滤器条：常驻，故取中性底 */
+.rp-doc-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 15px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.rp-doc-bar .switch {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.rp-doc-focus {
+  padding: 8px 15px;
+  font-size: var(--fs-sm);
+  color: var(--primary-deep);
+  background: var(--primary-soft);
+  border-bottom: 1px solid var(--primary-line);
+}
+.rp-doc-bd {
+  flex: 1;
+  min-height: 260px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding: 6px 15px 18px;
+}
+.rd-sec {
+  padding-top: 14px;
+}
+.rd-sec h4 {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 6px;
+}
+.rd-sec ul {
+  list-style: none;
+}
+.rd-l {
+  position: relative;
+  padding: 5px 8px 5px 11px;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-md);
+  line-height: 1.85;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.16s;
+}
+.rd-l:hover {
+  background: var(--surface-2);
+}
+/* 抽取到技能要素的行留一条竖线 —— 一眼看出哪些内容真的被系统读进去了 */
+.rd-l.cited::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 7px;
+  bottom: 7px;
+  width: 2.5px;
+  border-radius: var(--radius-pill);
+  background: var(--src-jd);
+  opacity: 0.55;
+}
+.rd-l.on {
+  background: #fff6e0;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--amber-line);
+}
+.rd-l.picked {
+  background: var(--primary-soft);
+  color: var(--ink);
+}
+.rd-txt mark {
+  background: #fdf0c9;
+  color: inherit;
+  border-radius: var(--radius-xs);
+  padding: 0 2px;
+}
+.rd-l.on .rd-txt mark {
+  background: #f7dc98;
+}
+.rd-l-hint {
+  display: block;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px dashed var(--line-strong);
+  font-size: var(--fs-sm);
+  color: var(--primary-deep);
+}
+.rp {
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ---------------- 页眉 ---------------- */
+.rp-hd {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 396px;
+  gap: 34px;
+  padding: 30px 34px 28px;
+  background: linear-gradient(180deg, var(--surface-tint) 0%, var(--panel) 100%);
+  border-bottom: 1px solid var(--line);
+}
+.rp-eyebrow {
+  display: inline-block;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.rp-hd h1 {
+  margin-top: 6px;
+  font-size: var(--fs-4xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.rp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 11px;
+}
+.rp-tags span {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+.tag-p {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+.tag-o {
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  color: var(--ink-2);
+}
+.tag-n {
+  background: var(--amber-soft);
+  color: var(--amber);
+  font-weight: 600;
+}
+
+/* ---------------- 比对基准 ----------------
+   报告以哪一份岗位要求为准，由岗位与招聘信息两处选择共同决定，故合成一块。
+   两个下拉等宽并排，标签在上：此前标签在左、宽度各随文字，两行控件的左边缘
+   因而对不齐，读起来像两件不相干的事。 */
+/* ---------------- 目标岗位 ----------------
+
+   此处原是一个带边框的浅色方块，里面并排两枚下拉（目标岗位、基准招聘信息），
+   下面再压一行窗口与编号。一件事被拆成三处，还各带一句解释。
+
+   现在只剩一件事要做：选岗位。故不再画方块 —— 报告页首本已是一整块浅色底，
+   在浅色上再叠一层浅色只是把边框叠出来。改由一条竖起的主色标线领起，
+   下拉自身撑满可用宽度、字号提到与岗位名同一档，基准取自多少条招聘信息
+   作一行小字附在下面。 */
+.rp-base {
+  margin-top: 20px;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+}
+/* 实测链路以本块收尾，故由它顶住底边；演示链路的末块是三档计数，见下 */
+.rp-live .rp-base {
+  margin-top: auto;
+}
+.rp-base-lb {
+  display: block;
+  margin-bottom: 7px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+}
+/* 下拉与它右端的指示箭头。原生 select 的箭头在各系统上样式不一，
+   故收掉它自己那枚，另画一枚定位在右端 */
+.rp-base-sel {
+  position: relative;
+  max-width: 460px;
+}
+.rp-base-sel svg {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--ink-3);
+}
+.rp-base-sel select {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 38px 11px 13px;
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.rp-base-sel select:hover {
+  border-color: var(--primary-line);
+}
+.rp-base-sel select:focus-visible {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+/* 重算途中按住不放：此刻改选会与正在跑的那一次撞在一起 */
+.rp-base-sel select:disabled {
+  color: var(--ink-3);
+  cursor: progress;
+  background: var(--surface-tint);
+}
+.rp-base-sel select:disabled + svg {
+  opacity: 0.4;
+}
+/* 基准由多少条招聘信息汇总而来。这是这份报告可信到什么程度的第一道依据，
+   故紧随选择器，不与其他标识混在一行 */
+.rp-base-meta {
+  margin-top: 9px;
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+.rp-base-meta b {
+  font-family: var(--mono);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--ink-2);
+}
+/* 重算途中。一秒以内的事，故只换文字并给一枚转圈，不动页面其余各块 */
+.rp-base-meta.busy {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--primary-deep);
+}
+.rp-base-spin {
+  width: 11px;
+  height: 11px;
+  flex: none;
+  border: 2px solid var(--primary-line);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: rp-base-spin 0.7s linear infinite;
+}
+@keyframes rp-base-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rp-base-spin {
+    animation: none;
+  }
+}
+
+.rp-basis {
+  margin-top: 16px;
+  font-size: var(--fs-md);
+  line-height: 1.8;
+  color: var(--ink-2);
+}
+.rp-basis b {
+  color: var(--ink);
+}
+/* ---------------- 真实性核验 ---------------- */
+.auth-top {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+/* 可核验度读数。此前在数字上方压一条通栏横线，横线两端无所依托，
+   与右侧的核验计数之间也就没有分界。现独立成卡，与右侧一段并列。 */
+.auth-score {
+  flex-shrink: 0;
+  width: 132px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--panel), var(--surface-tint));
+}
+.auth-score b {
+  font-size: var(--fs-5xl);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+.auth-score small {
+  margin-top: 5px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.auth-sum {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+.auth-sum p {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  font-size: var(--fs-md);
+  line-height: 1.85;
+}
+.auth-sum .htip {
+  margin-left: 14px;
+}
+.ck {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 9px;
+  border-radius: var(--radius-xs);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+.ck-pass {
+  color: var(--green-ink);
+  background: var(--green-soft);
+}
+.ck-watch {
+  color: var(--src-news-ink);
+  background: var(--amber-soft);
+}
+.ck-risk {
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+.auth-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+/* 诊断条目。语义由左侧那条色线承担，四边框与浅底不再重复表达同一件事：
+   底色浅到几乎不可见，却使每一条都成为一个独立的框。 */
+.ac {
+  border-left: 3px solid var(--line-strong);
+  padding: 2px 0 3px 14px;
+}
+.ac.ac-pass {
+  border-left-color: var(--green);
+}
+.ac.ac-watch {
+  border-left-color: var(--amber);
+}
+.ac.ac-risk {
+  border-left-color: var(--red);
+}
+.ac-hd {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin-bottom: 5px;
+}
+.ac-hd b {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+.ac-flag {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+}
+.ac-flag.ac-pass {
+  color: var(--green-ink);
+  background: var(--green-soft);
+}
+.ac-flag.ac-watch {
+  color: var(--src-news-ink);
+  background: var(--amber-soft);
+}
+.ac-flag.ac-risk {
+  color: #fff;
+  background: var(--red);
+}
+.ac-metric {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.ac-origin {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--primary);
+  border: 1px solid var(--primary-line);
+  background: var(--primary-soft);
+  border-radius: var(--radius-pill);
+  padding: 3px 10px;
+  transition: all 0.16s;
+}
+.ac-origin:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.ac p {
+  font-size: var(--fs-md);
+  line-height: 1.85;
+  color: var(--ink-2);
+}
+.ac-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+.ac-items span {
+  font-size: var(--fs-sm);
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  background: var(--surface-2);
+  color: var(--ink-2);
+}
+
+/* ---------------- 经历关联度 ---------------- */
+/* 每段经历一张卡。窄屏一列；宽屏两列 —— 单列时卡片会宽到一行只有几个字，
+   读的人要横扫一整幅才对得上左边的经历名。 */
+.xl-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+  gap: 12px;
+}
+.xl {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 13px 15px 14px;
+}
+.xl-hd {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-bottom: 9px;
+}
+.xl-hd b {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+.xl-kind {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: #fff;
+  border-radius: var(--radius-xs);
+  padding: 2px 8px;
+  flex-shrink: 0;
+}
+.xl-kind.k-work {
+  background: var(--src-jd);
+}
+.xl-kind.k-project {
+  background: var(--accent);
+}
+.xl-kind.k-competition {
+  background: var(--amber);
+}
+.xl-kind.k-research {
+  background: var(--src-paper);
+}
+.xl-org {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.xl-cov {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.xl-cov-bar {
+  flex: 1;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.xl-cov-bar i {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--primary), var(--cyan));
+}
+.xl-cov b {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  min-width: 46px;
+  text-align: right;
+}
+.xl-cov small {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  flex-shrink: 0;
+}
+.xl-hits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
+  gap: 6px 14px;
+}
+.xl-hit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  text-align: left;
+  transition: background 0.16s;
+}
+.xl-hit:hover {
+  background: var(--primary-soft);
+}
+.xl-hit-n {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.xl-hit-bar {
+  width: 62px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.xl-hit-bar i {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+}
+.xl-hit-bar i.ok {
+  background: var(--green);
+}
+.xl-hit-bar i.mid {
+  background: var(--amber);
+}
+.xl-hit-bar i.low {
+  background: var(--red);
+}
+.xl-hit-v {
+  width: 36px;
+  text-align: right;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+.xl-tasks,
+.xl-empty,
+.xl-unmapped {
+  margin-top: 9px;
+  font-size: var(--fs-sm);
+  line-height: 1.8;
+  color: var(--ink-2);
+}
+.xl-unmapped {
+  color: var(--ink-3);
+}
+
+/* “翻回简历原文”那一排 */
+.rp-origin-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+/* 左列比右列矮一截（右列有评分环加一组分档条），差出来的高度落在最下面
+   会拉出一段空白。改成撑满后把最末一块推到底，两列的底边即对齐。
+   实测链路末块为比对基准，演示链路末块为三档计数，两者各自顶底。 */
+.rp-hd-l {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.rp-hd-l .rp-bands {
+  margin-top: auto;
+  padding-top: 16px;
+}
+.rp-hd-r {
+  min-width: 0;
+}
+/* 评级下面那句说明带一枚演示数据标，基线对齐会把标顶歪 */
+.rp-verdict {
+  flex-wrap: wrap;
+}
+.rp-verdict span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.rp-ring {
+  position: relative;
+  width: 138px;
+  height: 138px;
+  margin: 0 auto;
+}
+.rp-ring-val {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+.rp-ring-val b {
+  display: block;
+  font-size: var(--fs-5xl);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.rp-ring-val small {
+  display: block;
+  margin-top: 5px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.rp-verdict {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+.rp-verdict b {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--primary-deep);
+}
+.rp-verdict span {
+  font-size: var(--fs-md);
+  color: var(--ink-2);
+}
+
+.rp-dims-hd {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+/* ---------------- 综合匹配度的构成：扣分瀑布 ----------------
+   行式而非柱式：右栏在 1280px 下会收到 330px，横排六根柱子加标签放不下，
+   而行式与报告页其余条形同构，读起来也不用横向找对应关系。 */
+.wf {
+  margin-top: 10px;
+}
+.wf-row {
+  display: grid;
+  grid-template-columns: 106px minmax(0, 1fr) 46px;
+  gap: 11px;
+  align-items: center;
+  padding: 3px 0;
+  width: 100%;
+  text-align: left;
+}
+button.wf-row {
+  background: none;
+  border: 0;
+  border-radius: var(--radius-sm);
+  transition: background 0.16s;
+}
+button.wf-row:hover {
+  background: var(--surface-2);
+}
+.wf-name {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: var(--fs-md);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+/* 权重跟在维度名后面，让“综合分怎么来的”在图上直接可验算 */
+.wf-name em {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  font-style: normal;
+  color: var(--ink-3);
+}
+.wf-track {
+  position: relative;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+}
+.wf-track i {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: var(--radius-pill);
+}
+.wf-full {
+  left: 0;
+  width: 100%;
+  background: var(--line-strong);
+  opacity: 0.5;
+}
+/* 没丢的那一段：淡，因为它不是要说的重点 */
+.wf-keep {
+  left: 0;
+  background: var(--primary);
+  opacity: 0.16;
+}
+/* 这一维扣掉的那一段：浮在 after → before 之间，长度就是扣分 */
+.wf-lost {
+  background: var(--amber);
+}
+.wf-score {
+  left: 0;
+  background: linear-gradient(90deg, var(--primary), var(--cyan));
+}
+.wf-num {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.wf-num-lost {
+  color: var(--ink-3);
+  font-weight: 500;
+}
+.wf-row-top .wf-name,
+.wf-row-top .wf-num {
+  color: var(--ink-3);
+  font-size: var(--fs-sm);
+}
+.wf-row-end {
+  margin-top: 5px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+.wf-row-end .wf-name {
+  font-weight: 700;
+  color: var(--ink);
+}
+.wf-row-end .wf-num {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+.wf-read {
+  margin-top: 9px;
+  font-size: var(--fs-sm);
+  line-height: 1.8;
+  color: var(--ink-3);
+}
+
+.rp-bands {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+/* 三档计数。此前为三栏，各在栏顶压一条语义色横线；横线悬在数字上方而不圈住它，
+   三栏之间也就没有边界，读者须自行判断哪个标签管哪个数字。现每档独立成卡：
+   语义由整张卡承担 —— 描边取该档的线色，底取该档的极淡面色，数字仍为本色，
+   三者同一色相，故在读到数字之前即可分辨档位。 */
+.rp-bands span {
+  min-width: 0;
+  text-align: center;
+  padding: 13px 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.rp-bands .bd-have {
+  border-color: var(--green-line);
+  background: var(--tint-green);
+}
+.rp-bands .bd-improve {
+  border-color: var(--amber-line);
+  background: var(--tint-amber);
+}
+.rp-bands .bd-missing {
+  border-color: var(--red-line);
+  background: var(--tint-red);
+}
+.rp-bands b {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--fs-3xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.bd-have b {
+  color: var(--green);
+}
+.bd-improve b {
+  color: var(--amber);
+}
+.bd-missing b {
+  color: var(--red);
+}
+
+/* ---------------- 分段 ---------------- */
+.rp-sec {
+  padding: 30px 34px;
+  border-top: 1px solid var(--line);
+}
+.rp-sec:first-of-type {
+  border-top: 0;
+}
+/* 说明收进问号之后，标题就是一行，记号与标题按中线对齐 */
+.rp-sec-hd {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+/* 节名与首页分段标题、全景图谱各节的节名同为一级，字号、字体、字距与记号一并取齐 */
+.rp-sec-hd h2 {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex-wrap: wrap;
+  font-family: var(--font-display);
+  font-size: var(--fs-4xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+/* 一级记号：10px 的菱形，描边取强调色，内填同族浅面。
+   形与色的由来见 global.css“标题记号”一节 */
+.rp-sec-hd h2::before {
+  content: '';
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--accent);
+  border-radius: 2px;
+  background: var(--accent-soft);
+  transform: rotate(45deg);
+  margin-right: 2px;
+}
+
+/* 图下方的读图说明：右对齐一枚问号，不占正文位置 */
+.rp-hint-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+/* 改进建议 */
+.rp-advice {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 14px 26px;
+}
+.adv {
+  padding-left: 15px;
+  border-left: 3px solid var(--line-strong);
+}
+.adv b {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+.adv p {
+  margin-top: 5px;
+  font-size: var(--fs-md);
+  line-height: 1.8;
+  color: var(--ink-2);
+}
+.adv-gap {
+  border-left-color: var(--red);
+}
+.adv-forward {
+  border-left-color: var(--violet);
+}
+.adv-dimension {
+  border-left-color: var(--amber);
+}
+.adv-strength {
+  border-left-color: var(--green);
+}
+
+/* 任务覆盖 */
+/* ---------------- 岗位核心任务的覆盖 ----------------
+
+   每项两行：名称与读数一行，条形与拖低它的那几项各占一行。此前四列并排，
+   薄弱项挤在末列被截成"嵌入式系统…"，而那一列恰是这一块唯一可据以行动的信息。
+
+   条形不再按三档取红黄绿。这是一个连续量，且与页首那枚达成率不同源、
+   没有及格线；着色分档会读作"这几项不及格"。改由长度单独表达，一色到底。 */
+.rp-tasks {
+  margin-bottom: 22px;
+}
+.rp-tasks ul {
+  list-style: none;
+  display: grid;
+  /* auto-fill 而非 auto-fit：后者会把"空"轨道折叠，本块每项都跨满自身的
+     内部网格，实测下折成了一列 */
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 15px 32px;
+}
+.rp-tasks li {
+  display: grid;
+  /* 薄弱项那一行的最小内容宽度会撑开轨道，令 auto-fit 少排一列；
+     此处显式压到 0，列数只由上面的 minmax 决定 */
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 10px;
+  align-items: baseline;
+  font-size: var(--fs-md);
+}
+.rt-n {
+  min-width: 0;
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rt-v {
+  font-family: var(--mono);
+  font-weight: 700;
+  text-align: right;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.rt-bar {
+  grid-column: 1 / -1;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.rt-bar i {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--primary);
+}
+/* 拖低这项任务的那几项能力。整行铺开，不截断 */
+.rt-hole {
+  grid-column: 1 / -1;
+  margin-top: 1px;
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+.rt-hole em {
+  font-style: normal;
+  margin-right: 6px;
+  color: var(--ink-3);
+  opacity: 0.75;
+}
+.rt-hole em::after {
+  content: '·';
+  margin-left: 6px;
+  color: var(--line-strong);
+}
+
+/* 学习路径 */
+.rp-path {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.ph {
+  position: relative;
+  padding: 2px 0 2px 15px;
+  border-left: 2px solid var(--line-strong);
+}
+.ph::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 0;
+  width: 44px;
+  height: 3px;
+  border-radius: 0 0 var(--radius-xs) var(--radius-xs);
+  background: var(--primary);
+}
+.ph-2::before {
+  background: var(--cyan);
+}
+.ph-3::before {
+  background: var(--violet);
+}
+.ph-hd {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+.ph-n {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--primary);
+}
+.ph-2 .ph-n {
+  color: var(--cyan);
+}
+.ph-3 .ph-n {
+  color: var(--violet);
+}
+.ph-hd b {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+}
+.ph-hd em {
+  font-style: normal;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  margin-left: auto;
+}
+.ph-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 13px;
+}
+.ph-sk {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-strong);
+  background: var(--panel);
+  font-size: var(--fs-md);
+}
+.ph-sk.fore {
+  border-color: var(--violet-line);
+  background: var(--violet-soft);
+  color: var(--src-paper-ink);
+}
+.ph-sk i {
+  font-style: normal;
+  font-size: var(--fs-sm);
+  color: var(--src-paper-ink);
+}
+/* 指向官方文档的外链。只在收录了稳定入口的技能点上出现 */
+.ph-doc {
+  margin-left: 2px;
+  padding: 0 3px;
+  border-radius: var(--radius-xs);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  transition: background 0.16s;
+}
+.ph-doc:hover {
+  background: var(--primary-soft);
+}
+.ph-empty {
+  font-size: var(--fs-md);
+  color: var(--ink-3);
+}
+.ph-res {
+  margin-top: 13px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--line-strong);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+/* 相近岗位 */
+.rp-near {
+  list-style: none;
+}
+.rp-near li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 130px 118px auto;
+  gap: 16px;
+  align-items: center;
+  padding: 13px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.rp-near li:last-child {
+  border-bottom: 0;
+}
+.nr-n b {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+}
+.nr-n small {
+  display: block;
+  margin-top: 3px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.nr-m {
+  text-align: right;
+}
+.nr-m small {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+.nr-m b {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--mono);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.nr-m b.up {
+  color: var(--green);
+}
+
+/* 页脚 */
+/* 页脚只剩两个出口。此前左侧另有一行版本号与评测说明，两者一左一右由
+   space-between 撑开，还垫了一层浅底。文字撤去之后底色也随之撤去 —— 一整块
+   浅底只为托住两枚按钮，反倒像是报告在这里还有一节内容。按钮靠右收齐。 */
+.rp-ft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 18px 34px 22px;
+  border-top: 1px solid var(--line);
+}
+.rp-ft-act {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+.rp-ft-act .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 页内共用 */
+.rp-sec .sub-hd {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* =========================================================
+   能力账本
+   ========================================================= */
+
+.ledger {
+  --lg-cols: minmax(150px, 1.25fr) minmax(190px, 2.5fr) 56px 56px 62px 74px;
+}
+.lg-head {
+  display: grid;
+  grid-template-columns: var(--lg-cols);
+  gap: 12px;
+  align-items: end;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line-strong);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.lg-head-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.lg-key {
+  width: 11px;
+  height: 11px;
+  border-radius: var(--radius-xs);
+  margin-left: 7px;
+}
+/* 证据指纹一列：表头文字右对齐到指纹的中线，行内只放图元 */
+.lg-fp-h {
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.lg-fp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+.lg-key-direct {
+  background: var(--primary);
+}
+.lg-key-task {
+  background: var(--violet);
+}
+.lg-key-own {
+  height: 6px;
+  border-radius: var(--radius-xs);
+  background: var(--ink);
+}
+
+.lg-item {
+  border-bottom: 1px solid var(--line);
+}
+.lg-item.open {
+  background: var(--surface-tint);
+}
+.lg-row {
+  display: grid;
+  grid-template-columns: var(--lg-cols);
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  text-align: left;
+  transition: background 0.15s;
+}
+.lg-row:hover {
+  background: var(--surface-2);
+}
+.lg-name {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+.lg-caret {
+  font-style: normal;
+  font-size: var(--fs-2xs);
+  color: var(--ink-3);
+  width: 9px;
+  flex-shrink: 0;
+}
+.lg-name b {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.lg-fore {
+  flex-shrink: 0;
+  font-style: normal;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: var(--radius-pill);
+  background: var(--violet-soft);
+  color: var(--src-paper-ink);
+}
+
+.lg-bar {
+  position: relative;
+  display: block;
+  height: 18px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.lg-seg {
+  position: absolute;
+  top: 0;
+  height: 18px;
+}
+.lg-seg-direct {
+  left: 0;
+  background: var(--primary);
+  opacity: 0.88;
+}
+.lg-seg-task {
+  background: var(--violet);
+  opacity: 0.62;
+}
+/* 我的水平：压在要求条上的深色内条，一眼看出差多少 */
+.lg-own {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  height: 6px;
+  border-radius: var(--radius-xs);
+  background: var(--ink);
+  opacity: 0.82;
+}
+
+.lg-num {
+  font-family: var(--mono);
+  font-size: var(--fs-md);
+  text-align: right;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.lg-gap-down {
+  color: var(--red);
+}
+.lg-gap-ok {
+  color: var(--green);
+}
+.lg-st {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-align: center;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+}
+.lg-head .lg-st {
+  font-weight: 400;
+  color: var(--ink-2);
+  background: none;
+  padding: 0;
+}
+.lg-st-have {
+  color: var(--green);
+  background: var(--green-soft);
+}
+.lg-st-improve {
+  color: var(--amber);
+  background: var(--amber-soft);
+}
+.lg-st-missing {
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+.lg-detail {
+  padding: 4px 0 15px 16px;
+}
+.lg-detail p {
+  font-size: var(--fs-md);
+  line-height: 1.8;
+  color: var(--ink-2);
+}
+.lg-detail p b {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.lg-detail-empty {
+  color: var(--ink-3);
+}
+.lg-tasks {
+  list-style: none;
+  margin-top: 8px;
+}
+.lg-tasks li {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) minmax(80px, 200px) 56px;
+  gap: 12px;
+  align-items: center;
+  padding: 3px 0;
+  font-size: var(--fs-md);
+}
+.lg-task-n {
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.lg-task-bar {
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.lg-task-bar i {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--violet);
+  opacity: 0.7;
+}
+
+/* =========================================================
+   能力地形导航
+   ========================================================= */
+
+.ct-wrap {
+  position: relative;
+  width: 100%;
+}
+/* 图有 420px 的最小宽度（再窄标签就无处落位），窄屏下让它在自己这一格里横向滚动，
+   而不是被外层裁掉右边一截 */
+@media (max-width: 520px) {
+  .ct-wrap {
+    overflow-x: auto;
+  }
+}
+/* 边框画在图内（见 CareerTerrain 的外框 rect）：CSS 的 border 加在 width 之外，
+   图会比容器宽出两像素，凭空多一条横向滚动条 */
+.ct-svg {
+  display: block;
+  border-radius: var(--radius);
+}
+.ct-dot {
+  fill: var(--lay-job);
+  opacity: 0.78;
+  stroke: var(--viz-halo);
+  stroke-width: 1.5;
+  cursor: pointer;
+  transition:
+    opacity 0.15s,
+    r 0.15s;
+}
+.ct-dot:hover {
+  opacity: 1;
+}
+.ct-dot-new {
+  fill: var(--amber);
+}
+/* 目标岗位画成圆环：与“当前位置”的实心绿点同色，靠形状分辨 */
+.ct-dot-target {
+  fill: var(--viz-halo);
+  stroke: var(--green);
+  stroke-width: 3.4;
+  opacity: 1;
+}
+
+.ct-route {
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  opacity: 0.95;
+}
+.ct-wp-halo {
+  fill: var(--amber);
+  opacity: 0.2;
+}
+.ct-wp {
+  fill: var(--amber);
+  stroke: var(--viz-halo);
+  stroke-width: 1.6;
+}
+.ct-wp-idx {
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  fill: #fff;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.ct-me-halo {
+  fill: var(--green);
+  opacity: 0.16;
+  animation: ctPulse 2.6s var(--ease) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.ct-me {
+  fill: var(--green);
+  stroke: var(--viz-halo);
+  stroke-width: 2.4;
+}
+@keyframes ctPulse {
+  0%,
+  100% {
+    transform: scale(0.86);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.24;
+  }
+}
+
+/* 图内文字：不描边、不垫底色。地势已压到最深处约三成主色，
+   下面这几个色在那个底上实测都在 4.5:1 以上，直接压上去即可 */
+.ct-labels text {
+  pointer-events: none;
+  font-family: var(--font);
+  letter-spacing: 0.01em;
+  transition:
+    fill 0.15s,
+    font-weight 0.15s;
+}
+.ct-t-job {
+  fill: #2b3757;
+  font-weight: 500;
+}
+.ct-t-new {
+  fill: #7d4404;
+  font-weight: 500;
+}
+.ct-t-target {
+  fill: #0a5f33;
+  font-weight: 700;
+}
+.ct-t-me {
+  fill: #0a5f33;
+  font-weight: 700;
+}
+.ct-t-wp {
+  fill: #7d4404;
+  font-weight: 600;
+}
+/* 鼠标停在哪个点上，那个名字跟着提亮 */
+.ct-labels text.is-hot {
+  fill: var(--primary-deep);
+  font-weight: 700;
+}
+
+.ct-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 22px;
+  margin-top: 12px;
+}
+.ct-legend span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.ct-sw {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ct-sw-me {
+  background: var(--green);
+}
+/* 与图上一致：目标是环，当前位置是实心点 */
+.ct-sw-target {
+  background: var(--panel);
+  box-shadow: 0 0 0 3px var(--green) inset;
+}
+.ct-sw-wp {
+  background: var(--amber);
+}
+.ct-sw-job {
+  width: 9px;
+  height: 9px;
+  background: var(--lay-job);
+  opacity: 0.78;
+}
+.ct-sw-new {
+  width: 9px;
+  height: 9px;
+  background: var(--amber);
+  opacity: 0.78;
+}
+/* 规模口径：与图例同一行，弱化处理 */
+.ct-count {
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+/* 读图说明推到图例这一行的最右端 */
+.ct-help {
+  margin-left: auto;
+}
+
+/* =========================================================
+   浮条提示
+   ========================================================= */
+
+.mtoast {
+  position: fixed;
+  left: 50%;
+  bottom: 34px;
+  transform: translateX(-50%);
+  z-index: 300;
+  background: var(--ink);
+  color: #fff;
+  padding: 11px 20px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-md);
+  box-shadow: var(--shadow-lg);
+  animation: mreportIn 0.28s var(--ease) both;
+}
+
+/* =========================================================
+   窄屏
+   ========================================================= */
+
+@media (max-width: 1440px) {
+  .mreport {
+    grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  }
+}
+
+/* 放不下两列时改成上下：简历退成一块可折叠高度的卡片压在报告上方，
+   仍然“先看到简历”，只是不再常驻视野 —— 窄屏没有可分的宽度。 */
+@media (max-width: 1180px) {
+  .mreport {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rp-doc {
+    position: static;
+    max-height: none;
+  }
+  .rp-doc-bd {
+    max-height: 46vh;
+  }
+}
+
+@media (max-width: 1280px) {
+  .rp-hd {
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: 26px;
+  }
+  /* 此处原把任务覆盖压成一列。改为两行式版式之后，一项的最小可读宽度是
+     340px，容器在这一档仍有九百余像素，压成一列只是把纵向拉长一倍；
+     真正放不下时上面那条 auto-fill 自己会收成一列。 */
+  .auth-top {
+    flex-direction: column;
+  }
+  .auth-score {
+    width: 100%;
+    flex-direction: row;
+    gap: 12px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 1080px) {
+  /* 左右留白由 --gutter 统一给（tokens.css § F），这里只调纵向 */
+  .match-wrap {
+    padding-top: 20px;
+    padding-bottom: 36px;
+  }
+  .mup {
+    grid-template-columns: 1fr;
+  }
+  /* 两栏并为一栏之后，分栏竖线无所分隔，改由一条顶线与上一栏分界 */
+  .mtarget {
+    position: static;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+  }
+  .mtarget-list {
+    max-height: 320px;
+  }
+  .rp-hd {
+    grid-template-columns: 1fr;
+  }
+  .rp-doc {
+    padding-right: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .rp-sec,
+  .rp-ft {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  .rp-path {
+    grid-template-columns: 1fr;
+  }
+  .ledger {
+    --lg-cols: minmax(120px, 1.2fr) minmax(140px, 2fr) 50px 50px 58px 68px;
+  }
+}
+
+@media (max-width: 760px) {
+  .match-wrap {
+    padding-top: 16px;
+    padding-bottom: 30px;
+  }
+  .msteps {
+    padding: 16px 8px 14px;
+  }
+  .mstep {
+    grid-template-rows: 32px auto;
+  }
+  .mstep-line {
+    top: 15px;
+    left: calc(50% + 21px);
+    width: calc(100% - 42px);
+  }
+  .mstep-dot {
+    width: 32px;
+    height: 32px;
+    font-size: var(--fs-sm);
+  }
+  .mstep-copy b {
+    font-size: var(--fs-md);
+  }
+  .mstep-copy small {
+    display: none;
+  }
+  .mup-main {
+    padding: 20px 17px;
+  }
+  .mparse {
+    margin-top: 22px;
+    padding: 20px 16px 18px;
+  }
+  /* 窄屏下页眉的两段各占一行：百分数与标题挤在一行时文件名要折三行 */
+  .mparse-hd {
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+  .rp-hd {
+    padding: 22px 17px;
+  }
+  .rp-hd h1 {
+    font-size: var(--fs-4xl);
+  }
+  .rp-sec,
+  .rp-ft {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+  .rp-base-sel {
+    max-width: none;
+  }
+  /* 账本在窄屏收掉证据指纹与“简历”一列，靠状态标签和条形表达。
+     指纹只有 15px，在窄屏上既读不出扇区又占掉一列，不如整列让位。 */
+  .ledger {
+    --lg-cols: minmax(0, 1.3fr) minmax(90px, 1.5fr) 54px 58px 66px;
+  }
+  .lg-head > :nth-child(3),
+  .lg-row > :nth-child(3),
+  .lg-head > :nth-child(5),
+  .lg-row > :nth-child(5) {
+    display: none;
+  }
+  .lg-tasks li {
+    grid-template-columns: minmax(0, 1fr) 52px;
+  }
+  .lg-task-bar {
+    display: none;
+  }
+  .rp-near li {
+    grid-template-columns: minmax(0, 1fr) 92px;
+    gap: 10px;
+  }
+  .rp-near .btn {
+    grid-column: 1 / -1;
+  }
+  .rp-ft-act .btn {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mflow,
+  .mreport,
+  .mparse-pipe li.active .mpp-ic,
+  .mdlg,
+  .mdlg-mask,
+  .ct-me-halo,
+  .mtoast {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* 未计入的维度：空心轨道 + 破折号，不画任何填充。
+   填充一旦出现（哪怕是 0 宽），读的人会把它当成"测出来是零"。 */
+.wf-row-dim.unscored .wf-name {
+  color: var(--ink-3);
+}
+.wf-track.hollow {
+  background: none;
+  border: 1px dashed var(--ink-3);
+}
+
+/* 能力账本上方的口径条 */
+.lg-provenance {
+  margin-bottom: 10px;
+}
+
+/* 报告页顶部的返回条，以及上传屏上"返回上一份报告"的入口。
+   两者都是这一页内部的往返，取次要按钮的形制，不与页面主动作抢注意。 */
+.mrep-bar {
+  display: flex;
+  margin-bottom: 12px;
+}
+/* 上传屏顶部的回程条。此前是一枚与页内其余次级按钮同形的小按钮，
+   扫过整屏也未必留意到上一份报告还在，故改为带主色的整条。 */
+.mup-back {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 10px 12px 10px 14px;
+  border: 1px solid var(--primary-line);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-sm);
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s var(--ease), box-shadow 0.15s var(--ease);
+}
+.mup-back:hover {
+  background: var(--panel);
+  box-shadow: var(--shadow-card);
+}
+.mup-back:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+.mup-back-t {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-md);
+  font-weight: 600;
+}
+.mup-back-t small {
+  display: block;
+  margin-top: 1px;
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  color: var(--ink-2);
+}
+.mup-back em {
+  font-style: normal;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--primary);
+  color: var(--on-ink);
+  white-space: nowrap;
+}
+

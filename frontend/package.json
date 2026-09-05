@@ -1,0 +1,29 @@
+{
+  "name": "jobgraph-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "JobGraph · 岗位能力图谱 —— 融合版前端",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview --port 4174",
+    "sample": "node scripts/export-sample.mjs",
+    "devgraph": "node scripts/export-devgraph.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.2",
+    "esbuild": "^0.21.5",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.9"
+  }
+}

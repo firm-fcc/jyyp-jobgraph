@@ -1,0 +1,584 @@
+/* =========================================================
+   引导与跨页联动
+
+   三块共用一套语汇，因为它们回答的是同一个问题的三段：
+     .wg   路线引导弹窗   —— 整套系统分几站、顺序是什么（进系统时一次）
+     .pgd  页首职责条     —— 这一页是第几站、给什么（每页一行，无展开项）
+     .nxt  页尾下一步     —— 看完这一页之后去哪，且带着当前选中的岗位过去
+
+   配色一律走既有令牌，不新引入色值：主色 --primary 只用于当前位置与主出口，
+   其余为中性面 + --line 描边，免得引导本身比它介绍的内容更抢眼。
+   ========================================================= */
+
+/* =========================================================
+   一、顶栏：导航悬停说明 + 路线入口
+   ========================================================= */
+
+.topnav-item {
+  position: relative;
+  display: inline-flex;
+}
+
+.topnav-tip {
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 50%;
+  transform: translate(-50%, -4px);
+  width: 268px;
+  padding: 10px 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  line-height: 1.62;
+  color: var(--ink-2);
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.16s var(--ease), transform 0.16s var(--ease), visibility 0.16s;
+  z-index: 60;
+}
+
+.topnav-tip em {
+  display: block;
+  margin-bottom: 3px;
+  font-style: normal;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.2px;
+}
+
+/* 只认 hover，不认 focus-within：导航项点下去就带走焦点，
+   而换页之后焦点仍留在那个链接上，说明便一直挂在顶栏下方不消失。 */
+.topnav-item:hover .topnav-tip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.topbar-guide {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: var(--panel);
+  color: var(--ink-2);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.18s var(--ease);
+}
+
+.topbar-guide:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+/* =========================================================
+   二、路线引导弹窗
+   ========================================================= */
+
+.wg-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(16, 26, 48, 0.42);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  display: flex;
+  /* safe center 而不是 center：视口矮到装不下这一屏时（实测 960×600 需要 700px），
+     center 会把弹窗上缘顶到视口之外，标题与关闭按钮一起看不见，
+     而遮罩虽可滚动却没有任何迹象提示可以滚。safe 在装不下时退回顶端对齐。 */
+  align-items: safe center;
+  justify-content: center;
+  padding: 28px 20px;
+  overflow: auto;
+  animation: wg-fade 0.22s var(--ease);
+}
+
+@keyframes wg-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.wg {
+  width: min(940px, 100%);
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-modal);
+  padding: 26px 30px 22px;
+  animation: wg-rise 0.26s var(--ease);
+}
+
+@keyframes wg-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+}
+
+.wg-hd {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.wg-eyebrow {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.wg-hd h2 {
+  font-size: var(--fs-4xl);
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: var(--ink);
+}
+
+.wg-x {
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-3);
+  flex-shrink: 0;
+  transition: all 0.18s;
+}
+
+.wg-x:hover {
+  background: var(--fill);
+  color: var(--ink);
+}
+
+/* ---- 路线图：四张卡片一行，卡片之间是箭头 ---- */
+
+.wg-route {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.wg-stop {
+  position: relative;
+  display: flex;
+}
+
+.wg-arrow {
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 10px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.wg-arrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -2.5px;
+  width: 5px;
+  height: 5px;
+  border-top: 1px solid var(--line-strong);
+  border-right: 1px solid var(--line-strong);
+  transform: rotate(45deg);
+}
+
+.wg-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 14px 14px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: none;
+  text-align: left;
+  transition: all 0.18s var(--ease);
+}
+
+.wg-card:hover {
+  border-color: var(--primary);
+  background: var(--panel);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.wg-no {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--primary);
+}
+
+.wg-no em {
+  font-style: normal;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: var(--ink-3);
+}
+
+.side-per .wg-no {
+  color: var(--accent);
+}
+
+.wg-name {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.wg-side {
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: var(--radius-xs);
+  color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.side-per .wg-side {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.wg-duty {
+  font-size: var(--fs-sm);
+  line-height: 1.66;
+  color: var(--ink-2);
+}
+
+.wg-enter {
+  margin-top: auto;
+  padding-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.wg-card:hover .wg-enter {
+  color: var(--primary);
+}
+
+/* ---- 页脚 ---- */
+
+.wg-ft {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.wg-ft-hint {
+  /* 页脚现在只剩这一句：两个入口按钮撤掉后没有并排元素，
+     再靠 margin-left:auto 推到右端会把它孤零零挂在角上 */
+  margin: 0 auto;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+/* =========================================================
+   三、页首职责条
+   ========================================================= */
+
+/* 页首职责条。此前为一层薄玻璃托底的圆角块，与其下的功能块同形，
+   页面开头因此出现两个形制相同而层级不同的矩形。现撤去容器，
+   改由一条底线与正文分界，与页顶规模摘要条取同一形制。 */
+.pgd {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 4px 0 12px;
+  margin-bottom: 18px;
+}
+
+.pgd-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pgd-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 11px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pgd-badge em {
+  font-style: normal;
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding-right: 8px;
+  margin-right: -2px;
+  border-right: 1px solid rgba(37, 99, 235, 0.28);
+  color: var(--ink-2);
+}
+
+.pgd-duty {
+  font-size: var(--fs-md);
+  line-height: 1.6;
+  color: var(--ink-2);
+  min-width: 0;
+}
+
+.pgd-dots {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pgd-dots i {
+  width: 16px;
+  height: 3px;
+  border-radius: var(--radius-xs);
+  background: var(--line-strong);
+}
+
+.pgd-dots i.on {
+  background: var(--primary);
+  width: 26px;
+}
+
+.pgd-landed {
+  margin-top: 10px;
+  padding: 2px 0 2px 11px;
+  border-left: 2px solid var(--amber-line);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pgd-landed .ic {
+  color: var(--amber-ink);
+  flex-shrink: 0;
+}
+
+.pgd-landed p {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.pgd-landed b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.pgd-landed-act {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.pgd-lnk {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 9px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--amber-line);
+  background: rgba(255, 255, 255, 0.72);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--amber-ink);
+  white-space: nowrap;
+  transition: all 0.18s;
+}
+
+.pgd-lnk:hover {
+  background: #fff;
+  border-color: var(--amber-ink);
+}
+
+/* =========================================================
+   四、页尾下一步
+   ========================================================= */
+
+/* 页尾下一步。三张去处卡本身是可点击的，边框留在它们身上即可；
+   外面再套一层容器，只会让读者先看见一个不可点击的大框。 */
+.nxt {
+  margin-top: 34px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.nxt-hd {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+/* 与各页的面板标题同级，故用同一枚 6px 实心菱形（见 global.css“标题记号”） */
+.nxt-hd h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--ink);
+}
+.nxt-hd h2::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+
+.nxt-hd p {
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.nxt-hd b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.nxt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 10px;
+}
+
+.nxt-card {
+  position: relative;
+  display: block;
+  padding: 13px 34px 13px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: none;
+  transition: all 0.18s var(--ease);
+}
+
+/* 悬停只改边框与底色。位移与投影是把卡片抬离页面的手法，
+   而这三张卡与正文同处一层，抬起来即与其余内容脱节。 */
+.nxt-card:hover {
+  border-color: var(--primary);
+  background: var(--surface-tint);
+}
+
+.nxt-card.primary {
+  border-color: var(--primary-line);
+}
+
+.nxt-ic {
+  display: inline-flex;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.nxt-label {
+  display: block;
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.nxt-desc {
+  display: block;
+  font-size: var(--fs-sm);
+  line-height: 1.66;
+  color: var(--ink-2);
+}
+
+.nxt-go {
+  position: absolute;
+  right: 12px;
+  top: 14px;
+  color: var(--ink-3);
+  display: inline-flex;
+}
+
+.nxt-card:hover .nxt-go {
+  color: var(--primary);
+}
+
+/* =========================================================
+   五、窄屏
+   ========================================================= */
+
+@media (max-width: 1080px) {
+  .wg-route {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .wg-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .pgd-dots {
+    display: none;
+  }
+  .pgd-duty {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .wg {
+    padding: 20px 18px 18px;
+  }
+  .wg-route {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .wg-ft-hint {
+    margin: 0;
+    flex-basis: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wg-mask,
+  .wg {
+    animation: none;
+  }
+  .wg-card:hover,
+  .nxt-card:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,423 @@
+{"case_id": "JD-001", "dim": "task", "title": "数据录入/数据分析", "gold": [], "system": ["T-12", "T-13"]}
+{"case_id": "JD-001", "dim": "skillpoint", "title": "数据录入/数据分析", "gold": [], "system": ["Excel", "数据可视化"]}
+{"case_id": "JD-001", "dim": "techstack", "title": "数据录入/数据分析", "gold": [], "system": ["TS-08"]}
+{"case_id": "JD-001", "dim": "skill", "title": "数据录入/数据分析", "gold": [], "system": ["F-1-01", "F-2-01", "F-2-03", "F-2-06", "F-3-04", "F-4-02", "T-DA-02", "T-DA-04"]}
+{"case_id": "JD-002", "dim": "task", "title": "数据分析专员", "gold": ["T-12", "T-13"], "system": ["T-13"]}
+{"case_id": "JD-002", "dim": "skillpoint", "title": "数据分析专员", "gold": ["Excel", "Python", "SQL", "Tableau"], "system": ["Excel", "Python", "SQL", "Tableau", "数据可视化", "数据模型", "统计学"]}
+{"case_id": "JD-002", "dim": "techstack", "title": "数据分析专员", "gold": ["TS-03", "TS-08"], "system": ["TS-08"]}
+{"case_id": "JD-002", "dim": "skill", "title": "数据分析专员", "gold": ["F-1-02", "F-2-03", "T-DA-01", "T-DA-04"], "system": ["F-1-02", "F-2-03", "F-2-05", "F-4-02", "T-DA-01", "T-DA-04"]}
+{"case_id": "JD-003", "dim": "task", "title": "大数据开发工程师", "gold": ["T-06", "T-12", "T-13"], "system": ["T-01", "T-05", "T-12", "T-15", "T-16"]}
+{"case_id": "JD-003", "dim": "skillpoint", "title": "大数据开发工程师", "gold": ["ElasticSearch", "Flink", "Hadoop", "Kafka", "Python", "Restful", "Spark", "开发框架", "设计模式"], "system": ["Elasticsearch", "Flink", "Hadoop", "Kafka", "Python", "RESTful API", "Spark", "孤岛", "工业互联网", "数据中台", "数据平台", "服务器", "设计模式"]}
+{"case_id": "JD-003", "dim": "techstack", "title": "大数据开发工程师", "gold": ["TS-02", "TS-03", "TS-04", "TS-08"], "system": ["TS-03"]}
+{"case_id": "JD-003", "dim": "skill", "title": "大数据开发工程师", "gold": ["F-1-01", "F-1-02", "F-2-03", "T-DA-02", "T-DA-03", "T-SW-01", "T-SW-03"], "system": ["F-1-01", "F-1-02", "F-1-03", "F-2-01", "F-2-03", "F-2-05", "F-3-02", "F-4-01", "F-4-02", "T-DA-02", "T-DA-03", "T-SW-01", "T-SW-03"]}
+{"case_id": "JD-004", "dim": "task", "title": "图像算法工程师", "gold": ["T-03", "T-07", "T-08", "T-31"], "system": ["T-03", "T-04", "T-08", "T-25", "T-38"]}
+{"case_id": "JD-004", "dim": "skillpoint", "title": "图像算法工程师", "gold": ["ARM芯片", "BPNN", "C/C++", "CNN", "DSP芯片", "KNN", "NVIDIA显卡", "Office", "OpenCV", "Project", "SVM", "Visio", "图像处理", "数字信号处理", "模型优化", "模型压缩", "模型部署", "深度学习"], "system": ["ARM", "BPNN", "C++", "CNN", "DSP", "Docker", "KNN", "NVIDIA", "Office", "OpenCV", "Project", "Python", "SVM", "Visio", "ai", "信号处理", "分类算法", "图像处理", "图像算法", "数字信号处理", "机器学习", "模型优化", "模型部署", "深度学习", "算法模型", "计算机视觉"]}
+{"case_id": "JD-004", "dim": "techstack", "title": "图像算法工程师", "gold": ["TS-02", "TS-08"], "system": ["TS-08"]}
+{"case_id": "JD-004", "dim": "skill", "title": "图像算法工程师", "gold": ["F-2-01", "F-2-02", "F-2-03", "T-AI-01", "T-AI-03", "T-SW-01", "T-SW-02", "T-SW-04"], "system": ["F-2-01", "F-2-02", "F-2-03", "F-2-06", "T-AI-01", "T-AI-03", "T-SW-01", "T-SW-04", "T-SYS-02", "T-SYS-07"]}
+{"case_id": "JD-005", "dim": "task", "title": "大数据开发", "gold": ["T-06", "T-08", "T-12", "T-13"], "system": ["T-08", "T-12", "T-13", "T-14", "T-42"]}
+{"case_id": "JD-005", "dim": "skillpoint", "title": "大数据开发", "gold": ["Doris", "ETL", "Flink", "Informatica", "Kettle", "Python", "SQL", "Spark", "数据仓库"], "system": ["Doris", "ETL", "Flink", "Informatica", "Kettle", "Python", "SQL", "Spark", "数据仓库", "数据平台", "数据挖掘", "数据模型", "数据集", "计算机软件"]}
+{"case_id": "JD-005", "dim": "techstack", "title": "大数据开发", "gold": ["TS-02", "TS-03", "TS-08"], "system": ["TS-03"]}
+{"case_id": "JD-005", "dim": "skill", "title": "大数据开发", "gold": ["F-2-03", "T-DA-02", "T-DA-03", "T-DA-04"], "system": ["F-2-01", "F-2-03", "F-2-05", "T-DA-01", "T-DA-02", "T-DA-03", "T-DA-04", "T-SW-01"]}
+{"case_id": "JD-006", "dim": "task", "title": "视觉开发工程师", "gold": ["T-01", "T-14", "T-17", "T-25"], "system": ["T-01", "T-08", "T-17", "T-18", "T-25"]}
+{"case_id": "JD-006", "dim": "skillpoint", "title": "视觉开发工程师", "gold": ["MES系统", "技术文档", "视觉定位", "视觉检测", "设备安装调试"], "system": ["MES", "光源", "检测", "相机", "自动化设备", "镜头"]}
+{"case_id": "JD-006", "dim": "techstack", "title": "视觉开发工程师", "gold": ["TS-02", "TS-03", "TS-08"], "system": []}
+{"case_id": "JD-006", "dim": "skill", "title": "视觉开发工程师", "gold": ["F-2-02", "F-2-03", "F-3-03", "T-SW-01", "T-SYS-03"], "system": ["F-2-02", "F-2-03", "F-2-06", "F-3-01", "F-3-02", "F-3-03", "T-AI-03", "T-DA-02", "T-SW-01", "T-SW-05", "T-SYS-07"]}
+{"case_id": "JD-007", "dim": "task", "title": "物流合规数据分析师", "gold": ["T-12", "T-13", "T-14", "T-30"], "system": ["T-01", "T-08", "T-12", "T-13", "T-25", "T-30"]}
+{"case_id": "JD-007", "dim": "skillpoint", "title": "物流合规数据分析师", "gold": ["Java", "Power BI", "Python", "SQL"], "system": ["Java", "Power BI", "Python", "SQL", "数据建模", "系统运维", "统计", "脚本"]}
+{"case_id": "JD-007", "dim": "techstack", "title": "物流合规数据分析师", "gold": ["TS-03", "TS-07", "TS-08"], "system": ["TS-08"]}
+{"case_id": "JD-007", "dim": "skill", "title": "物流合规数据分析师", "gold": ["F-1-01", "F-2-03", "F-4-02", "T-DA-01", "T-DA-04", "T-SW-01"], "system": ["F-1-01", "F-1-02", "F-2-03", "F-2-06", "F-4-01", "F-4-02", "T-DA-01", "T-DA-02", "T-DA-03", "T-DA-04", "T-SW-01", "T-SYS-07"]}
+{"case_id": "JD-008", "dim": "task", "title": "视觉工程师", "gold": ["T-01", "T-03", "T-14", "T-19"], "system": ["T-01", "T-03", "T-07", "T-18", "T-21", "T-27"]}
+{"case_id": "JD-008", "dim": "skillpoint", "title": "视觉工程师", "gold": ["AI模型训练", "C#", "C++", "LabVIEW", "Python", "图像处理", "计算机视觉"], "system": ["C#", "C++", "LabVIEW", "Python", "ai", "图像处理算法", "工控机", "检测", "计算机视觉"]}
+{"case_id": "JD-008", "dim": "skill", "title": "视觉工程师", "gold": ["F-2-03", "F-4-01", "T-AI-03", "T-SW-01", "T-SW-04"], "system": ["F-2-01", "F-2-03", "F-3-01", "F-3-04", "F-4-02", "T-AI-01", "T-AI-03", "T-SW-01", "T-SW-02", "T-SW-04", "T-SYS-02"]}
+{"case_id": "JD-009", "dim": "task", "title": "视觉工程师(J10237)", "gold": ["T-03", "T-14", "T-21"], "system": ["T-01", "T-02", "T-03", "T-08", "T-15", "T-16", "T-21", "T-50"]}
+{"case_id": "JD-009", "dim": "skillpoint", "title": "视觉工程师(J10237)", "gold": ["3D视觉", "AI检测", "C#", "C++", "Halcon", "OpenCV", "PLC", "VisionPro", "机器人"], "system": ["3D视觉", "BOM", "C#", "C++", "Halcon", "OpenCV", "PLC", "VisionPro", "ai", "光源", "图像处理", "工业相机", "机器视觉", "机器视觉软件", "标定", "检测", "相机", "镜头"]}
+{"case_id": "JD-009", "dim": "skill", "title": "视觉工程师(J10237)", "gold": ["T-AI-03", "T-SW-01", "T-SYS-02"], "system": ["F-2-01", "F-2-05", "T-AI-03", "T-SW-01", "T-SW-05", "T-SYS-02", "T-SYS-03", "T-SYS-04", "T-SYS-07"]}
+{"case_id": "JD-010", "dim": "task", "title": "大模型算法工程师", "gold": ["T-03", "T-04", "T-35"], "system": ["T-01", "T-03", "T-04", "T-05"]}
+{"case_id": "JD-010", "dim": "skillpoint", "title": "大模型算法工程师", "gold": ["BERT", "ChatGLM", "DeepSpeed", "GPT-3", "HuggingGPT", "LLaMA2", "Langchain", "分布式训练", "大模型系统设计", "模型部署"], "system": ["BERT", "ChatGLM", "DeepSpeed", "GPT-3", "LLaMA", "LangChain", "Llama 2", "分布式训练", "分布式部署", "模型部署", "自然语言处理", "高性能"]}
+{"case_id": "JD-010", "dim": "techstack", "title": "大模型算法工程师", "gold": ["TS-02", "TS-05", "TS-08"], "system": ["TS-08"]}
+{"case_id": "JD-010", "dim": "skill", "title": "大模型算法工程师", "gold": ["T-AI-01", "T-AI-02", "T-AI-04", "T-AI-10", "T-SW-01", "T-SW-02", "T-SW-03", "T-SYS-06"], "system": ["F-1-04", "F-2-01", "F-2-03", "T-AI-01", "T-AI-02", "T-AI-04", "T-AI-06", "T-AI-09", "T-AI-10", "T-DA-02", "T-DA-03", "T-SW-01", "T-SW-03", "T-SW-04", "T-SYS-06", "T-SYS-07"]}
+{"case_id": "JD-011", "dim": "task", "title": "人工智能算法工程师", "gold": ["T-03", "T-04", "T-28"], "system": ["T-03"]}
+{"case_id": "JD-011", "dim": "skillpoint", "title": "人工智能算法工程师", "gold": ["AI Agent", "BERT", "BLIP", "CLIP", "Donut", "GPT-4V", "LayoutLM", "OCR", "PyTorch", "Python", "RAG", "TensorFlow", "Transformer", "图像分割", "图像分类", "文本匹配", "目标检测"], "system": ["AI Agent", "AIGC", "BERT", "BLIP", "CLIP", "CV", "Donut", "GPT-4V", "LayoutLM", "NLP", "OCR", "PyTorch", "Python", "RAG", "TensorFlow", "Transformer", "VLM", "ai", "图像", "图像分割", "图像分类", "图像处理", "多模态大模型", "检测", "深度学习框架", "目标检测", "算法设计", "自然语言处理", "计算机视觉", "语义理解"]}
+{"case_id": "JD-011", "dim": "techstack", "title": "人工智能算法工程师", "gold": ["TS-02", "TS-08"], "system": ["TS-08"]}
+{"case_id": "JD-011", "dim": "skill", "title": "人工智能算法工程师", "gold": ["T-AI-01", "T-AI-02", "T-AI-03", "T-AI-04", "T-AI-07", "T-AI-08", "T-AI-10"], "system": ["F-1-02", "T-AI-01", "T-AI-02", "T-AI-03", "T-AI-04", "T-AI-07", "T-AI-08", "T-DA-01", "T-SW-01", "T-SW-02"]}
+{"case_id": "JD-012", "dim": "task", "title": "系统开发专员", "gold": ["T-01", "T-05", "T-07", "T-10", "T-14", "T-24", "T-25"], "system": ["T-01", "T-05", "T-06", "T-07", "T-08", "T-10", "T-17", "T-24", "T-25"]}
+{"case_id": "JD-012", "dim": "skillpoint", "title": "系统开发专员", "gold": [".NET", ".NET Core", "ASP.NET API", "ASP.NET MVC", "C#", "Docker", "MySQL", "Redis", "SQL Server", "SQL优化", "微服务", "面向对象编程"], "system": [".NET", ".NET Core", ".NET MVC", "API", "ASP.NET API", "Bug", "C#", "Docker", "MySQL", "OOP", "Redis", "SQL", "SQL Server", "单元测试", "微服务", "网络安全", "资产管理", "面向对象编程"]}
+{"case_id": "JD-012", "dim": "techstack", "title": "系统开发专员", "gold": ["TS-02", "TS-03", "TS-05", "TS-07"], "system": ["TS-02", "TS-03", "TS-05", "TS-06"]}
+{"case_id": "JD-012", "dim": "skill", "title": "系统开发专员", "gold": ["F-2-02", "F-2-03", "T-DA-02", "T-SW-01", "T-SW-03", "T-SW-04", "T-SYS-01", "T-SYS-05"], "system": ["F-2-01", "F-2-02", "F-2-03", "F-4-02", "T-DA-02", "T-SW-01", "T-SW-03", "T-SW-04", "T-SYS-05", "T-SYS-06"]}
+{"case_id": "JD-013", "dim": "task", "title": "产品工程师", "gold": [], "system": ["T-07", "T-18", "T-25"]}
+{"case_id": "JD-013", "dim": "skillpoint", "title": "产品工程师", "gold": [], "system": ["事务"]}
+{"case_id": "JD-013", "dim": "techstack", "title": "产品工程师", "gold": [], "system": ["TS-08"]}
+{"case_id": "JD-013", "dim": "skill", "title": "产品工程师", "gold": [], "system": ["F-1-01", "F-1-02", "F-2-02", "F-2-03", "F-2-05", "F-3-01", "F-3-04", "F-4-02", "T-DA-04", "T-SYS-02"]}
+{"case_id": "JD-014", "dim": "task", "title": "Python开发工程师", "gold": ["T-01", "T-03", "T-06", "T-12", "T-13"], "system": ["T-01", "T-04", "T-06", "T-13"]}
+{"case_id": "JD-014", "dim": "skillpoint", "title": "Python开发工程师", "gold": ["C++", "Docker", "Git", "Linux", "Matplotlib", "NumPy", "Pandas", "Python", "Requests", "SQL", "Scrapy", "cpython", "numba", "polars", "pyecharts", "seaborn", "大模型部署"], "system": ["C++", "Docker", "Git", "Linux", "NumPy", "Numba", "Pandas", "Python", "Requests", "SQL", "Scrapy", "Seaborn", "matplotlib", "polars", "pyecharts", "容器", "数据结构", "数据采集", "框架开发", "网络爬虫", "量化"]}
+{"case_id": "JD-014", "dim": "techstack", "title": "Python开发工程师", "gold": ["TS-02", "TS-03", "TS-05", "TS-08"], "system": ["TS-02"]}
+{"case_id": "JD-014", "dim": "skill", "title": "Python开发工程师", "gold": ["T-AI-04", "T-DA-02", "T-DA-04", "T-SW-01", "T-SW-02", "T-SYS-01"], "system": ["T-AI-06", "T-DA-02", "T-DA-04", "T-SW-01", "T-SW-02", "T-SW-05", "T-SYS-01"]}
+{"case_id": "JD-015", "dim": "task", "title": "软件工程师（产品开发方向）", "gold": [], "system": ["T-01", "T-02", "T-07", "T-14", "T-21", "T-25"]}
+{"case_id": "JD-015", "dim": "skillpoint", "title": "软件工程师（产品开发方向）", "gold": [], "system": ["51单片机", "APQP", "Altium", "BOM", "C", "CATIA", "FMEA", "IATF16949", "Keil", "MSA", "PCB", "PIC", "PPAP", "Protel", "SPC", "VB", "五大工具", "仪器仪表", "单片机", "原理图", "工装夹具", "数字电路", "模拟电路", "汇编语言", "电子电路", "电气标准", "电磁兼容", "电路", "硬件设计"]}
+{"case_id": "JD-015", "dim": "techstack", "title": "软件工程师（产品开发方向）", "gold": [], "system": ["TS-02"]}
+{"case_id": "JD-015", "dim": "skill", "title": "软件工程师（产品开发方向）", "gold": [], "system": ["F-2-02", "F-2-03", "F-3-04", "F-4-02", "T-SW-01", "T-SW-03", "T-SW-04", "T-SYS-02", "T-SYS-03"]}
+{"case_id": "JD-016", "dim": "task", "title": "资深嵌入式工程师(J10166)", "gold": ["T-01", "T-02", "T-14", "T-26"], "system": ["T-01", "T-02", "T-03", "T-14", "T-21", "T-25", "T-26"]}
+{"case_id": "JD-016", "dim": "skillpoint", "title": "资深嵌入式工程师(J10166)", "gold": ["C/C++", "FPGA", "FreeRTOS", "Linux驱动", "uC-OS", "单片机", "通信", "音频驱动"], "system": ["C++", "FPGA", "Firmware", "FreeRTOS", "Linux", "Linux驱动", "RTOS", "UCOS", "单片机", "嵌入式", "音频", "驱动", "驱动开发"]}
+{"case_id": "JD-016", "dim": "techstack", "title": "资深嵌入式工程师(J10166)", "gold": ["TS-02", "TS-08"], "system": ["TS-02", "TS-05", "TS-08"]}
+{"case_id": "JD-016", "dim": "skill", "title": "资深嵌入式工程师(J10166)", "gold": ["F-1-02", "F-2-03", "F-3-01", "F-3-04", "F-4-02", "T-SW-01", "T-SYS-02", "T-SYS-03"], "system": ["F-1-01", "F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-02", "F-3-03", "F-3-04", "F-4-01", "F-4-02", "T-DA-01", "T-SW-01", "T-SW-02", "T-SYS-01", "T-SYS-02", "T-SYS-03", "T-SYS-04"]}
+{"case_id": "JD-017", "dim": "task", "title": "c#开发工程师", "gold": ["T-01", "T-03"], "system": ["T-01", "T-03", "T-05", "T-06", "T-13"]}
+{"case_id": "JD-017", "dim": "skillpoint", "title": "c#开发工程师", "gold": [".NET 5.0+", "C#", "DependencyProperty", "Entity Framework Core", "MVVM", "Prism", "SqlSugar", "WPF", "XAML", "任务并行库 (TPL)", "依赖注入 (DI)", "关系型数据库", "多线程编程", "非关系型数据库", "面向切面编程 (AOP)"], "system": [".NET", ".NET 5.0", "AOP", "C#", "CLR", "DI", "DependencyProperty", "Entity Framework Core", "GC", "LINQ", "MVVM", "MySQL", "ORM", "PRISM", "Redis", "SQL", "SqlSugar", "TPL", "WPF", "XAML", "YMS", "async/await", "依赖注入", "关系型数据库", "内存管理", "动画", "反射", "图像处理算法", "多线程编程", "委托/事件", "容器", "异步编程", "性能调优", "数理统计", "样式", "模板", "泛型", "线程", "绑定", "统计学", "自定义控件", "虚拟化", "设计模式"]}
+{"case_id": "JD-017", "dim": "techstack", "title": "c#开发工程师", "gold": ["TS-02", "TS-03", "TS-08"], "system": ["TS-02"]}
+{"case_id": "JD-017", "dim": "skill", "title": "c#开发工程师", "gold": ["F-2-03", "T-AI-03", "T-DA-01", "T-SW-01", "T-SW-02"], "system": ["F-2-01", "F-2-03", "T-AI-03", "T-DA-01", "T-DA-02", "T-DA-04", "T-SW-01", "T-SW-02", "T-SW-03"]}
+{"case_id": "JD-018", "dim": "task", "title": "后端开发实习生-Data语音", "gold": ["T-01", "T-03", "T-04", "T-05", "T-08", "T-40"], "system": ["T-01", "T-03", "T-04", "T-05", "T-06", "T-08", "T-18", "T-28"]}
+{"case_id": "JD-018", "dim": "skillpoint", "title": "后端开发实习生-Data语音", "gold": ["Go", "K8s", "Kafka", "Python", "RDS", "Redis", "分布式推理", "大模型", "数据结构", "深度学习", "算法", "语音算法"], "system": ["Go", "Kafka", "Kubernetes", "Python", "RDS", "Redis", "ai", "分布式推理", "剪映", "数据结构", "深度学习", "算法设计", "语音", "音频", "高可用"]}
+{"case_id": "JD-018", "dim": "techstack", "title": "后端开发实习生-Data语音", "gold": ["TS-02", "TS-03", "TS-04", "TS-05"], "system": ["TS-02"]}
+{"case_id": "JD-018", "dim": "skill", "title": "后端开发实习生-Data语音", "gold": ["T-AI-01", "T-AI-04", "T-SW-01", "T-SW-02", "T-SW-03", "T-SYS-06", "T-SYS-07"], "system": ["F-1-01", "F-1-04", "F-2-01", "F-4-01", "F-4-02", "T-AI-01", "T-AI-03", "T-AI-06", "T-DA-02", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-05", "T-SYS-06", "T-SYS-07"]}
+{"case_id": "JD-019", "dim": "task", "title": "高级软件开发工程师（JAVA方向）", "gold": ["T-01", "T-05", "T-14", "T-26", "T-27", "T-35"], "system": ["T-01", "T-05", "T-07", "T-08", "T-14", "T-17", "T-25", "T-27", "T-35"]}
+{"case_id": "JD-019", "dim": "skillpoint", "title": "高级软件开发工程师（JAVA方向）", "gold": ["AI辅助编程工具", "Ant Design Vue", "DDD", "Docker", "Element-Plus", "Element-UI", "Gateway", "Java", "Jenkins", "Kubernetes", "Nacos", "Seata", "Spring Cloud Alibaba", "TypeScript", "UML", "Vue2", "Vue3", "思维导图", "时序图", "流程图", "系统架构图"], "system": ["Ant Design Vue", "DDD", "Docker", "Gateway", "Java", "Jenkins", "Kubernetes", "Nacos", "Seata", "Spring", "Spring Cloud Alibaba", "TypeScript", "UI", "UML", "Vue", "ai", "分布式", "单元测试", "可配置", "容器", "思维导图", "数据中台", "时序图", "流程图", "设计模式", "重构", "领域驱动设计", "高可用"]}
+{"case_id": "JD-019", "dim": "techstack", "title": "高级软件开发工程师（JAVA方向）", "gold": ["TS-02", "TS-05", "TS-07", "TS-08"], "system": ["TS-02"]}
+{"case_id": "JD-019", "dim": "skill", "title": "高级软件开发工程师（JAVA方向）", "gold": ["F-1-04", "F-2-02", "F-2-03", "T-AI-09", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-04", "T-SYS-06", "T-SYS-07"], "system": ["F-1-04", "F-2-01", "F-2-02", "F-2-03", "F-3-02", "T-AI-09", "T-SW-01", "T-SW-03", "T-SW-04", "T-SYS-06", "T-SYS-07"]}
+{"case_id": "JD-020", "dim": "skill", "title": "it工程师", "gold": ["F-1-01", "F-4-02", "T-SW-01"], "system": ["T-SW-01"]}
+{"case_id": "JD-021", "dim": "task", "title": "iOS", "gold": ["T-01"], "system": ["T-01", "T-03", "T-06"]}
+{"case_id": "JD-021", "dim": "skillpoint", "title": "iOS", "gold": ["MySQL", "Objective-C", "Oracle", "PostgreSQL", "SQL Server", "Swift", "SwiftUI", "Xcode", "iOS SDK"], "system": ["MySQL", "Objective-C", "Oracle", "PostgreSQL", "SQL Server", "Swift", "SwiftUI", "Xcode", "iOS", "iOS SDK", "关系数据库", "数据结构", "算法设计", "设计模式", "面向对象"]}
+{"case_id": "JD-021", "dim": "techstack", "title": "iOS", "gold": ["TS-02", "TS-03"], "system": ["TS-01"]}
+{"case_id": "JD-022", "dim": "task", "title": "DSP固件开发工程师", "gold": ["T-02", "T-07", "T-14", "T-25"], "system": ["T-02", "T-03", "T-07", "T-08", "T-16", "T-25"]}
+{"case_id": "JD-022", "dim": "skillpoint", "title": "DSP固件开发工程师", "gold": ["485", "C", "C++", "CAN", "CPLD", "DSP", "FPGA", "SPI", "仿真工具", "硬件电路图分析"], "system": ["Bug", "C++", "CAN", "CPLD", "DSP", "FPGA", "PI", "Pr", "RS-485", "SPI", "UPS", "仿真", "仿真工具", "固件", "控制理论", "电力电子", "电源", "电路图", "逆变器", "通信协议", "重复控制"]}
+{"case_id": "JD-022", "dim": "skill", "title": "DSP固件开发工程师", "gold": ["F-4-01", "T-SW-01", "T-SYS-02", "T-SYS-03"], "system": ["F-2-02", "F-2-03", "F-2-05", "F-4-01", "T-DA-01", "T-SW-01", "T-SW-02", "T-SW-04", "T-SYS-03", "T-SYS-04", "T-SYS-07"]}
+{"case_id": "JD-023", "dim": "task", "title": "安卓开发工程师", "gold": ["T-01", "T-07"], "system": ["T-01", "T-05", "T-07"]}
+{"case_id": "JD-023", "dim": "skillpoint", "title": "安卓开发工程师", "gold": ["Android", "Compose", "Java", "Kotlin", "MVVM"], "system": ["Android", "App", "Compose", "Java", "Kotlin", "MVVM", "智能座舱"]}
+{"case_id": "JD-023", "dim": "techstack", "title": "安卓开发工程师", "gold": ["TS-02", "TS-08"], "system": ["TS-01"]}
+{"case_id": "JD-023", "dim": "skill", "title": "安卓开发工程师", "gold": ["F-1-01", "F-2-03", "F-3-04", "F-4-01", "F-4-02", "T-SW-01", "T-SW-04"], "system": ["F-1-01", "F-2-03", "F-3-04", "F-4-01", "F-4-02", "T-SW-01", "T-SW-03", "T-SW-04"]}
+{"case_id": "JD-024", "dim": "task", "title": "Java开发工程师(J11816)", "gold": ["T-01", "T-05", "T-07", "T-08"], "system": ["T-01", "T-05", "T-06", "T-07", "T-08", "T-25"]}
+{"case_id": "JD-024", "dim": "skillpoint", "title": "Java开发工程师(J11816)", "gold": ["Ajax", "Docker", "JQuery", "Java", "JavaScript", "Kubernetes", "MongoDB", "MySQL", "Mybatis", "Oracle", "Redis", "SpringCloud", "SqlServer", "bootstrap", "freemarker", "vue"], "system": ["Ajax", "Bug", "Docker", "FreeMarker", "Java", "JavaScript", "Kubernetes", "MongoDB", "MyBatis", "MySQL", "NoSQL", "OOP", "Oracle", "Redis", "SQL", "Spring", "Vue", "jQuery", "sqlserver", "容器", "数据结构", "算法基础", "设计模式"]}
+{"case_id": "JD-024", "dim": "techstack", "title": "Java开发工程师(J11816)", "gold": ["TS-02", "TS-03", "TS-05", "TS-08"], "system": ["TS-02"]}
+{"case_id": "JD-024", "dim": "skill", "title": "Java开发工程师(J11816)", "gold": ["F-1-02", "F-2-02", "T-DA-02", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-04", "T-SYS-06"], "system": ["F-1-02", "F-2-02", "F-2-05", "F-3-01", "T-DA-02", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-04", "T-SYS-06", "T-SYS-07"]}
+{"case_id": "JD-025", "dim": "task", "title": "网页前端研发设计师", "gold": ["T-01", "T-03", "T-07", "T-25"], "system": ["T-01", "T-05", "T-07", "T-25", "T-43"]}
+{"case_id": "JD-025", "dim": "skillpoint", "title": "网页前端研发设计师", "gold": ["CSS3", "GIS组件", "HTML5", "JavaScript", "MQTT", "React", "UI组件库", "Vue.js", "WebPack", "WebSocket"], "system": ["CSS", "GIS", "HTML", "Java", "JavaScript", "MQTT", "React", "UI", "Vue", "WebSocket", "Webpack", "回归", "接口协议", "知识库"]}
+{"case_id": "JD-025", "dim": "techstack", "title": "网页前端研发设计师", "gold": ["TS-01", "TS-02", "TS-04", "TS-08"], "system": ["TS-01"]}
+{"case_id": "JD-025", "dim": "skill", "title": "网页前端研发设计师", "gold": ["F-2-02", "F-2-03", "T-SW-01", "T-SW-04", "T-SW-05", "T-SW-06"], "system": ["F-1-02", "F-2-02", "F-2-03", "F-2-06", "T-SW-01", "T-SW-03", "T-SW-04", "T-SYS-04"]}
+{"case_id": "JD-026", "dim": "task", "title": "Python开发", "gold": ["T-01", "T-05", "T-13"], "system": ["T-01", "T-04", "T-05", "T-13", "T-18", "T-19"]}
+{"case_id": "JD-026", "dim": "skillpoint", "title": "Python开发", "gold": ["Go", "HTTP", "Java", "Python", "TCP/IP", "多协程", "多线程", "多进程", "数据结构", "算法", "高并发"], "system": ["Go", "HTTP", "Java", "Python", "TCP/IP", "ai", "协程", "多线程", "多进程", "并发", "并发编程", "数据结构", "统计", "网络协议", "网络编程", "高并发"]}
+{"case_id": "JD-026", "dim": "techstack", "title": "Python开发", "gold": ["TS-02", "TS-08"], "system": ["TS-02"]}
+{"case_id": "JD-026", "dim": "skill", "title": "Python开发", "gold": ["F-1-01", "F-1-02", "F-3-04", "F-4-01", "F-4-02", "T-SW-01", "T-SW-02", "T-SW-03", "T-SYS-04"], "system": ["F-1-01", "F-1-02", "F-1-03", "F-2-03", "F-3-04", "F-4-02", "T-AI-04", "T-DA-04", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-05", "T-SYS-04"]}
+{"case_id": "JD-027", "dim": "task", "title": "C#软件开发主管", "gold": ["T-01", "T-07", "T-26"], "system": ["T-01", "T-02", "T-05", "T-06", "T-07", "T-21", "T-26"]}
+{"case_id": "JD-027", "dim": "skillpoint", "title": "C#软件开发主管", "gold": ["C#", "C/S架构", "HTTP", "MySQL", "PostgreSQL", "Restful", "SQLServer", "TCP/IP", "WCF", "WEB API", "Windows", "上位机开发", "串口编程", "半导体设备", "多线程", "数据结构", "算法设计", "自动化设备", "设计模式", "进程交互", "面向对象编程"], "system": ["C#", "C/S架构", "HTTP", "MySQL", "PostgreSQL", "RESTful API", "SQL Server", "TCP/IP", "WCF", "Web API", "Windows", "sqlserver", "上位机", "串口", "串口编程", "多线程", "数据结构", "硬件设备", "算法设计", "自动化设备", "设计模式", "面向对象编程"]}
+{"case_id": "JD-027", "dim": "techstack", "title": "C#软件开发主管", "gold": ["TS-02", "TS-03", "TS-08"], "system": ["TS-02"]}
+{"case_id": "JD-027", "dim": "skill", "title": "C#软件开发主管", "gold": ["F-2-03", "F-3-03", "F-4-02", "T-DA-02", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-04", "T-SYS-04"], "system": ["F-2-02", "F-2-03", "F-3-01", "F-4-01", "T-DA-02", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-04", "T-SYS-01", "T-SYS-02", "T-SYS-03", "T-SYS-04"]}
+{"case_id": "JD-028", "dim": "task", "title": "前端开发工程师(助理)", "gold": ["T-01", "T-07", "T-19"], "system": ["T-01", "T-07", "T-10", "T-13", "T-17", "T-19"]}
+{"case_id": "JD-028", "dim": "skillpoint", "title": "前端开发工程师(助理)", "gold": ["CI/CD", "ECharts", "ESLint", "Electron", "Element Plus", "Git", "Node.js", "Socket.IO", "TypeScript", "Vite", "Vue 3", "WebSocket"], "system": ["API", "CI/CD", "ECharts", "ESLint", "Electron", "Element Plus", "Git", "Node.js", "SCADA", "Socket", "Socket.IO", "TypeScript", "UI", "UX", "Vite", "Vue", "WebSocket", "信息安全", "前端开发", "前端框架", "同步", "告警", "安全产品", "审计系统", "性能调优", "数据可视化", "数据采集", "渲染", "自动化测试", "远程控制", "防火墙"]}
+{"case_id": "JD-028", "dim": "techstack", "title": "前端开发工程师(助理)", "gold": ["TS-01", "TS-02", "TS-07"], "system": ["TS-01"]}
+{"case_id": "JD-028", "dim": "skill", "title": "前端开发工程师(助理)", "gold": ["T-SW-01", "T-SW-03", "T-SW-04", "T-SW-05"], "system": ["F-1-01", "F-2-03", "F-4-01", "F-4-02", "T-DA-04", "T-SW-01", "T-SW-03", "T-SW-04", "T-SW-05", "T-SYS-02", "T-SYS-04", "T-SYS-05", "T-SYS-07"]}
+{"case_id": "JD-029", "dim": "job", "title": "装备开发工程师", "gold": "QA-01", "system": "DEV-09"}
+{"case_id": "JD-029", "dim": "task", "title": "装备开发工程师", "gold": ["T-07", "T-08", "T-31"], "system": ["T-01", "T-08", "T-31"]}
+{"case_id": "JD-029", "dim": "skillpoint", "title": "装备开发工程师", "gold": ["C", "C++", "TCP/IP", "WIFI协议", "Windows", "网络分析仪"], "system": ["C++", "PON", "TCP/IP", "交换机", "协议", "射频", "无线路由", "测试工具", "网络分析", "路由器"]}
+{"case_id": "JD-029", "dim": "techstack", "title": "装备开发工程师", "gold": ["TS-02", "TS-07"], "system": ["TS-02", "TS-05"]}
+{"case_id": "JD-029", "dim": "skill", "title": "装备开发工程师", "gold": ["T-SW-01", "T-SW-04", "T-SYS-04"], "system": ["T-SW-01", "T-SYS-04"]}
+{"case_id": "JD-030", "dim": "task", "title": "AI赋能开发工程师（粤语/英语）", "gold": ["T-01", "T-03", "T-07", "T-25", "T-27", "T-35", "T-48", "T-51"], "system": ["T-01", "T-04", "T-05", "T-06", "T-07", "T-08", "T-11", "T-27", "T-35", "T-51"]}
+{"case_id": "JD-030", "dim": "skillpoint", "title": "AI赋能开发工程师（粤语/英语）", "gold": ["AWS", "Amazon CodeWhisperer", "Azure", "C++", "CI/CD", "Claude Code", "Cursor", "Django", "Docker", "GCP", "GitHub Copilot", "Go", "Java", "JavaScript", "Kubernetes", "NoSQL", "Node.js", "Python", "React", "SQL", "Spring Boot", "Tabnine", "TypeScript", "Vue", "通义灵码"], "system": ["API", "AWS", "Amazon", "Azure", "C++", "CI/CD", "Claude Code", "Cursor", "Django", "Docker", "GCP", "GitHub Copilot", "Go", "HTTP", "Java", "JavaScript", "Kubernetes", "NoSQL", "Node.js", "Prompt", "Python", "REView", "React", "SQL", "Spring", "Spring Boot", "TCP/IP", "TypeScript", "Vue", "ai", "云服务", "容器", "微调", "数据结构", "自动化测试", "设计模式", "通义灵码", "重构", "驱动"]}
+{"case_id": "JD-030", "dim": "techstack", "title": "AI赋能开发工程师（粤语/英语）", "gold": ["TS-02", "TS-03", "TS-05", "TS-08"], "system": ["TS-08"]}
+{"case_id": "JD-030", "dim": "skill", "title": "AI赋能开发工程师（粤语/英语）", "gold": ["F-1-01", "F-1-04", "F-2-01", "F-2-02", "F-2-03", "F-3-01", "F-4-01", "F-4-02", "T-AI-04", "T-AI-05", "T-AI-06", "T-AI-09", "T-AI-10", "T-AI-13", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-04"], "system": ["F-1-01", "F-1-02", "F-1-03", "F-1-04", "F-2-01", "F-2-02", "F-2-03", "F-4-01", "T-AI-05", "T-AI-06", "T-AI-09", "T-AI-10", "T-AI-11", "T-AI-13", "T-DA-02", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-04", "T-SYS-04", "T-SYS-06", "T-SYS-07"]}
+{"case_id": "JD-031", "dim": "task", "title": "前端开发工程师", "gold": ["T-01", "T-07"], "system": ["T-01", "T-05", "T-07", "T-08", "T-10", "T-17"]}
+{"case_id": "JD-031", "dim": "skillpoint", "title": "前端开发工程师", "gold": ["CSS", "Docker", "Drupal CMS", "HTML", "JavaScript", "Node.js", "OAuth", "PHP", "RESTful API", "React.js", "SSO", "TypeScript", "Vue.js", "微信小程序", "微服务", "敏捷/Scrum"], "system": ["CMS", "CSS", "Docker", "Drupal", "HTML", "JavaScript", "Node.js", "OAuth", "PHP", "RESTful API", "React", "SSO", "TypeScript", "Vue", "前端开发", "协议", "容器", "微信小程序", "微服务", "敏捷开发", "身份验证", "高性能"]}
+{"case_id": "JD-031", "dim": "techstack", "title": "前端开发工程师", "gold": ["TS-01", "TS-02", "TS-04", "TS-07"], "system": ["TS-01"]}
+{"case_id": "JD-031", "dim": "skill", "title": "前端开发工程师", "gold": ["F-1-01", "F-2-03", "T-SW-01", "T-SW-04"], "system": ["F-1-01", "F-2-01", "F-2-02", "F-2-03", "T-SW-01", "T-SW-03", "T-SW-04", "T-SYS-05", "T-SYS-06"]}
+{"case_id": "JD-032", "dim": "task", "title": "研发工程师（济南）", "gold": ["T-01", "T-07", "T-25"], "system": ["T-01", "T-07", "T-08", "T-25"]}
+{"case_id": "JD-032", "dim": "skill", "title": "研发工程师（济南）", "gold": ["F-2-01", "F-3-04", "F-4-02", "T-SW-01", "T-SW-04"], "system": ["F-2-01", "F-2-02", "F-3-04", "T-SW-01", "T-SW-04", "T-SYS-07"]}
+{"case_id": "JD-033", "dim": "task", "title": "软件工程师", "gold": ["T-02", "T-07", "T-25"], "system": ["T-01", "T-02", "T-07", "T-10", "T-25", "T-31"]}
+{"case_id": "JD-033", "dim": "skillpoint", "title": "软件工程师", "gold": ["ASPICE", "AUTOSAR", "Arm", "C", "C++", "FreeRTOS", "MCU", "RT-Thread", "ThreadX", "信息安全", "功能安全"], "system": ["ARM", "ASPICE", "AUTOSAR", "C++", "FreeRTOS", "Thread", "ThreadX", "信息安全", "功能安全", "单片机", "嵌入式软件", "操作系统", "设计软件", "驱动开发"]}
+{"case_id": "JD-033", "dim": "techstack", "title": "软件工程师", "gold": ["TS-02", "TS-06", "TS-08"], "system": ["TS-02"]}
+{"case_id": "JD-033", "dim": "skill", "title": "软件工程师", "gold": ["F-4-02", "T-SW-01", "T-SYS-03", "T-SYS-05"], "system": ["F-2-02", "T-AI-12", "T-SW-01", "T-SW-03", "T-SW-04", "T-SYS-03", "T-SYS-05"]}
+{"case_id": "JD-034", "dim": "task", "title": "ERP开发工程师", "gold": ["T-06", "T-08", "T-14", "T-17", "T-20"], "system": ["T-01", "T-05", "T-06", "T-08", "T-10", "T-17", "T-20"]}
+{"case_id": "JD-034", "dim": "skillpoint", "title": "ERP开发工程师", "gold": [".NET Core", "4GL", "ASP.NET MVC", "CRM", "ERP", "OA", "SQL", "SRM", "WebAPI", "钉钉", "鼎捷ERP"], "system": [".NET Core", ".NET MVC", "4GL", "CRM", "ERP", "OA", "SQL", "SRM", "Web API", "数据备份", "数据库原理", "系统运维", "融合", "钉钉", "鼎捷ERP"]}
+{"case_id": "JD-034", "dim": "skill", "title": "ERP开发工程师", "gold": ["F-2-03", "F-2-05", "F-3-03", "F-4-02", "T-DA-02", "T-SW-01", "T-SW-03"], "system": ["F-1-02", "F-2-02", "F-2-03", "F-2-05", "F-3-03", "F-3-04", "F-4-02", "T-DA-02", "T-SW-01", "T-SW-03", "T-SYS-05", "T-SYS-07"]}
+{"case_id": "JD-035", "dim": "task", "title": "Java & Cobol开发工程师", "gold": ["T-01", "T-06", "T-07", "T-14", "T-17"], "system": ["T-01", "T-06", "T-07", "T-08", "T-17"]}
+{"case_id": "JD-035", "dim": "skillpoint", "title": "Java & Cobol开发工程师", "gold": ["AS/400", "COBOL", "DB2", "Java", "MyBatis", "MySQL", "SQLServer", "Spring", "SpringBoot", "SpringMVC"], "system": ["API", "AS", "COBOL", "DB2", "Java", "MyBatis", "MySQL", "SQL Server", "Spring", "Spring Boot", "Spring MVC", "springboot", "sqlserver", "数据库设计"]}
+{"case_id": "JD-035", "dim": "techstack", "title": "Java & Cobol开发工程师", "gold": ["TS-02", "TS-03"], "system": ["TS-02"]}
+{"case_id": "JD-035", "dim": "skill", "title": "Java & Cobol开发工程师", "gold": ["F-2-02", "F-2-03", "F-2-05", "F-4-02", "T-DA-02", "T-SW-01", "T-SW-02", "T-SW-04"], "system": ["F-2-01", "F-2-02", "F-2-03", "T-DA-02", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-04", "T-SW-05"]}
+{"case_id": "JD-036", "dim": "task", "title": "实施工程师（MES）", "gold": ["T-01", "T-06", "T-14", "T-17", "T-20"], "system": ["T-01", "T-02", "T-05", "T-06", "T-07", "T-08", "T-12", "T-17", "T-20"]}
+{"case_id": "JD-036", "dim": "skillpoint", "title": "实施工程师（MES）", "gold": ["C#", "ERP", "MES", "OA", "PDA", "PLC", "SQL", "企微", "传感器"], "system": ["C#", "ERP", "MES", "OA", "PDA", "PLC", "SQL", "企微", "前端开发", "数据模型", "脚本", "触摸屏"]}
+{"case_id": "JD-036", "dim": "techstack", "title": "实施工程师（MES）", "gold": ["TS-02", "TS-03", "TS-08"], "system": ["TS-01", "TS-02", "TS-03"]}
+{"case_id": "JD-036", "dim": "skill", "title": "实施工程师（MES）", "gold": ["F-2-01", "F-2-03", "F-3-03", "F-4-02", "T-DA-02", "T-SW-01"], "system": ["F-1-02", "F-2-01", "F-2-03", "F-2-05", "F-3-02", "F-3-03", "F-4-01", "T-DA-02", "T-SW-01", "T-SW-03", "T-SW-04", "T-SW-05", "T-SYS-03", "T-SYS-06"]}
+{"case_id": "JD-037", "dim": "task", "title": "嵌入式软件工程师", "gold": ["T-01", "T-02"], "system": ["T-02", "T-25"]}
+{"case_id": "JD-037", "dim": "skillpoint", "title": "嵌入式软件工程师", "gold": ["51单片机", "ADC", "BLDC驱动", "DMA", "DSP", "I2C", "MSP430", "PWM", "RTOS", "SPI", "STM32", "UART", "UCOS", "WiFi", "伺服电机驱动", "物联网", "蓝牙"], "system": ["51单片机", "ADC", "BLDC", "DMA", "DSP", "I2C", "PWM", "RTOS", "SPI", "STM32", "UART", "UCOS", "伺服电机", "单片机", "外设驱动", "嵌入式", "嵌入式软件", "操作系统", "物联网", "电机驱动", "系统调试", "蓝牙", "软件编程", "通信协议", "驱动", "驱动程序"]}
+{"case_id": "JD-037", "dim": "techstack", "title": "嵌入式软件工程师", "gold": ["TS-03", "TS-08"], "system": ["TS-02"]}
+{"case_id": "JD-037", "dim": "skill", "title": "嵌入式软件工程师", "gold": ["F-1-04", "F-4-02", "T-SW-01", "T-SYS-02", "T-SYS-03"], "system": ["F-1-04", "F-2-02", "F-4-01", "F-4-02", "T-SW-01", "T-SW-03", "T-SW-04", "T-SYS-01", "T-SYS-03", "T-SYS-04"]}
+{"case_id": "JD-038", "dim": "task", "title": "软件/性能模型工程师", "gold": [], "system": ["T-22"]}
+{"case_id": "JD-038", "dim": "skillpoint", "title": "软件/性能模型工程师", "gold": [], "system": ["C++", "GPU", "NPU", "Python", "SoC", "SystemC", "ZSim", "ai", "gem5", "仿真", "功耗", "处理器", "建模", "模拟器", "编译器", "负载", "驱动"]}
+{"case_id": "JD-038", "dim": "techstack", "title": "软件/性能模型工程师", "gold": [], "system": ["TS-02", "TS-08"]}
+{"case_id": "JD-038", "dim": "skill", "title": "软件/性能模型工程师", "gold": [], "system": ["T-AI-01", "T-DA-04", "T-SW-01", "T-SW-04", "T-SYS-02", "T-SYS-03"]}
+{"case_id": "JD-039", "dim": "task", "title": "嵌入式软件工程师  近地铁口", "gold": ["T-02", "T-14"], "system": ["T-01", "T-02", "T-16", "T-28"]}
+{"case_id": "JD-039", "dim": "skillpoint", "title": "嵌入式软件工程师  近地铁口", "gold": ["ARM", "C", "C#", "C++", "FPGA", "QT", "多轴联动", "嵌入式开发", "工业视觉", "运动控制器"], "system": ["ARM", "C#", "C++", "FPGA", "Qt", "嵌入式", "嵌入式软件", "运动控制卡", "运动控制器"]}
+{"case_id": "JD-039", "dim": "techstack", "title": "嵌入式软件工程师  近地铁口", "gold": ["TS-02", "TS-08"], "system": ["TS-02"]}
+{"case_id": "JD-039", "dim": "skill", "title": "嵌入式软件工程师  近地铁口", "gold": ["F-2-03", "F-2-05", "T-SW-01", "T-SYS-03"], "system": ["F-2-03", "F-2-05", "F-4-02", "T-AI-03", "T-SW-01", "T-SYS-03"]}
+{"case_id": "JD-040", "dim": "task", "title": "软件全栈开发工程师（工业AI方向）", "gold": ["T-01", "T-03", "T-05", "T-18"], "system": ["T-01", "T-03", "T-04", "T-05", "T-08", "T-11"]}
+{"case_id": "JD-040", "dim": "skillpoint", "title": "软件全栈开发工程师（工业AI方向）", "gold": ["Docker", "Java", "Kubernetes", "Python", "Vue", "大模型", "微服务架构", "机器学习", "计算机视觉"], "system": ["Docker", "Java", "Kubernetes", "Python", "Vue", "ai", "前端框架", "容器", "微服务架构", "机器学习", "算法模型", "高性能"]}
+{"case_id": "JD-040", "dim": "techstack", "title": "软件全栈开发工程师（工业AI方向）", "gold": ["TS-01", "TS-02", "TS-05", "TS-08"], "system": ["TS-08"]}
+{"case_id": "JD-040", "dim": "skill", "title": "软件全栈开发工程师（工业AI方向）", "gold": ["T-AI-01", "T-AI-04", "T-AI-09", "T-SW-01", "T-SW-03", "T-SW-05"], "system": ["F-1-04", "F-2-05", "T-AI-01", "T-AI-03", "T-AI-04", "T-AI-10", "T-SW-01", "T-SW-03", "T-SYS-06", "T-SYS-07"]}
+{"case_id": "JD-041", "dim": "skillpoint", "title": "全栈软件工程师", "gold": [".NET", "ASP.NET", "C#", "Java", "MySQL", "SQL Server"], "system": [".NET", "ASP.NET", "C#", "Java", "MySQL", "SQL Server", "面向对象"]}
+{"case_id": "JD-041", "dim": "techstack", "title": "全栈软件工程师", "gold": ["TS-02", "TS-03"], "system": ["TS-02"]}
+{"case_id": "JD-041", "dim": "skill", "title": "全栈软件工程师", "gold": ["F-2-01", "F-2-03", "T-SW-01", "T-SW-03", "T-SW-04"], "system": ["F-2-01", "F-2-03", "T-DA-02", "T-SW-01", "T-SW-02", "T-SW-04"]}
+{"case_id": "JD-042", "dim": "task", "title": "软件研发工程师", "gold": ["T-01", "T-02", "T-03", "T-05", "T-07", "T-08", "T-14", "T-25"], "system": ["T-01", "T-02", "T-03", "T-05", "T-06", "T-07", "T-08", "T-13", "T-25", "T-35"]}
+{"case_id": "JD-042", "dim": "skillpoint", "title": "软件研发工程师", "gold": ["C++", "CSS", "Docker", "Git", "HTML", "JavaScript", "Linux", "Matlab", "MySQL", "PostgreSQL", "PyTorch", "Python", "REST", "SQLite", "TensorFlow", "Ubuntu", "WebSocket", "gRPC", "华为昇腾"], "system": ["B/S", "B/S架构", "C++", "CSS", "Docker", "Git", "GitHub", "HTML", "JavaScript", "Linux", "MATLAB", "MySQL", "PostgreSQL", "PyTorch", "Python", "REST", "SQLite", "TensorFlow", "Ubuntu", "WebSocket", "ai", "gRPC", "仿真", "前端开发", "前端框架", "坐标变换", "容器", "导航", "嵌入式", "嵌入式平台", "数据可视化", "数据处理算法", "数据库设计", "昇腾", "服务器", "算法模型", "算法部署"]}
+{"case_id": "JD-042", "dim": "techstack", "title": "软件研发工程师", "gold": ["TS-01", "TS-02", "TS-03", "TS-08"], "system": ["TS-02"]}
+{"case_id": "JD-042", "dim": "skill", "title": "软件研发工程师", "gold": ["F-1-01", "F-2-03", "F-4-02", "T-AI-01", "T-DA-04", "T-SW-01", "T-SW-03", "T-SW-04", "T-SW-05", "T-SYS-01", "T-SYS-07"], "system": ["F-1-01", "F-1-02", "F-1-04", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-04", "F-4-01", "F-4-02", "F-5-01", "T-AI-01", "T-AI-09", "T-DA-01", "T-DA-02", "T-DA-04", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-04", "T-SYS-01", "T-SYS-03", "T-SYS-04", "T-SYS-06", "T-SYS-07"]}
+{"case_id": "JD-043", "dim": "job", "title": "智能制造工程师", "gold": "DEV-10", "system": "非IT"}
+{"case_id": "JD-043", "dim": "task", "title": "智能制造工程师", "gold": ["T-03", "T-06", "T-08", "T-12", "T-13", "T-17", "T-20", "T-26"], "system": ["T-01", "T-03", "T-04", "T-05", "T-06", "T-08", "T-10", "T-11", "T-13", "T-17", "T-20", "T-26", "T-27"]}
+{"case_id": "JD-043", "dim": "skillpoint", "title": "智能制造工程师", "gold": ["BI", "Docker", "ERP", "JavaScript", "Kafka", "Kubernetes", "Linux", "MES", "Maven", "MyBatis-Plus", "MySQL", "Nginx", "OA", "QMS", "RabbitMQ", "React", "Redis", "SpringBoot", "SpringCloud", "SpringMVC", "Sqlserver", "Vue", "云原生", "微服务", "智能流程自动化", "机器学习", "自然语言处理"], "system": ["BI", "BIM", "Docker", "EMS", "ERP", "Java", "JavaScript", "Kafka", "Kubernetes", "Linux", "MES", "Maven", "MyBatis-Plus", "MySQL", "Nginx", "OA", "QMS", "RabbitMQ", "React", "Redis", "SQL", "Spring", "Vue", "WMS", "ai", "springboot", "sqlserver", "中间件", "云原生", "仓储", "关系型数据库", "分布式系统", "前端开发", "容器", "微服务", "微服务架构", "数据中台", "机器学习", "系统运维", "自然语言处理"]}
+{"case_id": "JD-043", "dim": "techstack", "title": "智能制造工程师", "gold": ["TS-02", "TS-03", "TS-04", "TS-05"], "system": ["TS-02", "TS-03", "TS-05", "TS-08"]}
+{"case_id": "JD-043", "dim": "skill", "title": "智能制造工程师", "gold": ["F-2-05", "T-AI-01", "T-AI-02", "T-DA-02", "T-SW-01", "T-SW-03", "T-SYS-06", "T-SYS-07"], "system": ["F-1-01", "F-1-02", "F-1-04", "F-2-01", "F-2-03", "F-2-05", "F-3-02", "F-3-03", "F-4-01", "T-AI-01", "T-AI-02", "T-AI-04", "T-DA-02", "T-DA-04", "T-SW-01", "T-SW-03", "T-SYS-01", "T-SYS-05", "T-SYS-06", "T-SYS-07"]}
+{"case_id": "JD-044", "dim": "task", "title": "C#运动视觉软件工程师(J10220)", "gold": ["T-01", "T-03", "T-14", "T-25"], "system": ["T-01", "T-02", "T-03", "T-05", "T-14", "T-17", "T-19", "T-25", "T-38"]}
+{"case_id": "JD-044", "dim": "skillpoint", "title": "C#运动视觉软件工程师(J10220)", "gold": [".NET Framework", "ACS", "AI视觉", "Basler", "Blob分析", "C#", "EtherCAT", "Halcon", "OCR", "OpenCV", "Profinet", "RS232", "RS485", "VisionPro", "WinForms", "伺服电机", "固高", "多线程", "大恒", "实时系统", "异步编程", "模板匹配", "步进电机", "海康", "深度学习", "边缘检测", "运动控制卡", "雷赛"], "system": [".NET Framework", "ACS", "Basler", "Blob分析", "C#", "EtherCAT", "Halcon", "OCR", "OpenCV", "PROFINET", "RS-232", "RS485", "SDK", "UI设计", "VisionPro", "WinForms", "ai", "伺服电机", "固高", "图像", "图像处理", "多线程", "实时系统", "工业相机", "工业通信协议", "异步编程", "控制技术", "机器视觉", "检测", "模板匹配", "步进电机", "深度学习", "电机控制", "自动化设备", "边缘检测", "运动控制", "运动控制卡", "运动控制算法", "运动控制系统", "雷赛"]}
+{"case_id": "JD-044", "dim": "techstack", "title": "C#运动视觉软件工程师(J10220)", "gold": ["TS-02", "TS-08"], "system": ["TS-02"]}
+{"case_id": "JD-044", "dim": "skill", "title": "C#运动视觉软件工程师(J10220)", "gold": ["T-AI-03", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-05", "T-SYS-03", "T-SYS-04"], "system": ["F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "T-AI-01", "T-AI-03", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-05", "T-SYS-03", "T-SYS-04"]}
+{"case_id": "JD-045", "dim": "task", "title": "中央空调产品工程师", "gold": [], "system": ["T-13", "T-15", "T-17", "T-18", "T-25", "T-27"]}
+{"case_id": "JD-045", "dim": "skillpoint", "title": "中央空调产品工程师", "gold": [], "system": ["CAD", "Office"]}
+{"case_id": "JD-045", "dim": "skill", "title": "中央空调产品工程师", "gold": [], "system": ["F-1-03", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-2-06", "F-3-02", "F-3-03", "F-3-04", "F-4-01", "F-4-02", "T-DA-04", "T-SW-05"]}
+{"case_id": "JD-046", "dim": "task", "title": "后端开发实习生", "gold": ["T-01", "T-06", "T-07"], "system": ["T-01", "T-05", "T-06", "T-07", "T-08"]}
+{"case_id": "JD-046", "dim": "skillpoint", "title": "后端开发实习生", "gold": ["DCS", "DevOps", "Docker", "Dubbo", "GitLab CI", "Go", "InfluxDB", "JPA", "Java", "Jenkins", "Kubernetes", "MQTT", "MyBatis", "MySQL", "Netty", "PLC", "PostgreSQL", "Python", "Spring Boot", "Spring Cloud", "TDengine", "代码评审"], "system": ["DCS", "DevOps", "Docker", "Dubbo", "GitLab CI", "Go", "InfluxDB", "JPA", "JVM", "Java", "Jenkins", "Kubernetes", "MQTT", "MyBatis", "MySQL", "Netty", "PLC", "PostgreSQL", "Python", "SQL", "Spring", "Spring Boot", "Spring Cloud", "TDengine", "单元测试", "多线程", "容器", "工业互联网", "微服务架构", "性能调优", "数学建模", "数据库设计", "数据结构", "数据采集", "时序数据库", "物联网", "物联网协议", "调度", "集合", "驱动"]}
+{"case_id": "JD-046", "dim": "techstack", "title": "后端开发实习生", "gold": ["TS-02", "TS-03", "TS-05", "TS-07"], "system": ["TS-02"]}
+{"case_id": "JD-046", "dim": "skill", "title": "后端开发实习生", "gold": ["T-DA-02", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-04", "T-SYS-06", "T-SYS-07"], "system": ["F-1-02", "F-1-04", "F-2-01", "F-2-03", "F-4-01", "T-DA-02", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-04", "T-SYS-04", "T-SYS-06", "T-SYS-07"]}
+{"case_id": "JD-047", "dim": "task", "title": "汽车电子软件总监", "gold": ["T-03", "T-17", "T-20", "T-26", "T-27"], "system": ["T-02", "T-03", "T-17", "T-26", "T-27"]}
+{"case_id": "JD-047", "dim": "skillpoint", "title": "汽车电子软件总监", "gold": ["A-SPICE", "AUTOSAR CP", "C/C++", "MATLAB/Simulink", "MBD", "功能安全", "域控制器", "电机控制器", "电机控制算法"], "system": ["AUTOSAR", "AUTOSAR CP", "MBD", "功能安全", "功能安全标准", "域控制器", "架构评审", "电机控制器", "电机控制算法"]}
+{"case_id": "JD-047", "dim": "skill", "title": "汽车电子软件总监", "gold": ["F-2-01", "F-2-03", "F-3-02", "F-4-02", "T-AI-01", "T-SW-03", "T-SW-04", "T-SYS-03"], "system": ["F-1-02", "F-2-01", "F-2-03", "F-3-03", "T-AI-11", "T-SW-01", "T-SW-02", "T-SW-03", "T-SW-04", "T-SYS-03"]}
+{"case_id": "JD-048", "dim": "task", "title": "项目助理（英语）", "gold": [], "system": ["T-17"]}
+{"case_id": "JD-048", "dim": "skill", "title": "项目助理（英语）", "gold": [], "system": ["F-2-01"]}
+{"case_id": "JD-049", "dim": "task", "title": "应用技术经理（工业涂料领域）", "gold": [], "system": ["T-07", "T-08", "T-13", "T-14", "T-15", "T-25"]}
+{"case_id": "JD-049", "dim": "skillpoint", "title": "应用技术经理（工业涂料领域）", "gold": [], "system": ["性能测试"]}
+{"case_id": "JD-049", "dim": "skill", "title": "应用技术经理（工业涂料领域）", "gold": [], "system": ["F-1-01", "F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-03", "F-3-04", "F-4-01", "F-4-02", "T-DA-01", "T-DA-04", "T-SW-04", "T-SYS-01"]}
+{"case_id": "JD-050", "dim": "task", "title": "STCL PT Project Manager", "gold": [], "system": ["T-17", "T-25"]}
+{"case_id": "JD-050", "dim": "skillpoint", "title": "STCL PT Project Manager", "gold": [], "system": ["AS", "AT", "BE", "Backbone", "Function", "Grid", "HVDC", "Impact", "LL", "Make", "Matter", "PT", "Project", "RE", "Report", "SIEMENS", "Transformer", "Transformers", "Transition", "power", "storage"]}
+{"case_id": "JD-050", "dim": "skill", "title": "STCL PT Project Manager", "gold": [], "system": ["F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-2-06", "F-3-03", "F-3-04", "T-SYS-02"]}
+{"case_id": "JD-051", "dim": "task", "title": "项目经理", "gold": [], "system": ["T-17"]}
+{"case_id": "JD-051", "dim": "skillpoint", "title": "项目经理", "gold": [], "system": ["PMP", "证书"]}
+{"case_id": "JD-051", "dim": "skill", "title": "项目经理", "gold": [], "system": ["F-1-01", "F-2-01", "F-2-03", "F-2-05", "F-3-01", "F-3-02", "F-3-03", "F-4-01"]}
+{"case_id": "JD-052", "dim": "task", "title": "研发项目负责人（建筑SaaS方向）", "gold": ["T-05", "T-17", "T-18", "T-26", "T-27"], "system": ["T-01", "T-05", "T-17", "T-18", "T-26", "T-40"]}
+{"case_id": "JD-052", "dim": "skillpoint", "title": "研发项目负责人（建筑SaaS方向）", "gold": ["Activiti", "BIM", "CI/CD", "ClickUp", "DevOps", "Docker", "ERP", "Flowable", "Go", "Java", "Jira", "Kubernetes", "Node.js", "PMP", "Prince2", "React", "TAPD", "Vue", "信息系统项目管理师", "物联网"], "system": ["Activiti", "App", "BIM", "CI/CD", "DevOps", "Docker", "ERP", "Flowable", "Go", "Java", "Jira", "Kubernetes", "Node.js", "PMP", "PRINCE2", "React", "SaaS", "TAPD", "Vue", "主数据", "云原生", "前端框架", "同步", "敏捷开发", "物联网", "移动端", "证书", "重构", "项目管理软件"]}
+{"case_id": "JD-052", "dim": "techstack", "title": "研发项目负责人（建筑SaaS方向）", "gold": ["TS-02", "TS-05", "TS-07", "TS-08"], "system": ["TS-01", "TS-02", "TS-05", "TS-07"]}
+{"case_id": "JD-052", "dim": "skill", "title": "研发项目负责人（建筑SaaS方向）", "gold": ["F-1-01", "F-2-03", "F-3-02", "F-3-03", "F-4-01", "T-SW-01", "T-SW-03", "T-SYS-06"], "system": ["F-1-02", "F-1-04", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-02", "F-3-03", "F-3-04", "F-4-01", "F-5-01", "T-SW-01", "T-SW-03", "T-SYS-04", "T-SYS-05", "T-SYS-06", "T-SYS-07"]}
+{"case_id": "JD-053", "dim": "task", "title": "项目经理（医疗器械）", "gold": [], "system": ["T-15", "T-17"]}
+{"case_id": "JD-053", "dim": "skill", "title": "项目经理（医疗器械）", "gold": [], "system": ["F-2-01", "F-2-02", "F-2-03", "F-2-04", "F-2-05", "F-3-01", "F-3-02", "F-3-03", "F-4-01"]}
+{"case_id": "JD-054", "dim": "task", "title": "项目经理", "gold": [], "system": ["T-17", "T-26"]}
+{"case_id": "JD-054", "dim": "skillpoint", "title": "项目经理", "gold": [], "system": ["IATF16949"]}
+{"case_id": "JD-054", "dim": "skill", "title": "项目经理", "gold": [], "system": ["F-1-01", "F-1-02", "F-2-01", "F-2-03", "F-2-05", "F-3-02", "F-3-03", "F-3-04", "F-4-01"]}
+{"case_id": "JD-055", "dim": "task", "title": "PM主管", "gold": [], "system": ["T-17", "T-26", "T-27"]}
+{"case_id": "JD-055", "dim": "skillpoint", "title": "PM主管", "gold": [], "system": ["NPI", "PM", "冲压"]}
+{"case_id": "JD-055", "dim": "skill", "title": "PM主管", "gold": [], "system": ["F-1-01", "F-2-01", "F-2-03", "F-3-01", "F-3-02", "F-3-03", "F-3-04", "F-4-01", "F-4-02"]}
+{"case_id": "JD-056", "dim": "task", "title": "Project Manager", "gold": [], "system": ["T-10", "T-17", "T-26"]}
+{"case_id": "JD-056", "dim": "skillpoint", "title": "Project Manager", "gold": [], "system": ["AMP", "AS", "AT", "BASIS", "BE", "CAN", "CFT", "Core", "Functions", "IATF16949", "ID", "Make", "Monitor", "OEM", "Project", "Report", "Session", "Set", "TISAX", "performance"]}
+{"case_id": "JD-056", "dim": "skill", "title": "Project Manager", "gold": [], "system": ["F-2-01", "F-2-02", "F-2-03", "F-2-04", "F-3-02", "F-3-03", "F-4-01", "F-4-02", "T-SYS-05"]}
+{"case_id": "JD-057", "dim": "task", "title": "解决方案经理（机床高端装备）", "gold": [], "system": ["T-15", "T-16"]}
+{"case_id": "JD-057", "dim": "skillpoint", "title": "解决方案经理（机床高端装备）", "gold": [], "system": ["CNC", "机加工", "统计"]}
+{"case_id": "JD-057", "dim": "skill", "title": "解决方案经理（机床高端装备）", "gold": [], "system": ["F-1-01", "F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-04", "F-2-05", "F-2-06", "F-3-04", "F-4-01", "F-4-02"]}
+{"case_id": "JD-058", "dim": "task", "title": "项目管理", "gold": [], "system": ["T-17"]}
+{"case_id": "JD-058", "dim": "skill", "title": "项目管理", "gold": [], "system": ["F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-2-06", "F-3-01", "F-3-02", "F-3-03", "F-4-01"]}
+{"case_id": "JD-059", "dim": "task", "title": "高级项目经理", "gold": ["T-03", "T-14", "T-17", "T-25", "T-26"], "system": ["T-03", "T-04", "T-13", "T-15", "T-17", "T-25", "T-26"]}
+{"case_id": "JD-059", "dim": "skillpoint", "title": "高级项目经理", "gold": ["Jira", "PMP", "PRINCE2", "信息系统项目管理师", "敏捷", "瀑布", "甘特图", "禅道"], "system": ["Jira", "PMP", "PRINCE2", "ai", "同步", "多任务", "敏捷开发", "深度学习", "瀑布模型", "物联网", "甘特图", "知识图谱", "禅道"]}
+{"case_id": "JD-059", "dim": "techstack", "title": "高级项目经理", "gold": ["TS-02", "TS-08"], "system": ["TS-05", "TS-08"]}
+{"case_id": "JD-059", "dim": "skill", "title": "高级项目经理", "gold": ["F-1-01", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-02", "F-4-01"], "system": ["F-1-01", "F-1-02", "F-1-04", "F-2-01", "F-2-02", "F-2-03", "F-2-04", "F-2-05", "F-3-01", "F-3-02", "F-3-03", "F-3-04", "F-4-01", "F-4-02", "T-AI-01", "T-AI-02", "T-AI-04", "T-DA-03", "T-SYS-04"]}
+{"case_id": "JD-060", "dim": "task", "title": "解决方案/售前（二本及以上）", "gold": ["T-14", "T-15", "T-18", "T-26", "T-27"], "system": ["T-05", "T-13", "T-15", "T-17", "T-27"]}
+{"case_id": "JD-060", "dim": "skillpoint", "title": "解决方案/售前（二本及以上）", "gold": ["CCIE", "CISSP", "HCIP/IE", "IT基础设施集成", "PMP", "PPT", "云架构师", "云计算", "人工智能", "大数据", "物联网", "网络安全", "视讯与安防监控"], "system": ["CCIE", "CISSP", "CT", "DT", "HCIP", "ICT", "IE", "IaaS", "IoT", "PMP", "PaaS", "PowerPoint", "SaaS", "中标", "云架构", "多任务", "安防", "工业互联网", "物联网", "网络安全"]}
+{"case_id": "JD-060", "dim": "techstack", "title": "解决方案/售前（二本及以上）", "gold": ["TS-02", "TS-05", "TS-06", "TS-08"], "system": ["TS-05", "TS-06", "TS-08"]}
+{"case_id": "JD-060", "dim": "skill", "title": "解决方案/售前（二本及以上）", "gold": ["F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-04", "F-4-01"], "system": ["F-1-02", "F-1-04", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-2-06", "F-3-02", "F-3-03", "F-3-04", "F-4-02", "T-AI-01", "T-DA-03", "T-SW-03", "T-SYS-01", "T-SYS-04", "T-SYS-05", "T-SYS-06"]}
+{"case_id": "JD-061", "dim": "task", "title": "解决方案工程师", "gold": [], "system": ["T-15", "T-17", "T-23", "T-27"]}
+{"case_id": "JD-061", "dim": "skillpoint", "title": "解决方案工程师", "gold": [], "system": ["EPON", "ODN", "OTN", "PON", "WDM", "中兴", "光纤", "网络架构", "通信网络"]}
+{"case_id": "JD-061", "dim": "skill", "title": "解决方案工程师", "gold": [], "system": ["F-1-03", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "T-SYS-04"]}
+{"case_id": "JD-062", "dim": "task", "title": "项目助理", "gold": [], "system": ["T-13", "T-17"]}
+{"case_id": "JD-062", "dim": "skillpoint", "title": "项目助理", "gold": [], "system": ["Excel", "Office", "PowerPoint", "Word", "事务"]}
+{"case_id": "JD-062", "dim": "techstack", "title": "项目助理", "gold": [], "system": ["TS-08"]}
+{"case_id": "JD-062", "dim": "skill", "title": "项目助理", "gold": [], "system": ["F-2-01", "F-2-03", "F-2-05", "F-2-06", "F-3-02", "F-3-03", "F-3-04", "F-4-02", "T-DA-04"]}
+{"case_id": "JD-063", "dim": "task", "title": "技术总监", "gold": [], "system": ["T-17", "T-26"]}
+{"case_id": "JD-063", "dim": "skill", "title": "技术总监", "gold": [], "system": ["F-1-02", "F-1-04", "F-2-01", "F-2-03", "F-2-05", "F-3-02", "F-3-03", "F-4-01"]}
+{"case_id": "JD-064", "dim": "skillpoint", "title": "项目经理", "gold": [], "system": ["CAD"]}
+{"case_id": "JD-064", "dim": "skill", "title": "项目经理", "gold": [], "system": ["T-SW-06"]}
+{"case_id": "JD-065", "dim": "task", "title": "网络工程师", "gold": ["T-09"], "system": ["T-08", "T-09", "T-10", "T-23"]}
+{"case_id": "JD-065", "dim": "skillpoint", "title": "网络工程师", "gold": ["TCP/IP", "网络架构", "路由交换"], "system": ["Linux", "TCP/IP", "安全设备", "服务器", "网络工程", "网络架构", "网络系统", "网络设备", "路由交换"]}
+{"case_id": "JD-065", "dim": "techstack", "title": "网络工程师", "gold": ["TS-05", "TS-06"], "system": ["TS-05"]}
+{"case_id": "JD-065", "dim": "skill", "title": "网络工程师", "gold": ["F-1-01", "F-2-03", "T-SYS-04"], "system": ["F-1-01", "F-2-01", "F-2-03", "F-3-04", "F-4-02", "T-SYS-01", "T-SYS-04", "T-SYS-05", "T-SYS-07"]}
+{"case_id": "JD-066", "dim": "task", "title": "网络工程师（上海红松东路）", "gold": ["T-08", "T-09", "T-14", "T-15", "T-16", "T-25", "T-27"], "system": ["T-05", "T-08", "T-09", "T-14", "T-15", "T-16", "T-17", "T-23", "T-25", "T-27", "T-31"]}
+{"case_id": "JD-066", "dim": "skillpoint", "title": "网络工程师（上海红松东路）", "gold": ["CCNP", "Cisco", "F5", "H3C", "IP组网", "ITIL", "PMP", "TCP/IP", "华为", "安全规则", "深信服", "网络安全", "网络架构规划", "路由交换", "路由协议"], "system": ["CCNP", "Cisco", "F5", "H3C", "IP", "IPS/IDS", "ITIL", "PMP", "TCP/IP", "交换机", "交换网络", "数据中心", "无线AP", "深信服", "网络安全", "网络工程", "网络架构", "网络设备", "虚拟化", "计算机网络", "负载均衡", "路由交换", "路由协议", "路由器", "防火墙"]}
+{"case_id": "JD-066", "dim": "techstack", "title": "网络工程师（上海红松东路）", "gold": ["TS-05", "TS-06"], "system": ["TS-05"]}
+{"case_id": "JD-066", "dim": "skill", "title": "网络工程师（上海红松东路）", "gold": ["F-2-01", "F-2-03", "F-2-05", "F-3-03", "F-4-02", "T-SYS-01", "T-SYS-04", "T-SYS-05"], "system": ["F-2-01", "F-2-03", "F-2-05", "F-3-04", "T-SYS-04", "T-SYS-05", "T-SYS-07"]}
+{"case_id": "JD-067", "dim": "task", "title": "弱电技术工程师", "gold": [], "system": ["T-05", "T-15", "T-17"]}
+{"case_id": "JD-067", "dim": "skillpoint", "title": "弱电技术工程师", "gold": [], "system": ["CAD", "PowerPoint", "天正", "广联达", "证书", "造价软件"]}
+{"case_id": "JD-067", "dim": "skill", "title": "弱电技术工程师", "gold": [], "system": ["F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-02", "T-DA-02", "T-SW-03", "T-SW-06", "T-SYS-04"]}
+{"case_id": "JD-068", "dim": "task", "title": "高薪诚聘美国签证调试工程师", "gold": [], "system": ["T-02", "T-07", "T-25"]}
+{"case_id": "JD-068", "dim": "skillpoint", "title": "高薪诚聘美国签证调试工程师", "gold": [], "system": ["自动化设备"]}
+{"case_id": "JD-068", "dim": "techstack", "title": "高薪诚聘美国签证调试工程师", "gold": [], "system": ["TS-05"]}
+{"case_id": "JD-068", "dim": "skill", "title": "高薪诚聘美国签证调试工程师", "gold": [], "system": ["F-1-01", "F-1-02", "F-2-02", "F-2-03", "F-4-02", "T-SW-04"]}
+{"case_id": "JD-069", "dim": "task", "title": "售前管培生（J15275）（泉州）", "gold": [], "system": ["T-05", "T-07", "T-15", "T-27"]}
+{"case_id": "JD-069", "dim": "skillpoint", "title": "售前管培生（J15275）（泉州）", "gold": [], "system": ["AMP", "ERP", "多任务"]}
+{"case_id": "JD-069", "dim": "skill", "title": "售前管培生（J15275）（泉州）", "gold": [], "system": ["F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-01", "F-3-03", "F-3-04", "F-4-02", "T-SW-03", "T-SW-04"]}
+{"case_id": "JD-070", "dim": "task", "title": "售后技术支持工程师（接受出差）", "gold": [], "system": ["T-16"]}
+{"case_id": "JD-070", "dim": "skillpoint", "title": "售后技术支持工程师（接受出差）", "gold": [], "system": ["秤体"]}
+{"case_id": "JD-070", "dim": "skill", "title": "售后技术支持工程师（接受出差）", "gold": [], "system": ["F-2-01", "F-2-03", "F-3-04", "F-4-01", "F-4-02", "T-SYS-03"]}
+{"case_id": "JD-071", "dim": "skillpoint", "title": "IT系统集成工程师", "gold": ["网络系统支持"], "system": ["网络系统"]}
+{"case_id": "JD-071", "dim": "techstack", "title": "IT系统集成工程师", "gold": ["TS-05"], "system": []}
+{"case_id": "JD-071", "dim": "skill", "title": "IT系统集成工程师", "gold": ["F-2-01", "F-2-03", "F-2-05"], "system": ["T-SYS-01", "T-SYS-04"]}
+{"case_id": "JD-072", "dim": "task", "title": "售前技术支持", "gold": ["T-14", "T-15", "T-17"], "system": ["T-14", "T-15", "T-17", "T-25"]}
+{"case_id": "JD-072", "dim": "skill", "title": "售前技术支持", "gold": ["F-1-01", "F-2-01", "F-2-02", "F-2-05"], "system": ["F-1-01", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-04", "F-4-02"]}
+{"case_id": "JD-073", "dim": "job", "title": "网络管理员", "gold": "OPS-01", "system": "NET-01"}
+{"case_id": "JD-073", "dim": "task", "title": "网络管理员", "gold": ["T-08", "T-10", "T-14"], "system": ["T-08", "T-09", "T-10", "T-14"]}
+{"case_id": "JD-073", "dim": "skillpoint", "title": "网络管理员", "gold": ["TCP/IP", "交换机", "路由器"], "system": ["TCP/IP", "交换机", "信息安全", "网络系统", "网络设备", "路由器"]}
+{"case_id": "JD-073", "dim": "skill", "title": "网络管理员", "gold": ["F-2-03", "T-SYS-01", "T-SYS-04", "T-SYS-05"], "system": ["F-2-01", "F-2-03", "F-4-02", "T-SYS-01", "T-SYS-04", "T-SYS-05"]}
+{"case_id": "JD-074", "dim": "task", "title": "应用工程师（IT-FICO） (MJ000326)", "gold": ["T-06", "T-08", "T-14", "T-20", "T-27"], "system": ["T-01", "T-05", "T-07", "T-08", "T-10", "T-16", "T-20", "T-27"]}
+{"case_id": "JD-074", "dim": "skillpoint", "title": "应用工程师（IT-FICO） (MJ000326)", "gold": ["IT运维", "SAP FICO", "接口开发"], "system": ["FICO"]}
+{"case_id": "JD-074", "dim": "techstack", "title": "应用工程师（IT-FICO） (MJ000326)", "gold": ["TS-02", "TS-03", "TS-07"], "system": ["TS-05"]}
+{"case_id": "JD-074", "dim": "skill", "title": "应用工程师（IT-FICO） (MJ000326)", "gold": ["F-2-02", "F-2-03", "F-2-05", "T-DA-02", "T-SW-01", "T-SYS-01"], "system": ["F-2-01", "F-2-05", "T-SW-01", "T-SW-03", "T-SW-04", "T-SYS-05", "T-SYS-07"]}
+{"case_id": "JD-075", "dim": "task", "title": "风电光伏运维工程师（接受无经验）", "gold": [], "system": ["T-08", "T-13"]}
+{"case_id": "JD-075", "dim": "techstack", "title": "风电光伏运维工程师（接受无经验）", "gold": [], "system": ["TS-05"]}
+{"case_id": "JD-075", "dim": "skill", "title": "风电光伏运维工程师（接受无经验）", "gold": [], "system": ["F-1-01", "F-2-01", "F-2-03", "F-3-04", "F-4-02", "T-DA-04", "T-SYS-01", "T-SYS-03"]}
+{"case_id": "JD-076", "dim": "task", "title": "电力运维工程师", "gold": [], "system": ["T-08", "T-21"]}
+{"case_id": "JD-076", "dim": "skillpoint", "title": "电力运维工程师", "gold": [], "system": ["测试工具", "电气测试", "系统运维"]}
+{"case_id": "JD-076", "dim": "techstack", "title": "电力运维工程师", "gold": [], "system": ["TS-05"]}
+{"case_id": "JD-076", "dim": "skill", "title": "电力运维工程师", "gold": [], "system": ["F-1-01", "F-2-01", "F-2-03", "F-3-02", "F-3-04", "F-4-02", "T-DA-04", "T-SYS-01", "T-SYS-03", "T-SYS-05"]}
+{"case_id": "JD-077", "dim": "task", "title": "实施顾问-济南", "gold": ["T-14", "T-20", "T-27"], "system": ["T-15", "T-16", "T-25", "T-27"]}
+{"case_id": "JD-077", "dim": "skillpoint", "title": "实施顾问-济南", "gold": [], "system": ["事务"]}
+{"case_id": "JD-077", "dim": "techstack", "title": "实施顾问-济南", "gold": ["TS-02"], "system": []}
+{"case_id": "JD-077", "dim": "skill", "title": "实施顾问-济南", "gold": ["F-2-02", "F-2-03", "F-2-05", "F-3-04", "F-4-02"], "system": ["F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-01", "F-3-04", "F-4-02"]}
+{"case_id": "JD-078", "dim": "task", "title": "售前技术支持经理（主管）", "gold": [], "system": ["T-05", "T-15", "T-20", "T-25", "T-26", "T-27"]}
+{"case_id": "JD-078", "dim": "skillpoint", "title": "售前技术支持经理（主管）", "gold": [], "system": ["AMP", "ATEX", "CAD", "CE", "EPC", "ERP", "ISO9001", "MES", "Office", "PRO", "SAR", "SIL", "SOLIDWORKS", "WMS", "WPS", "执行器", "执行机构", "质量管理体系"]}
+{"case_id": "JD-078", "dim": "skill", "title": "售前技术支持经理（主管）", "gold": [], "system": ["F-2-01", "F-2-02", "F-2-03", "F-2-04", "F-2-05", "F-2-06", "F-3-01", "F-3-02", "F-3-03", "T-DA-02", "T-SYS-05"]}
+{"case_id": "JD-079", "dim": "job", "title": "高级售前工程师", "gold": "OPS-08", "system": "MGT-06"}
+{"case_id": "JD-079", "dim": "task", "title": "高级售前工程师", "gold": ["T-15", "T-17", "T-18"], "system": ["T-05", "T-15"]}
+{"case_id": "JD-079", "dim": "skillpoint", "title": "高级售前工程师", "gold": ["安防监控", "系统集成", "能源"], "system": ["安防"]}
+{"case_id": "JD-079", "dim": "techstack", "title": "高级售前工程师", "gold": ["TS-02", "TS-08"], "system": ["TS-08"]}
+{"case_id": "JD-079", "dim": "skill", "title": "高级售前工程师", "gold": ["F-1-01", "F-2-01", "F-2-02", "F-2-05"], "system": ["F-1-03", "F-1-04", "F-2-01", "F-2-02", "F-2-05", "F-2-06", "F-3-04", "T-SW-03"]}
+{"case_id": "JD-080", "dim": "task", "title": "mes售前", "gold": ["T-15", "T-17", "T-18", "T-20"], "system": ["T-15", "T-17", "T-20", "T-25"]}
+{"case_id": "JD-080", "dim": "skillpoint", "title": "mes售前", "gold": ["ERP", "MES"], "system": ["ERP", "MES", "PowerPoint"]}
+{"case_id": "JD-080", "dim": "techstack", "title": "mes售前", "gold": ["TS-02", "TS-03"], "system": []}
+{"case_id": "JD-080", "dim": "skill", "title": "mes售前", "gold": ["F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-02"], "system": ["F-1-02", "F-2-01", "F-2-02", "F-2-05", "F-3-02", "F-3-04"]}
+{"case_id": "JD-081", "dim": "task", "title": "AMHS工程师", "gold": [], "system": ["T-08", "T-24", "T-25", "T-27"]}
+{"case_id": "JD-081", "dim": "skillpoint", "title": "AMHS工程师", "gold": [], "system": ["AutoCAD", "Excel", "PowerPoint", "SOP", "STK"]}
+{"case_id": "JD-081", "dim": "techstack", "title": "AMHS工程师", "gold": [], "system": ["TS-05"]}
+{"case_id": "JD-081", "dim": "skill", "title": "AMHS工程师", "gold": [], "system": ["F-2-02", "F-2-03", "F-2-06", "F-3-03", "F-3-04", "T-SYS-03", "T-SYS-04"]}
+{"case_id": "JD-082", "dim": "task", "title": "机器人系统工程师", "gold": [], "system": ["T-02", "T-05", "T-07", "T-14", "T-16", "T-21", "T-25", "T-27"]}
+{"case_id": "JD-082", "dim": "skillpoint", "title": "机器人系统工程师", "gold": [], "system": ["CAN", "EtherCAT", "I2C", "SPI", "数据传输", "电机", "电机控制", "负载", "通信协议", "通信接口", "量化", "驱动"]}
+{"case_id": "JD-082", "dim": "skill", "title": "机器人系统工程师", "gold": [], "system": ["F-1-01", "F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-02", "F-3-04", "T-SW-01", "T-SW-04", "T-SYS-03", "T-SYS-04"]}
+{"case_id": "JD-083", "dim": "task", "title": "数字化实施工程师", "gold": ["T-05", "T-08", "T-13", "T-17", "T-20"], "system": ["T-05", "T-06", "T-08", "T-09", "T-10", "T-13", "T-15", "T-17", "T-20", "T-25"]}
+{"case_id": "JD-083", "dim": "skillpoint", "title": "数字化实施工程师", "gold": ["ERP", "MES", "PLM", "WMS", "信息安全", "数据治理", "管理咨询模型", "网络技术", "金蝶云星空"], "system": ["MES", "PLM", "WMS", "ai", "云星空ERP", "信息安全", "工业互联网", "知识库", "系统运维", "资产管理", "金蝶云星空"]}
+{"case_id": "JD-083", "dim": "techstack", "title": "数字化实施工程师", "gold": ["TS-02", "TS-03", "TS-06"], "system": ["TS-03", "TS-05", "TS-06", "TS-08"]}
+{"case_id": "JD-083", "dim": "skill", "title": "数字化实施工程师", "gold": ["F-1-01", "F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "T-DA-04", "T-SYS-05"], "system": ["F-1-01", "F-1-02", "F-1-03", "F-1-04", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-2-06", "F-3-02", "F-4-01", "F-4-02", "T-AI-01", "T-DA-02", "T-SW-01", "T-SYS-01", "T-SYS-04", "T-SYS-05", "T-SYS-07"]}
+{"case_id": "JD-084", "dim": "task", "title": "系统工程师（射频总体）", "gold": [], "system": ["T-03", "T-05", "T-07", "T-31"]}
+{"case_id": "JD-084", "dim": "skillpoint", "title": "系统工程师（射频总体）", "gold": [], "system": ["ADS", "MATLAB", "仿真软件", "信号源", "卫星通信", "卫通", "天线", "射频", "微波技术", "板卡", "状态管理", "电磁场", "网络分析"]}
+{"case_id": "JD-084", "dim": "techstack", "title": "系统工程师（射频总体）", "gold": [], "system": ["TS-05"]}
+{"case_id": "JD-084", "dim": "skill", "title": "系统工程师（射频总体）", "gold": [], "system": ["F-2-03", "F-2-05", "F-3-02", "T-DA-01", "T-SW-03", "T-SW-04", "T-SYS-04"]}
+{"case_id": "JD-085", "dim": "task", "title": "（代招）实施顾问助理(169974) 日语英语必须", "gold": ["T-18", "T-20", "T-27"], "system": ["T-20", "T-27"]}
+{"case_id": "JD-085", "dim": "skillpoint", "title": "（代招）实施顾问助理(169974) 日语英语必须", "gold": ["ERP"], "system": ["ERP", "PM"]}
+{"case_id": "JD-085", "dim": "techstack", "title": "（代招）实施顾问助理(169974) 日语英语必须", "gold": ["TS-02", "TS-03"], "system": []}
+{"case_id": "JD-085", "dim": "skill", "title": "（代招）实施顾问助理(169974) 日语英语必须", "gold": ["F-1-01", "F-2-01", "F-2-03", "F-2-05"], "system": ["F-2-01", "F-2-03", "F-2-05"]}
+{"case_id": "JD-086", "dim": "task", "title": "售前技术支持工程师", "gold": ["T-07", "T-14", "T-16"], "system": ["T-07", "T-15", "T-16"]}
+{"case_id": "JD-086", "dim": "skillpoint", "title": "售前技术支持工程师", "gold": ["AOI", "ERP系统", "SMT生产线", "SPI", "办公软件", "电子元件"], "system": ["AMP", "ERP", "SMT", "SPI", "事件", "电子元件"]}
+{"case_id": "JD-086", "dim": "techstack", "title": "售前技术支持工程师", "gold": ["TS-02", "TS-03"], "system": []}
+{"case_id": "JD-086", "dim": "skill", "title": "售前技术支持工程师", "gold": ["F-1-02", "F-2-01", "F-2-03", "F-4-02"], "system": ["F-1-02", "F-2-01", "F-2-03", "F-2-05", "F-2-06", "F-4-01", "T-SW-04", "T-SYS-02"]}
+{"case_id": "JD-087", "dim": "task", "title": "风电/光伏运维工程师", "gold": [], "system": ["T-13", "T-15", "T-25"]}
+{"case_id": "JD-087", "dim": "skillpoint", "title": "风电/光伏运维工程师", "gold": [], "system": ["CAD", "Excel", "Office", "PowerPoint", "WindPro", "Word", "中标", "协议", "模板"]}
+{"case_id": "JD-087", "dim": "techstack", "title": "风电/光伏运维工程师", "gold": [], "system": ["TS-05"]}
+{"case_id": "JD-087", "dim": "skill", "title": "风电/光伏运维工程师", "gold": [], "system": ["F-1-01", "F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-04", "F-2-06", "F-3-01", "F-3-04", "T-DA-01", "T-DA-04", "T-SW-06"]}
+{"case_id": "JD-088", "dim": "job", "title": "SAP工程师", "gold": "OPS-06", "system": "DEV-18"}
+{"case_id": "JD-088", "dim": "task", "title": "SAP工程师", "gold": ["T-14", "T-17", "T-20"], "system": ["T-05", "T-08", "T-17", "T-20", "T-25"]}
+{"case_id": "JD-088", "dim": "skillpoint", "title": "SAP工程师", "gold": ["ERP", "MES", "PMP", "SAP", "SCM"], "system": ["ERP", "FPC", "MES", "PCB", "PMP", "SAP", "SCM"]}
+{"case_id": "JD-088", "dim": "techstack", "title": "SAP工程师", "gold": ["TS-02", "TS-03"], "system": ["TS-05"]}
+{"case_id": "JD-088", "dim": "skill", "title": "SAP工程师", "gold": ["F-1-01", "F-2-01", "F-2-03", "F-2-05", "F-3-02"], "system": ["F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-04", "F-2-05", "F-3-01", "F-3-02", "F-3-03", "F-4-01", "T-SW-03"]}
+{"case_id": "JD-089", "dim": "skillpoint", "title": "UI设计师", "gold": ["Android设计规范", "CSS", "Figma", "HTML", "Illustrator", "Photoshop", "Sketch", "iOS设计规范", "墨刀"], "system": ["Android", "CSS", "Figma", "HTML", "Illustrator", "Photoshop", "Sketch", "UI", "UI设计", "UX", "ai", "iOS", "交互设计", "响应式设计", "墨刀", "流程图", "移动端", "虚拟现实", "视觉感知"]}
+{"case_id": "JD-089", "dim": "techstack", "title": "UI设计师", "gold": ["TS-01"], "system": ["TS-01", "TS-08"]}
+{"case_id": "JD-089", "dim": "skill", "title": "UI设计师", "gold": ["F-1-04", "F-2-01", "F-2-03", "F-2-05", "F-3-01", "F-4-02", "T-SW-05"], "system": ["F-1-01", "F-1-04", "F-2-01", "F-2-03", "F-2-05", "F-4-01", "F-4-02", "T-SW-05", "T-SW-06"]}
+{"case_id": "JD-090", "dim": "job", "title": "电商产品经理", "gold": "", "system": "PD-08"}
+{"case_id": "JD-090", "dim": "task", "title": "电商产品经理", "gold": [], "system": ["T-13", "T-17", "T-18", "T-27"]}
+{"case_id": "JD-090", "dim": "skillpoint", "title": "电商产品经理", "gold": [], "system": ["ASTM F963", "Amazon", "BOM", "CE", "Excel", "FDA", "Google Analytics", "Helium", "IPD", "Jungle Scout", "MPC", "PRD", "PowerPoint", "Project", "Shopify", "材质", "矩阵", "脚本", "驱动"]}
+{"case_id": "JD-090", "dim": "techstack", "title": "电商产品经理", "gold": [], "system": ["TS-08"]}
+{"case_id": "JD-090", "dim": "skill", "title": "电商产品经理", "gold": [], "system": ["F-1-02", "F-1-04", "F-2-01", "F-2-02", "F-2-03", "F-2-04", "F-2-05", "F-2-06", "F-3-01", "F-3-02", "F-3-03", "F-3-04", "F-4-01", "F-4-02", "T-DA-04"]}
+{"case_id": "JD-091", "dim": "task", "title": "产品总监（成都）", "gold": [], "system": ["T-13", "T-15", "T-17", "T-18"]}
+{"case_id": "JD-091", "dim": "techstack", "title": "产品总监（成都）", "gold": [], "system": ["TS-08"]}
+{"case_id": "JD-091", "dim": "skill", "title": "产品总监（成都）", "gold": [], "system": ["F-1-01", "F-1-02", "F-2-01", "F-2-03", "F-2-04", "F-2-05", "F-3-02", "F-4-01", "T-DA-04"]}
+{"case_id": "JD-092", "dim": "task", "title": "产品经理（mes系统）", "gold": ["T-17", "T-18", "T-20"], "system": ["T-01", "T-06", "T-07", "T-17", "T-18", "T-19", "T-20"]}
+{"case_id": "JD-092", "dim": "techstack", "title": "产品经理（mes系统）", "gold": ["TS-02"], "system": []}
+{"case_id": "JD-092", "dim": "skill", "title": "产品经理（mes系统）", "gold": ["F-1-01", "F-2-02", "F-2-03", "F-2-05"], "system": ["F-1-01", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "T-SW-05"]}
+{"case_id": "JD-093", "dim": "task", "title": "产品经理", "gold": [], "system": ["T-13", "T-18"]}
+{"case_id": "JD-093", "dim": "skillpoint", "title": "产品经理", "gold": [], "system": ["检索", "驱动"]}
+{"case_id": "JD-093", "dim": "techstack", "title": "产品经理", "gold": [], "system": ["TS-08"]}
+{"case_id": "JD-093", "dim": "skill", "title": "产品经理", "gold": [], "system": ["F-1-01", "F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-02", "F-3-04", "F-4-01", "F-4-02", "T-DA-04", "T-SW-05"]}
+{"case_id": "JD-094", "dim": "task", "title": "三终端产品经理", "gold": [], "system": ["T-13", "T-19", "T-27"]}
+{"case_id": "JD-094", "dim": "skillpoint", "title": "三终端产品经理", "gold": [], "system": ["PowerPoint", "检索"]}
+{"case_id": "JD-094", "dim": "skill", "title": "三终端产品经理", "gold": [], "system": ["F-1-03", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-2-06", "F-3-02", "F-3-03", "F-4-01", "F-4-02", "T-SW-05"]}
+{"case_id": "JD-095", "dim": "task", "title": "产品助理", "gold": [], "system": ["T-13", "T-17", "T-18", "T-24"]}
+{"case_id": "JD-095", "dim": "skillpoint", "title": "产品助理", "gold": [], "system": ["Excel", "NPD", "Office", "PowerPoint", "Word"]}
+{"case_id": "JD-095", "dim": "skill", "title": "产品助理", "gold": [], "system": ["F-1-01", "F-1-02", "F-2-02", "F-2-03", "F-2-06", "F-3-03", "F-3-04", "F-4-01"]}
+{"case_id": "JD-096", "dim": "task", "title": "网页设计师", "gold": ["T-18", "T-19"], "system": ["T-01", "T-19"]}
+{"case_id": "JD-096", "dim": "skillpoint", "title": "网页设计师", "gold": ["CSS", "HTML", "Illustrator", "Photoshop"], "system": ["CSS", "HTML", "HTML/CSS", "Illustrator", "Photoshop", "React", "UI设计", "Vue"]}
+{"case_id": "JD-096", "dim": "skill", "title": "网页设计师", "gold": ["F-1-04", "F-2-03", "F-2-05", "T-SW-05"], "system": ["F-1-01", "F-1-04", "F-2-01", "F-2-03", "F-4-02", "T-SW-01", "T-SW-05"]}
+{"case_id": "JD-097", "dim": "task", "title": "产品助理-周末双休", "gold": ["T-13", "T-17", "T-18"], "system": ["T-13", "T-17", "T-18", "T-19"]}
+{"case_id": "JD-097", "dim": "skillpoint", "title": "产品助理-周末双休", "gold": ["Axure", "Sketch"], "system": ["Axure", "Sketch", "UI", "UX"]}
+{"case_id": "JD-097", "dim": "techstack", "title": "产品助理-周末双休", "gold": ["TS-01"], "system": ["TS-08"]}
+{"case_id": "JD-097", "dim": "skill", "title": "产品助理-周末双休", "gold": ["F-1-01", "F-2-03", "F-2-05", "F-3-03"], "system": ["F-1-02", "F-2-01", "F-2-03", "F-2-05", "F-3-03", "F-4-01", "F-4-02", "T-DA-04", "T-SW-05"]}
+{"case_id": "JD-098", "dim": "task", "title": "温州应届生/本科生/管培生/实习生", "gold": ["T-07"], "system": ["T-07", "T-16"]}
+{"case_id": "JD-098", "dim": "skillpoint", "title": "温州应届生/本科生/管培生/实习生", "gold": ["C语言", "数电", "模电"], "system": ["C", "数电", "模电", "测试报告", "测试用例"]}
+{"case_id": "JD-098", "dim": "techstack", "title": "温州应届生/本科生/管培生/实习生", "gold": ["TS-07"], "system": ["TS-02"]}
+{"case_id": "JD-098", "dim": "skill", "title": "温州应届生/本科生/管培生/实习生", "gold": ["T-SW-04", "T-SYS-02"], "system": ["F-2-02", "F-2-05", "T-SW-01", "T-SW-04", "T-SYS-02"]}
+{"case_id": "JD-099", "dim": "task", "title": "测试工程师", "gold": [], "system": ["T-07", "T-15", "T-17"]}
+{"case_id": "JD-099", "dim": "skillpoint", "title": "测试工程师", "gold": [], "system": ["GB4706", "IEC", "检测", "测试报告", "测试方法", "测试计划", "电源"]}
+{"case_id": "JD-099", "dim": "skill", "title": "测试工程师", "gold": [], "system": ["F-1-01", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-03", "F-4-02", "T-SW-04"]}
+{"case_id": "JD-100", "dim": "task", "title": "声学测试工程师", "gold": [], "system": ["T-08", "T-13", "T-27", "T-42"]}
+{"case_id": "JD-100", "dim": "skillpoint", "title": "声学测试工程师", "gold": [], "system": ["检测", "自动化设备", "音频"]}
+{"case_id": "JD-100", "dim": "techstack", "title": "声学测试工程师", "gold": [], "system": ["TS-08"]}
+{"case_id": "JD-100", "dim": "skill", "title": "声学测试工程师", "gold": [], "system": ["F-1-01", "F-2-01", "F-2-03", "F-3-04", "F-4-02", "T-DA-02", "T-DA-04", "T-SYS-03", "T-SYS-07"]}
+{"case_id": "JD-101", "dim": "task", "title": "试制工程师与测试工程师", "gold": [], "system": ["T-01", "T-02", "T-07", "T-08", "T-13", "T-25", "T-31"]}
+{"case_id": "JD-101", "dim": "skillpoint", "title": "试制工程师与测试工程师", "gold": [], "system": ["性能测试", "扫描仪", "数据采集", "无人机", "驱动"]}
+{"case_id": "JD-101", "dim": "techstack", "title": "试制工程师与测试工程师", "gold": [], "system": ["TS-08"]}
+{"case_id": "JD-101", "dim": "skill", "title": "试制工程师与测试工程师", "gold": [], "system": ["F-1-02", "F-2-02", "F-2-03", "F-4-02", "T-DA-04", "T-SW-01", "T-SW-04", "T-SYS-01", "T-SYS-03"]}
+{"case_id": "JD-102", "dim": "task", "title": "生产测试", "gold": [], "system": ["T-07", "T-25", "T-31"]}
+{"case_id": "JD-102", "dim": "skill", "title": "生产测试", "gold": [], "system": ["F-1-02", "F-2-02", "F-2-06", "T-SW-04"]}
+{"case_id": "JD-103", "dim": "task", "title": "初级软件测试工程师", "gold": ["T-07"], "system": ["T-07", "T-35"]}
+{"case_id": "JD-103", "dim": "skillpoint", "title": "初级软件测试工程师", "gold": ["自动化测试工具"], "system": ["测试工具", "测试用例设计", "测试计划", "脚本", "自动化测试"]}
+{"case_id": "JD-103", "dim": "skill", "title": "初级软件测试工程师", "gold": ["F-1-01", "F-1-02", "F-2-03", "T-SW-04"], "system": ["F-1-01", "F-1-02", "F-2-01", "F-2-03", "F-3-04", "F-4-02", "T-SW-01", "T-SW-04"]}
+{"case_id": "JD-104", "dim": "task", "title": "射频测试工程师", "gold": [], "system": ["T-25", "T-31"]}
+{"case_id": "JD-104", "dim": "skillpoint", "title": "射频测试工程师", "gold": [], "system": ["5G", "CE", "CMA", "CNAS", "EN", "ETSI", "FCC", "FCC Part 15", "GB/T", "ISO/IEC 17025", "RFID", "Zigbee", "信号源", "功率计", "射频", "射频电路", "微波技术", "性能测试", "无线通信", "无线通信协议", "检测", "测试方法", "电磁场", "网络分析", "蓝牙", "证书", "调制", "频谱分析"]}
+{"case_id": "JD-104", "dim": "techstack", "title": "射频测试工程师", "gold": [], "system": ["TS-05"]}
+{"case_id": "JD-104", "dim": "skill", "title": "射频测试工程师", "gold": [], "system": ["F-1-01", "F-2-02", "T-SYS-04"]}
+{"case_id": "JD-105", "dim": "task", "title": "测试工程师（射频测试）", "gold": [], "system": ["T-07", "T-08", "T-13", "T-14", "T-31"]}
+{"case_id": "JD-105", "dim": "skillpoint", "title": "测试工程师（射频测试）", "gold": ["3GPP", "CMW100", "DFT", "IQ-M", "PCBA", "编程语言"], "system": ["3GPP", "CMW100", "DFT", "NPI", "PCBA", "射频", "电路分析", "统计分析", "自动化测试"]}
+{"case_id": "JD-105", "dim": "techstack", "title": "测试工程师（射频测试）", "gold": [], "system": ["TS-07"]}
+{"case_id": "JD-105", "dim": "skill", "title": "测试工程师（射频测试）", "gold": [], "system": ["F-1-01", "F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-04", "F-2-06", "F-3-02", "F-4-01", "T-DA-04", "T-SW-01", "T-SW-04", "T-SYS-03", "T-SYS-04", "T-SYS-07"]}
+{"case_id": "JD-106", "dim": "skillpoint", "title": "理化测试工程师", "gold": [], "system": ["ICP", "SIP", "SOP"]}
+{"case_id": "JD-107", "dim": "task", "title": "app软件测试助理", "gold": ["T-07"], "system": ["T-07", "T-10"]}
+{"case_id": "JD-107", "dim": "skillpoint", "title": "app软件测试助理", "gold": ["APP测试", "小程序测试"], "system": ["App", "Bug", "小程序", "测试计划", "测试软件", "统计"]}
+{"case_id": "JD-107", "dim": "techstack", "title": "app软件测试助理", "gold": ["TS-08"], "system": ["TS-01", "TS-06"]}
+{"case_id": "JD-107", "dim": "skill", "title": "app软件测试助理", "gold": ["F-2-01", "F-3-04", "F-4-02", "T-SW-04"], "system": ["F-2-01", "F-2-02", "F-3-04", "F-4-02", "T-SW-04", "T-SYS-05"]}
+{"case_id": "JD-108", "dim": "task", "title": "测试工程师 (MJ000084)", "gold": ["T-07"], "system": ["T-01", "T-07"]}
+{"case_id": "JD-108", "dim": "skillpoint", "title": "测试工程师 (MJ000084)", "gold": [], "system": ["测试工具", "测试报告", "测试方法", "测试用例", "测试计划", "自动化测试"]}
+{"case_id": "JD-108", "dim": "techstack", "title": "测试工程师 (MJ000084)", "gold": ["TS-07"], "system": ["TS-02", "TS-07"]}
+{"case_id": "JD-108", "dim": "skill", "title": "测试工程师 (MJ000084)", "gold": ["F-1-02", "F-2-02", "T-SW-04"], "system": ["F-1-01", "F-1-02", "F-2-02", "F-2-03", "T-SW-01", "T-SW-04", "T-SW-05"]}
+{"case_id": "JD-109", "dim": "task", "title": "网络安全工程师（劳务派遣岗）", "gold": ["T-07", "T-10", "T-14"], "system": ["T-01", "T-05", "T-10"]}
+{"case_id": "JD-109", "dim": "skillpoint", "title": "网络安全工程师（劳务派遣岗）", "gold": [".NET", "Burp Suite", "CTF", "EDR绕过", "Java", "Metasploit", "OWASP Top 10", "RCE", "SQL注入", "SSRF", "WAF绕过", "XSS", "反序列化", "反爬绕过", "应急响应", "渗透测试", "漏洞扫描", "蜜罐绕过", "越权漏洞", "重保值守"], "system": [".NET", "App", "Burp Suite", "CTF", "EDR", "Java", "Metasploit", "OWASP Top 10", "Python", "RCE", "SQL注入", "SSRF", "WAF", "XSS", "反序列化", "安全加固", "小程序", "应急响应", "测试报告", "渗透测试", "渗透测试工具", "漏洞扫描", "网络安全", "脚本", "蜜罐"]}
+{"case_id": "JD-109", "dim": "techstack", "title": "网络安全工程师（劳务派遣岗）", "gold": ["TS-02", "TS-06", "TS-07"], "system": ["TS-06"]}
+{"case_id": "JD-109", "dim": "skill", "title": "网络安全工程师（劳务派遣岗）", "gold": ["F-2-02", "F-2-03", "T-AI-12", "T-SYS-05"], "system": ["F-2-02", "F-2-03", "T-SW-01", "T-SYS-05"]}
+{"case_id": "JD-111", "dim": "job", "title": "网络与安全工程师", "gold": "NET-01", "system": "SEC-01"}
+{"case_id": "JD-111", "dim": "task", "title": "网络与安全工程师", "gold": ["T-09", "T-10", "T-14", "T-25"], "system": ["T-01", "T-09", "T-10", "T-11", "T-13", "T-14", "T-17", "T-25"]}
+{"case_id": "JD-111", "dim": "skillpoint", "title": "网络与安全工程师", "gold": ["AWS", "Azure", "CCIE Security", "CISP", "CISSP", "Cisco", "DNS", "FTP", "H3C", "HTTP", "IDS/IPS", "ISO 27001", "ITIL", "Linux", "OpenStack", "Python", "S-WAN", "Shell", "TCP/IP", "VPN", "Windows", "云网络", "信锐", "华为", "局域网", "广域网", "数据加密", "防火墙", "零信任安全架构"], "system": ["AWS", "Azure", "CCIE", "CISP", "CISSP", "Cisco", "DNS", "FTP", "H3C", "HTTP", "IDS/IPS", "ISO27001", "ITIL", "Linux", "OpenStack", "Python", "Shell", "TCP/IP", "VPN", "Windows", "事件", "云服务", "云网络", "交换机", "入侵检测与防御", "安全加固", "安全策略", "安全系统", "局域网", "广域网", "性能分析", "操作系统", "数据加密", "漏洞扫描", "网络协议", "网络基础设施", "网络安全", "网络攻击", "网络架构", "网络系统", "网络设备", "脚本", "证书", "路由器", "防火墙", "零信任", "风险评估"]}
+{"case_id": "JD-111", "dim": "techstack", "title": "网络与安全工程师", "gold": ["TS-05", "TS-06", "TS-07"], "system": ["TS-06"]}
+{"case_id": "JD-111", "dim": "skill", "title": "网络与安全工程师", "gold": ["F-1-01", "F-2-03", "F-4-01", "T-SW-01", "T-SYS-01", "T-SYS-04", "T-SYS-05"], "system": ["F-1-01", "F-1-02", "F-1-04", "F-2-01", "F-2-02", "F-2-03", "F-3-04", "F-4-02", "T-SW-01", "T-SYS-01", "T-SYS-04", "T-SYS-05", "T-SYS-06"]}
+{"case_id": "JD-112", "dim": "skillpoint", "title": "项目技术员", "gold": [], "system": ["证书"]}
+{"case_id": "JD-112", "dim": "skill", "title": "项目技术员", "gold": [], "system": ["F-2-03", "F-3-04"]}
+{"case_id": "JD-113", "dim": "task", "title": "设备运维技术人员+五险一金13薪", "gold": [], "system": ["T-08", "T-13", "T-14", "T-27"]}
+{"case_id": "JD-113", "dim": "techstack", "title": "设备运维技术人员+五险一金13薪", "gold": [], "system": ["TS-05"]}
+{"case_id": "JD-113", "dim": "skill", "title": "设备运维技术人员+五险一金13薪", "gold": [], "system": ["F-1-01", "F-2-01", "F-2-03", "F-3-04", "F-4-01", "F-4-02", "T-DA-04", "T-SYS-01"]}
+{"case_id": "JD-114", "dim": "task", "title": "电机开发工程师", "gold": [], "system": ["T-03", "T-07", "T-14", "T-21", "T-25"]}
+{"case_id": "JD-114", "dim": "skillpoint", "title": "电机开发工程师", "gold": [], "system": ["多任务", "电机", "电机控制算法", "电路设计"]}
+{"case_id": "JD-114", "dim": "techstack", "title": "电机开发工程师", "gold": [], "system": ["TS-08"]}
+{"case_id": "JD-114", "dim": "skill", "title": "电机开发工程师", "gold": [], "system": ["F-1-01", "F-2-01", "F-2-02", "F-2-03", "F-3-03", "T-AI-01", "T-SW-02", "T-SW-03", "T-SW-04", "T-SYS-02", "T-SYS-03"]}
+{"case_id": "JD-115", "dim": "task", "title": "半导体解决方案岗", "gold": [], "system": ["T-15", "T-17", "T-18", "T-20", "T-26", "T-27"]}
+{"case_id": "JD-115", "dim": "skillpoint", "title": "半导体解决方案岗", "gold": [], "system": ["SOP"]}
+{"case_id": "JD-115", "dim": "skill", "title": "半导体解决方案岗", "gold": [], "system": ["F-1-01", "F-1-04", "F-2-01", "F-2-02", "F-2-03", "F-2-05", "F-3-01", "F-3-02", "F-3-03", "F-4-01", "F-4-02"]}
+{"case_id": "JD-116", "dim": "task", "title": "电感工程师助理", "gold": [], "system": ["T-07", "T-14", "T-17", "T-18", "T-25"]}
+{"case_id": "JD-116", "dim": "skillpoint", "title": "电感工程师助理", "gold": [], "system": ["办公自动化软件", "电感"]}
+{"case_id": "JD-116", "dim": "skill", "title": "电感工程师助理", "gold": [], "system": ["F-2-01", "F-2-02", "F-2-03", "F-2-06", "F-3-03", "F-4-02", "T-SW-04", "T-SW-05"]}
+{"case_id": "JD-117", "dim": "task", "title": "产品研发工程师", "gold": [], "system": ["T-03", "T-07", "T-15", "T-16", "T-17", "T-18", "T-25"]}
+{"case_id": "JD-117", "dim": "skill", "title": "产品研发工程师", "gold": [], "system": ["F-1-04", "F-2-02", "F-2-05", "F-4-01", "F-4-02", "T-SW-01", "T-SW-04"]}
+{"case_id": "JD-118", "dim": "task", "title": "自动化电控工程师", "gold": [], "system": ["T-02", "T-16", "T-27"]}
+{"case_id": "JD-118", "dim": "skillpoint", "title": "自动化电控工程师", "gold": [], "system": ["BOM", "CAD", "PLC", "Protel", "操作系统", "电气元器件", "电气标准", "触摸屏"]}
+{"case_id": "JD-118", "dim": "skill", "title": "自动化电控工程师", "gold": [], "system": ["F-1-01", "F-2-01", "F-2-03", "F-4-02", "T-SW-01", "T-SYS-03"]}
+{"case_id": "JD-119", "dim": "task", "title": "质检员", "gold": [], "system": ["T-13", "T-27", "T-31"]}
+{"case_id": "JD-119", "dim": "skillpoint", "title": "质检员", "gold": [], "system": ["PCBA", "检测"]}
+{"case_id": "JD-119", "dim": "skill", "title": "质检员", "gold": [], "system": ["F-1-01", "F-2-01", "F-2-03", "F-3-04", "F-4-02", "T-DA-04", "T-SW-04", "T-SYS-03"]}
+{"case_id": "JD-120", "dim": "task", "title": "手机维修工程师", "gold": [], "system": ["T-14", "T-15"]}
+{"case_id": "JD-120", "dim": "skillpoint", "title": "手机维修工程师", "gold": [], "system": ["故障检测", "焊接"]}
+{"case_id": "JD-120", "dim": "skill", "title": "手机维修工程师", "gold": [], "system": ["F-1-02", "F-2-01", "F-2-05", "F-3-04", "F-4-02", "T-SYS-02"]}
+{"case_id": "JD-121", "dim": "task", "title": "高级电子硬件工程师", "gold": [], "system": ["T-02", "T-15", "T-17", "T-21", "T-26"]}
+{"case_id": "JD-121", "dim": "skillpoint", "title": "高级电子硬件工程师", "gold": [], "system": ["AD", "ADC", "ARM", "Buck-Boost", "Cadence", "DAC", "ECN", "FW", "I2C", "Mentor", "PADS", "PCB", "SPI", "STM32", "UART", "USB", "layout", "以太网", "原理图设计", "嵌入式系统", "总线", "数字电路设计", "测试仪表", "滤波", "电子元器件", "电路", "电路设计", "硬件设计", "计算机硬件", "设计软件"]}
+{"case_id": "JD-121", "dim": "techstack", "title": "高级电子硬件工程师", "gold": [], "system": ["TS-05"]}
+{"case_id": "JD-121", "dim": "skill", "title": "高级电子硬件工程师", "gold": [], "system": ["F-1-02", "F-2-01", "F-2-02", "F-2-03", "F-2-06", "F-3-01", "F-3-02", "F-3-03", "F-3-04", "T-SW-01", "T-SW-06", "T-SYS-02", "T-SYS-03", "T-SYS-04"]}

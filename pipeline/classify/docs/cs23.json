@@ -1,0 +1,186 @@
+{
+  "system_name": "CS2023",
+  "hierarchy_levels": 2,
+  "hierarchy": "一级大类 → 二级知识域/技能",
+  "categories": {
+    "Technical": {
+      "level": 1,
+      "name": "Technical",
+      "skills": {
+        "AL": {
+          "level": 2,
+          "code": "AL",
+          "english_name": "Algorithmic Foundations",
+          "chinese_name": "算法基础",
+          "definition": "Algorithms and data structures are foundational to all areas of computer science. This knowledge area covers fundamental algorithmic techniques, data structures, complexity analysis, computational models, and the societal impacts of algorithms. Concepts in this area appear throughout all other knowledge areas."
+        },
+        "AR": {
+          "level": 2,
+          "code": "AR",
+          "english_name": "Architecture and Organization",
+          "chinese_name": "计算机体系架构",
+          "definition": "Computer architecture and organization bridges hardware and software. This area examines how hardware components are organized to execute software, including digital logic, processor design, memory hierarchies, storage, and the interface between hardware and software."
+        },
+        "AI": {
+          "level": 2,
+          "code": "AI",
+          "english_name": "Artificial Intelligence",
+          "chinese_name": "人工智能",
+          "definition": "Artificial Intelligence seeks to build computational systems that exhibit intelligent behavior. Topics include search, knowledge representation, automated reasoning, machine learning, natural language processing, computer vision, robotics, and the ethical and societal implications of intelligent systems."
+        },
+        "DM": {
+          "level": 2,
+          "code": "DM",
+          "english_name": "Data Management",
+          "chinese_name": "数据管理",
+          "definition": "Data management addresses how data is stored, organized, retrieved, processed, and governed. This knowledge area covers data modeling, database systems, transaction processing, data integration, big data systems, data quality, and data governance."
+        },
+        "FPL": {
+          "level": 2,
+          "code": "FPL",
+          "english_name": "Foundations of Programming Languages",
+          "chinese_name": "程序语言基础",
+          "definition": "Programming languages provide the formal notation for expressing computational ideas. This area examines syntax, semantics, type systems, programming paradigms, language translation, and how language design influences software construction."
+        },
+        "GIT": {
+          "level": 2,
+          "code": "GIT",
+          "english_name": "Graphics and Interactive Techniques",
+          "chinese_name": "图形与交互技术",
+          "definition": "Computer graphics focuses on generating and manipulating visual imagery. Interactive techniques address real-time user interaction with graphical environments. Topics include rendering, geometric modeling, animation, visualization, and interactive graphics systems."
+        },
+        "HCI": {
+          "level": 2,
+          "code": "HCI",
+          "english_name": "Human-Computer Interaction",
+          "chinese_name": "人机交互",
+          "definition": "Human-Computer Interaction studies the interplay between people and computing systems. It integrates psychology, design, usability engineering, accessibility, interaction modalities, user experience, and methods for evaluating interactive systems."
+        },
+        "MSF": {
+          "level": 2,
+          "code": "MSF",
+          "english_name": "Mathematical and Statistical Foundations",
+          "chinese_name": "数理统计基础",
+          "definition": "Mathematics and statistics supply the formal reasoning tools essential to computer science. This area includes discrete mathematics, logic, probability, statistics, linear algebra, numerical methods, and mathematical modeling for computing problems."
+        },
+        "NC": {
+          "level": 2,
+          "code": "NC",
+          "english_name": "Networking and Communication",
+          "chinese_name": "网络与通信",
+          "definition": "Networking and communication governs how distributed computing entities exchange information. This knowledge area covers protocol stacks, network architecture, routing, transport services, network performance, and distributed communication security."
+        },
+        "OS": {
+          "level": 2,
+          "code": "OS",
+          "english_name": "Operating Systems",
+          "chinese_name": "操作系统",
+          "definition": "Operating systems manage hardware resources and provide abstractions for application software. Topics include process management, memory management, file systems, scheduling, concurrency, virtualization, and resource sharing."
+        },
+        "PDC": {
+          "level": 2,
+          "code": "PDC",
+          "english_name": "Parallel and Distributed Computing",
+          "chinese_name": "并行分布式计算",
+          "definition": "Parallel and distributed computing deals with systems composed of multiple cooperating computational units. It covers parallel execution models, distributed algorithms, consistency, fault tolerance, concurrency control, and large-scale distributed system design."
+        },
+        "SEC": {
+          "level": 2,
+          "code": "SEC",
+          "english_name": "Security",
+          "chinese_name": "网络安全",
+          "definition": "Computing systems are increasingly critical to modern society. Security builds a security mindset for designing, implementing, and operating systems that protect information assets, addressing confidentiality, integrity, availability, risk, adversarial behavior, and privacy."
+        },
+        "SEP": {
+          "level": 2,
+          "code": "SEP",
+          "english_name": "Society, Ethics, and the Profession",
+          "chinese_name": "计算社会、伦理与职业规范",
+          "definition": "Computing technologies have profound societal impact. This knowledge area examines ethical principles, professional responsibilities, legal frameworks, equity, bias, digital policy, and the social consequences of computing innovations."
+        },
+        "SDF": {
+          "level": 2,
+          "code": "SDF",
+          "english_name": "Software Development Fundamentals",
+          "chinese_name": "软件开发基础",
+          "definition": "Software Development Fundamentals covers core practices for constructing software. It includes basic programming constructs, modularity, testing, debugging, iteration, abstraction, and foundational practices for building correct software systems."
+        },
+        "SE": {
+          "level": 2,
+          "code": "SE",
+          "english_name": "Software Engineering",
+          "chinese_name": "软件工程",
+          "definition": "Software Engineering addresses large-scale, complex software system development. Topics include software lifecycle, requirements engineering, architecture design, quality assurance, project management, evolution, and maintenance of large software systems."
+        },
+        "SPD": {
+          "level": 2,
+          "code": "SPD",
+          "english_name": "Specialized Platform Development",
+          "chinese_name": "专用平台开发",
+          "definition": "Specialized Platform Development focuses on software built for constrained or domain-specific computing platforms, such as embedded systems, mobile platforms, edge computing, real-time systems, and domain-specific hardware platforms."
+        },
+        "SF": {
+          "level": 2,
+          "code": "SF",
+          "english_name": "Systems Fundamentals",
+          "chinese_name": "系统基础",
+          "definition": "Systems Fundamentals provides a unifying framework for reasoning about computing systems. It introduces core systems principles including abstraction, layering, trade-offs, performance evaluation, and the interaction between components within complex systems."
+        }
+      }
+    },
+    "Foundational": {
+      "level": 1,
+      "name": "Foundational",
+      "skills": {
+        "Adaptable": {
+          "level": 2,
+          "english_name": "Adaptable",
+          "chinese_name": "适应性",
+          "definition": "as the discipline is continually evolving;"
+        },
+        "Collaborative": {
+          "level": 2,
+          "english_name": "Collaborative",
+          "chinese_name": "协作意识",
+          "definition": "as most real-world applications are team efforts;"
+        },
+        "Inventive": {
+          "level": 2,
+          "english_name": "Inventive",
+          "chinese_name": "创新思维",
+          "definition": "Inventive in order to devise new solutions and apply existing solutions to new contexts;"
+        },
+        "Meticulous": {
+          "level": 2,
+          "english_name": "Meticulous",
+          "chinese_name": "严谨细致",
+          "definition": "Meticulous to ensure the correctness and completeness of solutions;"
+        },
+        "Persistent": {
+          "level": 2,
+          "english_name": "Persistent",
+          "chinese_name": "坚韧、持续攻坚",
+          "definition": "Persistent since computational problem-solving is an iterative process;"
+        },
+        "Proactive": {
+          "level": 2,
+          "english_name": "Proactive",
+          "chinese_name": "主动性、前瞻预判",
+          "definition": "Proactive to anticipate issues pertaining to usability, security, ethics, etc.;"
+        },
+        "Responsible": {
+          "level": 2,
+          "english_name": "Responsible",
+          "chinese_name": "责任意识（含技术社会影响、伦理责任）",
+          "definition": "Responsible in all aspects of a solution including design, implementation and maintenance;"
+        },
+        "Self-directed": {
+          "level": 2,
+          "english_name": "Self-directed",
+          "chinese_name": "自主导向（终身自主学习）",
+          "definition": "Self-directed, as commitment to life-long learning is required due to rapid evolution of the discipline."
+        }
+      }
+    }
+  }
+}

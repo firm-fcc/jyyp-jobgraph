@@ -1,0 +1,187 @@
+{
+  "version": "stage2b2_f_2_01_oral_communication_curated_v1",
+  "team_skill_id": "F-2-01",
+  "team_skill_name": "口头技术沟通",
+  "scope": "覆盖利益相关者关切的听取与确认、面向不同背景听众的技术表达、演示与答疑、口头结论的书面固化，以及跨角色会议中的信息对齐核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "ORL-01",
+      "name_zh": "关切听取与复述确认",
+      "type": "CORE",
+      "definition": "在技术讨论中听取各方关切，用对方可确认的措辞复述其诉求与约束，并当场校正理解偏差。",
+      "prerequisites": [],
+      "learning_outcome": "能够在讨论后复述各方诉求与约束，并取得对方对复述内容的确认。",
+      "evidence_task": "参与一次跨角色技术讨论，会中逐条复述各方诉求与约束并请对方确认，保留确认记录与被校正之处。",
+      "validation_criteria": [
+        "复述内容逐条对应可指认的发言",
+        "记录中含至少一处被对方校正的理解偏差"
+      ],
+      "source_refs": [
+        "swebok_v4",
+        "iso_iec_ieee_29148"
+      ]
+    },
+    {
+      "subskill_id": "ORL-02",
+      "name_zh": "面向听众的技术表达",
+      "type": "CORE",
+      "definition": "依据听众的技术背景与决策需要，调整术语层级、信息密度与讲述顺序，使关键结论先于细节到达。",
+      "prerequisites": [
+        "ORL-01"
+      ],
+      "learning_outcome": "能够就同一技术内容面向不同背景的听众各自组织一次表达，并说明取舍依据。",
+      "evidence_task": "就同一技术方案分别面向技术同行与非技术干系人各讲述一次，提交两份提纲及术语与详略的取舍说明。",
+      "validation_criteria": [
+        "两份提纲在术语层级与信息密度上有明确差异",
+        "取舍依据对应听众的决策需要"
+      ],
+      "source_refs": [
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "ORL-03",
+      "name_zh": "演示与现场答疑",
+      "type": "CORE",
+      "definition": "在演示中按预设路径展示技术结论，并对现场质询给出有依据的即时回应或明确的待查承诺。",
+      "prerequisites": [
+        "ORL-02"
+      ],
+      "learning_outcome": "能够完成一次技术演示并处理现场质询，对无法当场回答的问题给出可追踪的后续安排。",
+      "evidence_task": "完成一次技术演示，记录全部现场质询、当场回应的依据，以及待查问题的responsible与时限。",
+      "validation_criteria": [
+        "每条回应可追溯到演示материал或既有证据",
+        "待查问题均有承接人与时限"
+      ],
+      "source_refs": [
+        "swebok_v4",
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "ORL-04",
+      "name_zh": "口头结论的书面固化",
+      "type": "CORE",
+      "definition": "把口头达成的技术结论、待办与未决项转为书面记录并回传各方确认，使后续执行有据可依。",
+      "prerequisites": [
+        "ORL-01"
+      ],
+      "learning_outcome": "能够在讨论结束后产出书面纪要，区分已达成结论、待办事项与未决分歧并取得各方确认。",
+      "evidence_task": "就一次技术讨论产出纪要，分列结论、待办与未决分歧，回传各方并保留确认与修订痕迹。",
+      "validation_criteria": [
+        "结论、待办、未决三类分列且无混淆",
+        "各方确认或修订的痕迹完整"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_15289",
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "ORL-05",
+      "name_zh": "跨角色会议的信息对齐",
+      "type": "CORE",
+      "definition": "在多角色参与的技术会议中识别理解分歧，主动澄清口径差异，使各方对同一术语与目标的理解一致。",
+      "prerequisites": [
+        "ORL-04"
+      ],
+      "learning_outcome": "能够在多角色会议中发现并消解口径分歧，形成各方一致确认的术语与目标表述。",
+      "evidence_task": "主持或参与一次多角色技术会议，记录发现的口径分歧、澄清过程与最终一致的表述。",
+      "validation_criteria": [
+        "分歧的来源与澄清过程可复核",
+        "最终表述取得各方明确认可"
+      ],
+      "source_refs": [
+        "swebok_v4",
+        "pmbok_guide"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "ORL-VERIFY-01",
+    "objective": "验证当前口头技术沟通的能力证据。",
+    "task_description": "在一次真实的跨角色技术讨论中完成关切听取、面向听众的表达与结论固化，保留复述确认、提纲与纪要。",
+    "validation_criteria": [
+      "本人的发言与澄清行为可定位",
+      "听众差异化处理有对应记录",
+      "纪要中的结论取得各方确认"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "ORL-CAPSTONE-01",
+    "objective": "完成一轮诉求可确认、表达有取舍、结论有书面归档的技术沟通。",
+    "task_description": "围绕一项待决技术事项，完成各方关切听取与复述确认、面向不同听众的表达、现场答疑与纪要回传确认。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "各方诉求的复述确认记录完整",
+      "面向不同听众的取舍有依据",
+      "纪要区分结论、待办与未决且经确认",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_ieee_15289",
+      "title": "ISO/IEC/IEEE 15289 Systems and software engineering — Content of life-cycle information items",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "ORL-04"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_29148",
+      "title": "ISO/IEC/IEEE 29148 Systems and software engineering — Life cycle processes — Requirements engineering",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "ORL-01"
+      ]
+    },
+    {
+      "source_id": "pmbok_guide",
+      "title": "A Guide to the Project Management Body of Knowledge (PMBOK Guide)",
+      "authors_or_org": "Project Management Institute (PMI)",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.pmi.org",
+      "supports": [
+        "ORL-03",
+        "ORL-04",
+        "ORL-05"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "ORL-01",
+        "ORL-02",
+        "ORL-03",
+        "ORL-05"
+      ]
+    }
+  ]
+}

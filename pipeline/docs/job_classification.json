@@ -1,0 +1,3212 @@
+{
+  "system_name": "岗位体系（IT 岗位分类 v1）",
+  "version": "v1",
+  "date": "2026-08-05",
+  "source": "51job dd_funtype_translation.json + deepseek-v4-flash 筛选",
+  "meta": {
+    "source_total_nodes": 1584,
+    "it_related_nodes": 255,
+    "top_categories": 56,
+    "total_node_count_in_tree": 199,
+    "funtype_coverage": {
+      "total_funtype_parts": 1824,
+      "it_parts": 322,
+      "non_it_parts": 1502,
+      "source_distribution": {
+        "rule_merge": 45,
+        "classify": 1155,
+        "llm_merge": 120,
+        "llm": 504
+      }
+    },
+    "top_categories_note": "top_categories = IT 过滤后岗位树中每棵子树的最顶层节点数（即没有 IT 父节点的 IT 节点）。其中 15 个为带子类的高层类别（如 后端开发、人工智能、半导体/芯片），54 个为 51job 本身置于顶层、无 IT 父类的叶子岗位（如 电子工程师、C/C++开发工程师、封装工程师）。因此 top_categories 并非严格意义的\"合并后类别\"，而是顶层节点集合。",
+    "duplicate_merge": {
+      "merged_groups": 12,
+      "merged_nodes": 13,
+      "kept_nodes": 255,
+      "aliases": {
+        "A0L7": "A0MY",
+        "A0JT": "2725",
+        "A0LJ": "6760",
+        "A0JV": "2705",
+        "A0JQ": "0107",
+        "A0JU": "7200",
+        "A0KJ": "7200",
+        "6605": "6600",
+        "A0JS": "6609",
+        "A0L9": "7901",
+        "2126": "A0K5",
+        "A0MX": "6702",
+        "A0LH": "6738"
+      }
+    }
+  },
+  "hierarchy": [
+    {
+      "code": "A0MY",
+      "name": "电子工程师",
+      "name_en": "Electronics Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "电子产品工程师",
+        "电子工程师"
+      ],
+      "aliases": [
+        "A0L7"
+      ]
+    },
+    {
+      "code": "7116",
+      "name": "新能源电机工程师",
+      "name_en": "New Energy Electrical Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "新能源电机工程师"
+      ]
+    },
+    {
+      "code": "0122",
+      "name": "C/C++开发工程师",
+      "name_en": "C Language Development Engineer",
+      "count": 0,
+      "children": []
+    },
+    {
+      "code": "A0LG",
+      "name": "模拟芯片设计",
+      "name_en": "Analog IC Design Engineer",
+      "count": 0,
+      "children": []
+    },
+    {
+      "code": "3A00",
+      "name": "硬件开发",
+      "name_en": "Hardware development",
+      "count": 0,
+      "children": []
+    },
+    {
+      "code": "2600",
+      "name": "技术管理",
+      "name_en": "Technical Management",
+      "count": 12,
+      "children": [
+        {
+          "code": "2610",
+          "name": "项目助理",
+          "name_en": "Project Assistant",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "项目助理"
+          ]
+        },
+        {
+          "code": "2611",
+          "name": "首席技术执行官CTO",
+          "name_en": "Chief Technology Officer CTO",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "首席技术执行官CTO"
+          ]
+        },
+        {
+          "code": "2604",
+          "name": "技术经理",
+          "name_en": "Technical Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "技术研发主管",
+            "技术研发经理",
+            "技术研发经理/主管",
+            "技术经理"
+          ]
+        },
+        {
+          "code": "2726",
+          "name": "测试总监",
+          "name_en": "Test Director",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "测试总监"
+          ]
+        },
+        {
+          "code": "2612",
+          "name": "首席信息官CIO",
+          "name_en": "Chief Information Officer CIO",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "首席信息官CIO"
+          ]
+        },
+        {
+          "code": "2705",
+          "name": "测试经理",
+          "name_en": "Test Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "QA经理",
+            "QC经理",
+            "测试经理",
+            "质量管理/测试经理(QA/QC经理)"
+          ],
+          "aliases": [
+            "A0JV"
+          ]
+        },
+        {
+          "code": "2603",
+          "name": "技术总监",
+          "name_en": "Technical Director",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "技术总监",
+            "研发总监",
+            "研发部长"
+          ]
+        },
+        {
+          "code": "2605",
+          "name": "项目总监",
+          "name_en": "Project Director",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "项目总监"
+          ]
+        },
+        {
+          "code": "2606",
+          "name": "项目经理",
+          "name_en": "Project Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "项目经理"
+          ]
+        },
+        {
+          "code": "7502",
+          "name": "数据分析经理/主管",
+          "name_en": "Data Analysis Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "数据分析主管",
+            "数据分析经理",
+            "数据分析经理/主管"
+          ]
+        },
+        {
+          "code": "2607",
+          "name": "项目主管",
+          "name_en": "Project Supervisor",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "项目主管"
+          ]
+        },
+        {
+          "code": "2608",
+          "name": "项目执行/协调人员",
+          "name_en": "Project Specialist / Coordinator",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "项目协调人员",
+            "项目执行/协调人员",
+            "项目执行人员"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "7117",
+      "name": "汽车标定工程师",
+      "name_en": "Automobile Calibration Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "汽车标定工程师"
+      ]
+    },
+    {
+      "code": "0100",
+      "name": "后端开发",
+      "name_en": "Backend Development",
+      "count": 23,
+      "children": [
+        {
+          "code": "0106",
+          "name": "高级软件工程师",
+          "name_en": "Senior Software Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "高级软件工程师"
+          ]
+        },
+        {
+          "code": "0120",
+          "name": "PHP",
+          "name_en": "PHP Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "PHP开发工程师"
+          ]
+        },
+        {
+          "code": "0152",
+          "name": "Golang",
+          "name_en": "Go Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "Go开发工程师"
+          ]
+        },
+        {
+          "code": "0158",
+          "name": "Node.js",
+          "name_en": "Node.js Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "Node.js开发工程师"
+          ]
+        },
+        {
+          "code": "0155",
+          "name": "GIS工程师",
+          "name_en": "GIS Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "GIS工程师"
+          ]
+        },
+        {
+          "code": "0157",
+          "name": "C++开发工程师",
+          "name_en": "C++ Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "C++",
+            "C++开发工程师"
+          ]
+        },
+        {
+          "code": "0126",
+          "name": ".NET",
+          "name_en": ".NET Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            ".NET开发工程师"
+          ]
+        },
+        {
+          "code": "0129",
+          "name": "Hadoop",
+          "name_en": "Hadoop Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "Hadoop工程师"
+          ]
+        },
+        {
+          "code": "0130",
+          "name": "数据开发",
+          "name_en": "Big Data Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "大数据开发工程师"
+          ]
+        },
+        {
+          "code": "0117",
+          "name": "ERP技术开发",
+          "name_en": "ERP R&D",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "ERP技术开发"
+          ]
+        },
+        {
+          "code": "0153",
+          "name": "C#",
+          "name_en": "C# Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "C#开发工程师"
+          ]
+        },
+        {
+          "code": "0132",
+          "name": "脚本开发工程师",
+          "name_en": "Script Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "脚本开发工程师"
+          ]
+        },
+        {
+          "code": "0133",
+          "name": "语音/视频/图形开发",
+          "name_en": "Multimedia Development Engineer",
+          "count": 0,
+          "children": []
+        },
+        {
+          "code": "0156",
+          "name": "C开发工程师",
+          "name_en": "C Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "C",
+            "C开发工程师"
+          ]
+        },
+        {
+          "code": "0154",
+          "name": "全栈工程师",
+          "name_en": "Full Stack Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "全栈工程师"
+          ]
+        },
+        {
+          "code": "0151",
+          "name": "Ruby开发工程师",
+          "name_en": "Ruby Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "Ruby开发工程师"
+          ]
+        },
+        {
+          "code": "0107",
+          "name": "软件工程师",
+          "name_en": "Software Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "软件工程师",
+            "软件开发"
+          ],
+          "aliases": [
+            "A0JQ"
+          ]
+        },
+        {
+          "code": "0128",
+          "name": "区块链开发",
+          "name_en": "Blockchain Development",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "区块链开发"
+          ]
+        },
+        {
+          "code": "0124",
+          "name": "Python",
+          "name_en": "Python Software Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "Python开发工程师"
+          ]
+        },
+        {
+          "code": "0121",
+          "name": "Java开发工程师",
+          "name_en": "Java Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "Java开发工程师"
+          ]
+        },
+        {
+          "code": "0143",
+          "name": "架构师",
+          "name_en": "System Architecture Design",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "系统架构设计师"
+          ]
+        },
+        {
+          "code": "0123",
+          "name": "系统分析员",
+          "name_en": "System Analyst",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "系统分析员"
+          ]
+        },
+        {
+          "code": "0131",
+          "name": "爬虫工程师",
+          "name_en": "Crawler Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "爬虫开发工程师"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "7304",
+      "name": "图像处理工程师",
+      "name_en": "Image Processing Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "图像处理工程师"
+      ]
+    },
+    {
+      "code": "7107",
+      "name": "电气/电器工程师",
+      "name_en": "Electrical / Electronics Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "电气/电器工程师"
+      ]
+    },
+    {
+      "code": "3206",
+      "name": "售前/售后技术支持主管",
+      "name_en": "Technical Support Supervisor",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "售前/售后技术支持主管",
+        "售前技术支持主管",
+        "售后技术支持主管"
+      ]
+    },
+    {
+      "code": "2602",
+      "name": "技术总监/经理",
+      "name_en": "Technical Director/Manager",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "技术总监/经理"
+      ]
+    },
+    {
+      "code": "A0JR",
+      "name": "C/C++",
+      "name_en": "C/C++",
+      "count": 0,
+      "children": []
+    },
+    {
+      "code": "1D01",
+      "name": "解决方案经理",
+      "name_en": "Solution Manager",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "解决方案经理"
+      ]
+    },
+    {
+      "code": "6600",
+      "name": "互联网产品经理",
+      "name_en": "Product",
+      "count": 13,
+      "children": [
+        {
+          "code": "6611",
+          "name": "数据产品经理",
+          "name_en": "Data Product Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "数据产品经理"
+          ]
+        },
+        {
+          "code": "6615",
+          "name": "平台产品经理",
+          "name_en": "Platform Product Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "平台产品经理"
+          ]
+        },
+        {
+          "code": "6603",
+          "name": "产品助理",
+          "name_en": "Product Assistant",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "产品助理"
+          ]
+        },
+        {
+          "code": "6609",
+          "name": "需求工程师",
+          "name_en": "Demand / Specification Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "业务分析专员",
+            "业务分析主管",
+            "业务分析助理",
+            "业务分析经理",
+            "需求工程师"
+          ],
+          "aliases": [
+            "A0JS"
+          ]
+        },
+        {
+          "code": "6601",
+          "name": "产品专员",
+          "name_en": "Product Specialist",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "产品专员"
+          ]
+        },
+        {
+          "code": "6614",
+          "name": "商业化产品经理",
+          "name_en": "Commercial Product Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "商业化产品经理"
+          ]
+        },
+        {
+          "code": "6613",
+          "name": "策略产品经理",
+          "name_en": "Strategic Product Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "策略产品经理"
+          ]
+        },
+        {
+          "code": "6616",
+          "name": "增长产品经理",
+          "name_en": "Growth Product Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "增长产品经理"
+          ]
+        },
+        {
+          "code": "6608",
+          "name": "电商产品经理",
+          "name_en": "E-commerce Product Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电商产品经理"
+          ]
+        },
+        {
+          "code": "6606",
+          "name": "移动产品经理",
+          "name_en": "Mobile product manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "移动产品经理"
+          ]
+        },
+        {
+          "code": "6602",
+          "name": "产品经理/主管",
+          "name_en": "Product Manager/Supervisor",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "产品主管",
+            "产品经理",
+            "产品经理/主管",
+            "高级产品总监"
+          ]
+        },
+        {
+          "code": "6607",
+          "name": "用户产品经理",
+          "name_en": "User product manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "用户产品经理"
+          ]
+        },
+        {
+          "code": "6612",
+          "name": "AI产品经理",
+          "name_en": "AI Product Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "AI产品经理"
+          ]
+        }
+      ],
+      "funtypes": [
+        "互联网产品经理"
+      ],
+      "aliases": [
+        "6605"
+      ]
+    },
+    {
+      "code": "7305",
+      "name": "图像识别工程师",
+      "name_en": "Image Recognition Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "图像识别工程师"
+      ]
+    },
+    {
+      "code": "8600",
+      "name": "硬件产品经理",
+      "name_en": "Hardware Product Manager",
+      "count": 4,
+      "children": [
+        {
+          "code": "8603",
+          "name": "AR/VR产品经理",
+          "name_en": "AR/VR Product Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "AR产品经理",
+            "VR产品经理"
+          ]
+        },
+        {
+          "code": "8602",
+          "name": "IoT产品经理",
+          "name_en": "IoT Product Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "IoT产品经理"
+          ]
+        },
+        {
+          "code": "8604",
+          "name": "智能硬件产品经理",
+          "name_en": "Intelligent Hardware Product Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "智能硬件产品经理"
+          ]
+        },
+        {
+          "code": "8601",
+          "name": "芯片产品经理",
+          "name_en": "Chip Product Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "芯片产品经理"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "8402",
+      "name": "售后技术支持工程师",
+      "name_en": "After-sales technical support engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "售后技术支持工程师",
+        "售后服务"
+      ]
+    },
+    {
+      "code": "7115",
+      "name": "新能源电控工程师",
+      "name_en": "New Energy Electronic Control Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "新能源电控工程师"
+      ]
+    },
+    {
+      "code": "2954",
+      "name": "电子产品经理/产品工程师",
+      "name_en": "Electronic Product Manager/Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "电子产品经理",
+        "电子产品经理/产品工程师"
+      ]
+    },
+    {
+      "code": "2800",
+      "name": "通信技术开发与应用",
+      "name_en": "Communication Technology and Application",
+      "count": 14,
+      "children": [
+        {
+          "code": "2804",
+          "name": "电信交换工程师",
+          "name_en": "Telecommunication Exchange Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电信交换工程师"
+          ]
+        },
+        {
+          "code": "2812",
+          "name": "通信文档工程师",
+          "name_en": "Telecommunication Document Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "通信文档工程师"
+          ]
+        },
+        {
+          "code": "2801",
+          "name": "通信技术工程师",
+          "name_en": "Communication Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "通信技术工程师"
+          ]
+        },
+        {
+          "code": "2803",
+          "name": "无线通信工程师",
+          "name_en": "Wireless Communication Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "无线通信工程师"
+          ]
+        },
+        {
+          "code": "2819",
+          "name": "核心网工程师",
+          "name_en": "Core Network Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "核心网工程师"
+          ]
+        },
+        {
+          "code": "2802",
+          "name": "有线传输工程师",
+          "name_en": "Wired Transmission Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "有线传输工程师"
+          ]
+        },
+        {
+          "code": "2805",
+          "name": "数据通信工程师",
+          "name_en": "Data Communication Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "数据通信工程师"
+          ]
+        },
+        {
+          "code": "2814",
+          "name": "光通信工程师",
+          "name_en": "Optical Communication Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "光通信工程师"
+          ]
+        },
+        {
+          "code": "2808",
+          "name": "通信电源工程师",
+          "name_en": "Communication Power Supply Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "通信电源工程师"
+          ]
+        },
+        {
+          "code": "2821",
+          "name": "通信项目管理",
+          "name_en": "Telecommunications Project Manager",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "通信项目管理"
+          ]
+        },
+        {
+          "code": "2820",
+          "name": "通信设备工程师",
+          "name_en": "Telecommunications Equipment Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "通信设备工程师"
+          ]
+        },
+        {
+          "code": "2815",
+          "name": "射频工程师",
+          "name_en": "RF Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "射频工程师"
+          ]
+        },
+        {
+          "code": "2807",
+          "name": "通信网络工程师",
+          "name_en": "Telecommunication Network Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "通信网络工程师"
+          ]
+        },
+        {
+          "code": "2818",
+          "name": "基站工程师",
+          "name_en": "Base Station Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "基站工程师"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "A0N6",
+      "name": "鸿蒙开发",
+      "name_en": "Harmony OS Development",
+      "count": 0,
+      "children": []
+    },
+    {
+      "code": "A0K5",
+      "name": "智能大厦/综合布线/安防/弱电",
+      "name_en": "Smart building/cabling/security/weak current",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "弱电",
+        "智能大厦",
+        "综合布线"
+      ],
+      "aliases": [
+        "2126"
+      ]
+    },
+    {
+      "code": "7900",
+      "name": "运维/技术支持",
+      "name_en": "Operation / Technical Support",
+      "count": 20,
+      "children": [
+        {
+          "code": "7901",
+          "name": "运维工程师",
+          "name_en": "Operation Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "维护工程师",
+            "维护经理",
+            "运维工程师"
+          ],
+          "aliases": [
+            "A0L9"
+          ]
+        },
+        {
+          "code": "7904",
+          "name": "系统集成工程师",
+          "name_en": "System Integration Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "系统集成工程师"
+          ]
+        },
+        {
+          "code": "7917",
+          "name": "手机维修",
+          "name_en": "Mobile Phone Technician",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "手机维修"
+          ]
+        },
+        {
+          "code": "7914",
+          "name": "网络管理(Helpdesk)",
+          "name_en": "Helpdesk",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "网络管理(Helpdesk)"
+          ]
+        },
+        {
+          "code": "7907",
+          "name": "网站维护工程师",
+          "name_en": "Web Maintenance Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "网站维护工程师"
+          ]
+        },
+        {
+          "code": "0149",
+          "name": "技术文员/助理",
+          "name_en": "Technical Clerk/Assistant",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "技术助理",
+            "技术文员",
+            "技术文员/助理"
+          ]
+        },
+        {
+          "code": "7912",
+          "name": "IT经理/IT主管",
+          "name_en": "IT Manager/Supervisor",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "IT主管",
+            "IT经理"
+          ]
+        },
+        {
+          "code": "7902",
+          "name": "系统工程师",
+          "name_en": "System Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "系统工程师"
+          ]
+        },
+        {
+          "code": "0150",
+          "name": "技术文档工程师",
+          "name_en": "Technical Writer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "技术文档工程师"
+          ]
+        },
+        {
+          "code": "7920",
+          "name": "自动化运维工程师",
+          "name_en": "Automation Operation Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "自动化运维工程师"
+          ]
+        },
+        {
+          "code": "7910",
+          "name": "配置管理工程师",
+          "name_en": "Configuration Management Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "配置管理工程师"
+          ]
+        },
+        {
+          "code": "7918",
+          "name": "电脑维修",
+          "name_en": "Computer Maintenance Technician",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电脑维修"
+          ]
+        },
+        {
+          "code": "7915",
+          "name": "运维开发",
+          "name_en": "Operation Development",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "运维开发"
+          ]
+        },
+        {
+          "code": "7906",
+          "name": "网络安全工程师",
+          "name_en": "Network Security Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "网络安全工程师"
+          ]
+        },
+        {
+          "code": "7903",
+          "name": "DBA",
+          "name_en": "Database Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "数据库工程师(DBA)"
+          ]
+        },
+        {
+          "code": "7905",
+          "name": "ERP实施顾问",
+          "name_en": "ERP Implementation",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "ERP实施顾问"
+          ]
+        },
+        {
+          "code": "7916",
+          "name": "网络维修",
+          "name_en": "Network Maintenance",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "网络维修"
+          ]
+        },
+        {
+          "code": "7909",
+          "name": "技术支持/维护工程师",
+          "name_en": "Technical Support/Maintenance Engineer",
+          "count": 0,
+          "children": []
+        },
+        {
+          "code": "7913",
+          "name": "网络工程师(IT工程师)",
+          "name_en": "Network Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "网络工程师(IT工程师)"
+          ]
+        },
+        {
+          "code": "7908",
+          "name": "技术支持/维护经理",
+          "name_en": "Technical Support/Maintenance Manager",
+          "count": 0,
+          "children": []
+        }
+      ]
+    },
+    {
+      "code": "2700",
+      "name": "测试",
+      "name_en": "Test",
+      "count": 14,
+      "children": [
+        {
+          "code": "2957",
+          "name": "硬件测试工程师",
+          "name_en": "Hardware Testing QA",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "硬件测试工程师"
+          ]
+        },
+        {
+          "code": "7821",
+          "name": "游戏测试",
+          "name_en": "Game Testing",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "游戏测试"
+          ]
+        },
+        {
+          "code": "2718",
+          "name": "功能测试",
+          "name_en": "Functional Testing",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "功能测试"
+          ]
+        },
+        {
+          "code": "2724",
+          "name": "安全测试",
+          "name_en": "Security Testing",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "安全测试"
+          ]
+        },
+        {
+          "code": "2722",
+          "name": "测试开发",
+          "name_en": "Test Development",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "测试开发"
+          ]
+        },
+        {
+          "code": "2816",
+          "name": "通信测试工程师",
+          "name_en": "Telecommunication Test Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "通信测试工程师"
+          ]
+        },
+        {
+          "code": "2719",
+          "name": "性能测试",
+          "name_en": "Performance Testing",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "性能测试"
+          ]
+        },
+        {
+          "code": "2721",
+          "name": "移动端测试",
+          "name_en": "Mobile End Testing",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "移动端测试"
+          ]
+        },
+        {
+          "code": "2723",
+          "name": "测试主管",
+          "name_en": "Test Supervisor",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "QA主管",
+            "QC主管",
+            "测试主管",
+            "质量管理/测试主管(QA/QC主管)"
+          ]
+        },
+        {
+          "code": "2706",
+          "name": "系统测试",
+          "name_en": "Systems Testing QA",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "系统测试"
+          ]
+        },
+        {
+          "code": "2707",
+          "name": "软件测试",
+          "name_en": "Software Test Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "软件测试工程师"
+          ]
+        },
+        {
+          "code": "2725",
+          "name": "测试工程师",
+          "name_en": "Test Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "QA工程师",
+            "QC工程师",
+            "测试工程师",
+            "质量管理/测试工程师(QA/QC工程师)"
+          ],
+          "aliases": [
+            "A0JT"
+          ]
+        },
+        {
+          "code": "2704",
+          "name": "标准化工程师",
+          "name_en": "Standardization Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "标准化工程师"
+          ]
+        },
+        {
+          "code": "2720",
+          "name": "自动化测试",
+          "name_en": "Automated Testing",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "自动化测试"
+          ]
+        }
+      ],
+      "funtypes": [
+        "QC",
+        "测试员"
+      ]
+    },
+    {
+      "code": "3205",
+      "name": "售前/售后技术支持经理",
+      "name_en": "Technical Support Manager",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "售前/售后技术支持经理",
+        "售后技术支持经理",
+        "技术支持经理"
+      ]
+    },
+    {
+      "code": "2813",
+      "name": "通信产品经理/产品工程师",
+      "name_en": "Telecommunication Product Manager/Product Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "通信产品工程师",
+        "通信产品经理",
+        "通信产品经理/产品工程师"
+      ]
+    },
+    {
+      "code": "A0LI",
+      "name": "半导体产品经理",
+      "name_en": "IC Product Manager/Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "半导体产品经理"
+      ]
+    },
+    {
+      "code": "7119",
+      "name": "车联网工程师",
+      "name_en": "Car Networking Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "车联网工程师"
+      ]
+    },
+    {
+      "code": "A0LB",
+      "name": "网络工程师",
+      "name_en": "Network Engineer",
+      "count": 0,
+      "children": []
+    },
+    {
+      "code": "7500",
+      "name": "数据",
+      "name_en": "Data",
+      "count": 10,
+      "children": [
+        {
+          "code": "7503",
+          "name": "ETL开发工程师",
+          "name_en": "ETL Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "ETL开发工程师"
+          ]
+        },
+        {
+          "code": "7507",
+          "name": "数据建模工程师",
+          "name_en": "Data Modeling Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "数据建模工程师"
+          ]
+        },
+        {
+          "code": "7508",
+          "name": "数据治理工程师",
+          "name_en": "Data Governance Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "数据治理工程师"
+          ]
+        },
+        {
+          "code": "7505",
+          "name": "数据仓库工程师",
+          "name_en": "Data Warehouse Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "数据仓库工程师"
+          ]
+        },
+        {
+          "code": "7510",
+          "name": "电子数据取证分析师",
+          "name_en": "Digital Forensics Analyst",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电子数据取证分析师"
+          ]
+        },
+        {
+          "code": "7506",
+          "name": "数据采集工程师",
+          "name_en": "Data Acquisition Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "数据采集工程师"
+          ]
+        },
+        {
+          "code": "7511",
+          "name": "密码技术应用员",
+          "name_en": "Cryptographer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "密码技术应用员"
+          ]
+        },
+        {
+          "code": "7512",
+          "name": "数据标注师",
+          "name_en": "Data Annotation Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "数据标注师"
+          ]
+        },
+        {
+          "code": "7501",
+          "name": "数据分析师",
+          "name_en": "Data Analyst",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "分析师",
+            "数据分析师"
+          ]
+        },
+        {
+          "code": "7504",
+          "name": "BI工程师",
+          "name_en": "BI Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "BI工程师"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "3B00",
+      "name": "技术项目管理",
+      "name_en": "Technical project management",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "项目管理"
+      ]
+    },
+    {
+      "code": "8400",
+      "name": "销售技术支持",
+      "name_en": "Sales technical support",
+      "count": 0,
+      "children": []
+    },
+    {
+      "code": "7800",
+      "name": "游戏开发",
+      "name_en": "Game",
+      "count": 6,
+      "children": [
+        {
+          "code": "7823",
+          "name": "UE4",
+          "name_en": "UE4 Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "UE4开发工程师"
+          ]
+        },
+        {
+          "code": "7812",
+          "name": "游戏客户端开发工程师",
+          "name_en": "Game Client Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "游戏客户端开发工程师"
+          ]
+        },
+        {
+          "code": "7811",
+          "name": "U3D",
+          "name_en": "Unity3d Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "Unity3d开发工程师"
+          ]
+        },
+        {
+          "code": "7813",
+          "name": "游戏服务端开发工程师",
+          "name_en": "Game Server Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "游戏服务端开发工程师"
+          ]
+        },
+        {
+          "code": "7810",
+          "name": "cocos",
+          "name_en": "Cocos2d-x Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "Cocos2d-x开发工程师"
+          ]
+        },
+        {
+          "code": "7809",
+          "name": "游戏开发工程师",
+          "name_en": "Game Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "游戏开发工程师"
+          ]
+        }
+      ],
+      "funtypes": [
+        "游戏剧情策划",
+        "游戏文案策划"
+      ]
+    },
+    {
+      "code": "8403",
+      "name": "售前技术支持经理/主管",
+      "name_en": "Pre-sales Technical Support Manager/Supervisor",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "售前技术支持经理"
+      ]
+    },
+    {
+      "code": "7106",
+      "name": "汽车电子工程师",
+      "name_en": "Automotive Electronics Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "汽车电子工程师"
+      ]
+    },
+    {
+      "code": "A0LF",
+      "name": "IC版图设计",
+      "name_en": "Layout Design Engineer",
+      "count": 0,
+      "children": []
+    },
+    {
+      "code": "7300",
+      "name": "人工智能",
+      "name_en": "Artificial Intelligence",
+      "count": 9,
+      "children": [
+        {
+          "code": "7120",
+          "name": "智能驾驶工程师",
+          "name_en": "Intelligent Driving Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "智能驾驶工程师"
+          ]
+        },
+        {
+          "code": "7307",
+          "name": "机器视觉工程师",
+          "name_en": "Machine Vision Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "机器视觉工程师"
+          ]
+        },
+        {
+          "code": "7311",
+          "name": "搜索算法工程师",
+          "name_en": "Search Algorithm Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "搜索算法工程师"
+          ]
+        },
+        {
+          "code": "7309",
+          "name": "算法工程师",
+          "name_en": "Algorithm Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "算法工程师"
+          ]
+        },
+        {
+          "code": "7301",
+          "name": "机器学习工程师",
+          "name_en": "Machine learning Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "机器学习工程师"
+          ]
+        },
+        {
+          "code": "7302",
+          "name": "深度学习工程师",
+          "name_en": "Deep learning Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "深度学习工程师"
+          ]
+        },
+        {
+          "code": "7306",
+          "name": "语音识别工程师",
+          "name_en": "Speech Recognition Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "语音识别工程师"
+          ]
+        },
+        {
+          "code": "7310",
+          "name": "推荐算法工程师",
+          "name_en": "Recommend Algorithm Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "推荐算法工程师"
+          ]
+        },
+        {
+          "code": "7308",
+          "name": "自然语言处理(NLP)",
+          "name_en": "Natural Language Processing (NLP)",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "自然语言处理(NLP)"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "A0L8",
+      "name": "电气工程师",
+      "name_en": "Electrical Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "电器工程师",
+        "电气工程师",
+        "空调工程师"
+      ]
+    },
+    {
+      "code": "8404",
+      "name": "售后技术支持经理/主管",
+      "name_en": "After-sales Technical Support Manager/Supervisor",
+      "count": 0,
+      "children": []
+    },
+    {
+      "code": "6700",
+      "name": "半导体/芯片",
+      "name_en": "Semiconductor/IC",
+      "count": 27,
+      "children": [
+        {
+          "code": "6733",
+          "name": "数字前端工程师",
+          "name_en": "Digital IC Front-end Design Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "数字前端工程师"
+          ]
+        },
+        {
+          "code": "6760",
+          "name": "封装工程师",
+          "name_en": "Packaging Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "封装工程师"
+          ],
+          "aliases": [
+            "A0LJ"
+          ]
+        },
+        {
+          "code": "6737",
+          "name": "数字后端工程师",
+          "name_en": "Digital IC Physical Design Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "数字后端工程师"
+          ]
+        },
+        {
+          "code": "6739",
+          "name": "半导体设备工程师",
+          "name_en": "Semiconductor Equipment Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "半导体设备工程师"
+          ]
+        },
+        {
+          "code": "6722",
+          "name": "版图设计工程师",
+          "name_en": "Layout Design Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "版图设计工程师"
+          ]
+        },
+        {
+          "code": "6734",
+          "name": "FPGA原型验证工程师",
+          "name_en": "FPGA Prototyping Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "FPGA原型验证工程师"
+          ]
+        },
+        {
+          "code": "6729",
+          "name": "MEMS工程师",
+          "name_en": "MEMS Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "MEMS工程师"
+          ]
+        },
+        {
+          "code": "6732",
+          "name": "模拟版图工程师",
+          "name_en": "Analog IC Layout Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "模拟版图工程师"
+          ]
+        },
+        {
+          "code": "6748",
+          "name": "半导体产品经理/产品工程师",
+          "name_en": "IC Product Manager/Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "半导体产品工程师"
+          ]
+        },
+        {
+          "code": "6707",
+          "name": "半导体技术",
+          "name_en": "Semiconductor Technology",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "半导体技术"
+          ]
+        },
+        {
+          "code": "6728",
+          "name": "FPGA开发工程师",
+          "name_en": "FPGA Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "FPGA开发工程师"
+          ]
+        },
+        {
+          "code": "6731",
+          "name": "模拟芯片工程师",
+          "name_en": "Analog IC Design Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "模拟芯片工程师"
+          ]
+        },
+        {
+          "code": "6744",
+          "name": "封装研发工程师",
+          "name_en": "Package Design Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "封装研发工程师"
+          ]
+        },
+        {
+          "code": "6741",
+          "name": "失效分析工程师(FA)",
+          "name_en": "Failure Analysis Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "失效分析工程师(FA)"
+          ]
+        },
+        {
+          "code": "6727",
+          "name": "芯片架构工程师",
+          "name_en": "Chip Architect",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "芯片架构工程师"
+          ]
+        },
+        {
+          "code": "6702",
+          "name": "IC验证工程师",
+          "name_en": "IC Verification Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "IC验证工程师"
+          ],
+          "aliases": [
+            "A0MX"
+          ]
+        },
+        {
+          "code": "6735",
+          "name": "EDA工程师",
+          "name_en": "EDA Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "EDA工程师"
+          ]
+        },
+        {
+          "code": "6738",
+          "name": "芯片测试工程师",
+          "name_en": "IC Test Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "芯片测试工程师"
+          ],
+          "aliases": [
+            "A0LH"
+          ]
+        },
+        {
+          "code": "6712",
+          "name": "FAE 现场应用工程师",
+          "name_en": "Field Application Engineer (FAE)",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "FAE 现场应用工程师"
+          ]
+        },
+        {
+          "code": "6747",
+          "name": "半导体文档工程师",
+          "name_en": "IC Document Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "半导体文档工程师"
+          ]
+        },
+        {
+          "code": "6723",
+          "name": "半导体工艺工程师",
+          "name_en": "Semiconductor Process Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "半导体工艺工程师"
+          ]
+        },
+        {
+          "code": "6761",
+          "name": "半导体器件工程师",
+          "name_en": "Semiconductor Device Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "半导体器件工程师"
+          ]
+        },
+        {
+          "code": "6736",
+          "name": "可测性设计工程师(DFT)",
+          "name_en": "DFT Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "可测性设计工程师(DFT)"
+          ]
+        },
+        {
+          "code": "6730",
+          "name": "射频芯片设计",
+          "name_en": "RF IC Design Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "射频芯片设计"
+          ]
+        },
+        {
+          "code": "6701",
+          "name": "集成电路IC设计",
+          "name_en": "IC Design/Application Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "集成电路IC应用工程师",
+            "集成电路IC设计/应用工程师",
+            "集成电路IC设计工程师"
+          ]
+        },
+        {
+          "code": "6740",
+          "name": "工艺整合工程师(PIE)",
+          "name_en": "Process Integration Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "工艺整合工程师(PIE)"
+          ]
+        },
+        {
+          "code": "6750",
+          "name": "半导体测试工程师",
+          "name_en": "Semiconductor Test Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "半导体测试工程师"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "A0JW",
+      "name": "前端/移动开发",
+      "name_en": "",
+      "count": 0,
+      "children": []
+    },
+    {
+      "code": "7700",
+      "name": "移动开发",
+      "name_en": "Mobile development",
+      "count": 4,
+      "children": [
+        {
+          "code": "7703",
+          "name": "移动开发工程师",
+          "name_en": "Mobile Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "移动开发工程师"
+          ]
+        },
+        {
+          "code": "7705",
+          "name": "小程序开发工程师",
+          "name_en": "Mini Programs Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "小程序开发工程师"
+          ]
+        },
+        {
+          "code": "7702",
+          "name": "ios",
+          "name_en": "iOS Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "iOS开发工程师"
+          ]
+        },
+        {
+          "code": "7701",
+          "name": "android",
+          "name_en": "Android Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "Android开发工程师"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "7124",
+      "name": "智能驾驶测试工程师",
+      "name_en": "Driverless Test Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "智能驾驶测试工程师"
+      ]
+    },
+    {
+      "code": "7200",
+      "name": "前端开发",
+      "name_en": "Front-end development",
+      "count": 2,
+      "children": [
+        {
+          "code": "7201",
+          "name": "Web前端开发",
+          "name_en": "Web Front-end  Developer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "Web前端开发"
+          ]
+        },
+        {
+          "code": "7202",
+          "name": "HTML5开发工程师",
+          "name_en": "HTML5 Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "HTML5开发工程师"
+          ]
+        }
+      ],
+      "funtypes": [
+        "前端开发"
+      ],
+      "aliases": [
+        "A0JU",
+        "A0KJ"
+      ]
+    },
+    {
+      "code": "A0MZ",
+      "name": "嵌入式软件开发",
+      "name_en": "Embedded Software Development",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "ARM",
+        "MCU"
+      ]
+    },
+    {
+      "code": "A0LA",
+      "name": "IT技术支持",
+      "name_en": "Technical Support/Maintenance Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "电脑操作员",
+        "维修主管",
+        "维修站经理",
+        "维修经理"
+      ]
+    },
+    {
+      "code": "7303",
+      "name": "图像算法工程师",
+      "name_en": "Image Algorithm Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "图像算法工程师"
+      ]
+    },
+    {
+      "code": "7405",
+      "name": "网站架构设计师",
+      "name_en": "Web Architecture Design",
+      "count": 0,
+      "children": []
+    },
+    {
+      "code": "2900",
+      "name": "电子/电气/仪器仪表",
+      "name_en": "Electronics/Wiring/Instrument/Industry",
+      "count": 30,
+      "children": [
+        {
+          "code": "2925",
+          "name": "安防系统工程师",
+          "name_en": "Security System Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "安防",
+            "安防系统工程师"
+          ]
+        },
+        {
+          "code": "2914",
+          "name": "仪器/仪表/计量分析师",
+          "name_en": "Instrument/Measurement Analyst",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "仪器分析师",
+            "仪表分析师",
+            "计量分析师"
+          ]
+        },
+        {
+          "code": "2920",
+          "name": "电子电气维修工程师",
+          "name_en": "Electronic/Electrical Appliance Technologist",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电器维修工程师",
+            "电器维修技师",
+            "电子/电器维修工程师/技师",
+            "电子维修工程师",
+            "电子维修技师"
+          ]
+        },
+        {
+          "code": "2971",
+          "name": "工业视觉系统运维员",
+          "name_en": "Operator of Industrial Vision System",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "工业视觉系统运维员"
+          ]
+        },
+        {
+          "code": "2956",
+          "name": "高级硬件工程师",
+          "name_en": "Senior Hardware Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "高级硬件工程师"
+          ]
+        },
+        {
+          "code": "2910",
+          "name": "嵌入式软件开发(Linux/单片机/PLC/DSP等)",
+          "name_en": "Embedded Software Engineer (Linux/SCM/PLC/DSP…)",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "嵌入式软件开发 DSP",
+            "嵌入式软件开发 Linux",
+            "嵌入式软件开发 PLC",
+            "嵌入式软件开发 单片机"
+          ]
+        },
+        {
+          "code": "2965",
+          "name": "SMT工程师",
+          "name_en": "SMT Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "SMT工程师"
+          ]
+        },
+        {
+          "code": "2903",
+          "name": "电子工程师/技术员",
+          "name_en": "Electronics Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电子技术员"
+          ]
+        },
+        {
+          "code": "2906",
+          "name": "电声/音响工程师/技术员",
+          "name_en": "Electroacoustics Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电声/音响工程师/技术员",
+            "电声工程师",
+            "音响工程师",
+            "音响技术员"
+          ]
+        },
+        {
+          "code": "2969",
+          "name": "服务机器人应用技术员",
+          "name_en": "Service Robot Application Technician",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "服务机器人应用技术员"
+          ]
+        },
+        {
+          "code": "2962",
+          "name": "电子元器件工程师",
+          "name_en": "Electronic Component Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电子元器件工程师"
+          ]
+        },
+        {
+          "code": "2917",
+          "name": "电子技术研发工程师",
+          "name_en": "Electronics Development Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电子技术研发工程师"
+          ]
+        },
+        {
+          "code": "2953",
+          "name": "电子文档工程师",
+          "name_en": "Electronic Document Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电子文档工程师"
+          ]
+        },
+        {
+          "code": "2905",
+          "name": "电路工程师/技术员(模拟/数字)",
+          "name_en": "Electronic Circuit Engineer(Analog/Digital)",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电路工程师(模拟/数字)",
+            "电路技术员(模拟/数字)"
+          ]
+        },
+        {
+          "code": "2966",
+          "name": "PLC工程师",
+          "name_en": "PLC Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "PLC工程师"
+          ]
+        },
+        {
+          "code": "2919",
+          "name": "嵌入式硬件开发(主板机等)",
+          "name_en": "Embedded Hardware Engineer(PCB…)",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "嵌入式硬件开发(主板机…)",
+            "嵌入式硬件开发(主板机等)"
+          ]
+        },
+        {
+          "code": "2964",
+          "name": "PCB工程师",
+          "name_en": "PCB Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "PCB工程师"
+          ]
+        },
+        {
+          "code": "2959",
+          "name": "电子设备工程师",
+          "name_en": "Electronic Device Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电子设备工程师"
+          ]
+        },
+        {
+          "code": "2921",
+          "name": "变压器与磁电工程师",
+          "name_en": "Transformer and Magnetoelectricity Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "变压器与磁电工程师"
+          ]
+        },
+        {
+          "code": "2970",
+          "name": "智能硬件装调员",
+          "name_en": "Intelligent Hardware Assembler",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "智能硬件装调员"
+          ]
+        },
+        {
+          "code": "2911",
+          "name": "电池/电源开发",
+          "name_en": "Battery/Power Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电池/电源开发",
+            "电池开发",
+            "电源开发"
+          ]
+        },
+        {
+          "code": "2963",
+          "name": "机器人调试工程师",
+          "name_en": "Rob Commissioning Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "机器人调试工程师"
+          ]
+        },
+        {
+          "code": "2913",
+          "name": "家用电器/数码产品研发",
+          "name_en": "Household Electronics/Digital Products Development",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "家用电器/数码产品研发"
+          ]
+        },
+        {
+          "code": "2958",
+          "name": "计量工程师",
+          "name_en": "Measure Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "计量工程师"
+          ]
+        },
+        {
+          "code": "2909",
+          "name": "电子软件开发(ARM/MCU等)",
+          "name_en": "Electronics Software (ARM/MCU…)",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电子软件开发"
+          ]
+        },
+        {
+          "code": "2904",
+          "name": "电气工程师/技术员",
+          "name_en": "Electrical Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电力工程师/技术员",
+            "电力技术员",
+            "电气技术员"
+          ]
+        },
+        {
+          "code": "2908",
+          "name": "自动控制工程师",
+          "name_en": "Autocontrol Engineer/Technician",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "自动控制工程师",
+            "自动控制工程师/技术员",
+            "自动控制技术员"
+          ]
+        },
+        {
+          "code": "2951",
+          "name": "电子工艺工程师",
+          "name_en": "Electronic Process Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电子工艺工程师"
+          ]
+        },
+        {
+          "code": "2918",
+          "name": "激光/光电子技术",
+          "name_en": "Laser/Optoelectronics Technology",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "光电子技术",
+            "激光/光电子技术",
+            "激光技术"
+          ]
+        },
+        {
+          "code": "2955",
+          "name": "硬件工程师",
+          "name_en": "Hardware Engineer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "硬件工程师"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "2601",
+      "name": "首席技术执行官CTO/首席信息官CIO",
+      "name_en": "Chief Technology Officer CTO/Chief Information Officer CIO",
+      "count": 0,
+      "children": []
+    },
+    {
+      "code": "0630",
+      "name": "人力资源信息系统专员",
+      "name_en": "HRIS Specialist",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "人力资源信息系统专员"
+      ]
+    },
+    {
+      "code": "7400",
+      "name": "互联网设计",
+      "name_en": "Visual and Interactive Design",
+      "count": 11,
+      "children": [
+        {
+          "code": "7419",
+          "name": "美工/电商设计师",
+          "name_en": "Online Shop Graphic Designer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "电商设计师",
+            "美工/电商设计师",
+            "美工设计师"
+          ]
+        },
+        {
+          "code": "7423",
+          "name": "互联网设计总监",
+          "name_en": "Internet Design Director",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "互联网设计总监",
+            "设计总监"
+          ]
+        },
+        {
+          "code": "7412",
+          "name": "UI设计师",
+          "name_en": "UI Designer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "UI设计师"
+          ]
+        },
+        {
+          "code": "7401",
+          "name": "网页设计师",
+          "name_en": "Web Designer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "网页设计师"
+          ]
+        },
+        {
+          "code": "7404",
+          "name": "用户体验(UE/UX)设计师",
+          "name_en": "User Experience(UE/UX) Designer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "UE",
+            "UX",
+            "用户体验设计师",
+            "用户体验（UE/UX）设计师"
+          ]
+        },
+        {
+          "code": "7403",
+          "name": "视觉设计师",
+          "name_en": "Visual Effects Designer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "视觉设计师"
+          ]
+        },
+        {
+          "code": "6617",
+          "name": "用户研究",
+          "name_en": "User Research",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "用户研究"
+          ]
+        },
+        {
+          "code": "7416",
+          "name": "多媒体设计",
+          "name_en": "Multimedia Design",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "3D设计",
+            "多媒体开发工程师",
+            "多媒体设计"
+          ]
+        },
+        {
+          "code": "7402",
+          "name": "交互设计师",
+          "name_en": "Interaction Designer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "交互设计师"
+          ]
+        },
+        {
+          "code": "7424",
+          "name": "互联网设计经理/主管",
+          "name_en": "Internet Design Manager/Supervisor",
+          "count": 0,
+          "children": []
+        },
+        {
+          "code": "7406",
+          "name": "Flash设计师",
+          "name_en": "Flash Designer",
+          "count": 0,
+          "children": [],
+          "funtypes": [
+            "Flash设计师"
+          ]
+        }
+      ],
+      "funtypes": [
+        "互联网设计主管",
+        "互联网设计经理"
+      ]
+    },
+    {
+      "code": "3207",
+      "name": "售前/售后技术支持工程师",
+      "name_en": "Technical Support Engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "售前/售后技术支持工程师",
+        "技术支持工程师"
+      ]
+    },
+    {
+      "code": "2125",
+      "name": "楼宇自动化",
+      "name_en": "Building Automation",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "楼宇自动化"
+      ]
+    },
+    {
+      "code": "8401",
+      "name": "售前技术支持工程师",
+      "name_en": "Pre-sales technical support engineer",
+      "count": 0,
+      "children": [],
+      "funtypes": [
+        "售前技术支持工程师"
+      ]
+    }
+  ],
+  "mapping_log": {
+    "description": "DB funtype → 岗位分类 映射记录（可追溯）",
+    "rule_merges": [
+      {
+        "part": ".NET开发工程师",
+        "matched_to": ".NET"
+      },
+      {
+        "part": "C#开发工程师",
+        "matched_to": "C#"
+      },
+      {
+        "part": "Hadoop工程师",
+        "matched_to": "Hadoop"
+      },
+      {
+        "part": "Node.js开发工程师",
+        "matched_to": "Node.js"
+      },
+      {
+        "part": "PHP开发工程师",
+        "matched_to": "PHP"
+      },
+      {
+        "part": "Python开发工程师",
+        "matched_to": "Python"
+      },
+      {
+        "part": "UE4开发工程师",
+        "matched_to": "UE4"
+      },
+      {
+        "part": "互联网设计主管",
+        "matched_to": "互联网设计"
+      },
+      {
+        "part": "互联网设计经理",
+        "matched_to": "互联网设计"
+      },
+      {
+        "part": "计量工程师",
+        "matched_to": "计量工程师"
+      },
+      {
+        "part": "软件测试工程师",
+        "matched_to": "软件测试"
+      },
+      {
+        "part": "集成电路IC设计工程师",
+        "matched_to": "集成电路IC设计"
+      },
+      {
+        "part": "项目总监",
+        "matched_to": "项目总监"
+      }
+    ],
+    "llm_merges": [
+      {
+        "part": "3D设计",
+        "matched_to": "多媒体设计"
+      },
+      {
+        "part": "ARM",
+        "matched_to": "嵌入式软件开发"
+      },
+      {
+        "part": "AR产品经理",
+        "matched_to": "AR/VR产品经理"
+      },
+      {
+        "part": "Android开发工程师",
+        "matched_to": "android"
+      },
+      {
+        "part": "C",
+        "matched_to": "C开发工程师"
+      },
+      {
+        "part": "C++",
+        "matched_to": "C++开发工程师"
+      },
+      {
+        "part": "Cocos2d-x开发工程师",
+        "matched_to": "cocos"
+      },
+      {
+        "part": "Go开发工程师",
+        "matched_to": "Golang"
+      },
+      {
+        "part": "IT主管",
+        "matched_to": "IT经理/IT主管"
+      },
+      {
+        "part": "IT经理",
+        "matched_to": "IT经理/IT主管"
+      },
+      {
+        "part": "MCU",
+        "matched_to": "嵌入式软件开发"
+      },
+      {
+        "part": "QA主管",
+        "matched_to": "测试主管"
+      },
+      {
+        "part": "QA工程师",
+        "matched_to": "测试工程师"
+      },
+      {
+        "part": "QA经理",
+        "matched_to": "测试经理"
+      },
+      {
+        "part": "QC",
+        "matched_to": "测试"
+      },
+      {
+        "part": "QC主管",
+        "matched_to": "测试主管"
+      },
+      {
+        "part": "QC工程师",
+        "matched_to": "测试工程师"
+      },
+      {
+        "part": "QC经理",
+        "matched_to": "测试经理"
+      },
+      {
+        "part": "UE",
+        "matched_to": "用户体验(UE/UX)设计师"
+      },
+      {
+        "part": "UX",
+        "matched_to": "用户体验(UE/UX)设计师"
+      },
+      {
+        "part": "Unity3d开发工程师",
+        "matched_to": "U3D"
+      },
+      {
+        "part": "VR产品经理",
+        "matched_to": "AR/VR产品经理"
+      },
+      {
+        "part": "iOS开发工程师",
+        "matched_to": "ios"
+      },
+      {
+        "part": "业务分析专员",
+        "matched_to": "需求工程师"
+      },
+      {
+        "part": "业务分析主管",
+        "matched_to": "需求工程师"
+      },
+      {
+        "part": "业务分析助理",
+        "matched_to": "需求工程师"
+      },
+      {
+        "part": "业务分析经理",
+        "matched_to": "需求工程师"
+      },
+      {
+        "part": "产品主管",
+        "matched_to": "产品经理/主管"
+      },
+      {
+        "part": "产品经理",
+        "matched_to": "产品经理/主管"
+      },
+      {
+        "part": "仪器分析师",
+        "matched_to": "仪器/仪表/计量分析师"
+      },
+      {
+        "part": "仪表分析师",
+        "matched_to": "仪器/仪表/计量分析师"
+      },
+      {
+        "part": "光电子技术",
+        "matched_to": "激光/光电子技术"
+      },
+      {
+        "part": "分析师",
+        "matched_to": "数据分析师"
+      },
+      {
+        "part": "半导体产品工程师",
+        "matched_to": "半导体产品经理/产品工程师"
+      },
+      {
+        "part": "售前技术支持主管",
+        "matched_to": "售前/售后技术支持主管"
+      },
+      {
+        "part": "售前技术支持经理",
+        "matched_to": "售前技术支持经理/主管"
+      },
+      {
+        "part": "售后技术支持主管",
+        "matched_to": "售前/售后技术支持主管"
+      },
+      {
+        "part": "售后技术支持经理",
+        "matched_to": "售前/售后技术支持经理"
+      },
+      {
+        "part": "售后服务",
+        "matched_to": "售后技术支持工程师"
+      },
+      {
+        "part": "多媒体开发工程师",
+        "matched_to": "多媒体设计"
+      },
+      {
+        "part": "大数据开发工程师",
+        "matched_to": "数据开发"
+      },
+      {
+        "part": "安防",
+        "matched_to": "安防系统工程师"
+      },
+      {
+        "part": "嵌入式硬件开发(主板机…)",
+        "matched_to": "嵌入式硬件开发(主板机等)"
+      },
+      {
+        "part": "嵌入式软件开发 DSP",
+        "matched_to": "嵌入式软件开发(Linux/单片机/PLC/DSP等)"
+      },
+      {
+        "part": "嵌入式软件开发 Linux",
+        "matched_to": "嵌入式软件开发(Linux/单片机/PLC/DSP等)"
+      },
+      {
+        "part": "嵌入式软件开发 PLC",
+        "matched_to": "嵌入式软件开发(Linux/单片机/PLC/DSP等)"
+      },
+      {
+        "part": "嵌入式软件开发 单片机",
+        "matched_to": "嵌入式软件开发(Linux/单片机/PLC/DSP等)"
+      },
+      {
+        "part": "弱电",
+        "matched_to": "智能大厦/综合布线/安防/弱电"
+      },
+      {
+        "part": "技术助理",
+        "matched_to": "技术文员/助理"
+      },
+      {
+        "part": "技术支持工程师",
+        "matched_to": "售前/售后技术支持工程师"
+      },
+      {
+        "part": "技术支持经理",
+        "matched_to": "售前/售后技术支持经理"
+      },
+      {
+        "part": "技术文员",
+        "matched_to": "技术文员/助理"
+      },
+      {
+        "part": "技术研发主管",
+        "matched_to": "技术经理"
+      },
+      {
+        "part": "技术研发经理",
+        "matched_to": "技术经理"
+      },
+      {
+        "part": "技术研发经理/主管",
+        "matched_to": "技术经理"
+      },
+      {
+        "part": "数据分析主管",
+        "matched_to": "数据分析经理/主管"
+      },
+      {
+        "part": "数据分析经理",
+        "matched_to": "数据分析经理/主管"
+      },
+      {
+        "part": "数据库工程师(DBA)",
+        "matched_to": "DBA"
+      },
+      {
+        "part": "智能大厦",
+        "matched_to": "智能大厦/综合布线/安防/弱电"
+      },
+      {
+        "part": "测试员",
+        "matched_to": "测试"
+      },
+      {
+        "part": "游戏剧情策划",
+        "matched_to": "游戏开发"
+      },
+      {
+        "part": "游戏文案策划",
+        "matched_to": "游戏开发"
+      },
+      {
+        "part": "激光技术",
+        "matched_to": "激光/光电子技术"
+      },
+      {
+        "part": "爬虫开发工程师",
+        "matched_to": "爬虫工程师"
+      },
+      {
+        "part": "用户体验设计师",
+        "matched_to": "用户体验(UE/UX)设计师"
+      },
+      {
+        "part": "用户体验（UE/UX）设计师",
+        "matched_to": "用户体验(UE/UX)设计师"
+      },
+      {
+        "part": "电力工程师/技术员",
+        "matched_to": "电气工程师/技术员"
+      },
+      {
+        "part": "电力技术员",
+        "matched_to": "电气工程师/技术员"
+      },
+      {
+        "part": "电商设计师",
+        "matched_to": "美工/电商设计师"
+      },
+      {
+        "part": "电器工程师",
+        "matched_to": "电气工程师"
+      },
+      {
+        "part": "电器维修工程师",
+        "matched_to": "电子电气维修工程师"
+      },
+      {
+        "part": "电器维修技师",
+        "matched_to": "电子电气维修工程师"
+      },
+      {
+        "part": "电声工程师",
+        "matched_to": "电声/音响工程师/技术员"
+      },
+      {
+        "part": "电子/电器维修工程师/技师",
+        "matched_to": "电子电气维修工程师"
+      },
+      {
+        "part": "电子产品工程师",
+        "matched_to": "电子工程师"
+      },
+      {
+        "part": "电子产品经理",
+        "matched_to": "电子产品经理/产品工程师"
+      },
+      {
+        "part": "电子技术员",
+        "matched_to": "电子工程师/技术员"
+      },
+      {
+        "part": "电子维修工程师",
+        "matched_to": "电子电气维修工程师"
+      },
+      {
+        "part": "电子维修技师",
+        "matched_to": "电子电气维修工程师"
+      },
+      {
+        "part": "电子软件开发",
+        "matched_to": "电子软件开发(ARM/MCU等)"
+      },
+      {
+        "part": "电气技术员",
+        "matched_to": "电气工程师/技术员"
+      },
+      {
+        "part": "电池开发",
+        "matched_to": "电池/电源开发"
+      },
+      {
+        "part": "电源开发",
+        "matched_to": "电池/电源开发"
+      },
+      {
+        "part": "电脑操作员",
+        "matched_to": "IT技术支持"
+      },
+      {
+        "part": "电路工程师(模拟/数字)",
+        "matched_to": "电路工程师/技术员(模拟/数字)"
+      },
+      {
+        "part": "电路技术员(模拟/数字)",
+        "matched_to": "电路工程师/技术员(模拟/数字)"
+      },
+      {
+        "part": "研发总监",
+        "matched_to": "技术总监"
+      },
+      {
+        "part": "研发部长",
+        "matched_to": "技术总监"
+      },
+      {
+        "part": "空调工程师",
+        "matched_to": "电气工程师"
+      },
+      {
+        "part": "系统架构设计师",
+        "matched_to": "架构师"
+      },
+      {
+        "part": "维修主管",
+        "matched_to": "IT技术支持"
+      },
+      {
+        "part": "维修站经理",
+        "matched_to": "IT技术支持"
+      },
+      {
+        "part": "维修经理",
+        "matched_to": "IT技术支持"
+      },
+      {
+        "part": "维护工程师",
+        "matched_to": "运维工程师"
+      },
+      {
+        "part": "维护经理",
+        "matched_to": "运维工程师"
+      },
+      {
+        "part": "综合布线",
+        "matched_to": "智能大厦/综合布线/安防/弱电"
+      },
+      {
+        "part": "美工设计师",
+        "matched_to": "美工/电商设计师"
+      },
+      {
+        "part": "自动控制工程师/技术员",
+        "matched_to": "自动控制工程师"
+      },
+      {
+        "part": "自动控制技术员",
+        "matched_to": "自动控制工程师"
+      },
+      {
+        "part": "计量分析师",
+        "matched_to": "仪器/仪表/计量分析师"
+      },
+      {
+        "part": "设计总监",
+        "matched_to": "互联网设计总监"
+      },
+      {
+        "part": "质量管理/测试主管(QA/QC主管)",
+        "matched_to": "测试主管"
+      },
+      {
+        "part": "质量管理/测试工程师(QA/QC工程师)",
+        "matched_to": "测试工程师"
+      },
+      {
+        "part": "质量管理/测试经理(QA/QC经理)",
+        "matched_to": "测试经理"
+      },
+      {
+        "part": "软件开发",
+        "matched_to": "软件工程师"
+      },
+      {
+        "part": "通信产品工程师",
+        "matched_to": "通信产品经理/产品工程师"
+      },
+      {
+        "part": "通信产品经理",
+        "matched_to": "通信产品经理/产品工程师"
+      },
+      {
+        "part": "集成电路IC应用工程师",
+        "matched_to": "集成电路IC设计"
+      },
+      {
+        "part": "集成电路IC设计/应用工程师",
+        "matched_to": "集成电路IC设计"
+      },
+      {
+        "part": "音响工程师",
+        "matched_to": "电声/音响工程师/技术员"
+      },
+      {
+        "part": "音响技术员",
+        "matched_to": "电声/音响工程师/技术员"
+      },
+      {
+        "part": "项目协调人员",
+        "matched_to": "项目执行/协调人员"
+      },
+      {
+        "part": "项目执行人员",
+        "matched_to": "项目执行/协调人员"
+      },
+      {
+        "part": "项目管理",
+        "matched_to": "技术项目管理"
+      },
+      {
+        "part": "高级产品总监",
+        "matched_to": "产品经理/主管"
+      }
+    ],
+    "llm_direct_it": [
+      {
+        "part": "技术研发工程师",
+        "confidence": 0.95,
+        "reason": "直接匹配"
+      },
+      {
+        "part": "研发专家",
+        "confidence": 0.6,
+        "reason": "泛研发，可能IT"
+      },
+      {
+        "part": "装配工程师",
+        "confidence": 0.9,
+        "reason": "直接匹配"
+      },
+      {
+        "part": "装配工程师/技师",
+        "confidence": 0.85,
+        "reason": "包含技师变体"
+      },
+      {
+        "part": "装配技师",
+        "confidence": 0.8,
+        "reason": "技师同义"
+      },
+      {
+        "part": "计算机辅助设计工程师",
+        "confidence": 0.7,
+        "reason": "相关但未列出"
+      }
+    ],
+    "llm_direct_nonit_count": 1500,
+    "full_map_file": "codes/jd_fetch/output/funtype_it_map.json"
+  }
+}

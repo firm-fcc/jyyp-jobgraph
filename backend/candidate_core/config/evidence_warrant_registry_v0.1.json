@@ -1,0 +1,904 @@
+{
+  "registry_version": "evidence_warrant_registry_v0.1",
+  "created_date": "2026-08-19",
+  "project": "XH-202621 多源异构数据驱动岗位和能力图谱构建与动态演化分析研究",
+  "scope": {
+    "team_skill_registry": "v0.4",
+    "team_skill_total": 49,
+    "primary_skill_count": 43,
+    "auxiliary_work_quality_count": 6,
+    "primary_metric_skill_ids": [
+      "T-AI-01",
+      "T-AI-02",
+      "T-AI-03",
+      "T-AI-04",
+      "T-AI-05",
+      "T-AI-06",
+      "T-AI-07",
+      "T-AI-08",
+      "T-AI-09",
+      "T-AI-10",
+      "T-AI-11",
+      "T-AI-12",
+      "T-AI-13",
+      "T-SW-01",
+      "T-SW-02",
+      "T-SW-03",
+      "T-SW-04",
+      "T-SW-05",
+      "T-SW-06",
+      "T-SYS-01",
+      "T-SYS-02",
+      "T-SYS-03",
+      "T-SYS-04",
+      "T-SYS-05",
+      "T-SYS-06",
+      "T-SYS-07",
+      "T-DA-01",
+      "T-DA-02",
+      "T-DA-03",
+      "T-DA-04",
+      "F-1-02",
+      "F-2-01",
+      "F-2-02",
+      "F-2-03",
+      "F-2-04",
+      "F-2-05",
+      "F-2-06",
+      "F-3-01",
+      "F-3-02",
+      "F-3-03",
+      "F-5-01",
+      "F-5-02",
+      "F-5-03"
+    ],
+    "auxiliary_skill_ids_excluded_from_primary_metric": [
+      "F-1-01",
+      "F-1-03",
+      "F-1-04",
+      "F-3-04",
+      "F-4-01",
+      "F-4-02"
+    ],
+    "mini_dev_candidate_ids": [
+      "candidate_0010",
+      "candidate_0037",
+      "candidate_0042",
+      "candidate_0043",
+      "candidate_0068",
+      "candidate_0074",
+      "candidate_0082",
+      "candidate_0086",
+      "candidate_0095",
+      "candidate_0107"
+    ]
+  },
+  "construct": {
+    "name": "Evidence-Supported Team Skill v2",
+    "unit": "(candidate_id, team_skill_id)",
+    "gold_labels": [
+      "supported_direct",
+      "supported_warrant",
+      "not_supported",
+      "uncertain"
+    ],
+    "primary_positive_labels": [
+      "supported_direct",
+      "supported_warrant"
+    ],
+    "warrant_grade_policy": {
+      "A": "特异性高、外部验证明确；满足激活条件后可单独形成supported_warrant。",
+      "B": "强结构化间接证据；满足该条Warrant列出的附加条件后可形成supported_warrant。",
+      "C": "有信息量但不足以形成正例；仅用于候选召回、解释或要求补充证据。",
+      "D": "不得用于Skill推断或不得额外加权。"
+    },
+    "precedence": [
+      "如果存在充分直接行为证据，Gold优先标supported_direct，即使同时存在Warrant。",
+      "只有在没有充分直接证据时，才考虑supported_warrant。",
+      "C/D级信号不能通过简单叠加变成A/B级正例，除非某条Warrant明确规定组合规则。",
+      "uncertain必须在计算F1前裁决。"
+    ]
+  },
+  "source_priority": [
+    "中国国家职业分类/国家职业（技术技能）标准",
+    "国际权威职业框架（O*NET / ESCO）",
+    "官方认证考试大纲/资格标准",
+    "赛事官方章程、赛题与评审规则",
+    "正式科研贡献声明（CRediT等）",
+    "企业官方岗位说明（仅补充）"
+  ],
+  "warrants": [
+    {
+      "warrant_id": "W-OCC-AI-ML-01",
+      "signal_type": "occupation",
+      "signal_pattern": [
+        "AI算法工程师",
+        "人工智能算法工程师",
+        "算法工程师（明确AI/机器学习岗位语境）"
+      ],
+      "target_team_skill_id": "T-AI-01",
+      "target_team_skill_name": "机器学习与深度学习",
+      "grade": "B",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "必须是实际任职经历，不是求职意向或自我标签",
+        "岗位标题或同一任职段必须明确AI/机器学习语境",
+        "不得由此自动推出CV、NLP、RAG等更窄子领域"
+      ],
+      "rationale": "人社部对人工智能工程技术人员的职业任务明确包含AI算法、深度学习等分析、研究、开发与应用，因此明确的AI算法岗位可以作为机器学习/深度学习能力的结构化职业信号。",
+      "sources": [
+        {
+          "authority": "中华人民共和国人力资源和社会保障部",
+          "title": "人工智能工程技术人员等职业信息",
+          "url": "https://www.mohrss.gov.cn/xxgk2020/fdzdgknr/rcrs_4225/jnrc/202112/t20211227_431368.html"
+        },
+        {
+          "authority": "国家专业技术人才知识更新工程 / 人社部",
+          "title": "数字技术工程师国家职业（技术技能）标准目录",
+          "url": "https://zsgx.mohrss.gov.cn/zsgx/htmlDocument/category12500/index.html"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "AI算法工程师",
+        "算法工程师"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-OCC-SW-DEV-01",
+      "signal_type": "occupation",
+      "signal_pattern": [
+        "软件开发工程师",
+        "Software Developer",
+        "软件研发工程师",
+        "应用开发工程师"
+      ],
+      "target_team_skill_id": "T-SW-01",
+      "target_team_skill_name": "通用程序设计与软件工程",
+      "grade": "B",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "必须是实际任职经历",
+        "岗位标题需明确“软件/开发/应用开发”，仅“研发工程师”不够",
+        "实习/助理岗位默认降为C，除非同段存在明确开发行为"
+      ],
+      "rationale": "O*NET的软件开发职业明确以研究、设计、开发软件和软件解决方案为核心任务，可作为通用程序设计与软件工程的职业信号。",
+      "sources": [
+        {
+          "authority": "U.S. Department of Labor / O*NET",
+          "title": "Software Developers 15-1252.00",
+          "url": "https://www.onetonline.org/link/summary/15-1252.00"
+        },
+        {
+          "authority": "European Commission / ESCO",
+          "title": "The ESCO Classification",
+          "url": "https://esco.ec.europa.eu/en/classification"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "高级研发工程师（仅在软件语境下可匹配）",
+        "研发工程师"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-OCC-DB-01",
+      "signal_type": "occupation",
+      "signal_pattern": [
+        "数据库工程师",
+        "数据库开发工程师",
+        "Database Developer",
+        "Database Architect",
+        "DBA"
+      ],
+      "target_team_skill_id": "T-DA-02",
+      "target_team_skill_name": "数据管理与数据库",
+      "grade": "B",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "必须是实际任职经历",
+        "岗位标题必须明确数据库/数据仓库/DBA，不得从普通后端岗位自动升级",
+        "只支持数据库与数据管理的核心范围，不自动支持大数据并行计算"
+      ],
+      "rationale": "O*NET数据库架构职业核心任务包括数据库设计、数据模型、数据库开发与集成，因此明确数据库岗位可支持数据管理与数据库能力。",
+      "sources": [
+        {
+          "authority": "U.S. Department of Labor / O*NET",
+          "title": "Database Architects 15-1243.00",
+          "url": "https://www.onetonline.org/link/summary/15-1243.00"
+        },
+        {
+          "authority": "人社部",
+          "title": "大数据工程技术人员国家职业技术技能标准",
+          "url": "https://zsgx.mohrss.gov.cn/zsgx/htmlDocument/2021-09-30/detail_47001.html"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "智能数据库开发（若仅是任务句则应走直接行为，不按岗位Warrant）"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-OCC-ALGO-RES-01",
+      "signal_type": "occupation",
+      "signal_pattern": [
+        "算法研究员",
+        "Algorithm Researcher",
+        "算法研究工程师"
+      ],
+      "target_team_skill_id": "T-DA-01",
+      "target_team_skill_name": "计算数学与数据建模",
+      "grade": "C",
+      "decision_effect": "candidate_generation_only",
+      "activation_requirements": [
+        "岗位名本身只能说明与算法/数理方法相关的高概率背景",
+        "必须有直接行为、正式贡献或更具体职业标准后才能形成正例"
+      ],
+      "rationale": "“算法研究员”不是统一职业标准中的单一技能岗位，覆盖范围可能从优化、机器学习到业务算法，因此仅用于候选技能召回，不单独形成能力正例。",
+      "sources": [
+        {
+          "authority": "U.S. Department of Labor / O*NET",
+          "title": "Data Scientists 15-2051.00",
+          "url": "https://www.onetonline.org/link/summary/15-2051.00"
+        },
+        {
+          "authority": "European Commission / ESCO",
+          "title": "The ESCO Classification",
+          "url": "https://esco.ec.europa.eu/en/classification"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "算法研究员"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-OCC-RESEARCHER-GENERIC-01",
+      "signal_type": "occupation",
+      "signal_pattern": [
+        "研究员",
+        "副研究员",
+        "助理研究员"
+      ],
+      "target_team_skill_id": null,
+      "target_team_skill_name": null,
+      "grade": "D",
+      "decision_effect": "no_skill_inference",
+      "activation_requirements": [
+        "通用科研职称不对应具体技术Skill",
+        "只能作为经历背景；具体能力必须来自研究主题+个人行为/贡献"
+      ],
+      "rationale": "研究职称只描述岗位/职级，不足以判断候选人具体掌握何种Team Skill。",
+      "sources": [
+        {
+          "authority": "European Commission / ESCO",
+          "title": "The ESCO Classification",
+          "url": "https://esco.ec.europa.eu/en/classification"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "研究员",
+        "副研究员",
+        "助理研究员"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-OCC-MULTIMEDIA-RND-01",
+      "signal_type": "occupation",
+      "signal_pattern": [
+        "多媒体研发工程师",
+        "多媒体研发实习工程师"
+      ],
+      "target_team_skill_id": "T-AI-03",
+      "target_team_skill_name": "计算机视觉与多模态感知",
+      "grade": "C",
+      "decision_effect": "candidate_generation_only",
+      "activation_requirements": [
+        "“多媒体”并不等于计算机视觉",
+        "只有出现图像/视频识别、视觉算法、多模态感知等更具体职责时才可升级"
+      ],
+      "rationale": "多媒体岗位可能涉及音视频编解码、播放器、图形、视觉算法等多种方向，因此岗位名只能触发视觉/多模态候选，不足以单独证明该能力。",
+      "sources": [
+        {
+          "authority": "European Commission / ESCO",
+          "title": "The ESCO Classification",
+          "url": "https://esco.ec.europa.eu/en/classification"
+        },
+        {
+          "authority": "U.S. Department of Labor / O*NET",
+          "title": "Software Developers 15-1252.00",
+          "url": "https://www.onetonline.org/link/summary/15-1252.00"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "多媒体研发实习工程师"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-COMP-CUMCM-DA01-01",
+      "signal_type": "competition_award",
+      "signal_pattern": [
+        "全国大学生数学建模竞赛"
+      ],
+      "target_team_skill_id": "T-DA-01",
+      "target_team_skill_name": "计算数学与数据建模",
+      "grade": "B",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "必须是正式获奖而非仅参赛",
+        "团队奖需满足：有明确个人建模/计算角色，或同技能族存在独立直接证据；否则降为C",
+        "仅支持数学建模/数理求解核心，不自动支持论文写作或软件工程"
+      ],
+      "rationale": "官方章程明确竞赛要求建立数学模型、设计计算方法、计算机实现、结果分析检验与模型改进，因此获奖可作为计算数学与数据建模的高质量结构化信号。",
+      "sources": [
+        {
+          "authority": "全国大学生数学建模竞赛组委会 / 中国工业与应用数学学会",
+          "title": "全国大学生数学建模竞赛章程（2023年修订稿）",
+          "url": "https://www.mcm.edu.cn/html_cn/block/44e92058f537729c6b6a62a3662ee417.html"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "全国大学生数学建模竞赛国家一等奖"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-COMP-GMCM-DA01-01",
+      "signal_type": "competition_award",
+      "signal_pattern": [
+        "中国研究生数学建模竞赛",
+        "全国研究生数学建模竞赛",
+        "华为杯研究生数学建模竞赛"
+      ],
+      "target_team_skill_id": "T-DA-01",
+      "target_team_skill_name": "计算数学与数据建模",
+      "grade": "B",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "必须是正式获奖",
+        "团队奖需有明确个人建模/计算角色，或同技能族独立证据；否则降为C",
+        "不从团队奖自动推出书面技术文档撰写"
+      ],
+      "rationale": "官方赛事介绍将竞赛定位为提高建立数学模型和运用互联网信息技术解决实际问题能力的学术竞赛，因此可作为数据建模能力的结构化信号。",
+      "sources": [
+        {
+          "authority": "中国研究生创新实践系列大赛 / 中国研究生数学建模竞赛",
+          "title": "中国研究生数学建模竞赛赛事介绍",
+          "url": "https://cpipc.acge.org.cn/cw/contestIntrol/4"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "全国研究生数学建模三等奖"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-COMP-HUAWEI-CODECRAFT-SW01-01",
+      "signal_type": "competition_award",
+      "signal_pattern": [
+        "华为软件精英挑战赛",
+        "Huawei CodeCraft"
+      ],
+      "target_team_skill_id": "T-SW-01",
+      "target_team_skill_name": "通用程序设计与软件工程",
+      "grade": "B",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "必须是正式区域/全国获奖",
+        "团队奖需有明确个人编码/开发角色，或同技能族直接证据；否则降为C",
+        "只支持软件开发核心范围"
+      ],
+      "rationale": "华为官方将该赛事定位为软件编程竞赛，参赛作品通过代码提交与运行判题，因此获奖可作为软件开发能力的结构化信号。",
+      "sources": [
+        {
+          "authority": "华为云",
+          "title": "华为软件精英挑战赛官方赛事页面",
+          "url": "https://developer.huaweicloud.com/codecraft2024"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "华为软件精英赛粤港澳区二等奖"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-COMP-HUAWEI-CODECRAFT-SW02-01",
+      "signal_type": "competition_award",
+      "signal_pattern": [
+        "华为软件精英挑战赛",
+        "Huawei CodeCraft"
+      ],
+      "target_team_skill_id": "T-SW-02",
+      "target_team_skill_name": "算法与数据结构",
+      "grade": "B",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "必须是正式区域/全国获奖",
+        "赛事当届题目必须以算法优化/规划/计算问题为主要评测内容",
+        "团队奖需有明确个人算法角色，或同技能族直接证据；否则降为C"
+      ],
+      "rationale": "官方赛事围绕真实业务场景进行算法/代码求解和排名，在确认当届题目为算法优化型后，可作为算法与数据结构能力的结构化信号。",
+      "sources": [
+        {
+          "authority": "华为云",
+          "title": "华为软件精英挑战赛官方赛事页面",
+          "url": "https://developer.huaweicloud.com/codecraft2024"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "华为软件精英赛粤港澳区二等奖"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-COMP-BEIDOU-UNKNOWN-01",
+      "signal_type": "competition_award",
+      "signal_pattern": [
+        "北斗杯",
+        "“北斗杯”全国青少年科技创新大赛",
+        "北斗杯全国青少年空天科技体验与创新大赛"
+      ],
+      "target_team_skill_id": null,
+      "target_team_skill_name": null,
+      "grade": "C",
+      "decision_effect": "candidate_generation_only",
+      "activation_requirements": [
+        "必须知道具体赛项/作品方向后才能映射技术Skill",
+        "仅凭“北斗杯获奖”不得自动推出嵌入式、网络、AI、导航算法等任一具体能力"
+      ],
+      "rationale": "官方赛事包含导航、遥感、天地一体网络、智能科技、无人机、多传感器融合等多个方向；不掌握具体赛项时无法确定是哪一种技术能力。",
+      "sources": [
+        {
+          "authority": "中国卫星导航系统管理办公室",
+          "title": "关于举办“北斗杯”全国青少年空天科技体验与创新大赛的通知",
+          "url": "https://m.beidou.gov.cn/yw/gfgg/202302/t20230211_25859.html"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "第十一届“北斗杯”华北赛区三等奖"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-COMP-INTERNETPLUS-GENERIC-01",
+      "signal_type": "competition_award",
+      "signal_pattern": [
+        "互联网+大学生创新创业大赛",
+        "中国国际大学生创新大赛"
+      ],
+      "target_team_skill_id": null,
+      "target_team_skill_name": null,
+      "grade": "C",
+      "decision_effect": "context_only",
+      "activation_requirements": [
+        "必须知道具体项目技术内容与个人实质性贡献后才可映射Skill",
+        "奖项本身不对应单一技术能力"
+      ],
+      "rationale": "教育部赛事覆盖众多产业与技术方向，并明确要求审核成员实质性贡献；因此竞赛荣誉可作为创新项目经历背景，但不能单独映射某个技术Skill。",
+      "sources": [
+        {
+          "authority": "中华人民共和国教育部",
+          "title": "中国国际大学生创新大赛（2026）通知",
+          "url": "https://www.moe.gov.cn/srcsite/A08/s5672/202607/t20260731_1445670.html"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "中国国际“互联网+”大学生创新创业大赛天津市三等奖"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-COMP-FINTECH-GENERIC-01",
+      "signal_type": "competition_award",
+      "signal_pattern": [
+        "金融科技大赛",
+        "FinTech大赛"
+      ],
+      "target_team_skill_id": null,
+      "target_team_skill_name": null,
+      "grade": "C",
+      "decision_effect": "context_only",
+      "activation_requirements": [
+        "需查明具体赛事主办方、赛题和个人角色",
+        "在来源未核实前不得映射AI、金融、软件或数据Skill"
+      ],
+      "rationale": "“金融科技大赛”名称本身不足以说明参赛者实际完成的技术任务，v0.1仅保留为待解析结构化信号。",
+      "sources": [],
+      "observed_signal_examples_in_mini_dev": [
+        "四川省金融科技大赛三等奖"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-COMP-NETWORK-KNOWLEDGE-UNRESOLVED-01",
+      "signal_type": "competition_award",
+      "signal_pattern": [
+        "网络知识竞赛"
+      ],
+      "target_team_skill_id": null,
+      "target_team_skill_name": null,
+      "grade": "D",
+      "decision_effect": "no_skill_inference",
+      "activation_requirements": [
+        "赛事名称过于泛化且当前未锁定权威规则来源",
+        "不得仅凭名称映射计算机网络或网络安全Skill"
+      ],
+      "rationale": "“网络知识竞赛”可能指互联网常识、网络文明、网络安全或计算机网络知识，在官方赛事身份未解析前不允许形成Skill推断。",
+      "sources": [],
+      "observed_signal_examples_in_mini_dev": [
+        "大学生网络知识竞赛团队3等奖，个人进入全国决赛"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-PUB-AUTHORSHIP-ONLY-01",
+      "signal_type": "publication_authorship",
+      "signal_pattern": [
+        "第一作者",
+        "通讯作者",
+        "共同作者",
+        "论文发表"
+      ],
+      "target_team_skill_id": null,
+      "target_team_skill_name": null,
+      "grade": "C",
+      "decision_effect": "context_only",
+      "activation_requirements": [
+        "作者身份说明学术责任/贡献，但不说明具体完成了哪一种技术任务",
+        "不得由论文题目+作者顺序自动推出模型训练、软件开发、实验实现等具体Skill",
+        "如能取得CRediT/贡献声明，再按对应贡献Warrant判断"
+      ],
+      "rationale": "ICMJE明确指出作者身份本身不能传达个人具体贡献；CRediT专门用结构化贡献角色弥补这一缺口。因此作者顺序只能作为科研成果信号，不能单独映射技术Skill。",
+      "sources": [
+        {
+          "authority": "ICMJE",
+          "title": "Defining the Role of Authors and Contributors",
+          "url": "https://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html"
+        },
+        {
+          "authority": "ANSI/NISO CRediT",
+          "title": "CRediT role descriptors",
+          "url": "https://credit.niso.org/contributor-roles-defined/"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "第一作者论文",
+        "ICML第一作者",
+        "IEEE期刊第一作者"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-PUB-CREDIT-SOFTWARE-SW01-01",
+      "signal_type": "publication_contribution",
+      "signal_pattern": [
+        "CRediT: Software",
+        "贡献声明: Software"
+      ],
+      "target_team_skill_id": "T-SW-01",
+      "target_team_skill_name": "通用程序设计与软件工程",
+      "grade": "A",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "贡献声明必须可核验且与候选人身份匹配",
+        "只支持实际编程/软件开发范围，不自动推出软件架构"
+      ],
+      "rationale": "CRediT对Software角色的定义直接涵盖编程、软件开发、程序设计、代码与算法实现以及代码测试，因此是软件工程能力的高强度外部贡献证据。",
+      "sources": [
+        {
+          "authority": "ANSI/NISO CRediT",
+          "title": "CRediT role descriptors",
+          "url": "https://credit.niso.org/contributor-roles-defined/"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-PUB-CREDIT-FORMAL-DA01-01",
+      "signal_type": "publication_contribution",
+      "signal_pattern": [
+        "CRediT: Formal analysis",
+        "贡献声明: Formal analysis"
+      ],
+      "target_team_skill_id": "T-DA-01",
+      "target_team_skill_name": "计算数学与数据建模",
+      "grade": "A",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "贡献声明必须可核验且与候选人身份匹配",
+        "研究内容需涉及统计、数学、计算或模型分析"
+      ],
+      "rationale": "CRediT的Formal analysis明确指使用统计、数学、计算或其他形式化方法分析/综合研究数据，与计算数学与数据建模核心范围高度一致。",
+      "sources": [
+        {
+          "authority": "ANSI/NISO CRediT",
+          "title": "CRediT role descriptors",
+          "url": "https://credit.niso.org/contributor-roles-defined/"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-PUB-CREDIT-METHOD-AI01-01",
+      "signal_type": "publication_contribution",
+      "signal_pattern": [
+        "CRediT: Methodology",
+        "贡献声明: Methodology"
+      ],
+      "target_team_skill_id": "T-AI-01",
+      "target_team_skill_name": "机器学习与深度学习",
+      "grade": "B",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "论文主题必须明确属于机器学习/深度学习",
+        "Methodology贡献需明确到方法/模型设计，而不是一般研究设计",
+        "若主题不属于ML/DL，不得映射T-AI-01"
+      ],
+      "rationale": "CRediT的Methodology表示方法或模型的开发/设计；在论文主题明确为机器学习/深度学习时，可作为机器学习模型方法设计的结构化贡献证据。",
+      "sources": [
+        {
+          "authority": "ANSI/NISO CRediT",
+          "title": "CRediT role descriptors",
+          "url": "https://credit.niso.org/contributor-roles-defined/"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-PUB-CREDIT-VALIDATION-SW04-01",
+      "signal_type": "publication_contribution",
+      "signal_pattern": [
+        "CRediT: Validation",
+        "贡献声明: Validation"
+      ],
+      "target_team_skill_id": "T-SW-04",
+      "target_team_skill_name": "系统测试与质量评估",
+      "grade": "B",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "研究对象必须是软件、模型、系统或计算实验",
+        "需体现验证/复现/可靠性/基准测试，而非仅一般论文审阅"
+      ],
+      "rationale": "CRediT的Validation强调对结果/实验/研究输出的验证、复现和可靠性检查；在计算系统或模型语境下，可支持系统测试与质量评估。",
+      "sources": [
+        {
+          "authority": "ANSI/NISO CRediT",
+          "title": "CRediT role descriptors",
+          "url": "https://credit.niso.org/contributor-roles-defined/"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-PUB-CREDIT-VIS-DA04-01",
+      "signal_type": "publication_contribution",
+      "signal_pattern": [
+        "CRediT: Visualization",
+        "贡献声明: Visualization"
+      ],
+      "target_team_skill_id": "T-DA-04",
+      "target_team_skill_name": "数据分析与可视化",
+      "grade": "A",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "贡献声明必须可核验且与候选人身份匹配",
+        "只支持数据可视化/结果呈现范围"
+      ],
+      "rationale": "CRediT的Visualization直接指研究结果的可视化和数据呈现，可作为数据分析与可视化节点中“可视化呈现”部分的高强度外部贡献证据。",
+      "sources": [
+        {
+          "authority": "ANSI/NISO CRediT",
+          "title": "CRediT role descriptors",
+          "url": "https://credit.niso.org/contributor-roles-defined/"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-PUB-CREDIT-WRITE-F202-01",
+      "signal_type": "publication_contribution",
+      "signal_pattern": [
+        "CRediT: Writing – original draft",
+        "贡献声明: Writing – original draft"
+      ],
+      "target_team_skill_id": "F-2-02",
+      "target_team_skill_name": "书面技术文档撰写",
+      "grade": "A",
+      "decision_effect": "eligible_supported_warrant",
+      "activation_requirements": [
+        "贡献声明必须可核验且与候选人身份匹配",
+        "原始写作贡献必须是技术/科研成果正文，而非仅语言润色"
+      ],
+      "rationale": "CRediT的Writing – original draft明确指初稿的准备和撰写，可直接支持书面技术文档撰写能力。",
+      "sources": [
+        {
+          "authority": "ANSI/NISO CRediT",
+          "title": "CRediT role descriptors",
+          "url": "https://credit.niso.org/contributor-roles-defined/"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-PAT-INVENTOR-ALIGNED-01",
+      "signal_type": "patent_inventorship",
+      "signal_pattern": [
+        "发明人",
+        "专利发明人"
+      ],
+      "target_team_skill_id": null,
+      "target_team_skill_name": null,
+      "grade": "B",
+      "decision_effect": "eligible_supported_warrant_dynamic_target",
+      "activation_requirements": [
+        "必须确认候选人确为发明人，而非申请人/专利权人",
+        "必须读取专利摘要/权利要求或可靠技术说明，确认其技术实质与目标Team Skill对齐",
+        "仅有专利标题时降为C，不得自动映射具体Skill"
+      ],
+      "rationale": "中国专利法实施细则规定，发明人是对发明创造的实质性特点作出创造性贡献的人，因此发明人身份比一般论文作者顺序更能说明存在技术创造贡献；但具体贡献属于哪个Skill仍需专利实质内容对齐。",
+      "sources": [
+        {
+          "authority": "国家知识产权局",
+          "title": "中华人民共和国专利法实施细则（2023年修订）",
+          "url": "https://www.cnipa.gov.cn/art/2023/12/21/art_98_189197.html"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "发明专利第一作者/第一发明人"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-PAT-FIRST-ORDER-NOBOOST-01",
+      "signal_type": "patent_inventorship",
+      "signal_pattern": [
+        "第一发明人",
+        "发明人排名第一"
+      ],
+      "target_team_skill_id": null,
+      "target_team_skill_name": null,
+      "grade": "D",
+      "decision_effect": "no_extra_strength_from_order",
+      "activation_requirements": [
+        "发明人顺序不得解释为贡献大小",
+        "第一位次不能在W-PAT-INVENTOR-ALIGNED-01基础上额外加权"
+      ],
+      "rationale": "国家知识产权局明确说明，专利法、实施细则和审查指南没有要求发明人按创造性贡献大小排序，因此“第一发明人”不能自动等于贡献最大。",
+      "sources": [
+        {
+          "authority": "国家知识产权局",
+          "title": "发明专利人的顺序是否可以体现出贡献程度",
+          "url": "https://www.cnipa.gov.cn/jact/front/mailpubdetail.do?sysid=6&transactId=462056"
+        },
+        {
+          "authority": "国家知识产权局",
+          "title": "中华人民共和国专利法实施细则（2023年修订）",
+          "url": "https://www.cnipa.gov.cn/art/2023/12/21/art_98_189197.html"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "发明专利第一作者2022",
+        "第一作者专利"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-SELFCLAIM-TOOL-01",
+      "signal_type": "self_claim",
+      "signal_pattern": [
+        "熟悉Python",
+        "熟练掌握PyTorch",
+        "具备C++/Python编程经验",
+        "专业技能列表"
+      ],
+      "target_team_skill_id": null,
+      "target_team_skill_name": null,
+      "grade": "C",
+      "decision_effect": "candidate_generation_only",
+      "activation_requirements": [
+        "纯自我声明可用于候选技能召回或显式技能展示",
+        "在49节点层级未最终确认前，不将单个工具词自动升级为宽Team Skill",
+        "若同简历存在实际行为，再按direct_behavior标注"
+      ],
+      "rationale": "自我声明是有信息量的履历信号，但缺少行为验证；当前项目将其作为候选召回和解释层，不单独形成宽Team Skill正例。",
+      "sources": [
+        {
+          "authority": "Journal of Applied Psychology",
+          "title": "Meta-analysis of biodata in employment settings: Providing clarity to criterion and construct-related validity estimates",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34672651/"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "熟悉PyTorch",
+        "丰富的C++/Python编程经验"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-CONTEXT-ORG-PRESTIGE-01",
+      "signal_type": "organization_context",
+      "signal_pattern": [
+        "名企",
+        "大厂",
+        "知名高校",
+        "高声誉机构"
+      ],
+      "target_team_skill_id": null,
+      "target_team_skill_name": null,
+      "grade": "D",
+      "decision_effect": "no_skill_inference",
+      "activation_requirements": [
+        "公司/学校品牌只能作为经历上下文",
+        "不得因机构声誉直接增加任何Team Skill",
+        "岗位名称可另走occupation warrant"
+      ],
+      "rationale": "职业技能框架（O*NET/ESCO/国家职业标准）建立的是职业—技能或任务—技能关系，而不是机构品牌—技能关系；为降低光环效应与偏差，机构声誉不进入Skill判定。",
+      "sources": [
+        {
+          "authority": "U.S. Department of Labor / O*NET",
+          "title": "Software Developers 15-1252.00",
+          "url": "https://www.onetonline.org/link/summary/15-1252.00"
+        },
+        {
+          "authority": "European Commission / ESCO",
+          "title": "The ESCO Classification",
+          "url": "https://esco.ec.europa.eu/en/classification"
+        },
+        {
+          "authority": "国家专业技术人才知识更新工程 / 人社部",
+          "title": "数字技术工程师国家职业（技术技能）标准目录",
+          "url": "https://zsgx.mohrss.gov.cn/zsgx/htmlDocument/category12500/index.html"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [
+        "公司名称",
+        "学校名称"
+      ],
+      "notes": ""
+    },
+    {
+      "warrant_id": "W-CONTEXT-ROLE-TITLE-NARROWNESS-01",
+      "signal_type": "policy_guardrail",
+      "signal_pattern": [
+        "岗位名称→细分子领域"
+      ],
+      "target_team_skill_id": null,
+      "target_team_skill_name": null,
+      "grade": "D",
+      "decision_effect": "no_narrow_skill_without_specificity",
+      "activation_requirements": [
+        "宽岗位只允许推最核心的宽Skill",
+        "不得由AI算法工程师自动推出CV/NLP/RAG/Agent/AI安全等窄Skill",
+        "不得由研究员自动推出任何技术Skill"
+      ],
+      "rationale": "职业标准描述的是一个职业的任务集合，并不表示每个从业者执行所有任务；因此岗位Warrant必须采用“最小核心映射”，不能把职业任务全集复制到个人能力全集。",
+      "sources": [
+        {
+          "authority": "中华人民共和国人力资源和社会保障部",
+          "title": "人工智能工程技术人员等职业信息",
+          "url": "https://www.mohrss.gov.cn/xxgk2020/fdzdgknr/rcrs_4225/jnrc/202112/t20211227_431368.html"
+        },
+        {
+          "authority": "U.S. Department of Labor / O*NET",
+          "title": "Software Developers 15-1252.00",
+          "url": "https://www.onetonline.org/link/summary/15-1252.00"
+        },
+        {
+          "authority": "European Commission / ESCO",
+          "title": "The ESCO Classification",
+          "url": "https://esco.ec.europa.eu/en/classification"
+        }
+      ],
+      "observed_signal_examples_in_mini_dev": [],
+      "notes": ""
+    }
+  ]
+}

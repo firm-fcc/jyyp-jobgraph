@@ -1,0 +1,285 @@
+{
+  "version": "stage2b2_t_ai_04_generative_ai_curated_v1",
+  "team_skill_id": "T-AI-04",
+  "team_skill_name": "生成式AI原理与应用",
+  "scope": "覆盖生成机制的辨识、能力边界与失效条件的判定、生成任务的实现、输入数据的脱敏处理，以及生成结果的评价与选型说明核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "GEN-01",
+      "name_zh": "生成机制辨识",
+      "type": "CORE",
+      "definition": "分辨自回归、扩散、变分与对抗几类生成机制的建模目标与采样过程，并说明各自的适用条件。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一项生成任务说明所选机制的建模目标、采样过程与适用条件。",
+      "evidence_task": "就一项生成任务比较至少两类生成机制，说明各自的建模目标、采样过程与本任务下的取舍依据。",
+      "validation_criteria": [
+        "机制描述落到建模目标与采样过程",
+        "取舍依据与任务特征对应"
+      ],
+      "source_refs": [
+        "attention",
+        "ddpm",
+        "gan",
+        "vae"
+      ]
+    },
+    {
+      "subskill_id": "GEN-02",
+      "name_zh": "能力边界与失效条件判定",
+      "type": "CORE",
+      "definition": "依据模型的训练范围与生成机制判定其失效条件，并以样例说明失效的表现形式。",
+      "prerequisites": [
+        "GEN-01"
+      ],
+      "learning_outcome": "能够指出所用模型的失效条件，并给出可复现的失效样例。",
+      "evidence_task": "就一个在用模型构造并记录若干失效样例，说明各例失效的机制层面的原因。",
+      "validation_criteria": [
+        "失效样例可复现",
+        "原因追溯到机制或训练范围"
+      ],
+      "source_refs": [
+        "gpt3_fewshot",
+        "hallucination_survey"
+      ]
+    },
+    {
+      "subskill_id": "GEN-03",
+      "name_zh": "生成任务实现",
+      "type": "CORE",
+      "definition": "围绕文本、图像或代码的生成任务完成接口调用、参数设置与结果收敛，得到可交付的产物。",
+      "prerequisites": [
+        "GEN-01"
+      ],
+      "learning_outcome": "能够完成一项端到端的生成任务，并说明各项参数对结果的影响。",
+      "evidence_task": "就一项生成任务完成端到端实现，记录参数设置与对应的结果差异，交付可运行的产物。",
+      "validation_criteria": [
+        "实现过程与参数记录可复现",
+        "参数与结果差异有对应记录"
+      ],
+      "source_refs": [
+        "hf_transformers",
+        "openai_api_docs"
+      ]
+    },
+    {
+      "subskill_id": "GEN-04",
+      "name_zh": "输入数据脱敏与合规处理",
+      "type": "CORE",
+      "definition": "在数据进入模型之前识别个人信息与受限内容，并按留存与传输要求完成脱敏。",
+      "prerequisites": [
+        "GEN-01"
+      ],
+      "learning_outcome": "能够就一批输入数据完成识别与脱敏，并说明所依据的合规要求。",
+      "evidence_task": "就一批真实输入数据执行识别与脱敏，写明识别规则、脱敏方式与留存策略。",
+      "validation_criteria": [
+        "识别规则覆盖已声明的敏感类别",
+        "脱敏后的数据不可反推原值"
+      ],
+      "source_refs": [
+        "genai_measures_cn",
+        "pipl_cn"
+      ]
+    },
+    {
+      "subskill_id": "GEN-05",
+      "name_zh": "生成结果评价与选型说明",
+      "type": "CORE",
+      "definition": "以任务相关的指标评价生成结果，并据评价结论说明模型与参数的选择。",
+      "prerequisites": [
+        "GEN-02",
+        "GEN-03"
+      ],
+      "learning_outcome": "能够以指标与样例共同支撑一次生成方案的选择。",
+      "evidence_task": "就同一任务比较至少两套生成方案，给出指标结果、样例对照与最终选择的依据。",
+      "validation_criteria": [
+        "评价指标与任务目标对应",
+        "选择依据同时引用指标与样例"
+      ],
+      "source_refs": [
+        "helm",
+        "openai_api_docs"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "GEN-VERIFY-01",
+    "objective": "验证当前生成式AI原理与应用的能力证据。",
+    "task_description": "就一项真实生成任务完成实现、失效样例记录与结果评价，保留代码、参数与评价数据。",
+    "validation_criteria": [
+      "生成机制的选择有任务依据",
+      "失效样例可复现",
+      "评价指标与样例对照完整"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "GEN-CAPSTONE-01",
+    "objective": "完成一项机制选择有据、边界明确、结果可评价的生成式AI应用。",
+    "task_description": "就一项真实任务比较生成机制并完成实现，处理输入数据的脱敏，记录失效条件，最后以指标与样例支撑方案选择。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "实现全程可复现",
+      "失效条件有样例证据",
+      "脱敏处理覆盖已声明的敏感类别",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "attention",
+      "title": "Attention Is All You Need",
+      "authors_or_org": "Vaswani et al.",
+      "source_type": "paper",
+      "year": 2017,
+      "venue": "NeurIPS",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GEN-01"
+      ]
+    },
+    {
+      "source_id": "ddpm",
+      "title": "Denoising Diffusion Probabilistic Models",
+      "authors_or_org": "Ho, Jain, Abbeel",
+      "source_type": "paper",
+      "year": 2020,
+      "venue": "NeurIPS",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GEN-01"
+      ]
+    },
+    {
+      "source_id": "gan",
+      "title": "Generative Adversarial Networks",
+      "authors_or_org": "Goodfellow et al.",
+      "source_type": "paper",
+      "year": 2014,
+      "venue": "NeurIPS",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GEN-01"
+      ]
+    },
+    {
+      "source_id": "genai_measures_cn",
+      "title": "生成式人工智能服务管理暂行办法",
+      "authors_or_org": "国家互联网信息办公室等七部门",
+      "source_type": "regulation",
+      "year": 2023,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GEN-04"
+      ]
+    },
+    {
+      "source_id": "gpt3_fewshot",
+      "title": "Language Models are Few-Shot Learners",
+      "authors_or_org": "Brown et al.",
+      "source_type": "paper",
+      "year": 2020,
+      "venue": "NeurIPS",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GEN-02"
+      ]
+    },
+    {
+      "source_id": "hallucination_survey",
+      "title": "Survey of Hallucination in Natural Language Generation",
+      "authors_or_org": "Ji et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": "ACM Computing Surveys",
+      "version": null,
+      "doi": "10.1145/3571730",
+      "url": null,
+      "supports": [
+        "GEN-02"
+      ]
+    },
+    {
+      "source_id": "helm",
+      "title": "Holistic Evaluation of Language Models",
+      "authors_or_org": "Liang et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": "Transactions on Machine Learning Research",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GEN-05"
+      ]
+    },
+    {
+      "source_id": "hf_transformers",
+      "title": "Hugging Face Transformers Documentation",
+      "authors_or_org": "Hugging Face",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://huggingface.co/docs/transformers",
+      "supports": [
+        "GEN-03"
+      ]
+    },
+    {
+      "source_id": "openai_api_docs",
+      "title": "OpenAI API Documentation",
+      "authors_or_org": "OpenAI",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://platform.openai.com/docs",
+      "supports": [
+        "GEN-03",
+        "GEN-05"
+      ]
+    },
+    {
+      "source_id": "pipl_cn",
+      "title": "中华人民共和国个人信息保护法",
+      "authors_or_org": "全国人民代表大会常务委员会",
+      "source_type": "law",
+      "year": 2021,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GEN-04"
+      ]
+    },
+    {
+      "source_id": "vae",
+      "title": "Auto-Encoding Variational Bayes",
+      "authors_or_org": "Kingma and Welling",
+      "source_type": "paper",
+      "year": 2014,
+      "venue": "ICLR",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GEN-01"
+      ]
+    }
+  ]
+}

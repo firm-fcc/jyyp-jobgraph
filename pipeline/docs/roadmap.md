@@ -1,0 +1,52 @@
+# 开发 Roadmap
+
+## ✅ 已完成
+- [x] 岗位分类体系构建 → `classify/Jobs/jobs0806.json`（255 岗位）
+- [x] 岗位体系 v2.0 重构（2026-08-20）→ `classify/Jobs/jobs_v2.json`（9 类别 131 岗位两级职责分离；255 v1 节点全量处置=保留合并 200/剔除低 IT 46/纯类别退役 9；LLM 阅读真实 JD 生成定义/关键词/边界；可读介绍 `introduction/岗位分类体系介绍.md` 由 `build_jobs.py --doc` 生成；运行时消费者暂读 v1）
+- [x] JD→岗位归类引擎（2026-08-21）→ `codes/jd_annotate/classify_job.py` 四路信号：岗位名层/词库快路/LLM 兜底（非 IT 域判空）+ 任务/技能向量比对观测信号（JD 0/1 向量 vs 基图岗位向量余弦 top-k；约定用于新岗位探索转向与岗位模式漂移观察，验证有效后与 LLM 结合）；机制验证 job_2026_1_1.csv 快路 54.1%。**全量归类/向量化与消费者切换待做**
+- [x] JD 数据获取 → `data/jd_dataset/`
+- [x] 任务体系构建 → `classify/Tasks/tasks.json`（35 任务，冷启动 + 热更新防膨胀）
+- [x] 技能体系构建 → `classify/Skills/skills_builder.json`（59 项）
+- [x] 技能体系标准切换（2026-08-16）→ 文献版 `skills0805.json`（49 项）为唯一标准（映射/提及/图谱基图标签源）；Builder 版降为归纳产物（`config.SKILL_BUILDER_OUTPUT`，勿作标签源）
+- [x] 任务体系 v0.3 边界判据岗位化（2026-08-21）→ 收录判据 = IT 岗位职责（IT_GENERIC_DUTIES 双向口径）；人工审定补 T-26 技术团队管理 / T-27 技术培训与知识赋能（25→27），判据放宽后热更新零新增未回涌非 IT
+- [x] 任务体系 v0.2 重建（2026-08-21）→ `classify/Tasks/tasks.json`（25 个 IT 任务）：采样层 funtype→jobs_v2 IT 过滤 + 9 类分层（修复 funtype_it_map 丢失导致的分层退化），提示词层冷启/提案/监督加非 IT 域边界；v0.1（35 项，含 13 个非 IT 任务）存档 `tasks0807.json`
+- [x] 技能体系命名规范化（2026-08-21）→ `skills0821.json`（v0.5）为新基准：20 项仅改 name_zh（编码/定义不变），名称字数 5–18 → 7–10（众数 9）；taxonomy_base/config/classify_job 同步切换，0805 保留存档
+- [x] 体系基准参数化（2026-08-16）→ `classify/taxonomy_base.json` 单一开关（tasks/skills/jobs 标签源全局切换；环境变量 `TAXONOMY_BASE_*` 临时覆盖；builder/extractor 两份 config 同源读取，图模块自测跟随）
+- [x] JD 技能/任务抽取（含技能点）→ `codes/extractor/`
+- [x] 论文数据处理层（TXT → PaperRecord）→ `codes/paper_signal/`
+- [x] 论文新信号分类（信号提取 + 体系映射）→ `codes/extractor/`
+- [x] 论文 ΔG 增量层热更新 → `classify/DeltaG/papers_delta.json`（`codes/builder/`）
+- [x] 论文提及识别 → `classify/DeltaG/papers_mentions.json`（`codes/extractor/`）
+- [x] 代码分层重构（处理 / 分类 / 热更新三层）
+- [x] 行业新闻 ΔG 处理（相关性过滤→信号提取/提及→增量层）→ `classify/DeltaG/news_delta.json`（`codes/news_signal/` + `codes/extractor/` + `codes/builder/`）
+- [x] 时间线编排器（JD 按月分文件 + 新闻/论文映射表）→ `data/timeline/`（`codes/timeline/`）
+- [x] 岗位热更新模块（ΔG pending 新岗位 → LLM 任务/技能关联分析）→ 回填 `related_tasks`/`related_skills` + 新建叠层任务/技能（`codes/builder/`）
+- [x] 图谱时间截面存储机制 → `data/graph/{窗口}/{base,delta}/`（节点=体系 JSON + 边=每种连边一个文件；`codes/graph/`）
+- [x] JD-Origin 早期数据并入（2022-2024 批：导入本地 MySQL + funtype IT 映射重建 + 过滤导出 540 万条）→ `data/jd_dataset/`（`codes/jd_fetch/`）
+- [x] 基图边计算（简版 Graph Builder，2026-08-17）→ JD 抽样 → extractor 分类 → 频次/共现/薪资加权聚合 → `data/graph/{窗口}/base/` 四种边 + E_jd（`codes/graph/base_builder.py`）
+- [x] 图谱合成 G_eff = G_base ⊕ ΔG（2026-08-17）→ gap 修正 + job_links 新边 + 合成新 T-S 边 → `data/graph/{窗口}/effective/` 独立层（`codes/graph/synthesis.py`）
+- [x] 图谱 Loop 设计（2026-08-17）→ 单窗口 8 步顺序固化（分类与热更新并行原理 / 岗位热更新卡位 / 体系纪元规则）→ `docs/loop-design.md`
+- [x] JD 侧叠层热更新（2026-08-17；**2026-08-28 v2 重设计**）→ 第三信号源 `jd_delta.json`（市场确证，权重 1.0/半衰期 365 天）：新信号入叠层 + 对叠层实体的确证证据 + 基线提及跳过。v2（`codes/graph/jd_delta_v2.py`）= 全量确定性扫描（英文 token 差集 + 中文 n-gram 时间差分）+ 残差 LLM 裁决（HotUpdater 注入复用，结论跨窗缓存）——发现覆盖率 100% IT JD（旧 100 条抽样对 0.1% 出现率漏检 ~90%）；旧 `run_jd_delta.py` 弃用保留
+- [x] 叠层生命周期（2026-08-17）→ 可见性（参与门槛 0.15，参与下一次更新的标签空间）/ 遗忘（跌破门槛休眠不删除）/ 确证（JD 侧证据）/ 转正（强度+JD 确证双门槛 → 写基准体系，先备份）→ `participation.py` + `promotion.py`；快照三源化（三分支判源、graduated 移出视图、participates 标记）
+- [x] 技术栈体系构建（2026-08-18）→ `classify/TechStacks/techstacks.json` 25 栈（LLM 500 样本归纳 + 人工审定）+ funtype part→栈映射（349 part，规则 156 + LLM 193）→ `codes/jd_annotate/`
+- [x] 技术栈体系重构 v2.0 + 逐 JD 归类 v2.1（2026-08-20）→ 25 栈 LLM 归纳体系改为**人工确定的八类技术栈分类**（temp/技术栈分类.docx：前端与用户体验 / 后端开发与业务逻辑 / 数据存储与管理 / 中间件与消息通信 / 基础设施与云原生 / 安全与合规 / DevOps 与自动化 / AI/ML 与数据智能）；归类弃用 funtype→固定栈查表，改为词库快路（标题/正文关键词命中即划分）+ 必空排除表（非软件域标题判空）+ LLM 逐 JD 兜底归类（batch=20、文本指纹去重、断点续跑）→ `jd_stack_cache.jsonl`；`build_taxonomy.py` 移除 LLM 归纳；端到端验证通过 → `codes/jd_annotate/`
+- [x] JD 双维度标注引擎（2026-08-18）→ 技术栈三层解析（funtype 查表/标题/正文关键词）+ 级别五档规则（work_year > 正文年限 > 标题词），1 万行抽样验证（栈覆盖 96.1%、定级率 79.5%、判级一致率 83.2%）→ `codes/jd_annotate/annotate_jd.py`
+- [x] 运行时岗位基准切换 v2（2026-08-22）→ taxonomy_base jobs → jobs_v2.json（三基准齐至最新：任务 v0.3/技能 v0.5/岗位 v2.0）；promotion GJ- 写入适配 v2 结构；classify_job 非 IT 域改 LLM 显式"非IT相关"标签（non_it 缓存 + 向量阶段跳过，全量归类后作采样内容级过滤信号）；评估 funtype_it_map.json 无需重建（增量拉取可从 jobs_v2 funtypes 派生）
+- [x] JD 技能熟练度要求判定（2026-08-21）→ `codes/extractor/jd_proficiency.py`（移植简历侧量规 P1-P4/U + D1-D4 三段防线：量规注入/严格契约/正则旗标；词面锚点只提示不定级）+ 校准 CLI；2026-05 窗口 200 JD/986 对校准通过；`base_builder` 每窗口聚合写 `base/skill_prof.json`（演化分析输入；跨窗口熟练度趋势分析待做）
+
+## 🚧 待完成
+- [x] 近重复（抄袭）过滤 Stage D0（2026-08-28）→ `graph/jd_dedup.py`：simhash+Jaccard 抄袭簇保最早发布，五消费方在线过滤（S/B/D/v2/汇总）；赛题"抄袭"要求补全（时滞/噪音/通胀/交叉验证此前已覆盖）；实测 2022-05/06 变体占比 7.4%/6.9%，跨窗时序抄袭留二期
+- [x] JD ΔG v2 + 组装参数重放体系（2026-08-28）→ 三源 ΔG 逐窗增量（`--window`，pub_date≤窗末+断点，参与门 as-of 窗末）；`graph/replay.py` 改组装参数零 LLM 整链重建（参数指纹入三类 meta；2022-05/06 逐字节幂等实证）；薪资加权改 Stage D 组装期现算；fixtures 46 测全绿
+- [x] 论文数据恢复与解析层适配（2026-08-20）→ 全库六专题 × S/A 档落位 `data/papers/`（B 档未入库控总量）；`scan_papers` 两层布局支持 + 跨专题同文去重（8,097 篇唯一：S 197 / A 7,900）；ΔG 与 timeline 管线 dry-run 验证通过。2026-08-27 并入 arXiv 2022 全库批次 2,273 篇（`arxiv_ingest.py` 元数据裸格式转换，唯一论文 10,370，语料覆盖前移至 2022-01）
+- [ ] （P0）JD 双维度标注**全量运行**：`codes/jd_annotate/annotate_jd.py --in-place`（62 CSV 原地加 3 列，带 jobid 校验断点续跑）+ timeline 重建传播新列（引擎/体系/映射已就绪并验证，2026-08-18 按决策仅小样本测试未改数据文件）
+- [ ] （P0）人岗匹配算法（Skill 层 cosine + 差距分析）
+- [x] 提及识别 → ΔG strengthenings 接入（2026-08-22）→ 论文 ΔG 管线新增 Stage C（`paper_delta.strengthen_paper_mentions`）：分类式提及（`paper_mention`，skill/task 双模式、复用句级缓存）直接并入 strengthenings（tier 权重、paper_id 幂等、证据封顶 5 句、confidence=medium 与新闻侧同口径）；`--no-mention` 可跳过；fixtures `test_paper_delta_mention` 五组用例。新闻侧 mention 路径原已接入；JD 侧基线提及跳过为刻意设计（避免与 E_jd 重复计权）。**三源 ΔG 全量运行待做**
+- [x] 演化分析机制层（2026-08-22 收口）→ 实体强度 gap（`compute_gaps`）/ 边权重 λ 修正与合成新 T-S 边 / 叠层半衰期衰减 / 生命周期门控均在生产线；技能熟练度要求分布 `base/skill_prof.json` 按窗口产出（交付时序分析线使用）。**决策**：粗粒度岗位下放（v2 §2.4）由逐 JD 直接分类取代、不再实现；跨窗口趋势/报告属时序分析负责线，不在本项目开发范围
+- [ ] （P2）学习路径算法（Skill 前置关系 → 路径排序）
+- [ ] （P2）RAG 可溯源（输出附带依据）
+- [ ] （P2）Orchestrator 调度 + 版本回溯
+- [ ] （P2）Quality Guardian（噪声过滤 / 冗余检测）
+- [ ] （P3）100+ 岗位测试集与准确率评估（>90%）
+- [ ] （P3）测试覆盖率 >60%
+- [ ] （P3）Dockerfile + 运行说明
+- [ ] （P3）数据样例（1 新岗位 + 1 已有岗位图谱）

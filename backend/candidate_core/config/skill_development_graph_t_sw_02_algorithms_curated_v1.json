@@ -1,0 +1,170 @@
+{
+  "version": "stage2b2_t_sw_02_algorithms_curated_v1",
+  "team_skill_id": "T-SW-02",
+  "team_skill_name": "算法与数据结构",
+  "scope": "覆盖复杂度分析、基础数据结构选型、经典算法设计范式、正确性论证与测试，以及面向实际约束的性能优化核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "ALG-01",
+      "name_zh": "复杂度分析",
+      "type": "CORE",
+      "definition": "分析算法的时间与空间复杂度，区分最坏、平均与摊还情形并说明各自的适用判断。",
+      "prerequisites": [],
+      "learning_outcome": "能够对给定算法给出复杂度分析，并说明该结论在何种输入分布下成立。",
+      "evidence_task": "对一组算法实现给出复杂度分析，区分最坏与平均情形，并用实测数据验证增长趋势。",
+      "validation_criteria": [
+        "分析结论与实测增长趋势一致",
+        "最坏与平均情形的区分有输入依据"
+      ],
+      "source_refs": [
+        "cormen_clrs"
+      ]
+    },
+    {
+      "subskill_id": "ALG-02",
+      "name_zh": "数据结构选型",
+      "type": "CORE",
+      "definition": "依据操作频次与数据规模在各类数据结构之间选型，使主要操作的代价最低。",
+      "prerequisites": [
+        "ALG-01"
+      ],
+      "learning_outcome": "能够就一个实际问题完成数据结构选型，并用实测比较验证选型依据。",
+      "evidence_task": "针对一个实际问题比较两种以上数据结构，依据操作频次给出选型并用实测数据佐证。",
+      "validation_criteria": [
+        "选型依据落在实际操作频次上",
+        "比较结果由实测数据支持"
+      ],
+      "source_refs": [
+        "cormen_clrs"
+      ]
+    },
+    {
+      "subskill_id": "ALG-03",
+      "name_zh": "算法设计范式运用",
+      "type": "CORE",
+      "definition": "识别问题适用的设计范式并据以构造解法，说明该范式成立所依赖的问题性质。",
+      "prerequisites": [
+        "ALG-02"
+      ],
+      "learning_outcome": "能够为一个问题选择设计范式并实现解法，说明范式适用的依据。",
+      "evidence_task": "就一个实际问题选择设计范式并实现，说明该问题满足的性质及范式不适用时的替代方案。",
+      "validation_criteria": [
+        "范式选择的依据指向问题的具体性质",
+        "替代方案有可行性说明"
+      ],
+      "source_refs": [
+        "cormen_clrs"
+      ]
+    },
+    {
+      "subskill_id": "ALG-04",
+      "name_zh": "正确性论证与测试",
+      "type": "CORE",
+      "definition": "以不变式或归纳论证算法正确性，并用覆盖边界的测试佐证实现与设计一致。",
+      "prerequisites": [
+        "ALG-03"
+      ],
+      "learning_outcome": "能够给出算法的正确性论证，并用测试覆盖边界与退化情形。",
+      "evidence_task": "为一个算法实现给出正确性论证，设计覆盖边界与退化输入的测试并记录结果。",
+      "validation_criteria": [
+        "论证覆盖算法的关键步骤",
+        "测试包含边界与退化输入"
+      ],
+      "source_refs": [
+        "cormen_clrs",
+        "iso_iec_ieee_29119"
+      ]
+    },
+    {
+      "subskill_id": "ALG-05",
+      "name_zh": "面向实际约束的优化",
+      "type": "CORE",
+      "definition": "在内存、时延或数据分布等实际约束下优化实现，并量化优化前后的差异。",
+      "prerequisites": [
+        "ALG-04"
+      ],
+      "learning_outcome": "能够在实际约束下完成优化，并用量测数据说明改进幅度与代价。",
+      "evidence_task": "针对一个受实际约束的算法实现执行优化，量测优化前后的时间与空间表现并说明代价。",
+      "validation_criteria": [
+        "优化前后的量测口径一致",
+        "所付代价被明确指出"
+      ],
+      "source_refs": [
+        "cormen_clrs",
+        "iso_iec_ieee_15939"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "ALG-VERIFY-01",
+    "objective": "验证当前算法与数据结构的能力证据。",
+    "task_description": "就一个实际问题完成选型、实现、正确性论证与性能量测，保留代码、论证与实测数据。",
+    "validation_criteria": [
+      "本人的实现与论证可定位",
+      "复杂度结论与实测趋势一致",
+      "优化前后的量测口径一致"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "ALG-CAPSTONE-01",
+    "objective": "完成一个选型有据、正确性可论证、优化可量化的算法实现。",
+    "task_description": "针对一个实际问题分析复杂度并完成数据结构选型，运用适配的设计范式实现解法，给出正确性论证与边界测试，最后在实际约束下优化并量化差异。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "选型与范式选择均有依据",
+      "正确性论证覆盖关键步骤",
+      "优化前后量测口径一致且代价明确",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "cormen_clrs",
+      "title": "Introduction to Algorithms",
+      "authors_or_org": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein",
+      "source_type": "textbook",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "ALG-01",
+        "ALG-02",
+        "ALG-03",
+        "ALG-04",
+        "ALG-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15939",
+      "title": "ISO/IEC/IEEE 15939 Systems and software engineering — Measurement process",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "ALG-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_29119",
+      "title": "ISO/IEC/IEEE 29119 Software and systems engineering — Software testing",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "ALG-04"
+      ]
+    }
+  ]
+}

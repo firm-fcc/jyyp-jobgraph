@@ -1,0 +1,215 @@
+{
+  "version": "stage2b2_t_ai_02_nlp_curated_v1",
+  "team_skill_id": "T-AI-02",
+  "team_skill_name": "自然语言处理",
+  "scope": "覆盖语言任务定义、语料准备、文本表示、序列建模、预训练语言模型、信息抽取、语音处理与行为测试的自然语言处理核心路径和专门化分支。",
+  "nodes": [
+    {
+      "subskill_id": "NLP-01",
+      "name_zh": "语言任务与语料准备",
+      "type": "CORE",
+      "definition": "将目标场景转化为明确的语言处理任务，准备带有来源、划分与标注说明的可复现语料。",
+      "prerequisites": [],
+      "learning_outcome": "能够定义语言任务、数据边界、标注方案与无泄漏的训练验证测试划分。",
+      "evidence_task": "为固定语言任务提交任务定义、语料来源与许可说明、标注规范以及可复现的数据划分。",
+      "validation_criteria": [
+        "任务输入、输出和评价对象明确",
+        "语料来源、标注和数据划分可追溯且无明显泄漏"
+      ],
+      "source_refs": ["slp3"]
+    },
+    {
+      "subskill_id": "NLP-02",
+      "name_zh": "文本表示与序列建模",
+      "type": "CORE",
+      "definition": "将语言单位转换为可计算表示，并构建能够处理上下文与序列依赖的基线模型。",
+      "prerequisites": ["NLP-01"],
+      "learning_outcome": "能够实现文本预处理、表示与序列建模基线，并记录模型输入、配置和验证结果。",
+      "evidence_task": "在固定语料上实现一个可复现的文本表示与序列模型基线，保存预处理、特征、配置和验证输出。",
+      "validation_criteria": [
+        "文本表示与任务目标相匹配",
+        "预处理、模型配置和验证结果可复现"
+      ],
+      "source_refs": ["slp3"]
+    },
+    {
+      "subskill_id": "NLP-03",
+      "name_zh": "Transformer与预训练语言模型",
+      "type": "SPECIALIZATION",
+      "definition": "应用Transformer架构与预训练语言模型完成语言理解或生成任务，并保留可比较的实验记录。",
+      "prerequisites": ["NLP-02"],
+      "learning_outcome": "能够说明模型选择，完成预训练语言模型的任务适配并分析验证结果。",
+      "evidence_task": "选择Transformer、BERT或XLNet类模型完成固定任务实验，记录输入处理、模型配置、训练或推理设置及结果。",
+      "validation_criteria": [
+        "模型与任务选择有明确依据",
+        "模型配置、实验协议和结果可复核"
+      ],
+      "source_refs": ["attention", "bert", "xlnet"]
+    },
+    {
+      "subskill_id": "NLP-04",
+      "name_zh": "信息抽取与文本分析",
+      "type": "SPECIALIZATION",
+      "definition": "从文本中识别类别、实体、关系或其他结构化信息，并对错误类型进行样例级分析。",
+      "prerequisites": ["NLP-02"],
+      "learning_outcome": "能够构建文本分析或信息抽取流程，输出结构化结果并定位主要错误模式。",
+      "evidence_task": "在固定文本集上实现一项分类或信息抽取任务，保存预测结果、评价指标和代表性错误样例。",
+      "validation_criteria": [
+        "抽取或分析结果可回溯到原始文本",
+        "至少一个主要错误模式有具体样例证据"
+      ],
+      "source_refs": ["slp3"]
+    },
+    {
+      "subskill_id": "NLP-05",
+      "name_zh": "语音识别与语音合成",
+      "type": "SPECIALIZATION",
+      "definition": "构建语音识别或语音合成处理链路，记录声学、语言与解码配置以及可复核输出。",
+      "prerequisites": ["NLP-02"],
+      "learning_outcome": "能够实现并验证ASR或TTS任务中的数据处理、模型推理与结果评价流程。",
+      "evidence_task": "在固定语音样本上实现ASR或TTS实验，保存数据准备、模型与解码配置、输出以及评价结果。",
+      "validation_criteria": [
+        "语音输入、处理配置和输出可追溯",
+        "识别或合成质量使用明确协议评价"
+      ],
+      "source_refs": ["slp3", "kaldi"]
+    },
+    {
+      "subskill_id": "NLP-06",
+      "name_zh": "NLP评估与误差分析",
+      "type": "CORE",
+      "definition": "结合任务指标与行为测试检查NLP模型能力、鲁棒性和失效模式，并依据证据形成改进结论。",
+      "prerequisites": ["NLP-02"],
+      "learning_outcome": "能够设计包含总体指标、能力测试和样例诊断的分层评价方案。",
+      "evidence_task": "对固定模型执行任务指标与行为测试，输出失败样例分类、诊断结论和一次有依据的改进对比。",
+      "validation_criteria": [
+        "总体指标与具体语言能力测试分开报告",
+        "改进结论可追溯到失败样例和前后对比"
+      ],
+      "source_refs": ["slp3", "checklist"]
+    }
+  ],
+  "verification_task": {
+    "task_id": "NLP-VERIFY-01",
+    "objective": "验证当前自然语言处理能力证据。",
+    "task_description": "在固定语料与评价协议上完成可复现NLP任务，保留数据处理、模型配置、输出、指标和错误分析记录。",
+    "validation_criteria": [
+      "本人技术行为与输入输出可定位",
+      "数据、配置和评价协议可复核",
+      "至少包含一个样例级失败诊断"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "NLP-CAPSTONE-01",
+    "objective": "完成可复现、可评价的自然语言处理任务并依据错误证据改进。",
+    "task_description": "完成任务定义、语料准备、建模、评价与错误分析，比较至少一次有依据的改进并说明适用边界。",
+    "specialization_extensions": [
+      {
+        "subskill_id": "NLP-03",
+        "task_description": "增加Transformer或预训练语言模型实验，并与固定基线比较。",
+        "validation_criteria": [
+          "模型选择和配置有任务依据",
+          "基线与扩展使用相同评价协议"
+        ]
+      },
+      {
+        "subskill_id": "NLP-04",
+        "task_description": "增加信息抽取或文本分析任务及样例级错误诊断。",
+        "validation_criteria": [
+          "结构化输出可回溯原文",
+          "错误类别有代表性样例"
+        ]
+      },
+      {
+        "subskill_id": "NLP-05",
+        "task_description": "增加ASR或TTS实验并保存处理、解码与评价记录。",
+        "validation_criteria": [
+          "语音处理链路可复现",
+          "质量评价协议和结果可复核"
+        ]
+      }
+    ],
+    "validation_criteria": [
+      "任务、语料、配置和结果可复现",
+      "评价同时包含指标与样例诊断",
+      "改进动作由错误证据驱动",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "slp3",
+      "title": "Speech and Language Processing",
+      "authors_or_org": "Daniel Jurafsky and James H. Martin",
+      "source_type": "book_draft",
+      "year": 2026,
+      "venue": null,
+      "version": "3rd edition draft",
+      "doi": null,
+      "url": "https://web.stanford.edu/~jurafsky/slp3/",
+      "supports": ["NLP-01", "NLP-02", "NLP-04", "NLP-05", "NLP-06"]
+    },
+    {
+      "source_id": "attention",
+      "title": "Attention Is All You Need",
+      "authors_or_org": "Vaswani et al.",
+      "source_type": "paper",
+      "year": 2017,
+      "venue": "NeurIPS",
+      "version": null,
+      "doi": null,
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html",
+      "supports": ["NLP-03"]
+    },
+    {
+      "source_id": "bert",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "authors_or_org": "Devlin et al.",
+      "source_type": "paper",
+      "year": 2019,
+      "venue": "NAACL",
+      "version": null,
+      "doi": "10.18653/v1/N19-1423",
+      "url": "https://aclanthology.org/N19-1423/",
+      "supports": ["NLP-03"]
+    },
+    {
+      "source_id": "xlnet",
+      "title": "XLNet: Generalized Autoregressive Pretraining for Language Understanding",
+      "authors_or_org": "Yang et al.",
+      "source_type": "paper",
+      "year": 2019,
+      "venue": "NeurIPS",
+      "version": null,
+      "doi": null,
+      "url": "https://proceedings.neurips.cc/paper/2019/hash/dc6a7e655d7e5840e66733e9ee67cc69-Abstract.html",
+      "supports": ["NLP-03"]
+    },
+    {
+      "source_id": "kaldi",
+      "title": "The Kaldi Speech Recognition Toolkit",
+      "authors_or_org": "Povey et al.",
+      "source_type": "paper",
+      "year": 2011,
+      "venue": "IEEE ASRU",
+      "version": null,
+      "doi": null,
+      "url": "https://publications.idiap.ch/index.php/publications/show/2265",
+      "supports": ["NLP-05"]
+    },
+    {
+      "source_id": "checklist",
+      "title": "Beyond Accuracy: Behavioral Testing of NLP Models with CheckList",
+      "authors_or_org": "Ribeiro et al.",
+      "source_type": "paper",
+      "year": 2020,
+      "venue": "ACL",
+      "version": null,
+      "doi": "10.18653/v1/2020.acl-main.442",
+      "url": "https://aclanthology.org/2020.acl-main.442/",
+      "supports": ["NLP-06"]
+    }
+  ]
+}

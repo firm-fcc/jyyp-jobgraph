@@ -1,0 +1,179 @@
+﻿测试文件,用例,被测组件,输入,期望输出,属性,运行结果,耗时(秒),结果说明
+test_annotate_levels_tech.py,test_parse_work_year,jd_annotate/annotate_jd（级别解析 + 技术名词层 + 技术栈三层解析）,"work_year 字符串 5 例：""3-5年""、""10年以上""、""在校生/应届生""、""经验不限""、""""","(None,3)、(None,10)、(""L0"",0)、(None,0)、(None,None)",边界,通过,0.01,断言全部通过，输出与期望一致
+test_annotate_levels_tech.py,test_parse_text_years,jd_annotate/annotate_jd（级别解析 + 技术名词层 + 技术栈三层解析）,"正文 4 例：""要求5年以上开发经验""、""具有三年相关经验者优先""、""无经验亦可…""、""要求20年从业经历""",5、3（中文数字）、0、15（封顶）,边界,通过,0.00,断言全部通过，输出与期望一致
+test_annotate_levels_tech.py,test_years_to_level_thresholds,jd_annotate/annotate_jd（级别解析 + 技术名词层 + 技术栈三层解析）,"年限 [1,2,3,4,5,9,10]","['L1','L1','L2','L2','L3','L3','L4']",数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_annotate_levels_tech.py,test_resolve_level_priority,jd_annotate/annotate_jd（级别解析 + 技术名词层 + 技术栈三层解析）,同一条 JD 变换 6 种信号组合（列/正文/标题/funtype 逐级缺席）,"(""L2"",""work_year"")→(""L2"",""text"")→(""L0"",""text"")→(""L3"",""title"")→(""L3"",""funtype"")→("""","""")，source 字段标记来源",协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_annotate_levels_tech.py,test_extract_tech_mentions_boundaries,jd_annotate/annotate_jd（级别解析 + 技术名词层 + 技术栈三层解析）,标题/正文含 Java、JavaScript、MySQL、golang、Google、系统优化/测试,前三个规范名命中；golang 经别名折叠为 Go；Google 不误中 Go（词边界）；泛概念停用词零命中,防线回归,通过,14.10,断言全部通过，输出与期望一致
+test_annotate_levels_tech.py,test_extract_tech_mentions_version_and_suppression,jd_annotate/annotate_jd（级别解析 + 技术名词层 + 技术栈三层解析）,"标题+正文：""维护MySQL8主从集群""、""用Vue3重构组件库""、""基于Spring Boot…""、""负责微信小程序…""",MySQL/Vue 命中（版本号折叠）；Spring Boot、微信小程序命中且 Spring、微信不重复出现（位置抑制）,数学手算,通过,13.61,断言全部通过，输出与期望一致
+test_annotate_levels_tech.py,test_extract_tech_mentions_short_names,jd_annotate/annotate_jd（级别解析 + 技术名词层 + 技术栈三层解析）,"""精通C++与面向对象设计""、""熟悉C语言单片机开发""",C++ 命中且不误中 C；独立 C（词边界完整）命中规范名 C,数学手算,通过,7.17,断言全部通过，输出与期望一致
+test_annotate_levels_tech.py,test_stack_annotator_tiers,jd_annotate/annotate_jd（级别解析 + 技术名词层 + 技术栈三层解析）,StackAnnotator（缓存文件注入 1 条指纹记录）+ 4 组标题/正文,"(栈,tier) 四种组合均命中：t1=1、t2=2、t3=3（缓存栈 TS-TEST）、t4=0（空栈）",协议契约,通过,0.14,断言全部通过，输出与期望一致
+test_annotate_levels_tech.py,test_stack_annotator_cache_tolerant_missing,jd_annotate/annotate_jd（级别解析 + 技术名词层 + 技术栈三层解析）,JD_STACK_CACHE 指向不存在文件,cache 为空表，词库层 tier1 照常（生产冷启动路径）,容错降级,通过,0.01,断言全部通过，输出与期望一致
+test_base_builder.py,test_salary,graph/base_builder（Stage D 基图聚合）,"薪资字符串 9+4 例（""1.5-2万""、""20-30万/年""、""300-500元/天""、""2万以上""、""面议"" 等）",对应月薪数值（如 17500、250000/12、4400）；面议/空/不限 → None,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_base_builder.py,test_edges_math,graph/base_builder（Stage D 基图聚合）,4 条 mock JD（A×3 + B×1，文本驱动 mock 抽取表）构建 2025-01 基图,J-T=3/3=1.0、T-S 共现 3/4=0.75、S-SP=3/3、E_jd T-01=4/4 T-02=1/4；未提及技能点不生成边；端点名称回填完整,数学手算,通过,0.24,断言全部通过，输出与期望一致
+test_base_builder.py,test_force_guard,graph/base_builder（Stage D 基图聚合）,同一 out_root 连续两次 build_base（第二次不带 force）,首次成功；第二次抛 FileExistsError,协议契约,通过,0.24,断言全部通过，输出与期望一致
+test_base_builder.py,test_decay_chain,graph/base_builder（Stage D 基图聚合）,窗 1（4 条 JD）→ 窗 2（仅 1 条 B 类）连续构建，读两窗 freq.json,"W(T-01)=1+α·4、W(T-AI-01)=0+α·3、W(J_A) 纯衰减；Python.windows=[""2025-01"",""2025-02""]",数学手算,通过,0.42,断言全部通过，输出与期望一致
+test_base_builder.py,test_merge_history_unit,graph/base_builder（Stage D 基图聚合）,"构造 new freq（J1 w=2, T1=2）与 prev（total=10, J2 w=4）",total=2+5、T1=2+1、J2 衰减保留 2.0、J1 原值；prev_window_label 月/季推导正确,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_base_builder.py,test_skill_prof,graph/base_builder（Stage D 基图聚合）,4 条 mock JD + MockProf 评估器（A 类出 P3/U、B 类出 P2）,T-AI-01: 3×P3；T-SW-01: 3×U+1×P2；n_jds=4；build_info 统计 4 JD/7 对；meta 版本/窗口回填,数学手算,通过,0.20,断言全部通过，输出与期望一致
+test_builder_infra.py,test_sampler_filter_and_dedup,builder/sampler + taxonomy_store + supervisor + apply（热更新基础设施）,"9 条 (层,文本) 基础上追加：1 条重复文本、1 条过短文本",docs 恒为 9（重复与过短均不入池）,边界,通过,0.00,断言全部通过，输出与期望一致
+test_builder_infra.py,test_sampler_strategies_and_cap,builder/sampler + taxonomy_store + supervisor + apply（热更新基础设施）,"3 层×6 条样本；_cap_targets({6,6,6}, 10)；4 层预算 2","min_coverage 每层≥3 共 9；裁剪 {B:4,C:6} 总额恰 10；uniform 极端时输出 ≤2",数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_builder_infra.py,test_sampler_next_batch_consumption,builder/sampler + taxonomy_store + supervisor + apply（热更新基础设施）,8 条样本 next_batch(4)×2 + 断点哈希；另建采样器验证 sample 不标记消费,批间零重叠、remaining 8→4→0；consumed_hashes 8 条无重复；sample 后 remaining 不变,协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_builder_infra.py,test_sampler_reproducible,builder/sampler + taxonomy_store + supervisor + apply（热更新基础设施）,同 items 同 seed 构造两个采样器各采一次,两次结果完全一致（构造即重置随机种子）,确定性,通过,0.00,断言全部通过，输出与期望一致
+test_builder_infra.py,test_taxonomy_store_task_mode,builder/sampler + taxonomy_store + supervisor + apply（热更新基础设施）,"空 store 依次 add_task×2 → modify_task(T-02) → merge_tasks(T-01,T-02)","编码 T-01/T-02；labels=""T-01:数据管道开发\nT-02:可观测性建设""；改写生效；合并后仅存 T-01",读写字环,通过,0.01,断言全部通过，输出与期望一致
+test_builder_infra.py,test_taxonomy_store_skill_mode_and_roundtrip,builder/sampler + taxonomy_store + supervisor + apply（热更新基础设施）,skill store add_task → save → 以 task 模式 load,编码 S-01；reload 后 mode 推断回 skill、条目保留、total=1,读写字环,通过,0.01,断言全部通过，输出与期望一致
+test_builder_infra.py,test_supervise_type_normalization,builder/sampler + taxonomy_store + supervisor + apply（热更新基础设施）,桩 LLM 返回 decisions：字符串 index '0'、approved 'true'、越界 index 99、非 dict 条目,"仅 updates[0] 被批准；rejected=[{index:1,reason:…}]；越界与非法条跳过（历史缺陷：类型失配曾误拒全部）",防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_builder_infra.py,test_supervise_empty_updates,builder/sampler + taxonomy_store + supervisor + apply（热更新基础设施）,updates=[] + 断言式 mock（被调用即抛错）,"返回 ([], []) 且 LLM 零调用",边界,通过,0.01,断言全部通过，输出与期望一致
+test_builder_infra.py,test_apply_updates_full_actions,builder/sampler + taxonomy_store + supervisor + apply（热更新基础设施）,含 6 条更新的列表（add×2 含同名、merge、modify、未知 code、未知 action）,动作日志含 add T-02/skip add/merge T-02->T-01/modify T-01；终态仅 1 条目；save 后 reload 一致,幂等,通过,0.01,断言全部通过，输出与期望一致
+test_classify_cache.py,test_jobcls_cache_roundtrip,jd_annotate/classify_job（归类缓存层 + LLM 判定合并）,写缓存 → 改 strict / 重写 CSV / 换体系 sha 三次读取,"匹配时返回 (cls, stats)；任一失配返回 (None, None)",读写字环,通过,0.04,断言全部通过，输出与期望一致
+test_classify_cache.py,test_merged_classification_with_llm_cache,jd_annotate/classify_job（归类缓存层 + LLM 判定合并）,3 条 JD（名称层直收/泛词送 LLM/无信号）+ 注入含 1 条判定的 LLM 缓存文件,"tier 集合 {1,3}；泛词条 {""jobs"":[],""tier"":3,""non_it"":true}；无缓存条 unclassified=true；缓存缺失时全部 unclassified",协议契约,通过,0.87,断言全部通过，输出与期望一致
+test_classify_cache.py,test_parse_array_tolerant,jd_annotate/classify_job（归类缓存层 + LLM 判定合并）,3 段文本：```json 围栏、带说明文字、无数组,前两例解析出数组；第三例 ValueError,容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_classify_cache.py,test_load_progress_filters_unknown_keys,jd_annotate/classify_job（归类缓存层 + LLM 判定合并）,progress.jsonl：单键行 + 双键行 + 空行；valid_keys 取子集,仅返回交集键；文件缺失返回空 dict,边界,通过,0.01,断言全部通过，输出与期望一致
+test_eval_metric.py,test_alloc_under_total_passthrough,graph/eval_jd_parse（评测指标核心函数）,"sizes={""DEV"":5,""OPS"":3}，total=100","原样 {""DEV"":5,""OPS"":3}",边界,通过,0.00,断言全部通过，输出与期望一致
+test_eval_metric.py,test_alloc_largest_remainder_with_floor,graph/eval_jd_parse（评测指标核心函数）,"四组 (sizes,total)：(55/45,100)、(9/7/6,22)、(9/7/6,10)、(8/2,10)","55/45；全保 9/7/6；{A:4,B:3,C:3} 恰满 10；{A:8,B:2}（B 不被 floor 抬过真实规模 2）",数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_eval_metric.py,test_norm_sp,graph/eval_jd_parse（评测指标核心函数）,"""Vue.js""、""ElasticSearch""、""C++""、""机器 学习""",vuejs、elasticsearch、c、机器学习,数学手算,通过,0.01,断言全部通过，输出与期望一致
+test_eval_metric.py,test_prf_sp_soft_pairing,graph/eval_jd_parse（评测指标核心函数）,"四组 (pred, gold) 技能点集对",变体 F1=1.0；全错 0.0；双空 1.0（不惩罚）；多 pred P=0.5 R=1.0,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_eval_metric.py,test_prf_exact_sets,graph/eval_jd_parse（评测指标核心函数）,"[{a,b},{c}] vs [{a},{c,d}]",P=R=F=0.6667,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_eval_metric.py,test_coverage_sp,graph/eval_jd_parse（评测指标核心函数）,四组系统/黄金技能点集,软匹配 1.0、全空 0.0、双空 1.0、部分命中 0.5,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_extractor_classify.py,test_classify_units_dedupe_and_aggregate,extractor/extractor（句级分类链）+ jd_annotate/classify_stacks（生产端门）,桩客户端 + 3 单元（含 1 重复），注入 2 条分类结果,"LLM 收到去重后的 2 单元；skill_counts={S-PY:2,S-ML:1}；skillpoint_counts={NumPy:2}；map={S-PY:{NumPy:2}}",数学手算,通过,0.01,断言全部通过，输出与期望一致
+test_extractor_classify.py,test_classify_units_cache_hit,extractor/extractor（句级分类链）+ jd_annotate/classify_stacks（生产端门）,实例 1 写缓存 → 实例 2（新桩）分类同一句,实例 2 LLM 零调用，聚合结果一致,读写字环,通过,0.01,断言全部通过，输出与期望一致
+test_extractor_classify.py,test_collect_misses_production_gate,extractor/extractor（句级分类链）+ jd_annotate/classify_stacks（生产端门）,5 行 CSV（标题命中/正文命中/排除域/miss/重复）,rows=5 unique=4；tier1=1 tier2=1 excluded=1 miss=1；misses 只含未命中条,协议契约,通过,0.10,断言全部通过，输出与期望一致
+test_extractor_text.py,test_split_sentences_boundaries_and_paren,extractor 文本族（text_split/taxonomy/signal_extractor/mention_mapper/news_filter）,一段含。；！\n与（括号）的 JD 文本,切成 1-5 条子句，Java/MySQL 均保留,边界,通过,0.00,断言全部通过，输出与期望一致
+test_extractor_text.py,test_split_sentences_length_filter,extractor 文本族（text_split/taxonomy/signal_extractor/mention_mapper/news_filter）,"""短。""×3 + 一条长句；""""与 None；含重复列表",全部子句 ≥ SENTENCE_MIN_LEN；空输入 []；去重保序,边界,通过,0.00,断言全部通过，输出与期望一致
+test_extractor_text.py,test_taxonomy_label_loading,extractor 文本族（text_split/taxonomy/signal_extractor/mention_mapper/news_filter）,load_skills/load_tasks/load_jobs + 手工构造,"mode 分别 skill/task/job；labels 为 [{code,name_zh}]；code_to_name/name_to_code 互查成立",读写字环,通过,0.01,断言全部通过，输出与期望一致
+test_extractor_text.py,test_fit_name_degrades_not_drops,extractor 文本族（text_split/taxonomy/signal_extractor/mention_mapper/news_filter）,27 字长名（max_chars=12）与正常短名,截断后 ≤12 且非空；短名原样,容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_extractor_text.py,test_validate_signal_rules,extractor 文本族（text_split/taxonomy/signal_extractor/mention_mapper/news_filter）,合法信号 dict + 5 种非法变体 + 超长名变体,合法 → Candidate(high)；非法 → None；置信度非法 → Candidate(low)；超长 → ≤20 字,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_extractor_text.py,test_mention_norm_and_lookup,extractor 文本族（text_split/taxonomy/signal_extractor/mention_mapper/news_filter）,labels 三体系各 1 条（含 name_en）+ 中英文提及,"norm 大小写归一；lookup[""skills""][机器学习/Machine Learning]→S-01 等",数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_extractor_text.py,test_news_filter_settings_fallback,extractor 文本族（text_split/taxonomy/signal_extractor/mention_mapper/news_filter）,settings 读取：不存在键 / 不存在节点,均返回 default（17、'ok'），不抛错,容错降级,通过,0.08,断言全部通过，输出与期望一致
+test_extractor_text.py,test_news_filter_title_guide,extractor 文本族（text_split/taxonomy/signal_extractor/mention_mapper/news_filter）,含 body 的论文记录桩,返回非空字符串（截断到配置窗口）,边界,通过,0.00,断言全部通过，输出与期望一致
+test_jd_annotate_gate.py,test_matcher_ascii_boundary,jd_annotate/classify_job + common + classify_stacks（Stage A 归类门）,"合成词库 {X-01:[Java,数据分析], X-02:[go,微信支付], X-03:[C++]} + 5 段文本","""需要Java开发经验""→X-01；javascript/GOLANG 零命中；""会Go语言和C++""→[X-02,X-03]",数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_jd_annotate_gate.py,test_matcher_chinese_and_order,jd_annotate/classify_job + common + classify_stacks（Stage A 归类门）,"""微信支付对账，兼做数据分析"" 等文本","命中按首现位置排序 [X-02, X-01]（跨岗共享词抢占防线）",数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_jd_annotate_gate.py,test_rule_stacks_tiers,jd_annotate/classify_job + common + classify_stacks（Stage A 归类门）,"三组 (标题, 正文)：""数据分析岗""+无关 / ""招聘专员""+正文含词 / 全无","([""X-01""],1)、([""X-01""],2)、([],0)",协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_jd_annotate_gate.py,test_jd_text_key_and_parts,jd_annotate/classify_job + common + classify_stacks（Stage A 归类门）,"空白差异的同文两份 / 不同标题；""技术类 or 产品类""；排除表标题两例",同文同键、异文异键；拆分双元素；电镀工艺命中排除、Java 不命中,边界,通过,0.00,断言全部通过，输出与期望一致
+test_jd_annotate_gate.py,test_iter_rows_bom_and_embedded_newline,jd_annotate/classify_job + common + classify_stacks（Stage A 归类门）,utf-8-sig CSV：正文字段内含真实换行（带引号）+ 缺列文件 + limit=1,嵌套换行不拆行（2 条记录）；缺 job_information 列容错空串；limit 生效（wc -l 虚高 14× 的口径防线）,防线回归,通过,0.01,断言全部通过，输出与期望一致
+test_jd_annotate_gate.py,test_collect_gate_and_dedup,jd_annotate/classify_job + common + classify_stacks（Stage A 归类门）,4 行 CSV（非泛词名直收/泛词名无技术正文/排除表域/同文重复）,"rows=4 unique_all=3 unique=3；直收 jobs=[""DEV-01""] tier=1；泛词 ambig_name_to_llm=1 且进 misses；排除表条 non_it=true tier=0",防线回归,通过,0.42,断言全部通过，输出与期望一致
+test_jd_annotate_gate.py,test_collect_presample_filter,jd_annotate/classify_job + common + classify_stacks（Stage A 归类门）,2 行 CSV + presample 键集仅含其一,unique_all=2、presampled_out=1、classified 仅 1 条（未选键规则与 LLM 都不见）,协议契约,通过,0.38,断言全部通过，输出与期望一致
+test_jd_annotate_gate.py,test_collect_strict_gate,jd_annotate/classify_job + common + classify_stacks（Stage A 归类门）,2 行 CSV（名称层可直收 / 仅正文关键词）分别以 lax 与 strict 跑,lax：2 条归类 0 miss；strict：1 条归类（名称层）、1 条进 misses（关键词不再直收）,协议契约,通过,0.81,断言全部通过，输出与期望一致
+test_jd_annotate_gate.py,test_ambiguous_names_registered,jd_annotate/classify_job + common + classify_stacks（Stage A 归类门）,AMBIGUOUS_JOB_NAMES 与 jobs_v2 name_zh 全集比对,泛词名 ⊆ 体系名称；非泛词名不在清单；排除表函数两例,协议契约,通过,0.01,断言全部通过，输出与期望一致
+test_jd_dedup.py,test_simhash_deterministic,graph/jd_dedup（Stage D0 近重复过滤）,同一文档文本计算两次,"两次相等，值为 [0,2^64) 内整数",确定性,通过,0.01,断言全部通过，输出与期望一致
+test_jd_dedup.py,test_simhash_near_dup_sensitivity,graph/jd_dedup（Stage D0 近重复过滤）,同模板换皮文本（公司名/年限/措辞微改）与无关文本,换皮海明距 ≤6；无关 >10,数学手算,通过,0.01,断言全部通过，输出与期望一致
+test_jd_dedup.py,test_jaccard_confirm_reject,graph/jd_dedup（Stage D0 近重复过滤）,换皮文本对与无关文本对的 gram 集合,变体 jv≥0.95、无关 ju<0.1,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_jd_dedup.py,test_cluster_keep_earliest,graph/jd_dedup（Stage D0 近重复过滤）,4 文档：同簇 3 条（时间递增）+ 不同模板 1 条,簇内 later 并入最早（find(1)=0）；模板外自成簇,协议契约,通过,0.01,断言全部通过，输出与期望一致
+test_jd_dedup.py,test_blocks_pigeonhole,graph/jd_dedup（Stage D0 近重复过滤）,海明距 ≤3 的两个 64 位指纹做 8×8 分块,至少共享一块（鸽笼原理保证候选对不漏）,数学手算,通过,0.01,断言全部通过，输出与期望一致
+test_jd_dedup.py,test_load_variants_absent,graph/jd_dedup（Stage D0 近重复过滤）,查询不存在的窗口 2099-01,{},容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_jd_dedup.py,test_artifact_roundtrip,graph/jd_dedup（Stage D0 近重复过滤）,构造 3 文档簇（k2/k3 为 k1 变体）build → load_variants,"{""k2"":""k1"",""k3"":""k1""}（代表自身不在表内）",读写字环,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_channel.py,test_build_extract_prompt_context,extractor/jd_extractor + mention_mapper + paper_mention（JD/论文信号通道）,2 条 JD 记录 + overlay_labels 文本,prompt 含叠层清单、jd_index 0/1、title 与截断正文,协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_channel.py,test_fit_name_and_validate,extractor/jd_extractor + mention_mapper + paper_mention（JD/论文信号通道）,合法/非法信号 dict 6 种 + 提及 3 种 + 超长名,合法 → Candidate；缺定义/缺证据/坏 kind → None；提及同理；超长 ≤20 字,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_channel.py,test_extract_jd_signals_batch,extractor/jd_extractor + mention_mapper + paper_mention（JD/论文信号通道）,桩 call_llm 返回 2 条 jd_signals（1 条含非法信号与提及、1 条 index 越界）,候选恰 1 条（联邦学习）；mentions 归属 doc_id=J1,协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_channel.py,test_extract_jd_signals_llm_failure,extractor/jd_extractor + mention_mapper + paper_mention（JD/论文信号通道）,桩 call_llm 抛 RuntimeError,"([], {})",容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_channel.py,test_map_mentions_exact_hit_no_llm,extractor/jd_extractor + mention_mapper + paper_mention（JD/论文信号通道）,三体系各 1 条精确提及,"{""机器学习"":""S-01"",""模型训练"":""T-01"",""算法工程师"":""DEV-01""}",数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_channel.py,test_map_mentions_llm_group_and_drop,extractor/jd_extractor + mention_mapper + paper_mention（JD/论文信号通道）,1 条未命中提及 + 1 条未知 type + 1 条空名；桩 _llm_map_group,"仅 {""联邦学习"":""S-07""} 入结果；LLM 收到 skills 组恰 1 条",协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_channel.py,test_paper_mention_units_and_mode_guard,extractor/jd_extractor + mention_mapper + paper_mention（JD/论文信号通道）,含 title/keywords/abstract/evidence_sentences 的论文桩；mode='unknown',单元覆盖四类来源；ValueError,边界,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_doc_tokens,graph/jd_delta_v2（JD ΔG v2 发现引擎）,含 K8s、Docker、5G、纯数字、xx.com 的文档文本,k8s/docker/5g 在集合；123 不在；com 仅当 compose 独立存在,边界,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_chinese_apriori_mining,graph/jd_delta_v2（JD ΔG v2 发现引擎）,df=6 的 5-gram 新词语料（逐级上卷）+ df<5 搭配,5-gram 计 6；低频搭配不进结果,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_trim_context,graph/jd_delta_v2（JD ΔG v2 发现引擎）,"4 个短语：""熟悉提示词工程""、""大模型调优经验""、""相关经验""、""鸿蒙""",提示词工程、大模型调优、空串、鸿蒙,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_pool_band_and_vocab_diff,graph/jd_delta_v2（JD ΔG v2 发现引擎）,已知词表 + 语料池（含'提示词工程'新词与'相关专业'通用搭配）,带宽下限砍低频、上限砍通用；词表词被差集吸收不进池；n_docs 统计正确,数学手算,通过,0.01,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_substring_reduction,graph/jd_delta_v2（JD ΔG v2 发现引擎）,含碎片'提示词'与真名'提示词工程'的候选池,碎片并入更长真名；独立高频短词保留,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_trim_resurrection_ceiling,graph/jd_delta_v2（JD ΔG v2 发现引擎）,"中频长变体修剪后 df 超限的短词（'年以上' df 42,906 > 上限）",超限短词不得复活进池（带宽按修剪后终名 df 判定）；带内真名照常入选,防线回归,通过,0.01,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_task_skill_novelty_gate,graph/jd_delta_v2（JD ΔG v2 发现引擎）,task/skill 候选过新颖性守门（涵盖/确新/未决/幻觉 code 四路桩应答）,被涵盖→改 alias 指向 T-01；确新→new_tasks 落一条；未决→不缓存不应用；幻觉 code→压非技术缓存,防线回归,通过,0.05,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_collect_evidence,graph/jd_delta_v2（JD ΔG v2 发现引擎）,含要求句与提及句的文档集,证据首句以要求动词开头，附 doc_id,协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_window_end_date,graph/jd_delta_v2（JD ΔG v2 发现引擎）,"""2022-06""、""2024-02""",2022-06-30、2024-02-29,边界,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_confirm_channel_removed,graph/jd_delta_v2（JD ΔG v2 发现引擎）,模块属性存在性检查,子串预筛确证通道已退役（无 confirm_channel/_CONFIRM_PROMPT）,边界,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_load_overlay_items_born_window_gate,graph/jd_delta_v2（JD ΔG v2 发现引擎）,store 含同窗与早窗出生实体，窗末 2022-06-01 取参与清单,仅早窗出生实体入选（出生=入场窗，至少滞后一窗）；now 正确传窗末,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_adjudication_hotupdate_wiring,graph/jd_delta_v2（JD ΔG v2 发现引擎）,3 候选残差过注入式 HotUpdater 裁决（skillpoint/alias 桩应答）,结论只入缓存（排水），ΔG 四类条目全空（数据基面原则）,防线回归,通过,0.01,断言全部通过，输出与期望一致
+test_jd_delta_v2.py,test_assembly_fingerprint,graph/jd_delta_v2（JD ΔG v2 发现引擎）,同一 settings 上下文计算两次,fp1==fp2 且长度 16,确定性,通过,0.34,断言全部通过，输出与期望一致
+test_jd_pre_sample.py,test_select_keys,graph/jd_pre_sample（Stage S0 预抽样）,100 指纹宇宙：cap=60 与 cap=100 两次、种子 s 与 s' 对照,60 键 + w0=100/60；100 键 + w0=1；同种子两次一致；小 cap 键集 ⊆ 大 cap 键集,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_jd_pre_sample.py,test_apply_presample,graph/jd_pre_sample（Stage S0 预抽样）,"键权重表 {k1:1.0,k2:2.5} × 三种 pre_rec（无/keys=null/触发 w0=1.5）","前两种原样；触发时 {k1:1.5,k2:3.75} 且 active=true",数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_jd_pre_sample.py,test_collect_filter,graph/jd_pre_sample（Stage S0 预抽样）,6 行 CSV（含重复）+ presample 半选/不选两轮 collect,unique_all=5 恒定；半选时 selected+presampled_out=5 且 classified 只含已选；未激活 unique=unique_all,协议契约,通过,1.26,断言全部通过，输出与期望一致
+test_jd_proficiency.py,test_strict_contract,extractor/jd_proficiency（JD 技能熟练度评估）,MockLLM 首次返回坏输出（重复 JSON 键）后返回合法输出,重试 1 次后成功（P2）；n_retries=1 n_invalid=1；全坏时 requirement_level=None 且 flags 含 llm_no_valid_result,协议契约,通过,0.05,断言全部通过，输出与期望一致
+test_jd_proficiency.py,test_flags,extractor/jd_proficiency（JD 技能熟练度评估）,四组带矛盾锚点的评估输入,flags 分别含 marker_level_conflict/p4_without_high_signals/insufficient_level_conflict/years_level_conflict,防线回归,通过,0.15,断言全部通过，输出与期望一致
+test_jd_proficiency.py,test_chunking,extractor/jd_proficiency（JD 技能熟练度评估）,17 对技能（chunk 上限致 3 批）,mock.calls==3；8 技能结果完整且全 P2,协议契约,通过,0.03,断言全部通过，输出与期望一致
+test_jd_proficiency.py,test_cache,extractor/jd_proficiency（JD 技能熟练度评估）,同一 JD 评估两次 → 换文本再评估,第二次 mock.calls 仍 1 且 n_cache_hits=1；结果与首次一致；换文本后 calls=2,读写字环,通过,0.01,断言全部通过，输出与期望一致
+test_jd_proficiency.py,test_aggregate_skills_skipped,extractor/jd_proficiency（JD 技能熟练度评估）,评估记录含 skipped 与正常技能各 1,F-1-01 不在结果、T-SW-01 在,边界,通过,0.00,断言全部通过，输出与期望一致
+test_jd_proficiency.py,test_aggregate_proficiency,extractor/jd_proficiency（JD 技能熟练度评估）,两 JD ×（P2/P3、含 1 条 review 与旗标、1 条 unset）,"n=2 levels{P2:1,P3:1}；review=1 flags 计 1；unset=1",数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_jd_sample.py,test_full_retention_under_cap,graph/jd_sample（Stage S 分层降采样）,45 条 IT（40+5）cap=100,n_it=45 全保；per_job weight=1.0,边界,通过,0.00,断言全部通过，输出与期望一致
+test_jd_sample.py,test_floor_protects_rare_strata,graph/jd_sample（Stage S 分层降采样）,1020 条（1000+20）cap=100 floor=30,SEC 层 20 全保；DEV 层 k=98、weight=1000/98；各层 k×w≈n（误差<0.5）,数学手算,通过,0.01,断言全部通过，输出与期望一致
+test_jd_sample.py,test_determinism_and_nesting,graph/jd_sample（Stage S 分层降采样）,500 条单层：同盐两轮/换盐/大小 cap 对照,同种子键集相等；异种子不等；小 cap 键集 ⊆ 大 cap 键集,确定性,通过,0.01,断言全部通过，输出与期望一致
+test_jd_source.py,test_delta_store_jd,builder/delta_store + snapshot_builder + participation（JD 第三源）,DeltaStore(jd) 同 doc_id 确证两次 + 第二文档确证,证据不重复累积；两文档各占一格；强度=noisy-or；source_kinds 含 jd_confirm,幂等,通过,0.01,断言全部通过，输出与期望一致
+test_jd_source.py,test_snapshot_contrib_branches,builder/delta_store + snapshot_builder + participation（JD 第三源）,三条仅判源不同的证据,三档衰减系数逐条手算正确,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_jd_source.py,test_merge_three_sources,builder/delta_store + snapshot_builder + participation（JD 第三源）,papers+news+jd 三份 ΔG（含同名条目与 graduated 条）,同名条目合一、证据 1+2 并集、participates=True、graduated 计数跳过,协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_jd_source.py,test_participation,builder/delta_store + snapshot_builder + participation（JD 第三源）,papers+news 各含独有与共有条目，两次 exclude_src 调用,仅存于被排除源的条目消失；共有与他源条目保留；overlay 文本含实体名,边界,通过,0.01,断言全部通过，输出与期望一致
+test_jd_source.py,test_confirm_anchor,builder/delta_store + snapshot_builder + participation（JD 第三源）,规范名锚定 vs 变体名锚定两条路径,规范名：合并一条、jd_docs 计入；变体名：两条分裂、jd_docs 丢失,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_jd_summary_replay.py,test_row_maps_codes_to_names,graph/jd_summary + replay（汇总出口与重放编排）,1 条 jd_vectors 记录 + 四体系名映射表,"std_job=""算法工程师""、task_vec=""模型训练""、skill_vec_prof=""机器学习:P3""、level=""中级(3-4年)""、n_* 计数正确",读写字环,通过,0.00,断言全部通过，输出与期望一致
+test_jd_summary_replay.py,test_write_summary_csv_filters,graph/jd_summary + replay（汇总出口与重放编排）,3 条向量记录（keep/非 IT/keep2 抄袭变体）+ dedup.json 变体表 + 缺失源窗口,汇总 CSV 恰 1 行（keep）；缺失源 FileNotFoundError,边界,通过,0.01,断言全部通过，输出与期望一致
+test_jd_summary_replay.py,test_replay_plan_and_dry_run,graph/jd_summary + replay（汇总出口与重放编排）,临时窗树（3 窗 jd_vectors、仅 2022-06 有快照 meta）replay(dry_run=True),"stats={""windows"":3,""dry_run"":True}；计划文本区分""仅 base""与""+ 快照/合成""；含""零 LLM""标记",协议契约,通过,0.17,断言全部通过，输出与期望一致
+test_jd_summary_replay.py,test_replay_validation_guards,graph/jd_summary + replay（汇总出口与重放编排）,三种非法窗口列表：未知窗 / 非最早窗起跑 / 中间有洞,三种均 SystemExit（α 链完整性守卫）,防线回归,通过,0.01,断言全部通过，输出与期望一致
+test_job_categorize.py,test_find,builder/job_categorize（转正岗位归类）,注入含 GJ-999（无 category）的临时基准,find_uncategorized 返回 [GJ-999],边界,通过,0.05,断言全部通过，输出与期望一致
+test_job_categorize.py,test_flow,builder/job_categorize（转正岗位归类）,临时基准 + 桩 LLM 建议一个类别，跑两轮,首轮写入+备份 categorize-*+日志；二轮 GJ-999 不再出现,幂等,通过,0.10,断言全部通过，输出与期望一致
+test_job_categorize.py,test_suggest_only,builder/job_categorize（转正岗位归类）,同上输入 + --suggest-only,基准文件内容不变,边界,通过,0.05,断言全部通过，输出与期望一致
+test_job_categorize.py,test_prompt,builder/job_categorize（转正岗位归类）,构建 build_prompt,prompt 含类别定义与现有岗位清单,协议契约,通过,0.04,断言全部通过，输出与期望一致
+test_job_hot_update.py,test_infer_source_kind,builder/job_hot_update（岗位关联分析助手）,4 个路径 + fallback 参数,news、jd、papers、fallback,边界,通过,0.00,断言全部通过，输出与期望一致
+test_job_hot_update.py,test_evidence_aggregation,builder/job_hot_update（岗位关联分析助手）,两 doc 证据（含超长截断）+ 空证据 + 非法形状,分块文本按 [doc] 前缀、≤上限；空/畸形 → 空串；date=min、tier=max,容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_job_hot_update.py,test_assoc_record_doc_id,builder/job_hot_update（岗位关联分析助手）,"_JobAssocRecord(""GJ-01"")","doc_id=""job_assoc:GJ-01""",协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_job_hot_update.py,test_validate_candidate_rules,builder/job_hot_update（岗位关联分析助手）,合法 + 5 种非法 + 非法置信度候选,合法 → Candidate；缺名/缺定义/缺证据/过短 → None；置信度 → low,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_job_hot_update.py,test_dedup_links,builder/job_hot_update（岗位关联分析助手）,"[{tasks,T-01}×2, {tasks,T-02}]",前两条合一，保留 2 条,幂等,通过,0.00,断言全部通过，输出与期望一致
+test_llm_402_breaker.py,test_all_keys_402_circuit_breaks,extractor/llm + taxonomy_mapper（402 熔断传播）,双 key 环，mock urlopen 恒抛 HTTP 402,两个 key 均被尝试（Authorization 去重数=2）；异常消息含 '402' 与 '全部启用 key 不可用',防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_llm_402_breaker.py,test_partial_402_rotates_to_healthy_key,extractor/llm + taxonomy_mapper（402 熔断传播）,首请求 402、次请求成功的 mock 序列,"返回原文 '{""decisions"": []}'",容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_llm_402_breaker.py,test_map_signals_propagates_breaker,extractor/llm + taxonomy_mapper（402 熔断传播）,map_signals 注入熔断 call_llm,ResourceExhaustedError 向上抛出,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_llm_call.py,test_extract_json_tolerant,extractor/llm（call_llm 协议层）,4 段模型输出文本 + 1 段非 JSON,前四例解析出对象或数组；末例 ValueError,容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_llm_call.py,test_call_llm_success,extractor/llm（call_llm 协议层）,mock urlopen 返回 choices 载荷；parse_json 两种模式,"True 模式 → {""ok"": true}；False 模式 → 原文；请求体 messages 携带提示词",协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_llm_call.py,test_call_llm_length_upgrade,extractor/llm（call_llm 协议层）,首响应 finish_reason=length、次响应成功的 urlopen 桩,第二次请求 max_tokens=首次×2（封顶）；最终解析成功,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_llm_call.py,test_call_llm_402_breaker_single_key,extractor/llm（call_llm 协议层）,显式单 key + urlopen 恒抛 402,立即 ResourceExhaustedError（单 key 即全部启用 key）,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_llm_call.py,test_call_llm_402_rotates_then_breaks,extractor/llm（call_llm 协议层）,2 key 轮转环 + urlopen 恒抛 402,两个 key 均被尝试后熔断（Authorization 去重数=2）,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_llm_call.py,test_call_llm_402_then_success,extractor/llm（call_llm 协议层）,轮转环 2 key，首请求 402、次请求成功,"返回 {""ok"": 1}（换 key 后成功）",容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_llm_call.py,test_call_llm_non_retryable_http_error,extractor/llm（call_llm 协议层）,mock urlopen 恒抛 404,HTTPError 原样抛出,边界,通过,0.00,断言全部通过，输出与期望一致
+test_llm_client_cache.py,test_keyring_round_robin,extractor/llm（KeyRing）+ llm_client + cache,"KeyRing([""k1"",""k2"",""k3""]) 连取 5 次；单 key 环","序列 k1,k2,k3,k1,k2；单 key 恒返回该 key",确定性,通过,0.00,断言全部通过，输出与期望一致
+test_llm_client_cache.py,test_keyring_thread_safety,extractor/llm（KeyRing）+ llm_client + cache,4 线程 × 50 次并发取 key,总数 200 无丢失；4 key 各恰 50 次（均匀且线程安全）,并发安全,通过,0.00,断言全部通过，输出与期望一致
+test_llm_client_cache.py,test_extract_json_array_tolerant,extractor/llm（KeyRing）+ llm_client + cache,裸数组 / 前后带说明 / 无数组三段文本,前两例取出数组；末例 ValueError,容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_llm_client_cache.py,test_gather_batch_fault_tolerance,extractor/llm（KeyRing）+ llm_client + cache,3 批分类任务，中批抛'重试耗尽',其余两批结果保序合并；失败批返回空不中断（下次运行自动重试）,容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_llm_client_cache.py,test_sentence_cache_roundtrip,extractor/llm（KeyRing）+ llm_client + cache,"规范化键（""熟悉 Python，熟练使用。"" vs ""熟悉python熟练使用""）写读 + 旧格式 codes 行追加",同键命中 hits=1；重载持久；旧格式自动升级为 matches 形态,读写字环,通过,0.01,断言全部通过，输出与期望一致
+test_llm_client_post.py,test_client_post_success_and_tokens,extractor/llm_client._post + builder/llm.call_llm,mock urlopen 返回带 usage 的成功载荷（total_tokens=77）,解析出数组；total_tokens=77 call_count=1（成本核算口径）,协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_llm_client_post.py,test_client_post_429_retry_then_ok,extractor/llm_client._post + builder/llm.call_llm,首请求 429、次请求成功,第二次成功返回 []，共 2 次请求,容错降级,通过,3.48,断言全部通过，输出与期望一致
+test_llm_client_post.py,test_client_post_non_retryable_raises,extractor/llm_client._post + builder/llm.call_llm,mock urlopen 恒抛 404,HTTPError 直抛,边界,通过,0.00,断言全部通过，输出与期望一致
+test_llm_client_post.py,test_builder_call_llm_success_and_length_upgrade,extractor/llm_client._post + builder/llm.call_llm,builder 侧 call_llm：首响应 finish_reason=length、次响应成功,返回解析对象；第二次请求 max_tokens=首次×2（封顶 MAX_TOKENS_CAP）；确证覆盖 builder 实现,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_llm_live.py,test_live_call_llm_json_contract,,"提示词 '只输出 JSON：{""ok"": true}'（max_tokens=200，真实 API 端点）","返回 dict 且 r[""ok""] is True（稳健解析链在真实输出上成立）",协议契约,通过,1.07,"真实端点单次调用成功，实测返回 {""ok"": true}；经 KeyRing 轮转（api-key.txt 首个可用 key）"
+test_llm_live.py,test_live_classify_sentences_skill,,"2 句典型 JD 子句（""熟悉Python开发与数据分析""、""负责机器学习模型训练与调优""）+ 49 技能体系",每句返回匹配列表；code 均在体系合法集合内且含 skillpoints 键；至少一句非空,协议契约,通过,2.69,"实测分类：熟悉Python开发与数据分析→['T-SW-01', 'T-DA-04']; 负责机器学习模型训练与调优→['T-AI-01']"
+test_llm_live.py,test_live_merged_extraction,,"2 句（""熟悉Python后端开发""、""负责MySQL数据库性能优化""），merged 模式关闭缓存","每句结构 {""skills"":[…], ""tasks"":[…], ""overlays"":[…]}；聚合计数≥1；code 全部合法",协议契约,通过,2.56,实测 merged 抽取：熟悉Python后端开发→技能['T-SW-01']/任务['T-01']; 负责MySQL数据库性能优化→技能['T-DA-02']/任务['T-06']
+test_mapper_job_gate.py,test_job_gate_verdicts,extractor/taxonomy_mapper（岗位守门）,含近同义与合法新岗的映射批次 + 桩 LLM 守门应答,近同义条目 map_to 基线 code；守门只调用 1 次（批级合并）,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_mapper_job_gate.py,test_job_gate_llm_failure_keeps,extractor/taxonomy_mapper（岗位守门）,守门桩抛错 + 确定性同名条目,失败条 status=keep 且无 map_to；同名条仍映射 DEV-15,容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_mapper_near_recheck.py,test_near_recheck_same_forces_map,extractor/taxonomy_mapper（近邻复核）,一批含近重复（vs T-AI-08）与真新条目 + 桩 LLM 判 same,近重复 map_to=T-AI-08 理由'近邻复核 same'；真新条 keep；复核仅 1 次调用,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_mapper_near_recheck.py,test_near_recheck_llm_failure_keeps,extractor/taxonomy_mapper（近邻复核）,复核桩抛错,条目 status=keep 无 map_to,容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_mapper_recheck.py,test_recheck_keeps_revisions,extractor/taxonomy_mapper（守门终审 recheck）,一批含涵盖变体/兄弟环节/真新条目 + 桩 recheck 应答,"map_to=tasks/T-13；兄弟条目按改名合并（脑波数据处理 在、脑波数据采集 不在）；kept 理由含""守门通过""与 nearest code",防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_news_lazy_parse.py,test_scan_news_metadata_sync_and_fallback,graph/news_signal 惰性解析（新闻接入）,临时源目录（2 文件）+ 损坏缓存场景,source_file 列表有序；doc_id 按相对路径；缓存损坏时重扫得 3 条,容错降级,通过,0.17,断言全部通过，输出与期望一致
+test_news_lazy_parse.py,test_parse_news_selected,graph/news_signal 惰性解析（新闻接入）,选定 1 条 doc_id,恰解析 1 条，body 非空且带 md5,读写字环,通过,0.01,断言全部通过，输出与期望一致
+test_news_lazy_parse.py,test_news_delta_window_lazy_wiring,graph/news_signal 惰性解析（新闻接入）,临时池 5 条 cap=2,抽样 2 条且 sample.json 记录 doc_ids；解析集合=抽样集合,端到端产物,通过,1.80,断言全部通过，输出与期望一致
+test_news_sampling.py,test_news_sample_cap_deterministic,graph/news_signal 降采样,500 条池 cap=100 同种子两次抽样,两次 doc_id 序列一致；sample.json 记 pool_size/cap/doc_ids 与实抽一致,确定性,通过,0.01,断言全部通过，输出与期望一致
+test_news_sampling.py,test_news_sample_cap_noop_within_cap,graph/news_signal 降采样,50 条池 cap=100,原列表原样返回（同一对象）；不落 sample.json,边界,通过,0.01,断言全部通过，输出与期望一致
+test_overlay_participation.py,test_build_overlay_labels,graph/run_jd_extract（叠层注入）+ snapshot_builder/participation,任务/技能各 1 条参与实体,"首行""- 多技能模型融合调优（任务）：…""；名称集={多技能模型融合调优,提示工程}",协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_overlay_participation.py,test_classify_merged_overlays,graph/run_jd_extract（叠层注入）+ snapshot_builder/participation,桩客户端按 prompt 中叠层清单应答 + 2 句文本,"叠层句 overlays=[""提示工程""]；基图句 skills=T-SW-01；prompt 含""叠层候选体系""段",协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_overlay_participation.py,test_merge_delta_remap_effective_window,graph/run_jd_extract（叠层注入）+ snapshot_builder/participation,store 含 retired_window=2023-06 条目，分别以 05/06 窗末 merge,05 视图含该条且 n_remapped_skipped=0；06 视图不含且计数=1,边界,通过,0.00,断言全部通过，输出与期望一致
+test_overlay_participation.py,test_merge_delta_rename_retroactive,graph/run_jd_extract（叠层注入）+ snapshot_builder/participation,store 含 2026-08-30 改名条目（机器人技能示教），按出生窗起各窗 merge,所有窗口渲染新名；rename_history 只留 store 不进快照产物,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_overlay_participation.py,test_participating_items_remap_skip,graph/run_jd_extract（叠层注入）+ snapshot_builder/participation,同上 store 两个窗末取 participating_items,05 含 团队协作与协调+数据流漂移治理；06 仅剩后者,边界,通过,0.00,断言全部通过，输出与期望一致
+test_overlay_participation.py,test_job_overlay_prompt_and_split,graph/run_jd_extract（叠层注入）+ snapshot_builder/participation,PROMPT_JOB_OVERLAY 模板 + 岗位叠层清单构建,模板含 {overlay_jobs}/{titles} 与'宁缺毋滥'；岗位条目带定义行（标题级通道）,协议契约,通过,0.00,断言全部通过，输出与期望一致
+test_overlay_participation.py,test_merge_delta_graduated_window_gate,graph/run_jd_extract（叠层注入）+ snapshot_builder/participation,store 含 graduated_window 条目，生效窗前后两个窗末 merge,生效窗前仍渲染叠层（n_graduated_skipped=0）；生效窗起移出（计数=1）,边界,通过,0.00,断言全部通过，输出与期望一致
+test_paper_delta_mention.py,test_strengthen_and_idempotent,builder/paper_delta（论文提及强化）,skill+task 各 1 条提及，strengthen 两轮,条目并入且不重复创建；强度不变；source_kinds 标 mention,幂等,通过,0.01,断言全部通过，输出与期望一致
+test_paper_delta_mention.py,test_cross_paper_noisy_or,builder/paper_delta（论文提及强化）,两篇论文各 1 条同实体提及,证据列表两格分属两 doc,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_paper_delta_mention.py,test_evidence_cap,builder/paper_delta（论文提及强化）,超封顶数量的提及句,证据条数 ≤ MENTION_EVIDENCE_CAP,边界,通过,0.00,断言全部通过，输出与期望一致
+test_paper_delta_mention.py,test_empty_mention,builder/paper_delta（论文提及强化）,空提及列表,strengthenings 空,边界,通过,0.00,断言全部通过，输出与期望一致
+test_promotion.py,test_dry_run,builder/promotion（转正）,构造仅 scan 级证据/文档数不足的候选 + dry-run,文件零写入；候选全被拒（理由含文档数不足）,边界,通过,0.03,断言全部通过，输出与期望一致
+test_promotion.py,test_scan_grade_not_counted,builder/promotion（转正）,同实体 scan 5 篇 vs require 2 篇两种证据形态,scan-only 不达标；require 2 篇达标入选,防线回归,通过,0.02,断言全部通过，输出与期望一致
+test_promotion.py,test_promote_and_mark,builder/promotion（转正）,多类型候选执行 run_promotion（临时基准副本）,三体系文件按规则追加；meta 提升；ΔG 源标 graduated；备份目录生成,端到端产物,通过,0.09,断言全部通过，输出与期望一致
+test_skillpoint_norm.py,test_l1_folding,graph/skillpoint_norm（技能点三层归一）,"[""Mybatis"",""MyBatis"",""HTML 5"",""HTML5"",""NodeJS"",""zookeeper""]",归一为 MyBatis、HTML（含 retired 重映射）、Node.js、ZooKeeper,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_skillpoint_norm.py,test_l2_alias_semantic,graph/skillpoint_norm（技能点三层归一）,"[""C语言"",""Golang"",""K8s"",""单片机"",""MCU"",""WIFI"",""IIC"",""以太网""]",C、Go、Kubernetes、单片机（MCU 并入）、Wi-Fi、I2C、以太网,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_skillpoint_norm.py,test_distinct_not_merged,graph/skillpoint_norm（技能点三层归一）,"[""Spring"",""Spring Boot"",""Spring Cloud"",""C"",""C++"",""C#"",""Angular"",""AngularJS""]",8 个规范名全部独立保留（无过度合并）,防线回归,通过,0.00,断言全部通过，输出与期望一致
+test_skillpoint_norm.py,test_l3_llm_first_seen,graph/skillpoint_norm（技能点三层归一）,首次见 'RocketMQ中间件'/'TDSQL'（mock LLM 拆分）→ 新实例再见,"首见拆分 (RocketMQ,中间件)/(TDSQL,数据库)；第二次零 LLM 调用；缓存文件含新行",读写字环,通过,0.01,断言全部通过，输出与期望一致
+test_skillpoint_norm.py,test_normalize_skillpoint_map_dedup,graph/skillpoint_norm（技能点三层归一）,"{T-SW-01:[""Mybatis"",""Spring MVC""], T-DA-02:[""MySQL"",""mysql""]}","{T-SW-01:[""MyBatis"",""Spring MVC""], T-DA-02:[""MySQL""]}",幂等,通过,0.00,断言全部通过，输出与期望一致
+test_skillpoint_norm.py,test_expansion_and_retired,graph/skillpoint_norm（技能点三层归一）,"含 ""C""、""HTML5""、""Vue2"" 的映射",按注册表 expansions/retired 展开或重映射,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_snapshot.py,test_merge_and_filter,graph/snapshot_builder + graph_snapshot（时间截面快照）,papers/news ΔG 夹具（含过期/无日期/未来证据）+ 窗末日期,过期与未来证据剔除、无日期保留（三档分别断言）,边界,通过,0.00,断言全部通过，输出与期望一致
+test_snapshot.py,test_job_links,graph/snapshot_builder + graph_snapshot（时间截面快照）,合并后的快照数据,job_links 每条右端实体存在,协议契约,通过,0.01,断言全部通过，输出与期望一致
+test_snapshot.py,test_empty_delta,graph/snapshot_builder + graph_snapshot（时间截面快照）,空 ΔG 输入,构建成功且 stats 标记缺源,容错降级,通过,0.00,断言全部通过，输出与期望一致
+test_snapshot.py,test_build_and_idempotent,graph/snapshot_builder + graph_snapshot（时间截面快照）,同窗两次 build_snapshot（force 与否）,force 重建逐键一致；无 force 二次抛 FileExistsError,幂等,通过,0.53,断言全部通过，输出与期望一致
+test_snapshot.py,test_keep_base_edges,graph/snapshot_builder + graph_snapshot（时间截面快照）,已有基图边 → force 重建（两种模式）,默认保留且 meta 计数；reset 后为空 schema,读写字环,通过,0.73,断言全部通过，输出与期望一致
+test_stage_helpers.py,test_build_universe_dedup,graph/jd_pre_sample + jd_sample + jd_dedup + annotate_jd（阶段产物端到端）,3 行 CSV（1 条同文重复）,记录数 3、指纹唯一 2（两口径分计）,边界,通过,0.01,断言全部通过，输出与期望一致
+test_stage_helpers.py,test_make_presample_trigger_and_not,graph/jd_pre_sample + jd_sample + jd_dedup + annotate_jd（阶段产物端到端）,10 指纹窗口：cap=5 与 cap=100 两轮 + 已存在再跑,"触发：5 键 w0=2.0 population 记 10/5；未触发：keys=null selected=10；已存在打印""已存在，跳过""",端到端产物,通过,0.01,断言全部通过，输出与期望一致
+test_stage_helpers.py,test_make_sample_end_to_end,graph/jd_pre_sample + jd_sample + jd_dedup + annotate_jd（阶段产物端到端）,4 键 A 门桩结果（3+1 分层）：cap=2/floor=1、cap=1000、含 unclassified 三轮,DEV 层 3→2 weight=1.5、keys 3 条带权重；全保 keys=null n=4；A 未跑满 SystemExit,端到端产物,通过,0.01,断言全部通过，输出与期望一致
+test_stage_helpers.py,test_build_variants_star_cluster,graph/jd_pre_sample + jd_sample + jd_dedup + annotate_jd（阶段产物端到端）,3 文档（最早代表/最小编辑变体/无关）+ A 门桩,变体指向最早代表、代表不在表；load_variants 回读同口径,端到端产物,通过,0.02,断言全部通过，输出与期望一致
+test_stage_helpers.py,test_iter_annotated,graph/jd_pre_sample + jd_sample + jd_dedup + annotate_jd（阶段产物端到端）,2 行原始行（含 work_year=3-5年 / 全空）+ StackAnnotator,首行补齐 techstack/tier=1/level=L2/source=work_year；次行空标注且判级为空,端到端产物,通过,0.10,断言全部通过，输出与期望一致
+test_synthesis.py,test_gaps,graph/synthesis（合成 G_eff = G_base ⊕ ΔG）,手造 base E_jd 与 ΔG 强度（含足额/不足/岗位类）,gap 0.5/0.8 与 0.4/0.05；足额 gap=0；jobs 类跳过计数 1,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_synthesis.py,test_synthesis_math,graph/synthesis（合成 G_eff = G_base ⊕ ΔG）,小基图 + 含增强/链接的 ΔG,各边 Δw 逐条手算值断言；合成新 T-S 边 2 条,数学手算,通过,0.00,断言全部通过，输出与期望一致
+test_synthesis.py,test_ts_cap,graph/synthesis（合成 G_eff = G_base ⊕ ΔG）,上限设 1 + 两条候选新边,"仅 (T-02, T-AI-01) 入 effective",边界,通过,0.00,断言全部通过，输出与期望一致
+test_synthesis.py,test_empty_delta,graph/synthesis（合成 G_eff = G_base ⊕ ΔG）,空 ΔG 合成,effective 边=base；统计全 0,边界,通过,0.00,断言全部通过，输出与期望一致
+test_synthesis.py,test_integration_independent,graph/synthesis（合成 G_eff = G_base ⊕ ΔG）,完整合成两轮 + 目录 md5 对比,base/delta md5 不变；effective=base+Δw；二次合成结果一致（忽略时间戳）,防线回归,通过,0.68,断言全部通过，输出与期望一致

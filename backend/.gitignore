@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+runtime/uploads/*
+runtime/outputs/*
+!runtime/uploads/.gitkeep
+!runtime/outputs/.gitkeep
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 接入侧追加：本地虚拟环境与测试覆盖率产物不入库。
+# 前者随机器而异，后者随每次跑测试重写，入库只会让每次提交都带上一份噪声差异。
+.venv/
+coverage.xml

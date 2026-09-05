@@ -1,0 +1,147 @@
+{
+  "manifest_version": "v3_design_manifest_2026-08-18_draft",
+  "status": "implementation_draft_pending_two_external_confirmations",
+  "final_blind_allowed": false,
+  "pending_confirmations": [
+    "whether team skill v0.4 49 nodes are final leaf nodes",
+    "whether competition/teacher defines an official formula for resume extraction accuracy >= 90%"
+  ],
+  "files": {
+    "README.md": {
+      "sha256": "476e8735d45d019f134d5ee27173da358436062739fb9b6f1f84dad7e852d205",
+      "size_bytes": 2526
+    },
+    ".env.example": {
+      "sha256": "fe0c2927854b5659c59982e8f98434f61ac405532fcbf4f796c3317f050bf587",
+      "size_bytes": 84
+    },
+    "config/team_skills_v0.4.json": {
+      "sha256": "154c7c85607cec8eacc19ba0ddff57168a81fd2abe4e93d71399e1e6a76d0399",
+      "size_bytes": 20253
+    },
+    "config/team_skill_adapter_v1.json": {
+      "sha256": "35f7b6316df6bb7513895768a0f22822845f566cec57fcf8ee1a7733244b1be9",
+      "size_bytes": 17970
+    },
+    "config/taxonomy_crosswalk_v1.json": {
+      "sha256": "6f21c41714f1a659d29af1b9c4a7a97dbc2afe29df17f80ab01f29485740a98b",
+      "size_bytes": 16483
+    },
+    "config/team_skill_output_schema_v3.json": {
+      "sha256": "e4be785b9cc3ca10131461a83d7b992ed24cab8fc57a0a40d5aac18c3a809be3",
+      "size_bytes": 3593
+    },
+    "config/team_skill_verifier_v3.txt": {
+      "sha256": "7d2d9abc0b45e9425652af072213837523ea2e16aa2c8eee86eb15f0ef889994",
+      "size_bytes": 2486
+    },
+    "docs/annotation_v2/evaluation_metrics_spec_v2_draft.md": {
+      "sha256": "26e1c9011e91b2de91a58e13b8889312ad6ad8fddf7a9cac70668f7cf008488c",
+      "size_bytes": 4300
+    },
+    "docs/v3_final_architecture.md": {
+      "sha256": "764e5539f9f8def548e13e103dc2d6b7dfccc36a90deb318e7bfc41a750d237f",
+      "size_bytes": 3778
+    },
+    "docs/v3_execution_status.md": {
+      "sha256": "1de16615980809ad49dbd1f41f46b448a08822334471ce0052f57cef94fa62ff",
+      "size_bytes": 1926
+    },
+    "extractor/document_parser_v3.py": {
+      "sha256": "b76f62b325bb99489145caee41137b323d25178c1f2d4350d21f1f7c04734c22",
+      "size_bytes": 4507
+    },
+    "extractor/team_skill_registry.py": {
+      "sha256": "b08847cf52ac74ca4063df754ba6be08a37453d2a9fc93c75f88ae146530b21c",
+      "size_bytes": 9806
+    },
+    "extractor/team_skill_schema_v3.py": {
+      "sha256": "b82942e11b980e26e9f2d6567943cb45abbc538c726c86c28dd0b5783f723364",
+      "size_bytes": 6748
+    },
+    "extractor/team_skill_candidate_generator_v3.py": {
+      "sha256": "9e324a6257ba4d6bb7457a29c1c7b33faca91f5b76466dee9c78a668b02dde7f",
+      "size_bytes": 2200
+    },
+    "extractor/team_skill_verifier_v3.py": {
+      "sha256": "ab1d617ae09e968413bf24a23c73ffc9838232a0d3b7ff4df434a30f6c7a0df5",
+      "size_bytes": 7601
+    },
+    "extractor/team_skill_auditor_v3.py": {
+      "sha256": "6bf92d5d546f0e0ce9b7ea17ced6ae450a9c13ae986cfc0a4a3362a92e3a6e1c",
+      "size_bytes": 5417
+    },
+    "extractor/team_skill_pipeline_v3.py": {
+      "sha256": "e099efaad10d6b87656e5dde8c8204838f39e89fa4c73224fc234fe155b77d64",
+      "size_bytes": 3479
+    },
+    "extractor/team_skill_profile_v3.py": {
+      "sha256": "0814f470a74ff3ca08eddd6bdcda0b3792001b96edacb3e817a27956f700cf71",
+      "size_bytes": 4112
+    },
+    "extractor/team_skill_metric_v2.py": {
+      "sha256": "074935b458b40d1449af90f937aa03a5445f54917e9e598894af68765361b5ba",
+      "size_bytes": 5735
+    },
+    "scripts/evaluate_team_skill_v2.py": {
+      "sha256": "94f88d074200ae6db490cdd4756b76ef819aba740367d5d829608c93e2027fd1",
+      "size_bytes": 1840
+    },
+    "scripts/evaluate_legacy_crosswalk_diagnostic_v3.py": {
+      "sha256": "9ce86f687bbdf9873cdbfa9e4a8290f726dadc4f8e82cff7fd2d9641083b7897",
+      "size_bytes": 3223
+    },
+    "tests/test_document_parser_v3.py": {
+      "sha256": "7546791be58f0063d308b57a4476427d5801b8c0f837675fd2c2ec6a58af2bbf",
+      "size_bytes": 1800
+    },
+    "tests/test_team_skill_registry_v3.py": {
+      "sha256": "aab6301f3a972fbe35aed47ef7a15e4ef321486c4d44e592352e7a55f39e712b",
+      "size_bytes": 1924
+    },
+    "tests/test_team_skill_schema_v3.py": {
+      "sha256": "e3e0bb8fc261215ced25516834cf9550c4871c0cca54f8b1925375c5302cc524",
+      "size_bytes": 1276
+    },
+    "tests/test_team_skill_candidate_generator_v3.py": {
+      "sha256": "2a47b27e9c17d76cf3e93067481cd67dce0aad946d7ba5db045891e33b7ffb75",
+      "size_bytes": 1728
+    },
+    "tests/test_team_skill_verifier_v3.py": {
+      "sha256": "c4626f0eb0af051c39c153bd11f6c85f971d91804e69b889dfde08925379963e",
+      "size_bytes": 2941
+    },
+    "tests/test_team_skill_auditor_v3.py": {
+      "sha256": "02f22ab8b3efdc02aa0f4757a5cec352a79c4a081969ede96ac89f54ab05930c",
+      "size_bytes": 2610
+    },
+    "tests/test_team_skill_pipeline_v3.py": {
+      "sha256": "76d3daa4ae0caf00765fe5112c1b8eb0d4e7ae4950ac153ee4f495cca5fd6866",
+      "size_bytes": 3151
+    },
+    "tests/test_team_skill_profile_v3.py": {
+      "sha256": "d372a79eb64e353e34d9aca0bb20000df51ded8da15263517699f02179d4916e",
+      "size_bytes": 2379
+    },
+    "tests/test_team_skill_metric_v2.py": {
+      "sha256": "136153064e22084f541431c16a5cbc8cfcd61c37c6a60b39eff1630f3eb505af",
+      "size_bytes": 2350
+    },
+    "tests/test_taxonomy_crosswalk_v1.py": {
+      "sha256": "a51f4c3239057d218b3e041c19e2f2c7ca76dadec65fe0eb34f2901d21fad318",
+      "size_bytes": 1053
+    },
+    "outputs/v3_stage1_coverage.txt": {
+      "sha256": "d40d86180f2e280b0614c7ac5ea5e38bb35efd598d5c6d5808a6f523ee72c6f7",
+      "size_bytes": 1272
+    },
+    "outputs/v3_stage1_execution_summary.json": {
+      "sha256": "e9ef72caa2fee7a1af738daf7c49dfccae764e95163b1cb5852dea98ac980752",
+      "size_bytes": 2209
+    },
+    "outputs/v3_legacy_crosswalk_diagnostic.json": {
+      "sha256": "395f9a3a7ebc1ac2f3183530772eb167138d47b341d22d617775060d8eb2f5bb",
+      "size_bytes": 784
+    }
+  }
+}

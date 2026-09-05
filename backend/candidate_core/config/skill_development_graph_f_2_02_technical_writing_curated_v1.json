@@ -1,0 +1,201 @@
+{
+  "version": "stage2b2_f_2_02_technical_writing_curated_v1",
+  "team_skill_id": "F-2-02",
+  "team_skill_name": "书面技术文档撰写",
+  "scope": "覆盖文档类型与读者定位、技术方案与实验结果的结构化表达、图表与术语规范、评审意见的处置，以及文档随实现变更的同步维护核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "DOC-01",
+      "name_zh": "读者定位与文档类型选择",
+      "type": "CORE",
+      "definition": "依据读者的使用场景选定文档类型与信息项，使文档承担明确的用途而非罗列已知信息。",
+      "prerequisites": [],
+      "learning_outcome": "能够为一项技术产出选定文档类型，并列出该类型必需的信息项及其取舍理由。",
+      "evidence_task": "为一项既有技术产出选定文档类型，列出必需信息项与省略项，并说明依据读者何种使用场景做此取舍。",
+      "validation_criteria": [
+        "信息项清单对应所选文档类型的既定要求",
+        "省略项的理由指向具体的读者场景"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_26514",
+        "iso_iec_ieee_15289"
+      ]
+    },
+    {
+      "subskill_id": "DOC-02",
+      "name_zh": "技术逻辑的结构化表达",
+      "type": "CORE",
+      "definition": "按问题、约束、方案、依据、边界的顺序组织技术论述，使读者能据以判断方案是否适用于自身情形。",
+      "prerequisites": [
+        "DOC-01"
+      ],
+      "learning_outcome": "能够撰写结构完整的技术方案文档，其中每项设计决策均附依据与适用边界。",
+      "evidence_task": "就一项技术方案撰写文档，逐项写明问题与约束、所选方案、决策依据与适用边界，并标注未覆盖的情形。",
+      "validation_criteria": [
+        "每项决策均有可核查的依据",
+        "适用边界与未覆盖情形均明确列出"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_26514",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "DOC-03",
+      "name_zh": "实验结果与数据呈现",
+      "type": "CORE",
+      "definition": "以可复现的方式报告实验设置、量测口径与结果，使读者能判断结论的成立范围并据以复算。",
+      "prerequisites": [
+        "DOC-02"
+      ],
+      "learning_outcome": "能够撰写实验报告，写明设置、口径、结果与结论的成立条件，且他人可据以复现。",
+      "evidence_task": "就一次技术实验撰写报告，写明环境与参数、量测口径、原始结果与统计处理方式，并说明结论的成立条件。",
+      "validation_criteria": [
+        "实验设置与口径足以支持他人复现",
+        "结论的成立条件与数据范围一致"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_15939",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "DOC-04",
+      "name_zh": "图表与术语规范",
+      "type": "CORE",
+      "definition": "按统一的术语表与图表规范呈现技术信息，使同一概念在全文与配图中保持一致指称。",
+      "prerequisites": [
+        "DOC-01"
+      ],
+      "learning_outcome": "能够建立并应用文档级术语表与图表规范，消除同义异名与图文口径不一致。",
+      "evidence_task": "为一份既有技术文档建立术语表与图表规范，逐处校正同义异名与图文口径不一致，保留修订记录。",
+      "validation_criteria": [
+        "术语表覆盖全文出现的关键概念",
+        "修订记录逐处对应原文位置"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_26514"
+      ]
+    },
+    {
+      "subskill_id": "DOC-05",
+      "name_zh": "评审处置与版本维护",
+      "type": "CORE",
+      "definition": "逐条处置文档评审意见，并在实现发生变更时同步更新文档，使文档与被描述对象保持一致。",
+      "prerequisites": [
+        "DOC-02",
+        "DOC-04"
+      ],
+      "learning_outcome": "能够完成评审意见的逐条处置与文档的版本化维护，说明每次修订对应的实现变更。",
+      "evidence_task": "就一份文档完成一轮评审，逐条记录意见、处置方式与理由；在实现变更后同步更新并标注变更来源。",
+      "validation_criteria": [
+        "每条评审意见均有处置结论与理由",
+        "文档修订可追溯到具体的实现变更"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_15289",
+        "iso_iec_ieee_12207"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "DOC-VERIFY-01",
+    "objective": "验证当前书面技术文档撰写的能力证据。",
+    "task_description": "就一项真实技术产出完成文档撰写、评审处置与变更同步，保留初稿、评审记录与修订痕迹。",
+    "validation_criteria": [
+      "本人撰写与修订的部分可定位",
+      "评审意见的处置逐条可核",
+      "文档与实现的一致性有对照依据"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "DOC-CAPSTONE-01",
+    "objective": "完成一份读者定位明确、依据可核、随实现同步维护的技术文档。",
+    "task_description": "为一项技术产出选定文档类型并完成撰写，含方案依据、实验结果、术语与图表规范，经一轮评审并在实现变更后同步更新。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "文档类型与信息项符合所选规范",
+      "方案依据与实验口径可复核",
+      "评审意见处置与变更同步均有记录",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_ieee_12207",
+      "title": "ISO/IEC/IEEE 12207 Systems and software engineering — Software life cycle processes",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "DOC-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15289",
+      "title": "ISO/IEC/IEEE 15289 Systems and software engineering — Content of life-cycle information items",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "DOC-01",
+        "DOC-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15939",
+      "title": "ISO/IEC/IEEE 15939 Systems and software engineering — Measurement process",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "DOC-03"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_26514",
+      "title": "ISO/IEC/IEEE 26514 Systems and software engineering — Design and development of information for users",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "DOC-01",
+        "DOC-02",
+        "DOC-04"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "DOC-02",
+        "DOC-03"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "jobgraph",
+  "private": true,
+  "version": "0.1.0",
+  "description": "JobGraph · 岗位能力图谱 —— 仓库根，前端在 frontend/，人岗匹配服务在 backend/",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "typecheck": "npm --prefix frontend run typecheck",
+    "preview": "npm --prefix frontend run preview",
+    "build": "npm --prefix frontend ci && npm --prefix frontend run build -- --outDir ../dist --emptyOutDir"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

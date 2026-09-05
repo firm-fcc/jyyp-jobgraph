@@ -1,0 +1,170 @@
+{
+  "version": "stage2b2_t_sys_06_cloud_container_curated_v1",
+  "team_skill_id": "T-SYS-06",
+  "team_skill_name": "云平台容器与分布式系统",
+  "scope": "覆盖云服务模型与选型、容器镜像与编排、分布式一致性与容错、弹性伸缩与成本控制，以及多租户隔离核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "CLD-01",
+      "name_zh": "云服务模型与选型",
+      "type": "CORE",
+      "definition": "依据运维责任边界、可移植性与成本结构在各类云服务模型之间做出选择。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一个场景完成云服务选型，说明责任边界与被接受的锁定风险。",
+      "evidence_task": "就一个实际场景比较两种以上云服务模型，输出选型结论、责任边界与锁定风险评估。",
+      "validation_criteria": [
+        "责任边界的划分具体到运维事项",
+        "锁定风险有迁移代价的估计"
+      ],
+      "source_refs": [
+        "nist_sp_800_145"
+      ]
+    },
+    {
+      "subskill_id": "CLD-02",
+      "name_zh": "容器镜像与编排",
+      "type": "CORE",
+      "definition": "构建可复现的容器镜像并编排其部署、扩缩与健康检查，使实例故障能被自动替换。",
+      "prerequisites": [
+        "CLD-01"
+      ],
+      "learning_outcome": "能够完成容器编排部署，并验证实例故障后的自动恢复。",
+      "evidence_task": "为一个服务构建镜像并完成编排部署，注入实例故障并记录自动替换的过程与耗时。",
+      "validation_criteria": [
+        "镜像构建过程可复现",
+        "故障注入后的自动替换有实际记录"
+      ],
+      "source_refs": [
+        "nist_sp_800_145",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "CLD-03",
+      "name_zh": "分布式一致性与容错",
+      "type": "CORE",
+      "definition": "依据业务对一致性的要求选择复制与协调方式，并说明网络分区下的系统行为。",
+      "prerequisites": [
+        "CLD-02"
+      ],
+      "learning_outcome": "能够就一个分布式场景选定一致性方案，并说明分区与节点失效时的表现。",
+      "evidence_task": "就一个分布式场景选定一致性与复制方案，列出分区、延迟与节点失效三种情形下的系统行为。",
+      "validation_criteria": [
+        "一致性选择与业务要求相对应",
+        "三种失效情形的行为均有具体描述"
+      ],
+      "source_refs": [
+        "nist_sp_800_145",
+        "iso_iec_ieee_15288"
+      ]
+    },
+    {
+      "subskill_id": "CLD-04",
+      "name_zh": "弹性伸缩与成本控制",
+      "type": "CORE",
+      "definition": "依据负载特征设定伸缩策略，在满足容量要求的前提下控制资源开销。",
+      "prerequisites": [
+        "CLD-03"
+      ],
+      "learning_outcome": "能够设计伸缩策略并用负载数据验证其容量与成本表现。",
+      "evidence_task": "为一个服务设计伸缩策略，用真实或模拟负载验证扩缩行为，记录容量满足度与资源开销。",
+      "validation_criteria": [
+        "伸缩阈值有负载数据依据",
+        "容量与成本的实测结果均被记录"
+      ],
+      "source_refs": [
+        "nist_sp_800_145"
+      ]
+    },
+    {
+      "subskill_id": "CLD-05",
+      "name_zh": "多租户隔离",
+      "type": "CORE",
+      "definition": "在共享基础设施上实现租户间的资源、网络与数据隔离，并验证越界访问被阻断。",
+      "prerequisites": [
+        "CLD-04"
+      ],
+      "learning_outcome": "能够实现多租户隔离并通过实际尝试验证隔离有效。",
+      "evidence_task": "在共享环境中配置租户隔离，实际尝试跨租户访问资源与数据，记录阻断结果。",
+      "validation_criteria": [
+        "隔离覆盖资源、网络与数据三方面",
+        "跨租户访问的阻断有实际验证"
+      ],
+      "source_refs": [
+        "nist_sp_800_145"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "CLD-VERIFY-01",
+    "objective": "验证当前云平台容器与分布式系统的能力证据。",
+    "task_description": "在真实云环境中完成容器编排、伸缩配置与隔离验证，保留镜像构建、故障注入与实测数据。",
+    "validation_criteria": [
+      "本人的部署与配置行为可定位",
+      "故障注入与自动恢复有记录",
+      "隔离与伸缩均有实测验证"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "CLD-CAPSTONE-01",
+    "objective": "完成一套选型有据、故障可自愈、隔离经验证的云上部署。",
+    "task_description": "为一个服务完成云服务选型，构建镜像并编排部署，选定一致性方案并说明失效行为，设计伸缩策略并实测，最后配置并验证多租户隔离。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "选型的责任边界与锁定风险明确",
+      "故障注入后自动恢复有记录",
+      "伸缩与隔离均有实测结果",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_ieee_15288",
+      "title": "ISO/IEC/IEEE 15288 Systems and software engineering — System life cycle processes",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "CLD-03"
+      ]
+    },
+    {
+      "source_id": "nist_sp_800_145",
+      "title": "NIST SP 800-145 The NIST Definition of Cloud Computing",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "standard",
+      "year": 2011,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://csrc.nist.gov/publications/detail/sp/800-145/final",
+      "supports": [
+        "CLD-01",
+        "CLD-02",
+        "CLD-03",
+        "CLD-04",
+        "CLD-05"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "CLD-02"
+      ]
+    }
+  ]
+}

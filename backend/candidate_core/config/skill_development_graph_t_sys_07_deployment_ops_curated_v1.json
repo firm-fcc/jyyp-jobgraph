@@ -1,0 +1,185 @@
+{
+  "version": "stage2b2_t_sys_07_deployment_ops_curated_v1",
+  "team_skill_id": "T-SYS-07",
+  "team_skill_name": "系统部署交付与运维",
+  "scope": "覆盖发布流程与环境一致性、部署自动化与回滚、监控告警设计、故障响应与事后复盘，以及变更管理核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "OPS-01",
+      "name_zh": "环境一致性与发布流程",
+      "type": "CORE",
+      "definition": "使各环境的配置差异被显式管理，并把发布过程固化为可重复执行的流程。",
+      "prerequisites": [],
+      "learning_outcome": "能够输出环境配置清单与发布流程，使同一版本在各环境的部署结果一致。",
+      "evidence_task": "为一个系统整理各环境的配置差异并固化发布流程，验证同一版本在两个环境的部署一致性。",
+      "validation_criteria": [
+        "环境差异被显式记录而非隐含在人工步骤中",
+        "一致性有实际的跨环境验证"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_12207",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "OPS-02",
+      "name_zh": "部署自动化与回滚",
+      "type": "CORE",
+      "definition": "把部署步骤自动化，并为每次发布准备可在限定时间内完成的回滚路径。",
+      "prerequisites": [
+        "OPS-01"
+      ],
+      "learning_outcome": "能够完成自动化部署并实际演练一次回滚，记录回滚耗时与数据影响。",
+      "evidence_task": "为一个系统实现自动化部署，执行一次发布后演练回滚，记录耗时、步骤与数据影响。",
+      "validation_criteria": [
+        "部署过程无需人工干预即可重复",
+        "回滚演练有实际耗时与影响记录"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_12207"
+      ]
+    },
+    {
+      "subskill_id": "OPS-03",
+      "name_zh": "监控与告警设计",
+      "type": "CORE",
+      "definition": "依据系统的失效模式设定监控指标与告警阈值，使告警指向具体的处置动作。",
+      "prerequisites": [
+        "OPS-02"
+      ],
+      "learning_outcome": "能够设计监控与告警方案，说明每条告警对应的失效模式与处置动作。",
+      "evidence_task": "为一个系统设计监控指标与告警规则，逐条说明对应的失效模式、阈值依据与处置动作。",
+      "validation_criteria": [
+        "每条告警对应可指认的失效模式",
+        "阈值设定有历史数据或容量依据"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_15939"
+      ]
+    },
+    {
+      "subskill_id": "OPS-04",
+      "name_zh": "故障响应与事后复盘",
+      "type": "CORE",
+      "definition": "按既定流程响应线上故障，恢复服务后复盘根因并落实防止复发的措施。",
+      "prerequisites": [
+        "OPS-03"
+      ],
+      "learning_outcome": "能够完成一次故障的响应与复盘，输出含根因与防复发措施的报告。",
+      "evidence_task": "就一次真实或演练故障记录响应过程，恢复后输出复盘报告，含时间线、根因与防复发措施。",
+      "validation_criteria": [
+        "时间线与实际操作记录一致",
+        "防复发措施对应已确认的根因"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_12207",
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "OPS-05",
+      "name_zh": "变更管理",
+      "type": "CORE",
+      "definition": "对生产变更执行评审、窗口安排与影响告知，使变更的风险与影响范围事前可知。",
+      "prerequisites": [
+        "OPS-04"
+      ],
+      "learning_outcome": "能够按变更流程完成一次生产变更，保留评审、告知与验证记录。",
+      "evidence_task": "就一次生产变更完成评审申请、影响评估、窗口安排与变更后验证，保留全过程记录。",
+      "validation_criteria": [
+        "影响评估覆盖受影响的服务与用户",
+        "变更后验证覆盖评估中列出的影响面"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_12207",
+        "pmbok_guide"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "OPS-VERIFY-01",
+    "objective": "验证当前系统部署交付与运维的能力证据。",
+    "task_description": "就一个真实系统完成自动化部署、监控设计与故障响应，保留部署记录、告警规则与复盘报告。",
+    "validation_criteria": [
+      "本人的部署与处置行为可定位",
+      "回滚演练有实际记录",
+      "复盘根因与防复发措施对应"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "OPS-CAPSTONE-01",
+    "objective": "完成一套部署可重复、失效有告警、故障可复盘的运维方案。",
+    "task_description": "为一个系统统一环境配置并固化发布流程，实现自动化部署与回滚演练，设计监控告警，响应一次故障并复盘，最后按变更流程完成一次生产变更。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "部署过程可重复且回滚经演练",
+      "告警逐条对应失效模式与处置动作",
+      "复盘含时间线、根因与防复发措施",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_ieee_12207",
+      "title": "ISO/IEC/IEEE 12207 Systems and software engineering — Software life cycle processes",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "OPS-01",
+        "OPS-02",
+        "OPS-04",
+        "OPS-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15939",
+      "title": "ISO/IEC/IEEE 15939 Systems and software engineering — Measurement process",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "OPS-03"
+      ]
+    },
+    {
+      "source_id": "pmbok_guide",
+      "title": "A Guide to the Project Management Body of Knowledge (PMBOK Guide)",
+      "authors_or_org": "Project Management Institute (PMI)",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.pmi.org",
+      "supports": [
+        "OPS-04",
+        "OPS-05"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "OPS-01"
+      ]
+    }
+  ]
+}

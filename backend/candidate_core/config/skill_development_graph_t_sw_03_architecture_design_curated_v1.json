@@ -1,0 +1,189 @@
+{
+  "version": "stage2b2_t_sw_03_architecture_design_curated_v1",
+  "team_skill_id": "T-SW-03",
+  "team_skill_name": "软件架构与系统设计",
+  "scope": "覆盖架构驱动因素的提取、组件与接口划分、质量属性的设计权衡、分布式与集成方案的选型，以及架构决策的记录与评估核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "ARCH-01",
+      "name_zh": "架构驱动因素提取",
+      "type": "CORE",
+      "definition": "从业务目标、约束与质量属性要求中提取真正影响结构选择的驱动因素，并按影响程度排序。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一个系统提取架构驱动因素并排序，说明各因素对结构选择的具体影响。",
+      "evidence_task": "就一个真实系统提取架构驱动因素，按影响排序并逐项说明其约束了哪些结构选择。",
+      "validation_criteria": [
+        "驱动因素可回溯到业务目标或明确约束",
+        "排序依据说明了对结构的实际影响"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_42010",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "ARCH-02",
+      "name_zh": "组件划分与接口定义",
+      "type": "CORE",
+      "definition": "按职责内聚与依赖最小的原则划分组件，并为组件间交互定义明确的接口契约。",
+      "prerequisites": [
+        "ARCH-01"
+      ],
+      "learning_outcome": "能够输出组件划分与接口契约，使各组件可被独立实现与替换。",
+      "evidence_task": "为一个系统输出组件划分图与接口契约，说明划分依据并标明各接口的输入输出与错误语义。",
+      "validation_criteria": [
+        "组件职责无重叠且依赖方向明确",
+        "接口契约含输入输出与错误语义"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_42010",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "ARCH-03",
+      "name_zh": "质量属性的设计权衡",
+      "type": "CORE",
+      "definition": "针对性能、可用性、可维护性等相互制约的质量属性，在结构层面做出取舍并说明代价。",
+      "prerequisites": [
+        "ARCH-02"
+      ],
+      "learning_outcome": "能够就一组冲突的质量属性给出结构层面的取舍方案，并量化被牺牲的一方。",
+      "evidence_task": "就一个系统的两项冲突质量属性设计取舍方案，给出各方案的量化影响与最终选择理由。",
+      "validation_criteria": [
+        "冲突关系有具体的结构层面解释",
+        "被牺牲一方的影响有量化说明"
+      ],
+      "source_refs": [
+        "iso_iec_25010",
+        "iso_iec_ieee_42030"
+      ]
+    },
+    {
+      "subskill_id": "ARCH-04",
+      "name_zh": "分布式与集成方案选型",
+      "type": "CORE",
+      "definition": "依据一致性、时延与故障域要求选择进程间通信、数据分区与集成方式，并说明其失效表现。",
+      "prerequisites": [
+        "ARCH-03"
+      ],
+      "learning_outcome": "能够就一个分布式场景完成通信与数据方案选型，并说明各类故障下的系统表现。",
+      "evidence_task": "就一个跨服务场景选择通信与数据一致性方案，列出常见故障情形及系统在各情形下的行为。",
+      "validation_criteria": [
+        "选型依据对应明确的一致性与时延要求",
+        "故障情形下的系统行为有具体描述"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_42010",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "ARCH-05",
+      "name_zh": "架构决策记录与评估",
+      "type": "CORE",
+      "definition": "以架构决策记录固化选择及其理由，并按既定方法评估架构是否满足驱动因素。",
+      "prerequisites": [
+        "ARCH-04"
+      ],
+      "learning_outcome": "能够产出架构决策记录并完成一次架构评估，指出未满足的驱动因素。",
+      "evidence_task": "为一个系统产出架构决策记录，并按场景法评估其对驱动因素的满足情况，列出风险点。",
+      "validation_criteria": [
+        "决策记录含备选、选择与被否理由",
+        "评估结论逐项对应架构驱动因素"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_42030",
+        "iso_iec_ieee_42010"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "ARCH-VERIFY-01",
+    "objective": "验证当前软件架构与系统设计的能力证据。",
+    "task_description": "就一个真实系统完成驱动因素提取、组件划分与质量属性权衡，保留接口契约、取舍依据与决策记录。",
+    "validation_criteria": [
+      "本人的结构设计与取舍可定位",
+      "接口契约与实现保持一致",
+      "决策理由可回溯到驱动因素"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "ARCH-CAPSTONE-01",
+    "objective": "完成一份驱动因素明确、权衡有据、决策可回溯的系统架构。",
+    "task_description": "就一个真实系统提取并排序架构驱动因素，划分组件与接口，对冲突的质量属性做结构层面的取舍，选定分布式与集成方案，并以决策记录固化后完成一次架构评估。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "组件划分与接口契约完整",
+      "质量属性取舍的代价有量化说明",
+      "架构评估逐项对应驱动因素",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_25010",
+      "title": "ISO/IEC 25010 Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model",
+      "authors_or_org": "ISO/IEC",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "ARCH-03"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_42010",
+      "title": "ISO/IEC/IEEE 42010 Software, systems and enterprise — Architecture description",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "ARCH-01",
+        "ARCH-02",
+        "ARCH-04",
+        "ARCH-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_42030",
+      "title": "ISO/IEC/IEEE 42030 Systems and software engineering — Architecture evaluation framework",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "ARCH-03",
+        "ARCH-05"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "ARCH-01",
+        "ARCH-02",
+        "ARCH-04"
+      ]
+    }
+  ]
+}

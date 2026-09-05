@@ -1,0 +1,170 @@
+{
+  "version": "stage2b2_f_3_03_time_resource_planning_curated_v1",
+  "team_skill_id": "F-3-03",
+  "team_skill_name": "时间与资源统筹管理",
+  "scope": "覆盖工作分解与工作量估算、依赖与关键路径识别、人力算力财力的分配、进度偏差的监控与纠偏，以及资源冲突的协商处置核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "PLAN-01",
+      "name_zh": "工作分解与工作量估算",
+      "type": "CORE",
+      "definition": "把交付目标分解为可独立验收的工作项，并依据可比历史或参照给出工作量估算与不确定度。",
+      "prerequisites": [],
+      "learning_outcome": "能够输出可独立验收的工作分解，并为每项给出带依据的工作量估算。",
+      "evidence_task": "就一项交付目标完成工作分解，逐项给出验收口径、工作量估算、估算依据与不确定度。",
+      "validation_criteria": [
+        "每个工作项可独立验收且无重叠",
+        "估算依据可指向历史数据或明确参照"
+      ],
+      "source_refs": [
+        "pmbok_guide",
+        "iso_iec_ieee_12207"
+      ]
+    },
+    {
+      "subskill_id": "PLAN-02",
+      "name_zh": "依赖与关键路径识别",
+      "type": "CORE",
+      "definition": "梳理工作项之间的先后依赖，识别决定总工期的关键路径与其上的高风险环节。",
+      "prerequisites": [
+        "PLAN-01"
+      ],
+      "learning_outcome": "能够绘制依赖关系并指出关键路径，说明哪些环节的延误将直接推迟交付。",
+      "evidence_task": "就一份工作分解绘制依赖关系图，标出关键路径及其上各环节的延误影响。",
+      "validation_criteria": [
+        "依赖关系覆盖全部工作项",
+        "关键路径的判定可由依赖与工期复算"
+      ],
+      "source_refs": [
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "PLAN-03",
+      "name_zh": "人力算力与预算分配",
+      "type": "CORE",
+      "definition": "依据工作项的技能要求与时点约束分配人力、算力与预算，使各类资源的占用与释放时点明确。",
+      "prerequisites": [
+        "PLAN-02"
+      ],
+      "learning_outcome": "能够输出含时点的资源分配方案，并说明各项分配对应的工作项与约束。",
+      "evidence_task": "为一项计划输出资源分配方案，逐项标明人力、算力与预算的投入时点、退出时点与对应工作项。",
+      "validation_criteria": [
+        "资源投入与工作项的时点相衔接",
+        "分配总量不超过实际可用的资源上限"
+      ],
+      "source_refs": [
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "PLAN-04",
+      "name_zh": "进度监控与纠偏",
+      "type": "CORE",
+      "definition": "按固定周期比对计划与实际，在偏差超出阈值时给出含代价说明的纠偏方案。",
+      "prerequisites": [
+        "PLAN-03"
+      ],
+      "learning_outcome": "能够按周期监控进度并在超阈值时输出纠偏方案，说明其对范围、成本或质量的代价。",
+      "evidence_task": "在一个执行周期内按周期比对计划与实际，就一次超阈值偏差输出纠偏方案及其代价说明。",
+      "validation_criteria": [
+        "监控周期与阈值事先设定",
+        "纠偏方案明确指出被牺牲的一方"
+      ],
+      "source_refs": [
+        "pmbok_guide",
+        "iso_iec_ieee_15939"
+      ]
+    },
+    {
+      "subskill_id": "PLAN-05",
+      "name_zh": "资源冲突协商处置",
+      "type": "CORE",
+      "definition": "在多任务争用同一资源时依据优先级与影响面协商处置，并把结论同步到受影响的各方计划。",
+      "prerequisites": [
+        "PLAN-04"
+      ],
+      "learning_outcome": "能够就一次资源冲突完成协商处置，并使各方计划同步更新。",
+      "evidence_task": "就一次真实的资源争用记录冲突事实、优先级依据、协商结论与各方计划的同步更新。",
+      "validation_criteria": [
+        "优先级依据可核查而非临时裁定",
+        "受影响各方的计划均已同步"
+      ],
+      "source_refs": [
+        "pmbok_guide"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "PLAN-VERIFY-01",
+    "objective": "验证当前时间与资源统筹管理的能力证据。",
+    "task_description": "就一项真实交付完成工作分解、关键路径识别与资源分配，并保留监控与纠偏记录。",
+    "validation_criteria": [
+      "工作分解与估算依据可核查",
+      "关键路径的判定可复算",
+      "纠偏方案的代价说明明确"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "PLAN-CAPSTONE-01",
+    "objective": "完成一轮分解可验收、路径可复算、偏差有纠偏的计划执行。",
+    "task_description": "就一项交付目标完成工作分解与估算，识别依赖与关键路径，分配人力算力与预算，按周期监控进度并对超阈值偏差纠偏，处置期间出现的资源冲突。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "工作分解的验收口径明确且无重叠",
+      "资源分配不超出实际上限",
+      "纠偏与冲突处置均有依据与同步记录",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_ieee_12207",
+      "title": "ISO/IEC/IEEE 12207 Systems and software engineering — Software life cycle processes",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "PLAN-01"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15939",
+      "title": "ISO/IEC/IEEE 15939 Systems and software engineering — Measurement process",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "PLAN-04"
+      ]
+    },
+    {
+      "source_id": "pmbok_guide",
+      "title": "A Guide to the Project Management Body of Knowledge (PMBOK Guide)",
+      "authors_or_org": "Project Management Institute (PMI)",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.pmi.org",
+      "supports": [
+        "PLAN-01",
+        "PLAN-02",
+        "PLAN-03",
+        "PLAN-04",
+        "PLAN-05"
+      ]
+    }
+  ]
+}

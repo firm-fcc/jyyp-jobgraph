@@ -1,0 +1,23 @@
+{
+  "version": "stage2b2_t_ai_07_rag_curated_v1",
+  "team_skill_id": "T-AI-07",
+  "team_skill_name": "RAG检索增强生成与向量数据库",
+  "scope": "面向可追溯端到端RAG系统的核心学习路径与可选检索优化分支。",
+  "nodes": [
+    {"subskill_id":"RAG-01","name_zh":"知识准备与文档处理","type":"CORE","definition":"将受控知识源清洗、切分并保留来源和版本信息，使后续检索单元可复现、可追溯。","prerequisites":[],"learning_outcome":"能够构建保留文档来源、切分边界和版本信息的可复现知识准备流程。","evidence_task":"处理一组固定文档，输出清洗结果、切分记录、来源标识和版本化配置。","validation_criteria":["每个切分单元可回溯到原文位置","相同输入与配置可重建等价处理结果"],"source_refs":["rag_survey"]},
+    {"subskill_id":"RAG-02","name_zh":"嵌入与向量索引","type":"CORE","definition":"为文档单元生成稠密表示并建立带版本信息的向量索引，以支持可复现的相似度检索。","prerequisites":["RAG-01"],"learning_outcome":"能够选择并记录嵌入配置，构建、更新和复现向量索引。","evidence_task":"为固定切分集生成嵌入和向量索引，记录模型、维度、距离度量及索引版本。","validation_criteria":["嵌入和索引配置完整可复核","索引中的向量可映射回原始文档单元"],"source_refs":["dpr","rag_survey"]},
+    {"subskill_id":"RAG-03","name_zh":"检索系统构建","type":"CORE","definition":"实现查询编码、候选召回和检索结果追踪，并用固定问题集检查召回质量。","prerequisites":["RAG-02"],"learning_outcome":"能够构建可追踪的检索流程并区分漏检与噪声问题。","evidence_task":"实现固定问题集的Top-k检索，保存查询、候选、分数、来源及预期命中。","validation_criteria":["检索输入、排序结果和来源可复核","至少分析一个漏检或噪声样例"],"source_refs":["dpr"]},
+    {"subskill_id":"RAG-04","name_zh":"检索增强生成流水线","type":"CORE","definition":"将检索上下文组装到生成流程中，并保持回答与来源片段之间的可核对关系。","prerequisites":["RAG-03"],"learning_outcome":"能够实现受检索上下文约束、输出可追溯引用的端到端生成流程。","evidence_task":"连接检索与生成模块，保存上下文组装、回答、引用和证据不足时的处理结果。","validation_criteria":["关键回答内容可定位到提供的上下文","证据不足时不会伪造来源"],"source_refs":["rag_original"]},
+    {"subskill_id":"RAG-05","name_zh":"查询优化与重排序","type":"SPECIALIZATION","definition":"通过查询处理或候选重排序改善目标文档进入有效上下文的概率，并保留可比较实验。","prerequisites":["RAG-03"],"learning_outcome":"能够针对检索错误选择查询优化或重排序方法，并用固定问题集比较效果。","evidence_task":"在同一问题集上实现一种查询优化或重排序方法，保存基线、实验配置和逐项排序变化。","validation_criteria":["基线与优化方案使用相同语料和问题集","改进与退化样例均可逐项复核"],"source_refs":["bert_rerank","rag_survey"]},
+    {"subskill_id":"RAG-06","name_zh":"RAG评估与系统优化","type":"CORE","definition":"分别评估检索、回答依据和端到端质量，并依据可复核错误诊断迭代系统。","prerequisites":["RAG-04"],"learning_outcome":"能够建立分层RAG评估，定位检索或生成瓶颈并验证优化效果。","evidence_task":"对固定测试集执行检索与生成分层评估，输出指标、错误清单、一次优化及前后对比。","validation_criteria":["检索质量与回答依据分开评估","优化结论可追溯到错误样例和前后对比"],"source_refs":["ragas","rag_survey"]}
+  ],
+  "verification_task": {"task_id":"RAG-VERIFY-01","objective":"验证当前端到端RAG能力证据。","task_description":"在固定小型语料和问题集上完成可复现RAG任务，保留文档处理、索引、检索、生成、引用和评估记录。","validation_criteria":["本人行为、输入、输出和配置可定位","检索与生成依据可追溯","至少记录一个失败样例及诊断"],"purpose":"generate_behavioral_evidence_for_current_proficiency_assessment"},
+  "capstone_evidence_task": {"task_id":"RAG-CAPSTONE-01","objective":"完整构建并改进可评估、可追溯的端到端RAG流水线。","task_description":"实现文档处理、索引、检索与生成，分别评估检索和生成质量，诊断至少一个失败模式并完成有依据的调整。","specialization_extensions":[{"subskill_id":"RAG-05","task_description":"加入查询优化或重排序实验，并与相同问题集上的基线比较。","validation_criteria":["保存基线与扩展配置","逐项记录排序改进与退化"]}],"validation_criteria":["实际技术行为、配置和结果可归属","检索与生成分别评价","失败诊断、调整动作及前后对比可复核","不输出或声明P等级"],"purpose":"generate_behavioral_evidence_for_reassessment"},
+  "source_registry": [
+    {"source_id":"rag_original","title":"Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks","authors_or_org":"Lewis et al.","source_type":"paper","year":2020,"venue":"NeurIPS","version":null,"doi":null,"url":null,"supports":["RAG-04"]},
+    {"source_id":"dpr","title":"Dense Passage Retrieval for Open-Domain Question Answering","authors_or_org":"Karpukhin et al.","source_type":"paper","year":2020,"venue":"EMNLP","version":null,"doi":null,"url":null,"supports":["RAG-02","RAG-03"]},
+    {"source_id":"bert_rerank","title":"Passage Re-ranking with BERT","authors_or_org":"Nogueira and Cho","source_type":"paper","year":2019,"venue":"arXiv","version":null,"doi":null,"url":null,"supports":["RAG-05"]},
+    {"source_id":"ragas","title":"RAGAS: Automated Evaluation of Retrieval Augmented Generation","authors_or_org":"Es et al.","source_type":"paper","year":2023,"venue":"arXiv","version":null,"doi":null,"url":null,"supports":["RAG-06"]},
+    {"source_id":"rag_survey","title":"Retrieval-Augmented Generation for Large Language Models: A Survey","authors_or_org":"Gao et al.","source_type":"paper","year":2023,"venue":"arXiv","version":null,"doi":null,"url":null,"supports":["RAG-01","RAG-02","RAG-05","RAG-06"]}
+  ]
+}

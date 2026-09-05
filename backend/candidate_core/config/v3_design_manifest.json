@@ -1,0 +1,236 @@
+{
+  "manifest_version": "v3_run_ready_r3_2026-08-18",
+  "status": "development_run_ready_r3_after_first_real_api_smoke",
+  "logic_audit": "PASS_with_r3_retrieval_cost_and_explicit_skill_diagnostic_corrections",
+  "final_blind_allowed": false,
+  "metric_definition_status": "project_defined_team_skill_concept_micro_f1_pre_final_freeze",
+  "runtime_entrypoints": [
+    "run_v3.py",
+    "main.py"
+  ],
+  "legacy_entrypoint": "legacy_main.py",
+  "input_modes": [
+    "txt",
+    "docx",
+    "pdf",
+    "internal_anonymized_real_resume_dataset_v1_json"
+  ],
+  "data_exposure": {
+    "source_total": 120,
+    "legacy_pilot_exposed": 25,
+    "legacy_blind_exposed": 40,
+    "development_exposed_union": 65,
+    "holdout_unexposed": 55,
+    "holdout_category_counts": {
+      "人工智能": 25,
+      "智能科学": 15,
+      "计算机科学与技术": 15
+    },
+    "final_blind_missing_categories": [
+      "大数据",
+      "智能系统"
+    ],
+    "holdout_guard_default": "BLOCK",
+    "duplicate_leakage_audit": {
+      "exact_duplicate_pair_count": 0,
+      "high_similarity_pair_count": 0,
+      "high_similarity_threshold": 0.9,
+      "method": "whitespace-normalized exact hash and character 5-gram Jaccard",
+      "holdout_cross_split_duplicate_risk_detected": false
+    }
+  },
+  "recommended_first_real_api_smoke": [
+    "candidate_0027"
+  ],
+  "verified": {
+    "candidate_0027_r2_real_api": "PASS_pipeline_closed_but_fallback_cost_issue_detected",
+    "r3_internal_record_preflight": "PASS",
+    "holdout_guard": "PASS_exit_5",
+    "v3_targeted_tests": "48/48",
+    "v3_plus_legacy_core_targeted": "134/134",
+    "v3_targeted_coverage_percent": 83,
+    "full_suite": "834 tests; 6 historical failures + 18 historical errors"
+  },
+  "pending_confirmations": [
+    "whether team skill v0.4 49 nodes are final leaf nodes",
+    "after granularity confirmation: freeze how explicit_skill_mentions map/count in Team Skill presence metric"
+  ],
+  "required_before_final_blind": [
+    "confirm/freeze target Team Skill layer",
+    "freeze explicit-claim vs demonstrated-behavior Team Skill presence policy",
+    "freeze metric v2 and V3 code/config hashes before predictions",
+    "create fresh V3 Team Skill Gold before final predictions",
+    "add fresh 大数据 and 智能系统 resumes not used in development"
+  ],
+  "files": {
+    "README.md": {
+      "sha256": "3df1ab45d0c28c8e946c2b68ef7b28f0ba7156452b53c3ab76fc05acb4b2665d",
+      "size_bytes": 9982
+    },
+    "FINAL_LOGIC_AUDIT.md": {
+      "sha256": "f211262151526ca472170962ce277a3a68864617de8b6e5b5780d2090d0a793e",
+      "size_bytes": 3628
+    },
+    "run_v3.py": {
+      "sha256": "f2ee40b74f77f0616c6402e68bdb7fe043ed07174da16f0e96bbcc0fe2ee0f92",
+      "size_bytes": 17047
+    },
+    "main.py": {
+      "sha256": "e045a62c8f053d1297749564698aaace136756f12f1d8c066ccba33364c223f0",
+      "size_bytes": 190
+    },
+    "legacy_main.py": {
+      "sha256": "458d4abbbac07258f93f2dd0c501f7dc369efaee73f6a72fb6ab9ac6b42ebeec",
+      "size_bytes": 2635
+    },
+    "config/team_skills_v0.4.json": {
+      "sha256": "154c7c85607cec8eacc19ba0ddff57168a81fd2abe4e93d71399e1e6a76d0399",
+      "size_bytes": 20253
+    },
+    "config/team_skill_adapter_v1.json": {
+      "sha256": "6792df0a747b14fbe63412f14c29d0855aea99d5546a6b40e1906b8d8ca48df7",
+      "size_bytes": 18141
+    },
+    "config/taxonomy_crosswalk_v1.json": {
+      "sha256": "6f21c41714f1a659d29af1b9c4a7a97dbc2afe29df17f80ab01f29485740a98b",
+      "size_bytes": 16483
+    },
+    "config/team_skill_output_schema_v3.json": {
+      "sha256": "d0a70fa819d64d66ba3cd636ce8ec414bf30d130ba3104ca1e8c6d1748b0a176",
+      "size_bytes": 4919
+    },
+    "config/team_skill_verifier_v3.txt": {
+      "sha256": "64b089663cd3dfc2089ea1357fc42d2e4f53fb5568310d48c59eb3f309af388e",
+      "size_bytes": 3206
+    },
+    "config/v3_data_split_registry.json": {
+      "sha256": "f97705a63c21c33e80d481e032e48df5fcbb9e705beba9473e063ceb1271c2c9",
+      "size_bytes": 10969
+    },
+    "docs/annotation_v2/evaluation_metrics_spec_v2_project_defined.md": {
+      "sha256": "3ac49c74a724fcb02b96b0626af120f11df7eb6f56e08e5eb55d4884bddaefeb",
+      "size_bytes": 6170
+    },
+    "docs/v3_final_architecture.md": {
+      "sha256": "08e4610399542a2a4f260b76a30fb4dfd6dc4e878d311c35b9cf517bce11a796",
+      "size_bytes": 4300
+    },
+    "docs/v3_execution_status.md": {
+      "sha256": "c2928b00756cdc17ebf6d20c968de16a77fc171a36622c5edfc8a6ecf40ed879",
+      "size_bytes": 3174
+    },
+    "extractor/document_parser_v3.py": {
+      "sha256": "9f9bf0f2a98af285a0b627da71ca061efda0e9a601e984fa8f05e5501b973da8",
+      "size_bytes": 5360
+    },
+    "extractor/internal_resume_record_v3.py": {
+      "sha256": "14f3c0007f39a4577a3ea981315a2fa20eb87fb4e1fc85ebcf302b813f9e0725",
+      "size_bytes": 5440
+    },
+    "extractor/v3_data_split_registry.py": {
+      "sha256": "e11c018ed3d5cb81f21a3c0ca13502d335f5c8d0486fadbf1c678a3c121365ec",
+      "size_bytes": 1891
+    },
+    "extractor/team_skill_registry.py": {
+      "sha256": "5eaa64108f0c781b12c0e5926eef146b52666efd22c4e61a71244b5665e5a117",
+      "size_bytes": 10597
+    },
+    "extractor/team_skill_schema_v3.py": {
+      "sha256": "4189b30591e0c52c8496c12ccfb65ecde5e1367bcb052af1e09256d0460d99ff",
+      "size_bytes": 7128
+    },
+    "extractor/team_skill_candidate_generator_v3.py": {
+      "sha256": "34a85c9c664344e84fc506ed7b1e97863fb7ba259162fd0ab6ef455750dfae18",
+      "size_bytes": 2687
+    },
+    "extractor/team_skill_verifier_v3.py": {
+      "sha256": "5ec133fd166d61b31baf6f7b2fc1d38aabf9fa309125bb4712a7016e2b65397b",
+      "size_bytes": 10995
+    },
+    "extractor/team_skill_auditor_v3.py": {
+      "sha256": "75cab565062884b67d593a9f152646a724566e6e2b9896b69c765579a63aa4df",
+      "size_bytes": 7522
+    },
+    "extractor/team_skill_pipeline_v3.py": {
+      "sha256": "ed57c44ec429e4847341117e3e449785f153ce4c60b93a9b854980cbd4eebdb2",
+      "size_bytes": 10343
+    },
+    "extractor/team_skill_profile_v3.py": {
+      "sha256": "05f78e2be66a8f82558869b088cbb8b67e375d1a5c90f5cfa9b998eb14a00b9d",
+      "size_bytes": 4311
+    },
+    "extractor/team_skill_metric_v2.py": {
+      "sha256": "2fc2d7cbf9494b024d1e3022d05a141d4f8ceda13db22c28298923991e3554d0",
+      "size_bytes": 5745
+    },
+    "extractor/v3_client_adapter.py": {
+      "sha256": "82699fdb8363b3c25f43bddd6a4bcb9eff7d1b6808de93c2f69bba336ba09296",
+      "size_bytes": 1441
+    },
+    "tests/test_internal_resume_record_v3.py": {
+      "sha256": "e982e4611f791fa976c0b366af4bd6e2ad51c525026853f3d29ad319b2f5cf49",
+      "size_bytes": 3773
+    },
+    "tests/test_run_v3_preuse.py": {
+      "sha256": "e33c8c7465caf71173d90cdd1243b91a06fa335342fe55b332ebd917610f1bc4",
+      "size_bytes": 1573
+    },
+    "outputs/v3_run_ready_r2_coverage.txt": {
+      "sha256": "d3555d8b75dedfff1fad743b7c10a59c692534339a72300755a5a5f3c0ea655d",
+      "size_bytes": 1514
+    },
+    "outputs/v3_run_ready_r2_full_test_run.txt": {
+      "sha256": "dcbe633ac44e5e2bd6daca6610764ad6ee63f230b410641ba1019a569cf85bf7",
+      "size_bytes": 25782
+    },
+    "outputs/v3_run_ready_r2_offline_smoke.txt": {
+      "sha256": "a73a290bce8bf34ce6042212c3cc96645e2a933e2c70ac7148b6479d4d2d7023",
+      "size_bytes": 102
+    },
+    "R3_FIRST_REAL_RUN_AUDIT.md": {
+      "sha256": "a0c3a9cc77be4420f78e40eee3f29b063dea391d5edb4ae60817da79c9d3d04f",
+      "size_bytes": 4764
+    },
+    "extractor/team_skill_fallback_selector_v3.py": {
+      "sha256": "7eb0c1fe65fc748e767b8b68618525964cdfc2a5cbb67579058e24644a73a617",
+      "size_bytes": 10094
+    },
+    "extractor/grounded_capability_trace_v3.py": {
+      "sha256": "2b0a600aba2b791c6852458ca1db7a86252e388a821fa6f0b3a07e8a467df715",
+      "size_bytes": 2636
+    },
+    "extractor/explicit_skill_mentions_v3.py": {
+      "sha256": "966ceedcb02d403e85032f68f9f50d3b56052f12487d53761b723d4e917b6916",
+      "size_bytes": 3829
+    },
+    "config/team_skill_fallback_selector_v3.txt": {
+      "sha256": "3d467ac9582002c493199abc7e89918481910c6349e5bb65ce50e07ffc3cca8c",
+      "size_bytes": 1842
+    },
+    "tests/test_team_skill_pipeline_v3.py": {
+      "sha256": "e8ce0d29b7456f0840e418f26140a437eb18a529cacbada7b8be247c7067f1db",
+      "size_bytes": 6800
+    },
+    "tests/test_team_skill_fallback_selector_v3.py": {
+      "sha256": "701fe8044f0955fb48acc6213d9dc37ddca7f3c23eee95c6f9540f296a10447f",
+      "size_bytes": 3429
+    },
+    "tests/test_v3_trace_and_explicit_mentions.py": {
+      "sha256": "2e68b26b8ad2e641c456a76ccbd582b8e475a39959988f5034657f12773269e1",
+      "size_bytes": 2759
+    },
+    "outputs/v3_run_ready_r3_execution_summary.json": {
+      "sha256": "df535233db18786527c7049aeb734dc25636980720ed6b506bbeed78d50e73dd",
+      "size_bytes": 1668
+    }
+  },
+  "first_real_run_audit": {
+    "candidate_id": "candidate_0027",
+    "r2_fallback_candidate_pool_count": 3,
+    "r2_fallback_skill_universe_count": 129,
+    "r2_verifier_call_count": 15,
+    "r2_transport_attempt_count": 16,
+    "grounding": "3/3 candidates grounded; 7 located spans; 0 unlocated",
+    "r3_response": "constrained fallback selector + explicit skill diagnostic + grounded capability trace"
+  }
+}

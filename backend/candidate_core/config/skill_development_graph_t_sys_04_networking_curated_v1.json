@@ -1,0 +1,172 @@
+{
+  "version": "stage2b2_t_sys_04_networking_curated_v1",
+  "team_skill_id": "T-SYS-04",
+  "team_skill_name": "计算机网络与通信基础设施",
+  "scope": "覆盖分层协议模型的运用、网络拓扑与地址规划、设备与链路配置、流量观测与故障定位，以及可用性与容量设计核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "NET-01",
+      "name_zh": "分层协议模型运用",
+      "type": "CORE",
+      "definition": "按分层模型定位一次通信过程中各层的职责，并据此判断问题应在哪一层排查。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一次通信过程逐层说明其职责，并指出特定现象对应的层次。",
+      "evidence_task": "就一次真实通信抓取报文，逐层说明各层承担的职责，并将若干异常现象归到对应层次。",
+      "validation_criteria": [
+        "逐层说明与抓包证据对应",
+        "异常现象的层次归属有报文依据"
+      ],
+      "source_refs": [
+        "iso_iec_7498_1",
+        "ietf_rfc_1122"
+      ]
+    },
+    {
+      "subskill_id": "NET-02",
+      "name_zh": "拓扑与地址规划",
+      "type": "CORE",
+      "definition": "依据网段隔离、广播域控制与扩展余量规划网络拓扑与地址分配。",
+      "prerequisites": [
+        "NET-01"
+      ],
+      "learning_outcome": "能够输出含地址分配与隔离策略的拓扑方案，并说明扩展余量的留取依据。",
+      "evidence_task": "为一个实际场景输出网络拓扑与地址规划，说明网段划分、隔离策略与地址余量。",
+      "validation_criteria": [
+        "网段划分与隔离需求相对应",
+        "地址分配无冲突且留有扩展余量"
+      ],
+      "source_refs": [
+        "iso_iec_7498_1"
+      ]
+    },
+    {
+      "subskill_id": "NET-03",
+      "name_zh": "设备与链路配置",
+      "type": "CORE",
+      "definition": "在网络设备上配置路由、交换与访问控制，使实际连通性与规划一致。",
+      "prerequisites": [
+        "NET-02"
+      ],
+      "learning_outcome": "能够完成设备配置并验证连通性与访问控制符合规划。",
+      "evidence_task": "依据一份网络规划完成设备配置，逐项验证连通性与访问控制，保留配置与验证记录。",
+      "validation_criteria": [
+        "配置项逐条对应规划中的条目",
+        "连通性与访问控制均有验证记录"
+      ],
+      "source_refs": [
+        "ietf_rfc_1122"
+      ]
+    },
+    {
+      "subskill_id": "NET-04",
+      "name_zh": "流量观测与故障定位",
+      "type": "CORE",
+      "definition": "通过抓包、计数器与日志定位链路故障，区分丢包、时延与配置错误三类成因。",
+      "prerequisites": [
+        "NET-03"
+      ],
+      "learning_outcome": "能够依据观测数据定位一次网络故障，并给出成因判定的依据。",
+      "evidence_task": "就一次真实网络故障采集观测数据，给出成因判定、依据与排除其他成因的理由。",
+      "validation_criteria": [
+        "成因判定由观测数据直接支持",
+        "已排除的其他成因有排除依据"
+      ],
+      "source_refs": [
+        "ietf_rfc_1122",
+        "iso_iec_7498_1"
+      ]
+    },
+    {
+      "subskill_id": "NET-05",
+      "name_zh": "可用性与容量设计",
+      "type": "CORE",
+      "definition": "依据流量特征与故障域设计冗余链路与容量余量，说明单点失效时的降级表现。",
+      "prerequisites": [
+        "NET-04"
+      ],
+      "learning_outcome": "能够输出含冗余与容量依据的网络设计，并说明单点失效下的实际表现。",
+      "evidence_task": "为一个网络场景设计冗余与容量方案，说明容量测算依据，并演练一次单点失效观察降级表现。",
+      "validation_criteria": [
+        "容量测算有流量数据支撑",
+        "单点失效演练结果与设计预期一致"
+      ],
+      "source_refs": [
+        "iso_iec_7498_1",
+        "iso_iec_ieee_15288"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "NET-VERIFY-01",
+    "objective": "验证当前计算机网络与通信基础设施的能力证据。",
+    "task_description": "在真实网络环境中完成规划、配置与故障定位，保留拓扑方案、配置记录与观测数据。",
+    "validation_criteria": [
+      "本人的配置与排查行为可定位",
+      "故障成因判定由观测数据支持",
+      "配置与规划保持一致"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "NET-CAPSTONE-01",
+    "objective": "完成一套规划可落地、故障可定位、失效有降级的网络方案。",
+    "task_description": "为一个实际场景完成拓扑与地址规划，配置设备并验证连通性与访问控制，定位一次真实故障，并设计冗余与容量方案后演练单点失效。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "配置与规划逐项一致",
+      "故障成因判定有观测证据",
+      "单点失效演练结果与设计预期相符",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "ietf_rfc_1122",
+      "title": "RFC 1122 Requirements for Internet Hosts — Communication Layers",
+      "authors_or_org": "Internet Engineering Task Force (IETF)",
+      "source_type": "standard",
+      "year": 1989,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.rfc-editor.org/rfc/rfc1122",
+      "supports": [
+        "NET-01",
+        "NET-03",
+        "NET-04"
+      ]
+    },
+    {
+      "source_id": "iso_iec_7498_1",
+      "title": "ISO/IEC 7498-1 Information technology — Open Systems Interconnection — Basic Reference Model",
+      "authors_or_org": "ISO/IEC",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "NET-01",
+        "NET-02",
+        "NET-04",
+        "NET-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15288",
+      "title": "ISO/IEC/IEEE 15288 Systems and software engineering — System life cycle processes",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "NET-05"
+      ]
+    }
+  ]
+}

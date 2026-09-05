@@ -1,0 +1,252 @@
+{
+  "schema_version": "learning_path_api_response_v1",
+  "path_status": "PARTIAL_GRAPH_COVERAGE",
+  "gap_summary": {
+    "total_requirements": 7,
+    "MISSING": 6,
+    "LEVEL_GAP": 0,
+    "EVIDENCE_INSUFFICIENT": 0,
+    "SATISFIED": 1
+  },
+  "rendered": {
+    "candidate_id": "demo_candidate",
+    "target_job_id": "133663124",
+    "skill_paths": [
+      {
+        "team_skill_id": "T-AI-03",
+        "team_skill_name": "计算机视觉与多模态感知",
+        "gap_type": "MISSING",
+        "observed_level": null,
+        "required_level": "P3",
+        "path_mode": "LEARN",
+        "achieved_node_ids": [],
+        "current_state": "当前未发现足够行为证据支持该能力。",
+        "gap_explanation": "No supported Team Skill evidence is present; explicit mentions do not satisfy support.",
+        "development_goal": "按照冻结规划器给出的 LEARN 路径形成新的、可验证的行为证据。",
+        "learning_steps": [
+          {
+            "node_id": "CV-01",
+            "node_name": "视觉数据与图像处理",
+            "reason": "该节点由冻结规划器按 LEARN 模式选择；保持既定顺序完成并留存行为证据。",
+            "evidence_task": "处理固定图像集并记录标注、变换和质量检查。",
+            "validation_criteria": [
+              "样本与变换可追溯",
+              "质量问题有检查记录"
+            ]
+          },
+          {
+            "node_id": "CV-02",
+            "node_name": "视觉表征与识别",
+            "reason": "该节点由冻结规划器按 LEARN 模式选择；保持既定顺序完成并留存行为证据。",
+            "evidence_task": "实现固定数据集识别模型并保存训练与预测结果。",
+            "validation_criteria": [
+              "模型输入输出可复核",
+              "评价协议固定"
+            ]
+          },
+          {
+            "node_id": "CV-06",
+            "node_name": "视觉场景评价与误差诊断",
+            "reason": "该节点由冻结规划器按 LEARN 模式选择；保持既定顺序完成并留存行为证据。",
+            "evidence_task": "在固定测试与分布变化切片上评价模型并建立错误分类。",
+            "validation_criteria": [
+              "总体和切片结果分开报告",
+              "失败结论有样例支持"
+            ]
+          }
+        ],
+        "specialization_extensions": [],
+        "verification_guidance": null,
+        "capstone_guidance": {
+          "task_id": "CV-CAPSTONE-01",
+          "objective": "构建并诊断可评价的视觉感知系统。",
+          "task_description": "从数据准备到视觉模型评价完成端到端实验，定位场景失效并完成有依据的改进。",
+          "specialization_extensions": [],
+          "validation_criteria": [
+            "视觉处理链路可复现",
+            "错误诊断驱动调整",
+            "不直接输出P等级"
+          ],
+          "purpose": "generate_behavioral_evidence_for_reassessment"
+        },
+        "reassessment_required": true,
+        "reassessment_guidance": "完成学习步骤或 capstone 只能生成新的行为证据；熟练度必须由后续评估重新判定，不会自动升级。",
+        "path_status": "READY",
+        "render_status": "READY"
+      },
+      {
+        "team_skill_id": "T-DA-01",
+        "team_skill_name": "T-DA-01",
+        "gap_type": "MISSING",
+        "observed_level": null,
+        "required_level": "P2",
+        "path_mode": "LEARN",
+        "achieved_node_ids": [],
+        "current_state": "当前未发现足够行为证据支持该能力。",
+        "gap_explanation": "No supported Team Skill evidence is present; explicit mentions do not satisfy support.",
+        "development_goal": "按照冻结规划器给出的 LEARN 路径形成新的、可验证的行为证据。",
+        "learning_steps": [],
+        "specialization_extensions": [],
+        "verification_guidance": null,
+        "capstone_guidance": null,
+        "reassessment_required": true,
+        "reassessment_guidance": "完成学习步骤或 capstone 只能生成新的行为证据；熟练度必须由后续评估重新判定，不会自动升级。",
+        "path_status": "GRAPH_UNAVAILABLE",
+        "render_status": "READY"
+      },
+      {
+        "team_skill_id": "T-DA-04",
+        "team_skill_name": "T-DA-04",
+        "gap_type": "MISSING",
+        "observed_level": null,
+        "required_level": null,
+        "path_mode": "LEARN",
+        "achieved_node_ids": [],
+        "current_state": "当前未发现足够行为证据支持该能力。",
+        "gap_explanation": "No supported Team Skill evidence is present; explicit mentions do not satisfy support.",
+        "development_goal": "按照冻结规划器给出的 LEARN 路径形成新的、可验证的行为证据。",
+        "learning_steps": [],
+        "specialization_extensions": [],
+        "verification_guidance": null,
+        "capstone_guidance": null,
+        "reassessment_required": true,
+        "reassessment_guidance": "完成学习步骤或 capstone 只能生成新的行为证据；熟练度必须由后续评估重新判定，不会自动升级。",
+        "path_status": "GRAPH_UNAVAILABLE",
+        "render_status": "READY"
+      },
+      {
+        "team_skill_id": "T-SW-01",
+        "team_skill_name": "T-SW-01",
+        "gap_type": "MISSING",
+        "observed_level": null,
+        "required_level": "P3",
+        "path_mode": "LEARN",
+        "achieved_node_ids": [],
+        "current_state": "当前未发现足够行为证据支持该能力。",
+        "gap_explanation": "No supported Team Skill evidence is present; explicit mentions do not satisfy support.",
+        "development_goal": "按照冻结规划器给出的 LEARN 路径形成新的、可验证的行为证据。",
+        "learning_steps": [],
+        "specialization_extensions": [],
+        "verification_guidance": null,
+        "capstone_guidance": null,
+        "reassessment_required": true,
+        "reassessment_guidance": "完成学习步骤或 capstone 只能生成新的行为证据；熟练度必须由后续评估重新判定，不会自动升级。",
+        "path_status": "GRAPH_UNAVAILABLE",
+        "render_status": "READY"
+      },
+      {
+        "team_skill_id": "T-SW-03",
+        "team_skill_name": "T-SW-03",
+        "gap_type": "MISSING",
+        "observed_level": null,
+        "required_level": null,
+        "path_mode": "LEARN",
+        "achieved_node_ids": [],
+        "current_state": "当前未发现足够行为证据支持该能力。",
+        "gap_explanation": "No supported Team Skill evidence is present; explicit mentions do not satisfy support.",
+        "development_goal": "按照冻结规划器给出的 LEARN 路径形成新的、可验证的行为证据。",
+        "learning_steps": [],
+        "specialization_extensions": [],
+        "verification_guidance": null,
+        "capstone_guidance": null,
+        "reassessment_required": true,
+        "reassessment_guidance": "完成学习步骤或 capstone 只能生成新的行为证据；熟练度必须由后续评估重新判定，不会自动升级。",
+        "path_status": "GRAPH_UNAVAILABLE",
+        "render_status": "READY"
+      },
+      {
+        "team_skill_id": "T-SW-04",
+        "team_skill_name": "T-SW-04",
+        "gap_type": "MISSING",
+        "observed_level": null,
+        "required_level": null,
+        "path_mode": "LEARN",
+        "achieved_node_ids": [],
+        "current_state": "当前未发现足够行为证据支持该能力。",
+        "gap_explanation": "No supported Team Skill evidence is present; explicit mentions do not satisfy support.",
+        "development_goal": "按照冻结规划器给出的 LEARN 路径形成新的、可验证的行为证据。",
+        "learning_steps": [],
+        "specialization_extensions": [],
+        "verification_guidance": null,
+        "capstone_guidance": null,
+        "reassessment_required": true,
+        "reassessment_guidance": "完成学习步骤或 capstone 只能生成新的行为证据；熟练度必须由后续评估重新判定，不会自动升级。",
+        "path_status": "GRAPH_UNAVAILABLE",
+        "render_status": "READY"
+      },
+      {
+        "team_skill_id": "T-AI-01",
+        "team_skill_name": "机器学习与深度学习",
+        "gap_type": "SATISFIED",
+        "observed_level": "P3",
+        "required_level": "P3",
+        "path_mode": "NONE",
+        "achieved_node_ids": [],
+        "current_state": "当前证据下，该能力已满足目标岗位要求，无需进入当前优先学习路径。",
+        "gap_explanation": "Observed evidence-supported proficiency meets the stated requirement.",
+        "development_goal": "保持当前证据记录；本次不生成额外学习节点。",
+        "learning_steps": [],
+        "specialization_extensions": [],
+        "verification_guidance": null,
+        "capstone_guidance": null,
+        "reassessment_required": false,
+        "reassessment_guidance": null,
+        "path_status": "NO_ACTION",
+        "render_status": "READY"
+      }
+    ],
+    "render_status": "READY"
+  },
+  "proficiency": {
+    "source": "provided",
+    "levels": {
+      "T-AI-01": "P3"
+    },
+    "details": []
+  },
+  "diagnostics": {
+    "candidate_bridge": {
+      "schema_version": "candidate_matching_bridge_v1",
+      "source_profile_schema": "candidate_skill_profile_v4_3_4",
+      "candidate_decisions_mutated": false,
+      "partial_support_counts_as_supported": false,
+      "auxiliary_skills_graded": false,
+      "supported_primary_skill_ids": [
+        "T-AI-01"
+      ],
+      "supported_without_proficiency": [],
+      "proficiency_levels_applied": [
+        "T-AI-01"
+      ],
+      "excluded_partially_supported": [],
+      "excluded_auxiliary_supported": [],
+      "excluded_unsupported": [],
+      "ignored_auxiliary_proficiency_levels": []
+    },
+    "target_bridge": {
+      "included_skill_ids": [
+        "T-AI-01",
+        "T-AI-03",
+        "T-DA-01",
+        "T-DA-04",
+        "T-SW-01",
+        "T-SW-03",
+        "T-SW-04"
+      ],
+      "excluded_skills": [
+        {
+          "team_skill_id": "F-1-01",
+          "reason": "AUXILIARY_NOT_GRADED"
+        }
+      ],
+      "requirement_type_policy": "single_jd_detected_skill_compatibility_default",
+      "requirement_type_semantics": "core means included in the current single-JD target set; it is not a must-have/preferred inference",
+      "raw_jd_evidence_available": false,
+      "requirement_evidence_policy": "STRUCTURED_JD_SUMMARY_PROVENANCE",
+      "market_trend_rank_policy": "NOT_APPLIED_V1_1",
+      "required_capability_policy": "NOT_INFERRED",
+      "required_subskill_policy": "NOT_INFERRED"
+    },
+    "curated_graph_count": 6
+  }
+}

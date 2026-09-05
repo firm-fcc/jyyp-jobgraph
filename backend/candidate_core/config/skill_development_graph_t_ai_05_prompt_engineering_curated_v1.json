@@ -1,0 +1,216 @@
+{
+  "version": "stage2b2_t_ai_05_prompt_engineering_curated_v1",
+  "team_skill_id": "T-AI-05",
+  "team_skill_name": "提示设计与提示工程",
+  "scope": "覆盖提示结构与任务约束的表达、示例与上下文的组织、推理引导策略的运用、检索与工具结果的编排，以及提示故障的定位与迭代核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "PMT-01",
+      "name_zh": "提示结构与任务约束表达",
+      "type": "CORE",
+      "definition": "把任务目标、输入范围、输出格式与禁止事项写成结构化提示，使输出可被程序消费。",
+      "prerequisites": [],
+      "learning_outcome": "能够写出结构化提示，并使输出稳定符合所声明的格式与约束。",
+      "evidence_task": "就一项任务写出结构化提示，声明输出格式与约束，并以一批输入验证输出的符合率。",
+      "validation_criteria": [
+        "提示中的约束逐条可判定",
+        "输出符合率有实测数据"
+      ],
+      "source_refs": [
+        "openai_prompt_docs",
+        "gpt3_fewshot"
+      ]
+    },
+    {
+      "subskill_id": "PMT-02",
+      "name_zh": "示例与上下文组织",
+      "type": "CORE",
+      "definition": "按零样本与少样本两种形态组织示例，控制示例的数量、次序与代表性对输出的影响。",
+      "prerequisites": [
+        "PMT-01"
+      ],
+      "learning_outcome": "能够以对照实验说明示例组织方式对输出质量的影响。",
+      "evidence_task": "就同一任务比较零样本与若干种少样本组织方式，记录各配置下的输出质量差异。",
+      "validation_criteria": [
+        "各配置的差异仅在示例组织",
+        "质量差异有量化记录"
+      ],
+      "source_refs": [
+        "gpt3_fewshot",
+        "openai_prompt_docs"
+      ]
+    },
+    {
+      "subskill_id": "PMT-03",
+      "name_zh": "推理引导与自洽性策略",
+      "type": "CORE",
+      "definition": "以分步推理、自洽性采样等策略提升需要多步推理的任务的正确率，并控制其代价。",
+      "prerequisites": [
+        "PMT-02"
+      ],
+      "learning_outcome": "能够就一类推理任务运用引导策略，并给出正确率与代价的对照。",
+      "evidence_task": "就一类多步推理任务实施引导策略，记录正确率、采样次数与时延的前后对照。",
+      "validation_criteria": [
+        "策略配置与基线可比",
+        "正确率与代价同时记录"
+      ],
+      "source_refs": [
+        "cot_prompting",
+        "self_consistency"
+      ]
+    },
+    {
+      "subskill_id": "PMT-04",
+      "name_zh": "检索与工具结果的上下文编排",
+      "type": "CORE",
+      "definition": "把检索片段与工具返回编排进上下文，控制其顺序、截断与冲突处置。",
+      "prerequisites": [
+        "PMT-02"
+      ],
+      "learning_outcome": "能够把外部结果编排进提示，并处理片段之间的冲突与超长截断。",
+      "evidence_task": "就一项需要外部信息的任务编排检索或工具结果，写明排序、截断与冲突处置规则并验证其效果。",
+      "validation_criteria": [
+        "编排规则明确且可复现",
+        "冲突与截断的处置有实例说明"
+      ],
+      "source_refs": [
+        "rag_original",
+        "openai_prompt_docs"
+      ]
+    },
+    {
+      "subskill_id": "PMT-05",
+      "name_zh": "提示故障定位与迭代",
+      "type": "CORE",
+      "definition": "在输出不符合预期时区分提示表述、上下文供给与模型能力三类原因，并据此迭代。",
+      "prerequisites": [
+        "PMT-03",
+        "PMT-04"
+      ],
+      "learning_outcome": "能够定位提示故障的成因，并以受控修改验证改进。",
+      "evidence_task": "就一组失败样例逐条定位成因，执行受控修改并记录修改前后的对照结果。",
+      "validation_criteria": [
+        "成因归类有证据支撑",
+        "每次修改的变量单一且结果可比"
+      ],
+      "source_refs": [
+        "openai_prompt_docs",
+        "helm"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "PMT-VERIFY-01",
+    "objective": "验证当前提示设计与提示工程的能力证据。",
+    "task_description": "就一项真实任务完成提示设计、对照实验与故障迭代，保留提示版本、配置与实测数据。",
+    "validation_criteria": [
+      "提示版本与配置可复现",
+      "对照实验的变量单一",
+      "故障定位有样例证据"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "PMT-CAPSTONE-01",
+    "objective": "完成一套约束可判定、效果可对照、故障可定位的提示方案。",
+    "task_description": "就一项真实任务设计结构化提示，比较示例组织与推理引导策略，编排外部信息，最后据失败样例完成一次受控迭代。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "输出格式的符合率有实测数据",
+      "各项策略的效果有可比基线",
+      "迭代前后的对照可复核",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "cot_prompting",
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "authors_or_org": "Wei et al.",
+      "source_type": "paper",
+      "year": 2022,
+      "venue": "NeurIPS",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "PMT-03"
+      ]
+    },
+    {
+      "source_id": "gpt3_fewshot",
+      "title": "Language Models are Few-Shot Learners",
+      "authors_or_org": "Brown et al.",
+      "source_type": "paper",
+      "year": 2020,
+      "venue": "NeurIPS",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "PMT-01",
+        "PMT-02"
+      ]
+    },
+    {
+      "source_id": "helm",
+      "title": "Holistic Evaluation of Language Models",
+      "authors_or_org": "Liang et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": "Transactions on Machine Learning Research",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "PMT-05"
+      ]
+    },
+    {
+      "source_id": "openai_prompt_docs",
+      "title": "OpenAI Prompt Engineering Guide",
+      "authors_or_org": "OpenAI",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://platform.openai.com/docs/guides/prompt-engineering",
+      "supports": [
+        "PMT-01",
+        "PMT-02",
+        "PMT-04",
+        "PMT-05"
+      ]
+    },
+    {
+      "source_id": "rag_original",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "authors_or_org": "Lewis et al.",
+      "source_type": "paper",
+      "year": 2020,
+      "venue": "NeurIPS",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "PMT-04"
+      ]
+    },
+    {
+      "source_id": "self_consistency",
+      "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+      "authors_or_org": "Wang et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": "ICLR",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "PMT-03"
+      ]
+    }
+  ]
+}

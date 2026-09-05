@@ -1,0 +1,20 @@
+{
+  "version":"stage2b2_t_ai_03_cv_multimodal_curated_v1","team_skill_id":"T-AI-03","team_skill_name":"计算机视觉与多模态感知","scope":"覆盖视觉数据、表征、场景评价核心路径与检测、多模态对齐和融合分支。",
+  "nodes":[
+    {"subskill_id":"CV-01","name_zh":"视觉数据与图像处理","type":"CORE","definition":"准备、变换和审计可追溯视觉数据。","prerequisites":[],"learning_outcome":"能够建立可复现的视觉数据处理流程。","evidence_task":"处理固定图像集并记录标注、变换和质量检查。","validation_criteria":["样本与变换可追溯","质量问题有检查记录"],"source_refs":["szeliski","cs231n"]},
+    {"subskill_id":"CV-02","name_zh":"视觉表征与识别","type":"CORE","definition":"构建视觉特征或模型以识别图像内容。","prerequisites":["CV-01"],"learning_outcome":"能够训练并评价视觉识别基线。","evidence_task":"实现固定数据集识别模型并保存训练与预测结果。","validation_criteria":["模型输入输出可复核","评价协议固定"],"source_refs":["szeliski","cs231n"]},
+    {"subskill_id":"CV-03","name_zh":"目标检测与定位","type":"SPECIALIZATION","definition":"识别并定位图像或视频中的目标实例。","prerequisites":["CV-02"],"learning_outcome":"能够训练和诊断目标检测系统。","evidence_task":"在标注数据上实现检测并分析漏检和误检。","validation_criteria":["定位指标与样例同时报告","误检漏检可追踪"],"source_refs":["cs231n","szeliski"]},
+    {"subskill_id":"CV-04","name_zh":"多模态表征与对齐","type":"SPECIALIZATION","definition":"学习或使用跨视觉与文本模态的对应表示。","prerequisites":["CV-02"],"learning_outcome":"能够验证视觉文本表征的对齐质量。","evidence_task":"构建图文匹配或检索实验并分析错配样例。","validation_criteria":["模态输入与配对规则明确","对齐评价和错配证据可复核"],"source_refs":["multimodal_survey","clip"]},
+    {"subskill_id":"CV-05","name_zh":"多模态融合与跨模态理解","type":"SPECIALIZATION","definition":"融合多个模态以完成需要联合信息的感知或理解任务。","prerequisites":["CV-02"],"learning_outcome":"能够设计并评价多模态融合方案。","evidence_task":"比较单模态与融合模型并分析各模态贡献。","validation_criteria":["对照实验隔离模态贡献","融合失败模式有样例证据"],"source_refs":["multimodal_survey"]},
+    {"subskill_id":"CV-06","name_zh":"视觉场景评价与误差诊断","type":"CORE","definition":"评价视觉模型在分组、分布变化和具体场景中的表现。","prerequisites":["CV-02"],"learning_outcome":"能够定位视觉模型的场景化失效模式。","evidence_task":"在固定测试与分布变化切片上评价模型并建立错误分类。","validation_criteria":["总体和切片结果分开报告","失败结论有样例支持"],"source_refs":["wilds","szeliski"]}
+  ],
+  "verification_task":{"task_id":"CV-VERIFY-01","objective":"验证当前视觉感知能力证据。","task_description":"完成视觉数据处理、识别基线、固定评价和场景错误诊断。","validation_criteria":["本人行为与产物可定位","数据处理和评价可复核","包含具体失败样例"],"purpose":"generate_behavioral_evidence_for_current_proficiency_assessment"},
+  "capstone_evidence_task":{"task_id":"CV-CAPSTONE-01","objective":"构建并诊断可评价的视觉感知系统。","task_description":"从数据准备到视觉模型评价完成端到端实验，定位场景失效并完成有依据的改进。","specialization_extensions":[{"subskill_id":"CV-03","task_description":"加入目标检测与定位实验。","validation_criteria":["定位结果可复核"]},{"subskill_id":"CV-04","task_description":"加入图文表征对齐实验。","validation_criteria":["对齐质量可复核"]},{"subskill_id":"CV-05","task_description":"加入多模态融合对照实验。","validation_criteria":["模态贡献有对照"]}],"validation_criteria":["视觉处理链路可复现","错误诊断驱动调整","不直接输出P等级"],"purpose":"generate_behavioral_evidence_for_reassessment"},
+  "source_registry":[
+    {"source_id":"szeliski","title":"Computer Vision: Algorithms and Applications","authors_or_org":"Richard Szeliski","source_type":"book","year":2022,"venue":"Springer","version":"2nd edition","doi":null,"url":null,"supports":["CV-01","CV-02","CV-03","CV-06"]},
+    {"source_id":"cs231n","title":"CS231n: Deep Learning for Computer Vision","authors_or_org":"Stanford University","source_type":"course","year":null,"venue":null,"version":"verified_2026-08-28","doi":null,"url":"https://cs231n.stanford.edu/","supports":["CV-01","CV-02","CV-03"]},
+    {"source_id":"multimodal_survey","title":"Multimodal Machine Learning: A Survey and Taxonomy","authors_or_org":"Baltrušaitis, Ahuja, Morency","source_type":"paper","year":2019,"venue":"IEEE TPAMI","version":null,"doi":"10.1109/TPAMI.2018.2798607","url":null,"supports":["CV-04","CV-05"]},
+    {"source_id":"clip","title":"Learning Transferable Visual Models From Natural Language Supervision","authors_or_org":"Radford et al.","source_type":"paper","year":2021,"venue":"ICML","version":null,"doi":null,"url":null,"supports":["CV-04"]},
+    {"source_id":"wilds","title":"WILDS: A Benchmark of in-the-Wild Distribution Shifts","authors_or_org":"Koh et al.","source_type":"paper","year":2021,"venue":"ICML","version":null,"doi":null,"url":null,"supports":["CV-06"]}
+  ]
+}

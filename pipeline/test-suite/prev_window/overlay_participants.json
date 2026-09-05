@@ -1,0 +1,626 @@
+{
+ "as_of": "2026-06-01",
+ "n_participating": 47,
+ "items": [
+  {
+   "id": "PJ-010",
+   "name_zh": "虚拟现实工程师",
+   "array": "new_jobs",
+   "strength": 0.8873,
+   "definition": "在虚拟现实领域从事软硬件研发、数字资源设计制作、应用场景建设等工作的专业技术人才，职称等级分为助理工程师、工程师、高级工程师和正高级工程师。",
+   "name_en": "",
+   "born_window": "2024-04",
+   "remapped_window": "",
+   "sources": [
+    "jd",
+    "news"
+   ]
+  },
+  {
+   "id": "PT-008",
+   "name_zh": "非传统证书评估",
+   "array": "new_tasks",
+   "strength": 0.9589,
+   "definition": "从业者通过实验和反事实简历评分，评估非传统证书对求职者被感知价值的影响，并优化证书分享机制以提升其认可度。",
+   "name_en": "Non-Traditional Credential Valuation",
+   "born_window": "2024-04",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-017",
+   "name_zh": "本体对齐",
+   "array": "new_tasks",
+   "strength": 0.9986,
+   "definition": "我修复本体对齐中产生的错误映射，通过基于逻辑的预检查或后处理手段，剔除文本预处理阶段造成的虚假对应关系。",
+   "name_en": "Contextual Descriptor-based Ontology Alignment",
+   "born_window": "2024-11",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-018",
+   "name_zh": "知识图谱兴趣漂移追踪",
+   "array": "new_tasks",
+   "strength": 0.2551,
+   "definition": "持续监测用户兴趣变化，动态调整知识图谱摘要，确保推荐内容紧跟最新偏好。",
+   "name_en": "Interest Shift Tracking in Knowledge Graphs",
+   "born_window": "2024-12",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-019",
+   "name_zh": "图神经网络隐私泄露风险评估",
+   "array": "new_tasks",
+   "strength": 0.7734,
+   "definition": "评估图神经网络在隐私敏感场景下被提示学习攻击的风险，识别并量化信息泄露漏洞。",
+   "name_en": "Privacy Leakage Risk Assessment for Graph Neural Networks",
+   "born_window": "2024-12",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-020",
+   "name_zh": "自适应图结构构建",
+   "array": "new_tasks",
+   "strength": 0.8397,
+   "definition": "根据数据距离和动态阈值相似度，自动筛选并构建适应任务需求的图结构，提升模型性能。",
+   "name_en": "Adaptive Graph Construction",
+   "born_window": "2024-12",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-023",
+   "name_zh": "关系丰富文档的视觉信息抽取",
+   "array": "new_tasks",
+   "strength": 0.8969,
+   "definition": "从业者从版式多样、关系复杂的文档中抽取视觉实体并建立链接，应对训练数据有限等挑战。",
+   "name_en": "Visual Information Extraction from Relation-Rich Documents",
+   "born_window": "2025-04",
+   "remapped_window": "",
+   "sources": [
+    "jd",
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-023",
+   "name_zh": "大规模数据迁移执行",
+   "array": "new_tasks",
+   "strength": 0.6595,
+   "definition": "从业者通过高速网络互连，将超大规模数据（如362PB）从本地服务器迁移至云平台，并确保在限定时间内完成传输。",
+   "name_en": "large-scale data migration execution",
+   "born_window": "2025-06",
+   "remapped_window": "",
+   "sources": [
+    "news"
+   ]
+  },
+  {
+   "id": "PT-025",
+   "name_zh": "多源遥感数据联合分类",
+   "array": "new_tasks",
+   "strength": 0.927,
+   "definition": "从业者融合多源遥感数据，提升地物分类的精度与可靠性，完成土地覆盖制图任务。",
+   "name_en": "Multi-source Remote Sensing Data Joint Classification",
+   "born_window": "2025-05",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-026",
+   "name_zh": "多源时序遥感农业制图",
+   "array": "new_tasks",
+   "strength": 0.4926,
+   "definition": "从业者利用多源时序遥感数据建模时空模式，实现精准农业制图以保障粮食安全。",
+   "name_en": "Multi-source Temporal Agriculture Mapping",
+   "born_window": "2025-05",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-027",
+   "name_zh": "联邦学习数据质量动态评估与激励",
+   "array": "new_tasks",
+   "strength": 0.7562,
+   "definition": "从业者动态评估联邦学习中各客户端数据质量，设计激励机制以优化模型性能。",
+   "name_en": "Dynamic Data Quality Assessment and Incentive in Federated Learning",
+   "born_window": "2025-05",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-027",
+   "name_zh": "AI论文自动生成",
+   "array": "new_tasks",
+   "strength": 0.2753,
+   "definition": "从业者操作AI工具批量撰写学术论文，并负责摘要组织与问题切入等关键环节的质量把控。",
+   "name_en": "AI paper generation",
+   "born_window": "2026-02",
+   "remapped_window": "",
+   "sources": [
+    "news"
+   ]
+  },
+  {
+   "id": "PT-028",
+   "name_zh": "多智能体系统安全防护",
+   "array": "new_tasks",
+   "strength": 0.9896,
+   "definition": "从业者防护多智能体网络中的交互威胁，识别并抵御协同攻击与秘密串通行为。",
+   "name_en": "Multi-Agent Security",
+   "born_window": "2025-05",
+   "remapped_window": "",
+   "sources": [
+    "jd",
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-030",
+   "name_zh": "程序调用图补全与增强",
+   "array": "new_tasks",
+   "strength": 0.5049,
+   "definition": "我借助静态分析工具识别程序调用图中遗漏的调用边，并补全这些缺失关系以增强图结构。",
+   "name_en": "Program Call Graph Augmentation",
+   "born_window": "2025-06",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-031",
+   "name_zh": "大模型知识遗忘评估",
+   "array": "new_tasks",
+   "strength": 0.9973,
+   "definition": "我通过构建带置信度的知识图谱来评估大模型对特定事实的遗忘程度，并检验现有评估策略的有效性。",
+   "name_en": "Knowledge Correlation-aware Unlearning Evaluation",
+   "born_window": "2025-06",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-031",
+   "name_zh": "AI代理执行路径映射",
+   "array": "new_tasks",
+   "strength": 0.2,
+   "definition": "从业者追踪并可视化AI代理从提示组装到工具调用的完整执行链路，用于调试与优化。",
+   "name_en": "Mapping the execution path of an AI agent",
+   "born_window": "2026-04",
+   "remapped_window": "",
+   "sources": [
+    "news"
+   ]
+  },
+  {
+   "id": "PT-032",
+   "name_zh": "多模态实体链接",
+   "array": "new_tasks",
+   "strength": 0.983,
+   "definition": "我处理文本与图像等模态的实体链接，解决提及歧义和上下文信息缺失导致的语义不明确问题。",
+   "name_en": "Multimodal Mention Disambiguation",
+   "born_window": "2025-06",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-032",
+   "name_zh": "自蒸馏",
+   "array": "new_tasks",
+   "strength": 0.3509,
+   "definition": "从业者让同一模型既当学生又当老师，通过策略内自蒸馏提升模型自身性能。",
+   "name_en": "self-distillation",
+   "born_window": "2026-04",
+   "remapped_window": "",
+   "sources": [
+    "news"
+   ]
+  },
+  {
+   "id": "PT-033",
+   "name_zh": "多模态数据质量评估与过滤",
+   "array": "new_tasks",
+   "strength": 0.9994,
+   "definition": "从业者依据图文匹配度与质量，筛选并剔除低质、噪声样本，以提升训练数据的对齐性与语言流畅度。",
+   "name_en": "Multimodal Data Quality Assessment and Filtration",
+   "born_window": "2025-07",
+   "remapped_window": "",
+   "sources": [
+    "jd",
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-034",
+   "name_zh": "多源时序数据冲突检测与消解",
+   "array": "new_tasks",
+   "strength": 0.5181,
+   "definition": "从业者识别并处理多来源时间数据中的不一致与碎片化，通过消解冲突来统一事件密度分布，确保数据连贯可靠。",
+   "name_en": "Cross-source Temporal Conflict Detection and Resolution",
+   "born_window": "2025-07",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-037",
+   "name_zh": "序列比对",
+   "array": "new_tasks",
+   "strength": 0.5632,
+   "definition": "从业者运用图神经网络与动态规划混合框架，自适应处理不同基因组场景下的序列比对，提升对重复区、低复杂度区及结构变异的比对准确性。",
+   "name_en": "Adaptive Sequence Alignment Parameter Optimization",
+   "born_window": "2025-10",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-038",
+   "name_zh": "AI生成内容鉴别",
+   "array": "new_tasks",
+   "strength": 1.0,
+   "definition": "从业者针对乌尔都语等低资源语言，开发并应用AI生成文本检测框架，识别机器生成内容，缓解鉴别工具稀缺问题，保障内容可信度。",
+   "name_en": "AI-generated Text Detection in Low-Resource Languages",
+   "born_window": "2025-10",
+   "remapped_window": "",
+   "sources": [
+    "jd",
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-039",
+   "name_zh": "角色扮演评估数据构建",
+   "array": "new_tasks",
+   "strength": 0.5595,
+   "definition": "从业者构建角色-场景池，模拟测试角色与其他角色的对话，并招募标注者进行维度选择与判断评分，产出用于角色扮演评估的细粒度数据。",
+   "name_en": "Character-Scene Pool Construction",
+   "born_window": "2025-10",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-041",
+   "name_zh": "AI风险缓解策略效果评估",
+   "array": "new_tasks",
+   "strength": 0.5889,
+   "definition": "从业者评估降低AI内容危害的缓解策略，通过对比人类感知与实测效果，判断策略是否真正有效。",
+   "name_en": "Evaluation of AI Risk Mitigation Strategies",
+   "born_window": "2025-12",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-043",
+   "name_zh": "多模型级联路由与效率优化",
+   "array": "new_tasks",
+   "strength": 0.9884,
+   "definition": "从业者依据校准置信度对比信号，设计大模型与小模型的级联路由策略，在保持精度的前提下提升推理效率。",
+   "name_en": "Multi-Model Cascading Routing and Efficiency Optimization",
+   "born_window": "2026-01",
+   "remapped_window": "",
+   "sources": [
+    "jd",
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-044",
+   "name_zh": "基于模型集成的数据清洗",
+   "array": "new_tasks",
+   "strength": 0.6129,
+   "definition": "从业者集成多个专家模型及其校准置信度，设计数据清洗方法，在精确率与召回率间取得平衡，提升数据质量。",
+   "name_en": "Model Ensemble-based Data Cleaning",
+   "born_window": "2026-01",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-044",
+   "name_zh": "记忆自迭代",
+   "array": "new_tasks",
+   "strength": 0.8807,
+   "definition": "从业者构建闭环自进化机制，使智能体在执行后验证、反思并记忆，自动纠错并沉淀成功经验为长期资产。",
+   "name_en": "",
+   "born_window": "2026-02",
+   "remapped_window": "",
+   "sources": [
+    "jd",
+    "news"
+   ]
+  },
+  {
+   "id": "PT-046",
+   "name_zh": "招聘中的偏见审计与公平性评估",
+   "array": "new_tasks",
+   "strength": 0.9245,
+   "definition": "从业者通过简历审计实验等方法，检测并评估招聘流程中的性别等偏见，确保选拔公平性。",
+   "name_en": "Bias Audit and Fairness Assessment in Hiring",
+   "born_window": "2026-02",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-049",
+   "name_zh": "大模型驱动的安全事件响应规划",
+   "array": "new_tasks",
+   "strength": 0.9675,
+   "definition": "从业者利用大模型分析系统日志，自动生成安全事件的响应与恢复计划，辅助应急决策。",
+   "name_en": "LLM-driven Security Incident Response Planning",
+   "born_window": "2026-02",
+   "remapped_window": "",
+   "sources": [
+    "jd",
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-050",
+   "name_zh": "自动驾驶场景事实构建与验证",
+   "array": "new_tasks",
+   "strength": 0.6544,
+   "definition": "从业者整合多源证据，构建可靠场景知识图谱，校验并修正自动驾驶场景事实，抑制模型幻觉。",
+   "name_en": "Autonomous Driving Scene Fact Construction and Verification",
+   "born_window": "2026-03",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-051",
+   "name_zh": "自动驾驶细粒度场景问答",
+   "array": "new_tasks",
+   "strength": 0.6544,
+   "definition": "从业者开发并优化模型，使其能基于多模态驾驶观测，精准回答细粒度场景问题并超越现有水平。",
+   "name_en": "Fine-grained Scene Question Answering for Autonomous Driving",
+   "born_window": "2026-03",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-052",
+   "name_zh": "联邦学习数据质量管理",
+   "array": "new_tasks",
+   "strength": 0.6519,
+   "definition": "从业者应对各客户端数据不确定性与异构性，通过元学习与自适应学习率，提升非独立同分布下的本地训练效果。",
+   "name_en": "Uncertainty Modeling and Personalized Federated Learning on Heterogeneous Data",
+   "born_window": "2026-03",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-053",
+   "name_zh": "权威锚定AI辅助编目",
+   "array": "new_tasks",
+   "strength": 0.6476,
+   "definition": "从业者借助AI辅助编目工具，进行本体感知的多标签分类，将文本映射到权威词表，并确保编目结果可复现、可评估。",
+   "name_en": "Authority-anchored AI-assisted Cataloging",
+   "born_window": "2026-03",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-054",
+   "name_zh": "医学影像数据集盘点与治理",
+   "array": "new_tasks",
+   "strength": 0.6587,
+   "definition": "从业者盘点并治理海量开放医学影像数据集，评估其质量与操作者依赖性，为模型开发提供可靠数据基础。",
+   "name_en": "Medical Imaging Dataset Inventory and Governance",
+   "born_window": "2026-03",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-055",
+   "name_zh": "智能体技能持续学习",
+   "array": "new_tasks",
+   "strength": 0.6739,
+   "definition": "从业者持续训练智能体掌握新技能，同时避免遗忘旧技能，并评估其学习效果。",
+   "name_en": "Continual Skill Learning for Agents",
+   "born_window": "2026-04",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PT-056",
+   "name_zh": "数学定理机器证明",
+   "array": "new_tasks",
+   "strength": 0.4009,
+   "definition": "从业者运用强化学习或大模型智能体，为数学猜想构造反例或辅助证明定理。",
+   "name_en": "Automated Counterexample Construction in Mathematics",
+   "born_window": "2026-04",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PS-005",
+   "name_zh": "图数据增强",
+   "array": "new_skills",
+   "strength": 0.8628,
+   "definition": "掌握对图数据进行增强的各种技术方法，包括针对异质图、时序图、时空图等特定类型图数据的增强策略。",
+   "name_en": "Graph Data Augmentation Techniques",
+   "born_window": "2022-12",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PS-010",
+   "name_zh": "可解释性事实核查能力",
+   "array": "new_skills",
+   "strength": 0.7074,
+   "definition": "生成结构化、多模态报告，清晰展示核查依据和推理过程，而非仅给出黑盒判断的能力。",
+   "name_en": "Explainable Fact-checking Capability",
+   "born_window": "2024-12",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PS-011",
+   "name_zh": "大模型事实核查鲁棒性",
+   "array": "new_skills",
+   "strength": 0.4531,
+   "definition": "大型语言模型在事实核查任务中，能够稳定地基于真实新闻源进行回应，不受偏见（如政治倾向）影响的能力。",
+   "name_en": "LLM Fact-Checking Robustness",
+   "born_window": "2025-02",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PS-013",
+   "name_zh": "新兴技术教育应用整合能力",
+   "array": "new_skills",
+   "strength": 0.3126,
+   "definition": "将扩展现实（AR/VR）、物联网（IoT）和生成式AI等新兴技术有效整合到智能辅导系统中的能力，以创造更沉浸和个性化的学习体验。",
+   "name_en": "Integration of Emerging Technologies in Education",
+   "born_window": "2025-07",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PS-014",
+   "name_zh": "跨学科协作审计能力",
+   "array": "new_skills",
+   "strength": 0.5335,
+   "definition": "在审计工作中整合技术、法律、伦理等多学科知识，以有效应对AI系统复杂性与欺诈风险的能力。",
+   "name_en": "Cross-disciplinary Collaboration in Auditing",
+   "born_window": "2025-08",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PS-016",
+   "name_zh": "多模态基础模型规模化部署能力",
+   "array": "new_skills",
+   "strength": 0.9229,
+   "definition": "在保持模型性能的同时，解决多模态基础模型在计算效率与模型规模扩展方面的瓶颈，使其能够支撑真实世界的自主系统部署。",
+   "name_en": "Scalability and Computational Efficiency for Multi-Modal Foundation Models",
+   "born_window": "2025-12",
+   "remapped_window": "",
+   "sources": [
+    "jd",
+    "papers"
+   ]
+  },
+  {
+   "id": "PS-017",
+   "name_zh": "AI风险分层评估能力",
+   "array": "new_skills",
+   "strength": 0.3533,
+   "definition": "根据用户或学生的AI能力水平，区分并评估其面临的个人、制度与系统性AI风险（如偏见、不准确、创造力下降）的能力。",
+   "name_en": "Tiered AI Risk Assessment Competence",
+   "born_window": "2025-12",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PS-019",
+   "name_zh": "多模态非结构化数据理解与幻觉防控能力",
+   "array": "new_skills",
+   "strength": 0.3698,
+   "definition": "在利用大语言模型处理非结构化、多模态数据时，通过知识引导和迭代精炼来克服模型幻觉或误解上下文的能力要求。",
+   "name_en": "Multimodal Unstructured Data Understanding and Hallucination Mitigation",
+   "born_window": "2026-01",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PS-020",
+   "name_zh": "AI技能侵蚀识别能力",
+   "array": "new_skills",
+   "strength": 0.7774,
+   "definition": "识别和诊断知识工作者因依赖AI而出现的隐性技能退化（如直觉钝化、判断力下降）的能力，是组织和个人需要培养的新型元认知技能。",
+   "name_en": "AI Skill Erosion Detection Capability",
+   "born_window": "2026-01",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PS-021",
+   "name_zh": "基于地域信号的候选人评估能力",
+   "array": "new_skills",
+   "strength": 0.3773,
+   "definition": "识别并理解居住地址作为社会经济背景代理信号对候选人技能、教育及“契合度”感知的影响能力。",
+   "name_en": "Neighborhood Signaling Assessment",
+   "born_window": "2026-02",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  },
+  {
+   "id": "PS-023",
+   "name_zh": "长程检索与跨模态推理能力",
+   "array": "new_skills",
+   "strength": 0.6606,
+   "definition": "智能体在复杂个人文件环境中，进行长时间跨度的信息检索，并整合视觉、文本等多模态证据进行逻辑推理的能力。",
+   "name_en": "Long-horizon Retrieval and Cross-modal Reasoning",
+   "born_window": "2026-04",
+   "remapped_window": "",
+   "sources": [
+    "papers"
+   ]
+  }
+ ]
+}

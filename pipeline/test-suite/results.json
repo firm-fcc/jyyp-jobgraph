@@ -1,0 +1,118 @@
+{
+ "n_cases": 121,
+ "n_scored": 71,
+ "jd_parse_accuracy": 0.9249,
+ "job_category_pass": 0.9014,
+ "task_coverage_pass": 0.9155,
+ "skill_coverage_pass": 0.9577,
+ "metric": "三维度用例通过率平均（岗位大类 / 任务覆盖≥50% / 技能覆盖≥50%；评分集 = GT 有体系内归类的用例，IT 拒判不评分——2026-09-03 裁定）",
+ "threshold": 0.9,
+ "passed": true,
+ "fail_cases": [
+  {
+   "case_id": "JD-003",
+   "title": "大数据开发工程师",
+   "job": "AID-11→AID-11",
+   "task_cov": 0.33,
+   "skill_cov": 1.0
+  },
+  {
+   "case_id": "JD-011",
+   "title": "人工智能算法工程师",
+   "job": "AID-04→AID-01",
+   "task_cov": 0.33,
+   "skill_cov": 0.86
+  },
+  {
+   "case_id": "JD-020",
+   "title": "it工程师",
+   "job": "DEV-10→DEV-01",
+   "task_cov": 1.0,
+   "skill_cov": 0.33
+  },
+  {
+   "case_id": "JD-029",
+   "title": "装备开发工程师",
+   "job": "QA-01→DEV-09",
+   "task_cov": 0.67,
+   "skill_cov": 0.67
+  },
+  {
+   "case_id": "JD-043",
+   "title": "智能制造工程师",
+   "job": "DEV-10→非IT",
+   "task_cov": 0.88,
+   "skill_cov": 1.0
+  },
+  {
+   "case_id": "JD-060",
+   "title": "解决方案/售前（二本及以上）",
+   "job": "MGT-06→MGT-06",
+   "task_cov": 0.4,
+   "skill_cov": 0.86
+  },
+  {
+   "case_id": "JD-071",
+   "title": "IT系统集成工程师",
+   "job": "OPS-07→OPS-04",
+   "task_cov": 1.0,
+   "skill_cov": 0.0
+  },
+  {
+   "case_id": "JD-073",
+   "title": "网络管理员",
+   "job": "OPS-01→NET-01",
+   "task_cov": 1.0,
+   "skill_cov": 1.0
+  },
+  {
+   "case_id": "JD-074",
+   "title": "应用工程师（IT-FICO） (MJ000326)",
+   "job": "OPS-06→OPS-06",
+   "task_cov": 0.6,
+   "skill_cov": 0.33
+  },
+  {
+   "case_id": "JD-077",
+   "title": "实施顾问-济南",
+   "job": "OPS-06→OPS-06",
+   "task_cov": 0.33,
+   "skill_cov": 1.0
+  },
+  {
+   "case_id": "JD-079",
+   "title": "高级售前工程师",
+   "job": "OPS-08→MGT-06",
+   "task_cov": 0.33,
+   "skill_cov": 0.75
+  },
+  {
+   "case_id": "JD-088",
+   "title": "SAP工程师",
+   "job": "OPS-06→DEV-18",
+   "task_cov": 0.67,
+   "skill_cov": 0.8
+  },
+  {
+   "case_id": "JD-090",
+   "title": "电商产品经理",
+   "job": "→PD-08",
+   "task_cov": 1.0,
+   "skill_cov": 1.0
+  },
+  {
+   "case_id": "JD-109",
+   "title": "网络安全工程师（劳务派遣岗）",
+   "job": "SEC-01→SEC-01",
+   "task_cov": 0.33,
+   "skill_cov": 0.75
+  },
+  {
+   "case_id": "JD-111",
+   "title": "网络与安全工程师",
+   "job": "NET-01→SEC-01",
+   "task_cov": 1.0,
+   "skill_cov": 0.86
+  }
+ ]
+}

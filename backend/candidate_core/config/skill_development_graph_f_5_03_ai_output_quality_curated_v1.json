@@ -1,0 +1,203 @@
+{
+  "version": "stage2b2_f_5_03_ai_output_quality_curated_v1",
+  "team_skill_id": "F-5-03",
+  "team_skill_name": "AI输出质量评估",
+  "scope": "覆盖验收标准的设定、事实与来源核验、逻辑一致性检查、重复采样下的稳定性检验，以及评估记录与改进反馈的核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "AIQ-01",
+      "name_zh": "验收标准设定",
+      "type": "CORE",
+      "definition": "依据输出的使用场景把“可用”转为逐条可判定的验收条件，并区分必须满足项与可接受偏差。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一类AI输出给出逐条可判定的验收条件，并说明各条的判定方式。",
+      "evidence_task": "就一类实际使用的AI输出写出验收条件清单，逐条写明判定方式与不通过时的处置。",
+      "validation_criteria": [
+        "每条验收条件可判定通过与否",
+        "必须满足项与可接受偏差分列"
+      ],
+      "source_refs": [
+        "nist_ai_rmf",
+        "iso_iec_25010"
+      ]
+    },
+    {
+      "subskill_id": "AIQ-02",
+      "name_zh": "事实性与来源核验",
+      "type": "CORE",
+      "definition": "从输出中取出可核查的断言，逐条回到独立来源核对，并记录核对结果与不可核验项。",
+      "prerequisites": [
+        "AIQ-01"
+      ],
+      "learning_outcome": "能够逐条核验输出中的可核查断言，并给出核对来源与结论。",
+      "evidence_task": "就一份AI输出取出全部可核查断言，逐条给出核对来源、核对结论与不可核验的原因。",
+      "validation_criteria": [
+        "断言的取出范围有明确边界",
+        "每条结论附可复核的来源"
+      ],
+      "source_refs": [
+        "hallucination_survey",
+        "truthfulqa"
+      ]
+    },
+    {
+      "subskill_id": "AIQ-03",
+      "name_zh": "逻辑一致性检查",
+      "type": "CORE",
+      "definition": "检查输出内部的前提、推理与结论是否自洽，并识别与已知约束相冲突之处。",
+      "prerequisites": [
+        "AIQ-01"
+      ],
+      "learning_outcome": "能够指出输出中的自相矛盾与前提缺失，并说明其对结论的影响。",
+      "evidence_task": "就一份含推理过程的AI输出逐段检查前提与结论的一致性，列出矛盾项及其对结论的影响。",
+      "validation_criteria": [
+        "矛盾项定位到具体段落",
+        "影响范围有明确说明"
+      ],
+      "source_refs": [
+        "hallucination_survey",
+        "helm"
+      ]
+    },
+    {
+      "subskill_id": "AIQ-04",
+      "name_zh": "稳定性与重复性检验",
+      "type": "CORE",
+      "definition": "在同一输入的多次采样与等价改写下比较输出差异，判定结论是否稳定。",
+      "prerequisites": [
+        "AIQ-02",
+        "AIQ-03"
+      ],
+      "learning_outcome": "能够以重复采样与等价改写检验输出的稳定性，并给出差异的量化描述。",
+      "evidence_task": "就同一任务执行多次采样与等价改写，记录各次输出的差异并给出稳定性结论。",
+      "validation_criteria": [
+        "采样次数与改写方式记录完整",
+        "差异有量化描述而非印象判断"
+      ],
+      "source_refs": [
+        "helm",
+        "iso_iec_25010"
+      ]
+    },
+    {
+      "subskill_id": "AIQ-05",
+      "name_zh": "评估记录与改进反馈",
+      "type": "CORE",
+      "definition": "把评估过程与结论记录成可追溯的材料，并转为对提示、检索或流程的具体改动。",
+      "prerequisites": [
+        "AIQ-04"
+      ],
+      "learning_outcome": "能够输出可追溯的评估记录，并据其提出经验证的改进动作。",
+      "evidence_task": "就一轮评估输出记录，含验收条件、核验结果、稳定性结论与随后执行的改进及其前后对比。",
+      "validation_criteria": [
+        "记录足以支持他人复核",
+        "改进动作与评估结论逐项对应"
+      ],
+      "source_refs": [
+        "nist_ai_rmf",
+        "iso_iec_25010"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "AIQ-VERIFY-01",
+    "objective": "验证当前AI输出质量评估的能力证据。",
+    "task_description": "就一份真实使用的AI输出完成验收判定、事实核验与稳定性检验，保留核验记录与差异数据。",
+    "validation_criteria": [
+      "验收条件在评估前已确定",
+      "事实核验的来源可复核",
+      "稳定性结论有多次采样数据支撑"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "AIQ-CAPSTONE-01",
+    "objective": "完成一轮标准可判定、核验有据、结论可追溯的AI输出质量评估。",
+    "task_description": "就一类持续产出的AI输出设定验收标准，执行事实核验与逻辑检查，完成稳定性检验，输出评估记录并落实一次改进。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "验收条件均可判定通过与否",
+      "核验结论逐条附来源",
+      "改进前后有可比的对照数据",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "hallucination_survey",
+      "title": "Survey of Hallucination in Natural Language Generation",
+      "authors_or_org": "Ji et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": "ACM Computing Surveys",
+      "version": null,
+      "doi": "10.1145/3571730",
+      "url": null,
+      "supports": [
+        "AIQ-02",
+        "AIQ-03"
+      ]
+    },
+    {
+      "source_id": "helm",
+      "title": "Holistic Evaluation of Language Models",
+      "authors_or_org": "Liang et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": "Transactions on Machine Learning Research",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "AIQ-03",
+        "AIQ-04"
+      ]
+    },
+    {
+      "source_id": "iso_iec_25010",
+      "title": "ISO/IEC 25010 Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model",
+      "authors_or_org": "ISO/IEC",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "AIQ-01",
+        "AIQ-04",
+        "AIQ-05"
+      ]
+    },
+    {
+      "source_id": "nist_ai_rmf",
+      "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "framework",
+      "year": null,
+      "venue": null,
+      "version": "1.0",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "AIQ-01",
+        "AIQ-05"
+      ]
+    },
+    {
+      "source_id": "truthfulqa",
+      "title": "TruthfulQA: Measuring How Models Mimic Human Falsehoods",
+      "authors_or_org": "Lin, Hilton, Evans",
+      "source_type": "paper",
+      "year": 2022,
+      "venue": "ACL",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "AIQ-02"
+      ]
+    }
+  ]
+}

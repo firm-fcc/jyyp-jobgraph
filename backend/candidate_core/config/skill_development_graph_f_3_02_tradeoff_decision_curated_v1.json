@@ -1,0 +1,174 @@
+{
+  "version": "stage2b2_f_3_02_tradeoff_decision_curated_v1",
+  "team_skill_id": "F-3-02",
+  "team_skill_name": "多方权衡与方案决策",
+  "scope": "覆盖决策问题与约束的界定、评价维度与权重的确定、成本风险收益的量化比较、敏感性与失效条件分析，以及决策记录与回溯核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "DEC-01",
+      "name_zh": "决策问题与约束界定",
+      "type": "CORE",
+      "definition": "明确待决问题的边界、必须满足的硬约束与可协商的软约束，使备选方案在同一问题下可比。",
+      "prerequisites": [],
+      "learning_outcome": "能够界定决策问题并分列硬约束与软约束，说明各约束的来源。",
+      "evidence_task": "就一项待决技术选择界定问题边界，分列硬约束与软约束并标注各自来源与不可协商的理由。",
+      "validation_criteria": [
+        "硬约束的来源可核查",
+        "问题边界足以排除不相干的备选"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_42030",
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "DEC-02",
+      "name_zh": "评价维度与权重确定",
+      "type": "CORE",
+      "definition": "与利益相关者共同确定评价维度及其相对权重，并在评估前固定，避免结果反推权重。",
+      "prerequisites": [
+        "DEC-01"
+      ],
+      "learning_outcome": "能够在评估前确定并冻结评价维度与权重，且取得相关方确认。",
+      "evidence_task": "就一项决策组织确定评价维度与权重，记录各方意见、最终取值与冻结时点。",
+      "validation_criteria": [
+        "权重在任何方案被评估前已冻结",
+        "维度覆盖硬约束之外的关键关切"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_42030",
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "DEC-03",
+      "name_zh": "成本风险收益量化比较",
+      "type": "CORE",
+      "definition": "在统一口径下量化各备选方案的成本、风险与收益，使比较结果可被他人复算。",
+      "prerequisites": [
+        "DEC-02"
+      ],
+      "learning_outcome": "能够输出各方案在统一口径下的量化比较，并说明估算依据与不确定度。",
+      "evidence_task": "就两个以上备选方案完成成本、风险与收益的量化，写明估算依据、口径与不确定度范围。",
+      "validation_criteria": [
+        "各方案的估算口径一致",
+        "不确定度有依据而非笼统标注"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_42030",
+        "iso_iec_ieee_15939"
+      ]
+    },
+    {
+      "subskill_id": "DEC-04",
+      "name_zh": "敏感性与失效条件分析",
+      "type": "CORE",
+      "definition": "识别评估结论对哪些假设最敏感，并给出结论翻转所需的条件。",
+      "prerequisites": [
+        "DEC-03"
+      ],
+      "learning_outcome": "能够指出决策结论的敏感假设，并量化结论翻转的临界条件。",
+      "evidence_task": "就一项已完成的方案比较做敏感性分析，列出最敏感的假设及其使结论翻转的取值范围。",
+      "validation_criteria": [
+        "敏感假设的识别由比较数据支持",
+        "翻转条件以可观测的取值表述"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_42030"
+      ]
+    },
+    {
+      "subskill_id": "DEC-05",
+      "name_zh": "决策记录与回溯",
+      "type": "CORE",
+      "definition": "记录决策时点已知的信息、所选方案与被否方案的理由，使后续可据以回溯判断而非重开辩论。",
+      "prerequisites": [
+        "DEC-04"
+      ],
+      "learning_outcome": "能够产出可回溯的决策记录，含当时的已知信息、选择理由与复核触发条件。",
+      "evidence_task": "就一项已做出的决策产出记录，含时点、已知信息、选择与被否理由、复核触发条件与责任人。",
+      "validation_criteria": [
+        "被否方案的理由与评价维度对应",
+        "复核触发条件可被实际观测到"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_42030",
+        "pmbok_guide"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "DEC-VERIFY-01",
+    "objective": "验证当前多方权衡与方案决策的能力证据。",
+    "task_description": "就一项真实技术决策完成约束界定、权重冻结与量化比较，保留权重确认、估算依据与决策记录。",
+    "validation_criteria": [
+      "本人在决策中的分析与主张可定位",
+      "权重在评估前冻结且经确认",
+      "比较口径统一且可复算"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "DEC-CAPSTONE-01",
+    "objective": "完成一次权重先定、比较可复算、结论有失效条件的技术决策。",
+    "task_description": "针对一项待决技术选择界定问题与约束，先行冻结评价维度与权重，量化比较各方案的成本风险收益，做敏感性分析，并产出可回溯的决策记录。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "权重冻结时点早于任何方案评估",
+      "量化比较的口径与不确定度明确",
+      "决策记录含被否理由与复核触发条件",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_ieee_15939",
+      "title": "ISO/IEC/IEEE 15939 Systems and software engineering — Measurement process",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "DEC-03"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_42030",
+      "title": "ISO/IEC/IEEE 42030 Systems and software engineering — Architecture evaluation framework",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "DEC-01",
+        "DEC-02",
+        "DEC-03",
+        "DEC-04",
+        "DEC-05"
+      ]
+    },
+    {
+      "source_id": "pmbok_guide",
+      "title": "A Guide to the Project Management Body of Knowledge (PMBOK Guide)",
+      "authors_or_org": "Project Management Institute (PMI)",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.pmi.org",
+      "supports": [
+        "DEC-01",
+        "DEC-02",
+        "DEC-05"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "version": "stage2b2_t_sys_02_hardware_digital_circuit_curated_v1",
+  "team_skill_id": "T-SYS-02",
+  "team_skill_name": "计算机硬件与数字电路设计",
+  "scope": "覆盖数字逻辑与时序设计、硬件描述语言实现与仿真验证、处理器组成与存储层次、接口电路与信号完整性，以及硬件性能量测与故障定位核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "HW-01",
+      "name_zh": "数字逻辑与时序设计",
+      "type": "CORE",
+      "definition": "以组合逻辑与时序逻辑实现既定功能，并按建立与保持时间约束判定时序是否收敛。",
+      "prerequisites": [],
+      "learning_outcome": "能够完成一项数字电路的逻辑与时序设计，并说明其时序余量。",
+      "evidence_task": "就一项功能完成逻辑设计与时序分析，给出关键路径、时钟约束与时序余量。",
+      "validation_criteria": [
+        "功能与真值表或状态机对应",
+        "关键路径与时序余量有分析数据"
+      ],
+      "source_refs": [
+        "harris_ddca"
+      ]
+    },
+    {
+      "subskill_id": "HW-02",
+      "name_zh": "硬件描述语言实现与仿真验证",
+      "type": "CORE",
+      "definition": "用硬件描述语言实现设计，并以测试激励覆盖功能与边界情形完成仿真验证。",
+      "prerequisites": [
+        "HW-01"
+      ],
+      "learning_outcome": "能够交付可综合的硬件描述实现，并给出覆盖率可核的仿真结果。",
+      "evidence_task": "就一项设计完成硬件描述实现与测试平台，给出仿真波形、覆盖情况与未覆盖分支的说明。",
+      "validation_criteria": [
+        "实现可综合且与设计一致",
+        "未覆盖分支被明确标出"
+      ],
+      "source_refs": [
+        "ieee_1800_systemverilog",
+        "harris_ddca"
+      ]
+    },
+    {
+      "subskill_id": "HW-03",
+      "name_zh": "处理器组成与存储层次",
+      "type": "CORE",
+      "definition": "分析数据通路、控制与流水线的组织方式，以及各级存储对访问时延的影响。",
+      "prerequisites": [
+        "HW-01"
+      ],
+      "learning_outcome": "能够就一个处理器结构说明其数据通路与存储层次对性能的影响。",
+      "evidence_task": "就一个处理器结构分析流水线冒险与存储层次命中情况，给出对执行周期的影响估计。",
+      "validation_criteria": [
+        "冒险类型与处理方式对应",
+        "存储层次的影响有量化估计"
+      ],
+      "source_refs": [
+        "patterson_cod",
+        "hennessy_caqa"
+      ]
+    },
+    {
+      "subskill_id": "HW-04",
+      "name_zh": "接口电路与板级信号完整性",
+      "type": "CORE",
+      "definition": "设计板级接口的电气连接，并处理阻抗、串扰与电源完整性带来的信号退化。",
+      "prerequisites": [
+        "HW-02"
+      ],
+      "learning_outcome": "能够完成接口电路设计，并说明信号完整性措施及其依据。",
+      "evidence_task": "就一组板级接口完成电路设计，说明端接、走线与电源去耦的措施及其实测或仿真依据。",
+      "validation_criteria": [
+        "各项措施有电气依据",
+        "实测或仿真结果与设计目标对照"
+      ],
+      "source_refs": [
+        "ieee_1149_1_jtag",
+        "harris_ddca"
+      ]
+    },
+    {
+      "subskill_id": "HW-05",
+      "name_zh": "硬件性能量测与故障定位",
+      "type": "CORE",
+      "definition": "以仪器与在片调试手段量测硬件行为，按现象分层定位故障并验证修复。",
+      "prerequisites": [
+        "HW-03",
+        "HW-04"
+      ],
+      "learning_outcome": "能够定位一处硬件故障并验证修复，说明定位过程的判据。",
+      "evidence_task": "就一处真实硬件故障记录定位过程，含现象、逐层排除的判据、根因与修复后的复测结果。",
+      "validation_criteria": [
+        "定位过程逐层可追溯",
+        "修复后的复测覆盖原现象"
+      ],
+      "source_refs": [
+        "ieee_1149_1_jtag",
+        "patterson_cod"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "HW-VERIFY-01",
+    "objective": "验证当前计算机硬件与数字电路设计的能力证据。",
+    "task_description": "就一项真实硬件设计完成逻辑实现、仿真验证与一次故障定位，保留源码、波形与量测记录。",
+    "validation_criteria": [
+      "设计与仿真结果一致",
+      "时序分析数据完整",
+      "故障定位过程可追溯"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "HW-CAPSTONE-01",
+    "objective": "完成一项时序收敛、验证充分、故障可定位的硬件设计。",
+    "task_description": "就一项功能完成逻辑与时序设计，以硬件描述语言实现并仿真验证，设计板级接口，最后量测性能并定位一处故障。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "时序余量有分析数据支撑",
+      "仿真覆盖情况与未覆盖分支均记录",
+      "故障根因与修复复测对应",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "harris_ddca",
+      "title": "Digital Design and Computer Architecture",
+      "authors_or_org": "Sarah L. Harris, David Money Harris",
+      "source_type": "textbook",
+      "year": null,
+      "venue": null,
+      "version": "2nd edition",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HW-01",
+        "HW-02",
+        "HW-04"
+      ]
+    },
+    {
+      "source_id": "hennessy_caqa",
+      "title": "Computer Architecture: A Quantitative Approach",
+      "authors_or_org": "John L. Hennessy, David A. Patterson",
+      "source_type": "textbook",
+      "year": null,
+      "venue": null,
+      "version": "6th edition",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HW-03"
+      ]
+    },
+    {
+      "source_id": "ieee_1149_1_jtag",
+      "title": "IEEE 1149.1 Standard for Test Access Port and Boundary-Scan Architecture",
+      "authors_or_org": "IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HW-04",
+        "HW-05"
+      ]
+    },
+    {
+      "source_id": "ieee_1800_systemverilog",
+      "title": "IEEE 1800 Standard for SystemVerilog — Unified Hardware Design, Specification, and Verification Language",
+      "authors_or_org": "IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HW-02"
+      ]
+    },
+    {
+      "source_id": "patterson_cod",
+      "title": "Computer Organization and Design: The Hardware/Software Interface",
+      "authors_or_org": "David A. Patterson, John L. Hennessy",
+      "source_type": "textbook",
+      "year": null,
+      "venue": null,
+      "version": "6th edition",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HW-03",
+        "HW-05"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "version": "stage2b2_t_ai_09_genai_app_delivery_curated_v1",
+  "team_skill_id": "T-AI-09",
+  "team_skill_name": "生成式AI应用开发部署与工作流自动化",
+  "scope": "覆盖应用形态与接口设计、模型服务与向量存储的集成、防护栏与失败兜底、推理性能与量化部署，以及工作流编排与运行监测核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "GAPP-01",
+      "name_zh": "应用形态与接口设计",
+      "type": "CORE",
+      "definition": "确定应用的调用形态、输入输出契约与状态边界，使模型调用可被上下游按约定消费。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一项生成式AI应用给出稳定的接口契约与状态处理方式。",
+      "evidence_task": "就一项应用写出接口契约，含输入约束、输出结构、超时与错误码，并以调用样例验证。",
+      "validation_criteria": [
+        "契约中的字段与错误态逐项明确",
+        "调用样例覆盖正常与异常路径"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_12207",
+        "openai_api_docs"
+      ]
+    },
+    {
+      "subskill_id": "GAPP-02",
+      "name_zh": "模型服务与向量存储集成",
+      "type": "CORE",
+      "definition": "把模型服务、向量存储与业务数据源接入同一条调用链，并处理鉴权、重试与配额。",
+      "prerequisites": [
+        "GAPP-01"
+      ],
+      "learning_outcome": "能够搭起可运行的调用链，并说明各依赖的失败处置方式。",
+      "evidence_task": "就一项应用完成模型服务与向量存储的集成，记录鉴权、重试与配额配置及其实测行为。",
+      "validation_criteria": [
+        "调用链各段的依赖关系明确",
+        "重试与配额策略有实测记录"
+      ],
+      "source_refs": [
+        "langchain_docs",
+        "openai_api_docs"
+      ]
+    },
+    {
+      "subskill_id": "GAPP-03",
+      "name_zh": "防护栏与失败兜底",
+      "type": "CORE",
+      "definition": "在输入与输出两端设置校验与拦截规则，并为模型不可用或结果不合规的情形安排兜底路径。",
+      "prerequisites": [
+        "GAPP-02"
+      ],
+      "learning_outcome": "能够以规则拦截不合规的输入输出，并使系统在模型失效时仍给出确定行为。",
+      "evidence_task": "就一项应用实现输入输出的校验与拦截，注入故障验证兜底路径并记录系统行为。",
+      "validation_criteria": [
+        "拦截规则可复现且有样例",
+        "故障注入下的系统行为确定"
+      ],
+      "source_refs": [
+        "owasp_llm_top10",
+        "nist_ai_rmf"
+      ]
+    },
+    {
+      "subskill_id": "GAPP-04",
+      "name_zh": "推理性能与量化部署",
+      "type": "CORE",
+      "definition": "以批处理、缓存与权重量化等手段调整推理的时延与吞吐，并评估其对输出质量的影响。",
+      "prerequisites": [
+        "GAPP-02"
+      ],
+      "learning_outcome": "能够给出推理性能的调整方案，并同时给出质量代价的量测结果。",
+      "evidence_task": "就一项部署实施至少一项性能调整，记录时延、吞吐与输出质量的前后对照。",
+      "validation_criteria": [
+        "性能与质量同时量测",
+        "调整前后的条件一致"
+      ],
+      "source_refs": [
+        "vllm_paged_attention",
+        "gptq"
+      ]
+    },
+    {
+      "subskill_id": "GAPP-05",
+      "name_zh": "工作流编排与运行监测",
+      "type": "CORE",
+      "definition": "把多次模型调用与外部动作编排成可重放的工作流，并对运行结果建立监测与告警。",
+      "prerequisites": [
+        "GAPP-03",
+        "GAPP-04"
+      ],
+      "learning_outcome": "能够交付可重放的工作流，并以监测数据判断其运行是否正常。",
+      "evidence_task": "就一条真实工作流完成编排与监测配置，保留一次完整运行的轨迹与监测读数。",
+      "validation_criteria": [
+        "工作流可按轨迹重放",
+        "监测指标能反映失败与退化"
+      ],
+      "source_refs": [
+        "langchain_docs",
+        "iso_iec_ieee_12207"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "GAPP-VERIFY-01",
+    "objective": "验证当前生成式AI应用开发部署与工作流自动化的能力证据。",
+    "task_description": "就一项真实应用完成集成、防护栏配置与一次性能调整，保留配置、故障注入记录与运行轨迹。",
+    "validation_criteria": [
+      "调用链与依赖配置可复现",
+      "故障注入下的行为有记录",
+      "性能调整前后的量测条件一致"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "GAPP-CAPSTONE-01",
+    "objective": "交付一套契约明确、失败可控、运行可观测的生成式AI应用。",
+    "task_description": "就一项真实业务完成接口设计与集成，配置防护栏与兜底路径，实施一次性能调整，最后编排工作流并建立监测。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "接口契约与错误态逐项明确",
+      "兜底路径经故障注入验证",
+      "性能与质量的对照数据完整",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "gptq",
+      "title": "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers",
+      "authors_or_org": "Frantar et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": "ICLR",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GAPP-04"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_12207",
+      "title": "ISO/IEC/IEEE 12207 Systems and software engineering — Software life cycle processes",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GAPP-01",
+        "GAPP-05"
+      ]
+    },
+    {
+      "source_id": "langchain_docs",
+      "title": "LangChain Documentation",
+      "authors_or_org": "LangChain",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://python.langchain.com/docs/",
+      "supports": [
+        "GAPP-02",
+        "GAPP-05"
+      ]
+    },
+    {
+      "source_id": "nist_ai_rmf",
+      "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "framework",
+      "year": null,
+      "venue": null,
+      "version": "1.0",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GAPP-03"
+      ]
+    },
+    {
+      "source_id": "openai_api_docs",
+      "title": "OpenAI API Documentation",
+      "authors_or_org": "OpenAI",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://platform.openai.com/docs",
+      "supports": [
+        "GAPP-01",
+        "GAPP-02"
+      ]
+    },
+    {
+      "source_id": "owasp_llm_top10",
+      "title": "OWASP Top 10 for Large Language Model Applications",
+      "authors_or_org": "Open Worldwide Application Security Project (OWASP)",
+      "source_type": "industry_standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "supports": [
+        "GAPP-03"
+      ]
+    },
+    {
+      "source_id": "vllm_paged_attention",
+      "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+      "authors_or_org": "Kwon et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": "SOSP",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GAPP-04"
+      ]
+    }
+  ]
+}

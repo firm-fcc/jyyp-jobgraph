@@ -1,0 +1,187 @@
+{
+  "version": "stage2b2_f_2_05_requirement_insight_curated_v1",
+  "team_skill_id": "F-2-05",
+  "team_skill_name": "需求洞察与服务意识",
+  "scope": "覆盖业务场景与用户目标的还原、隐性需求的识别与验证、需求到技术方案的转化、方案价值的确认，以及交付后的使用反馈闭环核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "REQI-01",
+      "name_zh": "业务场景与用户目标还原",
+      "type": "CORE",
+      "definition": "从用户的实际操作流程还原其待完成的任务与成功判据，而非停留在其提出的功能描述上。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一项需求还原用户的实际任务与成功判据，并指出与原始功能描述的差异。",
+      "evidence_task": "就一项业务需求走查用户的实际操作流程，记录其待完成任务、成功判据，以及与原始描述不符之处。",
+      "validation_criteria": [
+        "任务与成功判据来自可指认的实际流程",
+        "与原始描述的差异逐条列出"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_29148",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "REQI-02",
+      "name_zh": "隐性需求识别与验证",
+      "type": "CORE",
+      "definition": "识别用户未言明但影响采用的约束与期望，并以可证伪的方式向用户求证。",
+      "prerequisites": [
+        "REQI-01"
+      ],
+      "learning_outcome": "能够提出隐性需求假设并设计求证方式，依据反馈保留或推翻该假设。",
+      "evidence_task": "就一项需求提出至少两条隐性需求假设，设计求证方式并记录用户反馈与假设的存废结论。",
+      "validation_criteria": [
+        "每条假设均有明确的求证方式",
+        "存废结论由用户反馈直接支持"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_29148"
+      ]
+    },
+    {
+      "subskill_id": "REQI-03",
+      "name_zh": "需求到技术方案的转化",
+      "type": "CORE",
+      "definition": "把已确认的用户需求转为带验收条件的技术需求项，使实现结果可对照用户的成功判据核验。",
+      "prerequisites": [
+        "REQI-02"
+      ],
+      "learning_outcome": "能够输出含验收条件的技术需求项，且每项可回溯到用户的成功判据。",
+      "evidence_task": "就一组已确认需求输出技术需求项，逐项写明验收条件并标注其对应的用户成功判据。",
+      "validation_criteria": [
+        "每项技术需求可回溯到用户成功判据",
+        "验收条件可据以判定通过与否"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_29148",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "REQI-04",
+      "name_zh": "方案价值的事前确认",
+      "type": "CORE",
+      "definition": "在投入实现前与用户确认方案能否解决其待办任务，并就无法覆盖的部分达成明确共识。",
+      "prerequisites": [
+        "REQI-03"
+      ],
+      "learning_outcome": "能够在实现前取得用户对方案覆盖范围的确认，并记录未覆盖部分的处置约定。",
+      "evidence_task": "就一项技术方案组织事前确认，记录用户对覆盖范围的认可、异议，以及未覆盖部分的处置约定。",
+      "validation_criteria": [
+        "覆盖与未覆盖范围均取得用户确认",
+        "未覆盖部分有明确处置约定"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_29148",
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "REQI-05",
+      "name_zh": "交付后的使用反馈闭环",
+      "type": "CORE",
+      "definition": "在交付后收集实际使用情况，判断原定成功判据是否达成，并据以发起修正。",
+      "prerequisites": [
+        "REQI-04"
+      ],
+      "learning_outcome": "能够依据交付后的使用数据或反馈判定成功判据的达成情况，并形成修正项。",
+      "evidence_task": "就一项已交付方案收集使用情况，对照原定成功判据给出达成判定，并列出据此发起的修正项。",
+      "validation_criteria": [
+        "达成判定对照事先约定的成功判据",
+        "修正项来自可指认的使用证据"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_29148",
+        "iso_iec_ieee_15939"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "REQI-VERIFY-01",
+    "objective": "验证当前需求洞察与服务意识的能力证据。",
+    "task_description": "就一项真实业务需求完成场景还原、隐性需求求证与方案转化，保留走查记录、求证反馈与验收条件。",
+    "validation_criteria": [
+      "本人的需求走查与求证行为可定位",
+      "隐性需求的存废由用户反馈支持",
+      "技术需求项可回溯到用户成功判据"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "REQI-CAPSTONE-01",
+    "objective": "完成一轮场景可还原、隐性需求经求证、价值经确认的需求处置。",
+    "task_description": "针对一项业务需求还原用户任务与成功判据，求证隐性需求，转化为带验收条件的技术需求，事前确认覆盖范围，并在交付后闭环判定达成情况。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "用户任务与成功判据来自实际流程",
+      "隐性需求的求证过程与结论完整",
+      "交付后的达成判定对照原定判据",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_ieee_15939",
+      "title": "ISO/IEC/IEEE 15939 Systems and software engineering — Measurement process",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "REQI-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_29148",
+      "title": "ISO/IEC/IEEE 29148 Systems and software engineering — Life cycle processes — Requirements engineering",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "REQI-01",
+        "REQI-02",
+        "REQI-03",
+        "REQI-04",
+        "REQI-05"
+      ]
+    },
+    {
+      "source_id": "pmbok_guide",
+      "title": "A Guide to the Project Management Body of Knowledge (PMBOK Guide)",
+      "authors_or_org": "Project Management Institute (PMI)",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.pmi.org",
+      "supports": [
+        "REQI-04"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "REQI-01",
+        "REQI-03"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "version": "stage2b2_f_5_02_human_ai_alignment_curated_v1",
+  "team_skill_id": "F-5-02",
+  "team_skill_name": "人机语义对齐",
+  "scope": "覆盖意图的可执行表述、约束与边界的显式声明、输出格式与验收条件的约定、结果偏差的诊断与修正，以及交互过程的留痕核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "ALIGN-01",
+      "name_zh": "意图的可执行表述",
+      "type": "CORE",
+      "definition": "把待办目标转为AI可直接执行的表述，写明产出对象、范围与不做什么。",
+      "prerequisites": [],
+      "learning_outcome": "能够将模糊目标改写为可执行表述，并说明改写前后在歧义上的差别。",
+      "evidence_task": "就一项模糊目标完成可执行改写，标注原表述的歧义点与改写后的消解方式。",
+      "validation_criteria": [
+        "歧义点逐项标出且改写后不再存在",
+        "表述含产出对象、范围与排除项"
+      ],
+      "source_refs": [
+        "nist_ai_rmf"
+      ]
+    },
+    {
+      "subskill_id": "ALIGN-02",
+      "name_zh": "约束与边界显式声明",
+      "type": "CORE",
+      "definition": "把隐含的前提、口径与禁止事项写入交互，使AI的输出落在可接受的范围内。",
+      "prerequisites": [
+        "ALIGN-01"
+      ],
+      "learning_outcome": "能够识别任务中的隐含约束并将其显式化，说明未声明时可能的偏离。",
+      "evidence_task": "就一项任务列出隐含约束并显式写入交互，对比声明前后的输出差异。",
+      "validation_criteria": [
+        "隐含约束的识别覆盖口径与禁止事项",
+        "声明前后的输出差异有实际记录"
+      ],
+      "source_refs": [
+        "nist_ai_rmf"
+      ]
+    },
+    {
+      "subskill_id": "ALIGN-03",
+      "name_zh": "输出格式与验收条件约定",
+      "type": "CORE",
+      "definition": "事先约定输出的结构与验收条件，使结果可被程序或固定标准直接校验。",
+      "prerequisites": [
+        "ALIGN-02"
+      ],
+      "learning_outcome": "能够约定可校验的输出格式与验收条件，并据以判定结果是否可用。",
+      "evidence_task": "就一项任务约定输出格式与验收条件，对实际输出执行校验并记录判定结果。",
+      "validation_criteria": [
+        "输出格式可被程序或固定标准校验",
+        "判定结果对应事先约定的条件"
+      ],
+      "source_refs": [
+        "nist_ai_rmf",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "ALIGN-04",
+      "name_zh": "结果偏差诊断与修正",
+      "type": "CORE",
+      "definition": "在输出偏离预期时判断偏差源自表述、约束还是模型能力，并据此选择修正方式。",
+      "prerequisites": [
+        "ALIGN-03"
+      ],
+      "learning_outcome": "能够对一次偏差给出分层诊断，并通过对应的修正使输出回到可接受范围。",
+      "evidence_task": "就一次输出偏差完成诊断，区分表述、约束与能力三类原因，记录修正方式与修正后的结果。",
+      "validation_criteria": [
+        "诊断结论指向三类原因中的具体一类",
+        "修正后的结果满足事先约定的验收条件"
+      ],
+      "source_refs": [
+        "nist_ai_rmf"
+      ]
+    },
+    {
+      "subskill_id": "ALIGN-05",
+      "name_zh": "交互过程留痕",
+      "type": "CORE",
+      "definition": "保留输入、约束、输出与修正的完整记录，使他人能据以复现该次人机协作的结论。",
+      "prerequisites": [
+        "ALIGN-04"
+      ],
+      "learning_outcome": "能够输出可复现的交互记录，使他人按记录可得到同类结果。",
+      "evidence_task": "就一次完整的人机协作保留输入、约束、输出与修正记录，并由他人依记录复现一次。",
+      "validation_criteria": [
+        "记录足以支持他人复现",
+        "复现结果与原结论一致或差异有解释"
+      ],
+      "source_refs": [
+        "nist_ai_rmf",
+        "iso_iec_ieee_15289"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "ALIGN-VERIFY-01",
+    "objective": "验证当前人机语义对齐的能力证据。",
+    "task_description": "就一项真实任务完成意图表述、约束声明与验收约定，保留交互记录、偏差诊断与修正过程。",
+    "validation_criteria": [
+      "本人的表述与修正行为可定位",
+      "约束声明前后的输出差异有记录",
+      "验收判定对应事先约定的条件"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "ALIGN-CAPSTONE-01",
+    "objective": "完成一次意图明确、约束显式、结果可校验的人机协作。",
+    "task_description": "就一项任务将模糊目标改写为可执行表述，显式声明约束与边界，约定可校验的输出格式与验收条件，对偏差分层诊断并修正，最后留下可复现的记录。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "改写消解了原表述的歧义",
+      "约束声明的效果有前后对比",
+      "交互记录足以支持他人复现",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_ieee_15289",
+      "title": "ISO/IEC/IEEE 15289 Systems and software engineering — Content of life-cycle information items",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "ALIGN-05"
+      ]
+    },
+    {
+      "source_id": "nist_ai_rmf",
+      "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "framework",
+      "year": null,
+      "venue": null,
+      "version": "1.0",
+      "doi": null,
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "supports": [
+        "ALIGN-01",
+        "ALIGN-02",
+        "ALIGN-03",
+        "ALIGN-04",
+        "ALIGN-05"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "ALIGN-03"
+      ]
+    }
+  ]
+}

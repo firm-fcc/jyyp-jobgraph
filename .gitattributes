@@ -1,0 +1,17 @@
+# 行尾规范
+#
+# 本仓库在 Windows 上开发，而 deploy/ 下的脚本与配置须交付至 Linux 主机执行。
+# CRLF 文本交由 Linux bash 执行会逐行报 $'\r': command not found，
+# 且 set -euo pipefail 因选项名变为 pipefail\r 而失败退出；脚本内部的 heredoc
+# 同样携带 CR，经 ssh 送至远端后在远端复现同一错误。
+#
+# 以下规则钉住工作区行尾，使其不再随 core.autocrlf 的取值而变。
+# 规则的优先级高于 core.autocrlf，故无须改动全局配置。
+
+# ---- 部署产物：整个 deploy/ 交付至 Linux，一律 LF ----
+deploy/**       text=auto eol=lf
+
+# ---- 其余位置的脚本与服务配置同样须为 LF ----
+*.sh            text eol=lf
+*.conf          text eol=lf
+*.service       text eol=lf

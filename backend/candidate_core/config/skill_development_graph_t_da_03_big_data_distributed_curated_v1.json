@@ -1,0 +1,229 @@
+{
+  "version": "stage2b2_t_da_03_big_data_distributed_curated_v1",
+  "team_skill_id": "T-DA-03",
+  "team_skill_name": "大数据处理与并行分布式计算",
+  "scope": "覆盖并行执行模型的运用、分布式存储与数据分区、批流处理流水线的构建、一致性与容错机制的选择，以及规模与性能的量测调优核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "BDP-01",
+      "name_zh": "并行执行模型运用",
+      "type": "CORE",
+      "definition": "把计算拆成可并行的单元，判定其数据依赖并估计并行带来的收益上限。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一项计算给出并行方案，并说明其数据依赖与加速比的上限。",
+      "evidence_task": "就一项真实计算实现并行方案，记录任务划分、数据依赖与不同并行度下的实测加速比。",
+      "validation_criteria": [
+        "任务划分与数据依赖对应",
+        "加速比有多并行度的实测数据"
+      ],
+      "source_refs": [
+        "mapreduce",
+        "ddia"
+      ]
+    },
+    {
+      "subskill_id": "BDP-02",
+      "name_zh": "分布式存储与数据分区",
+      "type": "CORE",
+      "definition": "按访问模式选择分区与副本策略，并判定其对负载均衡与热点的影响。",
+      "prerequisites": [
+        "BDP-01"
+      ],
+      "learning_outcome": "能够给出分区与副本方案，并以实测数据说明负载分布。",
+      "evidence_task": "就一份真实数据集实施分区与副本配置，量测各节点的负载分布与热点情况。",
+      "validation_criteria": [
+        "分区键的选择与访问模式对应",
+        "负载分布有实测读数"
+      ],
+      "source_refs": [
+        "gfs",
+        "ddia"
+      ]
+    },
+    {
+      "subskill_id": "BDP-03",
+      "name_zh": "批处理与流处理流水线构建",
+      "type": "CORE",
+      "definition": "按时效要求构建批处理或流处理流水线，处理乱序、迟到与窗口划分。",
+      "prerequisites": [
+        "BDP-02"
+      ],
+      "learning_outcome": "能够交付可运行的处理流水线，并说明其时效保证与迟到数据的处置。",
+      "evidence_task": "就一项真实数据处理需求构建流水线，写明窗口与水位配置并验证迟到数据的处置结果。",
+      "validation_criteria": [
+        "时效保证有明确定义",
+        "迟到数据的处置经实测验证"
+      ],
+      "source_refs": [
+        "spark_rdd",
+        "flink_docs"
+      ]
+    },
+    {
+      "subskill_id": "BDP-04",
+      "name_zh": "一致性与容错机制选择",
+      "type": "CORE",
+      "definition": "在一致性、可用性与分区容忍之间作出取舍，并据此选择复制与故障恢复机制。",
+      "prerequisites": [
+        "BDP-02"
+      ],
+      "learning_outcome": "能够说明所选一致性级别的代价，并以故障注入验证恢复行为。",
+      "evidence_task": "就一个分布式部署选定一致性级别并注入节点故障，记录恢复过程与数据一致性的检查结果。",
+      "validation_criteria": [
+        "一致性级别的取舍有场景依据",
+        "故障恢复行为经实测记录"
+      ],
+      "source_refs": [
+        "gilbert_lynch_cap",
+        "lamport_clocks"
+      ]
+    },
+    {
+      "subskill_id": "BDP-05",
+      "name_zh": "规模与性能量测调优",
+      "type": "CORE",
+      "definition": "在受控负载下量测吞吐、时延与资源占用，定位瓶颈并完成有依据的调优。",
+      "prerequisites": [
+        "BDP-03",
+        "BDP-04"
+      ],
+      "learning_outcome": "能够定位系统瓶颈，并给出调优前后的可比量测结果。",
+      "evidence_task": "就一个运行中的系统完成负载量测与瓶颈定位，实施一次调优并记录前后对照。",
+      "validation_criteria": [
+        "瓶颈定位有量测证据",
+        "调优前后的负载条件一致"
+      ],
+      "source_refs": [
+        "ddia",
+        "spark_rdd"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "BDP-VERIFY-01",
+    "objective": "验证当前大数据处理与并行分布式计算的能力证据。",
+    "task_description": "就一个真实数据处理系统完成并行实现、故障注入与性能量测，保留配置、日志与量测数据。",
+    "validation_criteria": [
+      "并行方案与数据依赖一致",
+      "故障恢复过程有实测记录",
+      "性能量测的负载条件明确"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "BDP-CAPSTONE-01",
+    "objective": "交付一条划分有据、容错可验证、性能可量测的分布式数据处理系统。",
+    "task_description": "就一项真实需求完成并行划分与分区设计，构建处理流水线，选定一致性机制并注入故障验证，最后完成一次基于量测的调优。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "任务划分与分区策略有访问模式依据",
+      "故障恢复与一致性检查记录完整",
+      "调优前后有可比的量测数据",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "ddia",
+      "title": "Designing Data-Intensive Applications",
+      "authors_or_org": "Martin Kleppmann",
+      "source_type": "book",
+      "year": 2017,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "BDP-01",
+        "BDP-02",
+        "BDP-05"
+      ]
+    },
+    {
+      "source_id": "flink_docs",
+      "title": "Apache Flink Documentation",
+      "authors_or_org": "Apache Software Foundation",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://flink.apache.org/",
+      "supports": [
+        "BDP-03"
+      ]
+    },
+    {
+      "source_id": "gfs",
+      "title": "The Google File System",
+      "authors_or_org": "Ghemawat, Gobioff, Leung",
+      "source_type": "paper",
+      "year": 2003,
+      "venue": "SOSP",
+      "version": null,
+      "doi": "10.1145/945445.945450",
+      "url": null,
+      "supports": [
+        "BDP-02"
+      ]
+    },
+    {
+      "source_id": "gilbert_lynch_cap",
+      "title": "Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services",
+      "authors_or_org": "Gilbert and Lynch",
+      "source_type": "paper",
+      "year": 2002,
+      "venue": "ACM SIGACT News",
+      "version": null,
+      "doi": "10.1145/564585.564601",
+      "url": null,
+      "supports": [
+        "BDP-04"
+      ]
+    },
+    {
+      "source_id": "lamport_clocks",
+      "title": "Time, Clocks, and the Ordering of Events in a Distributed System",
+      "authors_or_org": "Leslie Lamport",
+      "source_type": "paper",
+      "year": 1978,
+      "venue": "Communications of the ACM",
+      "version": null,
+      "doi": "10.1145/359545.359563",
+      "url": null,
+      "supports": [
+        "BDP-04"
+      ]
+    },
+    {
+      "source_id": "mapreduce",
+      "title": "MapReduce: Simplified Data Processing on Large Clusters",
+      "authors_or_org": "Dean and Ghemawat",
+      "source_type": "paper",
+      "year": 2004,
+      "venue": "OSDI",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "BDP-01"
+      ]
+    },
+    {
+      "source_id": "spark_rdd",
+      "title": "Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing",
+      "authors_or_org": "Zaharia et al.",
+      "source_type": "paper",
+      "year": 2012,
+      "venue": "NSDI",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "BDP-03",
+        "BDP-05"
+      ]
+    }
+  ]
+}

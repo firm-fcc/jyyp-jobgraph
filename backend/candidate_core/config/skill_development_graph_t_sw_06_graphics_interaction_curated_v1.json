@@ -1,0 +1,229 @@
+{
+  "version": "stage2b2_t_sw_06_graphics_interaction_curated_v1",
+  "team_skill_id": "T-SW-06",
+  "team_skill_name": "图形与交互技术",
+  "scope": "覆盖几何表示与空间变换、渲染管线与着色实现、动画与实时性能控制、交互事件与输入设备接入，以及图形应用的可用性核验核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "GFX-01",
+      "name_zh": "几何表示与空间变换",
+      "type": "CORE",
+      "definition": "以网格、曲面或体数据表示几何对象，并按坐标系链路完成模型、视图与投影变换。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一个场景写出完整的变换链路，并解释各步坐标系的含义。",
+      "evidence_task": "就一个三维场景实现变换链路，验证不同视角与投影参数下的成像结果与预期一致。",
+      "validation_criteria": [
+        "变换链路各步的坐标系明确",
+        "成像结果与解析预期可对照"
+      ],
+      "source_refs": [
+        "foley_cgpp",
+        "real_time_rendering"
+      ]
+    },
+    {
+      "subskill_id": "GFX-02",
+      "name_zh": "渲染管线与着色实现",
+      "type": "CORE",
+      "definition": "按图形管线的各可编程阶段实现着色，并说明光照与材质模型的取舍。",
+      "prerequisites": [
+        "GFX-01"
+      ],
+      "learning_outcome": "能够实现自定义着色并说明其光照模型的假设与代价。",
+      "evidence_task": "就一个场景实现顶点与片元着色，比较至少两种光照模型的成像与开销差异。",
+      "validation_criteria": [
+        "着色实现可复现",
+        "光照模型的差异有成像与开销对照"
+      ],
+      "source_refs": [
+        "khronos_vulkan",
+        "pbrt"
+      ]
+    },
+    {
+      "subskill_id": "GFX-03",
+      "name_zh": "动画与实时性能控制",
+      "type": "CORE",
+      "definition": "以插值与物理规则驱动动画，并通过剔除、批处理与细节层次控制帧时间。",
+      "prerequisites": [
+        "GFX-02"
+      ],
+      "learning_outcome": "能够把帧时间稳定在目标区间，并说明各项优化的贡献。",
+      "evidence_task": "就一个实时场景实施至少两项性能优化，记录各项的帧时间贡献与画质代价。",
+      "validation_criteria": [
+        "帧时间在同一场景条件下量测",
+        "各项优化的贡献分别记录"
+      ],
+      "source_refs": [
+        "real_time_rendering",
+        "khronos_vulkan"
+      ]
+    },
+    {
+      "subskill_id": "GFX-04",
+      "name_zh": "交互事件处理与输入设备接入",
+      "type": "CORE",
+      "definition": "接入指针、键盘或其他输入设备，处理事件的采样、去抖与拾取判定。",
+      "prerequisites": [
+        "GFX-02"
+      ],
+      "learning_outcome": "能够实现稳定的拾取与操控，并说明输入时延的构成。",
+      "evidence_task": "就一个交互场景实现对象拾取与操控，量测输入到反馈的时延并说明其构成。",
+      "validation_criteria": [
+        "拾取判定在遮挡情形下正确",
+        "输入时延有实测读数"
+      ],
+      "source_refs": [
+        "w3c_webgpu",
+        "foley_cgpp"
+      ]
+    },
+    {
+      "subskill_id": "GFX-05",
+      "name_zh": "图形应用的可用性核验",
+      "type": "CORE",
+      "definition": "以用户任务为单位核验图形界面的可操作性与可访问性，并据结果调整呈现。",
+      "prerequisites": [
+        "GFX-03",
+        "GFX-04"
+      ],
+      "learning_outcome": "能够就图形界面完成一次有据的可用性核验，并落实改动。",
+      "evidence_task": "就一个图形应用组织可用性核验，记录任务完成情况、发现的问题与随后的改动效果。",
+      "validation_criteria": [
+        "核验任务与真实使用情形对应",
+        "改动前后有可比的观测结果"
+      ],
+      "source_refs": [
+        "iso_9241_210",
+        "wcag_21"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "GFX-VERIFY-01",
+    "objective": "验证当前图形与交互技术的能力证据。",
+    "task_description": "就一个真实图形应用完成渲染实现、性能优化与交互接入，保留代码、帧时间数据与交互记录。",
+    "validation_criteria": [
+      "渲染实现可复现",
+      "帧时间在一致条件下量测",
+      "交互时延有实测读数"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "GFX-CAPSTONE-01",
+    "objective": "交付一个成像正确、帧时间可控、交互经核验的图形应用。",
+    "task_description": "就一个真实场景实现变换与着色，实施性能优化并稳定帧时间，接入交互设备，最后完成一次可用性核验并落实改动。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "变换与着色实现可复现",
+      "优化项的帧时间贡献分别记录",
+      "可用性核验结论驱动了具体改动",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "foley_cgpp",
+      "title": "Computer Graphics: Principles and Practice",
+      "authors_or_org": "John F. Hughes, Andries van Dam, Morgan McGuire, David F. Sklar, James D. Foley, Steven K. Feiner, Kurt Akeley",
+      "source_type": "textbook",
+      "year": 2013,
+      "venue": null,
+      "version": "3rd edition",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GFX-01",
+        "GFX-04"
+      ]
+    },
+    {
+      "source_id": "iso_9241_210",
+      "title": "ISO 9241-210 Ergonomics of human-system interaction — Human-centred design for interactive systems",
+      "authors_or_org": "ISO",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GFX-05"
+      ]
+    },
+    {
+      "source_id": "khronos_vulkan",
+      "title": "Vulkan Specification",
+      "authors_or_org": "Khronos Group",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://registry.khronos.org/vulkan/",
+      "supports": [
+        "GFX-02",
+        "GFX-03"
+      ]
+    },
+    {
+      "source_id": "pbrt",
+      "title": "Physically Based Rendering: From Theory to Implementation",
+      "authors_or_org": "Matt Pharr, Wenzel Jakob, Greg Humphreys",
+      "source_type": "textbook",
+      "year": 2023,
+      "venue": null,
+      "version": "4th edition",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GFX-02"
+      ]
+    },
+    {
+      "source_id": "real_time_rendering",
+      "title": "Real-Time Rendering",
+      "authors_or_org": "Tomas Akenine-Möller, Eric Haines, Naty Hoffman",
+      "source_type": "textbook",
+      "year": 2018,
+      "venue": null,
+      "version": "4th edition",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GFX-01",
+        "GFX-03"
+      ]
+    },
+    {
+      "source_id": "w3c_webgpu",
+      "title": "WebGPU",
+      "authors_or_org": "World Wide Web Consortium (W3C)",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.w3.org/TR/webgpu/",
+      "supports": [
+        "GFX-04"
+      ]
+    },
+    {
+      "source_id": "wcag_21",
+      "title": "Web Content Accessibility Guidelines (WCAG) 2.1",
+      "authors_or_org": "World Wide Web Consortium (W3C)",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": "2.1",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "GFX-05"
+      ]
+    }
+  ]
+}

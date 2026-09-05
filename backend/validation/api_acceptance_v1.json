@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "mode": "offline_deterministic_api_contract_only",
+  "candidate_source": "existing_synthetic_unit_fixture_not_real_pipeline_prediction",
+  "proficiency_source": "provided_test_level_no_model",
+  "job_source": "bundled_real_2022-10_133663124",
+  "external_api_calls": 0,
+  "real_e2e_status": "FAIL_see_e2e_smoke_v1",
+  "match_schema": "match_result_v1",
+  "checks": {
+    "match_ranges": true,
+    "frozen_threshold_decision": true,
+    "gap_sum_invariant": true,
+    "graph_unavailable": true
+  },
+  "endpoints": [
+    {
+      "endpoint": "GET /health",
+      "http_status": 200,
+      "schema_version": null,
+      "required_fields": [
+        "status",
+        "llm_configured",
+        "matching_calibrated"
+      ],
+      "required_fields_present": true
+    },
+    {
+      "endpoint": "GET /api/jobs",
+      "http_status": 200,
+      "schema_version": "job_catalog_response_v1",
+      "required_fields": [
+        "schema_version",
+        "items"
+      ],
+      "required_fields_present": true
+    },
+    {
+      "endpoint": "POST /api/candidate?preflight=true",
+      "http_status": 200,
+      "schema_version": "candidate_preflight_v1",
+      "required_fields": [
+        "quality",
+        "parser",
+        "team_skill_count"
+      ],
+      "required_fields_present": true
+    },
+    {
+      "endpoint": "GET /api/target-job/133663124",
+      "http_status": 200,
+      "schema_version": "target_job_profile_v1.1",
+      "required_fields": [
+        "schema_version",
+        "job",
+        "skills",
+        "semantics"
+      ],
+      "required_fields_present": true
+    },
+    {
+      "endpoint": "GET /api/job-summary/AID-01",
+      "http_status": 200,
+      "schema_version": "aggregated_job_summary_v1",
+      "required_fields": [
+        "schema_version",
+        "skills"
+      ],
+      "required_fields_present": true
+    },
+    {
+      "endpoint": "POST /api/match",
+      "http_status": 200,
+      "schema_version": "matching_pipeline_output_v1",
+      "required_fields": [
+        "schema_version",
+        "match_result",
+        "proficiency"
+      ],
+      "required_fields_present": true
+    },
+    {
+      "endpoint": "POST /api/learning-path",
+      "http_status": 200,
+      "schema_version": "learning_path_api_response_v1",
+      "required_fields": [
+        "schema_version",
+        "gap_summary",
+        "rendered"
+      ],
+      "required_fields_present": true
+    }
+  ]
+}

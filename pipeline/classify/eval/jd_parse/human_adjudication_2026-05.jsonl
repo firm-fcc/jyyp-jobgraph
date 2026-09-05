@@ -1,0 +1,7 @@
+{"case_id": "JD-006", "ruling": "gold_job_category=AID", "rationale": "正文为视觉定位/视觉检测/相机镜头光源选型——机器视觉应用工程，归 AI/数据大类（AID-08 同大类）；gold 选 DEV-10 软件工程师与正文技术构成不符", "evidence": "视觉定位/视觉检测/相机选型/镜头选型/光源选型"}
+{"case_id": "JD-015", "ruling": "it_related=true, job_code=DEV-33", "rationale": "正文含明确嵌入式软件职责（软件模块化开发/代码编写/软件失效分析），硬件成分不否定软件职责；DEV-33 嵌入式软件开发为最匹配岗", "evidence": "电子产品的软件设计和开发，包括软件模块化开发、代码编写"}
+{"case_id": "JD-038", "ruling": "it_related=false", "rationale": "芯片性能模型建模（Cycle-Accurate/SystemC）属半导体设计域——it_scope 排除政策（硬件/半导体类岗位不计 IT 统计范围）；gold 选 GJ-007 航天测试专家亦与正文无关", "evidence": "构建高精度的芯片性能模型（Cycle-Accurate Model）；芯片设计早期"}
+{"case_id": "JD-061", "ruling": "it_related=false", "rationale": "FTTx 光通信设备的海外解决方案售前岗——it_scope 排除政策（通信设备与现场类）；无软件/数据/AI 技术内容", "evidence": "海外市场不同国家FTTx方案的制定及推广"}
+{"case_id": "JD-069", "ruling": "it_related=false", "rationale": "售前管理培训生：正文全部为晋升路径/轮岗/行业前景，无任何技术职责；gold 选 OPS-06 ERP实施顾问与正文无关", "evidence": "高频晋升：每年4次晋升机会…培养周期6+12个月(不轮岗)"}
+{"case_id": "JD-082", "ruling": "it_related=false", "rationale": "人形机器人关节电机的机械/电气接口对接设计——硬件集成域（it_scope 排除）；gold 选 GJ-008 机器人感知算法工程师与正文（电机模组选型）不符", "evidence": "设计电机模组与人形机器人的对接方案，包括机械接口、电气接口和通信接口"}
+{"case_id": "JD-090", "ruling": "it_related=true", "rationale": "电商产品经理为体系内精确岗 PD-08；gold 判非IT与其自身规则（信息技术类含 IT 产品）矛盾", "evidence": "标题：电商产品经理；体系岗 PD-08 电商产品经理"}

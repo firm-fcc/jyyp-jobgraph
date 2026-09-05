@@ -1,0 +1,188 @@
+{
+  "version": "stage2b2_t_sw_04_testing_quality_curated_v1",
+  "team_skill_id": "T-SW-04",
+  "team_skill_name": "系统测试与质量评估",
+  "scope": "覆盖测试目标与质量模型的确定、测试设计与用例生成、缺陷记录与回归、性能与非功能评估，以及质量结论的输出核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "QA-01",
+      "name_zh": "质量模型与测试目标确定",
+      "type": "CORE",
+      "definition": "依据产品质量模型选定本次测试关注的质量特性，并把它们转为可判定的测试目标。",
+      "prerequisites": [],
+      "learning_outcome": "能够依据质量模型确定测试目标，并说明各目标的判定方式。",
+      "evidence_task": "就一个被测系统选定质量特性并转为测试目标，逐项写明判定方式与通过阈值。",
+      "validation_criteria": [
+        "质量特性的选取有产品语境依据",
+        "每个测试目标可判定通过与否"
+      ],
+      "source_refs": [
+        "iso_iec_25010",
+        "iso_iec_ieee_29119"
+      ]
+    },
+    {
+      "subskill_id": "QA-02",
+      "name_zh": "测试设计与用例生成",
+      "type": "CORE",
+      "definition": "按等价类、边界值与状态迁移等方法系统化设计用例，使覆盖不依赖于测试者的直觉。",
+      "prerequisites": [
+        "QA-01"
+      ],
+      "learning_outcome": "能够用系统化方法生成用例集，并说明其对输入空间的覆盖依据。",
+      "evidence_task": "就一个功能模块用系统化方法生成用例集，说明所用方法与覆盖依据，标明未覆盖的输入区间。",
+      "validation_criteria": [
+        "用例可回溯到所声明的设计方法",
+        "未覆盖区间被明确标出"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_29119",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "QA-03",
+      "name_zh": "缺陷记录与回归验证",
+      "type": "CORE",
+      "definition": "以可复现的方式记录缺陷，修复后执行针对原缺陷与相关路径的回归验证。",
+      "prerequisites": [
+        "QA-02"
+      ],
+      "learning_outcome": "能够输出可复现的缺陷记录，并在修复后完成覆盖原缺陷的回归验证。",
+      "evidence_task": "就一组实际缺陷输出记录，含复现步骤、期望与实际结果，修复后执行回归并记录结果。",
+      "validation_criteria": [
+        "缺陷记录足以支持他人复现",
+        "回归覆盖原缺陷及其相关路径"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_29119"
+      ]
+    },
+    {
+      "subskill_id": "QA-04",
+      "name_zh": "性能与非功能评估",
+      "type": "CORE",
+      "definition": "在受控环境下量测性能与其他非功能指标，说明负载模型、量测口径与结果的适用范围。",
+      "prerequisites": [
+        "QA-02"
+      ],
+      "learning_outcome": "能够完成一次非功能评估，并给出结果成立的负载与环境条件。",
+      "evidence_task": "就一个系统完成性能评估，写明负载模型、环境配置、量测口径与结果的适用范围。",
+      "validation_criteria": [
+        "负载模型与真实使用情形有对应关系",
+        "结果的适用范围有明确边界"
+      ],
+      "source_refs": [
+        "iso_iec_25010",
+        "iso_iec_ieee_15939"
+      ]
+    },
+    {
+      "subskill_id": "QA-05",
+      "name_zh": "质量结论与优化建议",
+      "type": "CORE",
+      "definition": "汇总测试证据形成质量结论，指出未达标项并给出有优先级的优化建议。",
+      "prerequisites": [
+        "QA-03",
+        "QA-04"
+      ],
+      "learning_outcome": "能够输出有证据支撑的质量结论与优化建议，并说明各建议的预期收益。",
+      "evidence_task": "就一轮测试输出质量报告，含结论、未达标项、优化建议与各建议对应的证据与预期收益。",
+      "validation_criteria": [
+        "结论逐项对应测试目标与实测数据",
+        "优化建议的优先级有依据"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_29119",
+        "iso_iec_25010"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "QA-VERIFY-01",
+    "objective": "验证当前系统测试与质量评估的能力证据。",
+    "task_description": "就一个真实被测系统完成测试设计、执行与缺陷回归，保留用例集、缺陷记录与量测数据。",
+    "validation_criteria": [
+      "用例设计方法与覆盖依据可核",
+      "缺陷记录可复现",
+      "量测口径与结果适用范围明确"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "QA-CAPSTONE-01",
+    "objective": "完成一轮目标可判定、覆盖有依据、结论有证据的质量评估。",
+    "task_description": "就一个系统依据质量模型确定测试目标，系统化设计用例，执行测试并记录缺陷，完成回归与非功能评估，最后输出带优先级建议的质量结论。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "测试目标均可判定通过与否",
+      "用例覆盖依据与未覆盖区间明确",
+      "质量结论逐项有实测数据支撑",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_25010",
+      "title": "ISO/IEC 25010 Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model",
+      "authors_or_org": "ISO/IEC",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "QA-01",
+        "QA-04",
+        "QA-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15939",
+      "title": "ISO/IEC/IEEE 15939 Systems and software engineering — Measurement process",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "QA-04"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_29119",
+      "title": "ISO/IEC/IEEE 29119 Software and systems engineering — Software testing",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "QA-01",
+        "QA-02",
+        "QA-03",
+        "QA-05"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "QA-02"
+      ]
+    }
+  ]
+}

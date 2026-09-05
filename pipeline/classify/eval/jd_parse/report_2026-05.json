@@ -1,0 +1,44 @@
+{
+ "window": "2026-05",
+ "n_cases": 121,
+ "n_scored": 71,
+ "score_note": "评分集 = gold 有体系内归类的用例（IT/非IT 拒判不评分，2026-09-03 用户裁定）",
+ "gold_file": "gold_2026-05.qc.jsonl",
+ "n_human_adjudicated": 7,
+ "jd_parse_accuracy": 0.9155,
+ "case_rule": "JD 解析准确率 = 三维度用例通过率平均：①岗位归类（系统岗位大类 = gold 岗位大类；系统判非IT 即失败）②任务归类（gold 任务覆盖率 ≥50%，双空通过）③技能归类（gold 技能覆盖率 ≥50%，双空通过）",
+ "components": {
+  "job_category_pass": 0.9014,
+  "task_coverage_pass": 0.9014,
+  "skill_coverage_pass": 0.9437,
+  "all3_pass_ref": 0.7887,
+  "job_exact_ref": 0.7465,
+  "it_reject_acc_ref": 0.9421,
+  "skillpoint_f1_ref": 0.5735,
+  "task_f1_ref": 0.4974,
+  "techstack_f1_ref": 0.5071,
+  "skill_f1_ref": 0.45,
+  "task_prf": {
+   "precision": 0.364,
+   "recall": 0.7851,
+   "f1": 0.4974
+  },
+  "skillpoint_prf": {
+   "precision": 0.43,
+   "recall": 0.8607,
+   "f1": 0.5735
+  },
+  "techstack_prf": {
+   "precision": 0.6283,
+   "recall": 0.4251,
+   "f1": 0.5071
+  },
+  "skill_prf": {
+   "precision": 0.3054,
+   "recall": 0.855,
+   "f1": 0.45
+  }
+ },
+ "micro_composite_ref": 0.6556,
+ "n_disagreements": 423
+}

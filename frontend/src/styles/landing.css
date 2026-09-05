@@ -1,0 +1,419 @@
+/* =========================================================
+   封面页
+
+   全部选择器收在 .landing 作用域内，与 home.css 的约定一致：
+   四个路由的 CSS 会被打进同一个全局包，通用类名裸露在全局会互相串味。
+
+   本页固定为一个视口高度且不滚动，因此所有纵向尺寸都用可压缩的单位
+   （clamp / vh），窗口变矮时各段一起收，而不是把底部指标条挤出屏幕。
+   ========================================================= */
+
+.landing {
+  position: relative;
+  /* 100dvh 而不是 100vh：移动端浏览器的地址栏收放会改变可视高度，
+     用 vh 会在收起地址栏时多出一段，正好触发滚动条 */
+  height: 100dvh;
+  /* 下限压到 500：再低就只能靠裁切，而各段尺寸都跟着视口高度收，
+     500 以上都能完整放下页头、标题、入口与底部指标条 */
+  min-height: 500px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 3.2vh, 34px) clamp(24px, 5vw, 64px) clamp(18px, 3vh, 30px);
+}
+
+/* =========================================================
+   背景光球
+   ========================================================= */
+.landing .lp-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* 三枚光球各沿一条闭合椭圆轨道匀速巡回，三条轨道的长短轴、周期与方向皆不同，
+   彼此因而不同步 —— 三球齐进齐退会让整幅背景像一块整体在晃。
+
+   位移写在 translate 这一独立属性上，不写进 transform：第三枚球的居中靠
+   transform: translate(-50%, -50%)，若把轨道也塞进 transform，两者相互覆盖。
+   两条属性各自动画，浏览器按 translate → transform 的次序合成。
+
+   呼吸另起一条 scale 动画，周期与轨道互质，缩放的节拍因而不与巡回对齐。 */
+.landing .lp-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.38;
+  will-change: translate, scale, opacity;
+}
+
+.landing .lp-orb-1 {
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  top: -200px;
+  left: -140px;
+  animation:
+    lp-orbit-a 24s linear infinite,
+    lp-breathe 11s ease-in-out infinite,
+    lp-glow 14s ease-in-out infinite;
+}
+
+.landing .lp-orb-2 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, var(--teal) 0%, transparent 70%);
+  bottom: -160px;
+  right: -120px;
+  animation:
+    lp-orbit-b 28s linear infinite,
+    lp-breathe 13s ease-in-out infinite,
+    lp-glow 17s ease-in-out infinite;
+  animation-delay: -9s, -5s, -6s;
+}
+
+.landing .lp-orb-3 {
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, var(--violet) 0%, transparent 70%);
+  top: 42%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  animation:
+    lp-orbit-c 26s linear infinite,
+    lp-breathe 9s ease-in-out infinite,
+    lp-glow 12s ease-in-out infinite;
+  animation-delay: -7s, -3s, -2s;
+}
+
+/* 轨道按椭圆逐点取样，段间线性插值 —— 取样够密时读不出折点，
+   而缓动函数会让球在取样点上一顿一顿。
+
+   幅度与周期一并放大过一轮：上一版三枚球每秒只走九到二十六像素，而球本身
+   直径三百四到五百六、外加九十像素模糊，位移不足自身的百分之几，肉眼读不出
+   在动。现按每秒三十五到五十像素定，一圈二十余秒。 */
+@keyframes lp-orbit-a {
+  0% { translate: 0px 130px; }
+  6.25% { translate: 80px 120px; }
+  12.5% { translate: 148px 92px; }
+  18.75% { translate: 194px 50px; }
+  25% { translate: 210px 0px; }
+  31.25% { translate: 194px -50px; }
+  37.5% { translate: 148px -92px; }
+  43.75% { translate: 80px -120px; }
+  50% { translate: 0px -130px; }
+  56.25% { translate: -80px -120px; }
+  62.5% { translate: -148px -92px; }
+  68.75% { translate: -194px -50px; }
+  75% { translate: -210px -0px; }
+  81.25% { translate: -194px 50px; }
+  87.5% { translate: -148px 92px; }
+  93.75% { translate: -80px 120px; }
+  100% { translate: -0px 130px; }
+}
+
+@keyframes lp-orbit-b {
+  0% { translate: -0px 150px; }
+  6.25% { translate: -65px 139px; }
+  12.5% { translate: -120px 106px; }
+  18.75% { translate: -157px 57px; }
+  25% { translate: -170px 0px; }
+  31.25% { translate: -157px -57px; }
+  37.5% { translate: -120px -106px; }
+  43.75% { translate: -65px -139px; }
+  50% { translate: -0px -150px; }
+  56.25% { translate: 65px -139px; }
+  62.5% { translate: 120px -106px; }
+  68.75% { translate: 157px -57px; }
+  75% { translate: 170px -0px; }
+  81.25% { translate: 157px 57px; }
+  87.5% { translate: 120px 106px; }
+  93.75% { translate: 65px 139px; }
+  100% { translate: 0px 150px; }
+}
+
+@keyframes lp-orbit-c {
+  0% { translate: 0px 110px; }
+  6.25% { translate: 115px 102px; }
+  12.5% { translate: 212px 78px; }
+  18.75% { translate: 277px 42px; }
+  25% { translate: 300px 0px; }
+  31.25% { translate: 277px -42px; }
+  37.5% { translate: 212px -78px; }
+  43.75% { translate: 115px -102px; }
+  50% { translate: 0px -110px; }
+  56.25% { translate: -115px -102px; }
+  62.5% { translate: -212px -78px; }
+  68.75% { translate: -277px -42px; }
+  75% { translate: -300px -0px; }
+  81.25% { translate: -277px 42px; }
+  87.5% { translate: -212px 78px; }
+  93.75% { translate: -115px 102px; }
+  100% { translate: -0px 110px; }
+}
+
+@keyframes lp-breathe {
+  0%,
+  100% {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.16;
+  }
+}
+
+/* 明暗脉动。糊到这个程度的光斑，位置挪动本就不易察觉，亮度变化才是读得出
+   "在动"的那一路；周期与轨道、呼吸三者互不整除，合起来不会踩在同一个节拍上。 */
+@keyframes lp-glow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing .lp-orb {
+    animation: none;
+    translate: none;
+    scale: 1;
+    opacity: 0.38;
+  }
+}
+
+/* =========================================================
+   顶部：品牌与版本
+   ========================================================= */
+.landing .lp-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.landing .lp-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 品牌名与副标题一律走全局的 .brand-name / .brand-sub（见 global.css），
+   本页不再另写一份。封面此前用的是竖排加衬线体，与顶栏是两个形态。
+   顶栏那两条按宽度隐藏品牌文字的规则只对 .topbar 生效，封面不受影响：
+   封面的这一行只有品牌与版本号两项，不存在顶栏那种挤压。 */
+
+.landing .lp-head-meta {
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   中部：主标题与入口
+   ========================================================= */
+.landing .lp-main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: clamp(12px, 1.8vh, 20px);
+}
+
+.landing .lp-eyebrow {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+
+.landing .lp-title {
+  font-family: var(--font-display);
+  /* 高度也参与约束：窗口变矮时标题跟着收，否则会把下面的按钮压出屏幕。
+     系数按标题实际字数定：第二行 16 字，比上一版的 10 字宽六成，
+     沿用旧系数会在 1280px 以下把标题顶出容器。 */
+  font-size: clamp(26px, min(4.2vw, 6.4vh), 56px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.landing .lp-title-accent {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--teal) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.landing .lp-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: clamp(4px, 1vh, 12px);
+}
+
+.landing .lp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all 0.28s var(--ease);
+}
+
+.landing .lp-btn-primary {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(23, 34, 59, 0.22);
+}
+
+.landing .lp-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(23, 34, 59, 0.3);
+  background: #000;
+}
+
+.landing .lp-btn-primary .ic {
+  transition: transform 0.28s var(--ease);
+}
+
+.landing .lp-btn-primary:hover .ic {
+  transform: translateX(3px);
+}
+
+.landing .lp-btn-ghost {
+  background: rgba(255, 255, 255, 0.64);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(23, 34, 59, 0.12);
+  color: var(--ink);
+}
+
+.landing .lp-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(23, 34, 59, 0.22);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   底部：规模指标
+   ========================================================= */
+.landing .lp-foot {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.landing .lp-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 820px;
+  padding: clamp(14px, 2.2vh, 24px) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.landing .lp-stat {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.landing .lp-stat-div {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 34px;
+  background: var(--line);
+}
+
+.landing .lp-stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.6vh, 28px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.landing .lp-stat-label {
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  font-weight: 500;
+}
+
+.landing .lp-note {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+/* =========================================================
+   窄屏
+   ========================================================= */
+@media (max-width: 720px) {
+  .landing {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  /* 手机上按容器自动折行：标题共 27 字，一行排不下 12 字以上，
+     强制断成固定两行会把第二行顶出屏幕 */
+  .landing .lp-title {
+    font-size: clamp(24px, 7.2vw, 34px);
+  }
+
+  .landing .lp-title br {
+    display: none;
+  }
+
+  .landing .lp-stats {
+    flex-wrap: wrap;
+    gap: 18px 0;
+    padding: 18px 20px;
+  }
+
+  .landing .lp-stat {
+    flex: 0 0 50%;
+  }
+
+  .landing .lp-stat-div {
+    display: none;
+  }
+
+  .landing .lp-head-meta {
+    display: none;
+  }
+}

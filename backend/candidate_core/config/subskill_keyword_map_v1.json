@@ -1,0 +1,58 @@
+{
+  "schema_version": "subskill_keyword_map_v1",
+  "skills": {
+    "T-AI-01": {
+      "ML-03": ["cnn", "dnn", "resnet", "rnn", "lstm", "alexnet", "vggnet", "googlenet", "深度学习", "神经网络"]
+    },
+    "T-AI-02": {
+      "NLP-03": ["bert", "transformer", "xlnet"],
+      "NLP-05": ["asr", "tts", "kaldi", "openfst", "wfst decoder"]
+    },
+    "T-AI-03": {
+      "CV-01": ["image processing", "图像处理"],
+      "CV-02": ["ocr", "人脸识别", "image classification", "图像分类"],
+      "CV-03": ["yolo", "faster r-cnn", "r-cnn", "rcnn", "目标检测", "目标检测算法", "object detection"],
+      "CV-04": ["clip", "vision-language alignment", "视觉文本对齐"],
+      "CV-05": ["multimodal fusion", "多模态融合"]
+    },
+    "T-AI-07": {
+      "RAG-01": ["document chunking", "文档切分"],
+      "RAG-02": ["faiss", "milvus", "pinecone", "weaviate", "chromadb", "向量数据库", "vector database"],
+      "RAG-03": ["bm25"],
+      "RAG-04": ["rag", "retrieval augmented generation", "检索增强生成"],
+      "RAG-05": ["reranker", "reranking", "重排序", "query rewriting", "查询改写"],
+      "RAG-06": ["ragas", "rag evaluation", "rag评估"]
+    },
+    "T-AI-08": {
+      "AG-01": ["react agent", "tool calling", "function calling", "工具调用"],
+      "AG-02": ["task planning", "replanning", "任务规划", "重规划"],
+      "AG-03": ["multi-agent role assignment", "多智能体角色分配"],
+      "AG-04": ["agent orchestration", "multi-agent orchestration", "智能体编排"],
+      "AG-05": ["agent failure recovery", "multi-agent conflict resolution", "智能体失败恢复"]
+    },
+    "T-AI-10": {
+      "LLM-01": ["instruction data", "post-training data", "指令数据", "后训练数据"],
+      "LLM-02": ["llm fine-tuning", "大模型微调"],
+      "LLM-03": ["sft", "supervised fine-tuning", "监督微调"],
+      "LLM-04": ["lora", "qlora", "peft", "parameter-efficient fine-tuning", "参数高效微调"],
+      "LLM-05": ["dpo", "rlhf", "preference optimization", "偏好对齐"],
+      "LLM-06": ["knowledge distillation", "model distillation", "模型蒸馏"]
+    },
+    "T-DA-02": {
+      "DB-01": ["database schema design", "schema design", "数据库设计", "数据建模"],
+      "DB-02": ["sql", "t-sql", "pl/sql", "hiveql", "spark sql", "存储过程"],
+      "DB-03": ["acid", "transaction isolation", "concurrency control", "事务隔离", "并发控制"],
+      "DB-04": ["explain", "explain analyze", "query optimization", "query plan", "查询优化", "执行计划"],
+      "DB-05": ["etl", "kettle", "informatica", "datastage", "ssis", "data migration", "data integration", "数据迁移", "数据集成"],
+      "DB-06": ["data governance", "metadata management", "data quality", "数据治理", "元数据管理", "数据质量"],
+      "DB-07": ["data guard", "backup and recovery", "disaster recovery", "备份恢复", "灾难恢复"]
+    },
+    "T-SW-01": {
+      "SWE-01": ["java", "c++", "python", "javascript", "c#", "go", "shell", "php", "typescript", "lua"],
+      "SWE-02": ["git", "svn", "maven", "webpack"],
+      "SWE-03": ["html", "css", "vue", "react", "jquery", "ajax", "angular", "bootstrap", "elementui"],
+      "SWE-04": ["spring", "mybatis", "spring boot", "spring mvc", "node.js", "hibernate", "asp.net"],
+      "SWE-05": ["qt", "android", "wpf", "winforms", "mfc"]
+    }
+  }
+}

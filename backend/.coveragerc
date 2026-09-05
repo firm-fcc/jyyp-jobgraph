@@ -1,0 +1,38 @@
+[run]
+source =
+    app
+    backend
+    candidate_core
+relative_files = True
+# Unreachable historical modules (from static runtime import audit); CLI and
+# external HTTP transport excluded. All active semantic/service modules retained.
+omit =
+    candidate_core/run_v3.py
+    candidate_core/extractor/agentic_llm_client.py
+    candidate_core/extractor/ability_shadow_*.py
+    candidate_core/extractor/ability_taxonomy_v2.py
+    candidate_core/extractor/agentic_controller.py
+    candidate_core/extractor/cached_llm_extractor.py
+    candidate_core/extractor/deterministic_evidence_auditor.py
+    candidate_core/extractor/evidence_review_agent.py
+    candidate_core/extractor/explicit_skill_mentions_v3.py
+    candidate_core/extractor/file_parser.py
+    candidate_core/extractor/final_decision_*.py
+    candidate_core/extractor/formal_evaluation_runner.py
+    candidate_core/extractor/grounded_capability_trace_v3.py
+    candidate_core/extractor/hybrid_resume_extractor*.py
+    candidate_core/extractor/jd_extractor.py
+    candidate_core/extractor/llm_extractor.py
+    candidate_core/extractor/llm_validator.py
+    candidate_core/extractor/resume_extractor.py
+    candidate_core/extractor/semantic_shadow_*.py
+    candidate_core/extractor/shadow_review_*.py
+    candidate_core/extractor/skill_normalizer.py
+    candidate_core/extractor/team_skill_metric_v2.py
+    candidate_core/extractor/team_skill_profile_v3.py
+    candidate_core/extractor/validated_resume_extractor.py
+
+[report]
+show_missing = True
+precision = 2
+fail_under = 60

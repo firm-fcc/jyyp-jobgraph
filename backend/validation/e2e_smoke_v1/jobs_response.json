@@ -1,0 +1,37 @@
+{
+  "schema_version": "job_catalog_response_v1",
+  "query": "算法工程师",
+  "limit": 3,
+  "items": [
+    {
+      "jd_key": "2e48512d369aa7c71d7c75bc7f3b4104",
+      "jobid": "133663124",
+      "title": "算法工程师",
+      "std_job": "算法工程师",
+      "level": "中级(3-4年)",
+      "techstack": "AI/ML 与数据智能",
+      "opentime": "2022-10-01",
+      "n_skills": 8
+    },
+    {
+      "jd_key": "a079ed9c57ab72804152480f03c7f821",
+      "jobid": "141784848",
+      "title": "视觉算法工程师",
+      "std_job": "算法工程师",
+      "level": "",
+      "techstack": "AI/ML 与数据智能",
+      "opentime": "2022-10-01",
+      "n_skills": 8
+    },
+    {
+      "jd_key": "3754247bdbf9950e86cd59e172dbb967",
+      "jobid": "142794351",
+      "title": "放射系统算法工程师(J11026)",
+      "std_job": "算法工程师",
+      "level": "",
+      "techstack": "AI/ML 与数据智能",
+      "opentime": "2022-10-01",
+      "n_skills": 8
+    }
+  ]
+}

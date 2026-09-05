@@ -1,0 +1,535 @@
+[
+  {
+    "stage": "subprocess",
+    "event": "start",
+    "pid": 25112,
+    "offset_seconds": 0.000347
+  },
+  {
+    "stage": "segmentation",
+    "event": "policy",
+    "pid": 20932,
+    "offset_seconds": 0.131097,
+    "status": "FROZEN_DOCUMENT_FULL_RESUME_PATH"
+  },
+  {
+    "stage": "proficiency",
+    "event": "not_run",
+    "pid": 20932,
+    "offset_seconds": 0.131465,
+    "status": "SEPARATE_DOWNSTREAM_ENDPOINT"
+  },
+  {
+    "stage": "document_parse",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 0.141472,
+    "call_id": 1
+  },
+  {
+    "stage": "document_parse",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 0.217656,
+    "call_id": 1,
+    "elapsed_seconds": 0.0759,
+    "status": "PASS",
+    "usage": {}
+  },
+  {
+    "stage": "evidence_extraction",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 0.220647,
+    "call_id": 2
+  },
+  {
+    "stage": "llm_logical",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 0.230028,
+    "call_id": 3,
+    "request_fingerprint": "0af7a120466f3e2bc609a7e4f5304d2c76155f5c77442e6de0c0f73fb02ab28a"
+  },
+  {
+    "stage": "llm_transport",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 0.23055,
+    "call_id": 4,
+    "request_fingerprint": "0af7a120466f3e2bc609a7e4f5304d2c76155f5c77442e6de0c0f73fb02ab28a"
+  },
+  {
+    "stage": "llm_transport",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 23.039903,
+    "call_id": 4,
+    "elapsed_seconds": 22.809056,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 941,
+      "completion_tokens": 2070,
+      "total_tokens": 3011
+    }
+  },
+  {
+    "stage": "llm_logical",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 23.040535,
+    "call_id": 3,
+    "elapsed_seconds": 22.81003,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 941,
+      "completion_tokens": 2070,
+      "total_tokens": 3011
+    }
+  },
+  {
+    "stage": "evidence_extraction",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 23.041034,
+    "call_id": 2,
+    "elapsed_seconds": 22.81118,
+    "status": "PASS",
+    "usage": {}
+  },
+  {
+    "stage": "team_skill_pipeline",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 23.042785,
+    "call_id": 5
+  },
+  {
+    "stage": "llm_logical",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 23.062541,
+    "call_id": 6,
+    "request_fingerprint": "ad0caa4c4fb6ce2bb80399aa50db5770a8a5b0a7e877a0040f873373fdb31ea7"
+  },
+  {
+    "stage": "llm_transport",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 23.063071,
+    "call_id": 7,
+    "request_fingerprint": "ad0caa4c4fb6ce2bb80399aa50db5770a8a5b0a7e877a0040f873373fdb31ea7"
+  },
+  {
+    "stage": "llm_transport",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 43.128748,
+    "call_id": 7,
+    "elapsed_seconds": 20.065181,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 2877,
+      "completion_tokens": 1914,
+      "total_tokens": 4791
+    }
+  },
+  {
+    "stage": "llm_logical",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 43.129479,
+    "call_id": 6,
+    "elapsed_seconds": 20.066459,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 2877,
+      "completion_tokens": 1914,
+      "total_tokens": 4791
+    }
+  },
+  {
+    "stage": "llm_logical",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 43.130047,
+    "call_id": 8,
+    "request_fingerprint": "f5dd6f5ace06e80328d4141a7e7f41390be3d64bfb29504fafa459fa0c308cdd"
+  },
+  {
+    "stage": "llm_transport",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 43.13044,
+    "call_id": 9,
+    "request_fingerprint": "f5dd6f5ace06e80328d4141a7e7f41390be3d64bfb29504fafa459fa0c308cdd"
+  },
+  {
+    "stage": "llm_transport",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 54.835343,
+    "call_id": 9,
+    "elapsed_seconds": 11.704544,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 817,
+      "completion_tokens": 653,
+      "total_tokens": 1470
+    }
+  },
+  {
+    "stage": "llm_logical",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 54.835847,
+    "call_id": 8,
+    "elapsed_seconds": 11.70544,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 817,
+      "completion_tokens": 653,
+      "total_tokens": 1470
+    }
+  },
+  {
+    "stage": "llm_logical",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 54.836311,
+    "call_id": 10,
+    "request_fingerprint": "58aab1c209b031727b313cb801afb3141b565d2a68121ffe68aacd247aaa309e"
+  },
+  {
+    "stage": "llm_transport",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 54.836614,
+    "call_id": 11,
+    "request_fingerprint": "58aab1c209b031727b313cb801afb3141b565d2a68121ffe68aacd247aaa309e"
+  },
+  {
+    "stage": "llm_transport",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 66.956392,
+    "call_id": 11,
+    "elapsed_seconds": 12.119486,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 858,
+      "completion_tokens": 738,
+      "total_tokens": 1596
+    }
+  },
+  {
+    "stage": "llm_logical",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 66.957023,
+    "call_id": 10,
+    "elapsed_seconds": 12.120435,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 858,
+      "completion_tokens": 738,
+      "total_tokens": 1596
+    }
+  },
+  {
+    "stage": "llm_logical",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 66.957449,
+    "call_id": 12,
+    "request_fingerprint": "4557c1acda208dfc316bb4040be8cab1dfafdb49e78bd8fc31e898c6492fbb62"
+  },
+  {
+    "stage": "llm_transport",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 66.957775,
+    "call_id": 13,
+    "request_fingerprint": "4557c1acda208dfc316bb4040be8cab1dfafdb49e78bd8fc31e898c6492fbb62"
+  },
+  {
+    "stage": "llm_transport",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 77.000975,
+    "call_id": 13,
+    "elapsed_seconds": 10.042933,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 851,
+      "completion_tokens": 549,
+      "total_tokens": 1400
+    }
+  },
+  {
+    "stage": "llm_logical",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 77.001552,
+    "call_id": 12,
+    "elapsed_seconds": 10.043801,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 851,
+      "completion_tokens": 549,
+      "total_tokens": 1400
+    }
+  },
+  {
+    "stage": "team_skill_pipeline",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 77.00203,
+    "call_id": 5,
+    "elapsed_seconds": 53.958951,
+    "status": "PASS",
+    "usage": {}
+  },
+  {
+    "stage": "candidate_profile_assembly",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 77.002382,
+    "call_id": 14
+  },
+  {
+    "stage": "candidate_profile_assembly",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 77.002762,
+    "call_id": 14,
+    "elapsed_seconds": 0.000102,
+    "status": "PASS",
+    "usage": {}
+  },
+  {
+    "stage": "candidate_profile_assembly",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 77.003085,
+    "call_id": 15
+  },
+  {
+    "stage": "candidate_profile_assembly",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 77.00402,
+    "call_id": 15,
+    "elapsed_seconds": 0.000681,
+    "status": "PASS",
+    "usage": {}
+  },
+  {
+    "stage": "candidate_profile_assembly",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 77.004324,
+    "call_id": 16
+  },
+  {
+    "stage": "candidate_profile_assembly",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 77.004588,
+    "call_id": 16,
+    "elapsed_seconds": 1.6e-05,
+    "status": "PASS",
+    "usage": {}
+  },
+  {
+    "stage": "candidate_profile_assembly",
+    "event": "start",
+    "pid": 20932,
+    "offset_seconds": 77.004828,
+    "call_id": 17
+  },
+  {
+    "stage": "candidate_profile_assembly",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 77.005151,
+    "call_id": 17,
+    "elapsed_seconds": 9e-05,
+    "status": "PASS",
+    "usage": {}
+  },
+  {
+    "stage": "worker",
+    "event": "end",
+    "pid": 20932,
+    "offset_seconds": 77.018481,
+    "return_code": 0
+  },
+  {
+    "stage": "subprocess",
+    "event": "end",
+    "pid": 25112,
+    "offset_seconds": 77.14287,
+    "status": "PASS",
+    "elapsed_seconds": 77.142859,
+    "return_code": 0
+  },
+  {
+    "stage": "proficiency",
+    "event": "start",
+    "pid": 25112,
+    "offset_seconds": 1.2e-05,
+    "call_id": 1
+  },
+  {
+    "stage": "proficiency_llm_logical",
+    "event": "start",
+    "pid": 25112,
+    "offset_seconds": 0.001026,
+    "call_id": 1,
+    "request_fingerprint": "a834d056bde225d5070aa8b128513b65477b188dba7db184179aeaa1049344c0"
+  },
+  {
+    "stage": "proficiency_llm_transport",
+    "event": "start",
+    "pid": 25112,
+    "offset_seconds": 0.001368,
+    "call_id": 2,
+    "request_fingerprint": "a834d056bde225d5070aa8b128513b65477b188dba7db184179aeaa1049344c0"
+  },
+  {
+    "stage": "proficiency_llm_transport",
+    "event": "end",
+    "pid": 25112,
+    "offset_seconds": 33.621415,
+    "call_id": 2,
+    "elapsed_seconds": 33.619763,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 1884,
+      "completion_tokens": 3201,
+      "total_tokens": 5085
+    }
+  },
+  {
+    "stage": "proficiency_llm_logical",
+    "event": "end",
+    "pid": 25112,
+    "offset_seconds": 33.630858,
+    "call_id": 1,
+    "elapsed_seconds": 33.629522,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 1884,
+      "completion_tokens": 3201,
+      "total_tokens": 5085
+    }
+  },
+  {
+    "stage": "proficiency",
+    "event": "end",
+    "pid": 25112,
+    "offset_seconds": 33.630782,
+    "call_id": 1,
+    "elapsed_seconds": 33.63042,
+    "status": "PASS",
+    "usage": {}
+  },
+  {
+    "stage": "proficiency",
+    "event": "start",
+    "pid": 25112,
+    "offset_seconds": 2.9e-05,
+    "call_id": 1
+  },
+  {
+    "stage": "proficiency_llm_logical",
+    "event": "start",
+    "pid": 25112,
+    "offset_seconds": 33.632101,
+    "call_id": 3,
+    "request_fingerprint": "3237d54517ec634fbaf785ee354b4eaa7ceccd308b93776d7d1490945c6cd3e3"
+  },
+  {
+    "stage": "proficiency_llm_transport",
+    "event": "start",
+    "pid": 25112,
+    "offset_seconds": 33.632435,
+    "call_id": 4,
+    "request_fingerprint": "3237d54517ec634fbaf785ee354b4eaa7ceccd308b93776d7d1490945c6cd3e3"
+  },
+  {
+    "stage": "proficiency_llm_transport",
+    "event": "end",
+    "pid": 25112,
+    "offset_seconds": 118.184087,
+    "call_id": 4,
+    "elapsed_seconds": 84.551358,
+    "error_type": "AgenticLLMResponseError",
+    "status": "FAIL"
+  },
+  {
+    "stage": "proficiency_llm_transport",
+    "event": "start",
+    "pid": 25112,
+    "offset_seconds": 119.186178,
+    "call_id": 5,
+    "request_fingerprint": "3237d54517ec634fbaf785ee354b4eaa7ceccd308b93776d7d1490945c6cd3e3"
+  },
+  {
+    "stage": "proficiency_llm_transport",
+    "event": "end",
+    "pid": 25112,
+    "offset_seconds": 204.56456,
+    "call_id": 5,
+    "elapsed_seconds": 85.377193,
+    "error_type": "AgenticLLMResponseError",
+    "status": "FAIL"
+  },
+  {
+    "stage": "proficiency_llm_transport",
+    "event": "start",
+    "pid": 25112,
+    "offset_seconds": 206.567364,
+    "call_id": 6,
+    "request_fingerprint": "3237d54517ec634fbaf785ee354b4eaa7ceccd308b93776d7d1490945c6cd3e3"
+  },
+  {
+    "stage": "proficiency_llm_transport",
+    "event": "end",
+    "pid": 25112,
+    "offset_seconds": 280.076588,
+    "call_id": 6,
+    "elapsed_seconds": 73.508345,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 1824,
+      "completion_tokens": 7236,
+      "total_tokens": 9060
+    }
+  },
+  {
+    "stage": "proficiency_llm_logical",
+    "event": "end",
+    "pid": 25112,
+    "offset_seconds": 280.077214,
+    "call_id": 3,
+    "elapsed_seconds": 246.444816,
+    "status": "PASS",
+    "usage": {
+      "prompt_tokens": 1824,
+      "completion_tokens": 7236,
+      "total_tokens": 9060
+    }
+  },
+  {
+    "stage": "proficiency",
+    "event": "end",
+    "pid": 25112,
+    "offset_seconds": 246.446013,
+    "call_id": 1,
+    "elapsed_seconds": 246.445699,
+    "status": "PASS",
+    "usage": {}
+  }
+]

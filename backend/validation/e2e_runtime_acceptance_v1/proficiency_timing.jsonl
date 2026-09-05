@@ -1,0 +1,12 @@
+{"stage": "proficiency", "event": "start", "pid": 26944, "offset_seconds": 1.3e-05, "call_id": 1}
+{"stage": "proficiency_llm_logical", "event": "start", "pid": 26944, "offset_seconds": 0.001174, "call_id": 1, "request_fingerprint": "0a86088558795e7484a21cc2c8f81f7e957f708e4313654a81bf3b58b8ea645f"}
+{"stage": "proficiency_llm_transport", "event": "start", "pid": 26944, "offset_seconds": 0.001597, "call_id": 2, "request_fingerprint": "0a86088558795e7484a21cc2c8f81f7e957f708e4313654a81bf3b58b8ea645f"}
+{"stage": "proficiency_llm_transport", "event": "end", "pid": 26944, "offset_seconds": 48.664255, "call_id": 2, "elapsed_seconds": 48.662328, "status": "PASS", "usage": {"prompt_tokens": 1804, "completion_tokens": 5162, "total_tokens": 6966}}
+{"stage": "proficiency_llm_logical", "event": "end", "pid": 26944, "offset_seconds": 48.666469, "call_id": 1, "elapsed_seconds": 48.66491, "status": "PASS", "usage": {"prompt_tokens": 1804, "completion_tokens": 5162, "total_tokens": 6966}}
+{"stage": "proficiency", "event": "end", "pid": 26944, "offset_seconds": 48.666434, "call_id": 1, "elapsed_seconds": 48.666007, "status": "PASS", "usage": {}}
+{"stage": "proficiency", "event": "start", "pid": 26944, "offset_seconds": 2e-05, "call_id": 1}
+{"stage": "proficiency_llm_logical", "event": "start", "pid": 26944, "offset_seconds": 48.668065, "call_id": 3, "request_fingerprint": "a00b32aa98e3c274139a3c1e0ffc6f408b3a67ab91ec8734bebbb05bf7ae1c65"}
+{"stage": "proficiency_llm_transport", "event": "start", "pid": 26944, "offset_seconds": 48.668466, "call_id": 4, "request_fingerprint": "a00b32aa98e3c274139a3c1e0ffc6f408b3a67ab91ec8734bebbb05bf7ae1c65"}
+{"stage": "proficiency_llm_transport", "event": "end", "pid": 26944, "offset_seconds": 70.298597, "call_id": 4, "elapsed_seconds": 21.629575, "status": "PASS", "usage": {"prompt_tokens": 1808, "completion_tokens": 1959, "total_tokens": 3767}}
+{"stage": "proficiency_llm_logical", "event": "end", "pid": 26944, "offset_seconds": 70.299105, "call_id": 3, "elapsed_seconds": 21.630683, "status": "PASS", "usage": {"prompt_tokens": 1808, "completion_tokens": 1959, "total_tokens": 3767}}
+{"stage": "proficiency", "event": "end", "pid": 26944, "offset_seconds": 21.63189, "call_id": 1, "elapsed_seconds": 21.631511, "status": "PASS", "usage": {}}

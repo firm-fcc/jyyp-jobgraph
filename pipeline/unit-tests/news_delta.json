@@ -1,0 +1,46 @@
+{
+  "meta": {"system_name": "fixture 新闻叠层", "source_kind": "news"},
+  "new_jobs": [
+    {
+      "id": "PJ-001", "name_zh": "具身智能数据采集员", "name_en": "",
+      "status": "pending", "definition": "负责具身智能场景的数据采集与标注。",
+      "evidence": {"newsX": {"date": "2026-04-20", "sentences": ["企业招聘具身数据采集员"], "confidence": "high"}},
+      "strength": 0.0, "max_contrib": 0.0,
+      "related_tasks": [
+        {"taxonomy": "new_tasks", "code": "PT-001", "name_zh": "具身数据采集"},
+        {"taxonomy": "tasks", "code": "T-01", "name_zh": "大模型应用开发与集成"}
+      ],
+      "related_skills": []
+    },
+    {
+      "id": "PJ-002", "name_zh": "机器人操作员", "name_en": "",
+      "status": "pending", "definition": "窗口外岗位。",
+      "evidence": {"newsY": {"date": "2026-06-20", "sentences": ["窗口外"], "confidence": "low"}},
+      "strength": 0.0, "max_contrib": 0.0, "related_tasks": [], "related_skills": []
+    }
+  ],
+  "new_tasks": [
+    {
+      "id": "PT-001", "name_zh": "具身数据采集", "name_en": "",
+      "description": "面向具身智能的数据采集任务。",
+      "evidence": {"newsX": {"date": "2026-04-20", "sentences": ["数据采集任务"], "confidence": "high"}},
+      "strength": 0.0, "max_contrib": 0.0
+    }
+  ],
+  "new_skills": [
+    {
+      "id": "PS-001", "name_zh": "具身智能", "name_en": "",
+      "skill_type": "hard", "definition": "具身智能能力。",
+      "evidence": {"newsX": {"date": "2026-04-20", "sentences": ["具身智能成热点"], "confidence": "high"}},
+      "strength": 0.0, "max_contrib": 0.0
+    }
+  ],
+  "skillpoints": [],
+  "strengthenings": [
+    {
+      "taxonomy": "tasks", "code": "T-01", "name_zh": "大模型应用开发与集成",
+      "source_kinds": ["mention"], "strength": 0.0, "max_contrib": 0.0,
+      "evidence": {"newsX": {"date": "2026-04-20", "sentences": ["大模型应用开发被提及"], "confidence": "high"}}
+    }
+  ]
+}

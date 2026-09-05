@@ -1,0 +1,11 @@
+{
+  "schema_version": "learning_path_real_replay_acceptance_v1",
+  "status": "PASS",
+  "candidate_id": "candidate_0068",
+  "http_status": 200,
+  "llm_calls": 0,
+  "identical_to_original_response": true,
+  "planner_unchanged": true,
+  "request_sha256": "7c297ba77d09539995e3942543afb24504d4e1eb2f2f5698447457bc3c064674",
+  "response_sha256": "f3b88cf4d4abd4d3cde565c322c97bc9594a242c90e6712a0db6c404afb0e6b9"
+}

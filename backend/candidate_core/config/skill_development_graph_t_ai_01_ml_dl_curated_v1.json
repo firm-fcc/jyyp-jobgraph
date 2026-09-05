@@ -1,0 +1,18 @@
+{
+  "version":"stage2b2_t_ai_01_ml_dl_curated_v1","team_skill_id":"T-AI-01","team_skill_name":"机器学习与深度学习","scope":"覆盖可复现实验、评价诊断与训练优化的机器学习核心路径及深度网络和应用验证分支。",
+  "nodes":[
+    {"subskill_id":"ML-01","name_zh":"任务定义与数据准备","type":"CORE","definition":"将业务或研究目标转化为可评价的学习任务并建立可追溯数据划分。","prerequisites":[],"learning_outcome":"能够定义目标、标签、数据边界与无泄漏划分。","evidence_task":"为固定数据集提交任务定义、数据审计和训练验证测试划分。","validation_criteria":["目标和评价对象明确","数据划分可复现且无明显泄漏"],"source_refs":["deep_learning_book","sklearn_docs"]},
+    {"subskill_id":"ML-02","name_zh":"训练与验证闭环","type":"CORE","definition":"实现含基线、训练、验证和实验记录的可复现建模闭环。","prerequisites":["ML-01"],"learning_outcome":"能够训练基线并用固定协议比较模型。","evidence_task":"实现一个基线与一个候选模型，保存配置、随机种子和验证结果。","validation_criteria":["训练配置和结果可复现","模型比较使用相同验证协议"],"source_refs":["sklearn_docs","pytorch_docs"]},
+    {"subskill_id":"ML-03","name_zh":"深度网络建模","type":"SPECIALIZATION","definition":"针对任务构建和训练合适的深度神经网络。","prerequisites":["ML-02"],"learning_outcome":"能够说明架构选择并稳定训练深度网络。","evidence_task":"实现深度网络并记录架构、损失、优化器和训练曲线。","validation_criteria":["架构与任务相匹配","训练动态和关键配置可复核"],"source_refs":["deep_learning_book","pytorch_docs"]},
+    {"subskill_id":"ML-04","name_zh":"模型评价与误差分析","type":"CORE","definition":"用与任务匹配的指标和样例分析识别模型失效模式。","prerequisites":["ML-02"],"learning_outcome":"能够区分总体指标与分组、样例级错误。","evidence_task":"输出固定测试集指标、分组结果和错误类别。","validation_criteria":["指标选择与任务目标一致","至少一个失效模式有样例证据"],"source_refs":["sklearn_docs"]},
+    {"subskill_id":"ML-05","name_zh":"训练优化与泛化控制","type":"CORE","definition":"基于验证和误差证据调整训练过程并控制过拟合。","prerequisites":["ML-02","ML-04"],"learning_outcome":"能够用对照实验验证优化或正则化选择。","evidence_task":"针对一个诊断问题比较两种改进并记录泛化效果。","validation_criteria":["改动依据来自验证或误差分析","前后对比控制关键变量"],"source_refs":["deep_learning_book","pytorch_docs"]},
+    {"subskill_id":"ML-06","name_zh":"模型应用验证","type":"SPECIALIZATION","definition":"在目标应用约束下验证模型输出质量、稳定性与适用边界。","prerequisites":["ML-02","ML-04"],"learning_outcome":"能够设计接近使用场景的验证并界定模型适用范围。","evidence_task":"构造代表性应用样例与边界样例，报告性能和失败条件。","validation_criteria":["验证覆盖目标使用条件","结论包含可复核限制而非部署运维声明"],"source_refs":["sklearn_docs"]}
+  ],
+  "verification_task":{"task_id":"ML-VERIFY-01","objective":"验证当前机器学习建模能力证据。","task_description":"完成数据划分、基线训练、固定评价和失败诊断，保留可复现实验记录。","validation_criteria":["本人建模行为可定位","数据、配置与指标可复核","包含样例级失败分析"],"purpose":"generate_behavioral_evidence_for_current_proficiency_assessment"},
+  "capstone_evidence_task":{"task_id":"ML-CAPSTONE-01","objective":"完成真实机器学习任务的可复现实验与有依据改进。","task_description":"完成数据划分、基线、训练、评价与失败诊断，比较至少两种改进并说明最终选择。","specialization_extensions":[{"subskill_id":"ML-03","task_description":"增加深度网络架构和训练实验。","validation_criteria":["架构选择有任务依据","训练过程可复核"]},{"subskill_id":"ML-06","task_description":"增加目标应用条件与边界样例验证。","validation_criteria":["应用条件明确","限制有样例证据"]}],"validation_criteria":["实验全程可复现","改进由诊断证据驱动","不直接输出P等级"],"purpose":"generate_behavioral_evidence_for_reassessment"},
+  "source_registry":[
+    {"source_id":"deep_learning_book","title":"Deep Learning","authors_or_org":"Ian Goodfellow, Yoshua Bengio, Aaron Courville","source_type":"book","year":2016,"venue":"MIT Press","version":null,"doi":null,"url":"https://www.deeplearningbook.org","supports":["ML-01","ML-03","ML-05"]},
+    {"source_id":"sklearn_docs","title":"scikit-learn User Guide","authors_or_org":"scikit-learn developers","source_type":"documentation","year":null,"venue":null,"version":"verified_2026-08-28","doi":null,"url":"https://scikit-learn.org/stable/user_guide.html","supports":["ML-01","ML-02","ML-04","ML-06"]},
+    {"source_id":"pytorch_docs","title":"PyTorch Documentation","authors_or_org":"PyTorch Foundation","source_type":"documentation","year":null,"venue":null,"version":"verified_2026-08-28","doi":null,"url":"https://pytorch.org/docs/stable/","supports":["ML-02","ML-03","ML-05"]}
+  ]
+}

@@ -1,0 +1,287 @@
+{
+  "system_name": "O*NET 融合技能体系",
+  "hierarchy_levels": 3,
+  "hierarchy": "一级大类 → 二级分组容器 → 三级叶子技能",
+  "categories": {
+    "Technical": {
+      "level": 1,
+      "english_name": "Technical",
+      "chinese_name": "技术技能",
+      "groups": {
+        "硬件、嵌入式与底层系统": {
+          "level": 2,
+          "name": "硬件、嵌入式与底层系统",
+          "skills": {
+            "T1": {
+              "level": 3,
+              "code": "T1",
+              "english_name": "Computer Hardware & Digital Design",
+              "chinese_name": "计算机硬件与数字电路设计",
+              "english_definition": "Knowledge of circuit boards, processors, chips, digital logic and electronic equipment; ability to carry out hardware design, hardware performance testing and hardware fault troubleshooting.",
+              "chinese_definition": "掌握处理器、芯片、数字逻辑、电路原理；具备硬件设计、硬件性能测试、硬件故障排查能力"
+            },
+            "T2": {
+              "level": 3,
+              "code": "T2",
+              "english_name": "Embedded Systems & Firmware Development",
+              "chinese_name": "嵌入式系统与固件开发",
+              "english_definition": "Knowledge of embedded hardware architecture, firmware principles and hardware-software interface; ability to develop embedded firmware, configure embedded equipment and debug embedded terminal systems.",
+              "chinese_definition": "掌握嵌入式硬件架构、固件、软硬件接口原理；具备嵌入式固件开发、设备配置、嵌入式系统调试能力"
+            },
+            "T3": {
+              "level": 3,
+              "code": "T3",
+              "english_name": "Operating System Principles & System Administration",
+              "chinese_name": "操作系统原理与系统运维",
+              "english_definition": "Knowledge of operating system scheduling, memory management, process mechanism and virtualization technology; ability to deploy, configure, maintain operating systems and virtualized environments, and resolve system runtime anomalies.",
+              "chinese_definition": "掌握操作系统调度、存储、进程、虚拟化原理；具备操作系统与虚拟化环境部署、运维、运行故障处置能力"
+            }
+          }
+        },
+        "网络与通信技术": {
+          "level": 2,
+          "name": "网络与通信技术",
+          "skills": {
+            "T4": {
+              "level": 3,
+              "code": "T4",
+              "english_name": "Computer Network & Telecommunication Infrastructure",
+              "chinese_name": "计算机网络与通信基础设施",
+              "english_definition": "Knowledge of communication transmission mechanism, network protocol, LAN/WAN topology and routing rules; ability to design network architecture, configure network devices and locate communication link faults.",
+              "chinese_definition": "掌握通信传输、网络协议、路由、局域网广域网架构；具备网络拓扑设计、网络设备配置、链路故障排查能力"
+            },
+            "T5": {
+              "level": 3,
+              "code": "T5",
+              "english_name": "Cybersecurity & Data Privacy Governance",
+              "chinese_name": "网络安全与数据隐私管控",
+              "english_definition": "Knowledge of vulnerability assessment, encryption technology, access control, intrusion detection and privacy compliance regulations; ability to execute security defense deployment, penetration testing and cyber emergency response.",
+              "chinese_definition": "掌握漏洞评估、加密、访问控制、入侵检测、隐私合规理论；具备安全防护部署、渗透测试、网络安全应急处置能力"
+            }
+          }
+        },
+        "软件、算法与智能技术": {
+          "level": 2,
+          "name": "软件、算法与智能技术",
+          "skills": {
+            "T6": {
+              "level": 3,
+              "code": "T6",
+              "english_name": "General Programming & Software Engineering",
+              "chinese_name": "通用程序设计与软件工程",
+              "english_definition": "Knowledge of programming paradigms, software design specifications and application development theories; ability to write business program code, complete module design and iterative development of application software.",
+              "chinese_definition": "掌握编程范式、软件设计规范、应用开发理论；具备业务代码编写、软件模块设计、应用迭代开发能力"
+            },
+            "T7": {
+              "level": 3,
+              "code": "T7",
+              "english_name": "Fundamental Algorithms & Data Processing",
+              "chinese_name": "基础算法与数据处理",
+              "english_definition": "Knowledge of classical algorithms, data structure theory and basic data analysis methods; ability to design algorithms, process structured data and solve conventional computational problems.",
+              "chinese_definition": "掌握经典算法、数据结构、基础数据分析理论；具备算法设计、结构化数据处理、常规计算问题求解能力"
+            },
+            "T8": {
+              "level": 3,
+              "code": "T8",
+              "english_name": "Machine Learning & Intelligent System Development",
+              "chinese_name": "机器学习与智能系统研发",
+              "english_definition": "Knowledge of pattern recognition, computational intelligence and machine learning fundamentals; ability to build machine learning models, develop intelligent application pipelines and evaluate model performance.",
+              "chinese_definition": "掌握模式识别、计算智能、机器学习基础理论；具备模型搭建、智能应用链路开发、模型效果评估能力"
+            },
+            "T9": {
+              "level": 3,
+              "code": "T9",
+              "english_name": "Computational Mathematics & Data Modeling",
+              "chinese_name": "计算数学与数据建模",
+              "english_definition": "Knowledge of linear algebra, probability, statistics and mathematical optimization; ability to construct mathematical models, complete data statistical analysis and optimize model parameters.",
+              "chinese_definition": "掌握线性代数、概率论、统计、优化理论；具备数学建模、数据统计分析、模型参数调优能力"
+            }
+          }
+        },
+        "系统架构、工程实施与测试": {
+          "level": 2,
+          "name": "系统架构、工程实施与测试",
+          "skills": {
+            "T10": {
+              "level": 3,
+              "code": "T10",
+              "english_name": "Information System Architecture Design",
+              "chinese_name": "信息系统架构设计",
+              "english_definition": "Knowledge of system engineering principles and architecture design methodologies; ability to sort out business requirements, design distributed system architecture and formulate overall technical schemes.",
+              "chinese_definition": "掌握系统工程原理、架构设计方法；具备需求梳理、分布式架构设计、整体技术方案制定能力"
+            },
+            "T11": {
+              "level": 3,
+              "code": "T11",
+              "english_name": "System Deployment, Delivery & Operation Maintenance",
+              "chinese_name": "系统部署交付与运维",
+              "english_definition": "Knowledge of software release standards, cluster deployment specifications and system operation specifications; ability to deploy distributed service clusters, carry out online delivery and daily system maintenance.",
+              "chinese_definition": "掌握软件发布、集群部署、系统运行规范；具备分布式集群部署、上线交付、系统日常运维能力"
+            },
+            "T12": {
+              "level": 3,
+              "code": "T12",
+              "english_name": "System Testing & Quality Evaluation",
+              "chinese_name": "系统测试与质量评估",
+              "english_definition": "Knowledge of testing theory, quality control standards and performance evaluation indicators; ability to conduct functional testing, performance testing, system inspection and put forward optimization suggestions.",
+              "chinese_definition": "掌握测试理论、质量规范、性能评价指标；具备功能、性能测试，系统检验并输出优化方案能力"
+            }
+          }
+        },
+        "专业软件与平台工具": {
+          "level": 2,
+          "name": "专业软件与平台工具",
+          "skills": {
+            "T13": {
+              "level": 3,
+              "code": "T13",
+              "english_name": "Technical Software, Cloud Platform & Development Tool Utilization",
+              "chinese_name": "专业软件、云平台与开发工具应用",
+              "english_definition": "Understand applicable scenarios of development software, database systems, cloud infrastructure, container tools and middleware; ability to select and use mainstream technical tools to support development, analysis and operation work.",
+              "chinese_definition": "掌握开发软件、数据库、云基础设施、容器、中间件适用场景；能够选用主流工具支撑开发、数据分析、运维工作"
+            }
+          }
+        }
+      }
+    },
+    "Foundational": {
+      "level": 1,
+      "english_name": "Foundational",
+      "chinese_name": "基础通用技能",
+      "groups": {
+        "Personal": {
+          "level": 2,
+          "name": "个人基础能力",
+          "skills": {
+            "F1": {
+              "level": 3,
+              "code": "F1",
+              "english_name": "Active Learning",
+              "chinese_name": "主动持续学习能力",
+              "english_definition": "Understand the value of emerging technical knowledge for ongoing and future problem solving and decision making.",
+              "chinese_definition": ""
+            },
+            "F2": {
+              "level": 3,
+              "code": "F2",
+              "english_name": "Critical Thinking",
+              "chinese_name": "批判性逻辑思考能力",
+              "english_definition": "Employ logic and reasoning to compare advantages and disadvantages of different technical schemes and conclusions.",
+              "chinese_definition": ""
+            },
+            "F3": {
+              "level": 3,
+              "code": "F3",
+              "english_name": "Mathematical Problem Solving",
+              "chinese_name": "数理建模与问题求解能力",
+              "english_definition": "Apply mathematical and statistical reasoning to model and resolve practical engineering challenges.",
+              "chinese_definition": ""
+            },
+            "F4": {
+              "level": 3,
+              "code": "F4",
+              "english_name": "Self-monitoring & Performance Assessment",
+              "chinese_name": "自我监测与工作复盘能力",
+              "english_definition": "Evaluate personal work quality and project execution effect, and carry out iterative optimization.",
+              "chinese_definition": ""
+            },
+            "F5": {
+              "level": 3,
+              "code": "F5",
+              "english_name": "Inductive & Deductive Reasoning",
+              "chinese_name": "归纳与演绎推理能力",
+              "english_definition": "Summarize general rules from scattered information; apply universal principles to tackle specific technical problems.",
+              "chinese_definition": ""
+            },
+            "F6": {
+              "level": 3,
+              "code": "F6",
+              "english_name": "Persistence & Goal Orientation",
+              "chinese_name": "目标导向与攻坚韧性",
+              "english_definition": "Stick to challenging technical objectives and persist when facing technical obstacles and repeated failures.",
+              "chinese_definition": ""
+            },
+            "F7": {
+              "level": 3,
+              "code": "F7",
+              "english_name": "Attention to Detail & Professional Integrity",
+              "chinese_name": "严谨细致与职业诚信自律",
+              "english_definition": "Keep rigorous in technical work; maintain ethical awareness during data processing and model development.",
+              "chinese_definition": ""
+            }
+          }
+        },
+        "Interactive": {
+          "level": 2,
+          "name": "人际协作能力",
+          "skills": {
+            "F8": {
+              "level": 3,
+              "code": "F8",
+              "english_name": "Active Listening & Oral Technical Communication",
+              "chinese_name": "积极倾听与口头技术沟通能力",
+              "english_definition": "Fully absorb the viewpoints of stakeholders and accurately convey technical information orally.",
+              "chinese_definition": ""
+            },
+            "F9": {
+              "level": 3,
+              "code": "F9",
+              "english_name": "Written Technical Communication",
+              "chinese_name": "书面技术文档撰写表达能力",
+              "english_definition": "Express technical logic, schemes and experimental results clearly through documents, reports and specifications.",
+              "chinese_definition": ""
+            },
+            "F10": {
+              "level": 3,
+              "code": "F10",
+              "english_name": "Team Coordination & Cooperation",
+              "chinese_name": "团队协作协调能力",
+              "english_definition": "Adjust personal work rhythm to cooperate with team members and jointly complete R&D and project delivery.",
+              "chinese_definition": ""
+            },
+            "F11": {
+              "level": 3,
+              "code": "F11",
+              "english_name": "Judgment and Multi-stakeholder Decision Making",
+              "chinese_name": "多方权衡与方案决策能力",
+              "english_definition": "Balance costs, risks and benefits of multiple technical solutions to select feasible schemes together with stakeholders.",
+              "chinese_definition": ""
+            },
+            "F12": {
+              "level": 3,
+              "code": "F12",
+              "english_name": "Persuasion & Negotiation",
+              "chinese_name": "说服与分歧谈判能力",
+              "english_definition": "Reconcile divergent opinions and promote stakeholders to recognize feasible technical routes.",
+              "chinese_definition": ""
+            },
+            "F13": {
+              "level": 3,
+              "code": "F13",
+              "english_name": "Time & Resource Management",
+              "chinese_name": "时间与资源统筹管理能力",
+              "english_definition": "Reasonably arrange personal and team schedules, allocate manpower, computing and financial resources.",
+              "chinese_definition": ""
+            },
+            "F14": {
+              "level": 3,
+              "code": "F14",
+              "english_name": "Adaptability & Stress Tolerance",
+              "chinese_name": "环境适应与压力耐受能力",
+              "english_definition": "Adapt to continuous technology iteration; calmly cope with high-pressure project delivery and technical emergencies.",
+              "chinese_definition": ""
+            },
+            "F15": {
+              "level": 3,
+              "code": "F15",
+              "english_name": "User Perception & Service Orientation",
+              "chinese_name": "需求洞察与业务服务意识",
+              "english_definition": "Identify implicit demands of business users and actively design matching technical solutions.",
+              "chinese_definition": ""
+            }
+          }
+        }
+      }
+    }
+  }
+}

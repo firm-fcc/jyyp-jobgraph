@@ -1,0 +1,1849 @@
+/* =========================================================
+   全景图谱
+   上半屏：左控制 / 中棱镜 / 右详情位
+   下半屏：前瞻信号分析（时间线 · 三源对照 · 热度排行 · 提前量分布）
+   ========================================================= */
+
+.pano-wrap {
+  max-width: var(--page-max-wide);
+  margin: 0 auto;
+  padding: 24px var(--gutter) 40px;
+}
+
+/* ---------------- 图谱规模（页顶数据条） ----------------
+   放在页顶而不是右侧栏：右侧那一格要留给“点谁看谁”，
+   常驻数据放进去会被一次点击整块盖掉。 */
+/* 图谱规模。与"岗位能力全景图"同处一行，故字号按标题行的元信息定：
+   标签取 --fs-sm，读数取 --fs-lg —— 再大就与 21px 的节名争主次。 */
+.pano-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 18px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+/* 岗位那一格后缀的一句小注：整份图谱的岗位数含新岗位，而下方类别下拉不含，
+   两个数同屏出现，差额要就地说清。取弱文字色，与读数本身分开。 */
+.pm-sub {
+  margin-left: 6px;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--ink-3);
+}
+.pano-meta > span {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+.pano-meta .pm-lead {
+  align-self: center;
+  font-weight: 600;
+  color: var(--ink);
+}
+.pano-meta .pm-lead .ic {
+  color: var(--ink-3);
+  transform: translateY(2px);
+}
+.pano-meta b {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.pano-meta .pm-hi b {
+  color: var(--accent);
+}
+.pano-meta em {
+  font-style: normal;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+/* ---------------- 主图 ----------------
+   整幅页宽都给图：三段横排，多出来的宽度全部让给条。
+   右侧的"点谁看谁"详情栏已撤 —— 图上单击点亮整条链，本身就是那一栏的答案。 */
+.pano-flow {
+  display: block;
+}
+.pano-flow-panel > .panel-bd {
+  padding: 0 0 12px;
+}
+
+/* 图内顶部：四个切换下拉 + 时间游标，一并吸附在面板顶部。
+   图有近千像素高，控件要是跟着滚出视野，改了什么当场就看不见 ——
+   而"看见变化"正是它们存在的理由。顶栏也是 sticky 的，所以 top 要把它让出来。 */
+.flow-head {
+  position: sticky;
+  top: calc(var(--topbar-h) + 4px);
+  z-index: 6;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.flow-ctl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding: 10px 14px 8px;
+}
+.fc-pick {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+/* 取消选中：与四个下拉同一行，推到行末 */
+.fc-clear {
+  margin-left: auto;
+  align-self: center;
+}
+.fc-lb {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.fc-pick select {
+  height: 32px;
+  max-width: 250px;
+  padding: 0 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  font-size: var(--fs-sm);
+  color: var(--ink);
+  font-family: var(--font);
+  cursor: pointer;
+}
+.fc-pick select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+.flow-time {
+  padding: 0 14px 6px;
+}
+.flow-time .pt-axis {
+  margin: 0;
+}
+
+/* 控件与图的共同外框。它只为界定上面那条 sticky 控件的粘附范围：
+   不加这一层，控件的粘附范围一直延伸到面板底部，滚到图末尾时会盖住
+   下面的图例与口径行。加上之后，图一滚完控件即随之离场。 */
+.flow-stick {
+  position: relative;
+}
+
+/* 图比容器宽时在自己这一格里横滚，不让整页出现横向滚动条 */
+.flow-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 12px 0;
+  scrollbar-width: thin;
+}
+
+/* 量宽量的是这一层而不是外面那层滚动容器：滚动容器带左右内边距，
+   量到的宽里含着它，图会正好宽出这一截而凭空多一条横向滚动条。
+   这一层无内边距，量到的就是图真正能用的宽度，内边距改多少都不影响。 */
+.flow-canvas {
+  min-width: 0;
+}
+
+/* 窄屏下竖标签横过来 —— 竖排的字在一条横标签里读不通 */
+@media (max-width: 1560px) {
+  .rail-strip {
+    flex-direction: row;
+    min-height: 0;
+  }
+  .rail-txt {
+    writing-mode: horizontal-tb;
+    letter-spacing: 0.06em;
+  }
+}
+
+/* ---------------- 岗位能力全景流图 ---------------- */
+.jcf {
+  position: relative;
+}
+.jcf-svg {
+  display: block;
+  font-family: var(--font);
+}
+/* 段名。三段的名字是这张图上最大的字 —— 主图总要有一处先落眼。
+   与序号圆同高，两者的中线对齐在 cy 上，不靠基线各自对各自的。 */
+.jcf-colhead {
+  font-size: 17px;
+  font-weight: 700;
+  fill: var(--ink);
+  letter-spacing: 0.01em;
+  dominant-baseline: central;
+}
+/* 段序号的圆底。用真正的 circle 而不是给字加粗描边：
+   描边沿字形轮廓外扩，窄字形扩不成圆，字内的空隙还会被填平。 */
+.jcf-head.job .jcf-colbadge { fill: var(--lay-job-ink); }
+.jcf-head.task .jcf-colbadge { fill: var(--lay-task-ink); }
+.jcf-head.cap .jcf-colbadge { fill: var(--lay-skill-ink); }
+/* 序号本身：白字压在圆心上，两个方向都居中 */
+.jcf-colnum {
+  font-size: 12px;
+  font-weight: 700;
+  fill: #fff;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+/* 编码说明退到灰字，与段名拉开两级 */
+.jcf-colsub {
+  font-size: 11px;
+  font-weight: 400;
+  fill: var(--ink-3);
+  dominant-baseline: central;
+}
+/* 段基线跟着本段的层色，三段的归属一眼可分 */
+.jcf-head.job .jcf-colrule { stroke: var(--lay-job-ink); }
+.jcf-head.task .jcf-colrule { stroke: var(--lay-task-ink); }
+.jcf-head.cap .jcf-colrule { stroke: var(--lay-skill-ink); }
+/* 列头基线：标题与图之间的那道横线，同时划出本段列宽 */
+.jcf-colrule {
+  stroke: var(--line-strong);
+  stroke-width: 1.6;
+  opacity: 0.85;
+}
+/* 能力组的分组带 —— 隔一组一条淡底，压在整行上不抢条 */
+.jcf-band {
+  fill: var(--surface-alt);
+  pointer-events: none;
+}
+.jcf-dim {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  fill: var(--ink-2);
+  letter-spacing: 0.08em;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.jcf-brace {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+.jcf-grp {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  fill: var(--ink-2);
+  dominant-baseline: middle;
+}
+.jcf-name {
+  font-size: var(--fs-xs);
+  fill: var(--ink);
+  dominant-baseline: middle;
+}
+/* ---------------- 第三段的下钻 ----------------
+   技能行点开后，其技能点就地展开在该行下方。展开出来的行在三处与技能行分开：
+   名字缩进并降一档墨色、条细一档、左侧一条归属线把它们收在父行名下。
+   三处都不用颜色区分，颜色在这一段已经归要求程度所有。 */
+.jcf-name.kid {
+  fill: var(--ink-2);
+}
+.jcf-row.kid .jcf-track {
+  opacity: 0.32;
+}
+.jcf-row.kid .jcf-barout {
+  stroke-width: 0.6;
+  opacity: 0.7;
+}
+/* 展开中的那一行：名字加重，与它自己的技能点拉开一档 */
+.jcf-row.open .jcf-name {
+  font-weight: 700;
+}
+/* 可展开指示。闭合朝右、展开朝下，位置压在名字前，不占条的宽度 */
+.jcf-caret {
+  fill: var(--ink-3);
+  pointer-events: none;
+}
+.jcf-row.open .jcf-caret,
+.jcf-row.on .jcf-caret {
+  fill: var(--primary);
+}
+/* 归属线：竖线从父行落到最后一个技能点，逐行一段横向短线接出去。
+   线本身不该抢：它交代的是从属关系，不是量。 */
+.jcf-kidline path {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1;
+  opacity: 0.5;
+  pointer-events: none;
+}
+/* 轨道底：一行的满格槽。条只占其中一截，槽交代这一行到哪儿为止，
+   顺带把三段各自的列宽画了出来 —— 没有它，三列之间只剩一片空白 */
+.jcf-track {
+  fill: var(--viz-track);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.jcf-barout {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 0.8;
+  rx: 2;
+  pointer-events: none;
+}
+/* 当月还没被招聘要求确认：轮廓改虚线，与"当月不在图谱里"的空轨道分得开 */
+.jcf-barout.wait {
+  stroke-dasharray: 2.4 2;
+  stroke: var(--ink-3);
+}
+.jcf-seg {
+  pointer-events: none;
+}
+/* 当月该条目还不在图谱里 —— 留一条点线空轨道，不是画一条长度为零的条 */
+.jcf-absent {
+  fill: none;
+  stroke: var(--ink-3);
+  stroke-width: 1;
+  stroke-dasharray: 2 2.6;
+  opacity: 0.55;
+  pointer-events: none;
+}
+/* 相对基准月的增减接在条尾：增量实心一段深色，收缩画成斜纹 */
+.jcf-up {
+  fill: var(--primary);
+  opacity: 0.85;
+  pointer-events: none;
+}
+.jcf-down {
+  fill: url(#jcf-hatch);
+  stroke: var(--ink-3);
+  stroke-width: 0.6;
+  pointer-events: none;
+}
+.jcf-new {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.4;
+  pointer-events: none;
+}
+.jcf-mk {
+  pointer-events: none;
+}
+.jcf-mk.up {
+  fill: var(--primary);
+}
+.jcf-mk.down {
+  fill: var(--ink-3);
+}
+.jcf-mk.new {
+  fill: var(--accent);
+}
+.jcf-mk.gone {
+  fill: none;
+  stroke: var(--ink-3);
+  stroke-width: 1.3;
+}
+
+.jcf-hit {
+  fill: transparent;
+}
+.jcf-row {
+  cursor: pointer;
+}
+.jcf-row:hover .jcf-hit {
+  fill: rgba(37, 99, 235, 0.05);
+}
+.jcf-row.lit .jcf-hit {
+  fill: rgba(37, 99, 235, 0.09);
+}
+.jcf-row.on .jcf-hit {
+  fill: rgba(37, 99, 235, 0.14);
+}
+.jcf-row.on .jcf-name {
+  font-weight: 700;
+  fill: var(--primary-deep);
+}
+.jcf-row.on .jcf-barout {
+  stroke: var(--primary);
+  stroke-width: 1.6;
+}
+/* 选中一项之后，不在这条链上的行整体退让。
+   上一版只给链上的行加了底色，别的行原样不动 —— 六七十行同样浓度的条里
+   点亮二十来行，链路本身反而找不出来。让非链路行降到 0.28：
+   淡到不抢，但仍看得见"整幅图有多大、点亮的是其中哪一小片"。 */
+.jcf-svg.picked .jcf-row {
+  opacity: 0.28;
+  transition: opacity 0.12s ease-out;
+}
+.jcf-svg.picked .jcf-row.on,
+.jcf-svg.picked .jcf-row.lit,
+/* 展开出来的技能点属于选中的那一行，与它同进退，不随非链路行一起退让 */
+.jcf-svg.picked .jcf-row.kid {
+  opacity: 1;
+}
+/* 下钻到的那一行：选中项之下的一层。它已经在链路上（.lit 已给足不透明度），
+   这里只再给一道行首的记号色，与选中项那一档区分 —— 两者若同形，
+   读者会以为选中项换了。 */
+.jcf-row.sub .jcf-name {
+  font-weight: 700;
+  fill: var(--primary-deep);
+}
+/* 分组带与括号跟着一起退：它们是能力段的骨架，链路点亮时不该比条更显眼 */
+.jcf-svg.picked .jcf-band {
+  opacity: 0.5;
+}
+
+/* 连线：能力→任务用中性色，任务→岗位换一档，两段分得开 */
+.jcf-links path {
+  fill: none;
+  stroke: var(--viz-link);
+  stroke-opacity: 0.34;
+}
+/* 常显底层：没有选中项时画的那一层，只交代三段是连着的。
+   透明度压到 0.13 —— 再高就会与条抢，再低就等于没画。 */
+.jcf-links.base path {
+  stroke-opacity: 0.13;
+}
+.jcf-links.base path.jd {
+  stroke-opacity: 0.16;
+}
+.jcf-links path.on {
+  stroke-opacity: 0.6;
+}
+.jcf-links path.jd {
+  stroke: var(--accent);
+  stroke-opacity: 0.3;
+}
+.jcf-links path.jd.on {
+  stroke-opacity: 0.55;
+}
+
+/* 选中岗位旁的跨页浮窗：形制、朝向与出场见 styles/jumpdock.css，三页共用一套。
+   落位由图侧算（JobCapabilityFlow 的 jumpAt）：零尺寸锚点钉在岗位条的条尾与
+   该行行心的交点上，浮窗贴着锚点右对齐、默认向上排。右对齐的好处是横向位置
+   对每一行都一样，浮窗不随条长左右跳动。
+
+   压到的是岗位段轨道区里相邻的一行，而选中状态下非链路行已退到 0.28 透明度；
+   名字列、连线起点与右侧两段一律不碰。空档取共用的默认值 14px。 */
+
+/* 变化的四种口径共用一套颜色：图上、口径行、提示里必须是同一个色 */
+.ch-new {
+  color: var(--accent);
+}
+.ch-up {
+  color: var(--primary-deep);
+}
+.ch-down,
+.ch-gone {
+  color: var(--ink-3);
+}
+.ch-flat {
+  color: var(--ink-2);
+}
+.link-btn {
+  font-size: var(--fs-sm);
+  color: var(--primary);
+  font-weight: 500;
+}
+.link-btn:hover {
+  text-decoration: underline;
+}
+.chip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.chip:disabled:hover {
+  border-color: var(--line-strong);
+}
+
+/* 三段同时为空时的一行说明，贴在图的位置上 */
+.flow-empty {
+  margin: 0 14px;
+  padding: 18px 0 6px;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+/* ---------------- 图例条 ----------------
+   长在主图面板底部，共用面板自己的边框和背景，
+   只用一条分隔线跟图隔开：自成一块卡片的话，光边框和外边距就要吃掉三十几像素。 */
+/* 图脚。左侧图注、右侧口径同处一行，分隔线、内边距与上边距由这一层统一给出。
+   左右内边距对齐图本身的起笔：.flow-scroll 有 12px 内边距，svg 里第一列又从 6px 起，
+   两者相加就是 18px。分隔线走整幅面板宽 —— 它分的是图与图脚，不是某一列。 */
+.flow-foot {
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px 30px;
+  margin-top: 8px;
+  padding: 9px 18px 0;
+  border-top: 1px solid var(--line);
+}
+.legend-bar {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 18px;
+}
+/* 三组加起来约 950px，条本身有 1430px，原先用 space-between 分剩下的近 500px，
+   于是组与组之间空出两百多像素，组名读起来不像在管后面那几个色块。
+   改成靠左顺排、组间给一条竖线：分组关系由分隔线交代，不由空白交代。 */
+.legend-grp {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+.legend-grp + .legend-grp {
+  padding-left: 18px;
+  border-left: 1px solid var(--line);
+}
+/* 只剩基准月那一组还有前缀。不加粗：加粗会让它重新看着像一行小标题，
+   而它是与后面四个色块连读的一句话 */
+.legend-lb {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.legend-grp span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+/* 口径行：贴在图例下面，与图例同一个层级，不另起一块。
+   每一项是一个数，之间用竖线隔开 —— 它交代的是"图上画了多少"，不是读法说明。 */
+.flow-cap {
+  flex: 0 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px 12px;
+  margin: 0;
+  padding: 0;
+  font-size: var(--fs-sm);
+  /* 这一行报的是"图上画了多少"，属于要读的数而不是背景装饰，取次级正文一档 */
+  color: var(--ink-2);
+}
+.flow-cap .cap-i {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.flow-cap .cap-i + .cap-i {
+  padding-left: 12px;
+  border-left: 1px solid var(--line-strong);
+}
+.flow-cap b {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+/* “取消选中”搬到图例条末尾 —— 主图那块没有标题栏可以放按钮 */
+.legend-grp .btn.sm {
+  margin-left: 4px;
+  padding: 3px 10px;
+}
+.legend-grp i {
+  width: 13px;
+  height: 13px;
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+}
+/* 状态色块（四个层级各一段）由 StateSwatch 画成 svg，这里只管排布 */
+.legend-grp .sw {
+  display: block;
+  flex-shrink: 0;
+}
+.sw-line {
+  height: 0 !important;
+  width: 20px !important;
+  border-top: 2px solid var(--viz-link);
+  border-radius: 0 !important;
+}
+/* 含前瞻成分的关系：紫色虚线，与图上连线的画法一致 */
+.sw-line.fore {
+  border-top-style: dashed;
+  border-top-color: var(--src-paper);
+}
+/* 外两环"当月已进入招聘要求"：实心边框 + 极淡填充，与图上一模一样 */
+.sw-lit {
+  border: 1.4px solid var(--lay-sp);
+  background: color-mix(in srgb, var(--lay-sp) 10%, transparent);
+}
+/* 较基准月的增减。四个色块与图上一一对应：
+   同一件事在图上、图例里、口径行里必须是同一个颜色，否则图例就成了另一套编码。 */
+.sw-up {
+  background: var(--primary);
+  opacity: 0.85;
+}
+.sw-down {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--ink-3) 0 1.4px,
+    transparent 1.4px 4.4px
+  );
+  border: 1px solid var(--line-strong);
+}
+.sw-new {
+  background: transparent;
+  border: 1.4px solid var(--accent);
+}
+.sw-gone {
+  background: transparent;
+  border: none;
+  position: relative;
+}
+.sw-gone::before,
+.sw-gone::after {
+  content: '';
+  position: absolute;
+  inset: 1px 0;
+  border-top: 1.3px solid var(--ink-3);
+  top: 50%;
+}
+.sw-gone::before {
+  transform: rotate(45deg);
+}
+.sw-gone::after {
+  transform: rotate(-45deg);
+}
+/* 当月还不在图谱里：点线空轨道 */
+.sw-track {
+  background: transparent;
+  border: 1px dashed var(--ink-3);
+  opacity: 0.7;
+}
+/* 当月尚未被招聘要求确认：细虚线轮廓 */
+.sw-wait {
+  background: transparent;
+  border: 1px dashed var(--ink-3);
+  border-radius: var(--radius-xs);
+  width: 20px !important;
+  height: 10px !important;
+}
+
+/* ---------------- 时间轴 ----------------
+   与四个切换下拉同框贴在图的顶部：它改的是图上每一段的样子，
+   离图越近，因果越清楚。 */
+.pt-axis {
+  flex: none;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+.pt-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-bottom: 2px;
+  min-height: 28px;
+}
+.pt-play {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.pt-btn {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  color: var(--ink-2);
+  line-height: 0;
+  transition: background 0.14s var(--ease), color 0.14s var(--ease);
+}
+.pt-btn:hover:not(:disabled) {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.pt-btn:disabled {
+  color: var(--ink-3);
+  opacity: 0.5;
+  cursor: default;
+}
+.pt-btn.main {
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+}
+.pt-btn.main:hover {
+  background: var(--primary);
+  color: #fff;
+}
+.pt-btn.main.on {
+  background: var(--primary);
+  color: #fff;
+}
+/* 当前月份：这一行唯一的大字，播放时它是读者盯着的那个数 */
+.pt-now {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  flex-shrink: 0;
+}
+.pt-now b {
+  font-size: var(--fs-lg);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+/* 实测 / 外推：一个字都不能省，这两段的可信度不是一回事 */
+.pt-flag {
+  font-size: var(--fs-xs);
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  color: var(--ink-2);
+}
+.pt-flag.fc {
+  background: var(--amber-soft);
+  color: var(--amber-ink);
+}
+.pt-acts {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.pt-basis {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.pt-basis em {
+  font-style: normal;
+  color: var(--ink-3);
+}
+.pt-svg {
+  display: block;
+  cursor: pointer;
+  touch-action: none;
+  overflow: visible;
+  border-radius: var(--radius-sm);
+}
+.pt-svg:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.pt-tick {
+  font-size: var(--fs-2xs);
+  fill: var(--ink-3);
+}
+.pt-tick.fc {
+  fill: var(--ink-2);
+  font-size: var(--fs-2xs);
+}
+/* 只有一个图标的方形小按钮 */
+.btn.sm.sq {
+  padding: 6px;
+  line-height: 0;
+}
+
+/* 关联条目 */
+.rel {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 7px 8px;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-md);
+  text-align: left;
+  transition: background 0.16s;
+}
+.rel:hover {
+  background: var(--primary-soft);
+}
+.rel-k {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.rel-n {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 权重数字左边留一格给可信度指纹：数字与“这个数有多少证据撑着”永远同框出现 */
+.rel-fp {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+.rel-w {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+  flex-shrink: 0;
+  min-width: 30px;
+  text-align: right;
+}
+
+/* =========================================================
+   下半屏 —— 前瞻信号分析
+   ========================================================= */
+/* 必须限定成直接子元素：`fore` 这个类名页面里还被当作“前瞻”的修饰词用在
+   图例的线段和数值上（.sw-line.fore、.kv b.fore），不限定的话那几处会白拿
+   30px 外边距和 26px 内边距，把所在的行整条撑高 —— 图例条虚高一倍就是这么来的。 */
+.pano-wrap > .fore {
+  margin-top: 30px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line-strong);
+}
+/* 时间线通栏（它的横轴要铺满整个观测窗口），下面一行是“排行 + 三源对照”。
+   两者高度接近，等分即可；再偏一边会把另一张图挤到读不出来。 */
+.fore-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 26px 34px;
+  align-items: stretch;
+  margin-bottom: 26px;
+}
+
+/* 同一行两块之间的竖线。挂在右侧那块的左缘，窄屏折行时随之换行。
+   通栏的那一块（.fore-full）自占整行，不参与分栏，故排除在外。 */
+.fore-grid > .panel:not(.fore-full) + .panel:not(.fore-full) {
+  padding-left: 34px;
+  border-left: 1px solid var(--line);
+}
+.fore-grid > .fore-full {
+  grid-column: 1 / -1;
+}
+/* 同一行的两块图高度不一定相等，面板拉伸到同高、内容区吃掉余量，
+   底边才对得齐；否则右侧那块会吊在半空 */
+.fore-grid > .panel {
+  display: flex;
+  flex-direction: column;
+}
+.fore-grid > .panel > .panel-bd {
+  flex: 1;
+}
+/* 三源对照这一块比左边的排行表短：面板被拉到同高之后，余量原样堆在内容之后，
+   底部空出一大片。改为把余量摊在三段之间（曲线 / 三处首现 / 定位按钮），
+   面板底边照旧与左边对齐，而空白成了段间的呼吸，不再是一段收不了尾的留白。 */
+.fore-grid > .fore-compare > .panel-bd {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ---------------- 图内通用构件 ---------------- */
+/* 图有下限宽度，容器再窄就让它自己横向滚，而不是把整页撑破 */
+.wf,
+.dv {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* 能力演变时间线的整行命中区：铺满一行的透明矩形，悬停转浅底。
+   选中行由它上面那块 --primary-soft 的矩形盖住，故这里不必再判选中。 */
+.stl-hit {
+  fill: transparent;
+}
+.stl-row:hover .stl-hit {
+  fill: var(--surface-alt);
+}
+.viz-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 12px;
+}
+.viz-legend span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.viz-legend i {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+}
+/* “信号时效”那根条的图例，画法与行末一致：填充部分是还剩多少分量 */
+.viz-legend .mk-track {
+  width: 22px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(to right, var(--src-paper) 0 60%, var(--surface-2) 60%);
+}
+/* 三枚首现标记的图例。尺寸与形状按图上的几何参数描出（见 SignalTimeline.tsx
+   顶部的 MK_R / MK_DIAMOND / MK_TRI）：上一版三枚一律铺满 12px 的方框，
+   菱形还带着圆角，比图上那枚大出近一倍，读者对不上是同一种标记。 */
+.viz-legend .mk-dot {
+  width: 8px;
+  height: 8px;
+  margin: 0 2px;
+  border-radius: 50%;
+  background: var(--src-paper);
+}
+.viz-legend .mk-diamond {
+  width: 6.8px;
+  height: 6.8px;
+  margin: 0 2.5px;
+  border-radius: 0;
+  background: var(--src-news);
+  transform: rotate(45deg);
+}
+.viz-legend .mk-tri {
+  width: 8.8px;
+  height: 8.4px;
+  margin: 0 1.5px;
+  border-radius: 0;
+  background: var(--src-jd);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+/* 预计确认的那一枚在图上是空心三角：用同形状的两层叠出描边，
+   clip-path 裁不出描边，故以外层色块加内层面色的方式实现 */
+.viz-legend .mk-tri-open {
+  width: 8.8px;
+  height: 8.4px;
+  margin: 0 1.5px;
+  border-radius: 0;
+  background: var(--src-paper);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  position: relative;
+}
+.viz-legend .mk-tri-open::after {
+  content: '';
+  position: absolute;
+  inset: 1.6px 1.4px 0;
+  background: var(--panel);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.viz-legend .mk-dash {
+  width: 28px;
+  height: 0;
+  border-top: 2px dashed var(--src-paper);
+  border-radius: 0;
+}
+/* 截断说明推到行末：它不是一种图元，与前面几条不同性质 */
+.viz-legend .stl-cap {
+  margin-left: auto;
+}
+.viz-legend .mk-range {
+  width: 28px;
+  height: 12px;
+  border: 1px solid var(--src-paper);
+  border-radius: var(--radius-xs);
+  background: var(--src-paper);
+  opacity: 0.16;
+}
+.viz-note {
+  margin-top: 10px;
+  font-size: var(--fs-sm);
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+.viz-note b {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.viz-empty {
+  padding: 22px 4px;
+  font-size: var(--fs-md);
+  color: var(--ink-3);
+}
+.pano .muted {
+  color: var(--ink-3);
+}
+
+/* ---------------- 三源对照 ---------------- */
+/* 两个模式回答的是两个问题，切换放在图上方，与图同宽 */
+.dv-mode {
+  display: inline-flex;
+  gap: 3px;
+  padding: 3px;
+  margin-bottom: 10px;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+}
+.dv-mode-b {
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  white-space: nowrap;
+  transition:
+    background 0.16s var(--ease),
+    color 0.16s var(--ease);
+}
+.dv-mode-b:hover {
+  color: var(--ink);
+}
+.dv-mode-b.on {
+  background: var(--panel);
+  color: var(--primary-deep);
+  font-weight: 600;
+  box-shadow: var(--shadow);
+}
+.dv-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-bottom: 10px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.dv-bar b {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.dv-fit b.hi {
+  color: var(--green);
+}
+/* 绘图区。拖动说明浮在图内左上角，指针离开即收，故不占版面高度 */
+.dv-plot {
+  position: relative;
+}
+/* 落在绘图区右下角：左上角是纵轴刻度与“招聘要求首次出现”那道标注，
+   贴在那里会把标注的字盖掉；两条曲线自左下向右上走，右下这一片是空的。
+   底边让开横轴的年份标签。 */
+.dv-hint {
+  position: absolute;
+  z-index: 2;
+  bottom: 34px;
+  right: 14px;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  backdrop-filter: blur(2px);
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.dv-firsts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+}
+/* 首现日期三联。三块此前共用一道同样的顶线：线不分辨三者，也不表达任何量，
+   与图上三条曲线的颜色编码更对不上。改为各带本路来源色的左色条与同色极淡的底，
+   三块因而自带归属，读数与上方曲线、下方图例同色系。 */
+.dv-firsts .dvf {
+  --dvf-c: var(--ink-3);
+  padding: 10px 13px;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--dvf-c) 22%, transparent);
+  border-left: 3px solid var(--dvf-c);
+  background: color-mix(in srgb, var(--dvf-c) 5%, var(--panel));
+}
+.dv-firsts .dvf.paper {
+  --dvf-c: var(--src-paper);
+}
+.dv-firsts .dvf.news {
+  --dvf-c: var(--src-news);
+}
+.dv-firsts .dvf.jd {
+  --dvf-c: var(--src-jd);
+}
+.dv-firsts dt {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  margin-bottom: 3px;
+}
+.dv-firsts dd {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+/* “未见于该源”一类的说明文字与日期同处一格。它不是读数，故不取日期那一档的
+   字号与字重 —— 同样加粗时，一句说明看上去与旁边两个月份是同一种东西。 */
+.dv-firsts dd.dvf-none {
+  font-size: var(--fs-md);
+  font-weight: 500;
+  color: var(--ink-3);
+}
+.c-paper {
+  color: var(--src-paper-ink);
+}
+.c-news {
+  color: var(--src-news-ink);
+}
+.c-jd {
+  color: var(--src-jd-ink);
+}
+
+/* ---------------- 提前量分布（时间线的边缘直方图） ---------------- */
+.lead {
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+}
+.lead svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------------- 前瞻热度排行 ---------------- */
+.rank {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-md);
+}
+.rank th {
+  padding: 0 8px 9px;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink-2);
+  text-align: left;
+  white-space: nowrap;
+}
+.rank td {
+  padding: 8px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+.rank tbody tr {
+  cursor: pointer;
+  transition: background 0.16s;
+}
+.rank tbody tr:hover,
+.rank tbody tr.on {
+  background: var(--primary-soft);
+}
+.rank tbody tr:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+.rank tbody tr:last-child td {
+  border-bottom: none;
+}
+.rank .c-idx {
+  width: 32px;
+  text-align: center;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.rank .c-spark {
+  width: 84px;
+}
+.rank .c-num {
+  width: 78px;
+  text-align: right;
+}
+.rank .c-num b {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--src-paper-ink);
+  font-variant-numeric: tabular-nums;
+}
+.rank .c-st {
+  width: 82px;
+  text-align: right;
+}
+.rank .rk-n {
+  display: block;
+  font-weight: 500;
+}
+.rank td small {
+  display: block;
+  margin-top: 1px;
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+.rank .tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.rank .tag.ok {
+  color: var(--green-ink);
+  background: var(--green-soft);
+}
+.rank .tag.wait {
+  color: var(--src-paper-ink);
+  background: var(--src-paper-soft);
+}
+.rank .rk-empty {
+  cursor: default;
+}
+.rank .rk-empty:hover {
+  background: none;
+}
+.rank .rk-empty td {
+  padding: 22px 8px;
+  text-align: center;
+  color: var(--ink-3);
+}
+
+/* =========================================================
+   分析引擎问答（页顶，可收起）
+   ========================================================= */
+/* 分析引擎问答。此前为独立一张卡片，与页内其余功能块同形，读者由此难以判断
+   它是本页的一部分还是浮在页上的构件。现撤去卡片，改由一条上边线起首、
+   一条下边线收尾，与页顶的规模摘要条取同一形制。 */
+/* 分析引擎成卡。它是本页唯一可输入、可提问的构件，其余各块都是只读的图；
+   此前只在底部压一条细线，与下方的分区之间就只剩一道同样的线，
+   于是"这里可以问"这件事在版面上没有任何提示。整框圈起来之后，
+   它与页内其余各块在形制上分开，标题栏另取一档浅灰面，与对话区再分一层。 */
+.echat {
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  margin-bottom: 26px;
+  padding: 0;
+  overflow: hidden;
+}
+.echat-hd {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: var(--surface-tint);
+  border-bottom: 1px solid var(--line);
+}
+/* 收起时标题栏是整张卡的全部，底边线无所分隔 */
+.echat:not(.open) .echat-hd {
+  border-bottom-color: transparent;
+}
+
+/* 标识方块。渐变填充改为单色描边：渐变在此并不表达任何量或类别，
+   仅为装饰，而全站其余图标方块均为描边形制。 */
+.echat-orb {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.echat-hd-t {
+  min-width: 0;
+  flex: 1;
+}
+.echat-hd-t b {
+  display: block;
+  font-size: var(--fs-xl);
+  font-weight: 700;
+}
+.echat-hd-t small {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  margin-top: 1px;
+}
+.echat-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--ink-2);
+  border: 1px solid var(--line-strong);
+  background: var(--panel);
+  border-radius: var(--radius-sm);
+  padding: 5px 10px;
+  transition: all 0.18s;
+}
+.echat-toggle:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.echat-clear {
+  flex-shrink: 0;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  background: none;
+  padding: 5px 4px;
+  transition: color 0.18s;
+}
+.echat-clear:hover {
+  color: var(--primary);
+}
+
+/* 收起 = 向上收合，不是“整块消失”。
+   做法是把外层设成单行栅格，行高从 1fr 收到 0fr —— 行高是可过渡的，
+   于是整块内容连续地被标题栏“吃”上去，而不是一帧之内不见。
+   内层必须 min-height:0 + overflow:hidden，否则子元素的固有高度会把 0fr 顶开。
+
+   这里不用 hidden 属性：[hidden] 的 display:none 来自浏览器默认样式表，
+   优先级低于本规则自己的 display，写了不生效 —— 之前点“收起”没反应就是这个原因。
+   收起后用 visibility:hidden 把内部按钮与输入框移出 Tab 序列和无障碍树；
+   visibility 按离散方式过渡，展开时立刻可见，收起时等动画走完才隐藏。 */
+.echat-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.28s var(--ease),
+    visibility 0.28s var(--ease);
+}
+.echat.open .echat-panel {
+  grid-template-rows: 1fr;
+  visibility: visible;
+}
+.echat-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 快速定位：一排指向本页各图的按钮，单独一条与对话区分开。
+   左右内边距落在这一层而不是 .echat-panel-inner 上 —— 后者是收合动画的
+   栅格项，给它加纵向内边距，收到 0fr 时那一档高度仍会留在版面上。 */
+.echat-anchors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 18px 12px;
+  background: none;
+}
+.echat-anchors-t {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink-3);
+  margin-right: 3px;
+}
+.echat-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-strong);
+  background: var(--panel);
+  color: var(--ink-2);
+  transition: all 0.18s;
+}
+.echat-anchor:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-soft);
+}
+
+/* ---------------- 对话流 ---------------- */
+/* 给一个最小高度：空对话时也占着这块地方，这一栏才读得出是对话而不是搜索框。
+   但它压在第一屏最上面，152px 的空白等于把下面的图整块推下去 —— 收到一条开场白的高度即可。 */
+.echat-body {
+  padding: 0 18px 15px;
+  min-height: 84px;
+  max-height: 340px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.echat-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+.echat-row.user {
+  justify-content: flex-end;
+}
+.echat-ava {
+  width: 26px;
+  height: 26px;
+  margin-top: 2px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+}
+.echat-bubble {
+  max-width: min(700px, 88%);
+  border-radius: var(--radius-lg);
+  border-top-left-radius: 4px;
+  padding: 9px 13px 10px;
+  background: var(--surface-2);
+  font-size: var(--fs-md);
+  line-height: 1.85;
+  color: var(--ink);
+}
+.echat-bubble.user {
+  max-width: min(560px, 82%);
+  background: var(--primary);
+  color: #fff;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 4px;
+}
+/* 逐字输出时的光标 */
+.echat-caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.95em;
+  margin-left: 2px;
+  vertical-align: -2px;
+  background: var(--primary);
+  animation: echatCaret 1s steps(2, jump-none) infinite;
+}
+@keyframes echatCaret {
+  50% {
+    opacity: 0;
+  }
+}
+/* 正在检索 */
+.echat-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 14px 15px;
+}
+.echat-dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink-3);
+  animation: echatDot 1.1s var(--ease) infinite;
+}
+.echat-dots i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.echat-dots i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes echatDot {
+  0%,
+  60%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 0.95;
+    transform: translateY(-3px);
+  }
+}
+/* 回答后面的定位链接：单独一行排开，点的是动作不是正文 */
+.echat-acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 9px;
+}
+.echat-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+  transition: all 0.18s;
+}
+.echat-link:hover {
+  color: var(--primary-deep);
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+/* ---------------- 输入区 ---------------- */
+.echat-form {
+  padding: 12px 18px 14px;
+  border-top: 1px solid var(--line);
+}
+.echat-sugs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 9px;
+}
+.echat-sug {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  padding: 4px 11px;
+  transition: all 0.18s;
+}
+.echat-sug:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+.echat-input {
+  display: flex;
+  align-items: flex-end;
+  gap: 9px;
+  background: var(--surface-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  padding: 7px 7px 7px 13px;
+}
+.echat-input:focus-within {
+  background: var(--panel);
+  border-color: var(--primary);
+  box-shadow: var(--focus-ring);
+}
+.echat-input textarea {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  resize: none;
+  font-family: inherit;
+  font-size: var(--fs-md);
+  line-height: 1.7;
+  color: var(--ink);
+  padding: 4px 0;
+  max-height: 116px;
+  scrollbar-width: thin;
+}
+.echat-send {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: var(--primary);
+  transition: all 0.18s;
+}
+.echat-send:hover:not(:disabled) {
+  background: var(--primary-deep);
+}
+.echat-send:disabled {
+  background: var(--line-strong);
+  color: var(--panel);
+  cursor: default;
+}
+@media (prefers-reduced-motion: reduce) {
+  .echat-caret,
+  .echat-dots i {
+    animation: none !important;
+  }
+}
+.btn.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.btn.primary:hover {
+  background: var(--primary-deep);
+  border-color: var(--primary-deep);
+  color: #fff;
+}
+.btn.primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   分层标题 + 跨块跳转的高亮
+   ========================================================= */
+/* 节名靠左，右侧操作位靠右，两者之间留给这一节的元信息（图谱规模）。
+   元信息紧跟节名而不居中：它说明的是这一节，位置上也应当挨着节名。 */
+.pano-sec-hd {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px 24px;
+  flex-wrap: wrap;
+  margin: 30px 0 14px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line-strong);
+}
+.pano-sec-hd:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+/* 分区标题：与首页各段的分段标题、人岗匹配报告各节的节名同为一级，故字号、
+   字体与字距三样一并取齐 —— 此前三处的字号分别是 21 / 42 / 21px，字体又分作
+   衬线与无衬线两路，同为 26px 时中文在两种字体下的视觉大小仍差一档。 */
+.pano-sec-hd h2 {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: var(--font-display);
+  font-size: var(--fs-4xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* 一级记号：10px 的菱形，描边取强调色，内填同族浅面。
+   形与色的由来见 global.css“标题记号”一节；面板标题用同形的 6px 实心版。 */
+.pano-sec-hd h2::before {
+  content: '';
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--accent);
+  border-radius: 2px;
+  background: var(--accent-soft);
+  transform: rotate(45deg);
+  margin-right: 2px;
+}
+.pano-sec-hd p {
+  margin-top: 7px;
+  font-size: var(--fs-md);
+  line-height: 1.8;
+  color: var(--ink-2);
+  max-width: 960px;
+}
+/* 分层标题右侧的口径切换：问号、演示数据标与筛选 chip 排一行 */
+.pano-sec-act {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.timeline-head-act {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* 顶栏是 sticky 的，滚动定位必须给它让出高度，否则目标会被压在栏下面 */
+.pano [id^='sec-'] {
+  scroll-margin-top: calc(var(--topbar-h) + 16px);
+}
+/* 对话框里点了按钮跳过来时闪一下，让人知道落在了哪一块 */
+.pano .spot {
+  animation: panoSpot 2.1s var(--ease);
+}
+@keyframes panoSpot {
+  0%,
+  62% {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.34);
+    border-color: var(--primary);
+  }
+  100% {
+    box-shadow: var(--shadow);
+  }
+}
+
+/* 被技术栈筛选排除掉的行压暗，但不隐藏 —— 它仍是“全景”的一部分 */
+/* 斜纹压在实色之上：两套编码叠在同一格，谁也不盖住谁 */
+/* 走势微条铺在格底，右侧给层内强度数字让出 30px。
+   宽度必须写死成 calc：svg 是替换元素，left + right 配 width:auto 会被判为过约束，
+   实际取的是 viewBox 的内在宽度，条子长度就跟格宽脱钩了。 */
+/* 走势微条的图例：一条从低走到高的斜线，末端一个点，与格内画法一致 */
+
+.seg-on {
+  background: var(--lay-job);
+}
+.seg-sub {
+  background: var(--lay-job-soft);
+}
+/* "本批未采集到对照"这一段用中性灰：它不是另一类节点，是缺口 */
+.seg-off {
+  background: var(--line-strong);
+}
+
+.st-extract {
+  color: var(--src-paper-ink);
+  background: var(--src-paper-soft);
+}
+.st-cross-validate {
+  color: var(--src-jd-ink);
+  background: var(--src-jd-soft);
+}
+.st-graph-commit {
+  color: var(--src-news-ink);
+  background: var(--src-news-soft);
+}
+
+/* 三源对照面板底部的动作 */
+.dv-act {
+  margin-top: 12px;
+}
+
+/* ---------------- 响应式 ----------------
+   左右留白由 --gutter 统一给（tokens.css § F），这里只调纵向。 */
+@media (max-width: 1300px) {
+  .pano-wrap {
+    padding-bottom: 36px;
+  }
+}
+
+/* 三列塞不下时改为“控制在上、图与数据并排”，再窄则完全纵向堆叠。
+   这种排法已经不存在“三列并排要对齐”的问题，各块回到自然高度，
+   棱镜也交回给 aspect-ratio 定尺寸 —— 竖排时它上面已经没有可分的剩余高度了。
+   收起 / 拖宽这一套也在这里整个失效：窄屏没有多余的宽度可分，
+   悬浮面板压在图上只会更难用，所以两栏一律摊开成普通区块。 */
+@media (max-width: 1240px) {
+  .pano-grid {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 18px;
+  }
+  .pano-rail {
+    position: static;
+    height: auto;
+  }
+  /* 竖标签、分隔缝、收起按钮在这套排法里都没有作用对象 */
+  .rail-strip,
+  .pano-seam,
+  .rail-toggle {
+    display: none;
+  }
+  .pano-rail > .rail-pop,
+  .pano-rail:not(.open) > .rail-pop {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: auto;
+    height: auto;
+    max-height: none;
+    padding: 0;
+    overflow: visible;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    /* 必须一并关掉：留着 visibility 的过渡，从悬浮态切到这套排法时
+       面板会先隐着等一个过渡周期才出现 */
+    transition: none;
+    box-shadow: none;
+  }
+  .pano-rail:not(.open) > .rail-pop > .panel {
+    box-shadow: var(--shadow);
+  }
+  .pano-rail > .rail-pop > .panel {
+    flex: 0 0 auto;
+  }
+  .pano-main > .panel > .panel-bd {
+    display: block;
+  }
+  /* 竖排时中间列的宽度就是整幅页宽，不再需要按剩余高度算边长 */
+  .prism-wrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    max-height: 82vh;
+    min-height: 520px;
+  }
+  /* 视图控制那一栏横过来铺满整行，控件分成多列排 */
+  .pano-rail:not(.right) {
+    grid-column: 1 / -1;
+  }
+  .pano-rail:not(.right) .ctl {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  .pano-rail:not(.right) .panel-bd {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px 26px;
+    align-items: start;
+  }
+
+.fore-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .fore-grid > .panel:not(.fore-full) + .panel:not(.fore-full) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .pano-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .prism-wrap {
+    max-height: none;
+  }
+  /* 窄屏下这一列最先牺牲：走势缩略图信息量最低 */
+  .rank .c-spark {
+    display: none;
+  }
+
+  .ffn-row {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 620px) {
+  .pano-wrap {
+    padding-top: 20px;
+    padding-bottom: 32px;
+  }
+  .pano-meta {
+    gap: 6px 14px;
+  }
+  .pano-meta b {
+    font-size: var(--fs-md);
+  }
+  .pano-meta em {
+    display: none;
+  }
+  .legend-bar {
+    gap: 10px 18px;
+  }
+  .fore-hd-t h2 {
+    font-size: var(--fs-2xl);
+  }
+  /* 容器宽度已经小于这个下限，再撑就会溢出 */
+  .prism-wrap {
+    min-height: 0;
+  }
+  .rank .c-idx {
+    display: none;
+  }
+}
+
+/* 图注与提示里的无法确定色块：与图上同一种点阵画法。
+   图注若画成灰色实心块，读的人会去图上找一块灰实心 —— 找不到。 */
+.legend-grp i.sw-unknown,
+.tt-prof i.sw-unknown {
+  background-image: radial-gradient(#7d8798 0.85px, transparent 0.85px);
+  background-size: 4px 4px;
+  background-color: var(--panel);
+  border: 1px solid var(--line);
+}
+/* 悬停提示里的四档构成：一行摆开，色块贴着自己的档名 */
+.tt-prof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin-top: 2px;
+}
+.tt-prof span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.tt-prof i {
+  width: 9px;
+  height: 9px;
+  border-radius: var(--radius-xs);
+  display: inline-block;
+}

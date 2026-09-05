@@ -1,0 +1,13 @@
+{
+  "schema_version": "backend_e2e_request_summary_v1",
+  "candidate_id": "backend_closeout_dev_001",
+  "resume_file": "examples/anonymous_dev_resume.pdf",
+  "resume_sha256": "2ceb059f4325cbc621d7329f91261d0aec3e9cbf0ad4db9973a7ed85c297a4ba",
+  "source": "existing anonymous synthetic other_llm_backend_001 Demo PDF; no Blind",
+  "job_id": "133663124",
+  "job_window": "2022-10",
+  "model": "deepseek-v4-flash",
+  "threshold": 0.380952,
+  "http_mode": "FastAPI ASGI TestClient, real services, real provider when authorized",
+  "learning_proficiency_policy": "reuse match response levels; no repeated proficiency call"
+}

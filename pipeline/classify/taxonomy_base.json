@@ -1,0 +1,6 @@
+{
+  "_说明": "体系基准单一开关：tasks/skills/jobs 三体系的标签源文件（Stage B 体系映射、提及识别、图谱基图节点均从此取）。改这里即全局切换基准，无需改代码。路径相对 classify/（也接受绝对路径）。环境变量 TAXONOMY_BASE_TASKS / TAXONOMY_BASE_SKILLS / TAXONOMY_BASE_JOBS 可临时覆盖单项（仅当次运行生效，适合 A/B 对比实验）。注意：skills 切回 skills_builder.json 前先确认映射判据已校准（2026-08-16 教训：基准与判据共同决定映射质量）。",
+  "tasks": "Tasks/tasks.json",
+  "skills": "Skills/skills0821.json",
+  "jobs": "Jobs/jobs_v2.json"
+}

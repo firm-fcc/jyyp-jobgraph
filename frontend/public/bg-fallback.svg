@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <!--
+    背景兜底图 —— 只在 public/bg.jpg 缺失时出现。
+    照着参考图的构成画的：斜向蓝色渐变 + 若干带亮边的圆角玻璃方块
+    + 二进制字串 + 细连线。放上真图后这一张不会被请求。
+  -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#cfe6fb" />
+      <stop offset="0.42" stop-color="#8fc2ef" />
+      <stop offset="1" stop-color="#4b8fd4" />
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.46" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.1" />
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5fe3ff" />
+      <stop offset="1" stop-color="#2f8fe0" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.14" r="0.7">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.62" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#sky)" />
+  <rect width="1600" height="1000" fill="url(#glow)" />
+
+  <!-- 背景层的横向光带 -->
+  <g fill="#ffffff" opacity="0.16">
+    <rect x="0" y="286" width="1600" height="7" />
+    <rect x="0" y="612" width="1600" height="5" />
+    <rect x="880" y="120" width="720" height="6" />
+  </g>
+
+  <!-- 二进制字串 -->
+  <g font-family="Consolas, monospace" font-size="27" fill="#ffffff" opacity="0.26" letter-spacing="2">
+    <text x="150" y="182">0101011</text>
+    <text x="196" y="228">00110101001001</text>
+    <text x="1180" y="368">00101010110</text>
+    <text x="1148" y="576">010010010110</text>
+    <text x="128" y="838">0110110100101001101</text>
+    <text x="106" y="936">1011001101</text>
+  </g>
+
+  <!-- 细连线与节点 -->
+  <g stroke="#c8f2ff" stroke-width="1.6" fill="none" opacity="0.62">
+    <path d="M1060 118 L1180 118 L1236 62" />
+    <path d="M1112 196 L1180 232" />
+    <path d="M256 616 L520 616 L568 578" />
+    <path d="M196 736 L392 736" />
+  </g>
+  <g fill="none" stroke="#e6faff" stroke-width="1.8" opacity="0.72">
+    <circle cx="1246" cy="56" r="6" />
+    <circle cx="1190" cy="240" r="5" />
+    <circle cx="578" cy="570" r="6" />
+    <circle cx="402" cy="736" r="5" />
+  </g>
+
+  <!-- 玻璃方块。带一条亮边，模拟参考图里方块的发光棱 -->
+  <g>
+    <rect x="-90" y="18" width="330" height="330" rx="42" fill="url(#glass)" />
+    <path d="M240 60v246" stroke="url(#edge)" stroke-width="7" opacity="0.85" />
+
+    <rect x="1250" y="-30" width="420" height="400" rx="46" fill="url(#glass)" />
+    <path d="M1250 14v312" stroke="url(#edge)" stroke-width="7" opacity="0.7" />
+
+    <rect x="452" y="66" width="470" height="800" rx="52" fill="url(#glass)" />
+    <path d="M452 120v692" stroke="url(#edge)" stroke-width="8" opacity="0.9" />
+    <path d="M922 120v692" stroke="url(#edge)" stroke-width="6" opacity="0.5" />
+
+    <rect x="-40" y="418" width="290" height="290" rx="40" fill="url(#glass)" />
+    <path d="M250 456v214" stroke="url(#edge)" stroke-width="6" opacity="0.75" />
+
+    <rect x="130" y="700" width="240" height="340" rx="40" fill="url(#glass)" />
+    <path d="M130 742v268" stroke="url(#edge)" stroke-width="6" opacity="0.6" />
+
+    <rect x="1140" y="702" width="520" height="360" rx="52" fill="url(#glass)" />
+    <path d="M1140 750v274" stroke="url(#edge)" stroke-width="7" opacity="0.7" />
+
+    <rect x="1268" y="300" width="400" height="330" rx="44" fill="url(#glass)" />
+    <path d="M1268 342v250" stroke="url(#edge)" stroke-width="6" opacity="0.55" />
+  </g>
+
+  <!-- 中央方块投在背板上的影 -->
+  <rect x="560" y="330" width="180" height="300" rx="22" fill="#3d78b4" opacity="0.16" />
+</svg>

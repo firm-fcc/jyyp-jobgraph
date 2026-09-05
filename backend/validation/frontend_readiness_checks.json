@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "mode": "offline_ASGI_synthetic_profile_provided_proficiency_real_bundled_JD",
+  "external_api_calls": 0,
+  "model_calls": 0,
+  "real_e2e_rerun": false,
+  "candidate_mode": "local_preflight_only",
+  "endpoints": [
+    {
+      "endpoint": "GET /health",
+      "http_status": 200,
+      "schema_version": null
+    },
+    {
+      "endpoint": "GET /api/jobs",
+      "http_status": 200,
+      "schema_version": "job_catalog_response_v1"
+    },
+    {
+      "endpoint": "POST /api/candidate?preflight=true",
+      "http_status": 200,
+      "schema_version": "candidate_preflight_v1"
+    },
+    {
+      "endpoint": "GET /api/target-job/133663124",
+      "http_status": 200,
+      "schema_version": "target_job_profile_v1.1"
+    },
+    {
+      "endpoint": "GET /api/job-summary/AID-01",
+      "http_status": 200,
+      "schema_version": "aggregated_job_summary_v1"
+    },
+    {
+      "endpoint": "POST /api/match",
+      "http_status": 200,
+      "schema_version": "matching_pipeline_output_v1"
+    },
+    {
+      "endpoint": "POST /api/learning-path",
+      "http_status": 200,
+      "schema_version": "learning_path_api_response_v1"
+    }
+  ],
+  "openapi_paths": 7,
+  "swagger_http_status": 200,
+  "cors": [
+    {
+      "origin": "http://localhost:5173",
+      "preflight": "PASS",
+      "get": "PASS",
+      "post": "PASS"
+    },
+    {
+      "origin": "http://127.0.0.1:5173",
+      "preflight": "PASS",
+      "get": "PASS",
+      "post": "PASS"
+    }
+  ],
+  "unauthorized_origin_blocked": true,
+  "threshold": 0.380952,
+  "typescript_strict": "PASS",
+  "typescript_version": "5.9.3",
+  "browser_react_integration": "PENDING"
+}

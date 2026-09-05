@@ -1,0 +1,205 @@
+# ==============================================================================
+# 全局参数中心（2026-08-16 起；08-17 改为 YAML 格式）
+#
+# codes/ 下各模块 config 与模块内可调参数统一从此读取，调参只改本文件、无需改代码。
+# 读取方式为按路径读文件（不是 import config），天然免疫跨模块 sys.modules 缓存顺序
+# 问题——原"新闻参数须模块内自洽"的限制由此解除。各 config 保留原变量名作薄读取层，
+# 并内置同值默认兜底（本文件缺失/损坏时系统仍可运行）。
+#
+# 相关配置的分工：
+#   - 体系基准（tasks/skills/jobs 标签源文件）→ classify/taxonomy_base.json
+#   - 敏感凭证不集中于此：
+#       DeepSeek key 在 codes/api-key.txt（gitignored）
+#       jd_fetch 数据库凭证在其 config*.yaml
+# ==============================================================================
+
+# DeepSeek API 调用（builder 与 extractor 原各持一份拷贝，现同源）。
+# use_thinking: true 表示禁用推理（v4-flash 为推理模型，不关会烧光 max_tokens 截断 JSON）。
+llm:
+  api_url: "https://api.deepseek.com/chat/completions"
+  model: deepseek-v4-flash
+  use_thinking: true
+  key_file: codes/api-key.txt
+  # 多账号并行（key 列表在 key_file，每行一个 sk-…，绝不写进本文件）：
+  #   api_keys_parallel = 启用的 key 数（取文件前 N 个，请求级 round-robin 轮转；
+  #   429/截断重试自动换下一个 key 分摊限速）。总批次并发 = concurrency × 实际启用数，
+  #   即 concurrency 语义变为「每 key 并发」——单 key（开关=1 或文件只有一个）时行为
+  #   与旧版完全一致。
+  #   2026-09-01 起 3 账号（总并发 40→120）。备注：08-31 的"第 3 key 401"实为写入
+  #   时抄错一位，原始 key 修正后实测有效但按用户裁定弃用；现第 3 席为新 key（尾
+  #   c09d，实测有效）。key_probe 预检兜底，个别 key 失效会被自动剔除。
+  api_keys_parallel: 3
+  # key 预检（2026-09-01 起）：KeyRing 首次构建（= 本进程第一次 LLM 请求前）对启用 key
+  # 并行发一次极小探测请求，不可用的（401/持续失败）本进程内剔除并打警告，减少批量
+  # 运行中途"请求失败-换 key 重试"的环节。probe 结果仅进程内有效（重启重测）；全部
+  # 不可用则中止并列出各 key 失败原因。false = 跳过预检（全部启用 key 上环，旧行为）。
+  key_probe: true
+  timeout: 180            # 单次请求超时（秒）
+  retries: 3              # 失败重试次数（多 key 下重试会换 key）
+  batch_max_tokens: 8000  # 单次 LLM 输出上限
+  max_tokens_cap: 32000   # 输出截断重试时的 max_tokens 上限
+  concurrency: 40         # 每 key 批次并发量（总并发 = 本值 × 启用 key 数；1=串行）。提速用，不改变调用数/token
+                          # 2026-08-30 20→40（用户裁定提速；若下窗日志 429/批失败率上升则回落）
+
+# ΔG 强度聚合：contrib = 源权重 × conf 权重 × 0.5^(age/半衰期)，noisy-OR 跨证据合成；
+# graph 快照按窗口重算时同用。改这里会影响新旧产物的强度可比性，改完记得重建快照。
+strength:
+  tier_weights: {"S": 1.0, "A": 0.7, "B": 0.5, "C": 0.3, "": 0.2}   # 论文分档权重（""=无档位）
+  conf_weight: {high: 1.0, medium: 0.6, low: 0.3}                    # LLM 自报置信度权重
+  paper_half_life_days: 730     # 论文信号半衰期（2 年，衰减慢）
+  news_source_weight: 0.4       # 新闻源权重（辅助信号，弱于论文）
+  news_half_life_days: 180      # 新闻信号半衰期（6 个月，时效快）
+  jd_source_weight: 1.0         # JD 源权重（市场确证，noisy-or 概率上限，与论文 S 档同级）
+  jd_half_life_days: 365        # JD 信号半衰期（1 年：转正窗口内未被再确认即自然淡化）
+  recency_unknown_decay: 0.5    # 日期缺失时的时间衰减底权
+  min_strength: 0.05            # 低于此强度的一次性噪声在保存时剔除（多证据信号永不删除）
+
+# 论文链路（parse → extract → map → ΔG）。
+# extract_chunk = 单次提取 LLM 调用包含的论文数；截断类参数与 TXT 头块/正文格式耦合，
+# 调大注意 token 成本。
+papers:
+  extract_chunk: 3
+  abstract_max_chars: 1500      # 摘要截断
+  abstract_min_chars: 200       # 无标记 fallback 时要求段落最小长度（视为摘要）
+  keywords_max: 12              # 关键词上限
+  context_chars: 2500           # body_excerpt 截断（喂 LLM 的正文片段）
+  min_content_chars: 200        # 正文过短则跳过该论文
+  body_scan_lines: 80           # 正文前 N 行内寻找 Abstract 标记
+  keyword_scan_lines: 200       # 正文前 N 行内寻找 Keywords
+  sampler_doc_max_chars: 4000   # sampler 紧凑文本截断（仅去重/断点，不影响 LLM 输入）
+  min_per_stratum: 1
+
+# 新闻链路（parse → filter → extract → ΔG）。
+# filter_guide_chars = Stage 0 过滤导语窗口（2026-08-15 由 200 调至 800：对标题党多救回 10/177）；
+# extract_body_chars = 提取正文截断。
+# 标题关键词词表已于 2026-08-17 移除（方案 B 后仅存统计观察角色，词表有 ASCII 子串误配等
+# 瑕疵且迁移对比已完成）。截断/字段绑定类常量（头字段名、分隔线正则）留在 news_config.py。
+news:
+  extract_chunk: 3
+  filter_guide_chars: 800
+  extract_body_chars: 3000
+  min_body_chars: 200
+  sampler_doc_max_chars: 4000
+  min_per_stratum: 1
+
+# JD 侧 ΔG 链路（timeline 月度 CSV → 全量扫描 → 残差裁决 → ΔG）。
+# JD 是市场当前需求的确证源：新信号入叠层（权重 1.0），对叠层既有实体的提及=确证证据；
+# 命中基线体系的提及不入叠层（基图频次域已覆盖）；不从 JD 侧发现新岗位（沿用 51job 分类）。
+# 旧抽样路径（builder/run_jd_delta.py，100 条/窗）已弃用，保留 --legacy；生产走
+# graph/jd_delta_v2.py（全量确定性扫描 + 残差 LLM 裁决，发现覆盖率=100% IT JD）。
+jd:
+  extract_chunk: 3
+  sample_total: 100            # （legacy 路径）单窗口抽样 JD 总量上限
+  per_funtype: 3               # （legacy 路径）每 funtype 抽样上限
+  extract_body_chars: 2000     # （legacy 路径）提取正文截断
+  min_text_chars: 100          # job_information 短于此跳过
+
+# JD ΔG v2（graph/jd_delta_v2.py：全量扫描 + 残差裁决，2026-08-27 起）。
+jd_delta_v2:
+  min_docs: 5              # 残差候选文档频下限（砍随机搭配/一次性噪声）
+  max_df_ratio: 0.05       # 中文 n-gram 文档频上限比例（砍通用语言搭配；新技术首发窗难超 5%）
+  zh_min_len: 3            # 中文候选最短字数（2 字被通用词淹没；2 字真词由论文源/L3 兜底）
+  max_candidates: 300      # 单窗送 LLM 裁决的候选上限（溢出留待下窗，首窗背景学习会打满）
+  adj_batch: 50            # 裁决批大小（HotUpdater 子块）
+  confirm_batch: 20        # 确证批大小（实体名×句子对）
+
+# 叠层生命周期：可见性（参与下一次更新的门槛）/ 遗忘（跌破门槛=休眠不删除）/ 转正（入基图）。
+# 转正需 JD 侧确证（ev.src=="jd" 的不同 JD 文档数）+ 强度双门槛；岗位门槛更高。
+# 时序：转正在窗口合成后收口，作用于下一窗口（本窗口快照保持转正前历史视图）。
+overlay:
+  participate_min_strength: 0.15   # 参与门槛：≥ 此强度的叠层实体进入下次更新的映射标签空间
+  promote_min_strength: 0.25       # 转正强度门槛（任务/技能）
+  promote_min_strength_jobs: 0.30  # 转正强度门槛（岗位）
+  promote_min_jd_docs: 2           # 转正所需 JD 侧确证文档数（任务/技能）
+  promote_min_jd_docs_jobs: 3      # 转正所需 JD 侧确证文档数（岗位）
+
+# extractor 的 JD 抽取（run_extractor）。
+# count_mode: sentence 按句计频（每句贡献 1）/ occurrence 按提及次数计。
+jd_extract:
+  batch_size: 15
+  sentence_min_len: 4
+  sentence_max_len: 200
+  count_mode: sentence
+
+# JD 技能熟练度要求判定（jd_proficiency：量规 P1-P4/U，precision-first，逐对 LLM 评估）。
+# 量规本体在 extractor/jd_proficiency_prompts.py（rubric_version 变更会使 jd_prof_cache 失效）。
+jd_proficiency:
+  chunk_skills: 12         # 单次 LLM 调用打包的技能对数上限（per-JD 与跨 JD 批量共用）
+  use_cache: true          # 文本指纹缓存（output/jd_prof_cache.jsonl，断点续跑）
+  soft_gate: true          # 软技能（F-）无梯度词证据 → 确定性 U 免 LLM（下游约定 U 视作最低档要求参与匹配）
+
+# JD 岗位归类门（classify_job → 基图管线 Stage A）。
+# strict: true = 仅岗位名出现在标题直接采信；关键词命中（含正文）泛词误报多
+# （'测试'→通信测试、'监控'→运维、'质检'→数据标注），一律送 LLM 按内容复核。
+# 岗位范围（硬件/通信现场/数据标注等排除集）在 graph/it_scope.json，与代码解耦。
+jd_gate:
+  strict: true
+
+# JD 降采样（Stage S，graph/jd_sample.py → {窗口}.sample.json；逐窗时序流程 A→S→B→C→D）。
+# cap: 窗口 IT JD 保留上限（超出按岗位分层比例下采样；小窗全量保留）
+# floor: 稀疏岗保底（层内 ≤floor 全保；大于 floor 的层采样不低于 floor 条，保证逐岗时序分辨率）
+# salt: 确定性哈希种子（可复现；同键扩展采样时缓存自动衔接）
+# 验证（2025-10 全量基线蒙特卡洛）：rate=10% 时三类主边 Jaccard≥0.96、漏边权重≤0.3%、
+# 岗位层零丢失；无保底纯比例抽样会漏 31% 边权重——floor 不可去。
+jd_sampling:
+  cap: 10000
+  floor: 30
+  salt: "challenge26-jd-sampling-v1"
+  # Stage S0 大窗预抽样（2026-09-03）：窗口 unique 指纹 > presample_cap 才触发，
+  # 确定性哈希选 cap 个 + w0=N/k 逆概率因子（Stage S 复合进各层权重，总量无偏）。
+  # ≤0 关闭。校准（真实记录数，wc -l 因内嵌换行虚高 ~14×）：2026-01 29k / 02 41k /
+  # 03 101k（unique 指纹 27k/37k/~95k）——60k 只让 2026-03 触发（~63%），02 及以下
+  # 全量保真；A 门 LLM 兜底是唯一随窗规模增长的成本项，B/C 已被 S cap 封顶。
+  presample_cap: 60000
+  presample_salt: "challenge26-jd-presample-v1"
+
+# 近重复（抄袭）过滤（Stage D0，graph/jd_dedup.py → {窗口}.dedup.json；赛题"抄袭"回应）。
+# simhash64(正文3-gram) 分块候选 → 海明距 ≤3 → 3-gram Jaccard ≥0.95 复核 → 簇内保留最早发布。
+jd_dedup:
+  hamming_max: 6           # simhash 海明距阈值（8×8 分块鸽笼保证 ≤7 不漏；精确率由 Jaccard 把守）
+  jaccard_min: 0.95        # n-gram 集合 Jaccard 复核阈值（对应 v1 设计"相似度>95%"）
+  ngram: 3                 # 字符 n-gram 长度（中文正文）
+  min_chars: 80            # 正文短于此不参与近重复（精确去重已覆盖；短文高误报）
+
+# Builder 冷启动/热更新迭代参数（tasks/skills 体系构建）与岗位关联分析文本预算。
+builder:
+  cold_sample: 500
+  hot_batch: 200
+  hot_chunk: 50
+  min_per_stratum: 3
+  max_rounds: 5
+  max_recheck: 3
+  doc_max_chars: 1200
+  cold_min_tasks: 8
+  cold_max_tasks: 30
+  skill_min_skills: 30
+  skill_max_skills: 60
+  job_assoc_max_chars: 6000
+
+# 基图边计算（graph/base_builder：JD → J-T/J-S/T-S/S-SP 四种边，algorithm-design-v2 §1）。
+# 抽样按 funtype→岗位节点分层；频次为文档级 presence 并做薪资加权
+# weight(jd) = log(1 + salary / salary_median)；跨窗口累积 freq_new + alpha·freq_hist。
+# ts_w2 为 T-S 显式关联项权重：当前抽取层无显式关联数据源，恒为 0，预留。
+graph_base:
+  sample_total: 200       # 单窗口抽样 JD 总量上限
+  per_job: 5              # 每岗位节点抽样上限（分层）
+  min_text_chars: 100     # job_information 短于此的行跳过
+  salary_weight: false    # 薪资加权（组装期现算：D 阶段按窗口 salary_monthly 中位数计 log(1+s/median)；改后 replay Stage D 即生效，无需重跑 B/C；CLI --no-salary-weight 可强制关闭）
+  alpha: 0.85             # 跨窗口历史衰减系数
+  ts_w1: 1.0              # T-S 共现项权重 w₁
+  ts_w2: 0.0              # T-S 显式关联项权重 w₂（预留，当前无数据源）
+  write_jd_vectors: true  # Stage B 是否写出每 JD 分类向量源文件到 data/timeline/jd/{窗口}.jd_vectors.jsonl（Stage D 基图聚合消费）
+
+# 图谱合成（graph/synthesis：G_eff = G_base ⊕ ΔG，algorithm-design-v2 §2）。
+# gap(E) = max(0, strength_ΔG(E) − E_jd(E))；effective = base_weight + Δw（加法合成）。
+# 叠层强度已按窗口末半衰期重算（§2.3 衰减在快照阶段完成），合成不再二次衰减。
+synthesis:
+  lambda_j: 0.3           # λ₁：J-T / J-S 边修正 Δw = λ₁·gap(右端实体)
+  lambda_ts: 0.3          # λ₂：T-S 边修正 Δw = λ₂·gap(T)·gap(S)
+  lambda_sp: 0.3          # λ₃：S-SP 边修正 Δw = λ₃·gap(S)（gap(SP) 无独立数据，降级用父技能）
+  max_new_ts_edges: 100   # 双端皆有 gap 时允许合成的新 T-S 边上限（防膨胀）
+
+# 新闻 ΔG 降采样（2026-08-30 用户裁定：新闻为辅助数据，语料扩容后按月上限抽样——
+# 先抽样再筛选；确定性窗口种子保证可重演，抽样记录落 data/timeline/news_derived/）。
+news_delta:
+  sample_cap: 800         # 单月新闻处理上限（超出则均匀随机抽样；2023 起月均 5-8k）

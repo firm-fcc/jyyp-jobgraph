@@ -1,0 +1,59 @@
+{
+  "meta": {"system_name": "fixture 论文叠层", "source_kind": "papers"},
+  "new_jobs": [
+    {
+      "id": "PJ-001", "name_zh": "具身智能数据采集员", "name_en": "Embodied Data Collector",
+      "status": "pending", "definition": "负责具身智能场景的数据采集与标注。",
+      "evidence": {
+        "paperA": {"date": "2026-05-10", "sentences": ["新型数据采集岗位正在出现"], "confidence": "high", "tier": "S"},
+        "paperB": {"date": "2026-06-15", "sentences": ["窗口外证据"], "confidence": "high", "tier": "A"}
+      },
+      "strength": 0.0, "max_contrib": 0.0,
+      "related_tasks": [
+        {"taxonomy": "tasks", "code": "T-01", "name_zh": "大模型应用开发与集成"},
+        {"taxonomy": "new_tasks", "code": "PT-001", "name_zh": "具身数据采集"}
+      ],
+      "related_skills": [
+        {"taxonomy": "skills", "code": "T-AI-01", "name_zh": "机器学习与深度学习"}
+      ]
+    },
+    {
+      "id": "PJ-002", "name_zh": "仅窗口外岗位", "name_en": "OutOfWindow",
+      "status": "pending", "definition": "证据全部在窗口之后。",
+      "evidence": {
+        "paperC": {"date": "2026-07-01", "sentences": ["太晚了"], "confidence": "low", "tier": "B"}
+      },
+      "strength": 0.0, "max_contrib": 0.0, "related_tasks": [], "related_skills": []
+    }
+  ],
+  "new_tasks": [
+    {
+      "id": "PT-001", "name_zh": "具身数据采集", "name_en": "Embodied Data Collection",
+      "description": "面向具身智能的数据采集任务。",
+      "evidence": {"paperA": {"date": "2026-05-10", "sentences": ["数据采集是关键任务"], "confidence": "high", "tier": "S"}},
+      "strength": 0.0, "max_contrib": 0.0
+    },
+    {
+      "id": "PT-002", "name_zh": "机器人行为模仿", "name_en": "Robot Imitation",
+      "description": "模仿学习相关任务。",
+      "evidence": {"paperC": {"date": "2026-07-01", "sentences": ["窗口外任务"], "confidence": "low", "tier": "B"}},
+      "strength": 0.0, "max_contrib": 0.0
+    }
+  ],
+  "new_skills": [
+    {
+      "id": "PS-001", "name_zh": "具身智能", "name_en": "Embodied AI",
+      "skill_type": "hard", "definition": "具身智能能力。",
+      "evidence": {"paperA": {"date": "2026-05-10", "sentences": ["具身智能成为热点"], "confidence": "high", "tier": "S"}},
+      "strength": 0.0, "max_contrib": 0.0
+    }
+  ],
+  "skillpoints": [],
+  "strengthenings": [
+    {
+      "taxonomy": "tasks", "code": "T-01", "name_zh": "大模型应用开发与集成",
+      "source_kinds": ["new_task"], "strength": 0.0, "max_contrib": 0.0,
+      "evidence": {"paperA": {"date": "2026-05-10", "sentences": ["大模型应用开发被提及"], "confidence": "high", "tier": "S"}}
+    }
+  ]
+}

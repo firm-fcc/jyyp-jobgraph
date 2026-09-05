@@ -1,0 +1,110 @@
+{
+  "schema_version": "backend_real_e2e_runtime_acceptance_v1",
+  "candidate_id": "candidate_0068",
+  "input_sha256": "ee799234c9eca3cfee047df2e1f418ef1581ba5edff73e3e7446360349e9b553",
+  "input_origin": "existing_real_anonymized_Pilot_privacy_only_PDF_conversion",
+  "test_pdf_in_public_archive": false,
+  "model": "deepseek-v4-flash",
+  "job_id": "133663124",
+  "job_window": "2022-10",
+  "threshold": 0.380952,
+  "http_mode": "local_ASGI_TestClient_real_services_real_LLM_not_mock",
+  "gold_used": false,
+  "formal_accuracy_evaluated": false,
+  "status": "FAIL",
+  "endpoints": {
+    "health": {
+      "http_status": 200,
+      "seconds": 0.016484,
+      "schema_version": null
+    },
+    "candidate": {
+      "http_status": 200,
+      "seconds": 169.227451,
+      "schema_version": "candidate_api_response_v1_1"
+    },
+    "target_job": {
+      "http_status": 200,
+      "seconds": 0.078419,
+      "schema_version": "target_job_profile_v1.1"
+    },
+    "match": {
+      "http_status": 200,
+      "seconds": 70.306365,
+      "schema_version": "matching_pipeline_output_v1"
+    },
+    "learning_path": {
+      "http_status": 400,
+      "seconds": 0.007156,
+      "schema_version": null
+    }
+  },
+  "checks": {
+    "candidate_schema": true,
+    "resume_text_nonempty": true,
+    "evidence_offsets_exact": true,
+    "grounded_candidates_present": true,
+    "target_schema": true,
+    "proficiency_generated": true,
+    "match_ranges": true,
+    "decision_calibrated": true,
+    "gap_sum": true
+  },
+  "candidate_skill_count": 3,
+  "grounded_capability_count": 2,
+  "evidence_count": 3,
+  "candidate_proficiency_status": "not_run_in_preuse_entrypoint",
+  "candidate_contract_counters": {
+    "evidence_candidate_count": 4,
+    "grounded_evidence_candidate_count": 2,
+    "ungrounded_candidate_skip_count": 2,
+    "verifier_call_count": 2,
+    "verifier_contract_retry_count": 0,
+    "fallback_candidate_pool_count": 2,
+    "fallback_skill_universe_count": 86,
+    "fallback_selector_call_count": 1,
+    "fallback_selector_contract_retry_count": 0,
+    "fallback_selector_failure_count": 0,
+    "fallback_selected_skill_count": 5,
+    "full_fallback_verifier_call_count": 0,
+    "audited_assessment_count": 5
+  },
+  "proficiency_count": 2,
+  "required_skill_count": 7,
+  "match_score": 14.29,
+  "verified_fit": 0.142857,
+  "decision": "NO_MATCH",
+  "gap_counts": {
+    "satisfied": 1,
+    "level_gap": 0,
+    "evidence_insufficient": 2,
+    "missing": 4
+  },
+  "error_type": "RuntimeError",
+  "estimated_total_completion_seconds": null,
+  "runtime": {
+    "stage_seconds": {
+      "document_parse": 0.084722,
+      "llm_transport": 167.797209,
+      "llm_logical": 168.804447,
+      "evidence_extraction": 43.885675,
+      "team_skill_pipeline": 124.934403,
+      "candidate_profile_assembly": 0.000963,
+      "subprocess": 169.198355,
+      "proficiency_llm_transport": 70.291903,
+      "proficiency_llm_logical": 70.295593,
+      "proficiency": 70.297518
+    },
+    "logical_api_calls": 6,
+    "transport_attempts": 7,
+    "transport_retries": 1,
+    "transport_completed": 7,
+    "transport_errors": 1,
+    "timeout_errors": 0,
+    "identical_logical_request_repeats": 0,
+    "verifiable_tokens": 25794,
+    "average_completed_transport_seconds": 34.01273,
+    "slowest_completed_transport_seconds": 70.741936,
+    "total_seconds": 239.653555
+  }
+}

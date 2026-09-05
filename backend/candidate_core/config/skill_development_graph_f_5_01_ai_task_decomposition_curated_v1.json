@@ -1,0 +1,157 @@
+{
+  "version": "stage2b2_f_5_01_ai_task_decomposition_curated_v1",
+  "team_skill_id": "F-5-01",
+  "team_skill_name": "AI任务拆解",
+  "scope": "覆盖任务的可自动化边界判定、子任务切分与接口定义、单步可验证性设计、失败处置与回退，以及人工复核点设置的核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "TASK-01",
+      "name_zh": "可自动化边界判定",
+      "type": "CORE",
+      "definition": "判断一项复杂任务中哪些环节适合交由AI处理，哪些因判断责任或数据约束须由人承担。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一项任务划出可自动化边界，并说明不宜交付AI的环节及其理由。",
+      "evidence_task": "就一项真实任务逐环节判定是否适合交由AI处理，标明理由与不宜交付的约束来源。",
+      "validation_criteria": [
+        "判定逐环节给出且理由可核查",
+        "不宜交付的约束指向责任或数据的具体限制"
+      ],
+      "source_refs": [
+        "nist_ai_rmf",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "TASK-02",
+      "name_zh": "子任务切分与接口定义",
+      "type": "CORE",
+      "definition": "把可自动化部分切分为输入输出明确的子任务，使每一步的产物可被下一步直接使用。",
+      "prerequisites": [
+        "TASK-01"
+      ],
+      "learning_outcome": "能够输出子任务序列及其输入输出契约，使各步之间无需人工转译。",
+      "evidence_task": "就一项任务输出子任务切分与各步的输入输出契约，说明前后步骤的衔接方式。",
+      "validation_criteria": [
+        "各子任务的输入输出格式明确",
+        "相邻步骤的产物无需人工转译即可衔接"
+      ],
+      "source_refs": [
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "TASK-03",
+      "name_zh": "单步可验证性设计",
+      "type": "CORE",
+      "definition": "为每个子任务设定可判定通过与否的检查方式，使错误在产生的那一步即被发现。",
+      "prerequisites": [
+        "TASK-02"
+      ],
+      "learning_outcome": "能够为各子任务设定检查方式，并说明该检查能拦住何种错误。",
+      "evidence_task": "为一组子任务逐步设定检查方式，说明各自能拦截的错误类型，并给出实际拦截的实例。",
+      "validation_criteria": [
+        "每步的检查方式可自动或按固定标准执行",
+        "至少有一处实际拦截的记录"
+      ],
+      "source_refs": [
+        "nist_ai_rmf",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "TASK-04",
+      "name_zh": "失败处置与回退",
+      "type": "CORE",
+      "definition": "为子任务失败设定重试、降级或转人工的处置路径，使整体流程在局部失败时仍可收敛。",
+      "prerequisites": [
+        "TASK-03"
+      ],
+      "learning_outcome": "能够设计失败处置路径，并在演练中验证流程可在局部失败下收敛。",
+      "evidence_task": "为一条自动化流程设计失败处置路径，注入失败并记录流程的实际收敛过程。",
+      "validation_criteria": [
+        "处置路径覆盖重试、降级与转人工三种情形",
+        "注入失败后的收敛过程有完整记录"
+      ],
+      "source_refs": [
+        "nist_ai_rmf"
+      ]
+    },
+    {
+      "subskill_id": "TASK-05",
+      "name_zh": "人工复核点设置",
+      "type": "CORE",
+      "definition": "在责任重大或不可逆的环节前设置人工复核点，使自动化流程的风险落在可控范围内。",
+      "prerequisites": [
+        "TASK-04"
+      ],
+      "learning_outcome": "能够依据后果的可逆性与影响面设置复核点，并说明各点的判定职责。",
+      "evidence_task": "就一条自动化流程设置人工复核点，逐点说明设置依据、复核内容与判定职责归属。",
+      "validation_criteria": [
+        "复核点的设置依据落在后果可逆性与影响面",
+        "各点的判定职责有明确归属"
+      ],
+      "source_refs": [
+        "nist_ai_rmf"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "TASK-VERIFY-01",
+    "objective": "验证当前AI任务拆解的能力证据。",
+    "task_description": "就一项真实任务完成边界判定、子任务切分与可验证性设计，保留契约定义、检查方式与失败处置记录。",
+    "validation_criteria": [
+      "边界判定的理由可核查",
+      "各步的输入输出契约明确",
+      "失败处置在演练中实际生效"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "TASK-CAPSTONE-01",
+    "objective": "完成一条边界清晰、逐步可验、失败可收敛的AI任务流程。",
+    "task_description": "就一项复杂任务判定可自动化边界，切分子任务并定义接口，为每步设定检查方式，设计失败处置路径并注入失败验证，最后设置人工复核点。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "可自动化边界的判定逐环节给出",
+      "各步检查方式有实际拦截记录",
+      "注入失败后流程可收敛且复核点职责明确",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "nist_ai_rmf",
+      "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "framework",
+      "year": null,
+      "venue": null,
+      "version": "1.0",
+      "doi": null,
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "supports": [
+        "TASK-01",
+        "TASK-03",
+        "TASK-04",
+        "TASK-05"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "TASK-01",
+        "TASK-02",
+        "TASK-03"
+      ]
+    }
+  ]
+}

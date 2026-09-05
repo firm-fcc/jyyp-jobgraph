@@ -1,0 +1,155 @@
+{
+  "version": "stage2b2_t_sys_01_operating_systems_curated_v1",
+  "team_skill_id": "T-SYS-01",
+  "team_skill_name": "操作系统与系统管理",
+  "scope": "覆盖进程与调度行为的观测、内存与存储管理、虚拟化环境部署、系统配置与权限管理，以及资源瓶颈与故障处置核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "OS-01",
+      "name_zh": "进程与调度行为观测",
+      "type": "CORE",
+      "definition": "使用系统工具观测进程状态、调度延迟与上下文切换，据此判断程序的实际运行特征。",
+      "prerequisites": [],
+      "learning_outcome": "能够依据观测数据说明一个程序的运行特征，并区分计算密集与等待密集。",
+      "evidence_task": "就一个真实负载采集进程与调度数据，说明其运行特征并给出计算与等待的占比依据。",
+      "validation_criteria": [
+        "结论由采集到的系统指标支持",
+        "计算与等待的划分有量化依据"
+      ],
+      "source_refs": [
+        "silberschatz_osc"
+      ]
+    },
+    {
+      "subskill_id": "OS-02",
+      "name_zh": "内存与存储管理",
+      "type": "CORE",
+      "definition": "理解虚拟内存、缓存与文件系统的行为，据此解释程序的内存占用与磁盘访问表现。",
+      "prerequisites": [
+        "OS-01"
+      ],
+      "learning_outcome": "能够解释一个程序的内存与存储表现，并指出可优化的访问模式。",
+      "evidence_task": "就一个真实程序采集内存与磁盘访问数据，解释其表现并指出至少一处可优化的访问模式。",
+      "validation_criteria": [
+        "解释与采集数据一致",
+        "优化点有具体的访问模式依据"
+      ],
+      "source_refs": [
+        "silberschatz_osc"
+      ]
+    },
+    {
+      "subskill_id": "OS-03",
+      "name_zh": "虚拟化环境部署",
+      "type": "CORE",
+      "definition": "部署并配置虚拟机或容器运行环境，使资源限额、网络与存储挂载符合预定要求。",
+      "prerequisites": [
+        "OS-02"
+      ],
+      "learning_outcome": "能够部署虚拟化环境并验证其资源限额与隔离效果。",
+      "evidence_task": "部署一套虚拟化环境，配置资源限额与网络存储，逐项验证限额生效与隔离效果。",
+      "validation_criteria": [
+        "限额配置有实际生效的验证",
+        "隔离效果有跨实例的验证记录"
+      ],
+      "source_refs": [
+        "silberschatz_osc",
+        "nist_sp_800_145"
+      ]
+    },
+    {
+      "subskill_id": "OS-04",
+      "name_zh": "系统配置与权限管理",
+      "type": "CORE",
+      "definition": "按最小权限原则配置账户、服务与文件权限，使越权访问在实际尝试中被拒绝。",
+      "prerequisites": [
+        "OS-03"
+      ],
+      "learning_outcome": "能够完成权限配置并通过实际尝试验证越权访问被拒绝。",
+      "evidence_task": "为一台主机配置账户与权限，列出权限矩阵并实际尝试越权操作，记录拒绝结果。",
+      "validation_criteria": [
+        "权限矩阵覆盖关键资源",
+        "越权尝试的拒绝有实际记录"
+      ],
+      "source_refs": [
+        "silberschatz_osc"
+      ]
+    },
+    {
+      "subskill_id": "OS-05",
+      "name_zh": "资源瓶颈与故障处置",
+      "type": "CORE",
+      "definition": "在系统异常时依据指标定位瓶颈资源或故障组件，执行处置并验证恢复。",
+      "prerequisites": [
+        "OS-04"
+      ],
+      "learning_outcome": "能够定位一次系统故障的根因，完成处置并验证系统恢复正常。",
+      "evidence_task": "就一次真实系统异常采集指标，定位瓶颈或故障组件，执行处置并记录恢复验证结果。",
+      "validation_criteria": [
+        "根因判定由系统指标支持",
+        "恢复验证覆盖原异常现象"
+      ],
+      "source_refs": [
+        "silberschatz_osc"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "OS-VERIFY-01",
+    "objective": "验证当前操作系统与系统管理的能力证据。",
+    "task_description": "在真实主机或虚拟化环境中完成部署、配置与故障处置，保留观测数据、配置记录与验证结果。",
+    "validation_criteria": [
+      "本人的配置与处置行为可定位",
+      "根因判定由系统指标支持",
+      "验证结果覆盖原异常"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "OS-CAPSTONE-01",
+    "objective": "完成一套观测有据、权限最小化、故障可恢复的系统环境。",
+    "task_description": "在真实环境中观测进程与内存行为，部署虚拟化环境并验证限额与隔离，按最小权限配置账户与服务，最后定位并处置一次系统异常。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "限额与隔离均有实际验证",
+      "越权尝试被实际拒绝",
+      "故障根因由指标支持且恢复经验证",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "nist_sp_800_145",
+      "title": "NIST SP 800-145 The NIST Definition of Cloud Computing",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "standard",
+      "year": 2011,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://csrc.nist.gov/publications/detail/sp/800-145/final",
+      "supports": [
+        "OS-03"
+      ]
+    },
+    {
+      "source_id": "silberschatz_osc",
+      "title": "Operating System Concepts",
+      "authors_or_org": "Abraham Silberschatz, Peter B. Galvin, Greg Gagne",
+      "source_type": "textbook",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "OS-01",
+        "OS-02",
+        "OS-03",
+        "OS-04",
+        "OS-05"
+      ]
+    }
+  ]
+}

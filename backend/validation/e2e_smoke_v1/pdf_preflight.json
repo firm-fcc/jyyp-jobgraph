@@ -1,0 +1,17 @@
+{
+  "schema_version": "candidate_preflight_v1",
+  "parser": "pymupdf_blocks_sorted",
+  "quality": {
+    "passed": true,
+    "fallback_required": false,
+    "flags": [],
+    "char_count": 591,
+    "nonempty_line_count": 25,
+    "readable_char_ratio": 1.0,
+    "page_count": 1,
+    "empty_page_count": 0,
+    "empty_page_ratio": 0.0
+  },
+  "team_skill_registry_version": "0.4",
+  "team_skill_count": 49
+}

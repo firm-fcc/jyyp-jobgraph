@@ -1,0 +1,257 @@
+{
+  "version": "stage2b2_t_sys_05_cybersecurity_privacy_curated_v1",
+  "team_skill_id": "T-SYS-05",
+  "team_skill_name": "网络安全与数据隐私管控",
+  "scope": "覆盖资产识别与威胁建模、访问控制与密码学措施的实施、漏洞评估与授权渗透测试、监测告警与入侵检测，以及隐私合规与事件响应核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "SEC-01",
+      "name_zh": "资产识别与威胁建模",
+      "type": "CORE",
+      "definition": "梳理系统的资产、信任边界与数据流向，按威胁建模方法给出威胁清单与优先级。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一个系统产出威胁清单，并说明各威胁的前提与影响。",
+      "evidence_task": "就一个真实系统完成资产梳理与威胁建模，输出含前提、影响与优先级的威胁清单。",
+      "validation_criteria": [
+        "信任边界与数据流向明确",
+        "威胁优先级的排序有依据"
+      ],
+      "source_refs": [
+        "nist_csf_2",
+        "mitre_attack"
+      ]
+    },
+    {
+      "subskill_id": "SEC-02",
+      "name_zh": "访问控制与密码学措施实施",
+      "type": "CORE",
+      "definition": "按最小权限实施身份与访问控制，并为传输与静态数据选择相称的密码学措施。",
+      "prerequisites": [
+        "SEC-01"
+      ],
+      "learning_outcome": "能够落实访问控制与加密配置，并说明密钥的生命周期管理。",
+      "evidence_task": "就一个系统实施访问控制与加密配置，写明权限模型、算法选择与密钥的生成、轮换与销毁。",
+      "validation_criteria": [
+        "权限模型符合最小权限",
+        "密钥生命周期各环节有明确责任"
+      ],
+      "source_refs": [
+        "nist_sp_800_53",
+        "iso_iec_27001"
+      ]
+    },
+    {
+      "subskill_id": "SEC-03",
+      "name_zh": "漏洞评估与授权渗透测试",
+      "type": "CORE",
+      "definition": "在书面授权范围内开展漏洞扫描与渗透测试，按可利用性与影响给出定级与修复建议。",
+      "prerequisites": [
+        "SEC-02"
+      ],
+      "learning_outcome": "能够在授权范围内完成一轮评估，并输出可复现的漏洞记录与修复建议。",
+      "evidence_task": "就一个授权目标完成漏洞评估，输出含复现步骤、影响判定与修复建议的报告。",
+      "validation_criteria": [
+        "测试范围不超出书面授权",
+        "每项漏洞附复现步骤与影响判定"
+      ],
+      "source_refs": [
+        "nist_sp_800_115",
+        "owasp_top10"
+      ]
+    },
+    {
+      "subskill_id": "SEC-04",
+      "name_zh": "监测告警与入侵检测",
+      "type": "CORE",
+      "definition": "部署日志采集与检测规则，使已识别的威胁在发生时可被观测，并控制误报率。",
+      "prerequisites": [
+        "SEC-02"
+      ],
+      "learning_outcome": "能够运行检测规则并给出其命中率与误报率的实测结果。",
+      "evidence_task": "就一个系统部署检测规则，以已知攻击样本与正常流量量测命中率与误报率。",
+      "validation_criteria": [
+        "检测规则对应已识别的威胁",
+        "命中率与误报率有实测数据"
+      ],
+      "source_refs": [
+        "mitre_attack",
+        "nist_sp_800_53"
+      ]
+    },
+    {
+      "subskill_id": "SEC-05",
+      "name_zh": "隐私合规与事件响应",
+      "type": "CORE",
+      "definition": "按适用法规落实个人信息的处理规则，并依预案完成安全事件的定级、处置与告知。",
+      "prerequisites": [
+        "SEC-03",
+        "SEC-04"
+      ],
+      "learning_outcome": "能够给出个人信息处理的合规结论，并按预案完成一次事件处置。",
+      "evidence_task": "就一个系统输出个人信息处理清单与合规结论，并就一次真实或演练事件记录定级、处置与告知过程。",
+      "validation_criteria": [
+        "处理清单覆盖收集至销毁全流程",
+        "事件处置各步与预案对应"
+      ],
+      "source_refs": [
+        "pipl_cn",
+        "gdpr",
+        "nist_sp_800_61"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "SEC-VERIFY-01",
+    "objective": "验证当前网络安全与数据隐私管控的能力证据。",
+    "task_description": "就一个授权范围内的系统完成威胁建模、访问控制实施与一轮漏洞评估，保留配置、测试记录与授权文件。",
+    "validation_criteria": [
+      "全部测试有书面授权支撑",
+      "漏洞记录含复现步骤",
+      "访问控制配置可核"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "SEC-CAPSTONE-01",
+    "objective": "完成一轮范围合规、措施可核、响应有预案的安全与隐私管控实践。",
+    "task_description": "就一个授权系统完成威胁建模，实施访问控制与加密，开展漏洞评估，部署检测规则，最后落实隐私合规并完成一次事件处置。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "测试范围不超出书面授权",
+      "检测规则的命中率与误报率有实测数据",
+      "个人信息处理清单覆盖全流程",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "gdpr",
+      "title": "Regulation (EU) 2016/679 General Data Protection Regulation",
+      "authors_or_org": "European Parliament and Council of the European Union",
+      "source_type": "regulation",
+      "year": 2016,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "SEC-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_27001",
+      "title": "ISO/IEC 27001 Information security, cybersecurity and privacy protection — Information security management systems",
+      "authors_or_org": "ISO/IEC",
+      "source_type": "standard",
+      "year": 2022,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "SEC-02"
+      ]
+    },
+    {
+      "source_id": "mitre_attack",
+      "title": "MITRE ATT&CK",
+      "authors_or_org": "MITRE",
+      "source_type": "framework",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://attack.mitre.org/",
+      "supports": [
+        "SEC-01",
+        "SEC-04"
+      ]
+    },
+    {
+      "source_id": "nist_csf_2",
+      "title": "NIST Cybersecurity Framework (CSF) 2.0",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "framework",
+      "year": 2024,
+      "venue": null,
+      "version": "2.0",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "SEC-01"
+      ]
+    },
+    {
+      "source_id": "nist_sp_800_115",
+      "title": "NIST SP 800-115 Technical Guide to Information Security Testing and Assessment",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "standard",
+      "year": 2008,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "SEC-03"
+      ]
+    },
+    {
+      "source_id": "nist_sp_800_53",
+      "title": "NIST SP 800-53 Security and Privacy Controls for Information Systems and Organizations",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": "Revision 5",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "SEC-02",
+        "SEC-04"
+      ]
+    },
+    {
+      "source_id": "nist_sp_800_61",
+      "title": "NIST SP 800-61 Computer Security Incident Handling Guide",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "SEC-05"
+      ]
+    },
+    {
+      "source_id": "owasp_top10",
+      "title": "OWASP Top 10",
+      "authors_or_org": "Open Worldwide Application Security Project (OWASP)",
+      "source_type": "industry_standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://owasp.org/www-project-top-ten/",
+      "supports": [
+        "SEC-03"
+      ]
+    },
+    {
+      "source_id": "pipl_cn",
+      "title": "中华人民共和国个人信息保护法",
+      "authors_or_org": "全国人民代表大会常务委员会",
+      "source_type": "law",
+      "year": 2021,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "SEC-05"
+      ]
+    }
+  ]
+}

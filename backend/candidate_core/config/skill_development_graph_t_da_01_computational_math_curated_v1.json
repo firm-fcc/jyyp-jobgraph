@@ -1,0 +1,201 @@
+{
+  "version": "stage2b2_t_da_01_computational_math_curated_v1",
+  "team_skill_id": "T-DA-01",
+  "team_skill_name": "计算数学与数据建模",
+  "scope": "覆盖线性代数与矩阵计算、概率建模与统计推断、优化问题的建模与求解、数学模型的构建与参数标定，以及误差与适用范围判定核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "MOD-01",
+      "name_zh": "线性代数与矩阵计算",
+      "type": "CORE",
+      "definition": "以矩阵形式表达数据与变换，并按数值稳定性选择分解与求解方法。",
+      "prerequisites": [],
+      "learning_outcome": "能够把一类计算任务写成矩阵形式，并说明所选数值方法的稳定性依据。",
+      "evidence_task": "就一项真实计算任务给出矩阵形式的表述与求解实现，说明数值方法的选择依据与条件数的影响。",
+      "validation_criteria": [
+        "矩阵表述与原问题等价",
+        "数值方法的选择有稳定性依据"
+      ],
+      "source_refs": [
+        "strang_linear_algebra",
+        "nocedal_wright"
+      ]
+    },
+    {
+      "subskill_id": "MOD-02",
+      "name_zh": "概率建模与统计推断",
+      "type": "CORE",
+      "definition": "以概率分布刻画不确定性，并按推断目标选择估计方法与检验方式。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一组数据给出分布假设、参数估计与假设检验的完整过程。",
+      "evidence_task": "就一组真实数据完成分布假设、参数估计与检验，说明各步的前提与检验结论的效力。",
+      "validation_criteria": [
+        "分布假设有数据依据",
+        "检验结论说明其前提与效力"
+      ],
+      "source_refs": [
+        "casella_berger",
+        "esl"
+      ]
+    },
+    {
+      "subskill_id": "MOD-03",
+      "name_zh": "优化问题建模与求解",
+      "type": "CORE",
+      "definition": "把目标与约束写成优化问题，判定其凸性并选择相应的求解算法。",
+      "prerequisites": [
+        "MOD-01",
+        "MOD-02"
+      ],
+      "learning_outcome": "能够把实际问题写成优化形式并求解，说明解的性质与收敛判据。",
+      "evidence_task": "就一项实际问题写出优化形式并求解，记录收敛过程、终止判据与解的性质。",
+      "validation_criteria": [
+        "目标与约束与原问题对应",
+        "收敛判据与解的性质明确"
+      ],
+      "source_refs": [
+        "boyd_convex",
+        "nocedal_wright"
+      ]
+    },
+    {
+      "subskill_id": "MOD-04",
+      "name_zh": "数学模型构建与参数标定",
+      "type": "CORE",
+      "definition": "围绕实际对象构建数学模型，以数据标定参数并检验模型对观测的复现能力。",
+      "prerequisites": [
+        "MOD-03"
+      ],
+      "learning_outcome": "能够构建可标定的模型，并给出参数标定与复现检验的结果。",
+      "evidence_task": "就一个实际对象构建模型并完成参数标定，给出模型对留出观测的复现结果。",
+      "validation_criteria": [
+        "模型结构与机理或数据依据对应",
+        "标定与检验使用不同的数据"
+      ],
+      "source_refs": [
+        "esl",
+        "casella_berger"
+      ]
+    },
+    {
+      "subskill_id": "MOD-05",
+      "name_zh": "误差分析与适用范围判定",
+      "type": "CORE",
+      "definition": "分解模型误差的来源，量化不确定性并给出模型成立的条件与外推边界。",
+      "prerequisites": [
+        "MOD-04"
+      ],
+      "learning_outcome": "能够给出误差来源的分解与不确定性区间，并写明模型的适用边界。",
+      "evidence_task": "就一个已标定的模型完成误差分解与不确定性量化，写明适用条件与不可外推的区间。",
+      "validation_criteria": [
+        "误差来源逐项分解",
+        "适用边界有数据支撑"
+      ],
+      "source_refs": [
+        "casella_berger",
+        "nocedal_wright"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "MOD-VERIFY-01",
+    "objective": "验证当前计算数学与数据建模的能力证据。",
+    "task_description": "就一个真实问题完成建模、求解与参数标定，保留推导、代码与检验数据。",
+    "validation_criteria": [
+      "模型表述与原问题等价",
+      "求解过程与收敛判据可复现",
+      "标定与检验使用不同数据"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "MOD-CAPSTONE-01",
+    "objective": "完成一次表述等价、求解可复现、边界明确的数学建模。",
+    "task_description": "就一个真实问题给出矩阵与概率表述，写成优化形式并求解，标定参数并检验复现能力，最后完成误差分解与适用边界判定。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "建模与求解全程可复现",
+      "检验数据独立于标定数据",
+      "误差与适用边界有量化结论",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "boyd_convex",
+      "title": "Convex Optimization",
+      "authors_or_org": "Stephen Boyd, Lieven Vandenberghe",
+      "source_type": "textbook",
+      "year": 2004,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "MOD-03"
+      ]
+    },
+    {
+      "source_id": "casella_berger",
+      "title": "Statistical Inference",
+      "authors_or_org": "George Casella, Roger L. Berger",
+      "source_type": "textbook",
+      "year": null,
+      "venue": null,
+      "version": "2nd edition",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "MOD-02",
+        "MOD-04",
+        "MOD-05"
+      ]
+    },
+    {
+      "source_id": "esl",
+      "title": "The Elements of Statistical Learning",
+      "authors_or_org": "Trevor Hastie, Robert Tibshirani, Jerome Friedman",
+      "source_type": "textbook",
+      "year": 2009,
+      "venue": null,
+      "version": "2nd edition",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "MOD-02",
+        "MOD-04"
+      ]
+    },
+    {
+      "source_id": "nocedal_wright",
+      "title": "Numerical Optimization",
+      "authors_or_org": "Jorge Nocedal, Stephen J. Wright",
+      "source_type": "textbook",
+      "year": 2006,
+      "venue": null,
+      "version": "2nd edition",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "MOD-01",
+        "MOD-03",
+        "MOD-05"
+      ]
+    },
+    {
+      "source_id": "strang_linear_algebra",
+      "title": "Introduction to Linear Algebra",
+      "authors_or_org": "Gilbert Strang",
+      "source_type": "textbook",
+      "year": null,
+      "venue": null,
+      "version": "5th edition",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "MOD-01"
+      ]
+    }
+  ]
+}

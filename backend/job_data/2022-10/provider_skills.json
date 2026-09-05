@@ -1,0 +1,471 @@
+{
+ "system_name": "岗位能力图谱-技能体系（Skill 层）",
+ "source_doc": "classify/docs/技能体系构建方案.md (v0.4)",
+ "version": "0.5",
+ "date": "2026-08-21",
+ "predecessor": "classify/Skills/skills0805.json（v0.4，2026-08-05）",
+ "change_note": "v0.5 命名规范化：20 项更名，仅改 name_zh（编码/定义/skill_type/name_en 不变），名称字数收敛至 7-10 字（众数 9）；精简超长名（如「生成式AI应用开发部署与工作流自动化」→「生成式AI应用开发」，删去成分由 definition 承载），补足过短名；语义边界仍以 definition 为准",
+ "total": 49,
+ "简明体系": {
+  "T": {
+   "name": "技术技能",
+   "name_en": "Technical",
+   "groups": {
+    "T-AI": {
+     "name": "人工智能与智能技术",
+     "name_en": "AI and Intelligent Technology",
+     "skills": [
+      "机器学习与深度学习",
+      "自然语言处理技术",
+      "计算机视觉与多模态",
+      "生成式AI原理与应用",
+      "提示设计与提示工程",
+      "大模型选型与评测",
+      "RAG与向量数据库",
+      "AI智能体构建与编排",
+      "生成式AI应用开发",
+      "大模型开发与微调",
+      "负责任AI与可解释性",
+      "AI安全与风险防控",
+      "AI幻觉识别与校验"
+     ]
+    },
+    "T-SW": {
+     "name": "软件与算法",
+     "name_en": "Software and Algorithms",
+     "skills": [
+      "程序设计与软件工程",
+      "算法与数据结构",
+      "软件架构与系统设计",
+      "系统测试与质量评估",
+      "人机交互与用户体验",
+      "图形与交互技术"
+     ]
+    },
+    "T-SYS": {
+     "name": "系统与基础设施",
+     "name_en": "Systems and Infrastructure",
+     "skills": [
+      "操作系统与系统管理",
+      "计算机硬件与数字电路",
+      "嵌入式系统与固件开发",
+      "计算机网络与通信技术",
+      "网络安全与数据隐私",
+      "云原生与分布式系统",
+      "系统部署交付与运维"
+     ]
+    },
+    "T-DA": {
+     "name": "数据与计算科学",
+     "name_en": "Data and Computational Science",
+     "skills": [
+      "计算数学与数据建模",
+      "数据管理与数据库",
+      "大数据与分布式计算",
+      "数据分析与可视化"
+     ]
+    }
+   }
+  },
+  "F": {
+   "name": "基础通用技能",
+   "name_en": "Foundational",
+   "groups": {
+    "F-1": {
+     "name": "学习与思维",
+     "name_en": "Learning and Thinking",
+     "skills": [
+      "终身学习与知识更新",
+      "批判性逻辑思考",
+      "归纳与演绎推理",
+      "创造力与创新思维"
+     ]
+    },
+    "F-2": {
+     "name": "沟通协作",
+     "name_en": "Communication and Collaboration",
+     "skills": [
+      "口头技术沟通与汇报",
+      "书面技术文档撰写",
+      "团队协作与协调",
+      "说服与分歧谈判",
+      "需求洞察与服务意识",
+      "信息管理与数字素养"
+     ]
+    },
+    "F-3": {
+     "name": "管理与决策",
+     "name_en": "Management and Decision",
+     "skills": [
+      "自我监测与工作复盘",
+      "多方权衡与方案决策",
+      "时间与资源统筹管理",
+      "环境适应与压力耐受"
+     ]
+    },
+    "F-4": {
+     "name": "职业素养",
+     "name_en": "Professional Qualities",
+     "skills": [
+      "目标导向与攻坚韧性",
+      "严谨细致与诚信自律"
+     ]
+    },
+    "F-5": {
+     "name": "AI通用素养",
+     "name_en": "AI Literacy",
+     "skills": [
+      "AI任务拆解与规划",
+      "人机语义对齐与协同",
+      "AI输出质量评估"
+     ]
+    }
+   }
+  }
+ },
+ "detail": {
+  "T-AI-01": {
+   "code": "T-AI-01",
+   "name_zh": "机器学习与深度学习",
+   "name_en": "Machine Learning and Deep Learning",
+   "definition": "掌握模式识别、计算智能与机器学习基础理论；能够构建机器学习模型、开发智能应用链路并评估模型效果。",
+   "skill_type": "hard"
+  },
+  "T-AI-02": {
+   "code": "T-AI-02",
+   "name_zh": "自然语言处理技术",
+   "name_en": "Natural Language Processing",
+   "definition": "掌握语言模型、序列建模、文本表示与信息抽取等NLP核心技术；能够开发文本分析、语义理解与语言生成应用。",
+   "skill_type": "hard"
+  },
+  "T-AI-03": {
+   "code": "T-AI-03",
+   "name_zh": "计算机视觉与多模态",
+   "name_en": "Computer Vision and Multimodal Perception",
+   "definition": "掌握图像处理、目标检测、视觉特征提取与多模态融合技术；能够开发视觉识别与跨模态理解应用。",
+   "skill_type": "hard"
+  },
+  "T-AI-04": {
+   "code": "T-AI-04",
+   "name_zh": "生成式AI原理与应用",
+   "name_en": "Generative AI Principles and Applications",
+   "definition": "理解并应用生成式AI的概念、框架与应用；掌握文本/图像/视频/代码生成、主流大模型工作逻辑、模型局限性与基础数据脱敏手段。",
+   "skill_type": "hard"
+  },
+  "T-AI-05": {
+   "code": "T-AI-05",
+   "name_zh": "提示设计与提示工程",
+   "name_en": "Prompt Design and Engineering",
+   "definition": "能够撰写结构化提示词，运用零样本/少样本、上下文操控、条件提示与RAG结合提示等技巧，优化模型输出并排查提示故障。",
+   "skill_type": "hard"
+  },
+  "T-AI-06": {
+   "code": "T-AI-06",
+   "name_zh": "大模型选型与评测",
+   "name_en": "LLM Selection and Evaluation",
+   "definition": "能够依据任务需求从多种外部模型中选择最合适的生成式AI模型，基于发布指标与用户实验评估模型质量、性能与影响。",
+   "skill_type": "hard"
+  },
+  "T-AI-07": {
+   "code": "T-AI-07",
+   "name_zh": "RAG与向量数据库",
+   "name_en": "RAG and Vector Databases",
+   "definition": "掌握检索增强生成与向量数据库技术，构建基于知识库的检索系统，提升生成内容的准确性与可溯源性。",
+   "skill_type": "hard"
+  },
+  "T-AI-08": {
+   "code": "T-AI-08",
+   "name_zh": "AI智能体构建与编排",
+   "name_en": "AI Agents and Multi-Agent Orchestration",
+   "definition": "能够设计具备自主多步骤工作流规划的AI智能体，实现跨智能体任务分配、编排与冲突解决。",
+   "skill_type": "hard"
+  },
+  "T-AI-09": {
+   "code": "T-AI-09",
+   "name_zh": "生成式AI应用开发",
+   "name_en": "GenAI Application Development, Deployment and Workflow Automation",
+   "definition": "围绕生成式AI模型设计与构建应用，集成LLM API、向量数据库、模型防护栏与低代码工具，支持模型量化推理与工作流自动化编排。",
+   "skill_type": "hard"
+  },
+  "T-AI-10": {
+   "code": "T-AI-10",
+   "name_zh": "大模型开发与微调",
+   "name_en": "LLM Development and Fine-tuning",
+   "definition": "应用深度学习与统计推断知识设计、实现、训练并评估生成式AI模型；掌握SFT、RLHF、参数高效微调、模型蒸馏与合成数据等技术。",
+   "skill_type": "hard"
+  },
+  "T-AI-11": {
+   "code": "T-AI-11",
+   "name_zh": "负责任AI与可解释性",
+   "name_en": "Responsible AI and Explainable AI",
+   "definition": "在AI项目中整合并确保伦理原则合规；掌握AI公平性与偏见治理、知识产权审查、可解释性方法，构建负责任AI开发框架。",
+   "skill_type": "hybrid"
+  },
+  "T-AI-12": {
+   "code": "T-AI-12",
+   "name_zh": "AI安全与风险防控",
+   "name_en": "AI Security",
+   "definition": "确保AI模型与系统从开发到部署运营全生命周期的安全；掌握提示注入攻击防护、红队测试、内容审核与风险监控。",
+   "skill_type": "hard"
+  },
+  "T-AI-13": {
+   "code": "T-AI-13",
+   "name_zh": "AI幻觉识别与校验",
+   "name_en": "AI Hallucination Verification and Quality Control",
+   "definition": "对生成式AI输出进行事实核查与逻辑检查，识别并消除幻觉；建立质量控制流程，确保输出准确性、一致性与可靠性。",
+   "skill_type": "hard"
+  },
+  "T-SW-01": {
+   "code": "T-SW-01",
+   "name_zh": "程序设计与软件工程",
+   "name_en": "General Programming and Software Engineering",
+   "definition": "掌握编程范式、软件设计规范与应用开发理论；具备业务代码编写、软件模块设计、应用迭代开发能力。",
+   "skill_type": "hard"
+  },
+  "T-SW-02": {
+   "code": "T-SW-02",
+   "name_zh": "算法与数据结构",
+   "name_en": "Algorithms and Data Structures",
+   "definition": "掌握经典算法、数据结构与基础数据分析理论；具备算法设计、结构化数据处理与常规计算问题求解能力。",
+   "skill_type": "hard"
+  },
+  "T-SW-03": {
+   "code": "T-SW-03",
+   "name_zh": "软件架构与系统设计",
+   "name_en": "Software Architecture and System Design",
+   "definition": "掌握系统工程原理与架构设计方法；具备需求梳理、分布式架构设计与整体技术方案制定能力。",
+   "skill_type": "hard"
+  },
+  "T-SW-04": {
+   "code": "T-SW-04",
+   "name_zh": "系统测试与质量评估",
+   "name_en": "System Testing and Quality Evaluation",
+   "definition": "掌握测试理论、质量规范与性能评价指标；具备功能与性能测试、系统检验并输出优化方案的能力。",
+   "skill_type": "hard"
+  },
+  "T-SW-05": {
+   "code": "T-SW-05",
+   "name_zh": "人机交互与用户体验",
+   "name_en": "Human-Computer Interaction and User Experience",
+   "definition": "研究人与计算系统的交互，整合心理学、设计、可用性工程与无障碍设计，评估交互系统并优化用户体验。",
+   "skill_type": "hybrid"
+  },
+  "T-SW-06": {
+   "code": "T-SW-06",
+   "name_zh": "图形与交互技术",
+   "name_en": "Graphics and Interactive Techniques",
+   "definition": "掌握渲染、几何建模、动画与可视化等计算机图形技术，以及实时交互系统的开发。",
+   "skill_type": "hybrid"
+  },
+  "T-SYS-01": {
+   "code": "T-SYS-01",
+   "name_zh": "操作系统与系统管理",
+   "name_en": "Operating Systems and System Administration",
+   "definition": "掌握操作系统调度、内存、进程与虚拟化原理；具备操作系统与虚拟化环境部署、配置、维护与故障处置能力。",
+   "skill_type": "hard"
+  },
+  "T-SYS-02": {
+   "code": "T-SYS-02",
+   "name_zh": "计算机硬件与数字电路",
+   "name_en": "Computer Hardware and Digital Circuit Design",
+   "definition": "掌握处理器、芯片、数字逻辑与电路原理；具备硬件设计、硬件性能测试与硬件故障排查能力。",
+   "skill_type": "hard"
+  },
+  "T-SYS-03": {
+   "code": "T-SYS-03",
+   "name_zh": "嵌入式系统与固件开发",
+   "name_en": "Embedded Systems and Firmware Development",
+   "definition": "掌握嵌入式硬件架构、固件与软硬件接口原理；具备嵌入式固件开发、设备配置与系统调试能力。",
+   "skill_type": "hard"
+  },
+  "T-SYS-04": {
+   "code": "T-SYS-04",
+   "name_zh": "计算机网络与通信技术",
+   "name_en": "Computer Networks and Communication Infrastructure",
+   "definition": "掌握通信传输、网络协议、路由与局域网广域网架构；具备网络拓扑设计、网络设备配置与链路故障排查能力。",
+   "skill_type": "hard"
+  },
+  "T-SYS-05": {
+   "code": "T-SYS-05",
+   "name_zh": "网络安全与数据隐私",
+   "name_en": "Cybersecurity and Data Privacy",
+   "definition": "掌握漏洞评估、加密、访问控制、入侵检测与隐私合规理论；具备安全防护部署、渗透测试与应急响应能力。",
+   "skill_type": "hard"
+  },
+  "T-SYS-06": {
+   "code": "T-SYS-06",
+   "name_zh": "云原生与分布式系统",
+   "name_en": "Cloud Platforms, Containers and Distributed Systems",
+   "definition": "掌握云基础设施、容器、中间件与分布式系统原理；具备云平台选型、容器编排与大规模分布式系统设计与运维能力。",
+   "skill_type": "hard"
+  },
+  "T-SYS-07": {
+   "code": "T-SYS-07",
+   "name_zh": "系统部署交付与运维",
+   "name_en": "System Deployment, Delivery and Operations",
+   "definition": "掌握软件发布、集群部署与系统运行规范；具备分布式集群部署、上线交付、监控告警与日常运维能力。",
+   "skill_type": "hard"
+  },
+  "T-DA-01": {
+   "code": "T-DA-01",
+   "name_zh": "计算数学与数据建模",
+   "name_en": "Computational Mathematics and Data Modeling",
+   "definition": "掌握线性代数、概率论、统计与优化理论；具备数学建模、数据统计分析、模型参数调优与数理问题求解能力。",
+   "skill_type": "hard"
+  },
+  "T-DA-02": {
+   "code": "T-DA-02",
+   "name_zh": "数据管理与数据库",
+   "name_en": "Data Management and Databases",
+   "definition": "掌握数据建模、数据库系统、事务处理、数据集成与数据治理；能够设计并管理数据库与数据平台。",
+   "skill_type": "hard"
+  },
+  "T-DA-03": {
+   "code": "T-DA-03",
+   "name_zh": "大数据与分布式计算",
+   "name_en": "Big Data Processing and Parallel/Distributed Computing",
+   "definition": "掌握并行执行模型、分布式算法、一致性、容错与大规模分布式系统设计；能够构建大数据处理流水线。",
+   "skill_type": "hard"
+  },
+  "T-DA-04": {
+   "code": "T-DA-04",
+   "name_zh": "数据分析与可视化",
+   "name_en": "Data Analysis and Visualization",
+   "definition": "掌握数据探索、统计分析、可视化呈现与数据驱动决策方法；能够从数据中提炼洞察并以可视化形式表达。",
+   "skill_type": "hard"
+  },
+  "F-1-01": {
+   "code": "F-1-01",
+   "name_zh": "终身学习与知识更新",
+   "name_en": "Active and Continuous Learning",
+   "definition": "理解新兴技术知识对当前及未来问题求解与决策的价值，保持自主、终身学习。",
+   "skill_type": "soft"
+  },
+  "F-1-02": {
+   "code": "F-1-02",
+   "name_zh": "批判性逻辑思考",
+   "name_en": "Critical Thinking",
+   "definition": "运用逻辑与推理比较不同技术方案与结论的优劣，做出合理判断。",
+   "skill_type": "soft"
+  },
+  "F-1-03": {
+   "code": "F-1-03",
+   "name_zh": "归纳与演绎推理",
+   "name_en": "Inductive and Deductive Reasoning",
+   "definition": "从零散信息归纳一般规律；运用普遍原理解决具体技术问题。",
+   "skill_type": "soft"
+  },
+  "F-1-04": {
+   "code": "F-1-04",
+   "name_zh": "创造力与创新思维",
+   "name_en": "Creativity and Innovative Thinking",
+   "definition": "能够提出新颖的技术方案与应用创新，将既有解决方案迁移到新场景。",
+   "skill_type": "soft"
+  },
+  "F-2-01": {
+   "code": "F-2-01",
+   "name_zh": "口头技术沟通与汇报",
+   "name_en": "Oral Technical Communication",
+   "definition": "充分吸收利益相关者观点，并准确口头传达技术信息。",
+   "skill_type": "soft"
+  },
+  "F-2-02": {
+   "code": "F-2-02",
+   "name_zh": "书面技术文档撰写",
+   "name_en": "Written Technical Communication",
+   "definition": "通过文档、报告与规范清晰表达技术逻辑、方案与实验结果。",
+   "skill_type": "soft"
+  },
+  "F-2-03": {
+   "code": "F-2-03",
+   "name_zh": "团队协作与协调",
+   "name_en": "Team Collaboration and Coordination",
+   "definition": "调整个人工作节奏与团队成员协作，共同完成研发与项目交付。",
+   "skill_type": "soft"
+  },
+  "F-2-04": {
+   "code": "F-2-04",
+   "name_zh": "说服与分歧谈判",
+   "name_en": "Persuasion and Negotiation",
+   "definition": "调和分歧意见，推动利益相关者认可可行技术路线。",
+   "skill_type": "soft"
+  },
+  "F-2-05": {
+   "code": "F-2-05",
+   "name_zh": "需求洞察与服务意识",
+   "name_en": "User Perception and Service Orientation",
+   "definition": "识别业务用户隐性需求，主动设计匹配的技术解决方案。",
+   "skill_type": "soft"
+  },
+  "F-2-06": {
+   "code": "F-2-06",
+   "name_zh": "信息管理与数字素养",
+   "name_en": "Information Management and Digital Literacy",
+   "definition": "能够高效获取、组织、评估与利用信息，具备数字环境下的信息检索、筛选与整合能力。",
+   "skill_type": "soft"
+  },
+  "F-3-01": {
+   "code": "F-3-01",
+   "name_zh": "自我监测与工作复盘",
+   "name_en": "Self-monitoring and Performance Assessment",
+   "definition": "评估个人工作质量与项目执行效果，进行迭代优化。",
+   "skill_type": "soft"
+  },
+  "F-3-02": {
+   "code": "F-3-02",
+   "name_zh": "多方权衡与方案决策",
+   "name_en": "Judgment and Decision Making",
+   "definition": "权衡多个技术方案的成本、风险与收益，与利益相关者共同做出可行决策。",
+   "skill_type": "soft"
+  },
+  "F-3-03": {
+   "code": "F-3-03",
+   "name_zh": "时间与资源统筹管理",
+   "name_en": "Time and Resource Management",
+   "definition": "合理规划个人与团队日程，调配人力、算力与财力资源。",
+   "skill_type": "soft"
+  },
+  "F-3-04": {
+   "code": "F-3-04",
+   "name_zh": "环境适应与压力耐受",
+   "name_en": "Adaptability and Stress Tolerance",
+   "definition": "适应持续技术迭代，冷静应对高压交付与技术突发事件。",
+   "skill_type": "soft"
+  },
+  "F-4-01": {
+   "code": "F-4-01",
+   "name_zh": "目标导向与攻坚韧性",
+   "name_en": "Persistence and Goal Orientation",
+   "definition": "坚持有挑战性的技术目标，面对技术障碍与反复失败保持攻坚韧性。",
+   "skill_type": "soft"
+  },
+  "F-4-02": {
+   "code": "F-4-02",
+   "name_zh": "严谨细致与诚信自律",
+   "name_en": "Attention to Detail and Professional Integrity",
+   "definition": "技术工作严谨细致，数据处理与模型开发中保持伦理意识与诚信自律。",
+   "skill_type": "soft"
+  },
+  "F-5-01": {
+   "code": "F-5-01",
+   "name_zh": "AI任务拆解与规划",
+   "name_en": "AI Task Decomposition",
+   "definition": "能够将复杂任务拆解为适配AI处理的可执行子任务。",
+   "skill_type": "hybrid"
+  },
+  "F-5-02": {
+   "code": "F-5-02",
+   "name_zh": "人机语义对齐与协同",
+   "name_en": "Human-AI Semantic Alignment",
+   "definition": "能够与AI系统进行语义对齐，准确表达需求、设定边界并理解AI输出。",
+   "skill_type": "hybrid"
+  },
+  "F-5-03": {
+   "code": "F-5-03",
+   "name_zh": "AI输出质量评估",
+   "name_en": "AI Output Quality Evaluation",
+   "definition": "能够评估AI输出的质量与可靠性，识别幻觉与潜在错误。",
+   "skill_type": "hybrid"
+  }
+ }
+}

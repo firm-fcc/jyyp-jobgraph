@@ -1,0 +1,186 @@
+{
+  "version": "stage2b2_f_1_02_critical_thinking_curated_v1",
+  "team_skill_id": "F-1-02",
+  "team_skill_name": "批判性逻辑思考",
+  "scope": "覆盖论证结构识别、证据与来源评估、备选方案的逻辑比较、常见推理谬误与认知偏差的识别，以及在不确定条件下形成并表述可复核结论的核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "CRT-01",
+      "name_zh": "论证结构与前提识别",
+      "type": "CORE",
+      "definition": "从一段技术论述中分离出主张、支持前提与未言明的隐含假设，并指出结论对哪些前提成立与否敏感。",
+      "prerequisites": [],
+      "learning_outcome": "能够拆解一段技术论述，列出其主张、前提与隐含假设，并说明各前提对结论的支撑关系。",
+      "evidence_task": "选取一份既有技术方案或评审意见，逐条标出其主张、显式前提与隐含假设，并说明推翻任一前提后结论如何变化。",
+      "validation_criteria": [
+        "主张、前提与隐含假设三者分列且各有原文出处",
+        "对至少一条隐含假设说明了它被推翻时结论的变化"
+      ],
+      "source_refs": [
+        "paul_elder_framework",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "CRT-02",
+      "name_zh": "证据质量与来源评估",
+      "type": "CORE",
+      "definition": "依据来源可核查性、样本与量测口径、适用边界等准则，判断一项技术证据能支撑到什么程度。",
+      "prerequisites": [
+        "CRT-01"
+      ],
+      "learning_outcome": "能够按固定准则评估技术证据的强弱，并指出该证据不足以支撑的推论。",
+      "evidence_task": "对一组支撑同一结论的技术证据逐项评估来源、口径与适用边界，给出强弱判定及理由，并指明其中被过度引申的推论。",
+      "validation_criteria": [
+        "每项证据的判定均对应可复核的准则条目",
+        "指出的过度引申有明确的边界依据"
+      ],
+      "source_refs": [
+        "paul_elder_framework",
+        "acrl_information_literacy"
+      ]
+    },
+    {
+      "subskill_id": "CRT-03",
+      "name_zh": "备选方案的逻辑比较",
+      "type": "CORE",
+      "definition": "在统一的比较维度与量测口径下比较两个以上技术方案，使优劣判断可被他人按同一口径复算。",
+      "prerequisites": [
+        "CRT-02"
+      ],
+      "learning_outcome": "能够设定统一的比较维度与口径，对多个技术方案给出可复算的优劣判断。",
+      "evidence_task": "针对一个真实技术选择，先固定比较维度与量测口径，再逐一评估两个以上方案，输出比较表与选择理由。",
+      "validation_criteria": [
+        "比较维度与口径在评估各方案时保持一致",
+        "选择理由可由比较表逐项回溯"
+      ],
+      "source_refs": [
+        "swebok_v4",
+        "iso_iec_ieee_42030"
+      ]
+    },
+    {
+      "subskill_id": "CRT-04",
+      "name_zh": "推理谬误与认知偏差识别",
+      "type": "CORE",
+      "definition": "识别技术讨论中常见的推理谬误与认知偏差，指出其对判断的具体影响并给出纠正后的论证。",
+      "prerequisites": [
+        "CRT-01"
+      ],
+      "learning_outcome": "能够指认一段技术论述中的推理谬误或认知偏差，说明其影响并重写为成立的论证。",
+      "evidence_task": "从既有技术讨论记录中找出至少两处推理谬误或认知偏差，标明类型与影响，并给出纠正后的论证版本。",
+      "validation_criteria": [
+        "每处标注给出谬误或偏差的类型与原文位置",
+        "纠正后的论证不再依赖被指出的缺陷"
+      ],
+      "source_refs": [
+        "paul_elder_framework"
+      ]
+    },
+    {
+      "subskill_id": "CRT-05",
+      "name_zh": "结论表述与不确定性说明",
+      "type": "CORE",
+      "definition": "在证据不足以支持确定结论时，按适用条件与置信程度表述判断，并写明结论失效的条件。",
+      "prerequisites": [
+        "CRT-03"
+      ],
+      "learning_outcome": "能够输出带适用条件与失效条件的技术结论，使读者据以判断可迁移范围。",
+      "evidence_task": "就一项已完成的技术判断撰写结论段，写明适用条件、置信程度、失效条件与后续可验证的观测点。",
+      "validation_criteria": [
+        "适用条件与失效条件均可据以判断结论是否成立",
+        "置信程度有对应的证据依据而非主观断言"
+      ],
+      "source_refs": [
+        "paul_elder_framework",
+        "swebok_v4"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "CRT-VERIFY-01",
+    "objective": "验证当前批判性逻辑思考的能力证据。",
+    "task_description": "就一项存在争议的技术判断，完成论证拆解、证据评估与方案比较，保留比较口径、判定理由与结论边界的书面记录。",
+    "validation_criteria": [
+      "本人的判断过程与依据可逐条定位",
+      "比较口径在各方案之间一致且可复算",
+      "结论的适用与失效条件均有明确表述"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "CRT-CAPSTONE-01",
+    "objective": "完成一份论证可拆解、证据可核查、结论边界明确的技术判断。",
+    "task_description": "针对一个尚无定论的技术选择，拆解各方论证与隐含假设，按统一口径比较备选方案，指出讨论中的推理缺陷，并输出带适用条件与失效条件的结论。",
+    "validation_criteria": [
+      "论证拆解覆盖各方主张及其隐含假设",
+      "比较口径统一且判断可由记录复算",
+      "结论写明适用条件、失效条件与后续观测点",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "paul_elder_framework",
+      "title": "The Miniature Guide to Critical Thinking: Concepts and Tools",
+      "authors_or_org": "Richard Paul, Linda Elder; Foundation for Critical Thinking",
+      "source_type": "framework",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.criticalthinking.org",
+      "supports": [
+        "CRT-01",
+        "CRT-02",
+        "CRT-04",
+        "CRT-05"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "CRT-01",
+        "CRT-03",
+        "CRT-05"
+      ]
+    },
+    {
+      "source_id": "acrl_information_literacy",
+      "title": "Framework for Information Literacy for Higher Education",
+      "authors_or_org": "Association of College and Research Libraries (ACRL)",
+      "source_type": "framework",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.ala.org/acrl/standards/ilframework",
+      "supports": [
+        "CRT-02"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_42030",
+      "title": "ISO/IEC/IEEE 42030 Systems and software engineering — Architecture evaluation framework",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "CRT-03"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "version": "stage2b2_f_3_01_self_review_curated_v1",
+  "team_skill_id": "F-3-01",
+  "team_skill_name": "自我监测与工作复盘",
+  "scope": "覆盖个人产出的质量自检、过程数据的采集、偏差归因、改进项的设定与验证，以及复盘结论向后续工作的迁移核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "RFL-01",
+      "name_zh": "产出质量自检",
+      "type": "CORE",
+      "definition": "在提交前依据既定标准自检个人产出，记录发现的问题与其在提交前的处置。",
+      "prerequisites": [],
+      "learning_outcome": "能够按标准完成产出自检，并使自检发现的问题在提交前得到处置。",
+      "evidence_task": "就一项个人产出建立自检清单并执行，记录发现问题、处置方式与提交前的复核结果。",
+      "validation_criteria": [
+        "自检清单对应该产出适用的标准",
+        "每项发现均有处置与复核记录"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_12207",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "RFL-02",
+      "name_zh": "过程数据采集",
+      "type": "CORE",
+      "definition": "记录工作过程中的时点、返工与阻塞等事实数据，使复盘有可核对的依据而非仅凭印象。",
+      "prerequisites": [
+        "RFL-01"
+      ],
+      "learning_outcome": "能够在工作过程中持续采集过程数据，且数据口径前后一致。",
+      "evidence_task": "在一个工作周期内采集计划与实际时点、返工次数与阻塞时长，说明采集口径并保持一致。",
+      "validation_criteria": [
+        "数据项的口径在整个周期内一致",
+        "记录可与实际交付物相互印证"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_15939"
+      ]
+    },
+    {
+      "subskill_id": "RFL-03",
+      "name_zh": "偏差归因",
+      "type": "CORE",
+      "definition": "对照计划与实际的差异，区分外部约束、方法选择与个人执行三类原因，指出各自的贡献。",
+      "prerequisites": [
+        "RFL-02"
+      ],
+      "learning_outcome": "能够就一次显著偏差给出分层归因，并说明各层原因的判定依据。",
+      "evidence_task": "就一次计划与实际的显著偏差完成归因，分列外部约束、方法与执行三类原因及其判定依据。",
+      "validation_criteria": [
+        "三类原因各有可核对的数据或事件支撑",
+        "归因不将全部偏差归于单一层次"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_15939",
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "RFL-04",
+      "name_zh": "改进项设定与验证",
+      "type": "CORE",
+      "definition": "把归因结论转为可观测的改进项，设定验证方式并在后续周期检验其是否奏效。",
+      "prerequisites": [
+        "RFL-03"
+      ],
+      "learning_outcome": "能够设定含观测指标的改进项，并在后续周期给出奏效与否的判定。",
+      "evidence_task": "依据一次归因结论设定改进项与观测指标，在后续周期采集数据并判定改进是否奏效。",
+      "validation_criteria": [
+        "改进项对应具体的归因结论",
+        "奏效判定由前后可比的数据支持"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_15939",
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "RFL-05",
+      "name_zh": "复盘结论的迁移",
+      "type": "CORE",
+      "definition": "把已验证的改进做法固化为可复用的检查项或流程，并在新任务中实际应用。",
+      "prerequisites": [
+        "RFL-04"
+      ],
+      "learning_outcome": "能够将复盘结论固化为可复用形式，并给出其在新任务中的应用记录。",
+      "evidence_task": "把一项已验证的改进固化为检查项或流程说明，在一项新任务中应用并记录其效果。",
+      "validation_criteria": [
+        "固化后的形式可被他人直接使用",
+        "新任务中的应用有实际记录"
+      ],
+      "source_refs": [
+        "pmbok_guide",
+        "iso_iec_ieee_12207"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "RFL-VERIFY-01",
+    "objective": "验证当前自我监测与工作复盘的能力证据。",
+    "task_description": "在一个真实工作周期内完成自检、过程数据采集与偏差归因，保留清单、数据记录与归因结论。",
+    "validation_criteria": [
+      "自检与采集由本人持续执行",
+      "数据口径前后一致且可核对",
+      "归因结论有数据或事件支撑"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "RFL-CAPSTONE-01",
+    "objective": "完成一轮自检有标准、归因有数据、改进经验证的工作复盘。",
+    "task_description": "在一个工作周期内执行产出自检与过程数据采集，对显著偏差分层归因，设定改进项并在后续周期验证其效果，最后固化为可复用形式。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "自检清单与过程数据的口径一致",
+      "归因分层且各有支撑",
+      "改进奏效的判定由前后可比数据支持",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_ieee_12207",
+      "title": "ISO/IEC/IEEE 12207 Systems and software engineering — Software life cycle processes",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "RFL-01",
+        "RFL-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15939",
+      "title": "ISO/IEC/IEEE 15939 Systems and software engineering — Measurement process",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "RFL-02",
+        "RFL-03",
+        "RFL-04"
+      ]
+    },
+    {
+      "source_id": "pmbok_guide",
+      "title": "A Guide to the Project Management Body of Knowledge (PMBOK Guide)",
+      "authors_or_org": "Project Management Institute (PMI)",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.pmi.org",
+      "supports": [
+        "RFL-03",
+        "RFL-04",
+        "RFL-05"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "RFL-01"
+      ]
+    }
+  ]
+}

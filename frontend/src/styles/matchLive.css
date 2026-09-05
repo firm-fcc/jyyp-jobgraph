@@ -1,0 +1,1154 @@
+/* =========================================================
+   人岗匹配 · 实测链路
+
+   与 match.css 同一套字号与色板，只补实测链路独有的几块：
+   取数状态条、基准 JD 选择、四态构成、逐项差距、学习路径、证据清单。
+
+   四态各占一色，全站范围内此四色只在本页出现，含义固定：
+     已满足 绿 · 等级不足 琥珀 · 证据不足 紫罗兰 · 未覆盖 红
+   紫罗兰给“证据不足”而不给“等级不足”：前者是判定不了，后者是判定了但不够，
+   后者与“缺”同属一路，用暖色连成一档，深浅区分程度。
+   ========================================================= */
+
+/* ---------------- 取数状态条 ----------------
+
+   只剩服务不可达一态。接通与探测两态原先也各挂一条，常态下等于在页首
+   常驻一行绿色横幅，说的是一件按预期发生的事。 */
+
+.mbe {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.mbe i {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ink-3);
+}
+.mbe-unreachable {
+  border-color: rgba(217, 119, 6, 0.32);
+  background: var(--amber-soft);
+  color: var(--amber-ink);
+}
+.mbe-unreachable i {
+  background: var(--amber);
+}
+/* ---------------- 上传页的提示与基准 JD ---------------- */
+
+.mup-warn {
+  margin-top: 12px;
+  padding: 10px 13px;
+  border: 1px solid rgba(217, 119, 6, 0.3);
+  border-radius: var(--radius-sm);
+  background: var(--amber-soft);
+  color: var(--amber-ink);
+  font-size: 12.5px;
+  line-height: 1.66;
+}
+
+.mjd {
+  margin-top: 16px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+}
+.mjd h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 9px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.mjd h4 em {
+  font-style: normal;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink-3);
+  padding: 1px 7px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+}
+.mjd select {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 12.5px;
+}
+.mjd select:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+.mjd-note {
+  margin: 8px 0 0;
+  font-size: 12px;
+  line-height: 1.66;
+  color: var(--ink-3);
+}
+.mjd-note.err {
+  color: var(--red);
+}
+
+/* ---------------- 解析页的失败态 ----------------
+
+   中断的一步就地标出：那一行整行转红，其后各行保持未开始；缘由与去留由弹窗给出。
+   只有实测链路会走到这一态，演示链路跑不出失败。行本身的着色在 match.css，
+   此处只补失败行的整行底色。 */
+.mparse-pipe li.failed {
+  background: var(--red-soft);
+  border-radius: var(--radius-sm);
+}
+
+/* ---------------- 报告：分节次序 ---------------- */
+
+/* 实测链路把服务端算出的三块提到前面，故整篇改用弹性列排布；
+   页眉与页脚固定在两端，其余各节由 order 决定。 */
+.rp-live {
+  display: flex;
+  flex-direction: column;
+}
+.rp-live > .rp-hd {
+  order: -1;
+}
+.rp-live > .rp-ft {
+  order: 90;
+}
+
+/* 分节标题下的口径提示。逐块交代该节的数是怎么算出来的、与页首那枚读数
+   的关系如何。此前这一处挂的是演示数据标（.rp-demo-lead，琥珀底），
+   四块改接实测输入之后，说的不再是"这一栏是补的"，而是口径本身，
+   故改为中性的浅底，不再借警示色。 */
+.rp-note {
+  margin: -6px 0 16px;
+  padding: 8px 12px;
+  border-left: 2px solid var(--line-strong);
+  background: var(--surface-tint);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+.rp-tasks .rp-note {
+  margin: 6px 0 12px;
+}
+
+/* ---------------- 报告页眉：基准 JD 与达成率 ---------------- */
+
+.rp-jd {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0 0 12px;
+  font-size: 12.5px;
+  color: var(--ink-3);
+}
+.rp-jd b {
+  color: var(--ink);
+  font-weight: 600;
+}
+.rp-jd em {
+  font-style: normal;
+  padding: 1px 7px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--ink-2);
+}
+.rp-jd small {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-3);
+}
+
+.rp-nocal {
+  margin: 10px 0 0;
+  padding: 8px 11px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-tint, #f6f8fd);
+  border: 1px solid var(--line);
+  font-size: 12px;
+  line-height: 1.66;
+  color: var(--ink-2);
+}
+.rp-nocal.warn {
+  border-color: rgba(217, 119, 6, 0.3);
+  background: var(--amber-soft);
+  color: var(--amber-ink);
+}
+
+/* ---------------- 四态构成条 ---------------- */
+
+.lv-bar {
+  margin-top: 10px;
+}
+.lv-bar-track {
+  display: flex;
+  height: 12px;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  background: var(--line);
+}
+.lv-seg {
+  display: block;
+  height: 100%;
+  transition: width 0.42s var(--ease);
+}
+.lv-ok {
+  background: var(--green);
+}
+.lv-gap {
+  background: var(--amber);
+}
+.lv-unk {
+  background: var(--violet);
+}
+.lv-miss {
+  background: var(--red);
+}
+
+.lv-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 15px;
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+.lv-legend li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--ink-2);
+}
+.lv-legend b {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.lv-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+/* ---------------- 逐项差距 ----------------
+   分组清单，不设折叠。每项两行：上行是判定，下行是简历里的支撑原句。
+   状态由左端四像素的色条承担，与达成率构成条的四态同色。 */
+
+/* ---------------- 差距明细 ----------------
+
+   账本式的一行制：一行一项，四栏并排。列宽由 --lg2-cols 一处定义，
+   表头与各行共用，故两者必然对齐。 */
+.lg2 {
+  --lg2-cols: minmax(0, 1.15fr) minmax(150px, 1.85fr) 60px 60px 72px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--panel);
+}
+.lg2-head {
+  display: grid;
+  grid-template-columns: var(--lg2-cols);
+  gap: 12px;
+  align-items: center;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-tint);
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+.lg2-head > span:nth-child(n + 3) {
+  text-align: right;
+}
+/* 三段的色例。与条形上那三截同色，对照着看即可 */
+.lg2-head-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.lg2-key {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  flex: none;
+  margin-left: 6px;
+}
+.lg2-key-hard {
+  background: var(--primary-line);
+}
+.lg2-key-soft {
+  background: var(--violet-line);
+}
+.lg2-key-own {
+  background: var(--ink);
+}
+
+.lg2-grp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 7px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-alt);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--ink-3);
+}
+.lg2-grp b {
+  min-width: 19px;
+  padding: 0 5px;
+  border-radius: var(--radius-pill);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  font-size: 11px;
+  text-align: center;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.lg2-item + .lg2-item {
+  border-top: 1px solid var(--line);
+}
+.lg2-item.open {
+  background: var(--surface-tint);
+}
+.lg2-row {
+  display: grid;
+  grid-template-columns: var(--lg2-cols);
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  padding: 8px 14px;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.lg2-row:hover {
+  background: var(--surface-tint);
+}
+.lg2-row:focus-visible {
+  outline: none;
+  box-shadow: inset var(--focus-ring);
+}
+.lg2-name {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+}
+.lg2-caret {
+  flex: none;
+  font-size: 9px;
+  font-style: normal;
+  color: var(--ink-3);
+}
+.lg2-name b {
+  min-width: 0;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 能力分类是分类不是结论，故只作一行灰字 */
+.lg2-kind {
+  flex: none;
+  font-style: normal;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+
+/* 要求条。三截叠在同一条轨道上，同一标尺：
+   浅紫到"提到过"，主色到"写明了熟练度"，深色内条到"简历够到" */
+.lg2-bar {
+  position: relative;
+  height: 15px;
+  min-width: 0;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.lg2-seg,
+.lg2-own {
+  position: absolute;
+  left: 0;
+  border-radius: var(--radius-pill);
+}
+.lg2-seg {
+  top: 0;
+  height: 100%;
+}
+/* 两截取中间调而非饱和色：一屏十七行，要求条若也用饱和色，
+   便与压在其上的简历条争，反倒看不出哪一项够到了、够到多少 */
+.lg2-seg-soft {
+  background: var(--violet-line);
+}
+.lg2-seg-hard {
+  background: var(--primary-line);
+}
+/* 简历够到的那一段。压在要求条上、上下各留白，四态各一色。
+   未覆盖一态不画 —— 它够到的正是零，画一根最小宽度的线反而像是够到了一点 */
+.lg2-own {
+  top: 4px;
+  height: 7px;
+  border: 1px solid var(--panel);
+  border-width: 0 1px 0 0;
+}
+/* 一色到底。四态的区分交给右侧的判定列，此处只表达"够到了多远"：
+   内条长度本身已分得开（已满足到条尾、等级不足按两侧档位的序数比、
+   证据不足记半），再叠三种颜色，十七行看下来只剩一片跳色。 */
+.lg2-own-ok,
+.lg2-own-gap,
+.lg2-own-unk {
+  background: var(--ink);
+}
+.lg2-own-miss {
+  display: none;
+}
+
+.lg2-lv {
+  text-align: right;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.lg2-lv em {
+  font-style: normal;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+.lg2-lv-mine {
+  font-weight: 600;
+}
+.lg2-st {
+  text-align: right;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.lg2-st-ok {
+  color: var(--green-ink);
+}
+.lg2-st-gap {
+  color: var(--amber-ink);
+}
+.lg2-st-unk {
+  color: var(--violet);
+}
+/* 未覆盖占多数且短期无行动余地，退作背景，让另外三态显出来 */
+.lg2-st-miss {
+  color: var(--ink-3);
+  font-weight: 500;
+}
+
+/* 展开层：两栏并列。左边说这条要求从何而来，右边说简历里凭什么判成这样。
+   两件事分属岗位与简历两侧，平铺在一起就分不出哪一段说的是谁。 */
+.lg2-detail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4px 34px;
+  padding: 12px 14px 14px 32px;
+  border-top: 1px dashed var(--line);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+.lg2-d-col h5 {
+  margin: 0 0 8px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+}
+.lg2-d-h {
+  margin: 0 0 9px;
+  line-height: 1.75;
+}
+.lg2-d-h b {
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--ink);
+}
+.lg2-d-h span {
+  color: var(--ink-3);
+}
+/* 熟练度的分档条数。一档一行，中位数落在哪一档就是岗位要求的那一档 */
+.lg2-dist {
+  list-style: none;
+  margin: 0 0 9px;
+  padding: 0;
+}
+.lg2-dist li {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 30px;
+  gap: 9px;
+  align-items: center;
+  padding: 1px 0;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+.lg2-dist li.on {
+  color: var(--ink);
+  font-weight: 600;
+}
+.lg2-dist-bar {
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.lg2-dist-bar i {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--line-strong);
+}
+.lg2-dist li.on .lg2-dist-bar i {
+  background: var(--primary);
+}
+.lg2-dist-v {
+  text-align: right;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+.lg2-d-rule {
+  margin: 0;
+  font-size: var(--fs-xs);
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+.lg2-d-rule b {
+  margin-left: 4px;
+  color: var(--ink);
+}
+
+/* 判定所依据的原句。底色与左栏原文里那一处同色，两边对得上 —— 点下方那枚
+   按钮，左栏就把这几处逐一标出来，颜色一致才看得出是同一件东西 */
+.lg2-ev {
+  margin: 0 0 8px;
+  padding: 7px 10px;
+  border-left: 3px solid rgba(180, 130, 20, 0.45);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: #fdf7e6;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.lg2-ev::before {
+  content: '“';
+}
+.lg2-ev::after {
+  content: '”';
+}
+.lg2-ev-tail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+.lg2-ev-none {
+  margin: 0;
+  line-height: 1.75;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+.lg2-loc {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  background: var(--panel);
+  font: inherit;
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.lg2-loc:hover {
+  border-color: var(--primary);
+  color: var(--primary-deep);
+  background: var(--primary-soft);
+}
+.lg2-loc:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* 四态判据在问号里逐条列出，一条一行 */
+.lv-hint-l {
+  display: block;
+  margin-bottom: 5px;
+}
+.lv-hint-l em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink);
+  margin-right: 5px;
+}
+
+/* ---------------- 学习路径 ----------------
+
+   按能力折叠的一份路径清单。收起态一行给出能力名、行动方式、目标档位与步骤
+   序列；序列以连续的分节条呈现，条数即步数，读者不展开也能判断这一项的长短。
+
+   左侧一道连贯的竖线把各项串起来，序号压在线上：这一节讲的是次序，
+   版式上就要看得出次序，而不是十几张彼此无关的卡片各自成块。 */
+
+.lp {
+  --lp-accent: var(--primary);
+  --lp-accent-soft: var(--primary-soft);
+  --lp-accent-ink: var(--primary-deep);
+}
+
+.lp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 30px;
+  position: relative;
+}
+/* 贯穿全列的竖线。序号是不透明的圆片，压在线上即成节点 */
+.lp-list::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  bottom: 14px;
+  width: 1px;
+  background: var(--line-strong);
+}
+
+.lp-item {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  transition: border-color 0.16s var(--ease), box-shadow 0.16s var(--ease);
+}
+.lp-item + .lp-item {
+  margin-top: 8px;
+}
+.lp-item:hover {
+  border-color: var(--line-strong);
+}
+.lp-item.open {
+  border-color: var(--lp-accent);
+  box-shadow: var(--shadow-card);
+}
+
+/* 行动方式决定整项的主色：从头习得、深化提升、先行验证三档 */
+.lp-m-learn {
+  --lp-accent: var(--primary);
+  --lp-accent-soft: var(--primary-soft);
+  --lp-accent-ink: var(--primary-deep);
+}
+.lp-m-deepen {
+  --lp-accent: var(--violet);
+  --lp-accent-soft: var(--violet-soft);
+  --lp-accent-ink: #5b3fd0;
+}
+.lp-m-verify {
+  --lp-accent: var(--cyan);
+  --lp-accent-soft: var(--cyan-soft);
+  --lp-accent-ink: #0b6c63;
+}
+
+.lp-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 14px;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 13px 11px 15px;
+  background: none;
+  border: 0;
+  border-radius: var(--radius);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+.lp-row:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.lp-n {
+  position: absolute;
+  left: -30px;
+  top: 12px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+  transition: all 0.16s var(--ease);
+}
+.lp-item.open .lp-n {
+  background: var(--lp-accent);
+  border-color: var(--lp-accent);
+  color: var(--on-ink);
+}
+
+.lp-main {
+  min-width: 0;
+}
+.lp-hd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+.lp-hd b {
+  font-size: 14px;
+  color: var(--ink);
+}
+.lp-mode {
+  font-style: normal;
+  font-size: 11px;
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--lp-accent-soft);
+  color: var(--lp-accent-ink);
+}
+
+/* 步骤序列。分节条各占等宽，条上写步骤名；名字放不下时截断，
+   条本身仍在，"共几步"这一件事不因宽度而丢失 */
+.lp-track {
+  display: flex;
+  gap: 3px;
+}
+.lp-track i {
+  flex: 1 1 0;
+  min-width: 0;
+  font-style: normal;
+  font-size: 11.5px;
+  line-height: 1.9;
+  color: var(--ink-3);
+  padding: 0 8px;
+  border-radius: var(--radius-xs);
+  background: var(--surface-tint);
+  border-top: 2px solid var(--line-strong);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.16s var(--ease);
+}
+.lp-item:hover .lp-track i,
+.lp-item.open .lp-track i {
+  border-top-color: var(--lp-accent);
+  color: var(--ink-2);
+}
+
+.lp-lv {
+  display: grid;
+  justify-items: end;
+  gap: 1px;
+  white-space: nowrap;
+}
+.lp-lv b {
+  font-size: 12.5px;
+  color: var(--ink);
+}
+.lp-lv small {
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+.lp-caret {
+  width: 14px;
+  height: 14px;
+  position: relative;
+}
+.lp-caret::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 4px;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid var(--ink-3);
+  border-bottom: 1.5px solid var(--ink-3);
+  transform: rotate(45deg);
+  transition: transform 0.16s var(--ease);
+}
+.lp-item.open .lp-caret::before {
+  transform: rotate(-135deg);
+  border-color: var(--lp-accent);
+}
+
+/* ---- 展开层 ---- */
+
+.lp-detail {
+  margin: 0 13px;
+  padding-bottom: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.lp-steps {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.lp-steps > li {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 10px;
+}
+.lp-step-n {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--lp-accent-soft);
+  color: var(--lp-accent-ink);
+  font-size: 11px;
+  font-weight: 600;
+}
+.lp-steps b {
+  font-size: 13px;
+  color: var(--ink);
+}
+.lp-steps p {
+  margin: 3px 0 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.lp-crit {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 6px;
+}
+.lp-crit li {
+  font-size: 11px;
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  color: var(--ink-3);
+}
+
+.lp-task {
+  margin-top: 12px;
+  padding: 11px 13px;
+  border-radius: var(--radius-sm);
+  background: var(--lp-accent-soft);
+}
+.lp-task-cap {
+  background: var(--surface-tint);
+  border: 1px solid var(--line);
+}
+.lp-task h5 {
+  margin: 0 0 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.lp-task p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+/* 重新评估的口径整节只说一次，故落在列表之后而不是逐项之内 */
+.lp-foot {
+  margin: 12px 0 0;
+  padding-left: 30px;
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+
+.lp-none {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+@media (max-width: 900px) {
+  .lp-list {
+    padding-left: 0;
+  }
+  .lp-list::before {
+    display: none;
+  }
+  .lp-n {
+    position: static;
+    margin-bottom: 8px;
+  }
+  .lp-row {
+    grid-template-columns: minmax(0, 1fr) 14px;
+    padding-left: 13px;
+  }
+  .lp-lv {
+    grid-column: 1 / -1;
+    justify-items: start;
+    grid-auto-flow: column;
+    gap: 7px;
+    align-items: baseline;
+  }
+  .lp-foot {
+    padding-left: 0;
+  }
+}
+
+/* ---------------- 左栏：正在定位某一项 ----------------
+
+   点右栏任一项能力或任一条核验，左栏就地高亮它的落点，本条随之出现。
+
+   整条一色。此前这里叠了三层底：外层一条中性浅灰、里面一枚浅蓝方块只包住
+   文字、右端再一枚白底描边的按钮，三段各自为界，读者要先分辨这是三样东西
+   还是一样。现在只有一层浅蓝 —— 它表达的正是"此刻处在一种临时状态"，
+   退出即消失。 */
+.lv-locbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 13px 8px 15px;
+  border-bottom: 1px solid var(--primary-line);
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+}
+.lv-locbar > svg {
+  flex: none;
+  opacity: 0.75;
+}
+.lv-locbar-t {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: var(--fs-sm);
+  color: inherit;
+}
+.lv-locbar-t b {
+  min-width: 0;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 命中处数是这一次定位的规模，不是结论，故压一档并由一个间隔点隔开 */
+.lv-locbar-t span {
+  flex: none;
+  opacity: 0.7;
+}
+.lv-locbar-t span::before {
+  content: '·';
+  margin-right: 8px;
+}
+/* 退出定位。平时只是一行同色系的字，指上去才显出可按 */
+.lv-locbar-quit {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background: none;
+  font: inherit;
+  font-size: var(--fs-xs);
+  color: var(--primary-deep);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, opacity 0.12s;
+}
+.lv-locbar-quit:hover {
+  opacity: 1;
+  border-color: var(--primary-line);
+  background: var(--panel);
+}
+.lv-locbar-quit:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* ---------------- 左栏：简历原文与标注 ----------------
+
+   原文按 pre 渲染以保留分行；被引用的句子加底色，技能清单里的列名加虚线下划。
+   两种标注在同一段文本上并存，故一律用行内标记而非块级容器 —— 块级会把一句话
+   从原文里拆出来另起一行，原文的段落形态就没了。 */
+
+.lv-doc-text {
+  margin: 0;
+  padding: 2px 2px 8px;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 2;
+  color: var(--ink);
+  white-space: pre-wrap;
+  word-break: break-word;
+  tab-size: 4;
+}
+
+/* 证据段。底色取招聘信息一侧的琥珀，与全站"原文摘录"同色；
+   两端各留一点内边距，标注因而看得出起止，又不至于把行距撑开。 */
+.lv-mk {
+  padding: 2px 1px;
+  border-radius: 3px;
+  background: #fdf0c9;
+  color: inherit;
+  box-shadow: inset 0 -1px 0 rgba(180, 130, 20, 0.35);
+  transition:
+    background 0.22s var(--ease),
+    opacity 0.22s var(--ease);
+}
+/* 聚焦某一项能力时，不支撑它的证据段退回无色，且整段原文压淡，
+   只有命中的那几处保持原样 —— 反过来把命中处加重会让整栏更花。 */
+.rp-doc-bd.focusing .lv-doc-text {
+  color: var(--ink-3);
+}
+.lv-mk.dim {
+  background: transparent;
+  box-shadow: none;
+  color: var(--ink-3);
+}
+.rp-doc-bd.focusing .lv-mk:not(.dim) {
+  background: #fbe49f;
+  color: var(--ink);
+}
+
+/* 由右栏的某一条核验或某段经历按字符偏移指来的落点。
+   与证据段区分开：证据段是琥珀，此处取主色的浅底 —— 两者含义不同，
+   一处说"这句支撑了某项能力"，一处说"这句就是那条判据的出处"。 */
+.lv-mk.pick {
+  background: color-mix(in srgb, var(--primary) 16%, transparent);
+  color: var(--ink);
+  box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--primary) 45%, transparent);
+}
+.rp-doc-bd.focusing .lv-mk.pick {
+  background: color-mix(in srgb, var(--primary) 26%, transparent);
+}
+
+/* 技能清单里的列名：只是写了个名字，不构成对能力的支撑，故不给底色，
+   只以虚线下划标出，与证据段一望可辨。 */
+.lv-mk-mention {
+  border-bottom: 1px dashed var(--line-strong);
+  color: var(--ink-2);
+}
+
+/* 取不到全文时的退回形态 */
+.lv-doc-fallback {
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+
+.lv-doc-sum {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.lv-doc-sum b {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.lv-doc-empty {
+  padding: 18px 4px;
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--ink-3);
+}
+
+.lv-ev-line {
+  padding: 9px 11px;
+  border-radius: var(--radius-sm);
+  border-left: 2px solid var(--primary);
+  background: var(--panel);
+  transition:
+    background 0.22s var(--ease),
+    opacity 0.22s var(--ease);
+}
+.lv-ev-line + .lv-ev-line {
+  margin-top: 7px;
+}
+.lv-ev-line q {
+  display: block;
+  quotes: '“' '”';
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.lv-ev-meta {
+  display: block;
+  margin-top: 4px;
+  font-size: 11.5px;
+  color: var(--ink-3);
+}
+.lv-ev-meta em {
+  font-style: normal;
+  font-family: var(--mono);
+  margin-right: 8px;
+}
+.lv-ev-line.on {
+  background: var(--primary-soft);
+  border-left-color: var(--primary-deep);
+}
+.lv-ev-line.dim {
+  opacity: 0.4;
+}
+
+/* ---------------- 窄屏 ---------------- */
+
+@media (max-width: 900px) {
+  /* 一行放不下能力名、等级与状态三段，故等级另起一行贴左 */
+  .lv-gi-top {
+    flex-wrap: wrap;
+  }
+  .lv-gi-lv {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+  }
+  .lv-gi-ev {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "version": "stage2b2_t_ai_06_llm_selection_eval_curated_v1",
+  "team_skill_id": "T-AI-06",
+  "team_skill_name": "大模型选型与评测",
+  "scope": "覆盖选型需求的指标化、公开评测结果的解读、面向任务的评测集构建、运行成本与时延的量测，以及选型结论与迁移风险的论证核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "LME-01",
+      "name_zh": "选型需求指标化",
+      "type": "CORE",
+      "definition": "把业务对模型的要求转为可量测的指标，并区分准入门槛与择优项。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一项选型任务给出可量测的指标集，并说明各指标的判定阈值。",
+      "evidence_task": "就一项真实选型写出指标集，逐项写明量测方法、阈值与其业务依据。",
+      "validation_criteria": [
+        "每项指标有明确的量测方法",
+        "门槛项与择优项分列"
+      ],
+      "source_refs": [
+        "iso_iec_25010",
+        "helm"
+      ]
+    },
+    {
+      "subskill_id": "LME-02",
+      "name_zh": "公开评测与发布指标解读",
+      "type": "CORE",
+      "definition": "读取公开评测与模型发布材料，判断其评测集、口径与本任务的相关程度。",
+      "prerequisites": [
+        "LME-01"
+      ],
+      "learning_outcome": "能够指出公开评测结果对本任务的适用范围与不可直接沿用之处。",
+      "evidence_task": "就候选模型收集公开评测数据，逐项说明其评测口径与本任务的差异及可否沿用。",
+      "validation_criteria": [
+        "评测口径逐项写明",
+        "不可沿用之处有具体理由"
+      ],
+      "source_refs": [
+        "helm",
+        "mmlu",
+        "model_cards"
+      ]
+    },
+    {
+      "subskill_id": "LME-03",
+      "name_zh": "面向任务的评测集构建",
+      "type": "CORE",
+      "definition": "以真实任务样本构建评测集，覆盖典型场景与边界场景，并确定评分方式。",
+      "prerequisites": [
+        "LME-01"
+      ],
+      "learning_outcome": "能够构建可复用的任务评测集，并使评分结果在评分者之间稳定。",
+      "evidence_task": "就本任务构建评测集，写明样本来源、场景覆盖与评分规则，并给出评分一致性的实测结果。",
+      "validation_criteria": [
+        "场景覆盖有取样依据",
+        "评分一致性有实测数据"
+      ],
+      "source_refs": [
+        "chatbot_arena",
+        "helm"
+      ]
+    },
+    {
+      "subskill_id": "LME-04",
+      "name_zh": "成本、时延与容量量测",
+      "type": "CORE",
+      "definition": "在受控条件下量测候选模型的单位成本、响应时延与并发容量，并说明量测口径。",
+      "prerequisites": [
+        "LME-01"
+      ],
+      "learning_outcome": "能够给出候选模型在既定负载下的成本与性能读数及其成立条件。",
+      "evidence_task": "就候选模型在同一负载模型下量测成本、时延与并发容量，写明环境配置与口径。",
+      "validation_criteria": [
+        "负载模型与真实使用情形对应",
+        "各候选模型的量测条件一致"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_15939",
+        "openai_api_docs"
+      ]
+    },
+    {
+      "subskill_id": "LME-05",
+      "name_zh": "选型结论与迁移风险论证",
+      "type": "CORE",
+      "definition": "汇总评测与量测结果形成选型结论，并说明版本变更与供应方变更时的迁移风险与应对。",
+      "prerequisites": [
+        "LME-02",
+        "LME-03",
+        "LME-04"
+      ],
+      "learning_outcome": "能够输出有数据支撑的选型结论，并给出迁移风险的应对方案。",
+      "evidence_task": "就一次选型输出结论文档，含指标达成情况、候选对照、最终选择的依据与迁移风险的应对。",
+      "validation_criteria": [
+        "结论逐项对应指标与实测数据",
+        "迁移风险有具体的应对动作"
+      ],
+      "source_refs": [
+        "model_cards",
+        "iso_iec_25010"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "LME-VERIFY-01",
+    "objective": "验证当前大模型选型与评测的能力证据。",
+    "task_description": "就一次真实选型完成指标设定、评测执行与成本量测，保留评测集、评分记录与量测数据。",
+    "validation_criteria": [
+      "指标在评测前已确定",
+      "候选模型的评测条件一致",
+      "成本与时延读数有环境说明"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "LME-CAPSTONE-01",
+    "objective": "完成一次指标可量测、对照条件一致、结论有据的大模型选型。",
+    "task_description": "就一项真实任务设定选型指标，解读公开评测，构建任务评测集，量测成本与时延，最后输出含迁移风险应对的选型结论。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "指标集覆盖门槛项与择优项",
+      "候选模型在同一条件下比较",
+      "结论逐项对应实测数据",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "chatbot_arena",
+      "title": "Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference",
+      "authors_or_org": "Chiang et al.",
+      "source_type": "paper",
+      "year": 2024,
+      "venue": "ICML",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "LME-03"
+      ]
+    },
+    {
+      "source_id": "helm",
+      "title": "Holistic Evaluation of Language Models",
+      "authors_or_org": "Liang et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": "Transactions on Machine Learning Research",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "LME-01",
+        "LME-02",
+        "LME-03"
+      ]
+    },
+    {
+      "source_id": "iso_iec_25010",
+      "title": "ISO/IEC 25010 Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model",
+      "authors_or_org": "ISO/IEC",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "LME-01",
+        "LME-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15939",
+      "title": "ISO/IEC/IEEE 15939 Systems and software engineering — Measurement process",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "LME-04"
+      ]
+    },
+    {
+      "source_id": "mmlu",
+      "title": "Measuring Massive Multitask Language Understanding",
+      "authors_or_org": "Hendrycks et al.",
+      "source_type": "paper",
+      "year": 2021,
+      "venue": "ICLR",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "LME-02"
+      ]
+    },
+    {
+      "source_id": "model_cards",
+      "title": "Model Cards for Model Reporting",
+      "authors_or_org": "Mitchell et al.",
+      "source_type": "paper",
+      "year": 2019,
+      "venue": "FAT*",
+      "version": null,
+      "doi": "10.1145/3287560.3287596",
+      "url": null,
+      "supports": [
+        "LME-02",
+        "LME-05"
+      ]
+    },
+    {
+      "source_id": "openai_api_docs",
+      "title": "OpenAI API Documentation",
+      "authors_or_org": "OpenAI",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://platform.openai.com/docs",
+      "supports": [
+        "LME-04"
+      ]
+    }
+  ]
+}

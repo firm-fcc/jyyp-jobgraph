@@ -1,0 +1,245 @@
+{
+  "version": "stage2b2_t_ai_11_responsible_ai_curated_v1",
+  "team_skill_id": "T-AI-11",
+  "team_skill_name": "负责任AI与可解释AI",
+  "scope": "覆盖伦理与合规要求的落位、数据与模型偏见的量测、可解释性方法的运用、知识产权与数据授权审查，以及治理过程留痕与披露核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "RAI-01",
+      "name_zh": "伦理与合规要求落位",
+      "type": "CORE",
+      "definition": "把适用的法规与治理框架转为本项目可执行的控制项，并指明各项的责任环节。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一个AI项目给出可执行的控制清单，并说明各控制项的依据与落点。",
+      "evidence_task": "就一个真实项目写出控制清单，逐项写明法规或框架依据、落点环节与验证方式。",
+      "validation_criteria": [
+        "每项控制有可核的外部依据",
+        "落点环节与项目流程对应"
+      ],
+      "source_refs": [
+        "nist_ai_rmf",
+        "iso_iec_42001",
+        "eu_ai_act"
+      ]
+    },
+    {
+      "subskill_id": "RAI-02",
+      "name_zh": "偏见量测与公平性判定",
+      "type": "CORE",
+      "definition": "选定受保护属性与公平性判据，量测数据与模型在各子群上的表现差异并判定其可接受性。",
+      "prerequisites": [
+        "RAI-01"
+      ],
+      "learning_outcome": "能够给出分群的量测结果，并依既定判据说明差异是否可接受。",
+      "evidence_task": "就一个模型选定判据完成分群量测，给出各子群读数、判据结论与后续处置。",
+      "validation_criteria": [
+        "受保护属性与判据在量测前确定",
+        "分群读数与样本量同时给出"
+      ],
+      "source_refs": [
+        "hardt_eoo",
+        "datasheets"
+      ]
+    },
+    {
+      "subskill_id": "RAI-03",
+      "name_zh": "可解释性方法运用",
+      "type": "CORE",
+      "definition": "按模型类型与解释对象选择解释方法，产出可核对的特征归因或样例解释。",
+      "prerequisites": [
+        "RAI-01"
+      ],
+      "learning_outcome": "能够就具体预测给出解释结果，并说明该解释方法的成立条件与局限。",
+      "evidence_task": "就一组具体预测产出解释结果，说明方法选择依据、成立条件与不可外推之处。",
+      "validation_criteria": [
+        "解释结果与具体预测一一对应",
+        "方法局限有明确说明"
+      ],
+      "source_refs": [
+        "shap",
+        "lime"
+      ]
+    },
+    {
+      "subskill_id": "RAI-04",
+      "name_zh": "知识产权与数据授权审查",
+      "type": "CORE",
+      "definition": "核查训练数据、模型权重与生成产物的授权状态，识别不可用于本用途的部分。",
+      "prerequisites": [
+        "RAI-01"
+      ],
+      "learning_outcome": "能够给出数据与模型的授权结论，并指出受限用途。",
+      "evidence_task": "就一个项目的数据与模型逐项核查授权，输出授权结论与受限用途清单。",
+      "validation_criteria": [
+        "每项资产的授权来源可核",
+        "受限用途写明具体条款依据"
+      ],
+      "source_refs": [
+        "eu_ai_act",
+        "datasheets"
+      ]
+    },
+    {
+      "subskill_id": "RAI-05",
+      "name_zh": "治理过程留痕与披露",
+      "type": "CORE",
+      "definition": "把控制执行、量测结果与决策记录成可审计的材料，并按对象范围完成对外披露。",
+      "prerequisites": [
+        "RAI-02",
+        "RAI-03",
+        "RAI-04"
+      ],
+      "learning_outcome": "能够输出可审计的治理记录，并据其完成一次面向使用者的披露。",
+      "evidence_task": "就一个项目输出治理记录与披露材料，含控制执行情况、量测结论与已知限制。",
+      "validation_criteria": [
+        "记录足以支持第三方审计",
+        "披露内容与内部记录一致"
+      ],
+      "source_refs": [
+        "model_cards",
+        "iso_iec_42001"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "RAI-VERIFY-01",
+    "objective": "验证当前负责任AI与可解释AI的能力证据。",
+    "task_description": "就一个真实AI项目完成控制落位、分群量测与解释产出，保留量测数据与治理记录。",
+    "validation_criteria": [
+      "控制项有可核的外部依据",
+      "分群量测的判据在量测前确定",
+      "解释结果对应具体预测"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "RAI-CAPSTONE-01",
+    "objective": "完成一套依据可核、量测有据、过程可审计的负责任AI实践。",
+    "task_description": "就一个真实项目落位合规控制，完成偏见量测与可解释性分析，核查数据与模型授权，最后输出治理记录与披露材料。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "控制清单逐项对应外部依据",
+      "分群读数与样本量完整",
+      "披露材料与内部记录一致",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "datasheets",
+      "title": "Datasheets for Datasets",
+      "authors_or_org": "Gebru et al.",
+      "source_type": "paper",
+      "year": 2021,
+      "venue": "Communications of the ACM",
+      "version": null,
+      "doi": "10.1145/3458723",
+      "url": null,
+      "supports": [
+        "RAI-02",
+        "RAI-04"
+      ]
+    },
+    {
+      "source_id": "eu_ai_act",
+      "title": "Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (AI Act)",
+      "authors_or_org": "European Parliament and Council of the European Union",
+      "source_type": "regulation",
+      "year": 2024,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "RAI-01",
+        "RAI-04"
+      ]
+    },
+    {
+      "source_id": "hardt_eoo",
+      "title": "Equality of Opportunity in Supervised Learning",
+      "authors_or_org": "Hardt, Price, Srebro",
+      "source_type": "paper",
+      "year": 2016,
+      "venue": "NeurIPS",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "RAI-02"
+      ]
+    },
+    {
+      "source_id": "iso_iec_42001",
+      "title": "ISO/IEC 42001 Information technology — Artificial intelligence — Management system",
+      "authors_or_org": "ISO/IEC",
+      "source_type": "standard",
+      "year": 2023,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "RAI-01",
+        "RAI-05"
+      ]
+    },
+    {
+      "source_id": "lime",
+      "title": "\"Why Should I Trust You?\": Explaining the Predictions of Any Classifier",
+      "authors_or_org": "Ribeiro, Singh, Guestrin",
+      "source_type": "paper",
+      "year": 2016,
+      "venue": "KDD",
+      "version": null,
+      "doi": "10.1145/2939672.2939778",
+      "url": null,
+      "supports": [
+        "RAI-03"
+      ]
+    },
+    {
+      "source_id": "model_cards",
+      "title": "Model Cards for Model Reporting",
+      "authors_or_org": "Mitchell et al.",
+      "source_type": "paper",
+      "year": 2019,
+      "venue": "FAT*",
+      "version": null,
+      "doi": "10.1145/3287560.3287596",
+      "url": null,
+      "supports": [
+        "RAI-05"
+      ]
+    },
+    {
+      "source_id": "nist_ai_rmf",
+      "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "framework",
+      "year": null,
+      "venue": null,
+      "version": "1.0",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "RAI-01"
+      ]
+    },
+    {
+      "source_id": "shap",
+      "title": "A Unified Approach to Interpreting Model Predictions",
+      "authors_or_org": "Lundberg and Lee",
+      "source_type": "paper",
+      "year": 2017,
+      "venue": "NeurIPS",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "RAI-03"
+      ]
+    }
+  ]
+}

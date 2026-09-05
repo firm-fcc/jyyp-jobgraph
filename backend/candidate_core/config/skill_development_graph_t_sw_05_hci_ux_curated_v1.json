@@ -1,0 +1,170 @@
+{
+  "version": "stage2b2_t_sw_05_hci_ux_curated_v1",
+  "team_skill_id": "T-SW-05",
+  "team_skill_name": "人机交互与用户体验",
+  "scope": "覆盖用户与任务研究、交互流程设计、可用性评估、无障碍设计，以及基于证据的体验改进核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "UX-01",
+      "name_zh": "用户与任务研究",
+      "type": "CORE",
+      "definition": "通过观察与访谈还原用户的实际任务流程与使用情境，识别其中的障碍点。",
+      "prerequisites": [],
+      "learning_outcome": "能够完成一次用户研究并输出任务流程与障碍点，且结论有原始记录支撑。",
+      "evidence_task": "就一个产品场景完成用户观察或访谈，输出任务流程图与障碍点清单，附原始记录出处。",
+      "validation_criteria": [
+        "任务流程来自实际观察而非推测",
+        "每个障碍点有原始记录出处"
+      ],
+      "source_refs": [
+        "iso_9241_210"
+      ]
+    },
+    {
+      "subskill_id": "UX-02",
+      "name_zh": "交互流程设计",
+      "type": "CORE",
+      "definition": "依据任务流程设计界面结构与操作路径，使用户完成目标所需的步骤与认知负担最小。",
+      "prerequisites": [
+        "UX-01"
+      ],
+      "learning_outcome": "能够输出交互流程与界面结构方案，说明其相对现状减少的步骤或认知负担。",
+      "evidence_task": "针对已识别的障碍点设计交互方案，对比新旧流程的步骤数与决策点，说明改进依据。",
+      "validation_criteria": [
+        "新旧流程的对比可量化",
+        "改进依据对应已识别的障碍点"
+      ],
+      "source_refs": [
+        "iso_9241_210"
+      ]
+    },
+    {
+      "subskill_id": "UX-03",
+      "name_zh": "可用性评估",
+      "type": "CORE",
+      "definition": "以任务完成率、耗时与错误率等指标评估界面可用性，使改进依据来自实测而非偏好。",
+      "prerequisites": [
+        "UX-02"
+      ],
+      "learning_outcome": "能够设计并执行可用性测试，输出含指标的评估结论。",
+      "evidence_task": "就一个界面设计可用性测试，招募用户执行任务并记录完成率、耗时与错误，输出评估结论。",
+      "validation_criteria": [
+        "测试任务对应真实使用目标",
+        "结论由实测指标而非主观评价支持"
+      ],
+      "source_refs": [
+        "iso_9241_210"
+      ]
+    },
+    {
+      "subskill_id": "UX-04",
+      "name_zh": "无障碍设计",
+      "type": "CORE",
+      "definition": "依据无障碍标准检查并改造界面，使依赖辅助技术的用户能完成同样的关键任务。",
+      "prerequisites": [
+        "UX-03"
+      ],
+      "learning_outcome": "能够依据标准完成无障碍检查与改造，并验证关键任务在辅助技术下可完成。",
+      "evidence_task": "对一个界面执行无障碍检查，列出不符合项并改造，用辅助技术验证关键任务可完成。",
+      "validation_criteria": [
+        "不符合项逐条对应标准条款",
+        "关键任务在辅助技术下的完成有验证记录"
+      ],
+      "source_refs": [
+        "wcag_21",
+        "iso_9241_210"
+      ]
+    },
+    {
+      "subskill_id": "UX-05",
+      "name_zh": "基于证据的体验改进",
+      "type": "CORE",
+      "definition": "汇总研究与实测证据形成改进优先级，改动上线后以同一指标验证效果。",
+      "prerequisites": [
+        "UX-04"
+      ],
+      "learning_outcome": "能够依据证据排定改进优先级，并在改动后用同口径指标验证效果。",
+      "evidence_task": "依据评估结论排定改进项并实施，改动后用同一指标复测，对比前后差异。",
+      "validation_criteria": [
+        "优先级排定有证据依据",
+        "前后对比使用同一量测口径"
+      ],
+      "source_refs": [
+        "iso_9241_210",
+        "iso_iec_ieee_15939"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "UX-VERIFY-01",
+    "objective": "验证当前人机交互与用户体验的能力证据。",
+    "task_description": "就一个真实界面完成用户研究、交互设计与可用性评估，保留原始研究记录、方案与实测指标。",
+    "validation_criteria": [
+      "研究结论有原始记录支撑",
+      "评估指标由实测得到",
+      "改进前后使用同一量测口径"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "UX-CAPSTONE-01",
+    "objective": "完成一轮研究有据、评估有指标、改进可验证的体验优化。",
+    "task_description": "就一个产品场景完成用户与任务研究，设计交互流程，执行可用性测试并量测指标，依据无障碍标准改造，最后实施改进并用同口径指标复测。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "任务流程来自实际观察",
+      "可用性结论由实测指标支持",
+      "无障碍不符合项逐条对应标准条款",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_9241_210",
+      "title": "ISO 9241-210 Ergonomics of human-system interaction — Human-centred design for interactive systems",
+      "authors_or_org": "ISO",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "UX-01",
+        "UX-02",
+        "UX-03",
+        "UX-04",
+        "UX-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15939",
+      "title": "ISO/IEC/IEEE 15939 Systems and software engineering — Measurement process",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "UX-05"
+      ]
+    },
+    {
+      "source_id": "wcag_21",
+      "title": "Web Content Accessibility Guidelines (WCAG) 2.1",
+      "authors_or_org": "World Wide Web Consortium (W3C)",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": "2.1",
+      "doi": null,
+      "url": "https://www.w3.org/TR/WCAG21/",
+      "supports": [
+        "UX-04"
+      ]
+    }
+  ]
+}

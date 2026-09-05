@@ -1,0 +1,11 @@
+# 图谱构建管线的运行依赖。Python 3.11 及以上。
+# 模型调用、数据解析与图谱计算均基于标准库实现，第三方依赖仅以下三项。
+
+# 参数中心 settings.yaml 的读取（codes/ 各模块必需）
+PyYAML>=6.0
+
+# 招聘数据获取：数据库读取（仅 codes/jd_fetch 使用）
+PyMySQL>=1.1.0
+
+# 论文元数据的表格导入（仅 codes/paper_signal/arxiv_ingest.py 使用）
+openpyxl>=3.1.0

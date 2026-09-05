@@ -1,0 +1,3119 @@
+/* =========================================================
+   岗位洞察
+   顶部子页面切换 → 筛选条 → 左列表 / 右详情
+   字号整体按 global.css 的口径走（正文 14–15px），
+   投影和答辩场景下 10px 的小字读不了，这里一律不用。
+   ========================================================= */
+
+.jobs-wrap {
+  max-width: var(--page-max-wide);
+  margin: 0 auto;
+  padding: 24px var(--gutter) 40px;
+}
+
+/* ---------------- 子页面切换 ----------------
+   两张大卡片而不是一排小标签：这是本页最重要的一次分叉，
+   要让人一眼看出现在站在哪一边、另一边是什么。
+   卡片内只留标题、计数与右侧提示，说明文案已撤，故图标与文字垂直居中。 */
+.jobs-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.jt {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  padding: 15px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: none;
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.18s,
+    background 0.18s,
+    box-shadow 0.18s;
+}
+
+.jt::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: transparent;
+  transition: background 0.18s;
+}
+
+.jt:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-tint);
+}
+
+.jt.on {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.1);
+}
+
+.jt.on::before {
+  background: var(--primary);
+}
+
+.jt-ic {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  display: grid;
+  place-items: center;
+  background: var(--surface-2);
+  color: var(--ink-3);
+  transition: all 0.18s;
+}
+
+.jt.on .jt-ic {
+  background: var(--primary);
+  color: #fff;
+}
+
+.jt-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.jt-text b {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.jt.on .jt-text b {
+  color: var(--primary-deep);
+}
+
+.jt-text b em {
+  font-style: normal;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.jt.on .jt-text b em {
+  background: var(--primary);
+  color: #fff;
+}
+
+.jt-flag {
+  flex-shrink: 0;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.jt.on .jt-flag {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ---------------- 筛选条 ----------------
+   四个控件此前同宽同高同描边，检索与两个下拉、一个按钮完全同权，
+   视线扫过整条时落不到检索上。此处按主次重排：
+   检索加高到 46px、主色描边、独立投影，并在右端给出快捷键与清空入口；
+   下拉与重置降为 38px 的次级控件，底色下沉一档。 */
+.jobs-filter {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) repeat(2, minmax(132px, 180px)) auto auto;
+  gap: 10px;
+  align-items: center;
+  padding: 0 0 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.jf-search {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.jf-search .ic {
+  position: absolute;
+  left: 14px;
+  color: var(--primary);
+  pointer-events: none;
+}
+
+.jf-search input {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  padding: 0 78px 0 43px;
+  border: 1px solid rgba(37, 99, 235, 0.34);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  outline: none;
+  font-size: var(--fs-lg);
+  color: var(--ink);
+  box-shadow:
+    0 1px 3px rgba(23, 46, 92, 0.07),
+    0 0 0 3px rgba(37, 99, 235, 0.05);
+  transition:
+    border-color 0.18s,
+    box-shadow 0.18s;
+}
+
+.jf-search input::placeholder {
+  color: var(--ink-3);
+}
+
+/* WebKit 的原生清空按钮会与右端的快捷键提示重叠 */
+.jf-search input::-webkit-search-cancel-button,
+.jf-search input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.jf-search input:hover {
+  border-color: rgba(37, 99, 235, 0.55);
+}
+
+.jf-search input:focus {
+  border-color: var(--primary);
+  box-shadow:
+    0 2px 9px rgba(37, 99, 235, 0.16),
+    0 0 0 4px rgba(37, 99, 235, 0.14);
+}
+
+.jf-search.on input {
+  border-color: var(--primary);
+  /* 有检索词时右端换成清空按钮，占位比快捷键提示窄 */
+  padding-right: 42px;
+}
+
+/* 快捷键提示：未输入时占住右端，说明按 “/” 可直接落到检索框 */
+.jf-hint {
+  position: absolute;
+  right: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  pointer-events: none;
+  user-select: none;
+}
+
+.jf-hint kbd {
+  min-width: 21px;
+  height: 21px;
+  display: grid;
+  place-items: center;
+  padding: 0 5px;
+  border: 1px solid var(--line-strong);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-xs);
+  background: var(--surface-2);
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink-2);
+}
+
+.jf-clear {
+  position: absolute;
+  right: 11px;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--ink-3);
+  transition:
+    background 0.16s,
+    color 0.16s;
+}
+
+.jf-clear:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+.jobs-filter select {
+  width: 100%;
+  height: 38px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-tint);
+  font-size: var(--fs-md);
+  color: var(--ink-2);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.jobs-filter select:hover {
+  border-color: var(--line-strong);
+}
+
+.jobs-filter select:focus {
+  border-color: var(--primary);
+}
+
+/* 选中非默认值时描出主色，让“此刻有筛选生效”在条上可见 */
+.jobs-filter select.on {
+  border-color: rgba(37, 99, 235, 0.42);
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+  font-weight: 600;
+}
+
+.jobs-filter .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  white-space: nowrap;
+}
+
+.jf-count {
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  white-space: nowrap;
+  padding-left: 4px;
+}
+
+.jf-count b {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+
+.jf-count.on b {
+  color: var(--primary);
+}
+
+/* ---------------- 工作区 ---------------- */
+.jobs-work {
+  display: grid;
+  grid-template-columns: 372px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.jobs-detail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---------------- 岗位列表 ---------------- */
+.jobs-list {
+  position: sticky;
+  top: calc(var(--topbar-h) + 16px);
+  padding-right: 20px;
+  border-right: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.jl-hd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.jl-hd strong {
+  font-size: var(--fs-lg);
+}
+
+/* 计数占掉剩余宽度并把演示标推到右端，三者因而不必各自定位 */
+.jl-hd>span:not(.dtag-wrap) {
+  flex: 1;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+.jl-scroll {
+  max-height: calc(100vh - var(--topbar-h) - 130px);
+  min-height: 320px;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.jl-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 12px 11px;
+  margin-bottom: 4px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  transition: all 0.16s;
+}
+
+.jl-card:hover {
+  background: var(--surface-tint);
+  border-color: var(--line);
+}
+
+.jl-card.on {
+  background: var(--primary-soft);
+  border-color: var(--primary-line);
+  box-shadow: inset 3px 0 0 var(--primary);
+  /* 选中的卡片在末行之下再开一段空白，跨页浮窗落在这一段里（见 .jl-dock）。
+     不这样做就只能把浮窗压在卡片自己的末行上，那一行写的是首现或批次说明，
+     盖掉半行读起来是残句。卡片本身有 0.16s 的过渡，这一段是展开出来的，
+     不是跳出来的；一次只有一张卡片开着，列表总高至多多出三十余像素。 */
+  padding-bottom: 44px;
+}
+
+.jl-t {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.jl-t strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--fs-xl);
+  font-weight: 600;
+}
+
+.jl-spark {
+  margin-left: auto;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.jl-m {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 7px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.jl-m i {
+  font-style: normal;
+  color: var(--line-strong);
+}
+
+.jl-b {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 9px;
+}
+
+.jl-sal {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 1px 8px;
+  border-radius: var(--radius-xs);
+  white-space: nowrap;
+}
+
+.jl-u {
+  display: block;
+  margin-top: 9px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.jl-card.on .jl-u {
+  border-top-color: var(--primary-line);
+}
+
+/* 选中卡片上的跨页浮窗：形制、朝向与出场见 styles/jumpdock.css，三页共用一套。
+   这一处不必另算坐标 —— 锚点是一张零高度的空块，就排在选中卡片之后，浮窗贴着
+   它右对齐向上浮起，正落进上面那段为它开出来的空白里，不压卡片上的任何一行。
+   空档 10px 由卡片的下外边距与留白合成。卡片右缘对每一张都一样，浮窗横向不动；
+   左栏常驻，往下翻页时选定的岗位仍带着这一个出口。 */
+.jl-dock {
+  position: relative;
+  z-index: 2;
+  height: 0;
+  /* 空处不拦事件：只有浮窗本体接管鼠标，其余仍能点到下面的卡片 */
+  pointer-events: none;
+  --jdk-gap: 10px;
+}
+
+.jl-dock .jdk-wrap {
+  right: 10px;
+}
+
+/* 浮窗落在选中卡片之内，归属由包含关系交代；尖角此时指向卡片下方的空处，
+   反而多出一处指示。另外两页的浮窗浮在图元之外，尖角照旧。 */
+.jl-dock .jdk::after {
+  display: none;
+}
+
+.jl-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 40px 16px;
+  color: var(--ink-3);
+  font-size: var(--fs-md);
+}
+
+/* ---------------- 标签与置信度条 ---------------- */
+.tag {
+  flex-shrink: 0;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  line-height: 1.7;
+}
+
+.tag-rej {
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+.tone-task {
+  color: var(--src-paper-ink);
+  background: var(--lay-task-soft);
+}
+
+.tone-skill {
+  color: var(--lay-skill-ink);
+  background: var(--lay-skill-soft);
+}
+
+.tone-sp {
+  color: var(--src-news-ink);
+  background: var(--lay-sp-soft);
+}
+
+.tone-news {
+  color: var(--src-news-ink);
+  background: var(--amber-soft);
+}
+
+.conf {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.conf-track {
+  width: 56px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.conf-track i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--primary);
+}
+
+.conf-hi .conf-track i {
+  background: var(--green);
+}
+
+.conf-mid .conf-track i {
+  background: var(--amber);
+}
+
+.conf-low .conf-track i {
+  background: var(--red);
+}
+
+.conf-v {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------- 按钮补充态 ---------------- */
+.btn.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: var(--primary-deep);
+  border-color: var(--primary-deep);
+  color: #fff;
+}
+
+.btn.on {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary-deep);
+}
+
+.btn.ok.on {
+  background: var(--green-soft);
+  border-color: var(--green-line);
+  color: var(--green);
+}
+
+.btn.no.on {
+  background: var(--red-soft);
+  border-color: var(--red-line);
+  color: var(--red);
+}
+
+.btn .ic {
+  vertical-align: -2px;
+  margin-right: 4px;
+}
+
+.muted {
+  color: var(--ink-3);
+}
+
+/* ---------------- 岗位摘要卡 ---------------- */
+.js {
+  overflow: hidden;
+}
+
+.js-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 18px 20px 16px;
+}
+
+.js-left {
+  min-width: 0;
+}
+
+.js-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.js-title h2 {
+  font-size: var(--fs-4xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+/* 与岗位名同行的两项限定语。与名字之间隔开一档，免得读成名字的一部分 */
+.js-title-m {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: 4px;
+  font-size: var(--fs-md);
+  color: var(--ink-2);
+}
+
+.js-sub {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  font-size: var(--fs-md);
+  color: var(--ink-2);
+}
+
+.js-sub i {
+  font-style: normal;
+  color: var(--line-strong);
+}
+
+.js-def {
+  margin-top: 11px;
+  padding: 2px 0 2px 14px;
+  border-left: 3px solid var(--primary);
+  font-size: var(--fs-md);
+  line-height: 1.8;
+  color: var(--ink-2);
+}
+
+.js-act {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.js-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  background: var(--surface-2);
+  gap: 1px;
+}
+
+/* 叠层新岗位只有两格有实测值（首次出现、前瞻强度）。仍按六等分排会让两格
+   挤在左端、右边空着一大片；此前改的三等分也多出一个空格。 */
+.js-grid-3 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.js-grid div {
+  padding: 11px 14px;
+  background: var(--panel);
+  min-width: 0;
+}
+
+/* 格名定两行高：六格里只有"出现频次"那一格带括号说明，会折成两行，
+   不定高时该格独自高出一档，六格的读数行随之上下错开。 */
+.js-grid dt {
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  min-height: calc(var(--fs-sm) * 3);
+  color: var(--ink-3);
+}
+
+.js-grid dd {
+  margin-top: 3px;
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ---------------- 涌现相图 ---------------- */
+.phase {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.phase-svg {
+  display: block;
+}
+
+/* 这张图里的字一律不描白边：描边等于给每个字裹一圈白，字一多就是一片毛边。
+   改为靠颜色本身拉开对比 —— 底色已经压到 5~7% 的淡washes，
+   只要文字取到足够深的一档就够读，不需要再垫一层白。 */
+.ph-zone {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  fill: var(--ink-2);
+}
+
+/* 分区名后半句压弱一档：前面的“成长区”才是要先读到的那个词。
+   用 ink-2 而不是 ink-3 —— ink-3 在白底上只有 2.4:1，正是“看不清”的那一档 */
+.ph-zone-note {
+  fill: var(--ink-2);
+  font-weight: 500;
+}
+
+.ph-tick {
+  font-size: var(--fs-sm);
+  fill: var(--ink-2);
+}
+
+.ph-axis {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  fill: var(--ink-2);
+}
+
+/* 岗位名压在淡底与尾迹上，取最深的 ink（白底 14:1），落位时另外避开所有圆点 */
+.ph-label {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  fill: var(--ink);
+  cursor: pointer;
+}
+
+.ph-label.strong {
+  font-weight: 700;
+  fill: var(--primary-deep);
+}
+
+.ph-dot {
+  cursor: pointer;
+}
+
+.phase-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.phase-legend span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.phase-legend .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.phase-legend .dot.solid {
+  background: var(--lay-job);
+  opacity: 0.85;
+}
+
+.phase-legend .dot.ghost {
+  border: 1.6px dashed var(--src-paper);
+}
+
+.phase-legend .sw-trail {
+  width: 22px;
+  height: 0;
+  border-top: 2px solid var(--viz-link);
+  flex-shrink: 0;
+}
+
+/* ---------------- 空间关系图 ----------------
+   与相图同一套取色：图场是 --surface-tint 的浅底，图内文字一律走 --ink 三档。
+   参考的那张星空图是深底，这里没有照搬 —— 全站是浅色界面，
+   为一张图翻一次底色，读者会先花几秒想“这块为什么是黑的”。 */
+.jspace {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.jspace-svg {
+  display: block;
+}
+
+.jsp-star,
+.jsp-glyph,
+.jsp-label-g {
+  cursor: pointer;
+}
+
+/* 岗位名压在光晕与连线上，取最深的 --ink（白底 14:1），落位时另外避开所有圆点 */
+.jsp-label {
+  font-weight: 500;
+  fill: var(--ink);
+}
+
+/* 新岗位的名字是临时标签，与下面那条虚线下划线同一个色 */
+.jsp-label.new {
+  font-weight: 700;
+}
+
+.jsp-label.ref {
+  fill: var(--ink-2);
+}
+
+/* 大类名压弱一档：它是背景信息，先读到的应当是岗位名。
+   后面缀成员数，一眼分得出这是一片区域而不是一个岗位 ——
+   真实体系里“人工智能”既是大类名也是一个岗位名，不缀数就分不开。 */
+.jsp-label.ring {
+  font-weight: 600;
+  fill: var(--ink-2);
+  letter-spacing: 0.03em;
+}
+
+.jsp-ring-n {
+  fill: var(--ink-3);
+  font-weight: 500;
+}
+
+.jsp-label.strong {
+  fill: var(--primary-deep);
+}
+
+/* 选中项那三个相近岗位的名字：与新岗位同一档字号，加粗提到最重的一级。
+   突出不靠底色，另外两处帮衬见 JobSpaceMap 的 PEER_HEX 一节 */
+.jsp-label.peer {
+  fill: var(--primary-deep);
+  font-weight: 700;
+}
+
+.jsp-label.peer.on {
+  fill: var(--lay-job-ink);
+}
+
+.jsp-label-rule {
+  stroke: var(--ink-3);
+  stroke-width: 1;
+}
+
+.jsp-lead {
+  stroke: var(--ink-3);
+  stroke-width: 1;
+  stroke-opacity: 0.7;
+}
+
+/* 连线中点上的那个距离读数。全图只有这一处描白边 ——
+   它必须压在线上（离开线就不知道是哪条线的读数），而线下面还有点。
+   相图那条“字一律不描白边”针对的是成片的标签，一个数不构成毛边。 */
+.jsp-dist {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  stroke: var(--viz-halo);
+  stroke-width: 3.4;
+  paint-order: stroke;
+  stroke-linejoin: round;
+}
+
+/* 相近岗位标注：套环加序号牌。序号牌是实心底上的白字，
+   不描边也压得住底下的点，与 --primary-deep 的对比为 8.6:1 */
+.jsp-peer-mk {
+  cursor: pointer;
+}
+
+.jsp-peer-n {
+  font-size: var(--fs-3xs);
+  font-weight: 700;
+  fill: #fff;
+  pointer-events: none;
+}
+
+/* 图例底：与图上的点云同层，故底色不做全不透明 —— 全不透明的一块白压在
+   点云上，读起来像另一张图；压得住身下的点即可。 */
+.jsp-legend-box {
+  fill: color-mix(in srgb, var(--panel) 93%, transparent);
+  stroke: color-mix(in srgb, var(--line) 70%, transparent);
+  stroke-width: 1;
+}
+
+.jsp-legend-hd {
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  fill: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+
+.jsp-legend-t {
+  font-size: var(--fs-2xs);
+  fill: var(--ink-2);
+}
+
+/* 浮层已改浅面，两个来源色直接取图上那一份，浮层与图同色 */
+.tt .jsp-tt-paper {
+  color: var(--src-paper-ink);
+}
+
+.tt .jsp-tt-news {
+  color: var(--src-news-ink);
+}
+
+.jsp-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 18px;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.jsp-legend span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* 图例项后面附的口径小注，取弱文字色与常规字重，与项名分开 */
+.jsp-legend em {
+  font-style: normal;
+  color: var(--ink-3);
+}
+
+.jsp-legend em::before {
+  content: '·';
+  margin: 0 5px 0 2px;
+}
+
+.jsp-legend .sw {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.jsp-legend .sw-star {
+  background: var(--lay-job);
+  opacity: 0.42;
+}
+
+/* 双色叠加的连续色标：两端是纯论文与纯新闻，中间是按比例调出来的那些点。
+   中点取 --src-paper 与 --src-news 的 RGB 中值，与图里的插值同一条线。 */
+.jsp-legend .sw-mix {
+  width: 62px;
+  height: 11px;
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #7c5cfc, #aa6981 50%, #d97706);
+}
+
+/* 与图内“无任务关联边”那类新岗位外套的那圈虚线同形 */
+.jsp-legend .sw-nolink {
+  width: 14px;
+  height: 14px;
+  background: var(--panel);
+  border: 1.5px dashed var(--ink-3);
+}
+
+.jsp-legend .sw-ring {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.4px dashed var(--lay-job);
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+
+/* ---------------- 空间关系图：左图右栏 ----------------
+   图给方位，右栏给差别。距离答得了“有多近”，答不了“差在哪儿”，
+   而后者才是“并入既有岗位还是单独成条”这个判断真正要看的东西。
+   两侧靠序号对上号，不必在一百多个点里按名字去找。
+
+   右栏定宽而不是按比例分：卡片里的任务清单是成句的中文，
+   宽度随面板伸缩会让同一张卡片在不同视口下从两行变四行。 */
+.jsp-split {
+  /* 相近岗位的记号色。图内名牌与序号牌、图例、右栏卡片四处同源，
+     与 JobSpaceMap 里的 PEER_HEX 是同一个值 */
+  --jsp-peer: var(--primary-deep);
+  --jsp-peer-soft: var(--primary-soft);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 336px;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.jsp-main {
+  min-width: 0;
+}
+
+/* 右栏与左图等高，卡片超出的部分在栏内自行滚动。
+   此前右栏按内容自然拉长，比图高出三百余像素，图下方空出一大块留白；
+   把图钉在视口上掩盖不了这一段，只是把空白挪到了视口之外。
+   此处让右栏自身不产生高度（内容绝对定位铺满），这一行的高度便完全
+   由左图决定，两栏底边由此对齐；图另有加高（见 JobSpaceMap 的 ratio）。 */
+.jsp-peers {
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-tint);
+}
+
+/* 同 .jsrc-scroll 一节：不设 overscroll-behavior。
+   空态或只有一张卡片时这一栏并不溢出，拦下滚轮会使整页卡住。 */
+.jsp-peers-sc {
+  position: absolute;
+  inset: 0;
+  padding: 12px;
+  overflow-y: auto;
+}
+
+.jsp-peers-hd {
+  margin: 15px 0 0;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--ink-2);
+  letter-spacing: 0.04em;
+}
+
+.jsp-peers-empty {
+  margin: 4px 0;
+  font-size: var(--fs-sm);
+  line-height: 1.85;
+  color: var(--ink-3);
+}
+
+/* 距离一侧为推导时贴在清单上方的那一句。左缘一道竖线把它与下面的卡片分开：
+   卡片列的是读数，这一句说的是读数是怎么来的，两者不该看着像同一层内容 */
+.jsp-peers-note {
+  margin: 7px 0 0;
+  padding: 6px 0 6px 9px;
+  border-left: 2px solid var(--line-strong);
+  font-size: var(--fs-xs);
+  line-height: 1.8;
+  color: var(--ink-3);
+}
+
+/* 无任务关联边那一档的空态是三段话，首句单独成行、加重，
+   其后两段为口径说明 —— 与只有一句的另一档共用同一个类名，故在此分段 */
+.jsp-peers-empty p {
+  margin: 0 0 8px;
+}
+
+.jsp-peers-empty p:first-child {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
+.jsp-peers-empty p:last-child {
+  margin-bottom: 0;
+}
+
+/* 栏首的选中项：右栏三张卡片全部相对它而言，不写出来就只剩三个孤立的岗位名。
+   名字下那条虚线与图内标签同义：临时标签，不是规范岗位名 */
+/* 当前选中：右栏的栏首，三张相近岗位卡片全部相对它而言。此前它与那三张卡片
+   同一副装束（同样的白底、同样一道细边），栏首与并列项因此分不出层级。
+   改为主色左条加同色极淡的底，一眼看出这一块是"被比的那一个"。 */
+.jsp-self {
+  padding: 9px 12px 10px;
+  border: 1px solid color-mix(in srgb, var(--primary) 22%, transparent);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--primary) 5%, var(--panel));
+}
+
+.jsp-self-k {
+  display: block;
+  margin-bottom: 4px;
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+}
+
+.jsp-self b {
+  display: inline-block;
+  padding-bottom: 1px;
+  border-bottom: 1px dashed var(--ink-3);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.jsp-self-m {
+  display: block;
+  margin-top: 5px;
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+
+.jsp-self i,
+.jsp-peer-m i {
+  margin: 0 5px;
+  font-style: normal;
+  color: var(--ink-3);
+}
+
+.jsp-peer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jsp-peer {
+  padding: 9px 11px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  transition:
+    border-color 0.16s,
+    box-shadow 0.16s;
+}
+
+/* 指到某一张卡片时，图上对应的那个点同步加重，反向亦然 */
+.jsp-peer.on {
+  border-color: var(--jsp-peer);
+  box-shadow: 0 0 0 3px var(--jsp-peer-soft);
+}
+
+.jsp-peer-hd {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.jsp-peer-hd b {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--ink);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jsp-peer-hd em {
+  flex-shrink: 0;
+  font-style: normal;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--jsp-peer);
+  font-variant-numeric: tabular-nums;
+}
+
+.jsp-peer-hd em i {
+  margin-right: 3px;
+  font-style: normal;
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.jsp-peer-rk {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--jsp-peer);
+  color: #fff;
+  font-style: normal;
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+}
+
+.jsp-peer-m {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+
+/* 集合差的三个计数。中间那一段加重：它是“贴着却没落进去”的那部分，
+   另两个是它的参照 */
+.jsp-peer-n {
+  margin-top: 6px;
+  font-size: var(--fs-2xs);
+  color: var(--ink-3);
+}
+
+.jsp-peer-n b {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.jsp-peer-n i {
+  margin: 0 5px;
+  font-style: normal;
+}
+
+/* ---- 任务构成对照表 ----
+   两列并排给份额。差别有两种：一侧不承担（另一侧画短横），
+   或两侧都承担而份额不同（两条横条长短之差）。
+   横条整栏共用一把标尺，新岗位那一列在三张卡片里因此长短一致。 */
+.jsp-tt {
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px solid var(--line);
+}
+
+.jsp-tt-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 74px 74px;
+  gap: 8px;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.jsp-tt-row.hd {
+  padding-bottom: 3px;
+  font-size: var(--fs-2xs);
+  color: var(--ink-3);
+}
+
+.jsp-tt-row.hd .jsp-tt-c {
+  justify-content: flex-end;
+}
+
+.jsp-tt-n {
+  overflow: hidden;
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 仅一侧承担的那一项：承担的一侧提到最深一档，缺席的一侧压弱 */
+.jsp-tt-row.new .jsp-tt-n {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.jsp-tt-row.ref .jsp-tt-n {
+  color: var(--ink-3);
+}
+
+.jsp-tt-c {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.jsp-tt-bar {
+  flex: 1;
+  min-width: 0;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--viz-track);
+  overflow: hidden;
+}
+
+.jsp-tt-bar i {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--primary);
+}
+
+/* 已有岗位那一列压到图内已有岗位点的同一档，两处深浅一致 */
+.jsp-tt-bar i.ref {
+  background: var(--lay-job);
+  opacity: 0.42;
+}
+
+.jsp-tt-c b {
+  width: 26px;
+  flex-shrink: 0;
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  color: var(--ink-2);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.jsp-tt-c b.nil {
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.jsp-tt-more {
+  margin: 5px 0 0;
+  font-size: var(--fs-2xs);
+  color: var(--ink-3);
+}
+
+.read-hint {
+  margin-top: 12px;
+  padding: 11px 13px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-size: var(--fs-md);
+  line-height: 1.85;
+  color: var(--ink-2);
+}
+
+.read-hint b {
+  color: var(--ink);
+}
+
+/* ---------------- 岗位定义五要素 ---------------- */
+.rv {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rv-state {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.rv-state.rv-approved {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.rv-state.rv-rejected {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+.rv-state.rv-edited {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+/* 上一版五要素的两列平铺（.five 的两列网格与 .five-item 一族）已随版式重排作废，
+   类名在组件里也已不再出现；此处删去。留着的那条 `.five { display: grid }` 曾把
+   重排后的版式重新掰成两列：名称与定义落进左列并被拉到与右列等高，一栏之内
+   只有顶上三行有字，其余尽是空白。现行版式见文末"岗位定义五要素（重排版）"。 */
+
+/* 分项标签（"01 · 岗位名称"一类）。它标出的是定义的五个组成部分，属正文层级，
+   故取次级文字色而非弱文字色 —— 后者是给计数、单位、轴标这类附注用的。 */
+.five-lb {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  margin-bottom: 9px;
+}
+
+.five-lb.tone-task {
+  color: var(--src-paper-ink);
+  background: none;
+}
+
+.five-lb.tone-skill {
+  color: var(--lay-skill-ink);
+  background: none;
+}
+
+.five-lb.tone-sp {
+  color: var(--src-news-ink);
+  background: none;
+}
+
+.five-lb.tone-news {
+  color: var(--accent);
+  background: none;
+}
+
+.five-name {
+  font-size: var(--fs-3xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.five-def {
+  margin-top: 8px;
+  font-size: var(--fs-md);
+  line-height: 1.85;
+  color: var(--ink-2);
+}
+
+/* 核心职责一格横跨整行，条目却都是四到六个字：排成一列时右侧空着大半格。
+   宽屏下改两列，窄屏（见文末媒体查询）退回一列。 */
+.five-duty {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  column-gap: 28px;
+}
+
+.five-duty li {
+  display: flex;
+  gap: 10px;
+  font-size: var(--fs-md);
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.five-duty li>span {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 12px var(--mono);
+  color: var(--primary);
+  background: var(--primary-soft);
+}
+
+/* ---------------- 人工优化表单 ---------------- */
+.edit-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 13px;
+  margin-bottom: 15px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-soft);
+  color: var(--lay-job-ink);
+  font-size: var(--fs-md);
+  line-height: 1.75;
+}
+
+.edit-tip .ic {
+  margin-top: 3px;
+}
+
+.edit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.edit-f {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.edit-f.wide {
+  grid-column: 1 / -1;
+}
+
+.edit-f label {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.edit-f label em {
+  margin-left: 8px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+.edit-f input,
+.edit-f textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  font-size: var(--fs-md);
+  line-height: 1.7;
+  outline: none;
+  resize: vertical;
+  transition: all 0.18s;
+}
+
+.edit-f input:focus,
+.edit-f textarea:focus {
+  border-color: var(--primary);
+  box-shadow: var(--focus-ring);
+}
+
+.edit-act {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------------- 能力年轮 ---------------- */
+/* 年轮那一列多分一点：圆的直径直接由列宽决定，
+   九个版本环挤在一个半径里，宽一分环带就厚一分，色带才认得出来。
+   右边的变更清单是文字列表，窄一点只是行数多几行。 */
+/* 左右两块等高。原先是 align-items:start，两块各按自己的内容收高 ——
+   年轮那边由 1:1 的画布加两行图例定高，清单那边由 .ch-list 的限高定高，
+   两个数没有理由相等，实测差二十几像素，两张卡片的底边就是错开的。
+   改成等高，多出来的高度交给清单：它本来就是滚动区，长一点只是少滚两下。 */
+/* 左栏年轮，右栏变更清单，两块各占一列通栏到底。
+   右栏下方原另有一块"下一季度前瞻"，已撤除。 */
+.evo {
+  display: grid;
+  grid-template-columns: minmax(0, 1.16fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.evo>.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.evo>.panel>.panel-bd {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 年轮画布按 1:1 定高，不参与这次拉伸 */
+.evo .annuli {
+  flex: none;
+}
+
+.annuli {
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 620px;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+}
+
+.annuli-svg {
+  display: block;
+  overflow: visible;
+}
+
+/* 同样不描白边。年轮的字压的是实心色带，靠加深文字救不回来，
+   所以改成两条路：压在色带上的（能力名）按底色明暗自动取黑字或白字，
+   其余的（版本号、今日线）各自坐在一小片不透明底片上。 */
+.an-today {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  fill: var(--ink);
+}
+
+.an-ver {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  fill: var(--ink);
+}
+
+.an-ver.fore {
+  fill: var(--src-paper-ink);
+}
+
+/* 标在“今日环”弧上的能力名。字色由 CapabilityAnnuli.tsx 逐条按色带明暗算，
+   这里不设 fill —— 设了会覆盖不掉。字号与那边的 BAND_FS 一致 */
+.an-band {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.an-center-t {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  fill: var(--ink);
+}
+
+.an-center-s {
+  font-size: var(--fs-sm);
+  fill: var(--ink-2);
+}
+
+.an-tick {
+  font-size: var(--fs-xs);
+  fill: var(--ink-2);
+}
+
+.an-tick.fore {
+  fill: var(--src-paper-ink);
+  font-weight: 600;
+}
+
+.an-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+/* 一个能力组一行：组名在左，其后是这一组的几项，同组共用一个色相。
+   不用 wrap 平铺 —— 平铺时两组会落在同一行，而组内是明度阶、组间是色相差，
+   浅色档与隔壁组的深色档挨在一起，看着像同一组里的两档。
+   组名列定宽，各行的项因而左缘对齐，一列扫下来即读得出组的多少。 */
+.an-legend .anl-g {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 6px;
+  padding-left: 112px;
+  min-height: 24px;
+}
+
+/* 组名脱离流：项因而从固定的左缘起排，组内换行时也保持同一缩进，
+   各行的第一项左缘对齐 */
+.anl-gt {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 104px;
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.03em;
+  text-align: right;
+}
+
+.anl {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  transition: all 0.16s;
+}
+
+button.anl:hover {
+  background: var(--surface-2);
+}
+
+.anl.on {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+  font-weight: 600;
+}
+
+.anl i {
+  width: 11px;
+  height: 11px;
+  border-radius: var(--radius-pill);
+  flex-shrink: 0;
+}
+
+/* 变更条数：只标在真的有变更的能力上 */
+.anl-n {
+  min-width: 16px;
+  padding: 0 4px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--ink-3);
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+}
+
+.anl.on .anl-n {
+  background: var(--primary);
+  color: #fff;
+}
+
+.an-marks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 10px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.an-marks[hidden] {
+  display: none;
+}
+
+.an-marks span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mk {
+  width: 14px;
+  height: 3px;
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+}
+
+.mk.add {
+  background: var(--green);
+}
+
+.mk.mod {
+  background: var(--ink);
+}
+
+.mk.merge {
+  background: var(--amber);
+}
+
+.mk.rm {
+  background: var(--red);
+}
+
+.mk.hatch {
+  height: 12px;
+  border-radius: var(--radius-xs);
+  background: repeating-linear-gradient(45deg, var(--ink-3) 0 2px, #fff 2px 5px);
+}
+
+.mk.pred {
+  height: 12px;
+  border-radius: var(--radius-xs);
+  border: 1.4px dashed var(--src-paper);
+}
+
+/* ---------------- 变更清单 ---------------- */
+.ch-act {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ch-act select {
+  padding: 5px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  font-size: var(--fs-sm);
+  cursor: pointer;
+}
+
+.ch-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 13px;
+}
+
+.ch-prog {
+  margin-left: auto;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+.ch-prog b {
+  color: var(--primary);
+  font-size: var(--fs-lg);
+  font-variant-numeric: tabular-nums;
+}
+
+.ch-list {
+  max-height: 620px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 2px;
+}
+
+/* 两列并排时由清单吃掉剩余高度，两张卡片的底边才对得齐。
+   flex-basis 必须取 0：取 auto 的话清单会拿自己的内容高度（上百条变更、
+   三千多像素）去参与定高，反过来把左边的年轮一起撑到满屏之外。
+   1300px 以下 .evo 塌成单列，没有可对齐的对象，flex-basis:0 会把清单压成一条缝。 */
+@media (min-width: 1301px) {
+  .evo .ch-list {
+    flex: 1 1 0;
+    min-height: 0;
+    max-height: none;
+  }
+}
+
+.ch {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 13px 14px;
+  transition: all 0.16s;
+}
+
+.ch.approved {
+  border-color: var(--green-line);
+  background: var(--tint-green);
+}
+
+.ch.rejected {
+  border-color: var(--red-line);
+  background: var(--tint-red);
+}
+
+.ch-top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.ch-op {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: #fff;
+  padding: 1px 9px;
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+}
+
+.ch-name {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.ch-name:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.ch-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.ch-ver {
+  margin-left: auto;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.ch-reason {
+  margin-top: 8px;
+  font-size: var(--fs-md);
+  line-height: 1.8;
+  color: var(--ink-2);
+}
+
+.ch-reason b {
+  color: var(--ink);
+}
+
+.ch-merge {
+  margin-top: 6px;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  line-height: 1.7;
+}
+
+/* ---------------- 能力构成 ---------------- */
+.sp-list {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sp {
+  padding: 10px 11px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: all 0.16s;
+}
+
+.sp:hover {
+  background: var(--surface-tint);
+}
+
+.sp.on {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.sp-hd {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.sp-n {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.sp-n:hover {
+  color: var(--primary);
+}
+
+.sp-w {
+  margin-left: auto;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.sp-ev {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+}
+
+.sp-ev:hover {
+  background: var(--surface-2);
+}
+
+.sp-pts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.spp {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: var(--fs-sm);
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-strong);
+  color: var(--ink-2);
+  background: var(--panel);
+}
+
+.spp em {
+  font-style: normal;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+
+.spp.ghost {
+  border-style: dashed;
+  border-color: var(--src-paper);
+  color: var(--src-paper-ink);
+  background: transparent;
+}
+
+/* ---------------- 可信度四格 ---------------- */
+.tr-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.tr-grid div {
+  padding: 12px 14px;
+  background: var(--panel);
+}
+
+.tr-grid small {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+.tr-grid b {
+  display: block;
+  margin-top: 4px;
+  font-size: var(--fs-3xl);
+  font-weight: 700;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.risk {
+  font-size: var(--fs-2xl) !important;
+}
+
+.risk-low {
+  color: var(--green);
+}
+
+.risk-mid {
+  color: var(--amber);
+}
+
+.risk-high {
+  color: var(--red);
+}
+
+.src-first {
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+/* ---------------- 证据表 ---------------- */
+.ev-tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-md);
+}
+
+.ev-tbl th {
+  text-align: left;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink-3);
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ev-tbl td {
+  padding: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ev-tbl tr:last-child td {
+  border-bottom: none;
+}
+
+.ev-tbl .r {
+  text-align: right;
+}
+
+.ev-tbl .num {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+
+.ev-tbl .muted {
+  color: var(--ink-3);
+}
+
+/* ---------------- 可信度指纹 ---------------- */
+.fp {
+  vertical-align: -3px;
+  flex: 0 0 auto;
+}
+
+.fp-empty {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--amber);
+  white-space: nowrap;
+}
+
+/* ---------------- 数据来源（三方面来源 + 差异研判） ----------------
+   原来这里是一个从右侧滑出的“证据链”抽屉。抽屉的问题是：
+   原文被藏在一次额外点击后面，而看的人真正想知道的是
+   “三方面来源各自在讲什么、彼此差在哪”—— 那是要并排比对的内容，
+   不是逐条翻阅的内容。所以改成就地展开的三列 + 一段研判。 */
+/* 顶栏是 sticky 的，首页快报滚到这一节时必须给它让出高度，
+   否则这一节的标题会被压在栏下面 */
+#job-source {
+  scroll-margin-top: calc(var(--topbar-h) + 16px);
+}
+
+.jsrc-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.42fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+/* 只剩论文与新闻两列时改为等分：招聘那一列宽出四成是因为它按企业铺开，
+   它不在时另两列没有理由不等宽。 */
+.jsrc-cols.two {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.jsrc-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--line-strong);
+  padding: 14px 0 0;
+}
+
+/* 招聘那一列按公司铺开，一长就上千像素；限高之后三列表头齐平，
+   各自滚各自的，比对时不用来回找 */
+/* 此处原有 overscroll-behavior: contain。它的本意是滚到底不带动整页，
+   而滚动容器即便内容未溢出也照样拦截滚轮 —— 论文、新闻两栏的条目常不足限高，
+   指针落在其上时整页因此滚不动。滚动链交回浏览器默认，代价只是滚到底后接着滚页。 */
+.jsrc-scroll {
+  min-height: 0;
+  max-height: 440px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-right: 6px;
+  margin-right: -6px;
+}
+
+.jsrc-col.jd {
+  border-top: 3px solid var(--src-jd);
+}
+
+.jsrc-col.news {
+  border-top: 3px solid var(--src-news);
+}
+
+.jsrc-col.paper {
+  border-top: 3px solid var(--src-paper);
+}
+
+.jsrc-hd {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 9px;
+  padding-bottom: 11px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.jsrc-hd b {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.jsrc-hd small {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  flex: 1;
+  min-width: 90px;
+  /* 新闻一栏这里排的是文章标题，一条就有二三十字且中英混排，不给断点会
+     整行冲出本栏、压到右侧的学术论文一栏上。断点放开，并钳在两行以内 —— 
+     表头要答的是"来自哪几家"，不是把标题读完。 */
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.jsrc-spark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.jsrc-spark em {
+  font-style: normal;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.jsrc-blk+.jsrc-blk {
+  margin-top: 15px;
+  padding-top: 13px;
+  border-top: 1px dashed var(--line);
+}
+
+/* 子块标题：面板标题之下、正文之上的那一级 */
+.jsrc-blk h4 {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 9px;
+}
+
+/* 空态说明。原先是 ink-3 的一行浮字，白底只有 2.4:1 ——
+   而它说的是"本期检出结果为无变化"，这是一条结论，不是背景注释。 */
+.jsrc-none {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  line-height: 1.75;
+}
+
+/* 各公司强调什么 */
+.jsrc-tbl {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.jsrc-tbl th {
+  width: 96px;
+  text-align: left;
+  vertical-align: top;
+  padding: 9px 10px 9px 0;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  border-top: 1px solid var(--line);
+}
+
+.jsrc-tbl th small {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  color: var(--ink-3);
+}
+
+.jsrc-tbl td {
+  padding: 9px 0;
+  border-top: 1px solid var(--line);
+}
+
+.jsrc-tbl tr:first-child th,
+.jsrc-tbl tr:first-child td {
+  border-top: none;
+  padding-top: 0;
+}
+
+.jsrc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.jsrc-tag {
+  font-size: var(--fs-sm);
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  background: var(--surface-2);
+  color: var(--ink-2);
+}
+
+/* 标签列被截断时的尾注。不给底色 —— 它不是一项能力，是一个计数，
+   与前面几枚标签同色会被当成第六项能力名 */
+.jsrc-more {
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  align-self: center;
+}
+
+/* 只有这一家写的那一项：差异就在这里，必须一眼看到 */
+.jsrc-tag.alone {
+  background: var(--amber-soft);
+  color: var(--src-news-ink);
+  font-weight: 600;
+}
+
+.jsrc-quote {
+  margin-top: 6px;
+  font-size: var(--fs-sm);
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+
+.jsrc-flag {
+  margin-top: 5px;
+  font-size: var(--fs-xs);
+  color: var(--red);
+}
+
+.jsrc-legend {
+  margin-top: 10px;
+  font-size: var(--fs-sm);
+  line-height: 1.8;
+  color: var(--ink-2);
+}
+
+.jsrc-legend .jsrc-tag {
+  margin-right: 4px;
+}
+
+.jsrc-focus {
+  margin-top: 9px;
+  font-size: var(--fs-sm);
+  line-height: 1.9;
+  color: var(--ink-2);
+}
+
+.jsrc-focus b {
+  display: inline-block;
+  margin: 0 4px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.jsrc-focus em {
+  font-style: normal;
+  margin-left: 3px;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+
+/* 原文摘录 */
+.jsrc-quotes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.jsrc-quotes li {
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+  padding: 9px 11px;
+}
+
+.jsrc-q-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  margin-bottom: 4px;
+}
+
+.jsrc-q-meta span {
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jsrc-q-meta em {
+  font-style: normal;
+  color: var(--ink-3);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.jsrc-quotes p {
+  font-size: var(--fs-sm);
+  line-height: 1.8;
+  color: var(--ink-2);
+}
+
+/* 在招企业：名称与条数两列，条数右对齐取等宽数字，纵向可比 */
+.jsrc-cos {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.jsrc-cos li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-sm);
+}
+
+.jsrc-cos li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.jsrc-cos b {
+  min-width: 0;
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jsrc-cos em {
+  flex-shrink: 0;
+  font-style: normal;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 招聘原文摘录 */
+.jsrc-raw {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.jsrc-raw li {
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+  padding: 9px 11px;
+}
+
+.jsrc-raw-hd {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: var(--fs-xs);
+}
+
+.jsrc-raw-hd b {
+  min-width: 0;
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jsrc-raw-hd em {
+  flex-shrink: 0;
+  font-style: normal;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.jsrc-raw .jsrc-legend {
+  margin-top: 6px;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+
+/* ---------------- 差异研判 ---------------- */
+.jsrc-verdict {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.jsrc-vhd h3 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* 与面板标题同一级，故用同一枚菱形前缀。此前只有面板标题带，
+   这一节的标题在同一屏里与它们平级却少一枚标记，读起来像是低一级的小标题 */
+.jsrc-vhd h3::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+
+.jsrc-vcols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.jv {
+  min-width: 0;
+  border-top: 2px solid var(--line-strong);
+  padding: 13px 0 14px;
+}
+
+/* 三类判断此前各铺一整块语义底色。底色铺满整栏之后，栏内的每一条又要用
+   半透明白底才能读出来，于是同一块面积上叠了两层底。现只在栏顶留一条同色线，
+   语义仍在，栏内因此可以直接用页面底。 */
+.jv.ok {
+  border-top-color: var(--green);
+}
+
+.jv.care {
+  border-top-color: var(--red);
+}
+
+.jv.think {
+  border-top-color: var(--amber);
+}
+
+.jv header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin-bottom: 10px;
+}
+
+.jv header b {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.jv header em {
+  font-style: normal;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.jv header small {
+  width: 100%;
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+/* 收起时一行一条：能力名 + 判成这一档的理由短名。
+   整段判定依据点“判定依据”才展开 —— 三列同时铺开就是三面文字墙 */
+.jv-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 条目此前靠半透明白底从所在栏的语义底色中浮出来。栏的底色撤去之后
+   白底即无所浮，改由条目之间的一条细线分隔，展开态用浅底标出。 */
+.jv-item {
+  border-top: 1px solid var(--line);
+  transition: background 0.18s;
+}
+
+.jv-item:first-child {
+  border-top: 0;
+}
+
+.jv-item:hover {
+  background: var(--surface-tint);
+}
+
+.jv-item.open {
+  background: var(--surface-tint);
+}
+
+.jv-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  padding: 8px 11px;
+  background: none;
+  text-align: left;
+}
+
+.jv-name strong {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.jv-tag {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  background: rgba(23, 34, 59, 0.055);
+  border-radius: var(--radius-xs);
+  padding: 1.5px 6px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.jv-more {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  transition:
+    color 0.18s,
+    transform 0.18s;
+}
+
+.jv-more .ic {
+  transition: transform 0.2s var(--ease);
+}
+
+.jv-row:hover .jv-more {
+  color: var(--primary);
+}
+
+.jv-item.open .jv-more .ic {
+  transform: rotate(180deg);
+}
+
+.jv-why {
+  margin: 0 11px;
+  padding-bottom: 10px;
+  border-top: 1px dashed var(--line);
+}
+
+.jv-why p {
+  margin-top: 8px;
+  font-size: var(--fs-sm);
+  line-height: 1.85;
+  color: var(--ink-2);
+}
+
+.jv-mix {
+  display: inline-block;
+  margin-top: 7px;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.jv li.jsrc-none {
+  background: none;
+  padding: 4px 0;
+}
+
+/* ---------------- 轻提示 ---------------- */
+.jobs-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 34px;
+  transform: translateX(-50%);
+  z-index: 220;
+  padding: 11px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: #fff;
+  font-size: var(--fs-md);
+  box-shadow: var(--shadow-lg);
+  animation: dr-fade 0.18s var(--ease);
+}
+
+/* ---------------- 响应式 ---------------- */
+@media (max-width: 1560px) {
+  .jobs-work {
+    grid-template-columns: 336px minmax(0, 1fr);
+  }
+
+  .js-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1300px) {
+
+  /* 面板再窄下去，图与右栏并排会把图压到 460px 以下（JobSpaceMap 的下限），
+     图开始横向溢出。此处让右栏落到图下方，图占满面板宽度。 */
+  .jsp-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* 上下排布时右栏落在图下方，不必再与图等高，按内容自然展开即可 */
+  .jsp-peers {
+    overflow: visible;
+  }
+
+  .jsp-peers-sc {
+    position: static;
+  }
+
+  /* 左右留白由 --gutter 统一给（tokens.css § F），这里只调纵向 */
+  .jobs-wrap {
+    padding-top: 22px;
+    padding-bottom: 36px;
+  }
+
+  .evo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .annuli {
+    max-height: 520px;
+  }
+
+  .jobs-filter {
+    grid-template-columns: minmax(200px, 1fr) repeat(2, minmax(118px, 168px)) auto auto;
+  }
+}
+
+@media (max-width: 1040px) {
+  .jobs-tabs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .jf-count {
+    grid-column: 1 / -1;
+    padding-left: 2px;
+  }
+
+  .jt-flag {
+    display: none;
+  }
+
+  .jobs-work {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* 两栏并为一栏之后，分栏竖线无所分隔，只会孤立地挂在列表右缘 */
+  .jobs-list {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  .jobs-list {
+    position: static;
+  }
+
+  .jl-scroll {
+    max-height: 400px;
+    min-height: 0;
+  }
+
+  .js-main {
+    flex-direction: column;
+  }
+
+  .js-act {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .jobs-wrap {
+    padding-top: 18px;
+    padding-bottom: 30px;
+  }
+
+  .jobs-filter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .jf-search {
+    grid-column: 1 / -1;
+  }
+
+  .jobs-filter .btn {
+    justify-self: start;
+  }
+
+  .js-grid,
+  .tr-grid,
+  .dr-mix {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .js-title h2 {
+    font-size: var(--fs-3xl);
+  }
+
+  .five,
+  .edit-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .five-item:nth-child(2n) {
+    border-left: none;
+  }
+
+  .js-act .btn {
+    flex: 1;
+  }
+
+  .ch-ver {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .annuli {
+    min-height: 0;
+  }
+}
+
+/* ---------------- 重复判定与合并 ----------------
+   取代原先的岗位涌现相图。一组一行，两个名字之间只放一个动词，
+   相似度与源文件里的 code 对照放在第二行 —— 那是可以拿去核对的东西。 */
+.merge-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.merge-item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 10px 13px;
+  background: var(--surface-2);
+}
+
+.merge-item.on {
+  border-color: var(--ink-3);
+  background: var(--panel);
+}
+
+.merge-pair {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.merge-from {
+  font-size: var(--fs-md);
+  color: var(--ink-2);
+  text-decoration: line-through;
+  text-decoration-color: var(--ink-3);
+}
+
+.merge-arrow {
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+
+.merge-to {
+  font-size: var(--fs-lg);
+  font-weight: 650;
+  color: var(--ink);
+}
+
+.merge-meta {
+  display: flex;
+  gap: 18px;
+  margin-top: 4px;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 年轮上方的口径条：贴着图放，不能只写在页脚 */
+.ann-provenance {
+  margin-bottom: 10px;
+}
+
+/* 岗位定义之后的边界判据。缩一档字号、压一条左边线：
+   它是定义的补充说明，不是与定义并列的另一段。 */
+.js-bd {
+  margin: 6px 0 0;
+  padding-left: 10px;
+  border-left: 2px solid var(--line-strong);
+  font-size: var(--fs-xs);
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.js-bd em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink-3);
+  margin-right: 6px;
+}
+
+/* ==================== 岗位定义五要素（重排版） ====================
+   由两列平铺改为"一栏定义 + 三段读数"：名称与定义单占一栏，其余四项进网格，
+   带量的三项各画一根贴底细条，四项因而在同一把尺子下可比。 */
+.five {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.five-head {
+  padding: 16px 18px 15px;
+  background: linear-gradient(180deg, var(--surface-1, #f8fafc) 0%, var(--panel) 100%);
+  border-bottom: 1px solid var(--line);
+}
+
+.five-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.five-cell {
+  padding: 14px 18px 16px;
+  min-width: 0;
+  border-top: 1px solid var(--line);
+}
+
+.five-cell:first-child {
+  border-top: none;
+}
+
+.five-cell:nth-child(2n) {
+  border-left: 1px solid var(--line);
+}
+
+.five-cell.wide {
+  grid-column: 1 / -1;
+  border-left: none;
+}
+
+/* 分项标签右侧的计数：它是这一项列了几条的读数，取弱文字色与常规字重 */
+.five-n {
+  margin-left: 8px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-3);
+  font-size: var(--fs-sm);
+}
+
+.five-none {
+  font-size: var(--fs-sm);
+  line-height: 1.8;
+  color: var(--ink-3);
+}
+
+.dfr-list {
+  list-style: none;
+  display: grid;
+  gap: 7px;
+}
+
+.dfr-list.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+}
+
+.dfr {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 92px auto;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-sm);
+}
+
+.dfr-n {
+  color: var(--ink-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dfr-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.dfr-fill {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.dfr-fill.tone-skill {
+  background: var(--lay-skill);
+}
+
+.dfr-fill.tone-sp {
+  background: var(--src-news);
+}
+
+.dfr-fill.tone-news {
+  background: var(--accent);
+}
+
+.dfr-v {
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (max-width: 1080px) {
+  .five-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .five-duty {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .five-cell:nth-child(2n) {
+    border-left: none;
+  }
+
+  .dfr-list.two {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* 标题行里的一级归属。与岗位名同行，取轻底浅字，与状态标签在形制上分开：
+   前者是归属，后者是本期状态，两者读法不同 */
+.js-cat {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--ink-2);
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+}
+
+/* ==================== 下一季度前瞻 ====================
+   两列并排：一列上调、一列下调。行内四段 —— 能力名、信号量、上季到下季的份额、
+   序列的历史季度数。信号量按百分点写到三位小数：这一批数值在千分之一量级，
+   写作百分比整数时整列全是 0.0。 */
+/* 两栏之前的一句话：这两个数怎么来的，读者不必点开问号也应当读得到 */
+.fcw-lead {
+  font-size: var(--fs-sm);
+  line-height: 1.85;
+  color: var(--ink-2);
+  margin-bottom: 12px;
+}
+
+.fcw {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.fcw-hd {
+  margin-bottom: 9px;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.fcw-hd.up {
+  color: var(--src-paper-ink);
+}
+
+.fcw-hd.down {
+  color: var(--ink-3);
+}
+
+.fcr {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  align-items: baseline;
+  gap: 10px;
+  font-size: var(--fs-sm);
+}
+
+.fcr-n {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fcr-d {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.fcr-d em {
+  margin-left: 3px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+.fcr-d.up {
+  color: var(--src-paper-ink);
+}
+
+.fcr-d.down {
+  color: var(--ink-2);
+}
+
+.fcr-v,
+.fcr-h {
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.fcw-cap {
+  margin-top: 12px;
+  font-size: var(--fs-sm);
+  line-height: 1.75;
+  color: var(--ink-3);
+}
+
+@media (max-width: 900px) {
+  .fcw {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

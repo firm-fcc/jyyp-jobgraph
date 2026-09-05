@@ -1,0 +1,254 @@
+{
+  "version": "stage2b2_t_ai_13_hallucination_qc_curated_v1",
+  "team_skill_id": "T-AI-13",
+  "team_skill_name": "AI幻觉校验与质量控制",
+  "scope": "覆盖幻觉类型的辨识、可核查断言的抽取与溯源、自动核验方法的运用、质量控制流程与抽检的建立，以及残余风险的披露与处置核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "HAL-01",
+      "name_zh": "幻觉类型辨识与判据",
+      "type": "CORE",
+      "definition": "区分事实性错误、来源虚构、指令偏离与内部矛盾几类失效，并为每类写出判据。",
+      "prerequisites": [],
+      "learning_outcome": "能够按判据把失效样例归入幻觉类型，并使不同判定者的归类一致。",
+      "evidence_task": "就一批真实输出逐条归类失效类型，写明判据并给出归类一致性的实测结果。",
+      "validation_criteria": [
+        "每类判据可独立判定",
+        "归类一致性有实测数据"
+      ],
+      "source_refs": [
+        "hallucination_survey",
+        "truthfulqa"
+      ]
+    },
+    {
+      "subskill_id": "HAL-02",
+      "name_zh": "可核查断言抽取与溯源",
+      "type": "CORE",
+      "definition": "从输出中切出可核查的最小断言单元，并把每条断言指向具体来源位置。",
+      "prerequisites": [
+        "HAL-01"
+      ],
+      "learning_outcome": "能够把输出拆成可核查的断言并逐条溯源，指明无源断言。",
+      "evidence_task": "就一批输出完成断言切分与溯源，逐条给出来源位置或标注为无源。",
+      "validation_criteria": [
+        "断言切分粒度一致",
+        "无源断言被明确标出"
+      ],
+      "source_refs": [
+        "factscore",
+        "rag_original"
+      ]
+    },
+    {
+      "subskill_id": "HAL-03",
+      "name_zh": "自动核验方法运用",
+      "type": "CORE",
+      "definition": "运用一致性采样、检索比对与专项评测集对输出实施自动核验，并标定其误判率。",
+      "prerequisites": [
+        "HAL-02"
+      ],
+      "learning_outcome": "能够运行自动核验并给出其与人工判定的一致程度。",
+      "evidence_task": "就一批样本同时执行自动核验与人工判定，给出一致率、误判样例与适用边界。",
+      "validation_criteria": [
+        "自动与人工在同一批样本上比较",
+        "误判样例有具体记录"
+      ],
+      "source_refs": [
+        "selfcheckgpt",
+        "ragas"
+      ]
+    },
+    {
+      "subskill_id": "HAL-04",
+      "name_zh": "质量控制流程与抽检",
+      "type": "CORE",
+      "definition": "把核验措施编入产出流程，确定抽检比例、放行条件与不合格件的处置。",
+      "prerequisites": [
+        "HAL-03"
+      ],
+      "learning_outcome": "能够运行含抽检与放行判定的质量控制流程，并给出过程数据。",
+      "evidence_task": "就一条真实产出流程实施抽检与放行判定，保留一个周期的抽检记录与不合格处置记录。",
+      "validation_criteria": [
+        "抽检比例与放行条件事先确定",
+        "不合格件的处置全程可追溯"
+      ],
+      "source_refs": [
+        "iso_iec_25010",
+        "iso_iec_ieee_29119"
+      ]
+    },
+    {
+      "subskill_id": "HAL-05",
+      "name_zh": "残余风险披露与处置",
+      "type": "CORE",
+      "definition": "对核验后仍不可消除的风险给出量化描述，并在交付物中完成披露与使用限制说明。",
+      "prerequisites": [
+        "HAL-04"
+      ],
+      "learning_outcome": "能够给出残余风险的量化描述，并在交付物中落实使用限制。",
+      "evidence_task": "就一次交付输出残余风险说明，含未覆盖场景、已知误判率与使用限制。",
+      "validation_criteria": [
+        "残余风险有量化读数",
+        "使用限制写明具体场景"
+      ],
+      "source_refs": [
+        "nist_ai_rmf",
+        "iso_iec_25010"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "HAL-VERIFY-01",
+    "objective": "验证当前AI幻觉校验与质量控制的能力证据。",
+    "task_description": "就一批真实输出完成失效归类、断言溯源与自动核验，保留判定记录与一致性数据。",
+    "validation_criteria": [
+      "失效归类的判据可独立判定",
+      "断言溯源逐条可核",
+      "自动核验与人工判定在同一批样本上比较"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "HAL-CAPSTONE-01",
+    "objective": "建立一条判据明确、核验可标定、残余风险有披露的质量控制流程。",
+    "task_description": "就一条真实产出流程确定幻觉判据，实施断言溯源与自动核验，运行抽检与放行判定，最后完成残余风险披露。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "判据与抽检规则事先确定",
+      "自动核验的误判率有实测数据",
+      "不合格件的处置可追溯",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "factscore",
+      "title": "FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation",
+      "authors_or_org": "Min et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": "EMNLP",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HAL-02"
+      ]
+    },
+    {
+      "source_id": "hallucination_survey",
+      "title": "Survey of Hallucination in Natural Language Generation",
+      "authors_or_org": "Ji et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": "ACM Computing Surveys",
+      "version": null,
+      "doi": "10.1145/3571730",
+      "url": null,
+      "supports": [
+        "HAL-01"
+      ]
+    },
+    {
+      "source_id": "iso_iec_25010",
+      "title": "ISO/IEC 25010 Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model",
+      "authors_or_org": "ISO/IEC",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HAL-04",
+        "HAL-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_29119",
+      "title": "ISO/IEC/IEEE 29119 Software and systems engineering — Software testing",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HAL-04"
+      ]
+    },
+    {
+      "source_id": "nist_ai_rmf",
+      "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "framework",
+      "year": null,
+      "venue": null,
+      "version": "1.0",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HAL-05"
+      ]
+    },
+    {
+      "source_id": "rag_original",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "authors_or_org": "Lewis et al.",
+      "source_type": "paper",
+      "year": 2020,
+      "venue": "NeurIPS",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HAL-02"
+      ]
+    },
+    {
+      "source_id": "ragas",
+      "title": "RAGAS: Automated Evaluation of Retrieval Augmented Generation",
+      "authors_or_org": "Es et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HAL-03"
+      ]
+    },
+    {
+      "source_id": "selfcheckgpt",
+      "title": "SelfCheckGPT: Zero-Resource Black-Box Hallucination Detection for Generative Large Language Models",
+      "authors_or_org": "Manakul, Liusie, Gales",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": "EMNLP",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HAL-03"
+      ]
+    },
+    {
+      "source_id": "truthfulqa",
+      "title": "TruthfulQA: Measuring How Models Mimic Human Falsehoods",
+      "authors_or_org": "Lin, Hilton, Evans",
+      "source_type": "paper",
+      "year": 2022,
+      "venue": "ACL",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "HAL-01"
+      ]
+    }
+  ]
+}

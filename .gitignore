@@ -1,0 +1,45 @@
+node_modules/
+dist/
+.wrangler/
+.dev.vars
+.env
+.env.*
+# 样例不含任何真实取值，需入库供他人复制成 .env.local
+!.env.example
+*.local
+*.log
+.DS_Store
+Thumbs.db
+.claude/
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.coverage.*
+coverage_html/
+
+# 前端测试的覆盖率报告（可由 npm run test:coverage 重新生成）
+frontend/tests/coverage/
+
+# 图谱构建管线
+# 原始数据集与运行产物（体量以 GB 计，由 settings.yaml 配置路径）
+pipeline/data/
+pipeline/codes/*/output/
+pipeline/codes/extractor/cache/
+pipeline/codes/api-key.txt
+# 体系构建的断点与日志（可重新生成；体系文件本身入库）
+pipeline/classify/*/builder_log.*
+pipeline/classify/*/*_checkpoint.json
+pipeline/classify/backup/
+# 三源增量层的信号数据（由管线按窗口生成，单文件以十兆计）
+pipeline/classify/DeltaG/
+# 单元测试的中间数据（报告本身入库）
+pipeline/unit-tests/.coverage*
+pipeline/unit-tests/.test-results.xml
+pipeline/unit-tests/.live-observations.json
+# 数据迁移包
+graph_data_bundle_*.zip
+graph_data_bundle_*.sha256

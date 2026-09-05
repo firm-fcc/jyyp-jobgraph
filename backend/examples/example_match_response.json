@@ -1,0 +1,555 @@
+{
+  "schema_version": "matching_pipeline_output_v1",
+  "match_result": {
+    "schema_version": "match_result_v1",
+    "candidate_id": "demo_candidate",
+    "job_id": "133663124",
+    "job_title": "算法工程师",
+    "match_score": 14.29,
+    "decision": "NOT_CALIBRATED",
+    "decision_threshold": null,
+    "summary": {
+      "required_skills": 7,
+      "satisfied": 1,
+      "level_gap": 0,
+      "evidence_insufficient": 0,
+      "missing": 6
+    },
+    "metrics": {
+      "verified_fit": 0.142857,
+      "skill_coverage": 0.142857,
+      "level_gap_rate": 0.0,
+      "uncertainty_rate": 0.0,
+      "missing_rate": 0.857143
+    },
+    "skills": [
+      {
+        "team_skill_id": "T-AI-01",
+        "team_skill_name": "机器学习与深度学习",
+        "required_level": "P3",
+        "candidate_level": "P3",
+        "gap_type": "SATISFIED",
+        "path_mode": "NONE",
+        "requirement_type": "core",
+        "requirement_evidence": [
+          "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-AI-01"
+        ],
+        "candidate_evidence": [
+          {
+            "evidence_ref": "demo_project:0:22",
+            "text": "独立训练并优化深度学习模型，完成部署验证。",
+            "source_id": "demo_project",
+            "start": 0,
+            "end": 22
+          }
+        ],
+        "explanation": "Observed evidence-supported proficiency meets the stated requirement."
+      },
+      {
+        "team_skill_id": "T-AI-03",
+        "team_skill_name": "计算机视觉与多模态感知",
+        "required_level": "P3",
+        "candidate_level": null,
+        "gap_type": "MISSING",
+        "path_mode": "LEARN",
+        "requirement_type": "core",
+        "requirement_evidence": [
+          "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-AI-03"
+        ],
+        "candidate_evidence": [],
+        "explanation": "No supported Team Skill evidence is present; explicit mentions do not satisfy support."
+      },
+      {
+        "team_skill_id": "T-DA-01",
+        "team_skill_name": "计算数学与数据建模",
+        "required_level": "P2",
+        "candidate_level": null,
+        "gap_type": "MISSING",
+        "path_mode": "LEARN",
+        "requirement_type": "core",
+        "requirement_evidence": [
+          "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-DA-01"
+        ],
+        "candidate_evidence": [],
+        "explanation": "No supported Team Skill evidence is present; explicit mentions do not satisfy support."
+      },
+      {
+        "team_skill_id": "T-DA-04",
+        "team_skill_name": "数据分析与可视化",
+        "required_level": null,
+        "candidate_level": null,
+        "gap_type": "MISSING",
+        "path_mode": "LEARN",
+        "requirement_type": "core",
+        "requirement_evidence": [
+          "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-DA-04"
+        ],
+        "candidate_evidence": [],
+        "explanation": "No supported Team Skill evidence is present; explicit mentions do not satisfy support."
+      },
+      {
+        "team_skill_id": "T-SW-01",
+        "team_skill_name": "通用程序设计与软件工程",
+        "required_level": "P3",
+        "candidate_level": null,
+        "gap_type": "MISSING",
+        "path_mode": "LEARN",
+        "requirement_type": "core",
+        "requirement_evidence": [
+          "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-SW-01"
+        ],
+        "candidate_evidence": [],
+        "explanation": "No supported Team Skill evidence is present; explicit mentions do not satisfy support."
+      },
+      {
+        "team_skill_id": "T-SW-03",
+        "team_skill_name": "软件架构与系统设计",
+        "required_level": null,
+        "candidate_level": null,
+        "gap_type": "MISSING",
+        "path_mode": "LEARN",
+        "requirement_type": "core",
+        "requirement_evidence": [
+          "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-SW-03"
+        ],
+        "candidate_evidence": [],
+        "explanation": "No supported Team Skill evidence is present; explicit mentions do not satisfy support."
+      },
+      {
+        "team_skill_id": "T-SW-04",
+        "team_skill_name": "系统测试与质量评估",
+        "required_level": null,
+        "candidate_level": null,
+        "gap_type": "MISSING",
+        "path_mode": "LEARN",
+        "requirement_type": "core",
+        "requirement_evidence": [
+          "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-SW-04"
+        ],
+        "candidate_evidence": [],
+        "explanation": "No supported Team Skill evidence is present; explicit mentions do not satisfy support."
+      }
+    ],
+    "semantics": {
+      "score": "verified_satisfied_job_requirements / eligible_job_requirements",
+      "score_direction": "job_requirement_coverage_asymmetric",
+      "extra_candidate_skills_penalized": false,
+      "cosine_used": false,
+      "jd_U": "LEVEL_UNSPECIFIED",
+      "jd_U_is_P1": false,
+      "candidate_U": "EVIDENCE_INSUFFICIENT_FOR_LEVEL_COMPARISON",
+      "partially_supported_counts_as_supported": false
+    }
+  },
+  "diagnostics": {
+    "candidate_bridge": {
+      "schema_version": "candidate_matching_bridge_v1",
+      "source_profile_schema": "candidate_skill_profile_v4_3_4",
+      "candidate_decisions_mutated": false,
+      "partial_support_counts_as_supported": false,
+      "auxiliary_skills_graded": false,
+      "supported_primary_skill_ids": [
+        "T-AI-01"
+      ],
+      "supported_without_proficiency": [],
+      "proficiency_levels_applied": [
+        "T-AI-01"
+      ],
+      "excluded_partially_supported": [],
+      "excluded_auxiliary_supported": [],
+      "excluded_unsupported": [],
+      "ignored_auxiliary_proficiency_levels": []
+    },
+    "target_bridge": {
+      "included_skill_ids": [
+        "T-AI-01",
+        "T-AI-03",
+        "T-DA-01",
+        "T-DA-04",
+        "T-SW-01",
+        "T-SW-03",
+        "T-SW-04"
+      ],
+      "excluded_skills": [
+        {
+          "team_skill_id": "F-1-01",
+          "reason": "AUXILIARY_NOT_GRADED"
+        }
+      ],
+      "requirement_type_policy": "single_jd_detected_skill_compatibility_default",
+      "requirement_type_semantics": "core means included in the current single-JD target set; it is not a must-have/preferred inference",
+      "raw_jd_evidence_available": false,
+      "requirement_evidence_policy": "STRUCTURED_JD_SUMMARY_PROVENANCE",
+      "market_trend_rank_policy": "NOT_APPLIED_V1_1",
+      "required_capability_policy": "NOT_INFERRED",
+      "required_subskill_policy": "NOT_INFERRED"
+    }
+  },
+  "target_job_profile": {
+    "schema_version": "target_job_profile_v1.1",
+    "source_type": "single_jd",
+    "window": "2022-10",
+    "job": {
+      "job_code": "AID-01",
+      "job_name": "算法工程师",
+      "jd_key": "2e48512d369aa7c71d7c75bc7f3b4104",
+      "jobid": "133663124",
+      "title": "算法工程师",
+      "std_job": "算法工程师",
+      "opentime": "2022-10-01",
+      "level": "中级(3-4年)",
+      "level_source": "text",
+      "techstack": "AI/ML 与数据智能"
+    },
+    "taxonomy": {
+      "provider_version": "0.5",
+      "canonical_version": "0.4",
+      "provider_taxonomy_sha256": "5387bb36b7bbb06258614b867354e57444347b2fce6c412c421c8c47fca948d1",
+      "canonical_taxonomy_sha256": "154c7c85607cec8eacc19ba0ddff57168a81fd2abe4e93d71399e1e6a76d0399",
+      "taxonomy_compatibility": {
+        "status": "PASS",
+        "identity_rule": "team_skill_id",
+        "semantic_fields_checked": [
+          "code",
+          "definition",
+          "skill_type"
+        ],
+        "display_name_difference_count": 20,
+        "display_name_differences": [
+          {
+            "team_skill_id": "F-1-01",
+            "canonical_name": "主动持续学习",
+            "provider_name": "终身学习与知识更新"
+          },
+          {
+            "team_skill_id": "F-2-01",
+            "canonical_name": "口头技术沟通",
+            "provider_name": "口头技术沟通与汇报"
+          },
+          {
+            "team_skill_id": "F-2-03",
+            "canonical_name": "团队协作协调",
+            "provider_name": "团队协作与协调"
+          },
+          {
+            "team_skill_id": "F-4-02",
+            "canonical_name": "严谨细致与职业诚信自律",
+            "provider_name": "严谨细致与诚信自律"
+          },
+          {
+            "team_skill_id": "F-5-01",
+            "canonical_name": "AI任务拆解",
+            "provider_name": "AI任务拆解与规划"
+          },
+          {
+            "team_skill_id": "F-5-02",
+            "canonical_name": "人机语义对齐",
+            "provider_name": "人机语义对齐与协同"
+          },
+          {
+            "team_skill_id": "T-AI-02",
+            "canonical_name": "自然语言处理",
+            "provider_name": "自然语言处理技术"
+          },
+          {
+            "team_skill_id": "T-AI-03",
+            "canonical_name": "计算机视觉与多模态感知",
+            "provider_name": "计算机视觉与多模态"
+          },
+          {
+            "team_skill_id": "T-AI-07",
+            "canonical_name": "RAG检索增强生成与向量数据库",
+            "provider_name": "RAG与向量数据库"
+          },
+          {
+            "team_skill_id": "T-AI-08",
+            "canonical_name": "AI智能体与多智能体编排",
+            "provider_name": "AI智能体构建与编排"
+          },
+          {
+            "team_skill_id": "T-AI-09",
+            "canonical_name": "生成式AI应用开发部署与工作流自动化",
+            "provider_name": "生成式AI应用开发"
+          },
+          {
+            "team_skill_id": "T-AI-11",
+            "canonical_name": "负责任AI与可解释AI",
+            "provider_name": "负责任AI与可解释性"
+          },
+          {
+            "team_skill_id": "T-AI-12",
+            "canonical_name": "AI安全技术",
+            "provider_name": "AI安全与风险防控"
+          },
+          {
+            "team_skill_id": "T-AI-13",
+            "canonical_name": "AI幻觉校验与质量控制",
+            "provider_name": "AI幻觉识别与校验"
+          },
+          {
+            "team_skill_id": "T-DA-03",
+            "canonical_name": "大数据处理与并行分布式计算",
+            "provider_name": "大数据与分布式计算"
+          },
+          {
+            "team_skill_id": "T-SW-01",
+            "canonical_name": "通用程序设计与软件工程",
+            "provider_name": "程序设计与软件工程"
+          },
+          {
+            "team_skill_id": "T-SYS-02",
+            "canonical_name": "计算机硬件与数字电路设计",
+            "provider_name": "计算机硬件与数字电路"
+          },
+          {
+            "team_skill_id": "T-SYS-04",
+            "canonical_name": "计算机网络与通信基础设施",
+            "provider_name": "计算机网络与通信技术"
+          },
+          {
+            "team_skill_id": "T-SYS-05",
+            "canonical_name": "网络安全与数据隐私管控",
+            "provider_name": "网络安全与数据隐私"
+          },
+          {
+            "team_skill_id": "T-SYS-06",
+            "canonical_name": "云平台容器与分布式系统",
+            "provider_name": "云原生与分布式系统"
+          }
+        ]
+      },
+      "identity_rule": "team_skill_id"
+    },
+    "source_provenance": {
+      "jd_summary_sha256": "972a76bfd2073f0c005aea4090151bd5ca9836035a060bf48892991e7009754e",
+      "jobs_sha256": "27f5c27e90446b7986e31df8f9f5028b6a935750dabd187da6140424c4e77524",
+      "job_skill_sha256": "80100ba89440f4835b54b1e7a0e91193ab9453a0b529dbd1549dde90982f34b7",
+      "graph_layer": "effective",
+      "raw_jd_evidence_available": false
+    },
+    "semantics": {
+      "jd_U": "LEVEL_UNSPECIFIED",
+      "jd_U_is_P1": false,
+      "market_weight_is_probability": false,
+      "market_weight_role": "advisory_only_not_ranked_in_v1.1"
+    },
+    "skills": [
+      {
+        "team_skill_id": "F-1-01",
+        "team_skill_name": "主动持续学习",
+        "provider_skill_name": "终身学习与知识更新",
+        "skill_type": "soft",
+        "is_primary": false,
+        "requirement_present": true,
+        "required_level_raw": null,
+        "required_level": null,
+        "requirement_status": "AUXILIARY_NOT_GRADED",
+        "learning_path_target_eligible": false,
+        "level_comparison_eligible": false,
+        "requirement_evidence_kind": "STRUCTURED_JD_SUMMARY_PROVENANCE",
+        "requirement_evidence_ref": "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:F-1-01",
+        "market_signal": {
+          "graph_layer": "effective",
+          "is_probability": false,
+          "origin": "base",
+          "base_weight": 0.3324,
+          "delta_weight": 0.1914,
+          "effective_weight": 0.5238,
+          "gap": 0.6379,
+          "weight": 0.3324,
+          "lambda": 0.3
+        }
+      },
+      {
+        "team_skill_id": "T-AI-01",
+        "team_skill_name": "机器学习与深度学习",
+        "provider_skill_name": "机器学习与深度学习",
+        "skill_type": "hard",
+        "is_primary": true,
+        "requirement_present": true,
+        "required_level_raw": "P3",
+        "required_level": "P3",
+        "requirement_status": "EXPLICIT_LEVEL",
+        "learning_path_target_eligible": true,
+        "level_comparison_eligible": true,
+        "requirement_evidence_kind": "STRUCTURED_JD_SUMMARY_PROVENANCE",
+        "requirement_evidence_ref": "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-AI-01",
+        "market_signal": {
+          "graph_layer": "effective",
+          "is_probability": false,
+          "origin": "base",
+          "base_weight": 0.7169,
+          "delta_weight": 0.2839,
+          "effective_weight": 1.0008,
+          "gap": 0.9463,
+          "weight": 0.7169,
+          "lambda": 0.3
+        }
+      },
+      {
+        "team_skill_id": "T-AI-03",
+        "team_skill_name": "计算机视觉与多模态感知",
+        "provider_skill_name": "计算机视觉与多模态",
+        "skill_type": "hard",
+        "is_primary": true,
+        "requirement_present": true,
+        "required_level_raw": "P3",
+        "required_level": "P3",
+        "requirement_status": "EXPLICIT_LEVEL",
+        "learning_path_target_eligible": true,
+        "level_comparison_eligible": true,
+        "requirement_evidence_kind": "STRUCTURED_JD_SUMMARY_PROVENANCE",
+        "requirement_evidence_ref": "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-AI-03",
+        "market_signal": {
+          "graph_layer": "effective",
+          "is_probability": false,
+          "origin": "base",
+          "base_weight": 0.4769,
+          "delta_weight": 0.2832,
+          "effective_weight": 0.7601,
+          "gap": 0.944,
+          "weight": 0.4769,
+          "lambda": 0.3
+        }
+      },
+      {
+        "team_skill_id": "T-DA-01",
+        "team_skill_name": "计算数学与数据建模",
+        "provider_skill_name": "计算数学与数据建模",
+        "skill_type": "hard",
+        "is_primary": true,
+        "requirement_present": true,
+        "required_level_raw": "P2",
+        "required_level": "P2",
+        "requirement_status": "EXPLICIT_LEVEL",
+        "learning_path_target_eligible": true,
+        "level_comparison_eligible": true,
+        "requirement_evidence_kind": "STRUCTURED_JD_SUMMARY_PROVENANCE",
+        "requirement_evidence_ref": "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-DA-01",
+        "market_signal": {
+          "graph_layer": "effective",
+          "is_probability": false,
+          "origin": "base",
+          "base_weight": 0.6318,
+          "delta_weight": 0.2804,
+          "effective_weight": 0.9122,
+          "gap": 0.9348,
+          "weight": 0.6318,
+          "lambda": 0.3
+        }
+      },
+      {
+        "team_skill_id": "T-DA-04",
+        "team_skill_name": "数据分析与可视化",
+        "provider_skill_name": "数据分析与可视化",
+        "skill_type": "hard",
+        "is_primary": true,
+        "requirement_present": true,
+        "required_level_raw": "U",
+        "required_level": null,
+        "requirement_status": "LEVEL_UNSPECIFIED",
+        "learning_path_target_eligible": true,
+        "level_comparison_eligible": false,
+        "requirement_evidence_kind": "STRUCTURED_JD_SUMMARY_PROVENANCE",
+        "requirement_evidence_ref": "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-DA-04",
+        "market_signal": {
+          "graph_layer": "effective",
+          "is_probability": false,
+          "origin": "base",
+          "base_weight": 0.2353,
+          "delta_weight": 0.2569,
+          "effective_weight": 0.4922,
+          "gap": 0.8562,
+          "weight": 0.2353,
+          "lambda": 0.3
+        }
+      },
+      {
+        "team_skill_id": "T-SW-01",
+        "team_skill_name": "通用程序设计与软件工程",
+        "provider_skill_name": "程序设计与软件工程",
+        "skill_type": "hard",
+        "is_primary": true,
+        "requirement_present": true,
+        "required_level_raw": "P3",
+        "required_level": "P3",
+        "requirement_status": "EXPLICIT_LEVEL",
+        "learning_path_target_eligible": true,
+        "level_comparison_eligible": true,
+        "requirement_evidence_kind": "STRUCTURED_JD_SUMMARY_PROVENANCE",
+        "requirement_evidence_ref": "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-SW-01",
+        "market_signal": {
+          "graph_layer": "effective",
+          "is_probability": false,
+          "origin": "base",
+          "base_weight": 0.8771,
+          "delta_weight": 0.118,
+          "effective_weight": 0.9951,
+          "gap": 0.3934,
+          "weight": 0.8771,
+          "lambda": 0.3
+        }
+      },
+      {
+        "team_skill_id": "T-SW-03",
+        "team_skill_name": "软件架构与系统设计",
+        "provider_skill_name": "软件架构与系统设计",
+        "skill_type": "hard",
+        "is_primary": true,
+        "requirement_present": true,
+        "required_level_raw": "U",
+        "required_level": null,
+        "requirement_status": "LEVEL_UNSPECIFIED",
+        "learning_path_target_eligible": true,
+        "level_comparison_eligible": false,
+        "requirement_evidence_kind": "STRUCTURED_JD_SUMMARY_PROVENANCE",
+        "requirement_evidence_ref": "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-SW-03",
+        "market_signal": {
+          "graph_layer": "effective",
+          "is_probability": false,
+          "origin": "base",
+          "base_weight": 0.219,
+          "delta_weight": 0.2163,
+          "effective_weight": 0.4353,
+          "gap": 0.7209,
+          "weight": 0.219,
+          "lambda": 0.3
+        }
+      },
+      {
+        "team_skill_id": "T-SW-04",
+        "team_skill_name": "系统测试与质量评估",
+        "provider_skill_name": "系统测试与质量评估",
+        "skill_type": "hard",
+        "is_primary": true,
+        "requirement_present": true,
+        "required_level_raw": "U",
+        "required_level": null,
+        "requirement_status": "LEVEL_UNSPECIFIED",
+        "learning_path_target_eligible": true,
+        "level_comparison_eligible": false,
+        "requirement_evidence_kind": "STRUCTURED_JD_SUMMARY_PROVENANCE",
+        "requirement_evidence_ref": "structured_jd_summary:2022-10:2e48512d369aa7c71d7c75bc7f3b4104:skill_vec_01:T-SW-04",
+        "market_signal": {
+          "graph_layer": "effective",
+          "is_probability": false,
+          "origin": "base",
+          "base_weight": 0.2468,
+          "delta_weight": 0.2075,
+          "effective_weight": 0.4543,
+          "gap": 0.6915,
+          "weight": 0.2468,
+          "lambda": 0.3
+        }
+      }
+    ],
+    "warnings": []
+  },
+  "proficiency": {
+    "source": "provided",
+    "levels": {
+      "T-AI-01": "P3"
+    },
+    "details": []
+  }
+}

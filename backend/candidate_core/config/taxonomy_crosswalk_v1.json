@@ -1,0 +1,427 @@
+{
+  "crosswalk_version": "1.0-draft",
+  "legacy_taxonomy_version": "2.0",
+  "team_skill_version": "0.4",
+  "status": "provisional_regression_crosswalk",
+  "automatic_gold_migration_allowed": false,
+  "policy": "Crosswalk is for retrieval, regression routing and coverage analysis only. It must not convert legacy Gold into V3 Gold without evidence re-verification against the Team Skill definition.",
+  "mappings": {
+    "tool.fastapi": {
+      "legacy_name": "FastAPI",
+      "legacy_node_type": "tool",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [],
+      "relation": "evidence_hint_only",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Framework use can retrieve software-development candidates but does not by itself prove the broad Team Skill."
+    },
+    "tool.mysql": {
+      "legacy_name": "MySQL",
+      "legacy_node_type": "tool",
+      "primary_team_skill_id": "T-DA-02",
+      "secondary_team_skill_ids": [],
+      "relation": "evidence_hint_only",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "MySQL use is evidence relevant to database/data-management, not automatic proof of the broad node."
+    },
+    "tool.redis": {
+      "legacy_name": "Redis",
+      "legacy_node_type": "tool",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [
+        "T-DA-02"
+      ],
+      "relation": "evidence_hint_only",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Redis cache use is context-dependent; it may support software implementation and sometimes data-management."
+    },
+    "tool.docker": {
+      "legacy_name": "Docker",
+      "legacy_node_type": "tool",
+      "primary_team_skill_id": "T-SYS-06",
+      "secondary_team_skill_ids": [
+        "T-SYS-07"
+      ],
+      "relation": "evidence_hint_only",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Docker use retrieves container/deployment candidates but does not prove orchestration or operations competence."
+    },
+    "knowledge.restful_api": {
+      "legacy_name": "RESTful API知识",
+      "legacy_node_type": "knowledge",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [],
+      "relation": "related_to",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "REST knowledge is related to software engineering but is not equivalent to demonstrated implementation ability."
+    },
+    "knowledge.async_task": {
+      "legacy_name": "异步任务知识",
+      "legacy_node_type": "knowledge",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [
+        "T-SYS-06"
+      ],
+      "relation": "related_to",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Async-task knowledge is implementation/system knowledge; requires behavior evidence for Team Skill support."
+    },
+    "activity.api_implementation": {
+      "legacy_name": "接口实现",
+      "legacy_node_type": "activity",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [],
+      "relation": "evidence_hint_only",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Direct API implementation is a strong behavior cue for software engineering."
+    },
+    "activity.data_storage": {
+      "legacy_name": "关系型数据存储行为",
+      "legacy_node_type": "activity",
+      "primary_team_skill_id": "T-DA-02",
+      "secondary_team_skill_ids": [],
+      "relation": "evidence_hint_only",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Relational storage behavior is directly relevant to database/data-management."
+    },
+    "activity.task_status_polling": {
+      "legacy_name": "任务状态轮询行为",
+      "legacy_node_type": "activity",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [],
+      "relation": "evidence_hint_only",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Polling behavior is a specific software implementation behavior."
+    },
+    "activity.status_query": {
+      "legacy_name": "状态查询",
+      "legacy_node_type": "activity",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [],
+      "relation": "evidence_hint_only",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Status-query behavior is a specific software implementation behavior."
+    },
+    "activity.log_recording": {
+      "legacy_name": "日志记录行为",
+      "legacy_node_type": "activity",
+      "primary_team_skill_id": "T-SYS-07",
+      "secondary_team_skill_ids": [
+        "T-SW-01"
+      ],
+      "relation": "evidence_hint_only",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Logging may be an operations or software-engineering behavior depending on context."
+    },
+    "activity.log_analysis": {
+      "legacy_name": "日志分析行为",
+      "legacy_node_type": "activity",
+      "primary_team_skill_id": "T-SYS-07",
+      "secondary_team_skill_ids": [
+        "T-SW-04"
+      ],
+      "relation": "evidence_hint_only",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Log analysis is primarily relevant to operations/troubleshooting and may support quality evaluation."
+    },
+    "activity.file_validation": {
+      "legacy_name": "文件校验",
+      "legacy_node_type": "activity",
+      "primary_team_skill_id": "T-SW-04",
+      "secondary_team_skill_ids": [
+        "T-SW-01"
+      ],
+      "relation": "evidence_hint_only",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "File validation is a quality/validation behavior but can also be ordinary implementation."
+    },
+    "activity.exception_handling": {
+      "legacy_name": "异常处理",
+      "legacy_node_type": "activity",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [
+        "T-SW-04"
+      ],
+      "relation": "evidence_hint_only",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Exception handling is software implementation with possible quality implications."
+    },
+    "activity.container_packaging": {
+      "legacy_name": "容器封装",
+      "legacy_node_type": "activity",
+      "primary_team_skill_id": "T-SYS-06",
+      "secondary_team_skill_ids": [
+        "T-SYS-07"
+      ],
+      "relation": "evidence_hint_only",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Container packaging is directly relevant to container platforms; deployment support depends on context."
+    },
+    "activity.deployment_testing": {
+      "legacy_name": "部署测试",
+      "legacy_node_type": "activity",
+      "primary_team_skill_id": "T-SYS-07",
+      "secondary_team_skill_ids": [
+        "T-SW-04"
+      ],
+      "relation": "evidence_hint_only",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Deployment testing touches both delivery/operations and system quality."
+    },
+    "activity.data_validation": {
+      "legacy_name": "数据验证",
+      "legacy_node_type": "activity",
+      "primary_team_skill_id": "T-SW-04",
+      "secondary_team_skill_ids": [
+        "T-DA-02"
+      ],
+      "relation": "evidence_hint_only",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Data validation is a quality-control behavior and may relate to data management."
+    },
+    "activity.retry_recovery": {
+      "legacy_name": "失败重试与恢复",
+      "legacy_node_type": "activity",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [
+        "T-SYS-07"
+      ],
+      "relation": "evidence_hint_only",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Retry/recovery is implementation reliability behavior; operations relevance depends on scope."
+    },
+    "ability.backend_api_development": {
+      "legacy_name": "后端API开发",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [],
+      "relation": "narrower_than",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Specific backend API development is narrower than the broad software-engineering Team Skill."
+    },
+    "ability.restful_api_development": {
+      "legacy_name": "RESTful API开发",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [],
+      "relation": "narrower_than",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "RESTful API development is narrower than the broad software-engineering Team Skill."
+    },
+    "ability.status_polling_interface_design": {
+      "legacy_name": "状态轮询接口实现",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [],
+      "relation": "narrower_than",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "A specific interface-design capability under software engineering."
+    },
+    "ability.task_status_polling": {
+      "legacy_name": "任务状态轮询",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [],
+      "relation": "narrower_than",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Specific implementation capability; broad Team Skill still requires direct evidence verification."
+    },
+    "ability.async_task_design": {
+      "legacy_name": "异步任务设计",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [
+        "T-SYS-06"
+      ],
+      "relation": "narrower_than",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Can be software or distributed-system design depending on implementation context."
+    },
+    "ability.log_recording": {
+      "legacy_name": "日志记录",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SYS-07",
+      "secondary_team_skill_ids": [
+        "T-SW-01"
+      ],
+      "relation": "narrower_than",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Systematic logging is narrower than operations; context may instead indicate software implementation."
+    },
+    "ability.log_analysis_troubleshooting": {
+      "legacy_name": "日志分析与排查",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SYS-07",
+      "secondary_team_skill_ids": [
+        "T-SW-04"
+      ],
+      "relation": "narrower_than",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Troubleshooting via logs is a specific operations/quality capability."
+    },
+    "ability.container_deployment_testing": {
+      "legacy_name": "容器化部署与测试",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SYS-07",
+      "secondary_team_skill_ids": [
+        "T-SYS-06",
+        "T-SW-04"
+      ],
+      "relation": "narrower_than",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Composite capability spans deployment, containers and testing; V3 must verify components separately."
+    },
+    "ability.data_validation_fault_tolerance": {
+      "legacy_name": "数据验证与容错机制",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SW-04",
+      "secondary_team_skill_ids": [
+        "T-SW-01",
+        "T-DA-02"
+      ],
+      "relation": "narrower_than",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Composite reliability capability; do not auto-collapse to one broad Team Skill."
+    },
+    "ability.file_validation_exception_handling": {
+      "legacy_name": "文件校验与异常处理",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SW-04",
+      "secondary_team_skill_ids": [
+        "T-SW-01"
+      ],
+      "relation": "narrower_than",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Specific validation/fault-handling capability; broad support requires evidence re-check."
+    },
+    "ability.mysql_data_storage": {
+      "legacy_name": "MySQL数据存储",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-DA-02",
+      "secondary_team_skill_ids": [],
+      "relation": "narrower_than",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Specific MySQL storage capability is narrower than database/data-management."
+    },
+    "ability.relational_database_operations": {
+      "legacy_name": "关系型数据库读写与事务操作",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-DA-02",
+      "secondary_team_skill_ids": [],
+      "relation": "narrower_than",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Relational DB operations are narrower than the broad database/data-management Team Skill."
+    },
+    "ability.cache_application": {
+      "legacy_name": "缓存应用",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [
+        "T-DA-02"
+      ],
+      "relation": "narrower_than",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Cache application is usually an implementation capability; data-management linkage is context-dependent."
+    },
+    "ability.document_parsing_processing": {
+      "legacy_name": "文档解析与处理",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [
+        "T-AI-02"
+      ],
+      "relation": "narrower_than",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Generic document parsing is software engineering; NLP only when semantic/language processing is actually evidenced."
+    },
+    "ability.batch_script_development": {
+      "legacy_name": "批处理脚本开发",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SW-01",
+      "secondary_team_skill_ids": [],
+      "relation": "narrower_than",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Batch scripting is a specific software-development capability."
+    },
+    "ability.permission_validation": {
+      "legacy_name": "权限校验",
+      "legacy_node_type": "ability",
+      "primary_team_skill_id": "T-SYS-05",
+      "secondary_team_skill_ids": [
+        "T-SW-01"
+      ],
+      "relation": "narrower_than",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "Permission validation may support cybersecurity when security scope is explicit; otherwise ordinary software validation."
+    },
+    "high_level.system_architecture_design": {
+      "legacy_name": "系统架构设计",
+      "legacy_node_type": "high_level_ability",
+      "primary_team_skill_id": "T-SW-03",
+      "secondary_team_skill_ids": [
+        "T-SYS-06"
+      ],
+      "relation": "narrower_than",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "Strong architecture evidence maps naturally to software architecture/system design."
+    },
+    "high_level.database_management": {
+      "legacy_name": "数据库管理",
+      "legacy_node_type": "high_level_ability",
+      "primary_team_skill_id": "T-DA-02",
+      "secondary_team_skill_ids": [],
+      "relation": "narrower_than",
+      "confidence": "high",
+      "automatic_gold_migration": false,
+      "note": "High-level database management maps naturally to data management/databases."
+    },
+    "high_level.performance_optimization": {
+      "legacy_name": "性能优化",
+      "legacy_node_type": "high_level_ability",
+      "primary_team_skill_id": "T-SW-04",
+      "secondary_team_skill_ids": [
+        "T-SW-01",
+        "T-SYS-07"
+      ],
+      "relation": "related_to",
+      "confidence": "medium",
+      "automatic_gold_migration": false,
+      "note": "No single Team Skill is an exact equivalent; performance optimization can span quality, implementation and operations."
+    }
+  }
+}

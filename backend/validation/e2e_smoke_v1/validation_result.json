@@ -1,0 +1,30 @@
+{
+  "status": "FAIL",
+  "checks": {
+    "health_ready": true,
+    "jobs_schema": true,
+    "summary_schema": true,
+    "pdf_parser_pass": true
+  },
+  "endpoints": {
+    "health": {
+      "http_status": 200,
+      "reused": false
+    },
+    "jobs": {
+      "http_status": 200,
+      "reused": false
+    },
+    "job_summary": {
+      "http_status": 200,
+      "reused": false
+    },
+    "candidate": {
+      "http_status": 500,
+      "reused": false
+    }
+  },
+  "error_type": "RuntimeError",
+  "elapsed_seconds": 900.293,
+  "error_body_recorded": false
+}

@@ -1,0 +1,48 @@
+# 人岗匹配服务的常驻单元，放置于 /etc/systemd/system/jobgraph-api.service
+#
+# 启用：systemctl daemon-reload && systemctl enable --now jobgraph-api
+# 查看：systemctl status jobgraph-api / journalctl -u jobgraph-api -f
+
+[Unit]
+Description=JobGraph 人岗匹配服务（FastAPI）
+Documentation=file:///opt/jobgraph/backend/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=jobgraph
+Group=jobgraph
+
+# 后端以 Path(__file__).parent 定位 .env 与 job_data，工作目录须为 backend 根。
+WorkingDirectory=/opt/jobgraph/backend
+
+# 环境变量由 app.py 内的 load_dotenv 从同目录 .env 读取，此处不再重复注入，
+# 避免同一取值存在两处来源。抽取子进程经 sys.executable 派生，
+# 故必须以虚拟环境内的解释器启动，不能用系统 python。
+ExecStart=/opt/jobgraph/backend/.venv/bin/python -m uvicorn app:app \
+    --host 127.0.0.1 --port 8000 \
+    --proxy-headers --forwarded-allow-ips 127.0.0.1
+
+# 仅监听回环地址，公网入口一律经 Nginx，故无需在防火墙开放 8000。
+
+Restart=on-failure
+RestartSec=5s
+
+# 抽取阶段派生子进程，停止时须连同控制组一并回收，否则会留下孤儿解释器。
+KillMode=control-group
+TimeoutStopSec=30s
+
+# /usr 与 /boot 置为只读，其余保持可写：运行时需要写入 runtime/uploads
+# 与 runtime/outputs，解释器亦会写入 __pycache__。
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+NoNewPrivileges=true
+
+# 单次抽取的解释器常驻内存约二百兆，此上限用于防止异常情形拖垮整机，
+# 在 2 GB 机型上应下调至 1500M。
+MemoryMax=3G
+
+[Install]
+WantedBy=multi-user.target

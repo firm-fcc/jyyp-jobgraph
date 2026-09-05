@@ -1,0 +1,5963 @@
+{
+ "system_name": "信息技术岗位体系",
+ "version": "3.3",
+ "date": "2026-02-28",
+ "source": "51job funtype 体系 v1.1（jobs0806.json，255 节点）重构：类别/岗位两级职责分离、相近岗位合并、剔除低 IT 相关岗位；定义与关键词由 LLM 阅读数据集真实 JD 生成",
+ "meta": {
+  "n_categories": 9,
+  "n_jobs": 145,
+  "design": "一级类别为纯组织维度（不挂 funtypes、不进 prompt 标签/图节点）；二级岗位为唯一实体。岗位归类不依赖 funtype——由逐 JD 关键词词库+LLM 判定（keywords 即快路词库，引擎待建，模式同 classify_stacks.py）；funtypes 保留用于溯源与 JD 抽样",
+  "from_v1": {
+   "kept_merged": 200,
+   "excluded_non_it": 46,
+   "dropped_categories": 9,
+   "excluded_detail": {
+    "2904": "电气工程师/技术员",
+    "7107": "电气/电器工程师",
+    "A0L8": "电气工程师",
+    "2908": "自动控制工程师",
+    "2966": "PLC工程师",
+    "2965": "SMT工程师",
+    "2951": "电子工艺工程师",
+    "2911": "电池/电源开发",
+    "2918": "激光/光电子技术",
+    "2963": "机器人调试工程师",
+    "2969": "服务机器人应用技术员",
+    "2970": "智能硬件装调员",
+    "2971": "工业视觉系统运维员",
+    "7116": "新能源电机工程师",
+    "7115": "新能源电控工程师",
+    "7117": "汽车标定工程师",
+    "2125": "楼宇自动化",
+    "A0K5": "智能大厦/综合布线/安防/弱电",
+    "2925": "安防系统工程师",
+    "2914": "仪器/仪表/计量分析师",
+    "2958": "计量工程师",
+    "2913": "家用电器/数码产品研发",
+    "2906": "电声/音响工程师/技术员",
+    "2921": "变压器与磁电工程师",
+    "2920": "电子电气维修工程师",
+    "7917": "手机维修",
+    "7918": "电脑维修",
+    "7916": "网络维修",
+    "2808": "通信电源工程师",
+    "2818": "基站工程师",
+    "2804": "电信交换工程师",
+    "0630": "人力资源信息系统专员",
+    "0149": "技术文员/助理",
+    "2608": "项目执行/协调人员",
+    "2610": "项目助理",
+    "2704": "标准化工程师",
+    "6723": "半导体工艺工程师",
+    "6739": "半导体设备工程师",
+    "6740": "工艺整合工程师(PIE)",
+    "6707": "半导体技术（JD 样例定义检测为制造工艺域，随工艺域剔除）",
+    "7419": "美工/电商设计师",
+    "7406": "Flash设计师",
+    "7416": "多媒体设计",
+    "8400": "销售技术支持（空壳）",
+    "A0JW": "前端/移动开发（空壳）",
+    "2601": "首席CTO/CIO合并版（空壳）"
+   },
+   "dropped_category_detail": {
+    "2600": "技术管理（类别）",
+    "0100": "后端开发（类别）",
+    "2800": "通信技术开发与应用（类别）",
+    "7900": "运维/技术支持（类别）",
+    "7300": "人工智能（类别）",
+    "6700": "半导体/芯片（类别）",
+    "2900": "电子/电气/仪器仪表（类别）",
+    "7400": "互联网设计（类别）",
+    "7500": "数据（类别）"
+   }
+  },
+  "generation": {
+   "definition_model": "deepseek-v4-flash",
+   "samples_per_job": 4,
+   "def_cache": "codes/jd_annotate/output/jobs_def_cache.jsonl"
+  }
+ },
+ "categories": [
+  {
+   "code": "DEV",
+   "name_zh": "软件开发",
+   "name_en": "Software Development",
+   "description": "软件设计、编码与交付：后端/前端/移动/游戏/嵌入式等软件开发岗"
+  },
+  {
+   "code": "AID",
+   "name_zh": "人工智能与数据",
+   "name_en": "AI & Data",
+   "description": "算法研究与工程化、数据工程与分析"
+  },
+  {
+   "code": "QA",
+   "name_zh": "测试与质量",
+   "name_en": "Quality Assurance",
+   "description": "软件测试执行、测试开发与测试管理"
+  },
+  {
+   "code": "OPS",
+   "name_zh": "运维与IT支持",
+   "name_en": "Operations & IT Support",
+   "description": "系统运维、数据库管理、IT 支持与技术服务"
+  },
+  {
+   "code": "NET",
+   "name_zh": "网络与通信",
+   "name_en": "Network & Telecom",
+   "description": "网络工程与电信技术研发"
+  },
+  {
+   "code": "HW",
+   "name_zh": "硬件与半导体",
+   "name_en": "Hardware & Semiconductor",
+   "description": "硬件设计与芯片设计/验证（不含制造工艺与设备）"
+  },
+  {
+   "code": "SEC",
+   "name_zh": "安全",
+   "name_en": "Security",
+   "description": "网络安全、安全测试与密码/取证"
+  },
+  {
+   "code": "PD",
+   "name_zh": "产品与设计",
+   "name_en": "Product & Design",
+   "description": "互联网/IT 产品岗与体验设计岗"
+  },
+  {
+   "code": "MGT",
+   "name_zh": "技术管理",
+   "name_en": "Technology Management",
+   "description": "技术条线管理与技术项目管理"
+  }
+ ],
+ "detail": {
+  "DEV-01": {
+   "code": "DEV-01",
+   "category": "DEV",
+   "name_zh": "Java开发工程师",
+   "name_en": "Java Developer",
+   "definition": "负责基于Java技术栈的企业级应用设计与开发，涵盖需求分析、系统设计、编码实现及测试维护。核心工作涉及Spring生态（Spring Boot/Spring Cloud/MyBatis）、微服务架构、分布式中间件（Redis/MQ）及关系型数据库应用，产出高质量、可扩展的后端服务及技术文档。",
+   "keywords": [
+    "Java",
+    "J2EE",
+    "Spring Boot",
+    "Spring Cloud",
+    "MyBatis",
+    "SSM",
+    "Dubbo",
+    "微服务",
+    "Redis",
+    "MQ",
+    "消息队列",
+    "Restful API",
+    "WebService",
+    "多线程",
+    "JVM",
+    "MySQL",
+    "SQL Server",
+    "Maven",
+    "Git",
+    "Jenkins",
+    "DevOps"
+   ],
+   "boundary": "与Python开发工程师等语言特定岗位的区别在于核心技术栈为Java及其生态体系，与全栈工程师的区别在于专注后端服务开发而非前端界面实现。",
+   "funtypes": [
+    "Java开发工程师"
+   ],
+   "source_codes": [
+    "0121"
+   ],
+   "source_names": [
+    "Java开发工程师"
+   ],
+   "hits": 210200,
+   "n_samples": 4
+  },
+  "DEV-02": {
+   "code": "DEV-02",
+   "category": "DEV",
+   "name_zh": "Python开发工程师",
+   "name_en": "Python Developer",
+   "definition": "负责使用Python语言进行软件系统设计、开发与维护，涵盖Web服务、API接口、数据处理及算法实现。典型技术栈包括Flask、Django、MySQL、Redis、Linux等，产出高质量、可扩展的代码及技术文档。",
+   "keywords": [
+    "Python",
+    "Flask",
+    "Django",
+    "Numpy",
+    "Pandas",
+    "MySQL",
+    "Redis",
+    "Linux",
+    "API开发",
+    "Web服务",
+    "数据挖掘",
+    "AI算法",
+    "Socket编程",
+    "HTTP协议",
+    "TCP协议",
+    "uwsgi",
+    "Nginx",
+    "Git",
+    "SVN",
+    "Pycharm"
+   ],
+   "boundary": "与Java开发工程师的边界在于Python开发工程师专注于Python技术栈及生态，而Java开发工程师使用Java及JVM相关技术。",
+   "funtypes": [
+    "Python开发工程师"
+   ],
+   "source_codes": [
+    "0124"
+   ],
+   "source_names": [
+    "Python"
+   ],
+   "hits": 22109,
+   "n_samples": 4
+  },
+  "DEV-03": {
+   "code": "DEV-03",
+   "category": "DEV",
+   "name_zh": "PHP开发工程师",
+   "name_en": "PHP Developer",
+   "definition": "负责基于PHP语言的Web业务系统设计与开发，涵盖核心模块编码、框架选型、数据库优化及接口规范制定。典型技术栈包括ThinkPHP、Laravel、Yii等框架，MySQL及Redis/Memcache等缓存，并涉及Linux运维与前端协作。关键产出为高可用、高性能的Web应用及配套技术文档。",
+   "keywords": [
+    "PHP",
+    "ThinkPHP",
+    "Laravel",
+    "Yii",
+    "MySQL",
+    "Redis",
+    "Memcache",
+    "MongoDB",
+    "RabbitMQ",
+    "RocketMQ",
+    "消息队列",
+    "OOP",
+    "设计模式",
+    "高并发",
+    "缓存设计",
+    "接口规范",
+    "Linux",
+    "Git",
+    "Composer",
+    "PHPUnit"
+   ],
+   "boundary": "与Java开发工程师的边界在于：PHP开发工程师专注于PHP语言及生态（如Laravel/ThinkPHP）的Web开发，而Java开发工程师使用Java及Spring等框架，两者在语言、框架和典型应用场景上明显不同。",
+   "funtypes": [
+    "PHP开发工程师"
+   ],
+   "source_codes": [
+    "0120"
+   ],
+   "source_names": [
+    "PHP"
+   ],
+   "hits": 12611,
+   "n_samples": 4
+  },
+  "DEV-04": {
+   "code": "DEV-04",
+   "category": "DEV",
+   "name_zh": "Golang开发工程师",
+   "name_en": "Golang Developer",
+   "definition": "负责使用Go语言进行后端服务、云平台及分布式系统的设计、开发与维护，涉及业务架构设计、性能优化及核心技术攻关。典型技术栈包括Gin、MySQL、Redis、Kafka、Docker、Kubernetes等，产出高质量代码、技术文档及可扩展的系统架构。",
+   "keywords": [
+    "Golang",
+    "Go语言",
+    "Gin",
+    "Beego",
+    "微服务",
+    "高并发",
+    "分布式系统",
+    "Docker",
+    "Kubernetes",
+    "K8s",
+    "MySQL",
+    "Redis",
+    "Kafka",
+    "Elasticsearch",
+    "gRPC",
+    "云原生",
+    "DDD",
+    "UML",
+    "CI/CD"
+   ],
+   "boundary": "与Java开发工程师的区别在于，Golang开发工程师专注于Go语言生态及云原生技术栈，而Java开发工程师则基于Java生态（如Spring）进行开发。",
+   "funtypes": [
+    "Go开发工程师"
+   ],
+   "source_codes": [
+    "0152"
+   ],
+   "source_names": [
+    "Golang"
+   ],
+   "hits": 5717,
+   "n_samples": 4
+  },
+  "DEV-05": {
+   "code": "DEV-05",
+   "category": "DEV",
+   "name_zh": "Node.js开发工程师",
+   "name_en": "Node.js Developer",
+   "definition": "负责使用Node.js技术栈进行服务端应用的设计、开发与维护，涵盖RESTful API、微服务及后端业务逻辑实现。典型技术栈包括Express、NestJS、LoopBack等框架，以及MySQL、PostgreSQL、Redis等数据存储。关键产出为稳定高效的后端服务、接口文档及部署脚本。",
+   "keywords": [
+    "Node.js",
+    "Express",
+    "NestJS",
+    "LoopBack",
+    "JavaScript",
+    "TypeScript",
+    "RESTful API",
+    "微服务",
+    "MySQL",
+    "PostgreSQL",
+    "Redis",
+    "Docker",
+    "Linux",
+    "npm",
+    "事件驱动",
+    "异步编程",
+    "中间件",
+    "PM2",
+    "Socket.io",
+    "服务端渲染"
+   ],
+   "boundary": "与Web前端开发工程师的边界在于，Node.js开发工程师专注于服务端逻辑与API实现，而非浏览器端页面交互与UI渲染。",
+   "funtypes": [
+    "Node.js开发工程师"
+   ],
+   "source_codes": [
+    "0158"
+   ],
+   "source_names": [
+    "Node.js"
+   ],
+   "hits": 45,
+   "n_samples": 4
+  },
+  "DEV-06": {
+   "code": "DEV-06",
+   "category": "DEV",
+   "name_zh": "C#开发工程师",
+   "name_en": "C# Developer",
+   "definition": "负责使用C#语言进行桌面应用（WinForms/WPF）或后端服务开发，熟悉面向对象设计，常涉及SQL Server/MySQL数据库操作及Windows API调用，产出高质量代码和软件功能模块。",
+   "keywords": [
+    "C#",
+    "WinForms",
+    "WPF",
+    "C/S架构",
+    "Windows API",
+    "SQL Server",
+    "MySQL",
+    "面向对象",
+    "Revit二次开发",
+    "CAD ARX",
+    "后端开发",
+    "ASP.NET",
+    "Entity Framework",
+    "LINQ",
+    "Visual Studio",
+    ".NET Framework",
+    ".NET Core",
+    "WCF",
+    "Web API"
+   ],
+   "boundary": "与.NET开发工程师的区别在于，C#开发工程师更专注于C#语言本身及WinForms/WPF等桌面技术，而.NET开发工程师可能涵盖更广泛的.NET生态（如ASP.NET、Azure等）。",
+   "funtypes": [
+    "C#开发工程师"
+   ],
+   "source_codes": [
+    "0153"
+   ],
+   "source_names": [
+    "C#"
+   ],
+   "hits": 37922,
+   "n_samples": 4
+  },
+  "DEV-07": {
+   "code": "DEV-07",
+   "category": "DEV",
+   "name_zh": ".NET开发工程师",
+   "name_en": ".NET Developer",
+   "definition": "负责基于.NET平台（如ASP.NET、.NET Framework/Core）的Web应用和系统开发，使用C#、SQL Server/Oracle等数据库技术，参与架构设计、核心模块编码及系统优化，确保产品稳定性和性能。",
+   "keywords": [
+    ".NET",
+    "C#",
+    "ASP.NET",
+    "MVC",
+    ".NET Framework",
+    ".NET Core",
+    "Web Service",
+    "SQL Server",
+    "Oracle",
+    "SQL",
+    "JavaScript",
+    "jQuery",
+    "Ajax",
+    "HTML",
+    "CSS",
+    "Bootstrap",
+    "EasyUI",
+    "网站后台管理",
+    "服务器管理"
+   ],
+   "boundary": "与C#开发工程师的区别在于，.NET开发工程师更侧重于使用ASP.NET等Web框架进行企业级Web应用开发，而C#开发工程师可能更专注于通用C#编程或桌面应用。",
+   "funtypes": [
+    ".NET开发工程师"
+   ],
+   "source_codes": [
+    "0126"
+   ],
+   "source_names": [
+    ".NET"
+   ],
+   "hits": 37130,
+   "n_samples": 4
+  },
+  "DEV-08": {
+   "code": "DEV-08",
+   "category": "DEV",
+   "name_zh": "Ruby开发工程师",
+   "name_en": "Ruby Developer",
+   "definition": "负责使用Ruby语言及Ruby on Rails框架进行Web应用后端开发，包括系统架构设计、核心模块实现、数据库优化及与前端协作交付高质量产品。典型技术栈包括Ruby、Rails、MySQL、Redis、Linux，关键产出为可扩展、高可用的后端服务与代码。",
+   "keywords": [
+    "Ruby",
+    "Ruby on Rails",
+    "Rails",
+    "DRY",
+    "MySQL",
+    "Redis",
+    "MongoDB",
+    "Linux",
+    "Debian",
+    "Ubuntu",
+    "CoffeeScript",
+    "SCSS",
+    "Git",
+    "面向对象编程",
+    "设计模式",
+    "高可用架构",
+    "后端开发",
+    "RESTful API"
+   ],
+   "boundary": "与Java开发工程师的边界在于本岗位以Ruby/Rails为核心技术栈，而非Java生态体系。",
+   "funtypes": [
+    "Ruby开发工程师"
+   ],
+   "source_codes": [
+    "0151"
+   ],
+   "source_names": [
+    "Ruby开发工程师"
+   ],
+   "hits": 4517,
+   "n_samples": 4
+  },
+  "DEV-09": {
+   "code": "DEV-09",
+   "category": "DEV",
+   "name_zh": "C/C++开发工程师",
+   "name_en": "C/C++ Development Engineer",
+   "definition": "负责使用C或C++语言进行软件系统的设计、开发、调试与维护，涵盖底层协议解析、嵌入式应用、图形界面及数据处理等方向。典型技术栈包括Linux、TCP/IP、多线程、QT、OpenGL等，产出高效稳定的代码及技术文档。",
+   "keywords": [
+    "C",
+    "C++",
+    "Linux",
+    "TCP/IP",
+    "多线程",
+    "内存管理",
+    "STL",
+    "QT",
+    "OpenGL",
+    "OpenCV",
+    "嵌入式",
+    "串口通信",
+    "协议解析",
+    "性能优化",
+    "GDB",
+    "Makefile",
+    "CMake",
+    "面向对象"
+   ],
+   "boundary": "与嵌入式软件开发工程师的边界在于，C/C++开发工程师更侧重于通用软件及系统级应用开发，而嵌入式软件开发工程师则聚焦于特定硬件平台上的固件与驱动开发。",
+   "funtypes": [
+    "C++",
+    "C++开发工程师",
+    "C",
+    "C开发工程师",
+    "C/C++开发工程师"
+   ],
+   "source_codes": [
+    "0122",
+    "A0JR",
+    "0157",
+    "0156"
+   ],
+   "source_names": [
+    "C/C++开发工程师",
+    "C/C++",
+    "C++开发工程师",
+    "C开发工程师"
+   ],
+   "hits": 112042,
+   "n_samples": 4
+  },
+  "DEV-10": {
+   "code": "DEV-10",
+   "category": "DEV",
+   "name_zh": "软件工程师",
+   "name_en": "Software Engineer",
+   "definition": "负责设计、开发、测试和维护软件系统或模块，涵盖需求分析、编码实现、性能优化及文档编写。典型技术栈包括C++、Java、Python等，涉及算法设计、数据结构应用及大规模复杂软件开发。关键产出为高质量、可扩展的软件代码及解决方案。",
+   "keywords": [
+    "FPGA",
+    "EDA",
+    "RTL",
+    "逻辑综合",
+    "布局布线",
+    "算法设计",
+    "数据结构",
+    "C++",
+    "Java",
+    "Python",
+    "大规模软件开发",
+    "性能优化",
+    "可扩展性",
+    "调试",
+    "软件模块设计",
+    "Linux内核驱动",
+    "多媒体框架",
+    "视频编解码"
+   ],
+   "boundary": "与Java开发工程师等语言专精岗位不同，软件工程师更强调跨语言、跨领域的通用软件工程能力，且不限定于特定技术栈。",
+   "funtypes": [
+    "软件工程师",
+    "软件开发",
+    "高级软件工程师"
+   ],
+   "source_codes": [
+    "0107",
+    "0106"
+   ],
+   "source_names": [
+    "软件工程师",
+    "高级软件工程师"
+   ],
+   "hits": 1226925,
+   "n_samples": 4
+  },
+  "DEV-11": {
+   "code": "DEV-11",
+   "category": "DEV",
+   "name_zh": "全栈工程师",
+   "name_en": "Full Stack Engineer",
+   "definition": "负责前后端系统的设计、开发与维护，涵盖用户界面、业务逻辑、数据库及API集成。典型技术栈包括Java/Spring、Vue/JavaScript、MySQL/NoSQL等。关键产出为可交付的全栈功能模块、性能优化方案及工程化体系建设。",
+   "keywords": [
+    "全栈",
+    "前后端",
+    "Vue",
+    "SpringBoot",
+    "SpringCloud",
+    "JavaScript",
+    "HTML5",
+    "CSS",
+    "RESTful API",
+    "MySQL",
+    "NoSQL",
+    "Redis",
+    "消息队列",
+    "微服务",
+    "Docker",
+    "Nginx",
+    "Webpack",
+    "Git",
+    "Linux",
+    "系统设计"
+   ],
+   "boundary": "与Java开发工程师的边界在于，全栈工程师需同时精通前端技术栈并负责端到端交付，而Java开发工程师主要聚焦后端服务实现。",
+   "funtypes": [
+    "全栈工程师"
+   ],
+   "source_codes": [
+    "0154"
+   ],
+   "source_names": [
+    "全栈工程师"
+   ],
+   "hits": 11997,
+   "n_samples": 4
+  },
+  "DEV-12": {
+   "code": "DEV-12",
+   "category": "DEV",
+   "name_zh": "架构师",
+   "name_en": "Architect",
+   "definition": "负责软件系统整体架构设计、技术选型与关键决策，制定技术演进路线并保障系统的高可用、可扩展与安全性。典型工作包括微服务/分布式系统设计、云原生架构规划、性能与容量评估，产出架构设计文档与技术规范。",
+   "keywords": [
+    "架构设计",
+    "系统架构",
+    "微服务",
+    "分布式系统",
+    "高并发",
+    "高可用",
+    "容灾",
+    "技术选型",
+    "架构评审",
+    "架构演进",
+    "领域驱动设计",
+    "DDD",
+    "云原生",
+    "容器化",
+    "Kubernetes",
+    "服务治理",
+    "性能优化",
+    "容量规划",
+    "架构规范",
+    "技术中台"
+   ],
+   "boundary": "与系统分析/需求工程师的区别在于：架构师聚焦技术方案与系统结构设计，而系统分析/需求工程师侧重业务需求梳理与功能规格定义。",
+   "funtypes": [
+    "系统架构设计师",
+    "网站架构设计师"
+   ],
+   "source_codes": [
+    "0143",
+    "7405"
+   ],
+   "source_names": [
+    "架构师",
+    "网站架构设计师"
+   ],
+   "hits": 37989,
+   "n_samples": 4
+  },
+  "DEV-13": {
+   "code": "DEV-13",
+   "category": "DEV",
+   "name_zh": "系统分析/需求工程师",
+   "name_en": "System Analyst / Requirements Engineer",
+   "definition": "负责收集、分析并转化用户需求为可落地的系统解决方案。核心工作包括需求调研、业务流程梳理、编写需求规格说明书及设计原型页面，并作为业务与技术团队间的桥梁，推动项目开发进程。典型工具包括Axure、Visio、UML建模工具及需求管理平台。关键产出为需求文档、原型图及系统实施方案。",
+   "keywords": [
+    "需求分析",
+    "需求调研",
+    "需求文档",
+    "原型设计",
+    "Axure",
+    "Visio",
+    "UML",
+    "用例图",
+    "流程图",
+    "用户故事",
+    "系统规划",
+    "方案设计",
+    "可行性分析",
+    "业务分析",
+    "需求评审",
+    "系统实施",
+    "用户培训",
+    "产品规划",
+    "竞品分析",
+    "数据分析"
+   ],
+   "boundary": "与产品经理相比，系统分析/需求工程师更侧重于技术实现层面的需求转化和系统设计，而非市场与商业价值定义。",
+   "funtypes": [
+    "系统分析员",
+    "业务分析专员",
+    "业务分析主管",
+    "业务分析助理",
+    "业务分析经理",
+    "需求工程师"
+   ],
+   "source_codes": [
+    "0123",
+    "6609"
+   ],
+   "source_names": [
+    "系统分析员",
+    "需求工程师"
+   ],
+   "hits": 53521,
+   "n_samples": 4
+  },
+  "DEV-14": {
+   "code": "DEV-14",
+   "category": "DEV",
+   "name_zh": "脚本开发工程师",
+   "name_en": "Script Development Engineer",
+   "definition": "负责使用脚本语言（如Python、Shell、Perl等）编写自动化脚本，以完成数据处理、系统运维、测试辅助或业务逻辑实现等任务。典型工作包括开发脚本工具、优化现有脚本性能、编写技术文档，并确保脚本的稳定性和可维护性。关键产出为高效、可靠的脚本代码及相关文档。",
+   "keywords": [
+    "脚本开发",
+    "Shell",
+    "Python脚本",
+    "Perl",
+    "自动化脚本",
+    "批处理",
+    "数据处理",
+    "系统运维",
+    "脚本优化",
+    "脚本调试",
+    "cron",
+    "正则表达式",
+    "命令行工具",
+    "日志分析",
+    "API调用",
+    "JSON处理",
+    "Excel自动化",
+    "数据库脚本",
+    "版本控制",
+    "CI/CD"
+   ],
+   "boundary": "与Python开发工程师的边界在于，脚本开发工程师侧重于使用脚本语言快速实现自动化任务和工具，而非构建大型应用系统。",
+   "funtypes": [
+    "脚本开发工程师"
+   ],
+   "source_codes": [
+    "0132"
+   ],
+   "source_names": [
+    "脚本开发工程师"
+   ],
+   "hits": 16501,
+   "n_samples": 4
+  },
+  "DEV-15": {
+   "code": "DEV-15",
+   "category": "DEV",
+   "name_zh": "GIS工程师",
+   "name_en": "GIS Engineer",
+   "definition": "负责地理信息系统软件的设计、开发与维护，涵盖桌面端、Web端及移动端应用。典型技术栈包括ArcGIS、QGIS、Cesium、OpenLayers、Leaflet、PostGIS、GDAL等，涉及空间数据处理、地图服务发布与三维可视化。核心产出为可运行的GIS功能模块、系统架构方案及技术文档。",
+   "keywords": [
+    "GIS",
+    "地理信息系统",
+    "ArcGIS",
+    "QGIS",
+    "SuperMap",
+    "Cesium",
+    "OpenLayers",
+    "Leaflet",
+    "WebGL",
+    "Three.js",
+    "PostGIS",
+    "空间数据库",
+    "OGC",
+    "WMS",
+    "WFS",
+    "KML",
+    "GDAL",
+    "GEOS",
+    "地图服务",
+    "投影转换",
+    "三维可视化"
+   ],
+   "boundary": "与Web前端开发工程师的边界在于，GIS工程师聚焦于地理空间数据的处理与地图可视化，而Web前端工程师更关注通用网页交互与界面实现。",
+   "funtypes": [
+    "GIS工程师"
+   ],
+   "source_codes": [
+    "0155"
+   ],
+   "source_names": [
+    "GIS工程师"
+   ],
+   "hits": 5754,
+   "n_samples": 4
+  },
+  "DEV-16": {
+   "code": "DEV-16",
+   "category": "DEV",
+   "name_zh": "爬虫工程师",
+   "name_en": "Web Scraping Engineer",
+   "definition": "负责设计和开发分布式网络爬虫系统，从网页和APP端抓取、解析和清洗海量数据，并解决各类反爬机制。核心工作包括爬虫框架（如Scrapy）的应用、代理池维护、JS逆向、验证码识别等，产出高质量的结构化数据供业务使用。",
+   "keywords": [
+    "爬虫",
+    "Scrapy",
+    "反爬",
+    "JS逆向",
+    "验证码识别",
+    "代理池",
+    "分布式爬虫",
+    "数据清洗",
+    "数据抓取",
+    "APP逆向",
+    "正则表达式",
+    "数据入库",
+    "多进程",
+    "海量数据",
+    "爬虫框架",
+    "反反爬",
+    "数据采集",
+    "爬虫平台"
+   ],
+   "boundary": "与Python开发工程师的区别在于，爬虫工程师专注于数据采集和反爬对抗，而Python开发工程师更侧重于通用业务逻辑和系统开发。",
+   "funtypes": [
+    "爬虫开发工程师"
+   ],
+   "source_codes": [
+    "0131"
+   ],
+   "source_names": [
+    "爬虫工程师"
+   ],
+   "hits": 1715,
+   "n_samples": 4
+  },
+  "DEV-17": {
+   "code": "DEV-17",
+   "category": "DEV",
+   "name_zh": "区块链开发工程师",
+   "name_en": "Blockchain Development Engineer",
+   "definition": "负责区块链平台的设计、开发、部署与维护，涵盖共识机制、智能合约、加密算法及分布式系统。典型技术栈包括Solidity、Go、Java、Hyperledger Fabric、以太坊等。关键产出包括区块链底层系统、智能合约、技术方案文档及行业标准参与。",
+   "keywords": [
+    "区块链",
+    "智能合约",
+    "Solidity",
+    "共识算法",
+    "分布式账本",
+    "Hyperledger",
+    "以太坊",
+    "密码学",
+    "数字签名",
+    "哈希算法",
+    "去中心化",
+    "DApp",
+    "Web3",
+    "DeFi",
+    "NFT",
+    "链上数据",
+    "节点部署",
+    "联盟链",
+    "公链",
+    "数字人民币"
+   ],
+   "boundary": "与Java开发工程师的边界在于，区块链开发工程师专注于区块链技术栈（如智能合约、共识机制）和去中心化应用，而非通用Java业务系统开发。",
+   "funtypes": [
+    "区块链开发"
+   ],
+   "source_codes": [
+    "0128"
+   ],
+   "source_names": [
+    "区块链开发"
+   ],
+   "hits": 1372,
+   "n_samples": 4
+  },
+  "DEV-18": {
+   "code": "DEV-18",
+   "category": "DEV",
+   "name_zh": "ERP技术开发",
+   "name_en": "ERP Technical Developer",
+   "definition": "负责企业资源计划（ERP）系统的二次开发、定制化功能实现及系统集成，典型技术栈包括SAP ABAP、用友NC、金蝶K3等，需深入理解财务、供应链等业务流程，产出高效稳定的程序代码、报表及接口，并持续优化系统性能。",
+   "keywords": [
+    "SAP",
+    "ABAP",
+    "用友NC",
+    "金蝶K3",
+    "ERP",
+    "二次开发",
+    "系统集成",
+    "数据对接",
+    "报表开发",
+    "存储过程",
+    "触发器",
+    "FICO",
+    "SD",
+    "MM",
+    "供应链",
+    "财务模块",
+    "API",
+    "MSSQL",
+    "Oracle",
+    "SQL Server"
+   ],
+   "boundary": "与Java开发工程师的边界在于，ERP技术开发专注于特定ERP平台（如SAP、用友、金蝶）的定制与集成，而非通用Java应用开发。",
+   "funtypes": [
+    "ERP技术开发"
+   ],
+   "source_codes": [
+    "0117"
+   ],
+   "source_names": [
+    "ERP技术开发"
+   ],
+   "hits": 100410,
+   "n_samples": 4
+  },
+  "DEV-19": {
+   "code": "DEV-19",
+   "category": "DEV",
+   "name_zh": "音视频/图形开发工程师",
+   "name_en": "Audio/Video/Graphics Development Engineer",
+   "definition": "负责音视频采集、编码、处理、传输及图形渲染相关功能的开发与优化，典型技术栈包括FFmpeg、OpenGL/Shader、音视频编解码标准等，产出高质量的音视频编辑、特效、AR互动及实时通信功能模块。",
+   "keywords": [
+    "FFmpeg",
+    "音视频编解码",
+    "视频录制",
+    "视频编辑",
+    "音频算法",
+    "回声消除",
+    "噪声抑制",
+    "自动增益控制",
+    "麦克风阵列",
+    "波束形成",
+    "盲源分离",
+    "音频编解码标准",
+    "G.7xx",
+    "AMR",
+    "EVS",
+    "AAC",
+    "OPUS",
+    "shader编程",
+    "GLSL",
+    "HLSL",
+    "CG",
+    "图形学",
+    "渲染",
+    "AR互动"
+   ],
+   "boundary": "与游戏开发工程师的边界在于，本岗位聚焦音视频处理和图形渲染技术本身，而非游戏玩法逻辑和游戏引擎的完整应用。",
+   "funtypes": [
+    "多媒体开发工程师"
+   ],
+   "source_codes": [
+    "0133"
+   ],
+   "source_names": [
+    "语音/视频/图形开发"
+   ],
+   "hits": 6868,
+   "n_samples": 4
+  },
+  "DEV-20": {
+   "code": "DEV-20",
+   "category": "DEV",
+   "name_zh": "Web前端开发",
+   "name_en": "Web Front-end Developer",
+   "definition": "负责Web产品的前端界面开发与交互实现，使用HTML/CSS/JavaScript及Vue、React等主流框架构建用户界面，并配合后端接口完成数据交互。需关注页面性能、兼容性与用户体验，产出高质量、可维护的前端代码。",
+   "keywords": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "TypeScript",
+    "Vue",
+    "React",
+    "Vuex",
+    "Vue-router",
+    "Redux",
+    "Webpack",
+    "Vite",
+    "Less",
+    "Sass",
+    "Element UI",
+    "Ant Design",
+    "ECharts",
+    "Axios",
+    "Node.js",
+    "npm/yarn",
+    "ES6"
+   ],
+   "boundary": "与全栈工程师的区别在于，前端开发工程师专注于浏览器端界面与交互，不涉及后端服务开发。",
+   "funtypes": [
+    "Web前端开发",
+    "前端开发"
+   ],
+   "source_codes": [
+    "7201",
+    "7200"
+   ],
+   "source_names": [
+    "Web前端开发",
+    "前端开发"
+   ],
+   "hits": 71207,
+   "n_samples": 4
+  },
+  "DEV-21": {
+   "code": "DEV-21",
+   "category": "DEV",
+   "name_zh": "HTML5开发工程师",
+   "name_en": "HTML5 Developer",
+   "definition": "负责基于HTML5、CSS3和JavaScript构建跨平台Web应用与移动端页面，实现交互效果与UI还原，优化性能与兼容性，并配合后端完成数据交互。典型技术栈包括Vue/React/Angular、Webpack、Sass等，产出高质量、可维护的前端代码及组件库。",
+   "keywords": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "ES6",
+    "Vue",
+    "React",
+    "Angular",
+    "Webpack",
+    "响应式布局",
+    "跨浏览器兼容",
+    "W3C规范",
+    "DOM操作",
+    "AJAX",
+    "前端性能优化",
+    "移动端适配",
+    "Sass/LESS",
+    "前端工程化",
+    "UI还原",
+    "切图",
+    "调试工具"
+   ],
+   "boundary": "与Web前端开发工程师的边界在于，HTML5开发工程师更侧重HTML5新特性及移动端适配，而Web前端开发工程师涵盖更广的Web前端技术体系。",
+   "funtypes": [
+    "HTML5开发工程师"
+   ],
+   "source_codes": [
+    "7202"
+   ],
+   "source_names": [
+    "HTML5开发工程师"
+   ],
+   "hits": 5371,
+   "n_samples": 4
+  },
+  "DEV-22": {
+   "code": "DEV-22",
+   "category": "DEV",
+   "name_zh": "移动开发工程师",
+   "name_en": "Mobile Development Engineer",
+   "definition": "负责移动端应用（Android/iOS）的设计、开发与维护，使用Java/Kotlin或Objective-C/Swift等语言，结合SDK、UI框架及网络通信技术，实现产品功能并优化性能。核心产出包括可上线的APP、稳定的代码库及技术文档。",
+   "keywords": [
+    "Android",
+    "iOS",
+    "移动开发",
+    "手机APP",
+    "SDK",
+    "Java",
+    "Kotlin",
+    "Objective-C",
+    "Swift",
+    "UI开发",
+    "自定义界面",
+    "Socket",
+    "HTTP",
+    "性能优化",
+    "适配性",
+    "兼容性",
+    "消息推送",
+    "JNI",
+    "媒体播放",
+    "数据库编程"
+   ],
+   "boundary": "与Android/iOS开发工程师的区别在于，移动开发工程师更强调跨平台综合能力，而Android/iOS开发工程师则专注于单一平台。",
+   "funtypes": [
+    "移动开发工程师"
+   ],
+   "source_codes": [
+    "7703",
+    "7700"
+   ],
+   "source_names": [
+    "移动开发工程师",
+    "移动开发"
+   ],
+   "hits": 5188,
+   "n_samples": 4
+  },
+  "DEV-23": {
+   "code": "DEV-23",
+   "category": "DEV",
+   "name_zh": "Android开发工程师",
+   "name_en": "Android Development Engineer",
+   "definition": "负责Android平台移动应用的设计、开发与维护，使用Java/Kotlin及Android SDK构建高质量App，涉及UI实现、网络通信、性能优化等，并输出可维护的代码与相关文档。",
+   "keywords": [
+    "Android SDK",
+    "Kotlin",
+    "Java",
+    "Activity",
+    "Fragment",
+    "RecyclerView",
+    "Handler",
+    "事件分发",
+    "网络编程",
+    "Socket",
+    "TCP/IP",
+    "HTTP",
+    "第三方框架",
+    "OkHttp",
+    "Retrofit",
+    "RxJava",
+    "MVVM",
+    "组件化",
+    "性能优化",
+    "APK打包"
+   ],
+   "boundary": "与iOS开发工程师的边界在于平台技术栈不同，Android开发专注于Google生态与Android系统，而iOS开发则基于Apple生态与Swift/Objective-C。",
+   "funtypes": [
+    "Android开发工程师"
+   ],
+   "source_codes": [
+    "7701"
+   ],
+   "source_names": [
+    "android"
+   ],
+   "hits": 27152,
+   "n_samples": 4
+  },
+  "DEV-24": {
+   "code": "DEV-24",
+   "category": "DEV",
+   "name_zh": "iOS开发工程师",
+   "name_en": "iOS Development Engineer",
+   "definition": "负责基于iOS平台的移动应用设计、开发与维护，使用Objective-C或Swift及Xcode等工具，实现产品功能并优化性能。需参与需求分析、框架搭建、技术选型，并输出高质量代码及技术文档。核心产出为可上架的iOS应用及配套文档。",
+   "keywords": [
+    "iOS",
+    "Objective-C",
+    "Swift",
+    "Xcode",
+    "CocoaTouch",
+    "UIKit",
+    "App Store",
+    "iPhone SDK",
+    "Instruments",
+    "CoreData",
+    "SQLite",
+    "多线程",
+    "内存管理",
+    "Runtime",
+    "RunLoop",
+    "Auto Layout",
+    "APNs",
+    "App生命周期"
+   ],
+   "boundary": "与Android开发工程师的边界在于：iOS开发工程师专注于苹果生态（iOS/macOS）的移动应用开发，使用Objective-C/Swift及Xcode工具链，而Android开发工程师则面向安卓平台，使用Java/Kotlin及Android Studio。",
+   "funtypes": [
+    "iOS开发工程师"
+   ],
+   "source_codes": [
+    "7702"
+   ],
+   "source_names": [
+    "ios"
+   ],
+   "hits": 5223,
+   "n_samples": 4
+  },
+  "DEV-25": {
+   "code": "DEV-25",
+   "category": "DEV",
+   "name_zh": "小程序开发工程师",
+   "name_en": "Mini Program Developer",
+   "definition": "负责微信、支付宝等平台小程序及跨端小程序的架构设计、功能开发与性能优化，基于uni-app、Taro等跨端框架及原生小程序语法实现业务需求，并协同UI与后端完成产品迭代与体验提升。",
+   "keywords": [
+    "微信小程序",
+    "支付宝小程序",
+    "uni-app",
+    "Taro",
+    "小程序云开发",
+    "WXML",
+    "WXSS",
+    "小程序API",
+    "跨端开发",
+    "小程序审核",
+    "小程序性能优化",
+    "微信开发者工具",
+    "小程序支付",
+    "订阅消息",
+    "小程序组件库",
+    "多端适配",
+    "小程序发布",
+    "小程序运维"
+   ],
+   "boundary": "与Web前端开发工程师的区别在于，小程序开发工程师聚焦于小程序平台特有的生命周期、API、审核与发布机制，而非通用浏览器网页开发。",
+   "funtypes": [
+    "小程序开发工程师"
+   ],
+   "source_codes": [
+    "7705"
+   ],
+   "source_names": [
+    "小程序开发工程师"
+   ],
+   "hits": 1773,
+   "n_samples": 4
+  },
+  "DEV-26": {
+   "code": "DEV-26",
+   "category": "DEV",
+   "name_zh": "鸿蒙开发工程师",
+   "name_en": "HarmonyOS Development Engineer",
+   "definition": "负责基于HarmonyOS/OpenHarmony平台进行应用与系统级开发，涵盖ArkTS/JS等语言的应用层开发、分布式能力构建及系统稳定性攻关，并参与SDK开发与研发效能提升。典型技术栈包括HarmonyOS SDK、ArkUI、分布式软总线、C/C++等，关键产出为鸿蒙应用、公共SDK及系统级解决方案。",
+   "keywords": [
+    "鸿蒙",
+    "HarmonyOS",
+    "OpenHarmony",
+    "ArkTS",
+    "ArkUI",
+    "分布式软总线",
+    "分布式数据库",
+    "分布式安全",
+    "鸿蒙开发板",
+    "烧录",
+    "发行版",
+    "驱动适配",
+    "SDK开发",
+    "JS",
+    "Node.js",
+    "C/C++",
+    "系统调用",
+    "内存管理"
+   ],
+   "boundary": "与Android开发工程师的边界在于：鸿蒙开发聚焦HarmonyOS/OpenHarmony特有架构与分布式能力，而非Android生态的SDK与框架。",
+   "funtypes": [],
+   "source_codes": [
+    "A0N6"
+   ],
+   "source_names": [
+    "鸿蒙开发"
+   ],
+   "hits": 0,
+   "n_samples": 4
+  },
+  "DEV-27": {
+   "code": "DEV-27",
+   "category": "DEV",
+   "name_zh": "游戏开发工程师",
+   "name_en": "Game Development Engineer",
+   "definition": "负责游戏客户端或服务端的核心功能与架构开发，使用C++、C#、Lua等语言及Unity、Unreal等引擎，实现游戏逻辑、网络通信、性能优化，并产出可运行的游戏版本。",
+   "keywords": [
+    "游戏逻辑",
+    "游戏服务器",
+    "游戏客户端",
+    "Unity",
+    "Unreal",
+    "C++",
+    "C#",
+    "Lua",
+    "socket编程",
+    "网络同步",
+    "MMORPG",
+    "游戏引擎",
+    "游戏架构",
+    "游戏玩法",
+    "游戏UI",
+    "游戏性能优化",
+    "游戏版本管理",
+    "游戏周边工具"
+   ],
+   "boundary": "与通用软件工程师相比，游戏开发工程师专注于游戏特有的逻辑、引擎和网络同步，而非通用业务系统开发。",
+   "funtypes": [
+    "游戏开发工程师",
+    "游戏剧情策划",
+    "游戏文案策划"
+   ],
+   "source_codes": [
+    "7809",
+    "7800"
+   ],
+   "source_names": [
+    "游戏开发工程师",
+    "游戏开发"
+   ],
+   "hits": 3462,
+   "n_samples": 4
+  },
+  "DEV-28": {
+   "code": "DEV-28",
+   "category": "DEV",
+   "name_zh": "UE4/UE5开发工程师",
+   "name_en": "UE4/UE5 Developer",
+   "definition": "负责基于虚幻引擎（UE4/UE5）的客户端功能模块开发与架构设计，使用C++和蓝图实现游戏逻辑、渲染效果及交互功能，并参与三维可视化、VR/AR、数字孪生等项目的技术攻关与性能优化，产出高质量的可扩展代码和文档。",
+   "keywords": [
+    "UE4",
+    "UE5",
+    "Unreal Engine",
+    "虚幻引擎",
+    "C++",
+    "蓝图",
+    "Blueprint",
+    "渲染",
+    "图形学",
+    "3D数学",
+    "VR",
+    "AR",
+    "数字孪生",
+    "数字人",
+    "元宇宙",
+    "光照系统",
+    "材质",
+    "物理引擎",
+    "动画系统",
+    "云渲染"
+   ],
+   "boundary": "与Unity3D开发工程师的边界在于：UE4/UE5开发工程师专注于虚幻引擎技术栈（C++/蓝图），而Unity3D开发工程师使用C#和Unity引擎，两者在引擎架构、编程语言和生态上存在根本差异。",
+   "funtypes": [
+    "UE4开发工程师"
+   ],
+   "source_codes": [
+    "7823"
+   ],
+   "source_names": [
+    "UE4"
+   ],
+   "hits": 1991,
+   "n_samples": 4
+  },
+  "DEV-29": {
+   "code": "DEV-29",
+   "category": "DEV",
+   "name_zh": "Unity3D开发工程师",
+   "name_en": "Unity3D Developer",
+   "definition": "负责基于Unity引擎的仿真软件、游戏客户端及VR/AR应用开发，涵盖架构设计、核心模块实现、性能优化与shader编写。典型技术栈包括C#、Unity引擎、UGUI/NGUI、网络通信（TCP/UDP）及图形学知识。关键产出为可运行的高性能交互应用或游戏客户端。",
+   "keywords": [
+    "Unity3D",
+    "Unity引擎",
+    "C#",
+    "shader",
+    "UGUI",
+    "NGUI",
+    "物理引擎",
+    "动画系统",
+    "后处理",
+    "性能优化",
+    "VR/AR",
+    "MMORPG",
+    "游戏客户端",
+    "仿真软件",
+    "TCP/UDP",
+    "图形学",
+    "Mesh",
+    "光照",
+    "游戏AI",
+    "客户端架构"
+   ],
+   "boundary": "与UE4/UE5开发工程师的边界：Unity3D开发工程师专注于Unity引擎及C#语言，而UE4/UE5开发工程师使用虚幻引擎及C++，两者在引擎和语言栈上根本不同。",
+   "funtypes": [
+    "Unity3d开发工程师"
+   ],
+   "source_codes": [
+    "7811"
+   ],
+   "source_names": [
+    "U3D"
+   ],
+   "hits": 6199,
+   "n_samples": 4
+  },
+  "DEV-30": {
+   "code": "DEV-30",
+   "category": "DEV",
+   "name_zh": "Cocos开发工程师",
+   "name_en": "Cocos Developer",
+   "definition": "负责基于Cocos2d-x引擎开发移动端游戏客户端，使用C++/Lua实现游戏逻辑、UI交互及表现效果，参与架构设计与性能优化，并完成跨平台（Android/iOS）发布与维护。",
+   "keywords": [
+    "Cocos2d-x",
+    "Cocos Creator",
+    "C++",
+    "Lua",
+    "游戏客户端",
+    "游戏开发",
+    "UI实现",
+    "跨平台",
+    "Android",
+    "iOS",
+    "MMORPG",
+    "图形算法",
+    "性能优化",
+    "架构设计",
+    "表现逻辑",
+    "移动游戏"
+   ],
+   "boundary": "与Unity3D开发工程师的区别在于，Cocos开发工程师专注于Cocos引擎（Cocos2d-x/Cocos Creator）及C++/Lua技术栈，而Unity3D开发工程师使用Unity引擎及C#语言。",
+   "funtypes": [
+    "Cocos2d-x开发工程师"
+   ],
+   "source_codes": [
+    "7810"
+   ],
+   "source_names": [
+    "cocos"
+   ],
+   "hits": 885,
+   "n_samples": 4
+  },
+  "DEV-31": {
+   "code": "DEV-31",
+   "category": "DEV",
+   "name_zh": "游戏客户端开发工程师",
+   "name_en": "Game Client Developer",
+   "definition": "负责游戏客户端逻辑功能、界面及工具的设计与开发，基于C/C++、Lua及主流引擎（如Unreal Engine）实现游戏玩法与系统，并针对渲染效果、性能及内存进行优化，产出可运行的高质量游戏客户端。",
+   "keywords": [
+    "C++",
+    "Lua",
+    "Unreal Engine",
+    "UE4",
+    "UE5",
+    "图形渲染",
+    "Shader",
+    "DrawCall",
+    "性能优化",
+    "内存优化",
+    "3D数学",
+    "碰撞检测",
+    "战斗系统",
+    "技能系统",
+    "GUI框架",
+    "CEGUI",
+    "DirectX",
+    "OpenGL",
+    "Vulkan",
+    "客户端架构"
+   ],
+   "boundary": "与游戏引擎开发工程师的边界在于：本岗位侧重游戏玩法与客户端功能实现，而引擎开发侧重引擎底层功能研发与渲染管线扩展。",
+   "funtypes": [
+    "游戏客户端开发工程师"
+   ],
+   "source_codes": [
+    "7812"
+   ],
+   "source_names": [
+    "游戏客户端开发工程师"
+   ],
+   "hits": 1002,
+   "n_samples": 4
+  },
+  "DEV-32": {
+   "code": "DEV-32",
+   "category": "DEV",
+   "name_zh": "游戏服务端开发工程师",
+   "name_en": "Game Server Developer",
+   "definition": "负责游戏服务端系统的设计、开发与维护，涵盖游戏逻辑、网络通信、数据存储及性能优化。典型技术栈包括C++、Go、Java、Linux、MySQL、Redis、TCP/IP、多线程并发等。核心产出是稳定、高效、可扩展的游戏服务器端系统及配套工具。",
+   "keywords": [
+    "游戏服务器",
+    "游戏服务端",
+    "C++",
+    "Go",
+    "Java",
+    "Linux",
+    "TCP/IP",
+    "多线程",
+    "并发",
+    "MySQL",
+    "Redis",
+    "protobuf",
+    "gdb",
+    "shell",
+    "游戏逻辑",
+    "网络通信",
+    "服务器架构",
+    "线上问题定位",
+    "游戏上线",
+    "小游戏"
+   ],
+   "boundary": "与游戏客户端开发工程师的边界在于：本岗位专注于服务器端逻辑、数据存储和网络通信，不涉及客户端渲染和玩家交互界面。",
+   "funtypes": [
+    "游戏服务端开发工程师"
+   ],
+   "source_codes": [
+    "7813"
+   ],
+   "source_names": [
+    "游戏服务端开发工程师"
+   ],
+   "hits": 1165,
+   "n_samples": 4
+  },
+  "DEV-33": {
+   "code": "DEV-33",
+   "category": "DEV",
+   "name_zh": "嵌入式软件开发",
+   "name_en": "Embedded Software Engineer",
+   "definition": "负责嵌入式系统软件的设计、开发与调试，涵盖驱动开发、控制算法实现及通信协议栈，典型技术栈包括C/C++、RTOS、ARM/STM32等。关键产出为稳定高效的固件、软件架构文档及产品集成支持。",
+   "keywords": [
+    "嵌入式",
+    "固件",
+    "RTOS",
+    "ARM",
+    "STM32",
+    "DSP",
+    "C语言",
+    "汇编",
+    "驱动开发",
+    "控制算法",
+    "通信协议",
+    "I2C",
+    "SPI",
+    "UART",
+    "CAN",
+    "PCB",
+    "原理图",
+    "硬件调试",
+    "数字电源",
+    "变频器"
+   ],
+   "boundary": "与C/C++开发工程师的区别在于，嵌入式软件开发需结合硬件（如电路、寄存器）进行底层开发，而C/C++开发更侧重应用层或通用软件。",
+   "funtypes": [
+    "ARM",
+    "MCU",
+    "嵌入式软件开发 DSP",
+    "嵌入式软件开发 Linux",
+    "嵌入式软件开发 PLC",
+    "嵌入式软件开发 单片机",
+    "电子软件开发",
+    "嵌入式软件开发(Linux/单片机/PLC/DSP…)",
+    "电子软件开发(ARM/MCU...)"
+   ],
+   "source_codes": [
+    "A0MZ",
+    "2910",
+    "2909"
+   ],
+   "source_names": [
+    "嵌入式软件开发",
+    "嵌入式软件开发(Linux/单片机/PLC/DSP等)",
+    "电子软件开发(ARM/MCU等)"
+   ],
+   "hits": 164264,
+   "n_samples": 4
+  },
+  "AID-01": {
+   "code": "AID-01",
+   "category": "AID",
+   "name_zh": "算法工程师",
+   "name_en": "Algorithm Engineer",
+   "definition": "负责设计、开发、优化和部署各类算法模型，涵盖控制算法、信号处理、机器学习/深度学习等方向。典型工作包括数学建模、仿真验证、嵌入式实现及产品落地，常用工具包括Matlab/Simulink、Python、TensorFlow/PyTorch等。核心产出是可运行的高效算法模块、技术文档及专利。",
+   "keywords": [
+    "算法设计",
+    "数学建模",
+    "仿真验证",
+    "Matlab",
+    "Simulink",
+    "控制算法",
+    "信号处理",
+    "嵌入式实现",
+    "DSP",
+    "FPGA",
+    "机器学习",
+    "深度学习",
+    "TensorFlow",
+    "PyTorch",
+    "数据挖掘",
+    "模型优化",
+    "算法优化",
+    "C/C++",
+    "Python"
+   ],
+   "boundary": "与机器学习工程师的边界在于：算法工程师更侧重算法从理论到工程实现的完整链路（含建模、仿真、嵌入式部署），而机器学习工程师更专注于机器学习模型的训练、调优与上线。",
+   "funtypes": [
+    "算法工程师"
+   ],
+   "source_codes": [
+    "7309"
+   ],
+   "source_names": [
+    "算法工程师"
+   ],
+   "hits": 60197,
+   "n_samples": 4
+  },
+  "AID-02": {
+   "code": "AID-02",
+   "category": "AID",
+   "name_zh": "机器学习工程师",
+   "name_en": "Machine Learning Engineer",
+   "definition": "负责设计、开发和优化机器学习模型及算法，涵盖数据预处理、特征工程、模型训练与评估、部署与监控等环节。典型技术栈包括Python、C++、TensorFlow、PyTorch等，并涉及分布式计算和性能优化。关键产出是可落地的机器学习解决方案，以支持业务决策或产品功能。",
+   "keywords": [
+    "机器学习",
+    "Machine Learning",
+    "模型训练",
+    "特征工程",
+    "模型部署",
+    "TensorFlow",
+    "PyTorch",
+    "Python",
+    "C++",
+    "强化学习",
+    "深度学习",
+    "模型优化",
+    "算法设计",
+    "数据处理",
+    "模型评估",
+    "MLOps",
+    "分布式训练",
+    "性能优化"
+   ],
+   "boundary": "与算法工程师的边界在于，机器学习工程师更侧重于模型的工程化实现、部署和优化，而算法工程师更偏向于研究新型算法和理论创新。",
+   "funtypes": [
+    "机器学习工程师"
+   ],
+   "source_codes": [
+    "7301"
+   ],
+   "source_names": [
+    "机器学习工程师"
+   ],
+   "hits": 5259,
+   "n_samples": 4
+  },
+  "AID-03": {
+   "code": "AID-03",
+   "category": "AID",
+   "name_zh": "深度学习工程师",
+   "name_en": "Deep Learning Engineer",
+   "definition": "负责设计、训练和优化深度学习模型，应用于图像识别、目标检测等场景。核心工作包括模型架构设计、训练调参、模型压缩与部署，以及算法性能分析与优化。典型技术栈包括PyTorch、TensorFlow、OpenCV、CUDA等。关键产出是高性能、可落地的深度学习算法模型及配套技术文档。",
+   "keywords": [
+    "深度学习",
+    "模型训练",
+    "模型压缩",
+    "模型部署",
+    "PyTorch",
+    "TensorFlow",
+    "CNN",
+    "RNN",
+    "目标检测",
+    "图像分割",
+    "OpenCV",
+    "CUDA",
+    "cuDNN",
+    "TensorRT",
+    "模型调优",
+    "神经网络",
+    "反向传播",
+    "迁移学习",
+    "数据增强",
+    "推理加速"
+   ],
+   "boundary": "与机器学习工程师的区别在于，深度学习工程师专注于基于深度神经网络的模型研发与优化，而机器学习工程师更侧重于传统机器学习算法及特征工程。",
+   "funtypes": [
+    "深度学习工程师"
+   ],
+   "source_codes": [
+    "7302"
+   ],
+   "source_names": [
+    "深度学习工程师"
+   ],
+   "hits": 4142,
+   "n_samples": 4
+  },
+  "AID-04": {
+   "code": "AID-04",
+   "category": "AID",
+   "name_zh": "自然语言处理(NLP)工程师",
+   "name_en": "Natural Language Processing Engineer",
+   "definition": "负责设计、开发和优化自然语言处理算法与系统，涵盖文本分类、命名实体识别、关系抽取、情感分析、意图识别等任务。典型技术栈包括Python、C++、TensorFlow、PyTorch、BERT等预训练模型，以及知识图谱构建。关键产出是高效、准确的NLP模型和解决方案，应用于舆情分析、智能审校、知识图谱等领域。",
+   "keywords": [
+    "NLP",
+    "自然语言处理",
+    "文本分类",
+    "命名实体识别",
+    "关系抽取",
+    "情感分析",
+    "意图识别",
+    "知识图谱",
+    "预训练模型",
+    "BERT",
+    "Transformer",
+    "词向量",
+    "句法分析",
+    "语义理解",
+    "文本挖掘",
+    "语料库",
+    "TensorFlow",
+    "PyTorch",
+    "PaddlePaddle",
+    "Python"
+   ],
+   "boundary": "与机器学习工程师的区别在于，NLP工程师专注于文本数据的处理与语言模型，而机器学习工程师更关注通用算法与模型在不同数据类型上的应用。",
+   "funtypes": [
+    "自然语言处理(NLP)"
+   ],
+   "source_codes": [
+    "7308"
+   ],
+   "source_names": [
+    "自然语言处理(NLP)"
+   ],
+   "hits": 2077,
+   "n_samples": 4
+  },
+  "AID-05": {
+   "code": "AID-05",
+   "category": "AID",
+   "name_zh": "语音识别工程师",
+   "name_en": "Speech Recognition Engineer",
+   "definition": "负责语音识别系统核心算法研发与优化，涵盖声学模型、语言模型、解码器及信号处理，使用深度学习框架和开源工具（如Kaldi、ESPnet），产出高精度低延迟的语音转写引擎，并支持产品集成与性能调优。",
+   "keywords": [
+    "语音识别",
+    "声学模型",
+    "语言模型",
+    "解码器",
+    "信号处理",
+    "语音信号处理",
+    "Kaldi",
+    "ESPnet",
+    "WFST",
+    "HMM",
+    "CTC",
+    "Attention",
+    "端到端语音识别",
+    "语音唤醒",
+    "语音端点检测",
+    "C/C++",
+    "Python",
+    "深度学习",
+    "Linux"
+   ],
+   "boundary": "与自然语言处理(NLP)工程师的边界：语音识别聚焦于将音频信号转换为文本，而NLP处理文本的语义与结构。",
+   "funtypes": [
+    "语音识别工程师"
+   ],
+   "source_codes": [
+    "7306"
+   ],
+   "source_names": [
+    "语音识别工程师"
+   ],
+   "hits": 730,
+   "n_samples": 4
+  },
+  "AID-06": {
+   "code": "AID-06",
+   "category": "AID",
+   "name_zh": "搜索算法工程师",
+   "name_en": "Search Algorithm Engineer",
+   "definition": "负责搜索系统的核心算法设计与优化，包括查询理解、召回、排序、相关性计算等环节。典型技术栈包括Elasticsearch、Lucene、Java及机器学习排序模型。关键产出是提升搜索相关性、转化率和用户体验的算法方案及系统实现。",
+   "keywords": [
+    "搜索算法",
+    "Elasticsearch",
+    "Lucene",
+    "查询理解",
+    "召回",
+    "排序",
+    "相关性",
+    "个性化搜索",
+    "搜索性能优化",
+    "电商搜索",
+    "搜索引擎",
+    "倒排索引",
+    "Query分析",
+    "排序模型",
+    "搜索架构",
+    "搜索相关性",
+    "搜索转化率",
+    "搜索服务"
+   ],
+   "boundary": "与推荐算法工程师的区别在于，搜索算法工程师聚焦于用户主动查询触发的信息检索与相关性排序，而推荐算法工程师则基于用户历史行为进行被动内容分发。",
+   "funtypes": [
+    "搜索算法工程师"
+   ],
+   "source_codes": [
+    "7311"
+   ],
+   "source_names": [
+    "搜索算法工程师"
+   ],
+   "hits": 194,
+   "n_samples": 4
+  },
+  "AID-07": {
+   "code": "AID-07",
+   "category": "AID",
+   "name_zh": "推荐算法工程师",
+   "name_en": "Recommendation Algorithm Engineer",
+   "definition": "负责推荐引擎的算法研发与优化，运用机器学习、深度学习等技术分析用户行为数据，构建用户画像与个性化推荐模型，提升推荐效果与用户体验。典型技术栈包括Python/C++、TensorFlow/PyTorch等深度学习框架，关键产出为推荐模型、特征工程方案及线上效果提升。",
+   "keywords": [
+    "推荐引擎",
+    "推荐系统",
+    "个性化推荐",
+    "用户画像",
+    "千人千面",
+    "CTR预估",
+    "排序模型",
+    "召回",
+    "协同过滤",
+    "TensorFlow",
+    "PyTorch",
+    "深度学习",
+    "特征工程",
+    "Embedding",
+    "多目标优化",
+    "AB测试",
+    "实时推荐",
+    "候选生成"
+   ],
+   "boundary": "与机器学习工程师的边界在于：推荐算法工程师聚焦于推荐场景的算法落地与优化，而机器学习工程师更关注通用机器学习算法的研究与实现。",
+   "funtypes": [
+    "推荐算法工程师"
+   ],
+   "source_codes": [
+    "7310"
+   ],
+   "source_names": [
+    "推荐算法工程师"
+   ],
+   "hits": 558,
+   "n_samples": 4
+  },
+  "AID-08": {
+   "code": "AID-08",
+   "category": "AID",
+   "name_zh": "图像算法工程师",
+   "name_en": "Image Algorithm Engineer",
+   "definition": "负责图像处理、计算机视觉核心算法的研究、开发与优化，涵盖图像增强、分割、特征提取、目标检测与识别等。典型技术栈包括OpenCV、Halcon、VisionPro、YOLO及C++/C#，并涉及工业视觉系统搭建与硬件选型。关键产出为高效稳定的视觉算法模块、解决方案及落地产品。",
+   "keywords": [
+    "图像处理",
+    "计算机视觉",
+    "OpenCV",
+    "Halcon",
+    "VisionPro",
+    "YOLO",
+    "图像增强",
+    "图像分割",
+    "特征提取",
+    "目标检测",
+    "OCR识别",
+    "缺陷检测",
+    "视觉定位",
+    "工业相机",
+    "镜头选型",
+    "光源方案",
+    "C++",
+    "C#",
+    "深度学习"
+   ],
+   "boundary": "与机器学习工程师的区别在于，图像算法工程师专注于图像/视频数据的视觉算法开发，而机器学习工程师更关注通用模型训练与部署，不限于视觉领域。",
+   "funtypes": [
+    "图像算法工程师",
+    "图像处理工程师",
+    "图像识别工程师",
+    "机器视觉工程师"
+   ],
+   "source_codes": [
+    "7303",
+    "7304",
+    "7305",
+    "7307"
+   ],
+   "source_names": [
+    "图像算法工程师",
+    "图像处理工程师",
+    "图像识别工程师",
+    "机器视觉工程师"
+   ],
+   "hits": 28555,
+   "n_samples": 4
+  },
+  "AID-09": {
+   "code": "AID-09",
+   "category": "AID",
+   "name_zh": "智能驾驶工程师",
+   "name_en": "Autonomous Driving Engineer",
+   "definition": "负责自动驾驶系统核心模块的设计、开发与集成，涵盖操作系统、感知融合、规划控制、高精定位及仿真测试等方向。典型技术栈包括C/C++、Linux、ROS/DDS、QNX及仿真平台（如VTD、CarMaker）。关键产出为稳定高效的自动驾驶功能模块、系统架构方案及仿真验证环境。",
+   "keywords": [
+    "自动驾驶",
+    "无人驾驶",
+    "C++",
+    "Linux",
+    "ROS",
+    "DDS",
+    "QNX",
+    "嵌入式",
+    "高精定位",
+    "车道导航",
+    "自动标定",
+    "传感器融合",
+    "激光雷达",
+    "GNSS/IMU",
+    "仿真平台",
+    "VTD",
+    "PreSCAN",
+    "CarMaker",
+    "SCANeR",
+    "系统架构"
+   ],
+   "boundary": "与算法工程师的边界在于：智能驾驶工程师侧重系统级软硬件集成与工程实现，而算法工程师专注感知、规划等具体算法的研究与优化。",
+   "funtypes": [
+    "智能驾驶工程师"
+   ],
+   "source_codes": [
+    "7120"
+   ],
+   "source_names": [
+    "智能驾驶工程师"
+   ],
+   "hits": 3825,
+   "n_samples": 4
+  },
+  "AID-10": {
+   "code": "AID-10",
+   "category": "AID",
+   "name_zh": "数据分析师",
+   "name_en": "Data Analyst",
+   "definition": "负责收集、清洗、处理和分析业务数据，通过报表、可视化和统计方法揭示业务趋势与问题，为决策提供数据支持。典型工具包括Excel、SQL、Python、Hive及BI工具，关键产出为日报/周报/月报、专题分析报告和业务洞察。",
+   "keywords": [
+    "数据分析",
+    "数据报表",
+    "数据透视表",
+    "Excel",
+    "SQL",
+    "Hive",
+    "Python",
+    "统计分析",
+    "业务分析",
+    "数据挖掘",
+    "数据可视化",
+    "报表开发",
+    "数据监控",
+    "业务洞察",
+    "数据驱动",
+    "数据报告",
+    "数据整理",
+    "数据清洗",
+    "数据敏感度",
+    "逻辑分析"
+   ],
+   "boundary": "与数据开发工程师的边界在于：数据分析师侧重业务分析与洞察，而数据开发工程师侧重数据管道和系统开发。",
+   "funtypes": [
+    "分析师",
+    "数据分析师"
+   ],
+   "source_codes": [
+    "7501"
+   ],
+   "source_names": [
+    "数据分析师"
+   ],
+   "hits": 44021,
+   "n_samples": 4
+  },
+  "AID-11": {
+   "code": "AID-11",
+   "category": "AID",
+   "name_zh": "数据开发工程师",
+   "name_en": "Data Development Engineer",
+   "definition": "负责大数据平台的数据采集、清洗、处理、存储及分析系统的设计与开发，使用Hadoop、Spark、Flink、Kafka等技术栈构建分布式数据管道，支撑离线批处理和实时流计算，产出高质量的数据服务与数据仓库，为业务分析和智能应用提供可靠的数据基础。",
+   "keywords": [
+    "Hadoop",
+    "Spark",
+    "Flink",
+    "Kafka",
+    "Hive",
+    "HBase",
+    "Storm",
+    "Elasticsearch",
+    "数据采集",
+    "数据清洗",
+    "数据仓库",
+    "实时计算",
+    "流式计算",
+    "分布式系统",
+    "ETL",
+    "Python",
+    "Java",
+    "Scala",
+    "Linux",
+    "TCP/IP"
+   ],
+   "boundary": "与ETL开发工程师的区别在于，数据开发工程师更侧重于大数据平台和分布式计算框架的构建与优化，而ETL开发工程师主要专注于数据仓库的抽取、转换、加载流程。",
+   "funtypes": [
+    "大数据开发工程师",
+    "Hadoop工程师"
+   ],
+   "source_codes": [
+    "0130",
+    "0129"
+   ],
+   "source_names": [
+    "数据开发",
+    "Hadoop"
+   ],
+   "hits": 34693,
+   "n_samples": 4
+  },
+  "AID-12": {
+   "code": "AID-12",
+   "category": "AID",
+   "name_zh": "ETL开发工程师",
+   "name_en": "ETL Developer",
+   "definition": "负责数据仓库和BI项目中ETL流程的设计、开发与维护，使用DataStage、Informatica、Kettle等工具进行数据抽取、转换和加载，编写存储过程及SQL进行数据处理和性能调优，产出高质量的数据模型和报表支持。",
+   "keywords": [
+    "ETL",
+    "DataStage",
+    "Informatica",
+    "Kettle",
+    "PL/SQL",
+    "存储过程",
+    "数据仓库",
+    "数据建模",
+    "OLAP",
+    "SQL优化",
+    "性能调优",
+    "数据集成",
+    "数据清洗",
+    "数据映射",
+    "调度",
+    "元数据",
+    "主数据",
+    "BI",
+    "报表开发",
+    "数据质量"
+   ],
+   "boundary": "与数据开发工程师的边界在于：ETL开发工程师更专注于数据抽取、转换、加载的流程实现和工具使用，而数据开发工程师更侧重于数据平台架构和整体数据链路开发。",
+   "funtypes": [
+    "ETL开发工程师"
+   ],
+   "source_codes": [
+    "7503"
+   ],
+   "source_names": [
+    "ETL开发工程师"
+   ],
+   "hits": 4615,
+   "n_samples": 4
+  },
+  "AID-13": {
+   "code": "AID-13",
+   "category": "AID",
+   "name_zh": "数据仓库工程师",
+   "name_en": "Data Warehouse Engineer",
+   "definition": "负责数据仓库的架构设计、模型开发与日常运维，使用SQL、ETL工具及MPP或云数仓技术栈，构建稳定高效的数据存储与计算体系，支撑业务分析与决策。核心产出包括数仓分层模型、ETL任务、性能优化方案及数据质量保障机制。",
+   "keywords": [
+    "数据仓库",
+    "数仓建模",
+    "ETL",
+    "SQL",
+    "Hive",
+    "Spark",
+    "Flink",
+    "Kafka",
+    "Greenplum",
+    "PostgreSQL",
+    "MPP",
+    "数据分层",
+    "维度建模",
+    "数据质量",
+    "数据一致性",
+    "性能调优",
+    "实时数仓",
+    "离线数仓",
+    "数仓开发",
+    "数仓运维"
+   ],
+   "boundary": "与数据开发工程师的边界在于：数据仓库工程师聚焦数仓架构与模型设计，而数据开发工程师更侧重数据管道与处理逻辑的实现。",
+   "funtypes": [
+    "数据仓库工程师"
+   ],
+   "source_codes": [
+    "7505"
+   ],
+   "source_names": [
+    "数据仓库工程师"
+   ],
+   "hits": 2861,
+   "n_samples": 4
+  },
+  "AID-14": {
+   "code": "AID-14",
+   "category": "AID",
+   "name_zh": "数据建模工程师",
+   "name_en": "Data Modeling Engineer",
+   "definition": "负责设计、开发和维护企业级数据模型（如概念模型、逻辑模型、物理模型）及数据仓库/数据集市架构，支持业务分析与决策。典型工作包括使用ERwin、PowerDesigner等工具进行建模，基于SQL、Python及大数据平台（如Hadoop、Spark）实施数据建模，并确保模型符合数据治理标准。关键产出为高质量的数据模型文档、建模规范及可扩展的数据架构方案。",
+   "keywords": [
+    "数据建模",
+    "数据模型",
+    "ERwin",
+    "PowerDesigner",
+    "逻辑模型",
+    "物理模型",
+    "维度建模",
+    "范式建模",
+    "数据仓库",
+    "数据集市",
+    "数据架构",
+    "建模规范",
+    "CDISC",
+    "SDTM",
+    "ADaM",
+    "SAS",
+    "数据湖",
+    "知识图谱"
+   ],
+   "boundary": "与数据仓库工程师的边界在于：数据建模工程师侧重于模型设计与架构规划，而数据仓库工程师更关注ETL流程实现和仓库日常运维。",
+   "funtypes": [
+    "数据建模工程师"
+   ],
+   "source_codes": [
+    "7507"
+   ],
+   "source_names": [
+    "数据建模工程师"
+   ],
+   "hits": 2890,
+   "n_samples": 4
+  },
+  "AID-15": {
+   "code": "AID-15",
+   "category": "AID",
+   "name_zh": "数据治理工程师",
+   "name_en": "Data Governance Engineer",
+   "definition": "负责构建和实施数据治理体系，包括制定数据标准、管理元数据和主数据、监控数据质量、设计数据安全策略等。典型工具包括数据治理平台、元数据管理工具、数据质量工具，以及Hadoop、Spark等大数据组件。关键产出包括数据治理方案、数据标准文档、数据质量报告和数据资产目录。",
+   "keywords": [
+    "数据治理",
+    "数据标准",
+    "元数据管理",
+    "主数据管理",
+    "数据质量管理",
+    "数据安全",
+    "数据资产",
+    "数据分类分级",
+    "数据架构",
+    "数据血缘",
+    "数据生命周期",
+    "数据治理平台",
+    "数据质量规则",
+    "数据标准编制",
+    "数据治理体系",
+    "数据治理咨询",
+    "数据治理工具",
+    "数据治理方案",
+    "数据治理流程",
+    "数据治理项目"
+   ],
+   "boundary": "与数据开发工程师的边界在于：数据治理工程师侧重于数据资产的管理和规范制定，而数据开发工程师侧重于数据管道和应用的开发实现。",
+   "funtypes": [
+    "数据治理工程师"
+   ],
+   "source_codes": [
+    "7508"
+   ],
+   "source_names": [
+    "数据治理工程师"
+   ],
+   "hits": 3077,
+   "n_samples": 4
+  },
+  "AID-16": {
+   "code": "AID-16",
+   "category": "AID",
+   "name_zh": "数据采集工程师",
+   "name_en": "Data Collection Engineer",
+   "definition": "负责从互联网、传感器、测绘设备等多源渠道采集原始数据，并进行清洗、整理、初步处理与入库。典型技术栈包括Python、Scrapy、Requests、API接口、SQL、Faro扫描仪等。关键产出是高质量、结构化的数据集及采集流程优化方案。",
+   "keywords": [
+    "数据采集",
+    "爬虫",
+    "Scrapy",
+    "Requests",
+    "API接口",
+    "数据清洗",
+    "数据整理",
+    "数据入库",
+    "SQL",
+    "点云数据",
+    "Faro",
+    "三维扫描",
+    "数据抽取",
+    "数据筛选",
+    "数据录入",
+    "采集流程优化",
+    "数据备份",
+    "数据质量"
+   ],
+   "boundary": "与数据开发工程师的边界在于：数据采集工程师专注于数据获取与初步处理，而数据开发工程师负责数据管道、存储与计算架构的搭建与维护。",
+   "funtypes": [
+    "数据采集工程师"
+   ],
+   "source_codes": [
+    "7506"
+   ],
+   "source_names": [
+    "数据采集工程师"
+   ],
+   "hits": 3477,
+   "n_samples": 4
+  },
+  "AID-17": {
+   "code": "AID-17",
+   "category": "AID",
+   "name_zh": "BI工程师",
+   "name_en": "BI Engineer",
+   "definition": "BI工程师负责构建和维护商业智能解决方案，包括数据仓库设计、ETL流程开发、数据建模及报表开发。典型技术栈包括Power BI、SQL Server、DAX、SSIS/SSAS/SSRS等。核心产出是满足业务需求的数据分析报表和可视化仪表盘，支持决策。",
+   "keywords": [
+    "Power BI",
+    "DAX",
+    "SQL Server",
+    "SSIS",
+    "SSAS",
+    "SSRS",
+    "数据仓库",
+    "ETL",
+    "数据建模",
+    "报表开发",
+    "可视化",
+    "BIEE",
+    "Oracle BI",
+    "星型模型",
+    "雪花模型",
+    "Kettle",
+    "Sqoop",
+    "HQL",
+    "Impala",
+    "Gateway"
+   ],
+   "boundary": "与数据分析师相比，BI工程师更侧重于数据平台和报表系统的技术实现，而非业务洞察和统计分析。",
+   "funtypes": [
+    "BI工程师"
+   ],
+   "source_codes": [
+    "7504"
+   ],
+   "source_names": [
+    "BI工程师"
+   ],
+   "hits": 4147,
+   "n_samples": 4
+  },
+  "AID-18": {
+   "code": "AID-18",
+   "category": "AID",
+   "name_zh": "数据标注师",
+   "name_en": "Data Annotator",
+   "definition": "负责对文本、图像、音视频等数据进行整理、标注与质检，使用Labelme等标注工具，为机器学习模型提供高质量训练数据。核心职责包括执行标注任务、跟进抽查、定位badcase并初步分析原因，同时优化标注流程与规范。关键产出为准确、规范的标注数据集及改进建议。",
+   "keywords": [
+    "数据标注",
+    "标注工具",
+    "Labelme",
+    "图像标注",
+    "文本标注",
+    "商品信息审核",
+    "质检",
+    "badcase",
+    "评测",
+    "数据整理",
+    "标注规范",
+    "内容审核",
+    "数据清洗",
+    "标注平台",
+    "数据质量",
+    "标注流程",
+    "数据标注专员",
+    "数据标注师"
+   ],
+   "boundary": "与数据采集工程师的边界：数据标注师侧重于对已有数据进行标注和质检，而数据采集工程师侧重于获取和收集原始数据。",
+   "funtypes": [
+    "数据标注师"
+   ],
+   "source_codes": [
+    "7512"
+   ],
+   "source_names": [
+    "数据标注师"
+   ],
+   "hits": 3202,
+   "n_samples": 4
+  },
+  "AID-19": {
+   "code": "AID-19",
+   "category": "AID",
+   "name_zh": "数据分析经理/主管",
+   "name_en": "Data Analytics Manager/Supervisor",
+   "definition": "负责带领团队或独立完成数据分析项目，包括需求对接、指标体系设计、数据挖掘与可视化报告产出，驱动业务决策。典型工具包括SQL、Python、Excel、BI工具（如Tableau、Power BI），并熟悉数据仓库（如Hive）。关键产出为数据分析报告、业务洞察及可落地的优化建议。",
+   "keywords": [
+    "数据分析报告",
+    "指标体系",
+    "数据挖掘",
+    "业务洞察",
+    "SQL",
+    "Python",
+    "Excel",
+    "PPT",
+    "BI工具",
+    "Tableau",
+    "Power BI",
+    "Hive",
+    "数据可视化",
+    "需求对接",
+    "项目管理",
+    "客户沟通",
+    "行业分析",
+    "趋势分析",
+    "效果评估",
+    "数据监控"
+   ],
+   "boundary": "与数据分析师相比，数据分析经理/主管更侧重于团队管理、项目统筹和业务决策支持，而数据分析师更专注于具体的数据处理和分析执行。",
+   "funtypes": [
+    "数据分析主管",
+    "数据分析经理",
+    "数据分析经理/主管"
+   ],
+   "source_codes": [
+    "7502"
+   ],
+   "source_names": [
+    "数据分析经理/主管"
+   ],
+   "hits": 4603,
+   "n_samples": 4
+  },
+  "QA-01": {
+   "code": "QA-01",
+   "category": "QA",
+   "name_zh": "测试工程师",
+   "name_en": "Test Engineer",
+   "definition": "负责依据测试方案和用例，对软硬件产品或系统执行功能、性能及环境适应性测试，记录并分析测试数据，编写测试报告，定位并跟踪缺陷。典型工作包括搭建测试环境、操作测试仪器、执行试验规程，并运用办公自动化或基础编程工具处理数据。关键产出为测试记录、缺陷报告和阶段性测试总结。",
+   "keywords": [
+    "测试用例",
+    "测试方案",
+    "测试报告",
+    "缺陷跟踪",
+    "bug单",
+    "测试环境",
+    "测试数据",
+    "试验报告",
+    "样机测试",
+    "型式试验",
+    "高低温试验",
+    "振动试验",
+    "电磁兼容",
+    "计量器具",
+    "测试仪器",
+    "故障分析",
+    "测试文档",
+    "测试标准",
+    "性能测试",
+    "环境试验"
+   ],
+   "boundary": "与测试开发工程师的边界在于：本岗位侧重手工执行测试、记录与分析结果，而测试开发工程师侧重编写自动化测试脚本和搭建测试平台。",
+   "funtypes": [
+    "QA工程师",
+    "QC工程师",
+    "测试工程师",
+    "质量管理/测试工程师(QA/QC工程师)",
+    "QC",
+    "测试员",
+    "软件测试工程师",
+    "功能测试",
+    "系统测试",
+    "移动端测试",
+    "性能测试"
+   ],
+   "source_codes": [
+    "2725",
+    "2700",
+    "2707",
+    "2718",
+    "2706",
+    "2721",
+    "2719"
+   ],
+   "source_names": [
+    "测试工程师",
+    "测试",
+    "软件测试",
+    "功能测试",
+    "系统测试",
+    "移动端测试",
+    "性能测试"
+   ],
+   "hits": 398081,
+   "n_samples": 4
+  },
+  "QA-02": {
+   "code": "QA-02",
+   "category": "QA",
+   "name_zh": "测试开发工程师",
+   "name_en": "Test Development Engineer",
+   "definition": "负责测试工具、框架及平台的开发与维护，通过自动化脚本和二次开发提升测试效率与覆盖率。典型技术栈包括Python/Java/C++、Selenium/Appium、Jenkins、Docker等。关键产出为可复用的测试框架、自动化测试套件及测试效能分析报告。",
+   "keywords": [
+    "自动化测试",
+    "测试框架开发",
+    "测试工具开发",
+    "Python",
+    "Java",
+    "C++",
+    "Selenium",
+    "Appium",
+    "Jenkins",
+    "Docker",
+    "CI/CD",
+    "接口测试",
+    "性能测试",
+    "脚本开发",
+    "二次开发",
+    "TMS系统",
+    "数据库开发",
+    "SQL",
+    "测试平台"
+   ],
+   "boundary": "与测试工程师的区别在于，测试开发工程师侧重于开发测试工具和框架，而测试工程师主要执行测试用例和缺陷管理。",
+   "funtypes": [
+    "测试开发",
+    "自动化测试"
+   ],
+   "source_codes": [
+    "2722",
+    "2720"
+   ],
+   "source_names": [
+    "测试开发",
+    "自动化测试"
+   ],
+   "hits": 16895,
+   "n_samples": 4
+  },
+  "QA-03": {
+   "code": "QA-03",
+   "category": "QA",
+   "name_zh": "游戏测试",
+   "name_en": "Game Tester",
+   "definition": "负责根据游戏设计文档编写和执行测试用例，对游戏功能、整包及线上版本进行全面测试，记录并追踪缺陷，撰写测试报告。典型工具包括Excel、Word及常用测试管理工具，核心产出为测试报告和缺陷分析，确保游戏质量。",
+   "keywords": [
+    "游戏测试",
+    "手游测试",
+    "功能测试",
+    "黑盒测试",
+    "测试用例",
+    "测试报告",
+    "缺陷管理",
+    "BUG跟踪",
+    "版本测试",
+    "整包测试",
+    "线上用户反馈",
+    "游戏体验",
+    "卡牌游戏",
+    "网络游戏",
+    "单机游戏",
+    "EVE Online",
+    "Excel",
+    "Word"
+   ],
+   "boundary": "与测试工程师的区别在于，游戏测试专注于游戏产品的内容和体验，而非通用软件的功能或性能测试。",
+   "funtypes": [
+    "游戏测试"
+   ],
+   "source_codes": [
+    "7821"
+   ],
+   "source_names": [
+    "游戏测试"
+   ],
+   "hits": 3120,
+   "n_samples": 4
+  },
+  "QA-04": {
+   "code": "QA-04",
+   "category": "QA",
+   "name_zh": "智能驾驶测试工程师",
+   "name_en": "Autonomous Driving Test Engineer",
+   "definition": "负责智能驾驶系统（含感知、决策、控制等模块）的实车与仿真测试，设计并执行测试用例，采集分析测试数据，定位问题并跟踪闭环。典型工具包括CANoe、INCA、CAPL、自动驾驶仿真平台等，关键产出为测试报告、问题清单及改进建议。",
+   "keywords": [
+    "智能驾驶",
+    "自动驾驶",
+    "ADAS",
+    "实车测试",
+    "仿真测试",
+    "CANoe",
+    "CAPL",
+    "INCA",
+    "CANape",
+    "CAN通信",
+    "测试用例",
+    "测试报告",
+    "数据采集",
+    "问题定位",
+    "C1驾照",
+    "车辆测试",
+    "传感器",
+    "雷达",
+    "摄像头",
+    "场景构建"
+   ],
+   "boundary": "与测试工程师的边界在于：智能驾驶测试工程师聚焦于自动驾驶系统（含传感器、算法）的专项测试，而通用测试工程师覆盖更广泛的软件或硬件功能测试。",
+   "funtypes": [
+    "智能驾驶测试工程师"
+   ],
+   "source_codes": [
+    "7124"
+   ],
+   "source_names": [
+    "智能驾驶测试工程师"
+   ],
+   "hits": 1472,
+   "n_samples": 4
+  },
+  "QA-05": {
+   "code": "QA-05",
+   "category": "QA",
+   "name_zh": "测试经理/主管",
+   "name_en": "Test Manager",
+   "definition": "负责制定测试策略与计划，管理测试团队并协调资源，确保产品按质量要求交付。核心工作包括测试流程设计、进度跟踪、人员招聘与绩效管理，并参与核心模块测试。典型技术栈涵盖功能、接口、性能、安全测试及自动化测试工具，关键产出为测试计划、质量报告及团队能力提升。",
+   "keywords": [
+    "测试方案",
+    "测试计划",
+    "测试进度",
+    "测试流程",
+    "测试团队",
+    "团队管理",
+    "人员招聘",
+    "绩效考核",
+    "敏捷开发",
+    "自动化测试",
+    "功能测试",
+    "接口测试",
+    "性能测试",
+    "安全性测试",
+    "Linux",
+    "ISO9001",
+    "质量管理体系",
+    "质量事故",
+    "质量改进",
+    "供应商质量"
+   ],
+   "boundary": "与测试工程师的区别在于其核心职责是团队管理与流程规划，而非具体执行测试用例编写与执行。",
+   "funtypes": [
+    "QA经理",
+    "QC经理",
+    "测试经理",
+    "质量管理/测试经理(QA/QC经理)",
+    "QA主管",
+    "QC主管",
+    "测试主管",
+    "质量管理/测试主管(QA/QC主管)",
+    "测试总监"
+   ],
+   "source_codes": [
+    "2705",
+    "2723",
+    "2726"
+   ],
+   "source_names": [
+    "测试经理",
+    "测试主管",
+    "测试总监"
+   ],
+   "hits": 214744,
+   "n_samples": 4
+  },
+  "OPS-01": {
+   "code": "OPS-01",
+   "category": "OPS",
+   "name_zh": "运维工程师",
+   "name_en": "Operations Engineer",
+   "definition": "负责IT系统、网络及业务的日常监控、部署发布、故障处理与安全加固，确保服务稳定运行。典型技术栈包括Linux、Nginx、MySQL、Redis、Shell/Python、Ansible、Zabbix/Prometheus。关键产出为高可用运维体系、自动化脚本及故障响应报告。",
+   "keywords": [
+    "Linux",
+    "Nginx",
+    "Iptables",
+    "MySQL",
+    "Redis",
+    "Shell",
+    "Python",
+    "Ansible",
+    "Salt",
+    "Zabbix",
+    "Prometheus",
+    "部署",
+    "发布",
+    "监控",
+    "故障处理",
+    "安全加固",
+    "DDOS防御",
+    "Web漏洞",
+    "自动化运维",
+    "游戏运维"
+   ],
+   "boundary": "与运维开发工程师的边界在于：运维工程师侧重系统运行维护与故障处理，而运维开发工程师更专注于开发运维工具和平台。",
+   "funtypes": [
+    "维护工程师",
+    "维护经理",
+    "运维工程师",
+    "自动化运维工程师",
+    "网站维护工程师"
+   ],
+   "source_codes": [
+    "7901",
+    "7920",
+    "7907"
+   ],
+   "source_names": [
+    "运维工程师",
+    "自动化运维工程师",
+    "网站维护工程师"
+   ],
+   "hits": 103201,
+   "n_samples": 4
+  },
+  "OPS-02": {
+   "code": "OPS-02",
+   "category": "OPS",
+   "name_zh": "运维开发工程师",
+   "name_en": "DevOps Engineer",
+   "definition": "负责设计、开发和维护自动化运维工具与平台，提升系统部署、监控和故障处理效率。典型技术栈包括Python、Linux、Django/Flask、Ansible、Jenkins、Docker、Kubernetes等。关键产出包括自动化脚本、运维平台、监控告警系统及持续交付流水线。",
+   "keywords": [
+    "Python",
+    "Linux shell",
+    "Django",
+    "Flask",
+    "Tornado",
+    "Ansible",
+    "SaltStack",
+    "Jenkins",
+    "Zabbix",
+    "Prometheus",
+    "Docker",
+    "Kubernetes",
+    "DevOps",
+    "自动化运维",
+    "运维平台开发",
+    "二次开发",
+    "CI/CD",
+    "监控系统"
+   ],
+   "boundary": "与运维工程师的区别在于，运维开发工程师侧重于开发自动化工具和平台，而运维工程师侧重于日常系统维护和故障处理。",
+   "funtypes": [
+    "运维开发"
+   ],
+   "source_codes": [
+    "7915"
+   ],
+   "source_names": [
+    "运维开发"
+   ],
+   "hits": 9155,
+   "n_samples": 4
+  },
+  "OPS-03": {
+   "code": "OPS-03",
+   "category": "OPS",
+   "name_zh": "系统工程师",
+   "name_en": "System Engineer",
+   "definition": "负责企业信息系统的规划、部署、维护与优化，涵盖需求分析、系统测试、日常运维及技术支持。典型技术栈包括Windows/Linux服务器、SQL数据库、虚拟化平台及监控工具。关键产出包括系统架构方案、运维流程文档、故障处理报告及系统性能优化建议。",
+   "keywords": [
+    "系统运维",
+    "系统支持",
+    "DCS系统",
+    "PLC",
+    "MES系统",
+    "SQL",
+    "VS",
+    "系统测试",
+    "需求规划",
+    "系统维护",
+    "系统改善",
+    "业务流程梳理",
+    "项目管理",
+    "AutoCAD",
+    "Visio",
+    "工控组态软件",
+    "自动化",
+    "仪器仪表",
+    "系统实施",
+    "系统培训"
+   ],
+   "boundary": "与运维工程师的边界在于，系统工程师更侧重于系统全生命周期的规划、测试与优化，而运维工程师主要聚焦于日常监控、故障处理与稳定性保障。",
+   "funtypes": [
+    "系统工程师"
+   ],
+   "source_codes": [
+    "7902"
+   ],
+   "source_names": [
+    "系统工程师"
+   ],
+   "hits": 36772,
+   "n_samples": 4
+  },
+  "OPS-04": {
+   "code": "OPS-04",
+   "category": "OPS",
+   "name_zh": "系统集成工程师",
+   "name_en": "System Integration Engineer",
+   "definition": "负责ICT系统及智慧城市等项目的整体规划、方案设计与实施管理，涵盖系统集成、网络通信、软硬件部署及现场施工协调。典型技术栈包括网络技术、通信技术、网络安全、主流ERP/CRM/OA及建筑智能化子系统。关键产出为集成方案、施工设计、项目交付及验收文档。",
+   "keywords": [
+    "系统集成",
+    "ICT",
+    "智慧城市",
+    "智能化系统",
+    "施工管理",
+    "深化设计",
+    "技术方案",
+    "网络技术",
+    "通信技术",
+    "网络安全",
+    "ERP",
+    "CRM",
+    "OA",
+    "PACS",
+    "HIS",
+    "数据库",
+    "项目管理",
+    "实施",
+    "验收"
+   ],
+   "boundary": "与运维工程师的边界：系统集成工程师侧重项目前期方案设计与实施交付，而运维工程师侧重系统上线后的日常运行维护与故障处理。",
+   "funtypes": [
+    "系统集成工程师"
+   ],
+   "source_codes": [
+    "7904"
+   ],
+   "source_names": [
+    "系统集成工程师"
+   ],
+   "hits": 14730,
+   "n_samples": 4
+  },
+  "OPS-05": {
+   "code": "OPS-05",
+   "category": "OPS",
+   "name_zh": "DBA",
+   "name_en": "DBA",
+   "definition": "负责数据库系统的安装、配置、监控、备份恢复、性能调优及安全管理，确保数据库高可用与稳定运行。典型技术栈包括Oracle、MySQL、SQL Server、PostgreSQL、Redis、MongoDB等，常用工具涉及RMAN、DataGuard、主从复制、分库分表及云数据库服务。关键产出包括数据库架构方案、运维巡检报告、故障处理记录及性能优化建议。",
+   "keywords": [
+    "DBA",
+    "数据库管理员",
+    "数据库运维",
+    "Oracle",
+    "MySQL",
+    "SQL Server",
+    "PostgreSQL",
+    "Redis",
+    "MongoDB",
+    "备份恢复",
+    "RMAN",
+    "DataGuard",
+    "主从复制",
+    "读写分离",
+    "性能调优",
+    "SQL优化",
+    "高可用",
+    "容灾",
+    "数据库监控",
+    "数据库安全",
+    "分库分表",
+    "数据库迁移",
+    "数据库故障处理"
+   ],
+   "boundary": "与运维工程师的边界在于DBA专注于数据库生命周期管理及数据安全，而运维工程师负责整体基础设施与系统运行。",
+   "funtypes": [
+    "数据库工程师(DBA)"
+   ],
+   "source_codes": [
+    "7903"
+   ],
+   "source_names": [
+    "DBA"
+   ],
+   "hits": 10981,
+   "n_samples": 4
+  },
+  "OPS-06": {
+   "code": "OPS-06",
+   "category": "OPS",
+   "name_zh": "ERP实施顾问",
+   "name_en": "ERP Implementation Consultant",
+   "definition": "负责ERP系统的需求调研、蓝图设计、配置实施、测试培训及上线支持，确保系统与业务流程匹配。典型技术栈包括SAP（FI/CO/SD/PP等模块）、Oracle、用友等，需掌握后台配置、二次开发接口及项目管理工具。关键产出为实施方案、配置文档、用户培训及系统稳定运行。",
+   "keywords": [
+    "ERP",
+    "SAP",
+    "FI/CO",
+    "SD",
+    "PP",
+    "PS",
+    "MM",
+    "S/4HANA",
+    "R/3",
+    "ABAP",
+    "蓝图设计",
+    "需求分析",
+    "后台配置",
+    "系统集成",
+    "实施方法论",
+    "上线支持",
+    "用户培训",
+    "业务流程优化",
+    "MES",
+    "WMS"
+   ],
+   "boundary": "与运维工程师的边界在于：ERP实施顾问聚焦于ERP系统的项目式实施与业务优化，而运维工程师侧重于系统日常运行维护与故障处理。",
+   "funtypes": [
+    "ERP实施顾问"
+   ],
+   "source_codes": [
+    "7905"
+   ],
+   "source_names": [
+    "ERP实施顾问"
+   ],
+   "hits": 41769,
+   "n_samples": 4
+  },
+  "OPS-07": {
+   "code": "OPS-07",
+   "category": "OPS",
+   "name_zh": "IT技术支持",
+   "name_en": "IT Support Specialist",
+   "definition": "负责企业终端用户计算机硬件、操作系统、办公软件及网络设备的日常维护与故障排除，提供现场或远程技术支持，确保办公环境稳定运行。典型技术栈包括Windows/macOS、Office套件、打印机、网络基础设备及AD域管理。关键产出是快速响应的故障解决记录、设备维护台账及用户满意度提升。",
+   "keywords": [
+    "桌面支持",
+    "helpdesk",
+    "故障排查",
+    "硬件维护",
+    "操作系统安装",
+    "办公软件支持",
+    "打印机维护",
+    "网络故障诊断",
+    "AD域",
+    "权限管理",
+    "IT资产管理",
+    "耗材管理",
+    "病毒查杀",
+    "防火墙配置",
+    "交换机配置",
+    "路由器配置",
+    "电话系统维护",
+    "数据备份",
+    "用户培训"
+   ],
+   "boundary": "与技术支持工程师的区别在于，IT技术支持更侧重终端用户日常桌面和办公设备支持，而技术支持工程师更偏向于特定产品或系统的深度技术问题解决。",
+   "funtypes": [
+    "电脑操作员",
+    "维修主管",
+    "维修站经理",
+    "维修经理",
+    "网络管理(Helpdesk)"
+   ],
+   "source_codes": [
+    "A0LA",
+    "7914"
+   ],
+   "source_names": [
+    "IT技术支持",
+    "网络管理(Helpdesk)"
+   ],
+   "hits": 19355,
+   "n_samples": 4
+  },
+  "OPS-08": {
+   "code": "OPS-08",
+   "category": "OPS",
+   "name_zh": "技术支持工程师",
+   "name_en": "Technical Support Engineer",
+   "definition": "负责为客户提供产品安装、调试、故障排查及技术咨询等售后支持服务，同时协助销售团队进行售前方案讲解与技术应答。典型工作涉及使用专业检测设备（如AFM、电镜）或网络协议分析工具，产出故障报告、技术文档及客户培训材料。",
+   "keywords": [
+    "售后支持",
+    "售前支持",
+    "技术答疑",
+    "故障排查",
+    "客户培训",
+    "技术方案",
+    "技术应答",
+    "AFM",
+    "近场光学",
+    "电镜",
+    "TCP/IP",
+    "IPSec",
+    "防火墙",
+    "VPN",
+    "IDS/IPS",
+    "技术沟通",
+    "现场支持",
+    "产品bug反馈"
+   ],
+   "boundary": "与IT技术支持的区别在于，技术支持工程师更侧重于特定产品或行业解决方案的专业技术支撑，而IT技术支持更偏向于企业内部通用IT系统的日常维护与用户支持。",
+   "funtypes": [
+    "售前/售后技术支持工程师",
+    "技术支持工程师",
+    "售前技术支持工程师",
+    "售后技术支持工程师",
+    "售后服务",
+    "技术支持/维护工程师"
+   ],
+   "source_codes": [
+    "3207",
+    "8401",
+    "8402",
+    "7909"
+   ],
+   "source_names": [
+    "售前/售后技术支持工程师",
+    "售前技术支持工程师",
+    "售后技术支持工程师",
+    "技术支持/维护工程师"
+   ],
+   "hits": 271739,
+   "n_samples": 4
+  },
+  "OPS-09": {
+   "code": "OPS-09",
+   "category": "OPS",
+   "name_zh": "技术支持经理/主管",
+   "name_en": "Technical Support Manager/Supervisor",
+   "definition": "负责管理技术支持团队，制定服务流程与标准，协调内外部资源解决复杂技术问题，确保客户满意度。典型工作包括团队管理、技术支持策略制定、客户沟通及技术方案审核。常用工具包括工单系统、CRM、远程支持工具等。关键产出为高效的技术支持服务、团队绩效提升及客户满意度报告。",
+   "keywords": [
+    "技术支持团队管理",
+    "客户满意度",
+    "工单系统",
+    "SLA",
+    "故障处理流程",
+    "技术方案审核",
+    "远程支持",
+    "CRM",
+    "服务流程优化",
+    "团队培训",
+    "客户沟通",
+    "问题升级机制",
+    "技术支持策略",
+    "服务报告",
+    "ITIL",
+    "技术支持KPI",
+    "客户关系维护",
+    "技术知识库"
+   ],
+   "boundary": "与IT技术支持工程师的区别在于，技术支持经理/主管侧重于团队管理、流程制定和客户满意度，而非直接处理一线技术问题。",
+   "funtypes": [
+    "售前/售后技术支持经理",
+    "售后技术支持经理",
+    "技术支持经理",
+    "售前/售后技术支持主管",
+    "售前技术支持主管",
+    "售后技术支持主管",
+    "售前技术支持经理",
+    "技术支持/维护经理"
+   ],
+   "source_codes": [
+    "3205",
+    "3206",
+    "8403",
+    "8404",
+    "7908"
+   ],
+   "source_names": [
+    "售前/售后技术支持经理",
+    "售前/售后技术支持主管",
+    "售前技术支持经理/主管",
+    "售后技术支持经理/主管",
+    "技术支持/维护经理"
+   ],
+   "hits": 51462,
+   "n_samples": 4
+  },
+  "OPS-10": {
+   "code": "OPS-10",
+   "category": "OPS",
+   "name_zh": "IT经理/IT主管",
+   "name_en": "IT Manager/Supervisor",
+   "definition": "负责制定和实施组织的信息技术规划与管理制度，统筹管理IT基础设施、网络、应用系统的日常运维与监控，确保系统稳定运行。协调内外部资源，处理技术故障，管理IT项目与供应商，并输出技术文档与报告。典型技术栈包括网络设备、服务器、安全设备、监控工具及IT服务管理流程。",
+   "keywords": [
+    "IT规划",
+    "IT管理",
+    "ITIL",
+    "网络监控",
+    "系统运维",
+    "故障应急",
+    "供应商管理",
+    "技术文档",
+    "机房管理",
+    "信息安全",
+    "IT项目",
+    "SLA",
+    "Helpdesk",
+    "ITSM",
+    "网络设备",
+    "服务器",
+    "安全设备",
+    "交易系统",
+    "营业网点",
+    "监管合规"
+   ],
+   "boundary": "与运维工程师的边界在于：IT经理/主管侧重IT整体规划、团队管理与资源协调，而运维工程师侧重具体技术操作与日常维护执行。",
+   "funtypes": [
+    "IT主管",
+    "IT经理",
+    "IT经理/IT主管"
+   ],
+   "source_codes": [
+    "7912"
+   ],
+   "source_names": [
+    "IT经理/IT主管"
+   ],
+   "hits": 21988,
+   "n_samples": 4
+  },
+  "OPS-11": {
+   "code": "OPS-11",
+   "category": "OPS",
+   "name_zh": "配置管理工程师",
+   "name_en": "Configuration Management Engineer",
+   "definition": "负责建立和维护软件配置管理体系，包括制定配置管理计划、管理版本、基线、变更和发布，以及维护配置管理工具（如SVN、Git、CC等）。通过自动化脚本和持续集成流程优化配置管理环境，确保软件交付的高效性和可追溯性。关键产出包括配置管理计划、配置审计报告、自动化构建与发布流程。",
+   "keywords": [
+    "配置管理",
+    "版本管理",
+    "基线管理",
+    "变更管理",
+    "发布管理",
+    "配置审计",
+    "SVN",
+    "Git",
+    "ClearCase",
+    "DOORS",
+    "TFS",
+    "Shell",
+    "Python",
+    "持续集成",
+    "DevOps",
+    "构建自动化",
+    "分支策略",
+    "配置库",
+    "软件配置管理"
+   ],
+   "boundary": "与运维工程师的边界在于，配置管理工程师专注于软件配置项、版本、基线和变更的流程与工具管理，而非基础设施和系统运行维护。",
+   "funtypes": [
+    "配置管理工程师"
+   ],
+   "source_codes": [
+    "7910"
+   ],
+   "source_names": [
+    "配置管理工程师"
+   ],
+   "hits": 2232,
+   "n_samples": 4
+  },
+  "OPS-12": {
+   "code": "OPS-12",
+   "category": "OPS",
+   "name_zh": "技术文档工程师",
+   "name_en": "Technical Documentation Engineer",
+   "definition": "负责产品技术文档的规划、编写、维护与管理，包括用户手册、维修手册、API文档、系统运维文档等。典型工具包括Markdown、DITA、MadCap Flare、Adobe FrameMaker、CAD等。关键产出是准确、清晰、易用的技术文档体系，以支持产品使用、维护和客户服务。",
+   "keywords": [
+    "技术文档",
+    "用户手册",
+    "维修手册",
+    "API文档",
+    "DITA",
+    "MadCap Flare",
+    "FrameMaker",
+    "Markdown",
+    "文档编写",
+    "文档管理",
+    "信息架构",
+    "技术写作",
+    "S-BOM",
+    "备件目录",
+    "诊断信息",
+    "技术服务公告",
+    "CAD",
+    "产品说明书",
+    "在线帮助",
+    "文档发布"
+   ],
+   "boundary": "与运维工程师的边界在于：技术文档工程师专注于文档的规划、编写与维护，而非系统或网络的日常运维操作。",
+   "funtypes": [
+    "技术文档工程师",
+    "通信文档工程师",
+    "半导体文档工程师",
+    "电子文档工程师"
+   ],
+   "source_codes": [
+    "0150",
+    "2812",
+    "6747",
+    "2953"
+   ],
+   "source_names": [
+    "技术文档工程师",
+    "通信文档工程师",
+    "半导体文档工程师",
+    "电子文档工程师"
+   ],
+   "hits": 14202,
+   "n_samples": 4
+  },
+  "NET-01": {
+   "code": "NET-01",
+   "category": "NET",
+   "name_zh": "网络工程师",
+   "name_en": "Network Engineer",
+   "definition": "负责企业或机构内部局域网、广域网及网络系统的规划、设计、部署、运维与优化，确保网络稳定、安全、高效运行。典型工作包括配置管理路由器、交换机、防火墙等网络设备，监控网络性能，排查故障，实施安全策略，并编写网络文档。关键产出为稳定可靠的网络环境、网络架构方案及运维报告。",
+   "keywords": [
+    "局域网",
+    "广域网",
+    "TCP/IP",
+    "路由器",
+    "交换机",
+    "防火墙",
+    "网络运维",
+    "网络架构",
+    "网络规划",
+    "网络优化",
+    "故障排查",
+    "网络监控",
+    "网络安全",
+    "VLAN",
+    "VPN",
+    "OSPF",
+    "BGP",
+    "CCNP",
+    "H3CSE",
+    "网络设备配置"
+   ],
+   "boundary": "与数据通信工程师的边界在于，网络工程师更侧重企业内网及园区网络的运维与优化，而数据通信工程师更关注运营商级或大规模数据网络的架构设计与协议实现。",
+   "funtypes": [
+    "网络工程师(IT工程师)",
+    "通信网络工程师"
+   ],
+   "source_codes": [
+    "7913",
+    "A0LB",
+    "2807"
+   ],
+   "source_names": [
+    "网络工程师(IT工程师)",
+    "网络工程师",
+    "通信网络工程师"
+   ],
+   "hits": 52465,
+   "n_samples": 4
+  },
+  "NET-02": {
+   "code": "NET-02",
+   "category": "NET",
+   "name_zh": "通信技术工程师",
+   "name_en": "Communication Technology Engineer",
+   "definition": "负责通信系统前沿技术研究、标准制定与算法优化，以及基站协议栈等核心模块的开发维护。典型工作涉及3GPP/ORAN/CCSA标准研究、B5G/6G技术调研、LTE/NR协议栈（PDCP/RLC/MAC）开发，产出包括专利、技术报告、解决方案及可交付的通信软件模块。",
+   "keywords": [
+    "3GPP",
+    "ORAN",
+    "CCSA",
+    "B5G",
+    "6G",
+    "NR",
+    "LTE/LTE-A",
+    "协议栈",
+    "PDCP",
+    "RLC",
+    "MAC",
+    "标准研究",
+    "专利布局",
+    "算法优化",
+    "系统设计",
+    "技术调研",
+    "电子对抗",
+    "频谱管理",
+    "仿真开发",
+    "总体论证"
+   ],
+   "boundary": "与无线通信工程师的边界在于本岗位侧重通信系统协议与标准层面的研究开发，而非射频链路或空口物理层硬件的设计与优化。",
+   "funtypes": [
+    "通信技术工程师"
+   ],
+   "source_codes": [
+    "2801"
+   ],
+   "source_names": [
+    "通信技术工程师"
+   ],
+   "hits": 28955,
+   "n_samples": 4
+  },
+  "NET-03": {
+   "code": "NET-03",
+   "category": "NET",
+   "name_zh": "无线通信工程师",
+   "name_en": "Wireless Communication Engineer",
+   "definition": "负责移动通信网络（LTE/5G）的规划、优化、部署与技术支持，涵盖宏站/室分设计、射频硬件开发及端到端解决方案交付。典型工具包括AutoCAD、通信概预算软件、网规网优工具及天越室分设计软件。关键产出为网络设计方案、优化报告、测试验证结果及可交付的通信系统。",
+   "keywords": [
+    "LTE",
+    "5G",
+    "无线宏站",
+    "室分设计",
+    "网规网优",
+    "射频",
+    "EPC核心网",
+    "端到端技术支持",
+    "网络部署",
+    "通信概预算",
+    "天越",
+    "AutoCAD",
+    "GSM",
+    "移动通信系统测试",
+    "解决方案测试",
+    "工业物联网",
+    "铁塔设计",
+    "网络优化",
+    "无线接入网",
+    "NR"
+   ],
+   "boundary": "与射频工程师的边界在于：无线通信工程师侧重网络级规划、优化与系统部署，而射频工程师聚焦于射频电路、天线及硬件模块的设计与调试。",
+   "funtypes": [
+    "无线通信工程师"
+   ],
+   "source_codes": [
+    "2803"
+   ],
+   "source_names": [
+    "无线通信工程师"
+   ],
+   "hits": 7831,
+   "n_samples": 4
+  },
+  "NET-04": {
+   "code": "NET-04",
+   "category": "NET",
+   "name_zh": "数据通信工程师",
+   "name_en": "Data Communication Engineer",
+   "definition": "负责数据通信网络（如骨干网、城域网、IDC及云资源池）的规划、设计、实施与维护，涵盖路由交换、网络安全及组网方案，使用主流数通设备（如Cisco、H3C、华为）进行配置调试，产出网络设计方案、勘察报告及运维文档。",
+   "keywords": [
+    "数据通信",
+    "数通",
+    "骨干网",
+    "城域网",
+    "IDC",
+    "云资源池",
+    "路由交换",
+    "TCP/IP",
+    "Cisco",
+    "H3C",
+    "华为",
+    "组网方案",
+    "网络规划",
+    "网络设计",
+    "勘察设计",
+    "可研",
+    "概预算",
+    "网络安全",
+    "网络运维",
+    "网络调试"
+   ],
+   "boundary": "与网络工程师的边界在于更侧重网络架构的规划设计与咨询，而非日常运维和故障排除。",
+   "funtypes": [
+    "数据通信工程师"
+   ],
+   "source_codes": [
+    "2805"
+   ],
+   "source_names": [
+    "数据通信工程师"
+   ],
+   "hits": 2541,
+   "n_samples": 4
+  },
+  "NET-05": {
+   "code": "NET-05",
+   "category": "NET",
+   "name_zh": "光通信工程师",
+   "name_en": "Optical Communication Engineer",
+   "definition": "负责光通信系统、光模块及光传输网络的设计、开发、测试与运维，涵盖激光通信、波分复用（DWDM/OTN/PTN）等技术，使用光谱分析仪、网络分析仪等工具，产出满足性能与可靠性要求的光通信产品或网络解决方案。",
+   "keywords": [
+    "光通信",
+    "光模块",
+    "相干光通信",
+    "DWDM",
+    "OTN",
+    "PTN",
+    "波分传输",
+    "光纤组网",
+    "激光通信",
+    "光谱分析仪",
+    "光传输网络",
+    "SOP",
+    "BOM",
+    "送样流程",
+    "制程工艺",
+    "光收发模块",
+    "传输设备",
+    "光纤测试仪"
+   ],
+   "boundary": "与有线传输工程师的区别在于，光通信工程师更侧重于光信号处理、光器件及光模块的设计与优化，而后者主要关注传输线路的物理布线与网络运维。",
+   "funtypes": [
+    "光通信工程师"
+   ],
+   "source_codes": [
+    "2814"
+   ],
+   "source_names": [
+    "光通信工程师"
+   ],
+   "hits": 3361,
+   "n_samples": 4
+  },
+  "NET-06": {
+   "code": "NET-06",
+   "category": "NET",
+   "name_zh": "有线传输工程师",
+   "name_en": "Wireline Transmission Engineer",
+   "definition": "负责有线传输网络（含光缆、管道、杆路及传输设备）的规划、勘察、设计与工程实施，使用AutoCAD、Office及概预算工具编制可研、方案与设计文件，并为建设单位提供传输专业技术支撑，确保传输链路稳定高效。",
+   "keywords": [
+    "传输网",
+    "传输设备",
+    "传输线路",
+    "传输管线",
+    "OTN",
+    "PTN",
+    "波分",
+    "光缆",
+    "勘察设计",
+    "可研",
+    "规划",
+    "概预算",
+    "AutoCAD",
+    "工程制图",
+    "技术支撑",
+    "运营商",
+    "移动",
+    "设计文件",
+    "NPI",
+    "BOM"
+   ],
+   "boundary": "与光通信工程师的区别在于，有线传输工程师侧重传输网络工程规划设计与线路/设备部署，而光通信工程师更聚焦光信号处理、光模块及光器件研发。",
+   "funtypes": [
+    "有线传输工程师"
+   ],
+   "source_codes": [
+    "2802"
+   ],
+   "source_names": [
+    "有线传输工程师"
+   ],
+   "hits": 1727,
+   "n_samples": 4
+  },
+  "NET-07": {
+   "code": "NET-07",
+   "category": "NET",
+   "name_zh": "射频工程师",
+   "name_en": "RF Engineer",
+   "definition": "负责射频子系统（如射频线圈、功放、收发链路）的设计、仿真、调试与测试，涵盖器件选型、性能优化及技术文档编写。典型工具包括ADS、HFSS、Cadence及频谱分析仪、矢量网络分析仪等。关键产出为满足性能与可靠性要求的射频模块或系统。",
+   "keywords": [
+    "射频",
+    "RF",
+    "射频线圈",
+    "射频功放",
+    "低噪声放大器",
+    "混频器",
+    "ADS",
+    "HFSS",
+    "Cadence",
+    "频谱分析仪",
+    "矢量网络分析仪",
+    "信号源",
+    "EMC",
+    "收发机架构",
+    "射频一致性测试",
+    "5G NR",
+    "3GPP RAN4",
+    "RAN5",
+    "磁共振",
+    "VHF频段"
+   ],
+   "boundary": "与无线通信工程师的边界在于：射频工程师聚焦硬件电路与电磁仿真，而无线通信工程师侧重系统级协议与链路性能。",
+   "funtypes": [
+    "射频工程师"
+   ],
+   "source_codes": [
+    "2815"
+   ],
+   "source_names": [
+    "射频工程师"
+   ],
+   "hits": 19030,
+   "n_samples": 4
+  },
+  "NET-08": {
+   "code": "NET-08",
+   "category": "NET",
+   "name_zh": "核心网工程师",
+   "name_en": "Core Network Engineer",
+   "definition": "负责移动通信核心网（EPC/5GC/IMS等）的规划、设计、部署、调测与运维，涉及NFV/SDN云化架构及信令协议流程，输出网络方案、配置数据及优化报告，并跟踪标准演进。",
+   "keywords": [
+    "核心网",
+    "5GC",
+    "EPC",
+    "IMS",
+    "NFV",
+    "SDN",
+    "信令",
+    "VoNR",
+    "VoLTE",
+    "UDM",
+    "MSS",
+    "资源池",
+    "网络切片",
+    "AMC",
+    "CA",
+    "卫星核心网",
+    "天地一体",
+    "核心网架构",
+    "核心网协议",
+    "核心网设计"
+   ],
+   "boundary": "与数据通信工程师的区别在于核心网工程师聚焦电信运营商级控制面与用户面网元及信令流程，而非企业园区或数据中心的路由交换与转发技术。",
+   "funtypes": [
+    "核心网工程师"
+   ],
+   "source_codes": [
+    "2819"
+   ],
+   "source_names": [
+    "核心网工程师"
+   ],
+   "hits": 721,
+   "n_samples": 4
+  },
+  "NET-09": {
+   "code": "NET-09",
+   "category": "NET",
+   "name_zh": "通信设备工程师",
+   "name_en": "Communication Equipment Engineer",
+   "definition": "负责通信设备的集成、安装、调试、维护及技术支持，确保系统稳定运行。典型工作包括现场督导、故障排查、客户培训及技术方案设计，涉及轨道交通、空管、卫星等专用通信系统。关键产出为设备验收报告、维护方案及用户培训文档。",
+   "keywords": [
+    "通信设备",
+    "设备集成",
+    "安装督导",
+    "调试",
+    "维护",
+    "故障排查",
+    "现场支持",
+    "客户培训",
+    "验收",
+    "轨道交通通信",
+    "空管语音通信",
+    "卫星终端",
+    "终端测试",
+    "通信系统",
+    "C++",
+    "Qt",
+    "Linux",
+    "3G/4G/5G"
+   ],
+   "boundary": "与通信技术工程师的区别在于，通信设备工程师更侧重硬件设备的现场部署与维护，而通信技术工程师更偏向网络架构设计与技术方案规划。",
+   "funtypes": [
+    "通信设备工程师"
+   ],
+   "source_codes": [
+    "2820"
+   ],
+   "source_names": [
+    "通信设备工程师"
+   ],
+   "hits": 1382,
+   "n_samples": 4
+  },
+  "NET-10": {
+   "code": "NET-10",
+   "category": "NET",
+   "name_zh": "通信测试工程师",
+   "name_en": "Communication Test Engineer",
+   "definition": "负责通信系统、设备及核心网产品的测试验证工作，包括制定测试计划、设计测试用例、执行功能/性能测试、分析故障并输出测试报告。典型技术栈包括4G/5G核心网、IMS、SDN/NFV、Wireshark、Linux及脚本语言。关键产出为测试方案、测试报告及质量改进建议。",
+   "keywords": [
+    "测试",
+    "调试",
+    "测试用例",
+    "测试计划",
+    "测试报告",
+    "故障分析",
+    "性能测试",
+    "功能测试",
+    "4G",
+    "5G",
+    "核心网",
+    "IMS",
+    "SDN",
+    "NFV",
+    "Wireshark",
+    "Linux",
+    "脚本",
+    "系统测试",
+    "验证",
+    "信号测试"
+   ],
+   "boundary": "与网络工程师的边界在于：通信测试工程师专注于测试验证和质量保障，而网络工程师侧重于网络规划、部署和运维。",
+   "funtypes": [
+    "通信测试工程师"
+   ],
+   "source_codes": [
+    "2816"
+   ],
+   "source_names": [
+    "通信测试工程师"
+   ],
+   "hits": 2395,
+   "n_samples": 4
+  },
+  "NET-11": {
+   "code": "NET-11",
+   "category": "NET",
+   "name_zh": "车联网工程师",
+   "name_en": "V2X Engineer",
+   "definition": "负责车联网（V2X）系统及产品的设计、开发与测试，涵盖车-车、车-路、车-人等通信场景。典型工作包括V2X安全模块开发、系统架构设计、测试用例编写与执行，涉及C-V2X、DSRC等通信技术及C/C++、Python、CAPL等开发语言。关键产出为满足前装及集成项目需求的V2X软件模块、架构方案及测试报告。",
+   "keywords": [
+    "V2X",
+    "C-V2X",
+    "车联网",
+    "V2X安全",
+    "V2X架构",
+    "DSRC",
+    "PC5",
+    "Uu",
+    "CA系统",
+    "国密算法",
+    "CANoe",
+    "VTESTStudio",
+    "CAPL",
+    "嵌入式开发",
+    "前装项目",
+    "V2X测试",
+    "车路协同",
+    "OBU",
+    "RSU"
+   ],
+   "boundary": "与无线通信工程师的边界在于，车联网工程师聚焦于汽车与交通场景下的V2X专用通信协议、安全机制及车载/路侧设备集成，而非通用蜂窝网络或无线链路的优化。",
+   "funtypes": [
+    "车联网工程师"
+   ],
+   "source_codes": [
+    "7119"
+   ],
+   "source_names": [
+    "车联网工程师"
+   ],
+   "hits": 1872,
+   "n_samples": 4
+  },
+  "HW-01": {
+   "code": "HW-01",
+   "category": "HW",
+   "name_zh": "硬件工程师",
+   "name_en": "Hardware Engineer",
+   "definition": "负责硬件产品的电路设计、原理图绘制、PCB布局指导及元器件选型，确保产品满足功能、性能和可靠性要求。典型技术栈包括x86/ARM架构、电源设计、EMC/EMI设计、高速数字电路等。关键产出为硬件设计方案、原理图、BOM清单及调试测试报告。",
+   "keywords": [
+    "原理图设计",
+    "PCB布局",
+    "元器件选型",
+    "x86架构",
+    "电源设计",
+    "EMC设计",
+    "EMI设计",
+    "高速电路",
+    "数字电路",
+    "模拟电路",
+    "BOM清单",
+    "硬件调试",
+    "可靠性设计",
+    "信号完整性",
+    "硬件测试",
+    "量产支持",
+    "硬件方案设计",
+    "电路设计"
+   ],
+   "boundary": "与嵌入式硬件开发工程师的区别在于，硬件工程师更侧重于电路板级设计、元器件选型和硬件系统集成，而嵌入式硬件开发更关注微控制器及外围接口的软硬件协同设计。",
+   "funtypes": [
+    "硬件工程师",
+    "高级硬件工程师"
+   ],
+   "source_codes": [
+    "2955",
+    "2956",
+    "3A00"
+   ],
+   "source_names": [
+    "硬件工程师",
+    "高级硬件工程师",
+    "硬件开发"
+   ],
+   "hits": 145110,
+   "n_samples": 4
+  },
+  "HW-02": {
+   "code": "HW-02",
+   "category": "HW",
+   "name_zh": "嵌入式硬件开发",
+   "name_en": "Embedded Hardware Development Engineer",
+   "definition": "负责嵌入式系统硬件方案设计、原理图与PCB开发及调试，涵盖ARM/DSP/FPGA等处理器及外围接口电路，输出可量产硬件板卡与相关技术文档。典型技术栈包括Altium Designer、KiCad、C语言及常用总线协议。",
+   "keywords": [
+    "嵌入式硬件",
+    "ARM",
+    "DSP",
+    "FPGA",
+    "STM32",
+    "MSP430",
+    "原理图设计",
+    "PCB设计",
+    "硬件调试",
+    "电机驱动",
+    "运动控制器",
+    "工业控制",
+    "电力电子",
+    "数模混合电路",
+    "Altium Designer",
+    "KiCad",
+    "SPI/IIC/CAN",
+    "低功耗设计",
+    "硬件方案设计",
+    "硬件测试"
+   ],
+   "boundary": "与硬件工程师相比，嵌入式硬件开发更强调处理器（ARM/DSP/FPGA）及其外设接口电路的设计与调试，而非通用电子产品的全流程硬件开发。",
+   "funtypes": [
+    "嵌入式硬件开发(主板机…)"
+   ],
+   "source_codes": [
+    "2919"
+   ],
+   "source_names": [
+    "嵌入式硬件开发(主板机等)"
+   ],
+   "hits": 19614,
+   "n_samples": 4
+  },
+  "HW-03": {
+   "code": "HW-03",
+   "category": "HW",
+   "name_zh": "PCB工程师",
+   "name_en": "PCB Engineer",
+   "definition": "负责根据原理图与结构要求完成PCB布局布线设计，使用Altium Designer、Cadence Allegro等EDA工具进行元器件建库、多层板设计及Gerber文件输出，并协同板厂完成工程确认与DFM检查，确保设计的可制造性与信号完整性。",
+   "keywords": [
+    "PCB Layout",
+    "PCB设计",
+    "布局布线",
+    "Gerber文件",
+    "元器件建库",
+    "封装库",
+    "Allegro",
+    "Altium Designer",
+    "Mentor",
+    "多层板",
+    "高速信号",
+    "信号完整性",
+    "电磁兼容",
+    "DFM",
+    "DFT",
+    "SMT文件",
+    "制板文件",
+    "布线规则",
+    "DDR",
+    "数模混合板"
+   ],
+   "boundary": "与硬件工程师的区别在于PCB工程师专注于电路板的物理布局与布线实现，而非电路原理设计与系统功能开发。",
+   "funtypes": [
+    "PCB工程师"
+   ],
+   "source_codes": [
+    "2964"
+   ],
+   "source_names": [
+    "PCB工程师"
+   ],
+   "hits": 14939,
+   "n_samples": 4
+  },
+  "HW-04": {
+   "code": "HW-04",
+   "category": "HW",
+   "name_zh": "电子工程师",
+   "name_en": "Electronics Engineer",
+   "definition": "负责电子产品的硬件设计、开发与调试，涵盖原理图绘制、PCB布局、元器件选型及样机测试。典型技术栈包括Altium Designer、PADS、Pspice、Saber等EDA工具，以及示波器、频谱仪等测试仪器。关键产出为符合功能与可靠性要求的硬件方案、BOM及测试报告。",
+   "keywords": [
+    "原理图",
+    "PCB Layout",
+    "元器件选型",
+    "IGBT",
+    "MCU",
+    "单板调试",
+    "BOM",
+    "电力电子",
+    "逆变器",
+    "PCS",
+    "变频器",
+    "UPS",
+    "开关电源",
+    "Pspice",
+    "Saber",
+    "Altium Designer",
+    "PADS",
+    "Protel",
+    "示波器",
+    "频谱仪"
+   ],
+   "boundary": "与硬件工程师相比，电子工程师更侧重电路设计与调试，而硬件工程师更关注系统级硬件架构与整机集成。",
+   "funtypes": [
+    "电子技术员",
+    "电子产品工程师",
+    "电子工程师",
+    "电子技术研发工程师",
+    "电子设备工程师",
+    "电子工程师/技术员"
+   ],
+   "source_codes": [
+    "2903",
+    "A0MY",
+    "2917",
+    "2959"
+   ],
+   "source_names": [
+    "电子工程师/技术员",
+    "电子工程师",
+    "电子技术研发工程师",
+    "电子设备工程师"
+   ],
+   "hits": 123802,
+   "n_samples": 4
+  },
+  "HW-05": {
+   "code": "HW-05",
+   "category": "HW",
+   "name_zh": "电子元器件工程师",
+   "name_en": "Electronic Component Engineer",
+   "definition": "负责电子元器件的选型、评估、验证与应用支持，确保元器件满足产品性能、可靠性与成本要求。典型工作包括元器件生命周期管理、替代料验证、失效分析及与供应商技术沟通。核心产出为元器件优选清单、技术规格书及可靠性评估报告。",
+   "keywords": [
+    "元器件选型",
+    "替代料",
+    "物料认证",
+    "器件失效分析",
+    "供应链",
+    "生命周期管理",
+    "规格书",
+    "可靠性评估",
+    "供应商管理",
+    "BOM",
+    "RoHS",
+    "AEC-Q200",
+    "降额设计",
+    "器件国产化",
+    "样品测试",
+    "参数比对",
+    "封装",
+    "ESD",
+    "MSL",
+    "PCN"
+   ],
+   "boundary": "与硬件工程师的区别在于，电子元器件工程师聚焦于元器件本身的选型、认证与可靠性，而非整机电路设计与系统集成。",
+   "funtypes": [
+    "电子元器件工程师"
+   ],
+   "source_codes": [
+    "2962"
+   ],
+   "source_names": [
+    "电子元器件工程师"
+   ],
+   "hits": 9440,
+   "n_samples": 4
+  },
+  "HW-06": {
+   "code": "HW-06",
+   "category": "HW",
+   "name_zh": "电路工程师",
+   "name_en": "Circuit Design Engineer",
+   "definition": "负责模拟、射频或定制数字电路的设计、仿真与验证，使用Cadence、ADS、HFSS等EDA工具完成电路原理图、版图指导及性能优化，输出设计规格书、验证报告等文档，并协同测试团队确保产品性能达标。",
+   "keywords": [
+    "射频电路",
+    "LNA",
+    "PA",
+    "VCO",
+    "PLL",
+    "ADS",
+    "HFSS",
+    "Cadence",
+    "Spectre",
+    "Hspice",
+    "Finesim",
+    "EM仿真",
+    "版图设计",
+    "电路仿真",
+    "存储器设计",
+    "SRAM",
+    "Regfile",
+    "BIST",
+    "FinFET",
+    "流片"
+   ],
+   "boundary": "与硬件工程师的区别在于，电路工程师专注于电路级设计与仿真验证，而硬件工程师更侧重于系统级硬件架构与整机集成。",
+   "funtypes": [
+    "电路工程师(模拟/数字)",
+    "电路技术员(模拟/数字)",
+    "电路工程师/技术员(模拟/数字)"
+   ],
+   "source_codes": [
+    "2905"
+   ],
+   "source_names": [
+    "电路工程师/技术员(模拟/数字)"
+   ],
+   "hits": 9216,
+   "n_samples": 4
+  },
+  "HW-07": {
+   "code": "HW-07",
+   "category": "HW",
+   "name_zh": "汽车电子工程师",
+   "name_en": "Automotive Electronics Engineer",
+   "definition": "负责汽车电子系统的硬件设计、开发与验证，涵盖电源管理、ECU、传感器等模块。典型工作包括原理图设计、PCB审核、EMC整改、DV/PV测试及客户技术支持。核心产出为符合车规标准（如ISO 26262、IATF 16949）的电子模块及技术文档。",
+   "keywords": [
+    "汽车电子",
+    "车载",
+    "ECU",
+    "电源管理",
+    "DC/DC",
+    "AC/DC",
+    "EMC",
+    "ISO 26262",
+    "IATF 16949",
+    "VDA6.3",
+    "PPAP",
+    "DV/PV",
+    "CAN/LIN",
+    "AUTOSAR",
+    "功能安全",
+    "硬件设计",
+    "原理图",
+    "PCB",
+    "BOM",
+    "8D"
+   ],
+   "boundary": "与硬件工程师的区别在于，汽车电子工程师聚焦于车规级电子模块的完整生命周期，包括功能安全、车载网络及客户质量流程，而硬件工程师更侧重通用硬件电路设计与调试。",
+   "funtypes": [
+    "汽车电子工程师"
+   ],
+   "source_codes": [
+    "7106"
+   ],
+   "source_names": [
+    "汽车电子工程师"
+   ],
+   "hits": 18268,
+   "n_samples": 4
+  },
+  "HW-08": {
+   "code": "HW-08",
+   "category": "HW",
+   "name_zh": "集成电路IC设计",
+   "name_en": "IC Design Engineer",
+   "definition": "负责数字或模拟集成电路的设计与实现，涵盖从规格定义、RTL编码/电路原理图设计、仿真验证到版图指导及流片支持的全流程。典型技术栈包括Verilog、Cadence/Synopsys EDA工具，以及无线通信基带或电源管理IC等特定领域知识。关键产出为满足性能、功耗、面积要求的芯片设计文件及成功流片。",
+   "keywords": [
+    "Verilog",
+    "ASIC设计流程",
+    "数字基带",
+    "Wi-Fi/BLE",
+    "LDO",
+    "DC-DC",
+    "Cadence",
+    "Synopsys",
+    "Mentor",
+    "流片",
+    "RTL",
+    "仿真验证",
+    "混合信号",
+    "电源管理IC",
+    "PFC",
+    "逻辑综合",
+    "时序收敛",
+    "版图指导"
+   ],
+   "boundary": "与数字前端工程师的区别在于，IC设计工程师更侧重整体芯片设计实现与流片交付，而数字前端工程师聚焦于RTL设计及综合等前端环节。",
+   "funtypes": [
+    "集成电路IC应用工程师",
+    "集成电路IC设计/应用工程师",
+    "集成电路IC设计工程师"
+   ],
+   "source_codes": [
+    "6701"
+   ],
+   "source_names": [
+    "集成电路IC设计"
+   ],
+   "hits": 40654,
+   "n_samples": 4
+  },
+  "HW-09": {
+   "code": "HW-09",
+   "category": "HW",
+   "name_zh": "数字前端工程师",
+   "name_en": "Digital Front-End Engineer",
+   "definition": "负责数字集成电路的前端设计，包括RTL编码、仿真验证、逻辑综合和时序分析，使用Verilog/SystemVerilog及EDA工具，产出可交付后端的门级网表，确保芯片功能、性能和功耗满足规格要求。",
+   "keywords": [
+    "RTL",
+    "Verilog",
+    "SystemVerilog",
+    "逻辑综合",
+    "时序分析",
+    "仿真验证",
+    "MCU",
+    "SOC",
+    "AHB总线",
+    "ARM Cortex-M",
+    "FPGA验证",
+    "低功耗设计",
+    "UPF",
+    "Lint",
+    "形式验证",
+    "Perl",
+    "Python",
+    "Tcl",
+    "数字设计",
+    "ASIC设计流程"
+   ],
+   "boundary": "与数字后端工程师的边界在于，前端聚焦于RTL设计、验证和综合，而后端负责从门级网表到物理实现的布局布线、时序收敛和物理验证。",
+   "funtypes": [
+    "数字前端工程师"
+   ],
+   "source_codes": [
+    "6733"
+   ],
+   "source_names": [
+    "数字前端工程师"
+   ],
+   "hits": 5646,
+   "n_samples": 4
+  },
+  "HW-10": {
+   "code": "HW-10",
+   "category": "HW",
+   "name_zh": "数字后端工程师",
+   "name_en": "Digital Backend Engineer",
+   "definition": "负责从门级网表到GDSII的物理设计，包括布局布线、时钟树综合、静态时序分析、功耗与电源网络分析、物理验证等，确保芯片时序收敛并满足制造要求。典型工具包括Innovus、Calibre、Star-RCXT、PrimeTime等，需精通Tcl/Perl/Python脚本以自动化流程。关键产出是经过签核的GDSII文件及设计报告。",
+   "keywords": [
+    "布局布线",
+    "时钟树综合",
+    "静态时序分析",
+    "时序收敛",
+    "物理验证",
+    "功耗分析",
+    "电源网络分析",
+    "IR drop",
+    "信号完整性",
+    "GDSII",
+    "Netlist",
+    "Innovus",
+    "Calibre",
+    "Star-RCXT",
+    "PrimeTime",
+    "Tempus",
+    "Tcl",
+    "Perl",
+    "Python",
+    "STA",
+    "Signoff",
+    "流片"
+   ],
+   "boundary": "与数字前端工程师的边界在于：数字后端专注于物理实现和时序收敛，而数字前端负责RTL设计和逻辑综合。",
+   "funtypes": [
+    "数字后端工程师"
+   ],
+   "source_codes": [
+    "6737"
+   ],
+   "source_names": [
+    "数字后端工程师"
+   ],
+   "hits": 3783,
+   "n_samples": 4
+  },
+  "HW-11": {
+   "code": "HW-11",
+   "category": "HW",
+   "name_zh": "模拟芯片工程师",
+   "name_en": "Analog IC Design Engineer",
+   "definition": "负责模拟集成电路的设计、仿真与验证，涵盖放大器、ADC/DAC、PLL、电源管理等模块。使用Cadence、HSPICE等EDA工具，与版图工程师协作完成版图设计，并参与芯片测试与量产支持。核心产出是高性能、高可靠性的模拟芯片设计。",
+   "keywords": [
+    "模拟IC设计",
+    "模拟电路",
+    "Analog Design",
+    "ADC",
+    "DAC",
+    "PLL",
+    "LDO",
+    "DC-DC",
+    "带隙基准",
+    "运算放大器",
+    "滤波器",
+    "SERDES",
+    "PHY",
+    "Cadence",
+    "Spectre",
+    "Virtuoso",
+    "HSPICE",
+    "版图设计",
+    "流片",
+    "量产"
+   ],
+   "boundary": "与数字前端工程师的边界在于，模拟芯片工程师专注于连续时间信号和模拟电路设计，而数字前端工程师处理离散时间数字逻辑和RTL设计。",
+   "funtypes": [
+    "模拟芯片工程师"
+   ],
+   "source_codes": [
+    "6731",
+    "A0LG"
+   ],
+   "source_names": [
+    "模拟芯片工程师",
+    "模拟芯片设计"
+   ],
+   "hits": 10980,
+   "n_samples": 4
+  },
+  "HW-12": {
+   "code": "HW-12",
+   "category": "HW",
+   "name_zh": "版图设计工程师",
+   "name_en": "Layout Design Engineer",
+   "definition": "负责将模拟、混合信号或射频电路原理图转换为物理版图，使用Cadence Virtuoso等EDA工具进行布局布线、物理验证（DRC/LVS）和寄生参数提取，确保版图符合工艺规则并优化性能，最终交付GDS文件用于流片。",
+   "keywords": [
+    "版图设计",
+    "Layout",
+    "模拟版图",
+    "射频版图",
+    "Cadence Virtuoso",
+    "Calibre",
+    "Assura",
+    "DRC",
+    "LVS",
+    "寄生参数提取",
+    "GDS",
+    "流片",
+    "Tapeout",
+    "物理验证",
+    "金属填充",
+    "匹配",
+    "电磁迁移",
+    "标准单元",
+    "IO",
+    "PLL",
+    "ADC",
+    "DAC"
+   ],
+   "boundary": "与数字后端工程师的区别在于，版图设计工程师专注于模拟/混合信号/射频电路的全定制版图，而数字后端工程师主要处理数字标准单元布局布线及时序收敛。",
+   "funtypes": [
+    "版图设计工程师",
+    "模拟版图工程师"
+   ],
+   "source_codes": [
+    "6722",
+    "A0LF",
+    "6732"
+   ],
+   "source_names": [
+    "版图设计工程师",
+    "IC版图设计",
+    "模拟版图工程师"
+   ],
+   "hits": 11736,
+   "n_samples": 4
+  },
+  "HW-13": {
+   "code": "HW-13",
+   "category": "HW",
+   "name_zh": "IC验证工程师",
+   "name_en": "IC Verification Engineer",
+   "definition": "负责芯片模块级和系统级功能验证，基于UVM等验证方法学搭建验证平台，编写测试用例并收集覆盖率，确保设计符合规格。典型工具包括SystemVerilog、VCS、Verdi等EDA工具，关键产出为验证计划、验证报告和覆盖率报告。",
+   "keywords": [
+    "UVM",
+    "SystemVerilog",
+    "Verilog",
+    "验证计划",
+    "测试点分解",
+    "覆盖率",
+    "前仿",
+    "后仿",
+    "数模混合验证",
+    "低功耗验证",
+    "AXI",
+    "APB",
+    "AHB",
+    "SoC验证",
+    "IP验证",
+    "VCS",
+    "Verdi",
+    "perl",
+    "python",
+    "回归验证"
+   ],
+   "boundary": "与芯片测试工程师的区别在于，IC验证工程师在流片前通过仿真验证设计功能，而芯片测试工程师负责流片后的实际硬件测试。",
+   "funtypes": [
+    "IC验证工程师"
+   ],
+   "source_codes": [
+    "6702"
+   ],
+   "source_names": [
+    "IC验证工程师"
+   ],
+   "hits": 9929,
+   "n_samples": 4
+  },
+  "HW-14": {
+   "code": "HW-14",
+   "category": "HW",
+   "name_zh": "FPGA开发工程师",
+   "name_en": "FPGA Development Engineer",
+   "definition": "负责基于FPGA芯片的逻辑开发与验证工作，包括需求分析、RTL代码编写、功能仿真、时序约束与收敛、上板调试及软硬件联调。典型技术栈涵盖Verilog/VHDL、Vivado/Quartus、ModelSim/VCS，以及Xilinx/Altera(Intel)系列器件和ZYNQ SoC平台。核心产出为满足功能与性能要求的FPGA固件、设计文档及测试报告。",
+   "keywords": [
+    "FPGA",
+    "Verilog",
+    "VHDL",
+    "RTL",
+    "Vivado",
+    "Quartus",
+    "ModelSim",
+    "时序约束",
+    "时序分析",
+    "Xilinx",
+    "Altera",
+    "Intel FPGA",
+    "ZYNQ",
+    "逻辑综合",
+    "布局布线",
+    "上板调试",
+    "逻辑分析仪",
+    "原型验证",
+    "MIPI",
+    "LVDS"
+   ],
+   "boundary": "与硬件工程师的边界在于FPGA工程师专注于可编程逻辑器件的内部逻辑设计与验证，而非板级电路原理图与PCB设计。",
+   "funtypes": [
+    "FPGA开发工程师",
+    "FPGA原型验证工程师"
+   ],
+   "source_codes": [
+    "6728",
+    "6734"
+   ],
+   "source_names": [
+    "FPGA开发工程师",
+    "FPGA原型验证工程师"
+   ],
+   "hits": 16804,
+   "n_samples": 4
+  },
+  "HW-15": {
+   "code": "HW-15",
+   "category": "HW",
+   "name_zh": "芯片架构工程师",
+   "name_en": "Chip Architecture Engineer",
+   "definition": "负责芯片系统级架构设计与性能分析，基于算法和功能行为进行建模（如Cmodel、GPGPUSim、Gem5），评估性能瓶颈并优化架构方案，与RTL、驱动团队协作完成交叉验证，产出架构规格和性能报告。典型技术栈包括C/C++、Python、计算机体系结构、并行计算（CUDA/OpenCL）及主流GPU/CPU架构。",
+   "keywords": [
+    "GPGPU",
+    "GPU架构",
+    "CPU架构",
+    "SOC建模",
+    "性能分析",
+    "Cmodel",
+    "GPGPUSim",
+    "Gem5",
+    "计算机体系结构",
+    "并行计算",
+    "CUDA",
+    "OpenCL",
+    "Cache",
+    "MMU",
+    "架构优化",
+    "系统建模",
+    "性能瓶颈",
+    "RTL协同",
+    "驱动协同"
+   ],
+   "boundary": "与集成电路IC设计工程师的边界在于：芯片架构工程师聚焦系统级架构规划、性能建模与软硬件协同优化，而IC设计工程师侧重具体电路实现与逻辑设计。",
+   "funtypes": [
+    "芯片架构工程师"
+   ],
+   "source_codes": [
+    "6727"
+   ],
+   "source_names": [
+    "芯片架构工程师"
+   ],
+   "hits": 1982,
+   "n_samples": 4
+  },
+  "HW-16": {
+   "code": "HW-16",
+   "category": "HW",
+   "name_zh": "射频芯片设计",
+   "name_en": "RFIC Design Engineer",
+   "definition": "负责设计无线通信芯片中的射频电路模块（如LNA、Mixer、PA、PLL、VCO等），完成电路仿真、版图指导及测试验证。核心工具包括Cadence Spectre/SpectreRF、ADS、HFSS等EDA软件，工艺覆盖RF CMOS、GaAs HBT、GaN等。关键产出为射频模块设计报告、仿真结果及可量产芯片方案。",
+   "keywords": [
+    "RFIC",
+    "射频电路",
+    "LNA",
+    "Mixer",
+    "PA",
+    "PLL",
+    "VCO",
+    "低噪声放大器",
+    "功率放大器",
+    "射频前端",
+    "Cadence SpectreRF",
+    "ADS",
+    "HFSS",
+    "射频匹配",
+    "射频滤波器",
+    "RF CMOS",
+    "GaAs HBT",
+    "GaN",
+    "无线通讯芯片",
+    "射频仿真",
+    "EM仿真",
+    "射频测试"
+   ],
+   "boundary": "与模拟芯片工程师的边界在于：射频芯片设计聚焦高频/微波频段的无线信号收发链路，而模拟芯片设计更侧重低频/基带的连续信号处理（如运放、ADC/DAC）。",
+   "funtypes": [
+    "射频芯片设计"
+   ],
+   "source_codes": [
+    "6730"
+   ],
+   "source_names": [
+    "射频芯片设计"
+   ],
+   "hits": 3187,
+   "n_samples": 4
+  },
+  "HW-17": {
+   "code": "HW-17",
+   "category": "HW",
+   "name_zh": "EDA工程师",
+   "name_en": "EDA Engineer",
+   "definition": "EDA工程师负责开发、维护和优化芯片设计自动化工具及流程，涵盖PDK开发、CAD环境搭建和电磁仿真支持。典型技术栈包括Cadence Virtuoso、Spectre、HFSS、Skill/TCL/Python脚本。关键产出包括PDK库、设计流程脚本、工具集成方案及技术支持文档。",
+   "keywords": [
+    "EDA",
+    "PDK",
+    "Pcell",
+    "Skill语言",
+    "Cadence Virtuoso",
+    "Spectre",
+    "SpectreRF",
+    "EMX",
+    "HFSS",
+    "Momentum",
+    "DRC/LVS/PEX",
+    "FinFET",
+    "Tape-Out",
+    "TCL",
+    "Perl",
+    "Python",
+    "Shell",
+    "电磁仿真",
+    "版图验证",
+    "CAD环境"
+   ],
+   "boundary": "与IC验证工程师的区别在于，EDA工程师专注于设计工具和流程的开发维护，而非验证方法学或测试用例设计。",
+   "funtypes": [
+    "EDA工程师"
+   ],
+   "source_codes": [
+    "6735"
+   ],
+   "source_names": [
+    "EDA工程师"
+   ],
+   "hits": 1609,
+   "n_samples": 4
+  },
+  "HW-18": {
+   "code": "HW-18",
+   "category": "HW",
+   "name_zh": "可测性设计工程师(DFT)",
+   "name_en": "Design for Test (DFT) Engineer",
+   "definition": "负责芯片可测性设计（DFT）的架构规划、实现与验证，包括扫描链插入、存储器内建自测试（MBIST）、自动测试向量生成（ATPG）及边界扫描等。使用Synopsys/Mentor等EDA工具完成DFT逻辑综合、时序收敛和测试向量生成，并支持ATE测试调试与良率分析。核心产出是高质量的测试方案、测试向量和可测试性设计实现，确保芯片可制造性和测试覆盖率。",
+   "keywords": [
+    "DFT",
+    "可测性设计",
+    "Scan Chain",
+    "MBIST",
+    "ATPG",
+    "Boundary Scan",
+    "OCC",
+    "Compression",
+    "TetraMAX",
+    "FastScan",
+    "TestKompress",
+    "DFTCompiler",
+    "DFTMAX",
+    "MBISTArchitect",
+    "LEC",
+    "CLP",
+    "STA",
+    "ECO",
+    "ATE",
+    "Pattern Generation",
+    "Diagnosis",
+    "PPA"
+   ],
+   "boundary": "与IC验证工程师的区别在于，DFT工程师专注于测试电路的设计与实现，而IC验证工程师负责功能验证，不涉及测试结构设计。",
+   "funtypes": [
+    "可测性设计工程师(DFT)"
+   ],
+   "source_codes": [
+    "6736"
+   ],
+   "source_names": [
+    "可测性设计工程师(DFT)"
+   ],
+   "hits": 2192,
+   "n_samples": 4
+  },
+  "HW-19": {
+   "code": "HW-19",
+   "category": "HW",
+   "name_zh": "芯片测试工程师",
+   "name_en": "IC Test Engineer",
+   "definition": "负责集成电路（IC）的测试开发与验证，包括测试方案设计、测试程序编写、ATE平台调试及量产测试异常维护。典型技术栈包括泰瑞达、STS8200等ATE平台，C++/VB等编程语言，以及模拟/数字电路知识。关键产出为测试程序、测试报告及量产测试方案。",
+   "keywords": [
+    "IC测试",
+    "ATE",
+    "泰瑞达",
+    "STS8200",
+    "测试程序",
+    "测试开发",
+    "量产测试",
+    "测试验证",
+    "模拟电路",
+    "数字电路",
+    "C++",
+    "VB",
+    "测试分析",
+    "测试异常",
+    "测试平台",
+    "测试编程",
+    "芯片测试",
+    "半导体测试"
+   ],
+   "boundary": "与硬件测试工程师的区别在于，芯片测试工程师专注于集成电路本身的测试开发与ATE平台应用，而硬件测试工程师侧重于整机或板级硬件的功能与性能测试。",
+   "funtypes": [
+    "芯片测试工程师",
+    "半导体测试工程师"
+   ],
+   "source_codes": [
+    "6738",
+    "6750"
+   ],
+   "source_names": [
+    "芯片测试工程师",
+    "半导体测试工程师"
+   ],
+   "hits": 10905,
+   "n_samples": 4
+  },
+  "HW-20": {
+   "code": "HW-20",
+   "category": "HW",
+   "name_zh": "封装工程师",
+   "name_en": "Packaging Engineer",
+   "definition": "封装工程师负责半导体产品的封装设计、工艺开发与量产导入，涵盖封装可行性评估、材料选型、工艺参数优化及异常分析。典型技术栈包括引线键合（WB）、倒装芯片（FC）、晶圆级封装（WLP）及系统级封装（SiP），常用工具如AutoCAD、SolidWorks及仿真软件。关键产出包括封装设计方案、工艺规范文件、NPI导入报告及良率提升方案。",
+   "keywords": [
+    "封装工艺",
+    "封装设计",
+    "DFN",
+    "QFN",
+    "LGA",
+    "die bond",
+    "wire bond",
+    "flip chip",
+    "封装可行性评估",
+    "NPI导入",
+    "封装design rule",
+    "FA分析",
+    "封装材料",
+    "可靠性测试",
+    "封装良率",
+    "3D封装",
+    "SiP",
+    "WLP",
+    "封装仿真"
+   ],
+   "boundary": "与硬件工程师的边界在于，封装工程师专注于芯片封装层面的工艺与设计，而硬件工程师侧重于电路板级系统设计与集成。",
+   "funtypes": [
+    "封装工程师",
+    "封装研发工程师"
+   ],
+   "source_codes": [
+    "6760",
+    "6744"
+   ],
+   "source_names": [
+    "封装工程师",
+    "封装研发工程师"
+   ],
+   "hits": 9278,
+   "n_samples": 4
+  },
+  "HW-21": {
+   "code": "HW-21",
+   "category": "HW",
+   "name_zh": "半导体器件工程师",
+   "name_en": "Semiconductor Device Engineer",
+   "definition": "负责半导体器件（如功率MOSFET、光器件等）的结构设计、仿真优化与工艺开发，协同工艺与测试团队完成器件性能提升及新产品导入，产出器件设计方案、仿真报告及专利。核心工具包括TCAD仿真软件（如Silvaco、Sentaurus）和版图设计工具。",
+   "keywords": [
+    "半导体器件",
+    "器件设计",
+    "器件仿真",
+    "TCAD",
+    "Silvaco",
+    "Sentaurus",
+    "功率MOSFET",
+    "SGT",
+    "Super Junction",
+    "光器件",
+    "100G/400G",
+    "工艺整合",
+    "器件物理",
+    "版图设计",
+    "良率提升",
+    "半导体工艺",
+    "器件测试",
+    "失效分析"
+   ],
+   "boundary": "与集成电路IC设计工程师的区别在于，半导体器件工程师聚焦于器件物理结构与工艺实现，而非数字或模拟电路的功能设计。",
+   "funtypes": [
+    "半导体器件工程师"
+   ],
+   "source_codes": [
+    "6761"
+   ],
+   "source_names": [
+    "半导体器件工程师"
+   ],
+   "hits": 5932,
+   "n_samples": 4
+  },
+  "HW-23": {
+   "code": "HW-23",
+   "category": "HW",
+   "name_zh": "FAE现场应用工程师",
+   "name_en": "Field Application Engineer",
+   "definition": "FAE现场应用工程师负责为客户提供售前和售后技术支持，包括产品演示、技术咨询、方案设计、问题诊断与解决，并推动客户项目Design-in。典型技术栈包括嵌入式系统（C/C++）、芯片应用（如SoC、DRAM）、通信协议（Wi-Fi/蓝牙）及硬件调试工具。关键产出包括客户技术方案、问题分析报告、产品改进反馈及客户关系维护。",
+   "keywords": [
+    "FAE",
+    "现场应用",
+    "技术支持",
+    "Design-in",
+    "客户支持",
+    "售前",
+    "售后",
+    "嵌入式",
+    "C/C++",
+    "芯片",
+    "SoC",
+    "DRAM",
+    "Wi-Fi",
+    "蓝牙",
+    "调试",
+    "故障分析",
+    "技术培训",
+    "客户关系",
+    "方案设计",
+    "问题解决"
+   ],
+   "boundary": "与硬件工程师的边界在于FAE侧重客户现场的技术支持与方案推广，而非内部硬件设计开发。",
+   "funtypes": [
+    "FAE 现场应用工程师"
+   ],
+   "source_codes": [
+    "6712"
+   ],
+   "source_names": [
+    "FAE 现场应用工程师"
+   ],
+   "hits": 37665,
+   "n_samples": 4
+  },
+  "HW-24": {
+   "code": "HW-24",
+   "category": "HW",
+   "name_zh": "MEMS工程师",
+   "name_en": "MEMS Engineer",
+   "definition": "负责微机电系统（MEMS）传感器的设计、仿真与开发，涵盖原理方案、结构图纸、工艺流程及性能测试。典型工具包括电磁与结构仿真软件（如COMSOL、ANSYS）、机械设计工具及版图软件。核心产出为新型MEMS传感器产品及配套工艺文档。",
+   "keywords": [
+    "MEMS",
+    "传感器",
+    "微机电系统",
+    "电磁仿真",
+    "结构仿真",
+    "COMSOL",
+    "ANSYS",
+    "机械设计",
+    "版图设计",
+    "工艺流程",
+    "传感器原理",
+    "材料特性",
+    "性能测试",
+    "产品开发",
+    "微电子",
+    "物理材料",
+    "Spice model",
+    "PDK",
+    "WAT"
+   ],
+   "boundary": "与半导体器件工程师的区别在于，MEMS工程师聚焦于微机械结构与传感器集成设计，而非纯电学器件特性建模与工艺开发。",
+   "funtypes": [
+    "MEMS工程师"
+   ],
+   "source_codes": [
+    "6729"
+   ],
+   "source_names": [
+    "MEMS工程师"
+   ],
+   "hits": 1822,
+   "n_samples": 4
+  },
+  "HW-25": {
+   "code": "HW-25",
+   "category": "HW",
+   "name_zh": "失效分析工程师(FA)",
+   "name_en": "Failure Analysis Engineer (FA)",
+   "definition": "负责对半导体器件、电子组件或系统进行故障定位与失效机理分析，运用电性测量（如OBIRCH、EMMI、I-V Curve Tracer）及物理/化学分析技术，撰写失效分析报告，为设计改进和良率提升提供依据。典型技术栈包括THEMOS、InGaAs、TDR、SEM/EDX等，关键产出为失效分析报告和改进建议。",
+   "keywords": [
+    "失效分析",
+    "FA",
+    "电性失效分析",
+    "OBIRCH",
+    "EMMI",
+    "InGaAs",
+    "I-V Curve Tracer",
+    "TDR",
+    "THEMOS",
+    "故障定位",
+    "失效机理",
+    "失效分析报告",
+    "RMA",
+    "良率提升",
+    "半导体器件",
+    "电子组件",
+    "故障分析",
+    "PFA",
+    "EFA"
+   ],
+   "boundary": "与可靠性工程师的区别在于，失效分析工程师专注于故障样品的定位和机理分析，而可靠性工程师侧重于可靠性测试方案制定、寿命评估和可靠性设计。",
+   "funtypes": [
+    "失效分析工程师(FA)"
+   ],
+   "source_codes": [
+    "6741"
+   ],
+   "source_names": [
+    "失效分析工程师(FA)"
+   ],
+   "hits": 6190,
+   "n_samples": 4
+  },
+  "HW-26": {
+   "code": "HW-26",
+   "category": "HW",
+   "name_zh": "硬件测试工程师",
+   "name_en": "Hardware Test Engineer",
+   "definition": "负责硬件产品（如PCBA、系统集成设备、无线通信终端）的测试方案规划、测试环境搭建与执行，涵盖功能、性能、可靠性及一致性测试；使用专业测试仪器（如CMW500、频谱仪）和自动化工具，分析并定位缺陷，输出测试报告，确保产品质量与生产效率。",
+   "keywords": [
+    "TE测试",
+    "PCBA测试",
+    "集成测试",
+    "系统调测试",
+    "测试环境搭建",
+    "测试工装",
+    "自动化测试",
+    "CMW500",
+    "频谱仪",
+    "信号源",
+    "射频一致性测试",
+    "协议一致性测试",
+    "可靠性测试",
+    "缺陷定位",
+    "测试报告",
+    "生产测试",
+    "测试设备维护",
+    "测试夹具"
+   ],
+   "boundary": "与芯片测试工程师的区别在于，硬件测试工程师聚焦于板级或系统级硬件产品的测试，而芯片测试工程师专注于芯片本身的晶圆或封装后测试。",
+   "funtypes": [
+    "硬件测试工程师"
+   ],
+   "source_codes": [
+    "2957"
+   ],
+   "source_names": [
+    "硬件测试工程师"
+   ],
+   "hits": 33570,
+   "n_samples": 4
+  },
+  "SEC-01": {
+   "code": "SEC-01",
+   "category": "SEC",
+   "name_zh": "网络安全工程师",
+   "name_en": "Cybersecurity Engineer",
+   "definition": "负责企业信息安全技术架构设计与实施，部署和维护安全基础设施（如防火墙、DLP、防病毒系统），开展渗透测试、漏洞检测与安全防护，组织等级保护与合规评估，并跟踪研究新兴安全技术。典型技术栈包括安全运维、渗透测试、数据防泄漏、云安全等。核心产出是安全技术规范、风险台账及安全事件响应方案。",
+   "keywords": [
+    "CISSP",
+    "CCIE",
+    "渗透测试",
+    "漏洞检测",
+    "安全等级保护",
+    "DLP",
+    "数据防泄漏",
+    "终端安全",
+    "应用开发安全",
+    "数据安全",
+    "安全架构",
+    "安全运维",
+    "风险评估",
+    "合规评估",
+    "双新评估",
+    "APP备案",
+    "SDK",
+    "云安全",
+    "安全事件响应",
+    "安全审计"
+   ],
+   "boundary": "与安全测试工程师的边界在于：网络安全工程师侧重整体安全架构、基础设施与合规管理，而安全测试工程师更聚焦于渗透测试和漏洞挖掘的具体执行。",
+   "funtypes": [
+    "网络安全工程师"
+   ],
+   "source_codes": [
+    "7906"
+   ],
+   "source_names": [
+    "网络安全工程师"
+   ],
+   "hits": 25329,
+   "n_samples": 4
+  },
+  "SEC-02": {
+   "code": "SEC-02",
+   "category": "SEC",
+   "name_zh": "安全测试工程师",
+   "name_en": "Security Test Engineer",
+   "definition": "负责对软件系统、移动应用及车联网平台进行安全渗透测试与漏洞挖掘，制定测试方案并输出报告，同时参与安全测试体系与自动化工具平台的建设。典型技术栈包括Web/移动端攻击技术、白盒审计、Python/Go代码审计及安全工具开发。关键产出为渗透测试报告、安全测试方案及自动化测试工具。",
+   "keywords": [
+    "渗透测试",
+    "漏洞挖掘",
+    "白盒审计",
+    "黑盒测试",
+    "Web安全",
+    "移动端安全",
+    "车联网",
+    "TSP",
+    "安全测试方案",
+    "测试报告",
+    "自动化测试",
+    "Python",
+    "Go",
+    "代码审计",
+    "CVE",
+    "CTF",
+    "安全工具平台",
+    "漏洞复现"
+   ],
+   "boundary": "与网络安全工程师的区别在于，安全测试工程师侧重于主动的渗透测试和漏洞验证，而网络安全工程师更关注网络架构的安全防护与运维。",
+   "funtypes": [
+    "安全测试"
+   ],
+   "source_codes": [
+    "2724"
+   ],
+   "source_names": [
+    "安全测试"
+   ],
+   "hits": 4279,
+   "n_samples": 4
+  },
+  "SEC-03": {
+   "code": "SEC-03",
+   "category": "SEC",
+   "name_zh": "密码技术应用员",
+   "name_en": "Cryptography Technology Application Specialist",
+   "definition": "负责密码算法与安全协议的设计、分析、优化及工程实现，涵盖后量子密码、隐私计算、区块链等前沿领域；参与密码产品（如密码机、密码卡）的研发与维护，并推动相关国家/行业标准制定。典型技术栈包括C/C++、OpenSSL、PKCS#11、SDF接口等。关键产出包括算法设计方案、产品开发文档、标准草案及技术研究报告。",
+   "keywords": [
+    "密码学",
+    "后量子密码",
+    "隐私计算",
+    "同态加密",
+    "MPC",
+    "联邦学习",
+    "密码算法",
+    "安全协议",
+    "密码机",
+    "密码卡",
+    "PKCS#11",
+    "SDF",
+    "OpenSSL",
+    "数字证书",
+    "区块链",
+    "标准研制",
+    "C/C++",
+    "Linux"
+   ],
+   "boundary": "与网络安全工程师的边界在于：密码技术应用员专注于密码算法与协议的设计实现及密码产品开发，而网络安全工程师更侧重于网络架构安全、威胁防护与安全运维。",
+   "funtypes": [
+    "密码技术应用员"
+   ],
+   "source_codes": [
+    "7511"
+   ],
+   "source_names": [
+    "密码技术应用员"
+   ],
+   "hits": 342,
+   "n_samples": 4
+  },
+  "SEC-04": {
+   "code": "SEC-04",
+   "category": "SEC",
+   "name_zh": "电子数据取证分析师",
+   "name_en": "Digital Forensics Analyst",
+   "definition": "负责电子数据的现场及在线提取、保全、恢复与分析，运用SQL、Linux及专业取证工具对计算机、移动端和存储介质中的数据进行检验，并编制司法鉴定报告。核心产出包括数据恢复结果、分析检验记录及可用于法律程序的鉴定结论。",
+   "keywords": [
+    "电子数据取证",
+    "数据恢复",
+    "数据保全",
+    "司法鉴定",
+    "声像资料鉴定",
+    "SQL",
+    "MySQL",
+    "Linux",
+    "存储介质",
+    "计算机取证",
+    "移动端取证",
+    "电子设备数据",
+    "原始记录",
+    "报告编制",
+    "鉴定技术研究",
+    "现场提取",
+    "在线提取",
+    "数据库分析",
+    "Java",
+    "IT审计"
+   ],
+   "boundary": "与网络安全工程师的边界在于：电子数据取证分析师侧重事后证据的提取、恢复与司法鉴定，而非网络安全的实时防护与漏洞修复。",
+   "funtypes": [
+    "电子数据取证分析师"
+   ],
+   "source_codes": [
+    "7510"
+   ],
+   "source_names": [
+    "电子数据取证分析师"
+   ],
+   "hits": 146,
+   "n_samples": 4
+  },
+  "PD-01": {
+   "code": "PD-01",
+   "category": "PD",
+   "name_zh": "产品经理",
+   "name_en": "Product Manager",
+   "definition": "负责产品全生命周期管理，包括市场洞察、需求分析、产品规划与设计、开发协调及上市运营。典型工具包括Axure、Visio、PPT等，关键产出为产品文档、原型及上市产品。",
+   "keywords": [
+    "产品规划",
+    "新品开发",
+    "需求分析",
+    "竞品分析",
+    "市场洞察",
+    "产品生命周期",
+    "原型设计",
+    "Axure",
+    "Visio",
+    "产品运营",
+    "产销协调",
+    "用户反馈",
+    "产品优化",
+    "项目管理",
+    "跨部门协同",
+    "产品文档",
+    "BRD",
+    "PRD",
+    "功能策划",
+    "产品迭代"
+   ],
+   "boundary": "与数据产品经理的边界在于，产品经理更侧重通用产品功能与用户体验，而数据产品经理专注于数据驱动的产品设计与数据工具。",
+   "funtypes": [
+    "产品主管",
+    "产品经理",
+    "产品经理/主管",
+    "高级产品总监",
+    "互联网产品经理",
+    "产品助理",
+    "产品专员",
+    "产品总监"
+   ],
+   "source_codes": [
+    "6602",
+    "6600",
+    "6603",
+    "6601"
+   ],
+   "source_names": [
+    "产品经理/主管",
+    "互联网产品经理",
+    "产品助理",
+    "产品专员"
+   ],
+   "hits": 205159,
+   "n_samples": 4
+  },
+  "PD-02": {
+   "code": "PD-02",
+   "category": "PD",
+   "name_zh": "数据产品经理",
+   "name_en": "Data Product Manager",
+   "definition": "负责数据类产品的全生命周期管理，包括需求分析、产品设计、开发推进与迭代优化。典型工作涉及数据采集、治理、分析及资产化运营，常使用Axure、SQL、数据可视化工具等，并协同技术、业务团队推动产品落地。核心产出为数据产品规划、PRD、原型及数据治理方案。",
+   "keywords": [
+    "数据产品",
+    "数据服务",
+    "数据治理",
+    "数据资产",
+    "数据质量",
+    "数据标准",
+    "数据口径",
+    "数据API",
+    "数据可视化",
+    "数据智能",
+    "数据体系",
+    "数据标签",
+    "数据模型",
+    "数据仓库",
+    "数据中台",
+    "PRD",
+    "Axure",
+    "SQL",
+    "ETL",
+    "BI"
+   ],
+   "boundary": "与产品经理的区别在于，数据产品经理专注于数据相关产品的规划与设计，强调数据治理、数据资产化及数据驱动业务，而通用产品经理更关注用户需求与功能实现。",
+   "funtypes": [
+    "数据产品经理"
+   ],
+   "source_codes": [
+    "6611"
+   ],
+   "source_names": [
+    "数据产品经理"
+   ],
+   "hits": 78,
+   "n_samples": 4
+  },
+  "PD-03": {
+   "code": "PD-03",
+   "category": "PD",
+   "name_zh": "AI产品经理",
+   "name_en": "AI Product Manager",
+   "definition": "负责AI产品的全生命周期管理，包括需求分析、场景定义、技术可行性评估、PRD撰写及跨团队协作。典型技术栈包括机器学习、自然语言处理、计算机视觉，常用工具如TensorFlow、PyTorch、Midjourney等。关键产出为AI产品规划、需求文档、原型及商业化方案。",
+   "keywords": [
+    "AI产品",
+    "机器学习",
+    "深度学习",
+    "自然语言处理",
+    "计算机视觉",
+    "大模型",
+    "生成式AI",
+    "PRD",
+    "算法",
+    "数据科学",
+    "TensorFlow",
+    "PyTorch",
+    "Midjourney",
+    "Sora",
+    "智能硬件",
+    "AIoT",
+    "边缘计算",
+    "模型部署",
+    "场景落地",
+    "技术可行性"
+   ],
+   "boundary": "与通用产品经理相比，AI产品经理更侧重于AI技术驱动的产品功能设计、算法需求定义及模型落地评估，而非泛化的用户需求与业务流程管理。",
+   "funtypes": [
+    "AI产品经理"
+   ],
+   "source_codes": [
+    "6612"
+   ],
+   "source_names": [
+    "AI产品经理"
+   ],
+   "hits": 292,
+   "n_samples": 4
+  },
+  "PD-04": {
+   "code": "PD-04",
+   "category": "PD",
+   "name_zh": "平台产品经理",
+   "name_en": "Platform Product Manager",
+   "definition": "负责平台型产品（如运营后台、管理系统、技术平台）的规划、需求分析与迭代落地，协调研发、运营等多方资源，设计高效的工具与系统，提升业务运营效率和用户体验。典型技术栈包括Axure、Visio、SQL等，关键产出为产品需求文档、原型设计及上线功能。",
+   "keywords": [
+    "平台产品",
+    "中后台",
+    "运营后台",
+    "工单系统",
+    "规则配置",
+    "需求分析",
+    "产品规划",
+    "原型设计",
+    "Axure",
+    "Visio",
+    "版本排期",
+    "跨部门协作",
+    "B端产品",
+    "业务流程",
+    "数据监控",
+    "权限管理",
+    "系统集成",
+    "API",
+    "微服务",
+    "容器化"
+   ],
+   "boundary": "与产品经理的区别在于，平台产品经理聚焦于内部或技术平台型产品，而非面向终端用户的功能型产品。",
+   "funtypes": [
+    "平台产品经理"
+   ],
+   "source_codes": [
+    "6615"
+   ],
+   "source_names": [
+    "平台产品经理"
+   ],
+   "hits": 38,
+   "n_samples": 4
+  },
+  "PD-05": {
+   "code": "PD-05",
+   "category": "PD",
+   "name_zh": "商业化产品经理",
+   "name_en": "Commercial Product Manager",
+   "definition": "负责商业化产品的全生命周期管理，通过市场分析、需求挖掘、价值提炼和运营策略，实现产品商业价值最大化。典型工作包括市场调研、竞品分析、产品定位、定价策略、GTM（Go-to-Market）规划及销售支持。关键产出为商业计划、产品路线图、营销工具包及收入增长方案。",
+   "keywords": [
+    "商业化",
+    "商业价值",
+    "收入增长",
+    "GTM",
+    "Go-to-Market",
+    "市场分析",
+    "竞品分析",
+    "定价策略",
+    "产品定位",
+    "销售支持",
+    "营销工具包",
+    "商业计划",
+    "产品路线图",
+    "客户关系维护",
+    "厂商关系",
+    "解决方案",
+    "产品线管理",
+    "市场洞察",
+    "运营策略",
+    "销售赋能"
+   ],
+   "boundary": "与产品经理的区别在于，商业化产品经理更聚焦于产品的商业变现和市场化落地，而产品经理更侧重于产品功能设计和用户体验。",
+   "funtypes": [
+    "商业化产品经理"
+   ],
+   "source_codes": [
+    "6614"
+   ],
+   "source_names": [
+    "商业化产品经理"
+   ],
+   "hits": 8,
+   "n_samples": 4
+  },
+  "PD-06": {
+   "code": "PD-06",
+   "category": "PD",
+   "name_zh": "策略产品经理",
+   "name_en": "Strategy Product Manager",
+   "definition": "负责产品战略规划与策略设计，基于业务目标、用户洞察和数据分析制定产品方向与规则，推动策略落地并持续优化。典型技术栈包括数据分析工具（SQL、Python）、A/B测试、用户画像、规则引擎等。关键产出为策略方案、产品路线图、PRD及策略效果评估报告。",
+   "keywords": [
+    "策略",
+    "战略规划",
+    "数据分析",
+    "用户洞察",
+    "A/B测试",
+    "规则引擎",
+    "决策树",
+    "用户画像",
+    "业务增长",
+    "转化率",
+    "留存率",
+    "PRD",
+    "产品路线图",
+    "竞品分析",
+    "市场趋势",
+    "风控策略",
+    "定价策略",
+    "反欺诈",
+    "策略优化",
+    "效果评估"
+   ],
+   "boundary": "与产品经理的边界在于，策略产品经理更专注于通过数据驱动和规则设计实现特定业务目标，而非全面负责产品功能迭代与用户体验。",
+   "funtypes": [
+    "策略产品经理"
+   ],
+   "source_codes": [
+    "6613"
+   ],
+   "source_names": [
+    "策略产品经理"
+   ],
+   "hits": 23,
+   "n_samples": 4
+  },
+  "PD-07": {
+   "code": "PD-07",
+   "category": "PD",
+   "name_zh": "增长产品经理",
+   "name_en": "Growth Product Manager",
+   "definition": "负责制定并执行产品增长策略，通过数据分析、A/B测试和用户行为洞察优化产品功能与用户体验，以提升用户获取、激活、留存、推荐及转化等核心增长指标，并协调跨部门资源推动增长项目落地。",
+   "keywords": [
+    "增长策略",
+    "用户增长",
+    "转化率提升",
+    "用户留存",
+    "用户活跃度",
+    "A/B测试",
+    "增长黑客",
+    "用户行为分析",
+    "数据驱动",
+    "增长实验",
+    "获客成本",
+    "LTV",
+    "CAC",
+    "漏斗分析",
+    "激活率",
+    "推荐系数",
+    "病毒系数",
+    "留存曲线",
+    "增长漏斗",
+    "实验设计"
+   ],
+   "boundary": "与产品经理相比，增长产品经理更聚焦于用户生命周期中的增长指标（如获客、激活、留存、转化）及实验驱动的方法论，而非泛化的功能规划与交付管理。",
+   "funtypes": [
+    "增长产品经理"
+   ],
+   "source_codes": [
+    "6616"
+   ],
+   "source_names": [
+    "增长产品经理"
+   ],
+   "hits": 2,
+   "n_samples": 2
+  },
+  "PD-08": {
+   "code": "PD-08",
+   "category": "PD",
+   "name_zh": "电商产品经理",
+   "name_en": "E-commerce Product Manager",
+   "definition": "负责电商平台（如自建商城、第三方店铺）的产品规划与全生命周期管理，涵盖市场调研、竞品分析、需求定义、原型设计、前后台功能落地及上线后数据优化。典型工具包括Axure、SQL、Google Analytics等，关键产出为高转化率的商城功能、商品策略及用户体验优化方案。",
+   "keywords": [
+    "电商产品",
+    "商城",
+    "H5",
+    "小程序",
+    "APP",
+    "前后台产品设计",
+    "需求文档",
+    "原型设计",
+    "用户转化",
+    "购物流程",
+    "商品管理",
+    "订单管理",
+    "支付",
+    "营销工具",
+    "数据分析",
+    "竞品分析",
+    "市场调研",
+    "选品",
+    "供应链",
+    "OEM/ODM"
+   ],
+   "boundary": "与平台产品经理的区别在于，电商产品经理聚焦于交易闭环和商品运营，而平台产品经理更关注多边生态和通用平台能力。",
+   "funtypes": [
+    "电商产品经理"
+   ],
+   "source_codes": [
+    "6608"
+   ],
+   "source_names": [
+    "电商产品经理"
+   ],
+   "hits": 4932,
+   "n_samples": 4
+  },
+  "PD-09": {
+   "code": "PD-09",
+   "category": "PD",
+   "name_zh": "移动产品经理",
+   "name_en": "Mobile Product Manager",
+   "definition": "负责移动端APP、H5及小程序等产品的全生命周期管理，包括用户需求调研、产品规划、功能设计、原型制作、项目推进及上线迭代。典型技术栈包括Axure、墨刀、MindManager等产品设计工具，并需关注移动端用户体验、数据分析和市场竞品动态。关键产出为高质量的产品需求文档（PRD）、原型图及成功上线的移动产品版本。",
+   "keywords": [
+    "移动端",
+    "APP",
+    "H5",
+    "小程序",
+    "移动产品",
+    "iOS",
+    "Android",
+    "Axure",
+    "墨刀",
+    "原型设计",
+    "PRD",
+    "用户调研",
+    "移动用户体验",
+    "版本迭代",
+    "移动端数据分析",
+    "移动端交互设计",
+    "移动端功能设计",
+    "移动端产品规划",
+    "移动端项目管理",
+    "移动端竞品分析"
+   ],
+   "boundary": "与通用产品经理相比，移动产品经理更专注于移动端平台特性（如触屏交互、移动网络环境、应用商店分发）及移动端用户行为模式。",
+   "funtypes": [
+    "移动产品经理"
+   ],
+   "source_codes": [
+    "6606"
+   ],
+   "source_names": [
+    "移动产品经理"
+   ],
+   "hits": 661,
+   "n_samples": 4
+  },
+  "PD-10": {
+   "code": "PD-10",
+   "category": "PD",
+   "name_zh": "用户产品经理",
+   "name_en": "User Product Manager",
+   "definition": "负责面向终端用户的产品规划与全生命周期管理，通过用户研究、需求分析、原型设计和数据反馈持续优化产品体验。核心工作包括用户需求挖掘、产品方案设计、跨团队协调推进落地，以及上线后的用户反馈收集与迭代优化。典型工具包括Axure、Figma、PRD文档、用户访谈、可用性测试等。",
+   "keywords": [
+    "用户需求",
+    "用户体验",
+    "用户研究",
+    "用户反馈",
+    "用户增长",
+    "需求分析",
+    "PRD",
+    "产品原型",
+    "Axure",
+    "Figma",
+    "可用性测试",
+    "用户画像",
+    "用户旅程",
+    "留存率",
+    "NPS",
+    "满意度",
+    "C端产品",
+    "用户运营",
+    "产品迭代",
+    "交互设计"
+   ],
+   "boundary": "与产品经理的区别在于，用户产品经理更聚焦于终端用户的需求挖掘与体验优化，而非商业变现或平台底层架构设计。",
+   "funtypes": [
+    "用户产品经理"
+   ],
+   "source_codes": [
+    "6607"
+   ],
+   "source_names": [
+    "用户产品经理"
+   ],
+   "hits": 2119,
+   "n_samples": 4
+  },
+  "PD-11": {
+   "code": "PD-11",
+   "category": "PD",
+   "name_zh": "硬件产品经理",
+   "name_en": "Hardware Product Manager",
+   "definition": "负责硬件产品从需求调研、定义、开发到上市的全生命周期管理，协调研发、设计、供应链等团队，确保产品按时交付并满足市场需求。典型工作包括硬件需求分析、产品规格制定、原型验证、成本控制及上市策略制定，常用工具包括Jira、Axure、Visio等。关键产出为硬件产品需求文档（PRD）、产品路线图及商业化产品方案。",
+   "keywords": [
+    "硬件产品",
+    "智能硬件",
+    "消费电子",
+    "IoT",
+    "嵌入式",
+    "结构设计",
+    "电子元器件",
+    "PCB",
+    "原型机",
+    "量产",
+    "供应链",
+    "BOM",
+    "产品规格书",
+    "硬件需求",
+    "产品生命周期",
+    "上市策略",
+    "成本控制",
+    "认证合规",
+    "硬件研发",
+    "产品定义"
+   ],
+   "boundary": "与产品经理的区别在于，硬件产品经理聚焦实体硬件产品的研发与量产，而产品经理通常指软件或互联网产品，不涉及硬件制造与供应链管理。",
+   "funtypes": [
+    "电子产品经理",
+    "电子产品经理/产品工程师",
+    "通信产品工程师",
+    "通信产品经理",
+    "通信产品经理/产品工程师",
+    "智能硬件产品经理",
+    "IoT产品经理",
+    "AR产品经理",
+    "VR产品经理",
+    "芯片产品经理",
+    "半导体产品经理",
+    "半导体产品工程师",
+    "半导体产品经理/产品工程师"
+   ],
+   "source_codes": [
+    "8600",
+    "2954",
+    "2813",
+    "8604",
+    "8602",
+    "8603",
+    "8601",
+    "A0LI",
+    "6748"
+   ],
+   "source_names": [
+    "硬件产品经理",
+    "电子产品经理/产品工程师",
+    "通信产品经理/产品工程师",
+    "智能硬件产品经理",
+    "IoT产品经理",
+    "AR/VR产品经理",
+    "芯片产品经理",
+    "半导体产品经理",
+    "半导体产品经理/产品工程师"
+   ],
+   "hits": 16625,
+   "n_samples": 4
+  },
+  "PD-12": {
+   "code": "PD-12",
+   "category": "PD",
+   "name_zh": "用户研究",
+   "name_en": "User Researcher",
+   "definition": "负责用户研究全流程设计与执行，运用问卷、访谈、焦点小组、可用性测试等定性与定量方法，洞察目标人群、场景与需求，输出用户洞察报告与产品机会点，协同产品、设计、研发团队将研究成果转化为产品概念与策略，支撑产品全生命周期创新与迭代。",
+   "keywords": [
+    "用户研究",
+    "定性研究",
+    "定量研究",
+    "深度访谈",
+    "焦点小组",
+    "可用性测试",
+    "问卷调研",
+    "SPSS",
+    "用户画像",
+    "用户旅程地图",
+    "需求洞察",
+    "场景分析",
+    "人群分析",
+    "市场调研",
+    "产品概念测试",
+    "可用性评估",
+    "用户痛点",
+    "研究方案设计",
+    "洞察报告",
+    "用户分层"
+   ],
+   "boundary": "与用户体验(UE/UX)设计师的区别在于，用户研究侧重通过系统化研究方法获取用户洞察与数据证据，而UE/UX设计师侧重基于洞察进行交互界面与体验方案的设计实现。",
+   "funtypes": [
+    "用户研究"
+   ],
+   "source_codes": [
+    "6617"
+   ],
+   "source_names": [
+    "用户研究"
+   ],
+   "hits": 25,
+   "n_samples": 4
+  },
+  "PD-13": {
+   "code": "PD-13",
+   "category": "PD",
+   "name_zh": "UI设计师",
+   "name_en": "UI Designer",
+   "definition": "负责产品界面视觉设计与用户体验优化，使用Sketch、Figma、PS、AI等工具完成高保真设计稿，制定并维护设计规范，与产品和技术团队协作推动设计落地，产出符合多平台规范且具备良好交互体验的界面方案。",
+   "keywords": [
+    "UI设计",
+    "视觉设计",
+    "交互设计",
+    "Sketch",
+    "Figma",
+    "Photoshop",
+    "Illustrator",
+    "设计规范",
+    "设计走查",
+    "高保真",
+    "移动端设计",
+    "Web端设计",
+    "iOS规范",
+    "Android规范",
+    "用户体验",
+    "界面设计",
+    "设计交付",
+    "设计系统"
+   ],
+   "boundary": "与UE/UX设计师的边界在于：UI设计师侧重界面视觉呈现与设计规范落地，而UE/UX设计师更关注用户研究、交互流程与整体体验策略。",
+   "funtypes": [
+    "UI设计师",
+    "视觉设计师"
+   ],
+   "source_codes": [
+    "7412",
+    "7403"
+   ],
+   "source_names": [
+    "UI设计师",
+    "视觉设计师"
+   ],
+   "hits": 29384,
+   "n_samples": 4
+  },
+  "PD-14": {
+   "code": "PD-14",
+   "category": "PD",
+   "name_zh": "用户体验(UE/UX)设计师",
+   "name_en": "UX/UE Designer",
+   "definition": "负责产品用户体验设计，包括用户研究、交互设计、界面原型及视觉规范制定。运用Sketch、Axure、Figma等工具，结合人机交互原则，提升产品易用性与满意度。产出高保真原型、交互流程、设计规范，并协同开发团队实现设计落地。",
+   "keywords": [
+    "用户体验设计",
+    "交互设计",
+    "用户研究",
+    "可用性测试",
+    "信息架构",
+    "原型设计",
+    "线框图",
+    "高保真原型",
+    "设计规范",
+    "人机交互",
+    "Sketch",
+    "Figma",
+    "Axure",
+    "Adobe XD",
+    "用户旅程地图",
+    "交互流程",
+    "易用性",
+    "视觉设计",
+    "设计系统",
+    "前端协作"
+   ],
+   "boundary": "与UI设计师的边界：UE/UX设计师侧重交互逻辑与用户体验，UI设计师侧重视觉表现与界面美观。",
+   "funtypes": [
+    "UE",
+    "UX",
+    "用户体验设计师",
+    "用户体验（UE/UX）设计师",
+    "交互设计师"
+   ],
+   "source_codes": [
+    "7404",
+    "7402"
+   ],
+   "source_names": [
+    "用户体验(UE/UX)设计师",
+    "交互设计师"
+   ],
+   "hits": 5014,
+   "n_samples": 4
+  },
+  "PD-15": {
+   "code": "PD-15",
+   "category": "PD",
+   "name_zh": "网页设计师",
+   "name_en": "Web Designer",
+   "definition": "负责网站、移动端及电商平台页面的视觉设计与制作，涵盖界面布局、图标、广告图及专题页等。核心工作包括根据原型完成高保真设计、使用Photoshop/Illustrator等工具产出视觉素材，并可能涉及HTML/CSS实现。关键产出为符合品牌调性、提升用户体验的网页及移动端界面设计。",
+   "keywords": [
+    "网页设计",
+    "Web Design",
+    "UI设计",
+    "视觉设计",
+    "Photoshop",
+    "Illustrator",
+    "Sketch",
+    "Axure",
+    "墨刀",
+    "Dreamweaver",
+    "HTML/CSS",
+    "Div+Css",
+    "页面设计",
+    "专题页",
+    "活动页",
+    "电商设计",
+    "店铺装修",
+    "详情页",
+    "广告图",
+    "手绘",
+    "C4D"
+   ],
+   "boundary": "与UI设计师的边界：网页设计师更侧重网页及电商页面的视觉呈现与制作，而UI设计师更聚焦于产品界面交互与组件规范。",
+   "funtypes": [
+    "网页设计师"
+   ],
+   "source_codes": [
+    "7401"
+   ],
+   "source_names": [
+    "网页设计师"
+   ],
+   "hits": 6075,
+   "n_samples": 4
+  },
+  "PD-16": {
+   "code": "PD-16",
+   "category": "PD",
+   "name_zh": "设计经理/主管",
+   "name_en": "Design Manager/Director",
+   "definition": "负责设计团队管理与项目统筹，主导品牌视觉、创意方案及设计交付。核心职责包括制定设计策略、把控创意方向、协调内外部资源，并确保设计质量与商业目标对齐。典型工具包括3ds Max、SketchUp、Adobe Creative Suite等，关键产出为高质量设计方案、品牌视觉体系及团队绩效提升。",
+   "keywords": [
+    "设计管理",
+    "创意总监",
+    "视觉形象",
+    "品牌视觉",
+    "艺术指导",
+    "设计团队",
+    "创意方案",
+    "概念设计",
+    "3ds Max",
+    "SketchUp",
+    "展览展示设计",
+    "车展创意",
+    "审美能力",
+    "创意策划",
+    "设计策略",
+    "项目统筹",
+    "外部设计资源",
+    "艺术项目"
+   ],
+   "boundary": "与UI/UX设计师的区别在于，设计经理/主管侧重团队管理、创意方向把控和项目统筹，而非具体界面或交互设计执行。",
+   "funtypes": [
+    "互联网设计总监",
+    "设计总监",
+    "互联网设计经理/主管"
+   ],
+   "source_codes": [
+    "7423",
+    "7424"
+   ],
+   "source_names": [
+    "互联网设计总监",
+    "互联网设计经理/主管"
+   ],
+   "hits": 47,
+   "n_samples": 4
+  },
+  "MGT-01": {
+   "code": "MGT-01",
+   "category": "MGT",
+   "name_zh": "技术经理",
+   "name_en": "Technical Manager",
+   "definition": "技术经理负责制定技术方案、管理开发团队并确保项目按时交付，同时参与技术选型和架构设计。典型技术栈包括Java、Python、微服务、云原生等，关键产出为技术方案、代码规范、团队绩效和项目里程碑。",
+   "keywords": [
+    "技术方案",
+    "架构设计",
+    "技术选型",
+    "团队管理",
+    "项目交付",
+    "代码审查",
+    "微服务",
+    "云原生",
+    "DevOps",
+    "敏捷开发",
+    "技术栈",
+    "系统设计",
+    "性能优化",
+    "技术债务",
+    "跨部门协作",
+    "技术路线图",
+    "研发流程",
+    "质量保障",
+    "风险管理",
+    "技术培训"
+   ],
+   "boundary": "与技术总监相比，技术经理更侧重于具体技术方案的实施和团队日常管理，而技术总监更关注整体技术战略和跨部门协调。",
+   "funtypes": [
+    "技术研发主管",
+    "技术研发经理",
+    "技术研发经理/主管",
+    "技术经理"
+   ],
+   "source_codes": [
+    "2604"
+   ],
+   "source_names": [
+    "技术经理"
+   ],
+   "hits": 100123,
+   "n_samples": 4
+  },
+  "MGT-02": {
+   "code": "MGT-02",
+   "category": "MGT",
+   "name_zh": "技术总监",
+   "name_en": "Technical Director",
+   "definition": "负责制定技术战略与产品路线，统筹研发资源与项目进度，主导关键技术选型与架构设计，并推动技术团队建设与跨部门协作。典型技术栈涵盖物联网、嵌入式、云平台及微服务等，核心产出包括技术规划、产品方案、研发管理体系及高质量交付成果。",
+   "keywords": [
+    "技术战略",
+    "产品规划",
+    "研发管理",
+    "架构设计",
+    "技术选型",
+    "团队管理",
+    "项目进度",
+    "跨部门协调",
+    "物联网",
+    "嵌入式",
+    "微服务",
+    "SpringCloud",
+    "DCS",
+    "PLC",
+    "产品化",
+    "中试放大",
+    "技术评审",
+    "代码评审",
+    "性能优化",
+    "技术团队建设"
+   ],
+   "boundary": "与技术经理相比，技术总监更侧重于技术战略规划与跨部门资源统筹，而技术经理则聚焦于具体技术方案的执行与团队日常管理。",
+   "funtypes": [
+    "技术总监",
+    "研发总监",
+    "研发部长",
+    "技术总监/经理"
+   ],
+   "source_codes": [
+    "2603",
+    "2602"
+   ],
+   "source_names": [
+    "技术总监",
+    "技术总监/经理"
+   ],
+   "hits": 23190,
+   "n_samples": 4
+  },
+  "MGT-03": {
+   "code": "MGT-03",
+   "category": "MGT",
+   "name_zh": "首席技术执行官CTO",
+   "name_en": "Chief Technology Officer (CTO)",
+   "definition": "负责制定公司技术战略与产品技术路线，主导技术顶层设计与架构决策，推动前沿技术研究与应用落地。领导研发团队，构建技术体系，确保技术方案与业务目标对齐，并实现技术创新与商业化。典型技术栈包括分布式架构、微服务、云原生、大数据、AI等。关键产出包括技术战略规划、架构设计、研发管理体系和商业化技术产品。",
+   "keywords": [
+    "技术战略",
+    "技术路线图",
+    "架构设计",
+    "技术决策",
+    "前沿技术研究",
+    "技术团队建设",
+    "研发管理",
+    "产品技术规划",
+    "技术商业化",
+    "分布式架构",
+    "微服务",
+    "云原生",
+    "大数据",
+    "人工智能",
+    "物联网",
+    "RFID",
+    "技术体系",
+    "创新原型",
+    "技术方向",
+    "技术方案"
+   ],
+   "boundary": "与技术经理/总监聚焦于具体研发执行和团队日常管理不同，CTO更侧重于公司层面的技术战略规划、前沿技术布局和跨部门技术决策。",
+   "funtypes": [
+    "首席技术执行官CTO"
+   ],
+   "source_codes": [
+    "2611"
+   ],
+   "source_names": [
+    "首席技术执行官CTO"
+   ],
+   "hits": 2513,
+   "n_samples": 4
+  },
+  "MGT-04": {
+   "code": "MGT-04",
+   "category": "MGT",
+   "name_zh": "首席信息官CIO",
+   "name_en": "Chief Information Officer",
+   "definition": "负责制定企业信息化战略与IT基础设施规划，推动业务流程优化与数字化平台建设，确保信息系统安全稳定运行。典型技术栈包括ERP、OA、CRM、TMS、WMS等企业级系统，关键产出为信息化规划方案、系统架构设计及业务效率提升成果。",
+   "keywords": [
+    "信息化规划",
+    "IT战略",
+    "业务流程优化",
+    "ERP",
+    "OA",
+    "CRM",
+    "TMS",
+    "WMS",
+    "系统架构",
+    "数据安全",
+    "基础设施",
+    "电子商务平台",
+    "物流信息系统",
+    "数字化",
+    "系统集成",
+    "IT治理",
+    "信息化平台",
+    "网络安全"
+   ],
+   "boundary": "与CTO的边界在于：CIO聚焦企业整体信息化战略与业务系统整合，而CTO更侧重技术产品研发与技术创新。",
+   "funtypes": [
+    "首席信息官CIO"
+   ],
+   "source_codes": [
+    "2612"
+   ],
+   "source_names": [
+    "首席信息官CIO"
+   ],
+   "hits": 886,
+   "n_samples": 4
+  },
+  "MGT-05": {
+   "code": "MGT-05",
+   "category": "MGT",
+   "name_zh": "项目经理",
+   "name_en": "Project Manager",
+   "definition": "负责项目全生命周期管理，包括计划制定、资源协调、进度控制、质量保障和交付验收。典型工具包括MS Project、Jira、Trados等，需具备跨部门沟通和风险管理能力。关键产出为按时按质交付的项目成果及项目文档。",
+   "keywords": [
+    "项目管理",
+    "项目计划",
+    "进度控制",
+    "风险管理",
+    "资源协调",
+    "交付验收",
+    "MS Project",
+    "Jira",
+    "Trados",
+    "PMP",
+    "项目经理证",
+    "施工管理",
+    "系统集成",
+    "翻译项目",
+    "工程项目",
+    "招投标",
+    "验收",
+    "沟通协调",
+    "时间节点",
+    "质量控制"
+   ],
+   "boundary": "与解决方案经理的区别在于，项目经理聚焦于项目执行与交付，而解决方案经理侧重于客户需求分析与方案设计。",
+   "funtypes": [
+    "项目经理",
+    "项目管理",
+    "项目主管",
+    "项目总监",
+    "通信项目管理"
+   ],
+   "source_codes": [
+    "2606",
+    "3B00",
+    "2607",
+    "2605",
+    "2821"
+   ],
+   "source_names": [
+    "项目经理",
+    "技术项目管理",
+    "项目主管",
+    "项目总监",
+    "通信项目管理"
+   ],
+   "hits": 353854,
+   "n_samples": 4
+  },
+  "MGT-06": {
+   "code": "MGT-06",
+   "category": "MGT",
+   "name_zh": "解决方案经理",
+   "name_en": "Solution Manager",
+   "definition": "负责深入挖掘客户业务需求，设计并交付定制化技术解决方案，协调内外部资源推动项目落地。典型工作包括需求调研、方案编写、招投标支持及客户宣讲，需熟悉行业知识并掌握相关技术架构。核心产出为高质量的解决方案文档、项目中标及客户满意度提升。",
+   "keywords": [
+    "解决方案",
+    "售前",
+    "需求调研",
+    "方案编写",
+    "招投标",
+    "客户沟通",
+    "技术架构",
+    "业务架构",
+    "低空经济",
+    "智慧交通",
+    "智能制造",
+    "工业IoT",
+    "场景化方案",
+    "行业研究",
+    "竞品分析",
+    "项目运作",
+    "方案宣讲",
+    "产品组合"
+   ],
+   "boundary": "与项目经理的边界在于：解决方案经理聚焦于售前阶段的需求分析与方案设计，而项目经理负责项目交付阶段的计划、执行与控制。",
+   "funtypes": [
+    "解决方案经理"
+   ],
+   "source_codes": [
+    "1D01"
+   ],
+   "source_names": [
+    "解决方案经理"
+   ],
+   "hits": 828,
+   "n_samples": 4
+  },
+  "GJ-001": {
+   "code": "GJ-001",
+   "category": "AID",
+   "name_zh": "人机协同专家",
+   "name_en": "Synthetic Expertise Practitioner",
+   "definition": "设计并落地人机协同/人机智能系统与工作流，使人与AI系统高效互补完成专业任务的专家（含与认知系统协作及人机交互智能研发）",
+   "keywords": [
+    "人机协同",
+    "人机交互",
+    "人机智能",
+    "提示词工程",
+    "Prompt Engineering",
+    "提示词",
+    "大模型应用",
+    "LLM应用",
+    "智能体",
+    "AI Agent",
+    "工作流设计",
+    "认知系统",
+    "人机系统",
+    "AI协作",
+    "Copilot"
+   ],
+   "boundary": "与算法工程师的区别在于不侧重模型与算法研发，而侧重人与AI系统的协作机制、提示词体系与工作流落地；与产品经理的区别在于面向内部作业范式改造而非产品需求与路线图管理。",
+   "funtypes": [
+    "人机协同专家"
+   ],
+   "graduated": "2023-06-30"
+  },
+  "GJ-002": {
+   "code": "GJ-002",
+   "category": "DEV",
+   "name_zh": "平台工程师",
+   "name_en": "Platform Engineer",
+   "definition": "负责构建和维护供其他工程师使用的共享工具链、工作流及内部开发者平台的工程师角色。",
+   "keywords": [
+    "平台工程",
+    "Platform Engineering",
+    "内部开发者平台",
+    "IDP",
+    "开发者平台",
+    "DevOps平台",
+    "平台建设",
+    "基础设施即代码",
+    "IaC",
+    "Golden Path",
+    "开发者体验",
+    "Developer Experience",
+    "工具链",
+    "CI/CD平台",
+    "自助式环境"
+   ],
+   "boundary": "与运维工程师的区别在于面向开发者的自助服务与内部平台产品化构建，而非线上系统稳定性保障；与DevOps工程师的区别在于平台工程是DevOps的产品化延伸——构建供其他工程师使用的共享平台，而非直接交付业务应用。",
+   "funtypes": [
+    "平台工程师"
+   ],
+   "graduated": "2023-08-31"
+  },
+  "GJ-003": {
+   "code": "GJ-003",
+   "category": "DEV",
+   "name_zh": "科研软件工程师",
+   "name_en": "Research Software Engineer (RSE)",
+   "definition": "在科研环境中，将软件工程实践应用于科学计算与数据密集型研究，开发、维护和优化支撑科研项目的软件工具与平台的工程师角色。",
+   "keywords": [
+    "科研软件",
+    "Research Software",
+    "RSE",
+    "科学计算",
+    "Scientific Computing",
+    "数据密集型研究",
+    "科研信息化",
+    "e-Science",
+    "可复现研究",
+    "数值模拟软件",
+    "科研数据平台",
+    "高性能计算",
+    "HPC",
+    "计算科学"
+   ],
+   "boundary": "与软件开发工程师的区别在于服务对象是科研流程与数据密集型研究，可复现性与学术协作优先于产品需求；与算法工程师的区别在于不研究算法本身，而是将软件工程实践应用于科研代码与平台。",
+   "funtypes": [
+    "科研软件工程师"
+   ],
+   "graduated": "2023-10-31"
+  },
+  "GJ-004": {
+   "code": "GJ-004",
+   "category": "AID",
+   "name_zh": "量子技术从业者",
+   "name_en": "Quantum Workforce",
+   "definition": "在量子技术产业中从事研发、工程、应用等工作的专业人才，需要掌握量子力学、量子计算、量子通信等跨学科知识与技能。",
+   "keywords": [
+    "量子计算",
+    "Quantum Computing",
+    "量子信息",
+    "量子通信",
+    "量子密码",
+    "QKD",
+    "量子算法",
+    "量子编程",
+    "Qiskit",
+    "量子硬件",
+    "超导量子比特",
+    "量子测量",
+    "量子科技",
+    "后量子密码"
+   ],
+   "boundary": "与算法工程师的区别在于研究对象为量子算法与量子信息科学而非经典计算；与硬件工程师的区别在于跨算法、硬件、应用的量子技术全栈知识结构，不专门从事经典电子设计。",
+   "funtypes": [
+    "量子技术从业者"
+   ],
+   "graduated": "2023-11-30"
+  },
+  "GJ-005": {
+   "code": "GJ-005",
+   "category": "DEV",
+   "name_zh": "产品工程师",
+   "name_en": "Product Engineer",
+   "definition": "专注于构建面向客户产品的工程师角色，与平台工程师相对（软件工程语境，源自平台工程/产品工程范式讨论）",
+   "keywords": [
+    "产品工程",
+    "Product Engineering",
+    "产品工程师",
+    "面向客户产品",
+    "产品化交付",
+    "产品代码",
+    "产品迭代",
+    "客户价值",
+    "端到端交付",
+    "产品线开发",
+    "全栈交付"
+   ],
+   "boundary": "与平台工程师相对——聚焦面向客户的产品构建而非内部开发者平台；与产品经理的区别在于是工程实现角色（写代码交付产品）而非需求与路线图管理。",
+   "funtypes": [
+    "产品工程师"
+   ],
+   "graduated": "2024-01-31"
+  },
+  "GJ-006": {
+   "code": "GJ-006",
+   "category": "",
+   "name_zh": "自然语言处理专家",
+   "name_en": "",
+   "definition": "专注于自然语言处理技术研发与应用的专业岗位，负责提升机器对语言的理解和生成能力。",
+   "keywords": [],
+   "boundary": "",
+   "funtypes": [
+    "自然语言处理专家"
+   ],
+   "graduated": "2024-06-30"
+  },
+  "GJ-007": {
+   "code": "GJ-007",
+   "category": "",
+   "name_zh": "航天测试专家",
+   "name_en": "Space Test Professional",
+   "definition": "专门负责航天系统测试的专业人员，需具备在动态决策、卫星包络扩展、故障响应及受限环境下操作的能力，确保航天任务可靠执行。",
+   "keywords": [],
+   "boundary": "",
+   "funtypes": [
+    "航天测试专家"
+   ],
+   "graduated": "2024-09-30"
+  },
+  "GJ-008": {
+   "code": "GJ-008",
+   "category": "",
+   "name_zh": "机器人感知算法工程师",
+   "name_en": "",
+   "definition": "负责开发机器人环境感知算法（如视觉、激光雷达数据处理）的工程师岗位。",
+   "keywords": [],
+   "boundary": "",
+   "funtypes": [
+    "机器人感知算法工程师"
+   ],
+   "graduated": "2025-03-31"
+  },
+  "GJ-009": {
+   "code": "GJ-009",
+   "category": "",
+   "name_zh": "生成式AI算法工程师",
+   "name_en": "",
+   "definition": "负责开发和实现生成式人工智能模型（如大语言模型、图像生成模型）的算法工程师岗位。",
+   "keywords": [],
+   "boundary": "",
+   "funtypes": [
+    "生成式AI算法工程师"
+   ],
+   "graduated": "2025-03-31"
+  },
+  "GJ-010": {
+   "code": "GJ-010",
+   "category": "",
+   "name_zh": "硬件工程总监",
+   "name_en": "",
+   "definition": "负责硬件工程团队的管理和产品硬件设计的领导岗位。",
+   "keywords": [],
+   "boundary": "",
+   "funtypes": [
+    "硬件工程总监"
+   ],
+   "graduated": "2025-03-31"
+  },
+  "GJ-011": {
+   "code": "GJ-011",
+   "category": "",
+   "name_zh": "AI测试自动化工程师",
+   "name_en": "",
+   "definition": "专门负责利用AI工具和平台设计、实施和维护自动化测试策略的工程师角色。",
+   "keywords": [],
+   "boundary": "",
+   "funtypes": [
+    "AI测试自动化工程师"
+   ],
+   "graduated": "2025-06-30"
+  },
+  "GJ-012": {
+   "code": "GJ-012",
+   "category": "",
+   "name_zh": "AI Agent工程师",
+   "name_en": "",
+   "definition": "一个专注于设计、开发和维护AI智能体（Agent）系统的工程岗位。",
+   "keywords": [],
+   "boundary": "",
+   "funtypes": [
+    "AI Agent工程师"
+   ],
+   "graduated": "2025-12-31"
+  },
+  "GJ-013": {
+   "code": "GJ-013",
+   "category": "",
+   "name_zh": "深度强化学习算法工程师",
+   "name_en": "",
+   "definition": "负责开发和优化基于深度强化学习的算法，用于机器人控制等应用场景的工程师岗位。",
+   "keywords": [],
+   "boundary": "",
+   "funtypes": [
+    "深度强化学习算法工程师"
+   ],
+   "graduated": "2025-12-31"
+  },
+  "GJ-014": {
+   "code": "GJ-014",
+   "category": "",
+   "name_zh": "前向部署工程师",
+   "name_en": "",
+   "definition": "一种嵌入客户环境、负责将AI模型部署为实际生产成果的工程师角色，介于后端软件工程师与客户-facing软件架构师之间。",
+   "keywords": [],
+   "boundary": "",
+   "funtypes": [
+    "前向部署工程师"
+   ],
+   "graduated": "2026-02-28"
+  }
+ }
+}

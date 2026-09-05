@@ -1,0 +1,287 @@
+{
+  "version": "stage2b2_t_sw_01_software_engineering_curated_v1",
+  "team_skill_id": "T-SW-01",
+  "team_skill_name": "通用程序设计与软件工程",
+  "scope": "覆盖编程语言与模块实现、版本控制与构建管理、Web前端、服务端、桌面与客户端应用实现，以及软件集成、调试和迭代维护的核心路径与专门化分支。",
+  "nodes": [
+    {
+      "subskill_id": "SWE-01",
+      "name_zh": "编程语言与模块实现",
+      "type": "CORE",
+      "definition": "使用适合任务的编程语言把明确需求实现为职责清晰、输入输出可验证的程序模块。",
+      "prerequisites": [],
+      "learning_outcome": "能够选择并使用编程语言实现可运行模块，说明接口、数据流与边界条件。",
+      "evidence_task": "依据固定需求实现一个可运行模块，提交源代码、运行方式、输入输出样例和边界条件验证。",
+      "validation_criteria": [
+        "实现与给定需求和接口约束一致",
+        "代码、运行步骤和验证样例可复现"
+      ],
+      "source_refs": ["swebok_v4"]
+    },
+    {
+      "subskill_id": "SWE-02",
+      "name_zh": "版本控制与构建管理",
+      "type": "CORE",
+      "definition": "使用版本控制与构建工具管理变更、依赖和可重复构建过程。",
+      "prerequisites": ["SWE-01"],
+      "learning_outcome": "能够维护可追溯的代码变更，并通过明确配置完成可重复构建。",
+      "evidence_task": "为固定代码库建立版本历史与构建配置，演示从干净环境检出、解析依赖并生成构建产物。",
+      "validation_criteria": [
+        "关键变更可由版本历史追溯",
+        "依赖、构建命令和产物可复核"
+      ],
+      "source_refs": ["swebok_v4", "git_reference", "maven_guides", "webpack_concepts"]
+    },
+    {
+      "subskill_id": "SWE-03",
+      "name_zh": "Web前端应用实现",
+      "type": "SPECIALIZATION",
+      "definition": "实现由结构、样式和交互组成的Web前端界面，并验证关键用户操作。",
+      "prerequisites": ["SWE-01"],
+      "learning_outcome": "能够实现符合页面结构与样式规范的前端功能，并记录交互验证结果。",
+      "evidence_task": "依据固定界面需求实现一个Web前端页面或组件，提交结构、样式、交互代码和关键操作验证。",
+      "validation_criteria": [
+        "页面结构、样式和交互职责可定位",
+        "关键用户操作具有可复核结果"
+      ],
+      "source_refs": ["html_standard", "css_specs"]
+    },
+    {
+      "subskill_id": "SWE-04",
+      "name_zh": "服务端应用实现",
+      "type": "SPECIALIZATION",
+      "definition": "实现服务端应用的请求处理、业务逻辑与数据访问边界，并保留可验证接口。",
+      "prerequisites": ["SWE-01"],
+      "learning_outcome": "能够构建可运行的服务端功能，明确接口契约、错误处理和数据流。",
+      "evidence_task": "依据固定接口契约实现一个服务端功能，提交启动方式、请求响应样例、错误处理和数据访问验证。",
+      "validation_criteria": [
+        "接口契约、业务逻辑与数据访问边界清晰",
+        "正常与异常请求均有可复核结果"
+      ],
+      "source_refs": ["swebok_v4", "spring_framework", "nodejs_docs", "aspnet_core"]
+    },
+    {
+      "subskill_id": "SWE-05",
+      "name_zh": "桌面与客户端应用实现",
+      "type": "SPECIALIZATION",
+      "definition": "实现桌面或移动客户端的界面、事件处理与平台能力交互。",
+      "prerequisites": ["SWE-01"],
+      "learning_outcome": "能够构建可运行的客户端功能，说明界面状态、事件流和平台接口。",
+      "evidence_task": "依据固定客户端需求实现一个桌面或移动功能，提交构建运行步骤、交互流程和平台接口验证。",
+      "validation_criteria": [
+        "界面状态、事件处理和平台交互可定位",
+        "构建、运行与关键交互结果可复核"
+      ],
+      "source_refs": ["qt_docs", "android_developers", "wpf_docs"]
+    },
+    {
+      "subskill_id": "SWE-06",
+      "name_zh": "软件集成、调试与迭代维护",
+      "type": "CORE",
+      "definition": "集成软件模块，依据可复现故障定位问题，并通过可追溯变更完成修复和迭代维护。",
+      "prerequisites": ["SWE-01", "SWE-02"],
+      "learning_outcome": "能够复现并定位集成问题，实施最小修复，验证回归结果并记录变更依据。",
+      "evidence_task": "对固定多模块应用执行集成与故障修复，提交复现步骤、诊断证据、变更记录和回归验证。",
+      "validation_criteria": [
+        "问题定位由可复现现象和诊断证据支持",
+        "修复变更可追溯且回归验证覆盖原故障"
+      ],
+      "source_refs": ["swebok_v4"]
+    }
+  ],
+  "verification_task": {
+    "task_id": "SWE-VERIFY-01",
+    "objective": "验证当前通用程序设计与软件工程能力证据。",
+    "task_description": "在固定需求和代码库上完成可运行实现，保留代码、构建、输入输出、变更和验证记录。",
+    "validation_criteria": [
+      "本人技术行为与代码变更可定位",
+      "构建运行步骤和输入输出可复核",
+      "验证结果对应明确需求或故障"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "SWE-CAPSTONE-01",
+    "objective": "完成可构建、可运行、可验证且变更可追溯的软件功能。",
+    "task_description": "依据固定需求完成模块实现、版本与构建管理、集成调试和回归验证，并说明实现边界。",
+    "specialization_extensions": [
+      {
+        "subskill_id": "SWE-03",
+        "task_description": "增加Web前端结构、样式与交互实现，并验证关键用户操作。",
+        "validation_criteria": [
+          "页面实现符合结构与样式约束",
+          "关键交互具有可复核结果"
+        ]
+      },
+      {
+        "subskill_id": "SWE-04",
+        "task_description": "增加服务端接口、业务逻辑与错误处理实现，并验证请求响应。",
+        "validation_criteria": [
+          "接口契约与实现一致",
+          "正常和异常请求均有验证证据"
+        ]
+      },
+      {
+        "subskill_id": "SWE-05",
+        "task_description": "增加桌面或移动客户端界面、事件和平台交互实现。",
+        "validation_criteria": [
+          "客户端可按说明构建运行",
+          "关键交互与平台调用可复核"
+        ]
+      }
+    ],
+    "validation_criteria": [
+      "需求、实现、构建和验证结果可追溯",
+      "集成问题与修复依据有完整记录",
+      "回归验证覆盖关键功能和原故障",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": ["SWE-01", "SWE-02", "SWE-04", "SWE-06"]
+    },
+    {
+      "source_id": "git_reference",
+      "title": "Git Reference",
+      "authors_or_org": "Git",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://git-scm.com/docs",
+      "supports": ["SWE-02"]
+    },
+    {
+      "source_id": "maven_guides",
+      "title": "Apache Maven Guides",
+      "authors_or_org": "Apache Maven Project",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://maven.apache.org/guides/",
+      "supports": ["SWE-02"]
+    },
+    {
+      "source_id": "webpack_concepts",
+      "title": "webpack Concepts",
+      "authors_or_org": "webpack",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://webpack.js.org/concepts/",
+      "supports": ["SWE-02"]
+    },
+    {
+      "source_id": "html_standard",
+      "title": "WHATWG HTML Living Standard",
+      "authors_or_org": "WHATWG",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://html.spec.whatwg.org/",
+      "supports": ["SWE-03"]
+    },
+    {
+      "source_id": "css_specs",
+      "title": "W3C CSS Specifications",
+      "authors_or_org": "W3C",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.w3.org/Style/CSS/specs.en.html",
+      "supports": ["SWE-03"]
+    },
+    {
+      "source_id": "spring_framework",
+      "title": "Spring Framework",
+      "authors_or_org": "Spring",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://spring.io/projects/spring-framework",
+      "supports": ["SWE-04"]
+    },
+    {
+      "source_id": "nodejs_docs",
+      "title": "Node.js Documentation",
+      "authors_or_org": "Node.js",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://nodejs.org/docs/latest/api/",
+      "supports": ["SWE-04"]
+    },
+    {
+      "source_id": "aspnet_core",
+      "title": "ASP.NET Core",
+      "authors_or_org": "Microsoft",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://dotnet.microsoft.com/en-us/apps/aspnet",
+      "supports": ["SWE-04"]
+    },
+    {
+      "source_id": "qt_docs",
+      "title": "Qt Documentation",
+      "authors_or_org": "Qt",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://doc.qt.io/",
+      "supports": ["SWE-05"]
+    },
+    {
+      "source_id": "android_developers",
+      "title": "Android Developers",
+      "authors_or_org": "Android Developers",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://developer.android.com/develop",
+      "supports": ["SWE-05"]
+    },
+    {
+      "source_id": "wpf_docs",
+      "title": "Microsoft WPF Documentation",
+      "authors_or_org": "Microsoft",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://learn.microsoft.com/en-us/dotnet/desktop/wpf/",
+      "supports": ["SWE-05"]
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "version": "stage2b2_f_2_03_team_collaboration_curated_v1",
+  "team_skill_id": "F-2-03",
+  "team_skill_name": "团队协作协调",
+  "scope": "覆盖角色职责与接口约定、工作节奏对齐、跨成员依赖的识别与处置、协作过程中的信息同步，以及交付阶段的协同验收核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "TEAM-01",
+      "name_zh": "角色职责与交付接口约定",
+      "type": "CORE",
+      "definition": "在协作开始前明确各成员的职责边界与彼此的交付接口，使后续工作有可校验的交接口径。",
+      "prerequisites": [],
+      "learning_outcome": "能够与团队约定职责边界与交付接口，并以书面形式固定交接内容与判定标准。",
+      "evidence_task": "在一项团队任务启动时约定各方职责与交付接口，产出含交接内容、格式与判定标准的书面约定。",
+      "validation_criteria": [
+        "职责边界覆盖任务的全部环节且无重叠遗漏",
+        "交接判定标准可据以验收"
+      ],
+      "source_refs": [
+        "pmbok_guide",
+        "iso_iec_ieee_12207"
+      ]
+    },
+    {
+      "subskill_id": "TEAM-02",
+      "name_zh": "工作节奏与进度对齐",
+      "type": "CORE",
+      "definition": "依据团队的迭代节奏安排个人工作，使自身产出的时点与他人的依赖时点相衔接。",
+      "prerequisites": [
+        "TEAM-01"
+      ],
+      "learning_outcome": "能够按团队节奏排布个人工作并在偏离时提前告知，使依赖方有调整余地。",
+      "evidence_task": "在一个迭代周期内记录个人计划与团队节点的对应关系，标注实际偏差及提前告知依赖方的时点。",
+      "validation_criteria": [
+        "个人计划与团队节点逐项对应",
+        "偏差告知早于依赖方受影响的时点"
+      ],
+      "source_refs": [
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "TEAM-03",
+      "name_zh": "跨成员依赖识别与处置",
+      "type": "CORE",
+      "definition": "识别自身工作对他人的依赖与被依赖关系，对阻塞项发起明确的处置请求并跟踪至解除。",
+      "prerequisites": [
+        "TEAM-02"
+      ],
+      "learning_outcome": "能够绘制任务的依赖关系并对阻塞项完成从发起到解除的闭环处置。",
+      "evidence_task": "就一项协作任务列出依赖关系，记录至少一处阻塞的发现、发起、处置与解除全过程。",
+      "validation_criteria": [
+        "依赖关系覆盖任务的关键路径",
+        "阻塞处置有发起、承接与解除三段记录"
+      ],
+      "source_refs": [
+        "pmbok_guide",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "TEAM-04",
+      "name_zh": "协作信息的同步与留痕",
+      "type": "CORE",
+      "definition": "把协作过程中的决定、变更与风险同步到共同可见之处，使团队成员无需追问即可获知现状。",
+      "prerequisites": [
+        "TEAM-01"
+      ],
+      "learning_outcome": "能够维护团队共同可见的协作记录，使决定与变更的时点、内容与影响范围均可查。",
+      "evidence_task": "在一个协作周期内维护共享的决定与变更记录，逐条标注时点、内容、影响范围与知会对象。",
+      "validation_criteria": [
+        "记录条目含时点、内容与影响范围",
+        "知会对象覆盖全部受影响成员"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_15289",
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "TEAM-05",
+      "name_zh": "交付阶段的协同验收",
+      "type": "CORE",
+      "definition": "在交付节点与协作方按既定判定标准共同验收，对未达标项明确返工范围与再验收时点。",
+      "prerequisites": [
+        "TEAM-03",
+        "TEAM-04"
+      ],
+      "learning_outcome": "能够组织或参与协同验收，对未达标项形成含范围与时点的返工安排。",
+      "evidence_task": "在一次交付节点组织按标准的协同验收，记录逐项判定结果、未达标项的返工范围与再验收时点。",
+      "validation_criteria": [
+        "验收逐项对应事先约定的判定标准",
+        "未达标项的返工范围与时点明确"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_12207",
+        "pmbok_guide"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "TEAM-VERIFY-01",
+    "objective": "验证当前团队协作协调的能力证据。",
+    "task_description": "在一项真实的团队任务中完成职责约定、节奏对齐、依赖处置与协同验收，保留约定、同步记录与验收结论。",
+    "validation_criteria": [
+      "本人承担的职责与实际产出可对应",
+      "依赖阻塞的处置过程可复核",
+      "验收判定对应事先约定的标准"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "TEAM-CAPSTONE-01",
+    "objective": "完成一轮职责清晰、依赖可控、交付经协同验收的团队协作。",
+    "task_description": "在一项团队任务中约定职责与交付接口，按团队节奏推进，识别并解除依赖阻塞，维护共享记录，并在交付节点完成协同验收。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "职责与交付接口的约定覆盖全部环节",
+      "依赖阻塞有闭环处置记录",
+      "协同验收逐项对应约定标准",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_ieee_12207",
+      "title": "ISO/IEC/IEEE 12207 Systems and software engineering — Software life cycle processes",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "TEAM-01",
+        "TEAM-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15289",
+      "title": "ISO/IEC/IEEE 15289 Systems and software engineering — Content of life-cycle information items",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "TEAM-04"
+      ]
+    },
+    {
+      "source_id": "pmbok_guide",
+      "title": "A Guide to the Project Management Body of Knowledge (PMBOK Guide)",
+      "authors_or_org": "Project Management Institute (PMI)",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.pmi.org",
+      "supports": [
+        "TEAM-01",
+        "TEAM-02",
+        "TEAM-03",
+        "TEAM-04",
+        "TEAM-05"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "TEAM-03"
+      ]
+    }
+  ]
+}

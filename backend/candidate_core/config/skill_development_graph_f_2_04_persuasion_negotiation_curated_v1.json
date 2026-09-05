@@ -1,0 +1,187 @@
+{
+  "version": "stage2b2_f_2_04_persuasion_negotiation_curated_v1",
+  "team_skill_id": "F-2-04",
+  "team_skill_name": "说服与分歧谈判",
+  "scope": "覆盖分歧根因的辨析、共同判据的建立、备选与让步空间的设计、面向不同立场的论证组织，以及共识的固化与执行跟踪核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "NEG-01",
+      "name_zh": "分歧根因辨析",
+      "type": "CORE",
+      "definition": "区分技术分歧中的事实分歧、口径分歧与利益分歧，指出各方争议实际落在哪一层。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一项技术分歧指出其所属层次，并说明该层次需要何种依据才能收敛。",
+      "evidence_task": "就一项真实技术分歧，逐条归类各方论点所属的分歧层次，并说明收敛该分歧所需的依据类型。",
+      "validation_criteria": [
+        "各方论点的归类均有原文出处",
+        "所需依据类型与分歧层次相符"
+      ],
+      "source_refs": [
+        "pmbok_guide",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "NEG-02",
+      "name_zh": "共同判据的建立",
+      "type": "CORE",
+      "definition": "在推进方案前先与各方就判定标准与量测口径达成一致，使后续比较不再受立场影响。",
+      "prerequisites": [
+        "NEG-01"
+      ],
+      "learning_outcome": "能够与各方共同确定判定标准与口径，并取得书面确认。",
+      "evidence_task": "就一项待决技术选择，组织各方确定判定标准与量测口径，保留提议、修订与最终确认记录。",
+      "validation_criteria": [
+        "判定标准与口径经各方书面确认",
+        "标准可用于区分备选方案的优劣"
+      ],
+      "source_refs": [
+        "iso_iec_ieee_42030",
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "NEG-03",
+      "name_zh": "备选与让步空间设计",
+      "type": "CORE",
+      "definition": "为核心诉求准备可接受的备选与让步边界，使谈判在不触碰底线的前提下留有推进余地。",
+      "prerequisites": [
+        "NEG-02"
+      ],
+      "learning_outcome": "能够就一项分歧列出备选方案、可让步项与不可让步项，并说明各自依据。",
+      "evidence_task": "就一项技术分歧设计谈判方案，列出备选、可让步项、不可让步项与各自的技术或成本依据。",
+      "validation_criteria": [
+        "不可让步项的依据可核查",
+        "备选方案在共同判据下均可评估"
+      ],
+      "source_refs": [
+        "pmbok_guide"
+      ]
+    },
+    {
+      "subskill_id": "NEG-04",
+      "name_zh": "面向立场的论证组织",
+      "type": "CORE",
+      "definition": "依据对方的关切重新组织同一技术论证，使论证落在对方在意的后果上而非仅陈述自身理由。",
+      "prerequisites": [
+        "NEG-03"
+      ],
+      "learning_outcome": "能够针对不同立场各组织一版论证，并说明其与对方关切的对应关系。",
+      "evidence_task": "就同一技术主张面向两个不同立场各组织一版论证，标明各版对应的对方关切与预期异议。",
+      "validation_criteria": [
+        "各版论证对应可指认的对方关切",
+        "预期异议附有应对依据"
+      ],
+      "source_refs": [
+        "pmbok_guide",
+        "swebok_v4"
+      ]
+    },
+    {
+      "subskill_id": "NEG-05",
+      "name_zh": "共识固化与执行跟踪",
+      "type": "CORE",
+      "definition": "把达成的共识转为含责任人与时点的书面约定，并在执行期跟踪偏离与再协商。",
+      "prerequisites": [
+        "NEG-04"
+      ],
+      "learning_outcome": "能够将谈判结果固化为可执行的书面约定，并在偏离时发起再协商。",
+      "evidence_task": "就一次达成共识的技术分歧产出书面约定，记录执行期的偏离情况与再协商过程。",
+      "validation_criteria": [
+        "约定含责任人、时点与判定方式",
+        "偏离与再协商过程有完整记录"
+      ],
+      "source_refs": [
+        "pmbok_guide",
+        "iso_iec_ieee_15289"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "NEG-VERIFY-01",
+    "objective": "验证当前说服与分歧谈判的能力证据。",
+    "task_description": "就一项真实技术分歧完成根因辨析、共同判据建立与共识固化，保留各方立场、判据确认与最终约定。",
+    "validation_criteria": [
+      "本人在分歧中的主张与让步可定位",
+      "共同判据经各方确认",
+      "最终约定含责任人与时点"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "NEG-CAPSTONE-01",
+    "objective": "完成一轮判据共认、让步有据、共识可执行的技术分歧处置。",
+    "task_description": "针对一项存在立场对立的技术选择，辨析分歧层次，建立共同判据，设计备选与让步空间，组织面向立场的论证，并将共识固化为可跟踪的约定。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "分歧层次的辨析有原文依据",
+      "共同判据经各方书面确认",
+      "共识约定含责任人、时点与判定方式",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "iso_iec_ieee_15289",
+      "title": "ISO/IEC/IEEE 15289 Systems and software engineering — Content of life-cycle information items",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "NEG-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_42030",
+      "title": "ISO/IEC/IEEE 42030 Systems and software engineering — Architecture evaluation framework",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "NEG-02"
+      ]
+    },
+    {
+      "source_id": "pmbok_guide",
+      "title": "A Guide to the Project Management Body of Knowledge (PMBOK Guide)",
+      "authors_or_org": "Project Management Institute (PMI)",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.pmi.org",
+      "supports": [
+        "NEG-01",
+        "NEG-02",
+        "NEG-03",
+        "NEG-04",
+        "NEG-05"
+      ]
+    },
+    {
+      "source_id": "swebok_v4",
+      "title": "IEEE Computer Society SWEBOK V4",
+      "authors_or_org": "IEEE Computer Society",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "V4",
+      "doi": null,
+      "url": "https://www.computer.org/education/bodies-of-knowledge/software-engineering",
+      "supports": [
+        "NEG-01",
+        "NEG-04"
+      ]
+    }
+  ]
+}

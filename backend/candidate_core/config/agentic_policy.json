@@ -1,0 +1,34 @@
+{
+  "policy_version": "1.1",
+  "error_action_map": {
+    "evidence_not_found": "delete",
+    "evidence_insufficient": "relocate",
+    "over_inference": "narrow",
+    "out_of_scope": "delete",
+    "bad_name": "rename",
+    "synonym_duplicate": "merge"
+  },
+  "action_priority": [
+    "delete",
+    "merge",
+    "narrow",
+    "rename",
+    "relocate",
+    "repair",
+    "low_confidence",
+    "keep"
+  ],
+  "allowed_repair_error_types": [
+    "evidence_insufficient",
+    "over_inference",
+    "bad_name"
+  ],
+  "max_revisions": 1,
+  "second_review_failure": {
+    "default_action": "low_confidence",
+    "delete_on_error_types": [
+      "evidence_not_found",
+      "out_of_scope"
+    ]
+  }
+}

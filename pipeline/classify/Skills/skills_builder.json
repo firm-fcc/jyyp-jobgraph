@@ -1,0 +1,422 @@
+{
+  "system_name": "技能体系（Builder 构建）",
+  "version": "0.1",
+  "date": "2026-08-07",
+  "source": "Builder 冷启动（500 条文档归纳）",
+  "total": 59,
+  "detail": {
+    "S-01": {
+      "code": "S-01",
+      "name_zh": "机器学习与深度学习",
+      "name_en": "Machine Learning & Deep Learning",
+      "definition": "掌握机器学习与深度学习模型的原理、构建、训练、评估与优化能力",
+      "skill_type": "hard"
+    },
+    "S-02": {
+      "code": "S-02",
+      "name_zh": "大模型与生成式AI",
+      "name_en": "Large Language Models & Generative AI",
+      "definition": "掌握大语言模型、多模态大模型、RAG、Agent等生成式AI技术的应用开发与优化能力",
+      "skill_type": "hard"
+    },
+    "S-03": {
+      "code": "S-03",
+      "name_zh": "计算机视觉",
+      "name_en": "Computer Vision",
+      "definition": "掌握图像处理、目标检测、图像识别、三维视觉等计算机视觉算法与应用开发能力",
+      "skill_type": "hard"
+    },
+    "S-04": {
+      "code": "S-04",
+      "name_zh": "自然语言处理",
+      "name_en": "Natural Language Processing",
+      "definition": "掌握文本处理、语义理解、语音识别与合成等自然语言处理技术能力",
+      "skill_type": "hard"
+    },
+    "S-05": {
+      "code": "S-05",
+      "name_zh": "算法与数据结构",
+      "name_en": "Algorithms & Data Structures",
+      "definition": "掌握常用算法设计、数据结构、算法分析与优化能力",
+      "skill_type": "hard"
+    },
+    "S-06": {
+      "code": "S-06",
+      "name_zh": "数据分析与挖掘",
+      "name_en": "Data Analysis & Mining",
+      "definition": "掌握数据清洗、统计分析、数据建模、数据挖掘与可视化呈现能力",
+      "skill_type": "hard"
+    },
+    "S-07": {
+      "code": "S-07",
+      "name_zh": "大数据处理",
+      "name_en": "Big Data Processing",
+      "definition": "掌握大数据生态组件、分布式计算框架及海量数据处理能力",
+      "skill_type": "hard"
+    },
+    "S-08": {
+      "code": "S-08",
+      "name_zh": "数据工程与ETL",
+      "name_en": "Data Engineering & ETL",
+      "definition": "掌握数据仓库建模、ETL流程设计、数据集成与数据管道开发能力",
+      "skill_type": "hard"
+    },
+    "S-09": {
+      "code": "S-09",
+      "name_zh": "数据库管理与优化",
+      "name_en": "Database Management & Optimization",
+      "definition": "掌握关系型与非关系型数据库的设计、开发、性能调优及运维管理能力",
+      "skill_type": "hard"
+    },
+    "S-10": {
+      "code": "S-10",
+      "name_zh": "后端开发",
+      "name_en": "Backend Development",
+      "definition": "掌握服务端业务逻辑、API设计、微服务架构及后端框架应用能力",
+      "skill_type": "hard"
+    },
+    "S-11": {
+      "code": "S-11",
+      "name_zh": "前端开发",
+      "name_en": "Frontend Development",
+      "definition": "掌握Web及移动端界面开发、交互实现、前端框架应用与性能优化能力",
+      "skill_type": "hard"
+    },
+    "S-12": {
+      "code": "S-12",
+      "name_zh": "移动应用开发",
+      "name_en": "Mobile Application Development",
+      "definition": "掌握Android、iOS或跨平台移动应用的设计、开发与发布能力",
+      "skill_type": "hard"
+    },
+    "S-13": {
+      "code": "S-13",
+      "name_zh": "嵌入式软件开发",
+      "name_en": "Embedded Software Development",
+      "definition": "掌握嵌入式系统软件设计、驱动开发、底层调试与软硬件协同能力",
+      "skill_type": "hard"
+    },
+    "S-14": {
+      "code": "S-14",
+      "name_zh": "硬件设计与开发",
+      "name_en": "Hardware Design & Development",
+      "definition": "掌握电路原理图设计、PCB布局、元器件选型及硬件调试能力",
+      "skill_type": "hard"
+    },
+    "S-15": {
+      "code": "S-15",
+      "name_zh": "FPGA与数字IC设计",
+      "name_en": "FPGA & Digital IC Design",
+      "definition": "掌握FPGA开发、数字逻辑设计、RTL编码及芯片验证能力",
+      "skill_type": "hard"
+    },
+    "S-16": {
+      "code": "S-16",
+      "name_zh": "模拟与射频设计",
+      "name_en": "Analog & RF Design",
+      "definition": "掌握模拟电路、射频电路、电磁兼容及信号完整性设计能力",
+      "skill_type": "hard"
+    },
+    "S-17": {
+      "code": "S-17",
+      "name_zh": "电力电子与电源设计",
+      "name_en": "Power Electronics & Power Supply Design",
+      "definition": "掌握电源拓扑、功率器件应用、电源电路设计与调试能力",
+      "skill_type": "hard"
+    },
+    "S-18": {
+      "code": "S-18",
+      "name_zh": "控制系统与自动化",
+      "name_en": "Control Systems & Automation",
+      "definition": "掌握自动控制原理、PLC编程、运动控制及工业自动化系统设计能力",
+      "skill_type": "hard"
+    },
+    "S-19": {
+      "code": "S-19",
+      "name_zh": "机器人技术与应用",
+      "name_en": "Robotics Technology & Application",
+      "definition": "掌握机器人系统架构、运动规划、控制算法及机器人集成应用能力",
+      "skill_type": "hard"
+    },
+    "S-20": {
+      "code": "S-20",
+      "name_zh": "操作系统与系统编程",
+      "name_en": "Operating Systems & System Programming",
+      "definition": "掌握操作系统原理、Linux/嵌入式系统、底层系统开发与优化能力",
+      "skill_type": "hard"
+    },
+    "S-21": {
+      "code": "S-21",
+      "name_zh": "网络与通信技术",
+      "name_en": "Networking & Communication Technologies",
+      "definition": "掌握网络协议、通信原理、网络设备配置及通信系统开发能力",
+      "skill_type": "hard"
+    },
+    "S-22": {
+      "code": "S-22",
+      "name_zh": "信息安全与网络安全",
+      "name_en": "Information & Cybersecurity",
+      "definition": "掌握安全攻防、漏洞分析、安全体系设计与合规管理能力",
+      "skill_type": "hard"
+    },
+    "S-23": {
+      "code": "S-23",
+      "name_zh": "云计算与虚拟化",
+      "name_en": "Cloud Computing & Virtualization",
+      "definition": "掌握云平台架构、容器化、虚拟化技术及云原生应用部署能力",
+      "skill_type": "hard"
+    },
+    "S-24": {
+      "code": "S-24",
+      "name_zh": "系统运维与监控",
+      "name_en": "System Operations & Monitoring",
+      "definition": "掌握IT系统部署、监控、故障排查、性能优化及自动化运维能力",
+      "skill_type": "hard"
+    },
+    "S-25": {
+      "code": "S-25",
+      "name_zh": "软件测试与质量保障",
+      "name_en": "Software Testing & Quality Assurance",
+      "definition": "掌握测试用例设计、自动化测试、性能测试及质量保障体系能力",
+      "skill_type": "hard"
+    },
+    "S-26": {
+      "code": "S-26",
+      "name_zh": "项目管理",
+      "name_en": "Project Management",
+      "definition": "掌握项目计划、进度、成本、风险及资源协调管理能力",
+      "skill_type": "hybrid"
+    },
+    "S-27": {
+      "code": "S-27",
+      "name_zh": "产品管理与规划",
+      "name_en": "Product Management & Planning",
+      "definition": "掌握产品需求分析、市场调研、产品定义、生命周期管理能力",
+      "skill_type": "hybrid"
+    },
+    "S-28": {
+      "code": "S-28",
+      "name_zh": "质量管理与体系",
+      "name_en": "Quality Management & Systems",
+      "definition": "掌握质量管理体系、质量工具应用、过程控制与持续改进能力",
+      "skill_type": "hybrid"
+    },
+    "S-29": {
+      "code": "S-29",
+      "name_zh": "工艺设计与优化",
+      "name_en": "Process Design & Optimization",
+      "definition": "掌握生产工艺流程设计、工艺参数优化、制程能力提升能力",
+      "skill_type": "hard"
+    },
+    "S-30": {
+      "code": "S-30",
+      "name_zh": "机械设计与制造",
+      "name_en": "Mechanical Design & Manufacturing",
+      "definition": "掌握机械结构设计、三维建模、材料选型及制造工艺能力",
+      "skill_type": "hard"
+    },
+    "S-31": {
+      "code": "S-31",
+      "name_zh": "光学设计与工程",
+      "name_en": "Optical Design & Engineering",
+      "definition": "掌握光学系统设计、光学仿真、光机结构及光学检测能力",
+      "skill_type": "hard"
+    },
+    "S-32": {
+      "code": "S-32",
+      "name_zh": "半导体工艺与设备",
+      "name_en": "Semiconductor Process & Equipment",
+      "definition": "掌握半导体制造工艺、设备维护、工艺开发与良率提升能力",
+      "skill_type": "hard"
+    },
+    "S-33": {
+      "code": "S-33",
+      "name_zh": "电子设计与测试",
+      "name_en": "Electronic Design & Testing",
+      "definition": "掌握电子产品电路设计、功能测试、信号测试及故障分析能力",
+      "skill_type": "hard"
+    },
+    "S-34": {
+      "code": "S-34",
+      "name_zh": "汽车电子与智能驾驶",
+      "name_en": "Automotive Electronics & Intelligent Driving",
+      "definition": "掌握汽车电子系统、车载网络、智能驾驶感知决策控制及测试能力",
+      "skill_type": "hard"
+    },
+    "S-35": {
+      "code": "S-35",
+      "name_zh": "物联网与智能硬件",
+      "name_en": "IoT & Smart Hardware",
+      "definition": "掌握物联网架构、智能设备开发、传感器应用及系统集成能力",
+      "skill_type": "hard"
+    },
+    "S-36": {
+      "code": "S-36",
+      "name_zh": "企业信息系统实施",
+      "name_en": "Enterprise Information System Implementation",
+      "definition": "掌握ERP、MES、CRM等企业级信息系统的实施、配置与运维能力",
+      "skill_type": "hard"
+    },
+    "S-37": {
+      "code": "S-37",
+      "name_zh": "售前与解决方案设计",
+      "name_en": "Pre-sales & Solution Design",
+      "definition": "掌握客户需求分析、技术方案设计、产品演示与投标支持能力",
+      "skill_type": "hybrid"
+    },
+    "S-38": {
+      "code": "S-38",
+      "name_zh": "技术支持与客户服务",
+      "name_en": "Technical Support & Customer Service",
+      "definition": "掌握产品技术问题解答、故障处理、客户培训与服务能力",
+      "skill_type": "hybrid"
+    },
+    "S-39": {
+      "code": "S-39",
+      "name_zh": "供应链与采购管理",
+      "name_en": "Supply Chain & Procurement Management",
+      "definition": "掌握供应商开发、采购流程、成本控制及供应链协同能力",
+      "skill_type": "hybrid"
+    },
+    "S-40": {
+      "code": "S-40",
+      "name_zh": "沟通与协作",
+      "name_en": "Communication & Collaboration",
+      "definition": "掌握跨部门沟通、团队协作、信息传达与协调能力",
+      "skill_type": "soft"
+    },
+    "S-41": {
+      "code": "S-41",
+      "name_zh": "问题分析与解决",
+      "name_en": "Problem Analysis & Solving",
+      "definition": "掌握识别问题、分析根因、制定并实施解决方案的能力",
+      "skill_type": "soft"
+    },
+    "S-42": {
+      "code": "S-42",
+      "name_zh": "学习与创新能力",
+      "name_en": "Learning & Innovation",
+      "definition": "掌握快速学习新技术、探索新方法及推动创新实践的能力",
+      "skill_type": "soft"
+    },
+    "S-43": {
+      "code": "S-43",
+      "name_zh": "文档撰写与汇报",
+      "name_en": "Technical Writing & Presentation",
+      "definition": "掌握技术文档编写、报告撰写及方案演示表达能力",
+      "skill_type": "soft"
+    },
+    "S-44": {
+      "code": "S-44",
+      "name_zh": "领导力与团队管理",
+      "name_en": "Leadership & Team Management",
+      "definition": "掌握团队建设、人员培养、任务分配与绩效管理能力",
+      "skill_type": "soft"
+    },
+    "S-45": {
+      "code": "S-45",
+      "name_zh": "英语与跨文化沟通",
+      "name_en": "English & Cross-cultural Communication",
+      "definition": "掌握英语听说读写及跨文化环境下的沟通协作能力",
+      "skill_type": "soft"
+    },
+    "S-46": {
+      "code": "S-46",
+      "name_zh": "办公软件应用",
+      "name_en": "Office Software Proficiency",
+      "definition": "掌握Word、Excel、PowerPoint等常用办公软件的高级应用能力",
+      "skill_type": "soft"
+    },
+    "S-47": {
+      "code": "S-47",
+      "name_zh": "行业知识",
+      "name_en": "Industry Domain Knowledge",
+      "definition": "掌握特定行业（如金融、制造、医疗、汽车等）的业务流程与专业知识",
+      "skill_type": "hybrid"
+    },
+    "S-48": {
+      "code": "S-48",
+      "name_zh": "需求分析与产品设计",
+      "name_en": "Requirement Analysis & Product Design",
+      "definition": "掌握用户需求调研、业务流程梳理、原型设计及需求文档编写能力",
+      "skill_type": "hybrid"
+    },
+    "S-49": {
+      "code": "S-49",
+      "name_zh": "系统架构设计",
+      "name_en": "System Architecture Design",
+      "definition": "掌握系统整体架构规划、技术选型、模块划分及接口设计能力",
+      "skill_type": "hard"
+    },
+    "S-50": {
+      "code": "S-50",
+      "name_zh": "软件开发流程与规范",
+      "name_en": "Software Development Process & Standards",
+      "definition": "掌握软件开发生命周期、编码规范、版本控制及持续集成能力",
+      "skill_type": "hard"
+    },
+    "S-51": {
+      "code": "S-51",
+      "name_zh": "设备维护与故障诊断",
+      "name_en": "Equipment Maintenance & Fault Diagnosis",
+      "definition": "掌握生产设备日常维护、保养、故障排查与维修能力",
+      "skill_type": "hard"
+    },
+    "S-52": {
+      "code": "S-52",
+      "name_zh": "测试测量与仪器操作",
+      "name_en": "Testing, Measurement & Instrument Operation",
+      "definition": "掌握示波器、万用表、频谱仪等测试测量仪器的操作与应用能力",
+      "skill_type": "hard"
+    },
+    "S-53": {
+      "code": "S-53",
+      "name_zh": "电磁兼容与信号完整性",
+      "name_en": "EMC & Signal Integrity",
+      "definition": "掌握电磁兼容设计、整改、测试及高速信号完整性分析能力",
+      "skill_type": "hard"
+    },
+    "S-54": {
+      "code": "S-54",
+      "name_zh": "仿真建模与分析",
+      "name_en": "Simulation, Modeling & Analysis",
+      "definition": "掌握使用仿真工具进行系统建模、性能分析与验证能力",
+      "skill_type": "hard"
+    },
+    "S-55": {
+      "code": "S-55",
+      "name_zh": "UI/UX设计",
+      "name_en": "UI/UX Design",
+      "definition": "掌握用户界面设计、交互设计、视觉设计及用户体验优化能力",
+      "skill_type": "hard"
+    },
+    "S-56": {
+      "code": "S-56",
+      "name_zh": "视觉设计与品牌创意",
+      "name_en": "Visual Design & Brand Creativity",
+      "definition": "掌握平面设计、品牌视觉、创意构思及设计软件应用能力",
+      "skill_type": "hard"
+    },
+    "S-57": {
+      "code": "S-57",
+      "name_zh": "市场分析与商业洞察",
+      "name_en": "Market Analysis & Business Insight",
+      "definition": "掌握市场调研、竞争分析、商业机会识别与策略制定能力",
+      "skill_type": "hybrid"
+    },
+    "S-58": {
+      "code": "S-58",
+      "name_zh": "销售与商务谈判",
+      "name_en": "Sales & Business Negotiation",
+      "definition": "掌握客户开发、商务谈判、合同管理及客户关系维护能力",
+      "skill_type": "soft"
+    },
+    "S-59": {
+      "code": "S-59",
+      "name_zh": "合规与风险管理",
+      "name_en": "Compliance & Risk Management",
+      "definition": "掌握法规遵循、风险评估、安全合规及应急预案管理能力",
+      "skill_type": "hybrid"
+    }
+  }
+}

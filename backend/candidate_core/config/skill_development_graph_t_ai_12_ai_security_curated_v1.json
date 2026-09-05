@@ -1,0 +1,216 @@
+{
+  "version": "stage2b2_t_ai_12_ai_security_curated_v1",
+  "team_skill_id": "T-AI-12",
+  "team_skill_name": "AI安全技术",
+  "scope": "覆盖攻击面辨识、提示注入与越狱防护、红队测试的组织、内容审核与输出管控，以及风险监控与事件响应核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "AISEC-01",
+      "name_zh": "AI系统攻击面辨识",
+      "type": "CORE",
+      "definition": "沿数据、模型、提示、工具与输出五处梳理AI系统的攻击面，并判定各处的影响范围。",
+      "prerequisites": [],
+      "learning_outcome": "能够就一个AI系统给出攻击面清单，并说明各处被利用后的影响。",
+      "evidence_task": "就一个真实AI系统输出攻击面清单，逐项写明入口、可被利用的条件与影响范围。",
+      "validation_criteria": [
+        "攻击面覆盖数据与模型两侧",
+        "影响范围有具体说明"
+      ],
+      "source_refs": [
+        "owasp_llm_top10",
+        "mitre_atlas"
+      ]
+    },
+    {
+      "subskill_id": "AISEC-02",
+      "name_zh": "提示注入与越狱防护",
+      "type": "CORE",
+      "definition": "针对提示注入与越狱构造检测与隔离措施，区分可信指令与不可信输入。",
+      "prerequisites": [
+        "AISEC-01"
+      ],
+      "learning_outcome": "能够实施可验证的注入防护措施，并给出防护前后的拦截结果。",
+      "evidence_task": "就一个系统实施注入防护，用一组注入样例验证并记录拦截率与漏过样例。",
+      "validation_criteria": [
+        "注入样例覆盖已知的注入形态",
+        "拦截率与漏过样例同时记录"
+      ],
+      "source_refs": [
+        "owasp_llm_top10",
+        "gcg_attack"
+      ]
+    },
+    {
+      "subskill_id": "AISEC-03",
+      "name_zh": "红队测试组织与实施",
+      "type": "CORE",
+      "definition": "在授权范围内组织对抗性测试，按预设的攻击目标系统性地探查模型与系统的失效。",
+      "prerequisites": [
+        "AISEC-01"
+      ],
+      "learning_outcome": "能够在授权范围内完成一轮红队测试，并输出可复现的失效记录。",
+      "evidence_task": "就一个系统在授权范围内完成一轮红队测试，记录攻击目标、执行过程与可复现的失效样例。",
+      "validation_criteria": [
+        "测试范围有明确的授权边界",
+        "失效样例可复现"
+      ],
+      "source_refs": [
+        "red_teaming_lm",
+        "nist_ai_rmf"
+      ]
+    },
+    {
+      "subskill_id": "AISEC-04",
+      "name_zh": "内容审核与输出管控",
+      "type": "CORE",
+      "definition": "对模型输出建立分级审核与拦截机制，并处理误拦与漏拦两类代价。",
+      "prerequisites": [
+        "AISEC-02"
+      ],
+      "learning_outcome": "能够运行输出审核机制，并给出误拦与漏拦的实测比例。",
+      "evidence_task": "就一个系统实施输出审核，在一批样本上量测误拦与漏拦并给出阈值选择的依据。",
+      "validation_criteria": [
+        "审核分级规则明确",
+        "误拦与漏拦有实测比例"
+      ],
+      "source_refs": [
+        "owasp_llm_top10",
+        "nist_ai_rmf"
+      ]
+    },
+    {
+      "subskill_id": "AISEC-05",
+      "name_zh": "风险监控与事件响应",
+      "type": "CORE",
+      "definition": "对运行中的AI系统建立异常监控，并按预案完成事件的定级、处置与复盘。",
+      "prerequisites": [
+        "AISEC-03",
+        "AISEC-04"
+      ],
+      "learning_outcome": "能够以监控数据发现异常，并按预案完成一次事件处置与复盘。",
+      "evidence_task": "就一次真实或演练事件完成定级、处置与复盘，保留监控读数、处置记录与改进项。",
+      "validation_criteria": [
+        "监控指标能反映已识别的风险",
+        "复盘产出可执行的改进项"
+      ],
+      "source_refs": [
+        "nist_ai_rmf",
+        "extract_training_data"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "AISEC-VERIFY-01",
+    "objective": "验证当前AI安全技术的能力证据。",
+    "task_description": "就一个授权范围内的AI系统完成攻击面梳理、注入防护验证与一轮红队测试，保留样例与拦截数据。",
+    "validation_criteria": [
+      "测试在明确的授权范围内进行",
+      "注入样例与拦截结果可复现",
+      "失效记录含复现步骤"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "AISEC-CAPSTONE-01",
+    "objective": "完成一轮范围明确、防护可验证、响应有预案的AI安全实践。",
+    "task_description": "就一个授权系统梳理攻击面，实施注入防护与输出审核，组织一轮红队测试，最后建立监控并完成一次事件处置与复盘。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "全部测试在授权边界内",
+      "防护措施有拦截率与漏过样例",
+      "事件处置与复盘记录完整",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "extract_training_data",
+      "title": "Extracting Training Data from Large Language Models",
+      "authors_or_org": "Carlini et al.",
+      "source_type": "paper",
+      "year": 2021,
+      "venue": "USENIX Security",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "AISEC-05"
+      ]
+    },
+    {
+      "source_id": "gcg_attack",
+      "title": "Universal and Transferable Adversarial Attacks on Aligned Language Models",
+      "authors_or_org": "Zou et al.",
+      "source_type": "paper",
+      "year": 2023,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "AISEC-02"
+      ]
+    },
+    {
+      "source_id": "mitre_atlas",
+      "title": "MITRE ATLAS Adversarial Threat Landscape for Artificial-Intelligence Systems",
+      "authors_or_org": "MITRE",
+      "source_type": "framework",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://atlas.mitre.org/",
+      "supports": [
+        "AISEC-01"
+      ]
+    },
+    {
+      "source_id": "nist_ai_rmf",
+      "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "authors_or_org": "National Institute of Standards and Technology (NIST)",
+      "source_type": "framework",
+      "year": null,
+      "venue": null,
+      "version": "1.0",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "AISEC-03",
+        "AISEC-04",
+        "AISEC-05"
+      ]
+    },
+    {
+      "source_id": "owasp_llm_top10",
+      "title": "OWASP Top 10 for Large Language Model Applications",
+      "authors_or_org": "Open Worldwide Application Security Project (OWASP)",
+      "source_type": "industry_standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "supports": [
+        "AISEC-01",
+        "AISEC-02",
+        "AISEC-04"
+      ]
+    },
+    {
+      "source_id": "red_teaming_lm",
+      "title": "Red Teaming Language Models with Language Models",
+      "authors_or_org": "Perez et al.",
+      "source_type": "paper",
+      "year": 2022,
+      "venue": "EMNLP",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "AISEC-03"
+      ]
+    }
+  ]
+}

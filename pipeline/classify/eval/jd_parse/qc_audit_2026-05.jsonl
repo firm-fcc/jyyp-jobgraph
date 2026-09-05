@@ -1,0 +1,15 @@
+{"case_id": "JD-006", "rule": "sp_category", "dropped": ["相机选型", "镜头选型", "光源选型"]}
+{"case_id": "JD-029", "rule": "sp_category", "dropped": ["射频测试仪", "示波器"]}
+{"case_id": "JD-044", "rule": "sp_category", "dropped": ["工业相机"]}
+{"case_id": "JD-046", "rule": "sp_category", "dropped": ["单元测试"]}
+{"case_id": "JD-061", "rule": "it_selfconsistency", "change": "it_related true→false（gold 岗位 NET-02 属 it_scope 排除域）"}
+{"case_id": "JD-071", "rule": "sp_category", "dropped": ["电脑维修", "办公设备维护", "IT桌面支持", "办公设备使用支持"]}
+{"case_id": "JD-074", "rule": "sp_category", "dropped": ["系统配置", "权限管理", "系统测试"]}
+{"case_id": "JD-077", "rule": "sp_category", "dropped": ["公司软件"]}
+{"case_id": "JD-079", "rule": "sp_category", "dropped": ["智慧城市", "政法", "交通", "金融", "文教"]}
+{"case_id": "JD-085", "rule": "sp_category", "dropped": ["日语", "英语"]}
+{"case_id": "JD-086", "rule": "sp_category", "dropped": ["印刷机", "贴片机", "回流焊"]}
+{"case_id": "JD-108", "rule": "sp_category", "dropped": ["自动化测试"]}
+{"case_id": "JD-105", "rule": "it_selfconsistency", "change": "it_related true→false（gold 岗位 HW-26 属 it_scope 排除域）"}
+{"case_id": "JD-105", "rule": "sp_category", "dropped": ["自动化测试"]}
+{"case_id": "JD-107", "rule": "sp_category", "dropped": ["网页测试", "功能测试", "安全测试", "测试文档编写"]}

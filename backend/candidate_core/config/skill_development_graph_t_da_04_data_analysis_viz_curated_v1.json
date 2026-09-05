@@ -1,0 +1,172 @@
+{
+  "version": "stage2b2_t_da_04_data_analysis_viz_curated_v1",
+  "team_skill_id": "T-DA-04",
+  "team_skill_name": "数据分析与可视化",
+  "scope": "覆盖分析问题的界定、数据探索与质量核查、统计分析与结论推断、图形编码选择与可视化实现，以及分析结论向决策的转化核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "DAV-01",
+      "name_zh": "分析问题界定与口径确定",
+      "type": "CORE",
+      "definition": "把业务问题转为可用数据回答的分析问题，并固定指标口径、时间窗与人群范围。",
+      "prerequisites": [],
+      "learning_outcome": "能够界定分析问题并固定口径，说明该口径下结论的适用范围。",
+      "evidence_task": "就一个业务问题输出分析设计，写明指标口径、时间窗、人群范围与结论的适用边界。",
+      "validation_criteria": [
+        "口径的三要素均明确且无歧义",
+        "适用边界与口径设定一致"
+      ],
+      "source_refs": [
+        "dama_dmbok2",
+        "iso_iec_ieee_15939"
+      ]
+    },
+    {
+      "subskill_id": "DAV-02",
+      "name_zh": "数据探索与质量核查",
+      "type": "CORE",
+      "definition": "在分析前核查缺失、异常与重复，判断数据是否足以支撑既定的分析问题。",
+      "prerequisites": [
+        "DAV-01"
+      ],
+      "learning_outcome": "能够完成数据质量核查并给出数据可用性判定，说明处理缺失与异常的依据。",
+      "evidence_task": "对一份真实数据集完成质量核查，记录缺失与异常的分布、处置方式与可用性判定。",
+      "validation_criteria": [
+        "缺失与异常的处置有明确依据",
+        "可用性判定针对既定分析问题"
+      ],
+      "source_refs": [
+        "dama_dmbok2"
+      ]
+    },
+    {
+      "subskill_id": "DAV-03",
+      "name_zh": "统计分析与结论推断",
+      "type": "CORE",
+      "definition": "选择与数据类型和问题相符的统计方法，报告效应大小与不确定性，避免以相关代替因果。",
+      "prerequisites": [
+        "DAV-02"
+      ],
+      "learning_outcome": "能够完成统计分析并规范报告结论，明确区分相关与因果。",
+      "evidence_task": "就一个分析问题执行统计分析，报告方法、效应大小与不确定性，并说明为何不能得出因果结论。",
+      "validation_criteria": [
+        "方法选择与数据类型相符",
+        "结论区分相关与因果且有依据"
+      ],
+      "source_refs": [
+        "cleveland_mcgill_1984",
+        "iso_iec_ieee_15939"
+      ]
+    },
+    {
+      "subskill_id": "DAV-04",
+      "name_zh": "图形编码选择与可视化实现",
+      "type": "CORE",
+      "definition": "依据数据类型与读者的判读任务选择图形编码，使读者能准确读出被强调的量值关系。",
+      "prerequisites": [
+        "DAV-03"
+      ],
+      "learning_outcome": "能够就同一数据选择合适的图形编码并说明依据，指出被弃用编码的判读劣势。",
+      "evidence_task": "就一组数据实现可视化，说明所选图形编码的依据，并对比一种被弃用编码的判读劣势。",
+      "validation_criteria": [
+        "编码选择的依据落在判读任务上",
+        "被弃用编码的劣势有具体说明"
+      ],
+      "source_refs": [
+        "cleveland_mcgill_1984"
+      ]
+    },
+    {
+      "subskill_id": "DAV-05",
+      "name_zh": "分析结论向决策的转化",
+      "type": "CORE",
+      "definition": "把分析结论转为可执行的建议，写明建议成立的条件与需要持续观测的指标。",
+      "prerequisites": [
+        "DAV-04"
+      ],
+      "learning_outcome": "能够输出含成立条件与观测指标的决策建议，并说明其不适用的情形。",
+      "evidence_task": "就一次完整分析输出决策建议，写明成立条件、观测指标与不适用情形。",
+      "validation_criteria": [
+        "建议可回溯到分析结论与数据",
+        "不适用情形有明确边界"
+      ],
+      "source_refs": [
+        "dama_dmbok2",
+        "iso_iec_ieee_15939"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "DAV-VERIFY-01",
+    "objective": "验证当前数据分析与可视化的能力证据。",
+    "task_description": "就一个真实数据集完成口径确定、质量核查、统计分析与可视化，保留分析脚本、口径说明与图形依据。",
+    "validation_criteria": [
+      "分析口径与结论适用范围一致",
+      "统计方法与数据类型相符",
+      "图形编码的选择有判读依据"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "DAV-CAPSTONE-01",
+    "objective": "完成一次口径明确、方法相符、图形可判读的数据分析。",
+    "task_description": "就一个业务问题界定分析口径，核查数据质量，执行统计分析并规范报告不确定性，选择合适的图形编码实现可视化，最后转化为带成立条件的决策建议。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "口径三要素明确且贯穿全程",
+      "结论明确区分相关与因果",
+      "图形编码选择有判读任务依据",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "cleveland_mcgill_1984",
+      "title": "Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods",
+      "authors_or_org": "William S. Cleveland, Robert McGill",
+      "source_type": "journal_article",
+      "year": 1984,
+      "venue": "Journal of the American Statistical Association",
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "DAV-03",
+        "DAV-04"
+      ]
+    },
+    {
+      "source_id": "dama_dmbok2",
+      "title": "DAMA-DMBOK: Data Management Body of Knowledge (2nd Edition)",
+      "authors_or_org": "DAMA International",
+      "source_type": "body_of_knowledge",
+      "year": null,
+      "venue": null,
+      "version": "2nd",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "DAV-01",
+        "DAV-02",
+        "DAV-05"
+      ]
+    },
+    {
+      "source_id": "iso_iec_ieee_15939",
+      "title": "ISO/IEC/IEEE 15939 Systems and software engineering — Measurement process",
+      "authors_or_org": "ISO/IEC/IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "DAV-01",
+        "DAV-03",
+        "DAV-05"
+      ]
+    }
+  ]
+}

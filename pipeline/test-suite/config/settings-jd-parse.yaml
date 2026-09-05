@@ -1,0 +1,27 @@
+jd_gate:
+  strict: true
+jd_sampling:
+  cap: 10000
+  floor: 30
+  salt: challenge26-jd-sampling-v1
+  presample_cap: 60000
+  presample_salt: challenge26-jd-presample-v1
+jd_extract:
+  batch_size: 15
+  sentence_min_len: 4
+  sentence_max_len: 200
+  count_mode: sentence
+llm:
+  api_url: https://api.deepseek.com/chat/completions
+  model: deepseek-v4-flash
+  use_thinking: true
+  key_file: codes/api-key.txt
+  api_keys_parallel: 3
+  key_probe: true
+  timeout: 180
+  retries: 3
+  batch_max_tokens: 8000
+  max_tokens_cap: 32000
+  concurrency: 40
+_说明: 生产 settings.yaml 关键节点快照（2026-09-03；密钥不入库——api-key.txt gitignored，另行配置）。测试运行走生产配置源，本快照供评审与漂移
+  diff。

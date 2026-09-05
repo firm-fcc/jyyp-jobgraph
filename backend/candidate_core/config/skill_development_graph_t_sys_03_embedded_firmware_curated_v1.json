@@ -1,0 +1,203 @@
+{
+  "version": "stage2b2_t_sys_03_embedded_firmware_curated_v1",
+  "team_skill_id": "T-SYS-03",
+  "team_skill_name": "嵌入式系统与固件开发",
+  "scope": "覆盖目标平台与工具链的建立、外设驱动与软硬件接口实现、实时调度与资源约束处理、固件更新与配置管理，以及在板调试与故障定位核心路径。",
+  "nodes": [
+    {
+      "subskill_id": "EMB-01",
+      "name_zh": "目标平台与工具链建立",
+      "type": "CORE",
+      "definition": "依据目标芯片配置交叉编译、链接脚本与启动流程，使固件可稳定烧录并运行。",
+      "prerequisites": [],
+      "learning_outcome": "能够从零建立可复现的构建与烧录流程，并说明启动阶段各步的作用。",
+      "evidence_task": "就一块目标板建立构建与烧录流程，记录链接布局、启动流程与从空片到运行的完整步骤。",
+      "validation_criteria": [
+        "构建流程可在另一台机器上复现",
+        "启动各阶段的职责明确"
+      ],
+      "source_refs": [
+        "arm_arm",
+        "lee_seshia"
+      ]
+    },
+    {
+      "subskill_id": "EMB-02",
+      "name_zh": "外设驱动与软硬件接口实现",
+      "type": "CORE",
+      "definition": "按数据手册实现外设驱动，处理寄存器时序、中断与直接存储访问的协同。",
+      "prerequisites": [
+        "EMB-01"
+      ],
+      "learning_outcome": "能够实现可用的外设驱动，并以实测波形或日志验证其时序。",
+      "evidence_task": "就一个外设实现驱动，给出寄存器配置依据与验证其时序正确的实测记录。",
+      "validation_criteria": [
+        "寄存器配置可追溯到数据手册",
+        "时序验证有实测证据"
+      ],
+      "source_refs": [
+        "arm_arm",
+        "lee_seshia"
+      ]
+    },
+    {
+      "subskill_id": "EMB-03",
+      "name_zh": "实时调度与资源约束处理",
+      "type": "CORE",
+      "definition": "在既定的存储与算力约束下安排任务优先级与临界区，使实时任务满足截止期。",
+      "prerequisites": [
+        "EMB-02"
+      ],
+      "learning_outcome": "能够给出满足截止期的任务安排，并量测其最坏响应时间与资源占用。",
+      "evidence_task": "就一组实时任务实施调度配置，量测最坏响应时间、栈占用与中断延迟。",
+      "validation_criteria": [
+        "截止期的满足有量测支撑",
+        "临界区与优先级反转的处置明确"
+      ],
+      "source_refs": [
+        "freertos_docs",
+        "lee_seshia"
+      ]
+    },
+    {
+      "subskill_id": "EMB-04",
+      "name_zh": "固件更新与配置管理",
+      "type": "CORE",
+      "definition": "实现可回退的固件更新流程，并对版本、配置与设备标识建立可追溯的管理。",
+      "prerequisites": [
+        "EMB-02"
+      ],
+      "learning_outcome": "能够交付可回退的更新流程，并说明中断更新时的设备状态。",
+      "evidence_task": "就一类设备实现固件更新流程，注入更新中断验证回退行为并记录版本追溯信息。",
+      "validation_criteria": [
+        "更新中断后的设备可恢复",
+        "版本与配置可追溯到具体设备"
+      ],
+      "source_refs": [
+        "misra_c",
+        "freertos_docs"
+      ]
+    },
+    {
+      "subskill_id": "EMB-05",
+      "name_zh": "在板调试与故障定位",
+      "type": "CORE",
+      "definition": "借助调试接口、日志与仪器定位在板故障，区分软件缺陷与硬件失效。",
+      "prerequisites": [
+        "EMB-03",
+        "EMB-04"
+      ],
+      "learning_outcome": "能够定位一处在板故障并验证修复，说明区分软硬件成因的依据。",
+      "evidence_task": "就一处真实在板故障记录定位过程，含现象、排除依据、根因判定与修复后的复测。",
+      "validation_criteria": [
+        "软硬件成因的区分有证据",
+        "复测覆盖原现象与相关路径"
+      ],
+      "source_refs": [
+        "ieee_1149_1_jtag",
+        "arm_arm"
+      ]
+    }
+  ],
+  "verification_task": {
+    "task_id": "EMB-VERIFY-01",
+    "objective": "验证当前嵌入式系统与固件开发的能力证据。",
+    "task_description": "就一块真实目标板完成工具链搭建、驱动实现与一次在板故障定位，保留构建产物、实测记录与调试日志。",
+    "validation_criteria": [
+      "构建与烧录流程可复现",
+      "驱动时序有实测证据",
+      "故障定位过程可追溯"
+    ],
+    "purpose": "generate_behavioral_evidence_for_current_proficiency_assessment"
+  },
+  "capstone_evidence_task": {
+    "task_id": "EMB-CAPSTONE-01",
+    "objective": "交付一套可复现构建、满足实时约束、更新可回退的嵌入式固件。",
+    "task_description": "就一块真实目标板建立工具链，实现外设驱动，完成实时任务调度与资源量测，实现可回退的固件更新，最后定位一处在板故障。",
+    "specialization_extensions": [],
+    "validation_criteria": [
+      "构建流程在另一环境可复现",
+      "实时约束的满足有量测数据",
+      "更新中断后的回退经实测验证",
+      "不直接输出或声明P等级"
+    ],
+    "purpose": "generate_behavioral_evidence_for_reassessment"
+  },
+  "source_registry": [
+    {
+      "source_id": "arm_arm",
+      "title": "Arm Architecture Reference Manual",
+      "authors_or_org": "Arm Limited",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://developer.arm.com/documentation/",
+      "supports": [
+        "EMB-01",
+        "EMB-02",
+        "EMB-05"
+      ]
+    },
+    {
+      "source_id": "freertos_docs",
+      "title": "FreeRTOS Documentation",
+      "authors_or_org": "FreeRTOS",
+      "source_type": "documentation",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": "https://www.freertos.org/Documentation/",
+      "supports": [
+        "EMB-03",
+        "EMB-04"
+      ]
+    },
+    {
+      "source_id": "ieee_1149_1_jtag",
+      "title": "IEEE 1149.1 Standard for Test Access Port and Boundary-Scan Architecture",
+      "authors_or_org": "IEEE",
+      "source_type": "standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "EMB-05"
+      ]
+    },
+    {
+      "source_id": "lee_seshia",
+      "title": "Introduction to Embedded Systems: A Cyber-Physical Systems Approach",
+      "authors_or_org": "Edward A. Lee, Sanjit A. Seshia",
+      "source_type": "textbook",
+      "year": 2017,
+      "venue": null,
+      "version": "2nd edition",
+      "doi": null,
+      "url": null,
+      "supports": [
+        "EMB-01",
+        "EMB-02",
+        "EMB-03"
+      ]
+    },
+    {
+      "source_id": "misra_c",
+      "title": "MISRA C Guidelines for the Use of the C Language in Critical Systems",
+      "authors_or_org": "MISRA",
+      "source_type": "industry_standard",
+      "year": null,
+      "venue": null,
+      "version": null,
+      "doi": null,
+      "url": null,
+      "supports": [
+        "EMB-04"
+      ]
+    }
+  ]
+}

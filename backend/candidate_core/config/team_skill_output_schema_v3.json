@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "team_skill_output_schema_v3",
+  "title": "CandidateSkillProfileV3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidate_id",
+    "skill_registry_version",
+    "assessments",
+    "metadata"
+  ],
+  "properties": {
+    "candidate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "skill_registry_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assessments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate_id",
+          "team_skill_id",
+          "team_skill_name",
+          "status",
+          "inference_mode",
+          "evidence",
+          "reason",
+          "confidence",
+          "atomic_abilities",
+          "audit_flags"
+        ],
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "team_skill_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "team_skill_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "supported",
+              "partially_supported",
+              "unsupported"
+            ]
+          },
+          "inference_mode": {
+            "enum": [
+              "direct_behavior",
+              "aggregate_signal"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "source_experience_id",
+                "start",
+                "end",
+                "fact",
+                "behavior",
+                "context",
+                "result"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "source_experience_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "start": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "end": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "fact": {
+                  "type": "string"
+                },
+                "behavior": {
+                  "type": "string"
+                },
+                "context": {
+                  "type": "string"
+                },
+                "result": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "reason": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "audit_flags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "atomic_abilities": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "enum": [
+                    "supported",
+                    "partially_supported"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "evidence": {
+                  "minItems": 1,
+                  "items": {
+                    "properties": {
+                      "start": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "end": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "start",
+                      "end"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "const": "unsupported"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "atomic_abilities": {
+                  "maxItems": 0
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

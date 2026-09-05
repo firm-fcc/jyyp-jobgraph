@@ -1,0 +1,699 @@
+{
+  "adapter_version": "1.0-draft",
+  "team_skill_source_version": "0.4",
+  "source_snapshot": "config/team_skills_v0.4.json",
+  "status": "provisional_pending_team_leaf_confirmation",
+  "rules": {
+    "alias_semantics": "retrieval_hint_only_not_evidence",
+    "inference_modes": [
+      "direct_behavior",
+      "aggregate_signal"
+    ],
+    "metric_roles": [
+      "primary_skill",
+      "auxiliary_work_quality"
+    ],
+    "primary_rule": "direct_behavior nodes are eligible for the primary concept metric; aggregate_signal nodes are auxiliary only"
+  },
+  "skills": {
+    "T-AI-01": {
+      "aliases": [
+        "机器学习",
+        "深度学习",
+        "ML",
+        "DL",
+        "模型训练",
+        "模型评估",
+        "PyTorch",
+        "TensorFlow"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-AI-02": {
+      "aliases": [
+        "NLP",
+        "自然语言处理",
+        "文本分类",
+        "信息抽取",
+        "语言模型",
+        "NER",
+        "命名实体识别"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-AI-03": {
+      "aliases": [
+        "计算机视觉",
+        "CV",
+        "目标检测",
+        "图像分类",
+        "多模态",
+        "视觉识别",
+        "OCR"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-AI-04": {
+      "aliases": [
+        "生成式AI",
+        "AIGC",
+        "GenAI",
+        "生成模型",
+        "大语言模型应用",
+        "LLM应用"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-AI-05": {
+      "aliases": [
+        "Prompt",
+        "提示词",
+        "提示工程",
+        "Prompt Engineering",
+        "few-shot",
+        "zero-shot",
+        "少样本提示"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-AI-06": {
+      "aliases": [
+        "模型选型",
+        "大模型评测",
+        "LLM评测",
+        "模型对比",
+        "benchmark"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": "Generic “模型评估” is intentionally excluded as an alias because it also belongs to general ML/DL model evaluation; use 大模型评测/LLM评测/模型选型/模型对比 for retrieval."
+    },
+    "T-AI-07": {
+      "aliases": [
+        "RAG",
+        "检索增强生成",
+        "向量数据库",
+        "embedding",
+        "Milvus",
+        "FAISS",
+        "Chroma"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-AI-08": {
+      "aliases": [
+        "AI Agent",
+        "Agent",
+        "智能体",
+        "多智能体",
+        "Multi-Agent",
+        "agentic workflow"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-AI-09": {
+      "aliases": [
+        "大模型应用开发",
+        "LLM API",
+        "工作流自动化",
+        "模型量化推理",
+        "GenAI应用部署"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-AI-10": {
+      "aliases": [
+        "大模型微调",
+        "SFT",
+        "RLHF",
+        "LoRA",
+        "PEFT",
+        "模型蒸馏",
+        "合成数据"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-AI-11": {
+      "aliases": [
+        "负责任AI",
+        "可解释AI",
+        "XAI",
+        "AI伦理",
+        "公平性",
+        "偏见治理"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-AI-12": {
+      "aliases": [
+        "AI安全",
+        "提示注入",
+        "Prompt Injection",
+        "红队测试",
+        "内容审核",
+        "模型安全"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-AI-13": {
+      "aliases": [
+        "幻觉检测",
+        "幻觉校验",
+        "事实核查",
+        "AI质量控制",
+        "Hallucination",
+        "输出可靠性"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SW-01": {
+      "aliases": [
+        "软件开发",
+        "编程",
+        "程序设计",
+        "API开发",
+        "后端开发",
+        "脚本开发",
+        "模块开发",
+        "业务代码"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SW-02": {
+      "aliases": [
+        "算法",
+        "数据结构",
+        "算法设计",
+        "复杂度分析"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SW-03": {
+      "aliases": [
+        "系统设计",
+        "架构设计",
+        "软件架构",
+        "分布式架构",
+        "整体技术方案"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SW-04": {
+      "aliases": [
+        "系统测试",
+        "软件测试",
+        "质量评估",
+        "性能测试",
+        "单元测试",
+        "QA",
+        "质量保障"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SW-05": {
+      "aliases": [
+        "HCI",
+        "人机交互",
+        "用户体验",
+        "UX",
+        "可用性",
+        "交互设计"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SW-06": {
+      "aliases": [
+        "计算机图形学",
+        "OpenGL",
+        "渲染",
+        "几何建模",
+        "动画",
+        "实时交互"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SYS-01": {
+      "aliases": [
+        "操作系统",
+        "Linux",
+        "系统管理",
+        "虚拟化",
+        "进程管理",
+        "内存管理"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SYS-02": {
+      "aliases": [
+        "硬件设计",
+        "数字电路",
+        "FPGA",
+        "芯片设计",
+        "数字逻辑",
+        "电路设计"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SYS-03": {
+      "aliases": [
+        "嵌入式",
+        "固件",
+        "MCU",
+        "STM32",
+        "驱动开发",
+        "软硬件接口"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SYS-04": {
+      "aliases": [
+        "计算机网络",
+        "网络协议",
+        "TCP/IP",
+        "路由",
+        "通信网络",
+        "网络拓扑"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SYS-05": {
+      "aliases": [
+        "网络安全",
+        "数据隐私",
+        "渗透测试",
+        "访问控制",
+        "加密",
+        "漏洞评估",
+        "应急响应"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SYS-06": {
+      "aliases": [
+        "Docker",
+        "Kubernetes",
+        "K8s",
+        "云平台",
+        "容器",
+        "分布式系统",
+        "容器编排"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-SYS-07": {
+      "aliases": [
+        "部署",
+        "运维",
+        "DevOps",
+        "监控告警",
+        "上线交付",
+        "CI/CD",
+        "集群部署"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-DA-01": {
+      "aliases": [
+        "数学建模",
+        "统计建模",
+        "优化理论",
+        "概率统计",
+        "模型参数调优",
+        "数理建模"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-DA-02": {
+      "aliases": [
+        "数据库",
+        "MySQL",
+        "PostgreSQL",
+        "SQL",
+        "数据管理",
+        "数据治理",
+        "事务处理",
+        "数据平台"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-DA-03": {
+      "aliases": [
+        "Hadoop",
+        "Spark",
+        "大数据",
+        "并行计算",
+        "分布式计算",
+        "数据流水线",
+        "大数据处理"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "T-DA-04": {
+      "aliases": [
+        "数据分析",
+        "数据可视化",
+        "统计分析",
+        "Tableau",
+        "Power BI",
+        "matplotlib",
+        "数据洞察"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-1-01": {
+      "aliases": [
+        "持续学习",
+        "主动学习",
+        "自我学习",
+        "自主学习",
+        "学习新技术"
+      ],
+      "inference_mode": "aggregate_signal",
+      "metric_role": "auxiliary_work_quality",
+      "evidence_policy": "multi_context_aggregate",
+      "notes": "Do not infer from a single self-description or isolated outcome; require convergent evidence across independent contexts."
+    },
+    "F-1-02": {
+      "aliases": [
+        "批判性思维",
+        "逻辑思考",
+        "方案比较",
+        "技术权衡",
+        "Critical Thinking"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-1-03": {
+      "aliases": [
+        "归纳推理",
+        "演绎推理",
+        "归纳分析",
+        "Deductive Reasoning",
+        "Inductive Reasoning"
+      ],
+      "inference_mode": "aggregate_signal",
+      "metric_role": "auxiliary_work_quality",
+      "evidence_policy": "multi_context_aggregate",
+      "notes": "Do not infer from a single self-description or isolated outcome; require convergent evidence across independent contexts."
+    },
+    "F-1-04": {
+      "aliases": [
+        "创新思维",
+        "创造力",
+        "创新方案",
+        "技术创新",
+        "Creativity"
+      ],
+      "inference_mode": "aggregate_signal",
+      "metric_role": "auxiliary_work_quality",
+      "evidence_policy": "multi_context_aggregate",
+      "notes": "Do not infer from a single self-description or isolated outcome; require convergent evidence across independent contexts."
+    },
+    "F-2-01": {
+      "aliases": [
+        "口头沟通",
+        "技术汇报",
+        "技术演讲",
+        "技术交流",
+        "Oral Communication"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-2-02": {
+      "aliases": [
+        "技术文档",
+        "文档撰写",
+        "技术报告",
+        "接口文档",
+        "设计文档",
+        "Written Communication"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-2-03": {
+      "aliases": [
+        "团队协作",
+        "跨团队协作",
+        "协调合作",
+        "团队合作",
+        "Collaboration"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-2-04": {
+      "aliases": [
+        "说服",
+        "谈判",
+        "分歧协调",
+        "推动共识",
+        "Negotiation"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-2-05": {
+      "aliases": [
+        "需求分析",
+        "需求洞察",
+        "用户需求",
+        "业务需求",
+        "服务意识"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-2-06": {
+      "aliases": [
+        "信息检索",
+        "信息管理",
+        "数字素养",
+        "信息筛选",
+        "信息整合"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-3-01": {
+      "aliases": [
+        "工作复盘",
+        "自我复盘",
+        "效果评估",
+        "迭代优化",
+        "Self-monitoring"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-3-02": {
+      "aliases": [
+        "方案决策",
+        "方案权衡",
+        "成本收益权衡",
+        "风险权衡",
+        "Decision Making"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-3-03": {
+      "aliases": [
+        "时间管理",
+        "资源管理",
+        "资源统筹",
+        "项目排期",
+        "算力资源管理"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-3-04": {
+      "aliases": [
+        "适应变化",
+        "压力耐受",
+        "高压交付",
+        "应对突发",
+        "Adaptability"
+      ],
+      "inference_mode": "aggregate_signal",
+      "metric_role": "auxiliary_work_quality",
+      "evidence_policy": "multi_context_aggregate",
+      "notes": "Do not infer from a single self-description or isolated outcome; require convergent evidence across independent contexts."
+    },
+    "F-4-01": {
+      "aliases": [
+        "目标导向",
+        "攻坚",
+        "韧性",
+        "持续解决困难",
+        "Persistence"
+      ],
+      "inference_mode": "aggregate_signal",
+      "metric_role": "auxiliary_work_quality",
+      "evidence_policy": "multi_context_aggregate",
+      "notes": "Do not infer from a single self-description or isolated outcome; require convergent evidence across independent contexts."
+    },
+    "F-4-02": {
+      "aliases": [
+        "严谨细致",
+        "职业诚信",
+        "自律",
+        "数据诚信",
+        "Attention to Detail"
+      ],
+      "inference_mode": "aggregate_signal",
+      "metric_role": "auxiliary_work_quality",
+      "evidence_policy": "multi_context_aggregate",
+      "notes": "Do not infer from a single self-description or isolated outcome; require convergent evidence across independent contexts."
+    },
+    "F-5-01": {
+      "aliases": [
+        "AI任务拆解",
+        "任务分解",
+        "AI子任务",
+        "Task Decomposition"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-5-02": {
+      "aliases": [
+        "人机语义对齐",
+        "需求表达",
+        "设定AI边界",
+        "AI交互",
+        "Human-AI Alignment"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    },
+    "F-5-03": {
+      "aliases": [
+        "AI输出评估",
+        "输出质量评估",
+        "识别幻觉",
+        "AI结果校验",
+        "AI Output Evaluation"
+      ],
+      "inference_mode": "direct_behavior",
+      "metric_role": "primary_skill",
+      "evidence_policy": "direct_behavior_grounded",
+      "notes": ""
+    }
+  }
+}

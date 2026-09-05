@@ -1,0 +1,1567 @@
+{
+  "schema_version": "frontend_integration_release_manifest_v1",
+  "release_name": "backend_frontend_integration_release_2026-09-03",
+  "release_date": "2026-09-03",
+  "created_utc": "2026-09-03T08:39:58.294240+00:00",
+  "release_status": "BACKEND_FRONTEND_INTEGRATION_READY_BROWSER_PENDING",
+  "source_zip_filename": "backend_frontend_handoff_final_e2e_pass_2026-09-03.zip",
+  "source_zip_sha256": "0da466fa745bc54eca6b12a343580a788b1d2206f33fbd4cd2ef74febdf3b615",
+  "candidate_runtime": "r4.3.4",
+  "target_job_profile": "v1.1",
+  "matching": "v1",
+  "matching_threshold": 0.380952,
+  "matching_threshold_status": "FROZEN_ENV_REQUIRED",
+  "api_count": 7,
+  "api_endpoints": [
+    "GET /health",
+    "GET /api/jobs",
+    "GET /api/job-summary/{job_code}",
+    "POST /api/candidate",
+    "GET /api/target-job/{job_id}",
+    "POST /api/match",
+    "POST /api/learning-path"
+  ],
+  "file_count": 206,
+  "file_count_includes_manifest": true,
+  "pytest_result": {
+    "passed": 306,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "subtests_passed": 174,
+    "junit_flattened_count": 480,
+    "warnings": 1,
+    "warning_type": "Starlette_AnyIO_deprecated_alias",
+    "seconds": 9.09,
+    "evidence": "validation/pytest_results.xml",
+    "external_http_blocked": true
+  },
+  "coverage": {
+    "percentage": 82.04,
+    "statements": 5290,
+    "covered": 4340,
+    "missed": 950,
+    "minimum": 60,
+    "status": "PASS",
+    "scope_unchanged": true,
+    "evidence": "coverage.xml",
+    "html_packaged": false
+  },
+  "e2e_status": "PASS_PRESERVED_FROM_SOURCE_NOT_RERUN",
+  "real_e2e": {
+    "status": "PASS",
+    "inherited_from_source_zip": true,
+    "rerun_in_this_release": false,
+    "evidence": "validation/e2e_runtime_acceptance_final/validation_result.json",
+    "endpoints": {
+      "health": {
+        "http_status": 200,
+        "seconds": 0.016602,
+        "schema_version": null
+      },
+      "candidate": {
+        "http_status": 200,
+        "seconds": 77.162731,
+        "schema_version": "candidate_api_response_v1_1"
+      },
+      "target_job": {
+        "http_status": 200,
+        "seconds": 0.074199,
+        "schema_version": "target_job_profile_v1.1"
+      },
+      "match": {
+        "http_status": 200,
+        "seconds": 280.085036,
+        "schema_version": "matching_pipeline_output_v1"
+      },
+      "learning_path": {
+        "http_status": 200,
+        "seconds": 0.009853,
+        "schema_version": "learning_path_api_response_v1"
+      }
+    },
+    "runtime": {
+      "stage_seconds": {
+        "document_parse": 0.0759,
+        "llm_transport": 76.7412,
+        "llm_logical": 76.746165,
+        "evidence_extraction": 22.81118,
+        "team_skill_pipeline": 53.958951,
+        "candidate_profile_assembly": 0.000889,
+        "subprocess": 77.142859,
+        "proficiency_llm_transport": 277.056659,
+        "proficiency_llm_logical": 280.074338,
+        "proficiency": 280.076119
+      },
+      "logical_api_calls": 7,
+      "transport_attempts": 9,
+      "transport_retries": 2,
+      "transport_completed": 9,
+      "transport_errors": 2,
+      "timeout_errors": 0,
+      "identical_logical_request_repeats": 0,
+      "verifiable_tokens": 26413,
+      "average_completed_transport_seconds": 39.310873,
+      "slowest_completed_transport_seconds": 85.377193,
+      "total_seconds": 357.370663
+    },
+    "match_score": 14.29,
+    "decision": "NO_MATCH",
+    "learning_path_status_counts": {
+      "READY": 2,
+      "GRAPH_UNAVAILABLE": 4,
+      "NO_ACTION": 1
+    },
+    "input_sha256": "2b0f0b60e0b317eaff9d9206fe69c8f7c5bde91bcc46274b134f81d7e97f4f65",
+    "test_pdf_packaged": false,
+    "private_replay_packaged": false,
+    "not_formal_matching_accuracy": true
+  },
+  "frozen_validation": {
+    "status": "PASS",
+    "protected_files": 115,
+    "candidate_core_files": 111,
+    "job_data_files": 4,
+    "frozen_files_modified": 0,
+    "all_bytes_match_source_zip": true,
+    "packaged_candidate_entries_verified": 23,
+    "candidate_manifest_entries": [
+      {
+        "path": "run_v3.py",
+        "expected_sha256": "5a16548f900cb79dc38538926856b0c507dc774646247d629f622543c7cf2295",
+        "copied_sha256": "5a16548f900cb79dc38538926856b0c507dc774646247d629f622543c7cf2295",
+        "match": true
+      },
+      {
+        "path": "config/team_skills_v0.4.json",
+        "expected_sha256": "154c7c85607cec8eacc19ba0ddff57168a81fd2abe4e93d71399e1e6a76d0399",
+        "copied_sha256": "154c7c85607cec8eacc19ba0ddff57168a81fd2abe4e93d71399e1e6a76d0399",
+        "match": true
+      },
+      {
+        "path": "config/team_skill_adapter_v1.json",
+        "expected_sha256": "6792df0a747b14fbe63412f14c29d0855aea99d5546a6b40e1906b8d8ca48df7",
+        "copied_sha256": "6792df0a747b14fbe63412f14c29d0855aea99d5546a6b40e1906b8d8ca48df7",
+        "match": true
+      },
+      {
+        "path": "config/segmented_evidence_extractor_v4.txt",
+        "expected_sha256": "aaabf6055019f2de980ddda95a47543eded2b509e78a6d4eb11d7f7c16c47d77",
+        "copied_sha256": "aaabf6055019f2de980ddda95a47543eded2b509e78a6d4eb11d7f7c16c47d77",
+        "match": true
+      },
+      {
+        "path": "config/team_skill_verifier_v4.txt",
+        "expected_sha256": "7dcd22bc756d0ff51c32fbee4e737eaf1976ab9aba73247b72fe0c47ac333630",
+        "copied_sha256": "7dcd22bc756d0ff51c32fbee4e737eaf1976ab9aba73247b72fe0c47ac333630",
+        "match": true
+      },
+      {
+        "path": "config/team_skill_fallback_selector_v4.txt",
+        "expected_sha256": "8ab6c027718eeefb6f6e5a0ec44660af361292f29281ebeb37ae84d303188d88",
+        "copied_sha256": "8ab6c027718eeefb6f6e5a0ec44660af361292f29281ebeb37ae84d303188d88",
+        "match": true
+      },
+      {
+        "path": "config/proficiency_v0.2.txt",
+        "expected_sha256": "62898d22e455f1e8481c8fa4a10055b3e85f54fd2bd4badf6c23d24c208f53b1",
+        "copied_sha256": "62898d22e455f1e8481c8fa4a10055b3e85f54fd2bd4badf6c23d24c208f53b1",
+        "match": true
+      },
+      {
+        "path": "config/proficiency_rubric.json",
+        "expected_sha256": "b593c58daf4f6b79b8b5a7f37da03637a2e914e4c1b5516b26ae6928f0f733ad",
+        "copied_sha256": "b593c58daf4f6b79b8b5a7f37da03637a2e914e4c1b5516b26ae6928f0f733ad",
+        "match": true
+      },
+      {
+        "path": "config/evidence_warrant_registry_v0.1.json",
+        "expected_sha256": "77df9a31ed43c9efc244854392151306444d936334b9c8d04e28a76f713cb1e6",
+        "copied_sha256": "77df9a31ed43c9efc244854392151306444d936334b9c8d04e28a76f713cb1e6",
+        "match": true
+      },
+      {
+        "path": "extractor/evidence_grounding_v4.py",
+        "expected_sha256": "93ae3d5d7ffb613a7ebe69af98e94e886e06cc003383327daff39d92793cccf2",
+        "copied_sha256": "93ae3d5d7ffb613a7ebe69af98e94e886e06cc003383327daff39d92793cccf2",
+        "match": true
+      },
+      {
+        "path": "extractor/resume_segmentation_v4.py",
+        "expected_sha256": "1321a514b0d7345a1c90af64ecb418e45ef0136e5585b6155d913802d7f7f075",
+        "copied_sha256": "1321a514b0d7345a1c90af64ecb418e45ef0136e5585b6155d913802d7f7f075",
+        "match": true
+      },
+      {
+        "path": "extractor/segmented_evidence_extraction_v4.py",
+        "expected_sha256": "0c46ea7675fa54ba727a3b2d9e3a7763be6db73d22f83739eb394407fe39bb0a",
+        "copied_sha256": "0c46ea7675fa54ba727a3b2d9e3a7763be6db73d22f83739eb394407fe39bb0a",
+        "match": true
+      },
+      {
+        "path": "extractor/extraction_reground_v4.py",
+        "expected_sha256": "6252e172ee6f765995e2371083bfcb05a3d144b347abeae34c74247d2bbbd6b7",
+        "copied_sha256": "6252e172ee6f765995e2371083bfcb05a3d144b347abeae34c74247d2bbbd6b7",
+        "match": true
+      },
+      {
+        "path": "extractor/team_skill_verifier_v4.py",
+        "expected_sha256": "c66e37a8a26f986fe9a8ba1bd2b41cd98d07277a5407ad467d2a406f2c52d21e",
+        "copied_sha256": "c66e37a8a26f986fe9a8ba1bd2b41cd98d07277a5407ad467d2a406f2c52d21e",
+        "match": true
+      },
+      {
+        "path": "extractor/team_skill_fallback_selector_v4.py",
+        "expected_sha256": "4c0a2f6cf3d6c3b18c12c72457044243d57eefa7915bdfc08d9a2236f58362a3",
+        "copied_sha256": "4c0a2f6cf3d6c3b18c12c72457044243d57eefa7915bdfc08d9a2236f58362a3",
+        "match": true
+      },
+      {
+        "path": "extractor/team_skill_auditor_v4.py",
+        "expected_sha256": "3dfade43eeb3b3b24a18a15c14518151e350aa69ed97c28092cf5ed92ec90619",
+        "copied_sha256": "3dfade43eeb3b3b24a18a15c14518151e350aa69ed97c28092cf5ed92ec90619",
+        "match": true
+      },
+      {
+        "path": "extractor/team_skill_profile_v4.py",
+        "expected_sha256": "88c3de6215b6ed8c381a0df73936043f3b63b04ae2219544e426d697c9e02add",
+        "copied_sha256": "88c3de6215b6ed8c381a0df73936043f3b63b04ae2219544e426d697c9e02add",
+        "match": true
+      },
+      {
+        "path": "extractor/explicit_skill_mentions_v4.py",
+        "expected_sha256": "6869251558942e5cbc3512dc965e8fbe0cc5eefcbe5716953027347783abd54a",
+        "copied_sha256": "6869251558942e5cbc3512dc965e8fbe0cc5eefcbe5716953027347783abd54a",
+        "match": true
+      },
+      {
+        "path": "extractor/team_skill_proficiency_bridge_v434.py",
+        "expected_sha256": "3f962503373a289ee79132fb8ff87d4734fea0967fa18d74e8da5b2262671db3",
+        "copied_sha256": "3f962503373a289ee79132fb8ff87d4734fea0967fa18d74e8da5b2262671db3",
+        "match": true
+      },
+      {
+        "path": "extractor/proficiency_evaluator.py",
+        "expected_sha256": "19faa0300c396462ca20fda06b002b913efb71718af1ee8f16d66d68b86947b8",
+        "copied_sha256": "19faa0300c396462ca20fda06b002b913efb71718af1ee8f16d66d68b86947b8",
+        "match": true
+      },
+      {
+        "path": "extractor/proficiency_validator.py",
+        "expected_sha256": "abf0099e9e921bc258c89cb02a9992b608cf6229fe950df0a43af9b0302e92dd",
+        "copied_sha256": "abf0099e9e921bc258c89cb02a9992b608cf6229fe950df0a43af9b0302e92dd",
+        "match": true
+      },
+      {
+        "path": "extractor/occupation_warrant_v431.py",
+        "expected_sha256": "ee9be099471a224e283d126b0e20807846e155fb0640d8329c2550d71f6f12c1",
+        "copied_sha256": "ee9be099471a224e283d126b0e20807846e155fb0640d8329c2550d71f6f12c1",
+        "match": true
+      },
+      {
+        "path": "extractor/grounded_capability_trace_v4.py",
+        "expected_sha256": "52214187dca17b3a77d0ad8c5f222ec3c6f26508effa8eadd7b343b6577894ab",
+        "copied_sha256": "52214187dca17b3a77d0ad8c5f222ec3c6f26508effa8eadd7b343b6577894ab",
+        "match": true
+      }
+    ],
+    "matching_module_hash_checks": [
+      {
+        "path": "extractor/candidate_matching_bridge_v1.py",
+        "source_sha256": "43049fda880d4cad8908d2238e02d1ab416d0b911ada29983a277b90f335c06f",
+        "copied_sha256": "43049fda880d4cad8908d2238e02d1ab416d0b911ada29983a277b90f335c06f",
+        "match": true
+      },
+      {
+        "path": "extractor/matching_engine_v1.py",
+        "source_sha256": "9a8b78aee9b731a1f4b1d3632c733675941c903eb83aa4192916e5921cf70bfe",
+        "copied_sha256": "9a8b78aee9b731a1f4b1d3632c733675941c903eb83aa4192916e5921cf70bfe",
+        "match": true
+      },
+      {
+        "path": "extractor/matching_pipeline_v1.py",
+        "source_sha256": "41c96d34e84d5719d90dd97479f17f31ca5862fab97aff60bd28fb018e8c655d",
+        "copied_sha256": "41c96d34e84d5719d90dd97479f17f31ca5862fab97aff60bd28fb018e8c655d",
+        "match": true
+      }
+    ],
+    "job_data_sha256": {
+      "job_data/2022-10/jd_summary_2022-10.csv": "972a76bfd2073f0c005aea4090151bd5ca9836035a060bf48892991e7009754e",
+      "job_data/2022-10/job_skill_effective.json": "80100ba89440f4835b54b1e7a0e91193ab9453a0b529dbd1549dde90982f34b7",
+      "job_data/2022-10/jobs.json": "27f5c27e90446b7986e31df8f9f5028b6a935750dabd187da6140424c4e77524",
+      "job_data/2022-10/provider_skills.json": "5387bb36b7bbb06258614b867354e57444347b2fce6c412c421c8c47fca948d1"
+    },
+    "source_runtime_validation": {
+      "passed": 26,
+      "total": 26,
+      "manifest_sha256": "689ee4b6c752291fbe16105487453ba1c30531836f484323da5f071f14507158",
+      "mode": "inherited_sealed_source_evidence_not_external_repository_rerun"
+    },
+    "source_manifest_entries_not_bundled": [
+      "docs/annotation_v2/evaluation_metrics_spec_v2_project_defined.md",
+      "tests/test_v4_evidence_and_segmentation.py",
+      "tests/test_team_skill_proficiency_bridge_v434.py"
+    ],
+    "learning_path_api_compatibility_unchanged": true
+  },
+  "security_scan": {
+    "status": "PASS",
+    "credential_pattern_hits": 0,
+    "private_key_hits": 0,
+    "bearer_token_hits": 0,
+    "prohibited_path_hits": 0,
+    "env_example_secrets_blank": true,
+    "env_packaged": false,
+    "real_resume_body_packaged": false,
+    "private_replay_packaged": false,
+    "gold_packaged": false,
+    "blind_prediction_packaged": false,
+    "runtime_packaged": false,
+    "exact_deployment_key_scan": "not_performed_no_deployment_key_loaded_this_release",
+    "scope": "all delivery text files scanned; existing synthetic fixtures and offline diagnostics identified separately; sole PDF is original synthetic parser fixture"
+  },
+  "cors_status": "PASS",
+  "cors_allowed_origins": [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"
+  ],
+  "cors_environment": "CORS_ALLOWED_ORIGINS",
+  "legacy_cors_environment": "CORS_ORIGINS_only_when_new_name_unset",
+  "cors_wildcard_with_credentials_allowed": false,
+  "browser_integration_status": "PENDING",
+  "typescript_strict": {
+    "status": "PASS",
+    "compiler_version": "5.9.3",
+    "command": "tsc --noEmit --strict -p frontend/tsconfig.json",
+    "dependencies_bundled": false
+  },
+  "python_compile": {
+    "status": "PASS",
+    "file_count": 116,
+    "method": "compile(source_bytes, filename, exec); no pyc output"
+  },
+  "frontend_readiness": {
+    "status": "PASS",
+    "mode": "offline_ASGI_synthetic_profile_provided_proficiency_real_bundled_JD",
+    "external_api_calls": 0,
+    "model_calls": 0,
+    "real_e2e_rerun": false,
+    "candidate_mode": "local_preflight_only",
+    "endpoints": [
+      {
+        "endpoint": "GET /health",
+        "http_status": 200,
+        "schema_version": null
+      },
+      {
+        "endpoint": "GET /api/jobs",
+        "http_status": 200,
+        "schema_version": "job_catalog_response_v1"
+      },
+      {
+        "endpoint": "POST /api/candidate?preflight=true",
+        "http_status": 200,
+        "schema_version": "candidate_preflight_v1"
+      },
+      {
+        "endpoint": "GET /api/target-job/133663124",
+        "http_status": 200,
+        "schema_version": "target_job_profile_v1.1"
+      },
+      {
+        "endpoint": "GET /api/job-summary/AID-01",
+        "http_status": 200,
+        "schema_version": "aggregated_job_summary_v1"
+      },
+      {
+        "endpoint": "POST /api/match",
+        "http_status": 200,
+        "schema_version": "matching_pipeline_output_v1"
+      },
+      {
+        "endpoint": "POST /api/learning-path",
+        "http_status": 200,
+        "schema_version": "learning_path_api_response_v1"
+      }
+    ],
+    "openapi_paths": 7,
+    "swagger_http_status": 200,
+    "cors": [
+      {
+        "origin": "http://localhost:5173",
+        "preflight": "PASS",
+        "get": "PASS",
+        "post": "PASS"
+      },
+      {
+        "origin": "http://127.0.0.1:5173",
+        "preflight": "PASS",
+        "get": "PASS",
+        "post": "PASS"
+      }
+    ],
+    "unauthorized_origin_blocked": true,
+    "threshold": 0.380952,
+    "typescript_strict": "PASS",
+    "typescript_version": "5.9.3",
+    "browser_react_integration": "PENDING"
+  },
+  "files_modified_from_source": [
+    ".env.example",
+    "FINAL_RELEASE_NOTES.md",
+    "FRONTEND_INTEGRATION.md",
+    "HANDOFF_MANIFEST.json",
+    "README.md",
+    "app.py",
+    "coverage.xml",
+    "frontend_api_types.ts",
+    "validation/pytest_results.xml"
+  ],
+  "files_added_from_source": [
+    "frontend/FRONTEND_API_REFERENCE.md",
+    "frontend/FRONTEND_INTEGRATION_CHECKLIST.md",
+    "frontend/FRONTEND_QUICKSTART.md",
+    "frontend/api_client_example.ts",
+    "frontend/frontend_api_types.ts",
+    "frontend/tsconfig.json",
+    "tests/test_frontend_integration.py",
+    "validation/E2E_RUNTIME_DIAGNOSIS.md",
+    "validation/FINAL_API_ACCEPTANCE.md",
+    "validation/FINAL_BACKEND_ACCEPTANCE.md",
+    "validation/FINAL_COVERAGE_REPORT.md",
+    "validation/FINAL_E2E_SUMMARY.md",
+    "validation/frontend_readiness_checks.json"
+  ],
+  "files_removed_or_relocated_from_source": [
+    "E2E_RUNTIME_DIAGNOSIS.md",
+    "FINAL_API_ACCEPTANCE.md",
+    "FINAL_BACKEND_ACCEPTANCE.md",
+    "FINAL_COVERAGE_REPORT.md",
+    "coverage_html/.gitignore",
+    "coverage_html/app_py.html",
+    "coverage_html/class_index.html",
+    "coverage_html/coverage_html_cb_188fc9a4.js",
+    "coverage_html/favicon_32_cb_c827f16f.png",
+    "coverage_html/function_index.html",
+    "coverage_html/index.html",
+    "coverage_html/keybd_closed_cb_900cfef5.png",
+    "coverage_html/status.json",
+    "coverage_html/style_cb_0853b3de.css",
+    "coverage_html/z_3808445eecfe4b86___init___py.html",
+    "coverage_html/z_3808445eecfe4b86_agentic_schema_py.html",
+    "coverage_html/z_3808445eecfe4b86_candidate_matching_bridge_v1_py.html",
+    "coverage_html/z_3808445eecfe4b86_document_parser_v3_py.html",
+    "coverage_html/z_3808445eecfe4b86_evidence_coverage_v432_py.html",
+    "coverage_html/z_3808445eecfe4b86_evidence_extraction_agent_py.html",
+    "coverage_html/z_3808445eecfe4b86_evidence_grounding_v4_py.html",
+    "coverage_html/z_3808445eecfe4b86_evidence_source_policy_v43_py.html",
+    "coverage_html/z_3808445eecfe4b86_explicit_skill_mentions_v4_py.html",
+    "coverage_html/z_3808445eecfe4b86_extraction_reground_v4_py.html",
+    "coverage_html/z_3808445eecfe4b86_grounded_capability_trace_v4_py.html",
+    "coverage_html/z_3808445eecfe4b86_internal_resume_record_v3_py.html",
+    "coverage_html/z_3808445eecfe4b86_learning_path_renderer_py.html",
+    "coverage_html/z_3808445eecfe4b86_learning_path_stage1_py.html",
+    "coverage_html/z_3808445eecfe4b86_matching_engine_v1_py.html",
+    "coverage_html/z_3808445eecfe4b86_matching_pipeline_v1_py.html",
+    "coverage_html/z_3808445eecfe4b86_occupation_warrant_v431_py.html",
+    "coverage_html/z_3808445eecfe4b86_proficiency_evaluator_py.html",
+    "coverage_html/z_3808445eecfe4b86_proficiency_validator_py.html",
+    "coverage_html/z_3808445eecfe4b86_resume_segmentation_v4_py.html",
+    "coverage_html/z_3808445eecfe4b86_review_assessment_schema_py.html",
+    "coverage_html/z_3808445eecfe4b86_segmented_evidence_extraction_v4_py.html",
+    "coverage_html/z_3808445eecfe4b86_target_job_profile_adapter_py.html",
+    "coverage_html/z_3808445eecfe4b86_target_job_profile_learning_bridge_py.html",
+    "coverage_html/z_3808445eecfe4b86_team_skill_auditor_v3_py.html",
+    "coverage_html/z_3808445eecfe4b86_team_skill_auditor_v4_py.html",
+    "coverage_html/z_3808445eecfe4b86_team_skill_candidate_generator_v3_py.html",
+    "coverage_html/z_3808445eecfe4b86_team_skill_fallback_selector_v3_py.html",
+    "coverage_html/z_3808445eecfe4b86_team_skill_fallback_selector_v4_py.html",
+    "coverage_html/z_3808445eecfe4b86_team_skill_pipeline_v3_py.html",
+    "coverage_html/z_3808445eecfe4b86_team_skill_proficiency_bridge_v434_py.html",
+    "coverage_html/z_3808445eecfe4b86_team_skill_profile_v4_py.html",
+    "coverage_html/z_3808445eecfe4b86_team_skill_registry_py.html",
+    "coverage_html/z_3808445eecfe4b86_team_skill_schema_v3_py.html",
+    "coverage_html/z_3808445eecfe4b86_team_skill_verifier_v3_py.html",
+    "coverage_html/z_3808445eecfe4b86_team_skill_verifier_v4_py.html",
+    "coverage_html/z_3808445eecfe4b86_v3_client_adapter_py.html",
+    "coverage_html/z_3808445eecfe4b86_v3_data_split_registry_py.html",
+    "coverage_html/z_aac3a6e458c63e1b___init___py.html",
+    "coverage_html/z_aac3a6e458c63e1b_candidate_service_py.html",
+    "coverage_html/z_aac3a6e458c63e1b_job_catalog_service_py.html",
+    "coverage_html/z_aac3a6e458c63e1b_job_summary_service_py.html",
+    "coverage_html/z_aac3a6e458c63e1b_learning_path_service_py.html",
+    "coverage_html/z_aac3a6e458c63e1b_matching_service_py.html",
+    "coverage_html/z_aac3a6e458c63e1b_proficiency_service_py.html",
+    "coverage_html/z_aac3a6e458c63e1b_target_job_service_py.html",
+    "coverage_html/z_e17dcb4e28158375___init___py.html",
+    "coverage_html/z_e17dcb4e28158375_bootstrap_py.html",
+    "coverage_html/z_e17dcb4e28158375_config_py.html",
+    "coverage_html/z_e17dcb4e28158375_runtime_candidate_worker_py.html",
+    "coverage_html/z_e17dcb4e28158375_runtime_observability_py.html",
+    "coverage_html/z_e17dcb4e28158375_schemas_py.html"
+  ],
+  "source_historical_docs_relocated": {
+    "FINAL_BACKEND_ACCEPTANCE.md": "validation/FINAL_BACKEND_ACCEPTANCE.md",
+    "FINAL_COVERAGE_REPORT.md": "validation/FINAL_COVERAGE_REPORT.md",
+    "FINAL_API_ACCEPTANCE.md": "validation/FINAL_API_ACCEPTANCE.md",
+    "E2E_RUNTIME_DIAGNOSIS.md": "validation/E2E_RUNTIME_DIAGNOSIS.md"
+  },
+  "archive_policy": {
+    "root_directory": "backend_frontend_integration_release_2026-09-03",
+    "zip_filename": "backend_frontend_integration_release_2026-09-03.zip",
+    "excluded": [
+      ".env",
+      ".env.* except .env.example",
+      "runtime/",
+      "__pycache__/",
+      ".pytest_cache/",
+      ".coverage",
+      "coverage_html/",
+      "node_modules/",
+      "dist/",
+      "cache/",
+      "private replay",
+      "real E2E PDF",
+      "other ZIPs"
+    ],
+    "file_hash_exclusion": "manifest self hash excluded to avoid circularity; final ZIP hash returned in delivery chat",
+    "crc_and_manifest_validation": "performed after final ZIP creation",
+    "original_zip_overwritten": false
+  },
+  "files": [
+    {
+      "path": ".coveragerc",
+      "size": 1530,
+      "sha256": "e546f345144b85333740bf0531bb5ebc4eab2c0b76ac3d22cc22f86c86a12ab0"
+    },
+    {
+      "path": ".env.example",
+      "size": 865,
+      "sha256": "0da6a7a0c7f67ad6535083ce1c2a9b0e34a41fb532ab2a612f8f9c45ec13c6bb"
+    },
+    {
+      "path": ".gitignore",
+      "size": 171,
+      "sha256": "dd2d9b3e801b0471c7cd098502f493523b918bcf539118321c39a2840e4827cc"
+    },
+    {
+      "path": "FINAL_RELEASE_NOTES.md",
+      "size": 1884,
+      "sha256": "2f6b06150e62cbe51eb8d59ad08cec8baa018357447bc7cd08adf8ce121c2106"
+    },
+    {
+      "path": "FRONTEND_INTEGRATION.md",
+      "size": 826,
+      "sha256": "af6a0472f53ae3ff9bf0b31c350459ddf5613ec1801072ea152f452c35d62aa6"
+    },
+    {
+      "path": "README.md",
+      "size": 3051,
+      "sha256": "4174ccffceaa9d82e8729916fc68829d792e33e0c73304c3d911e4ebea59b240"
+    },
+    {
+      "path": "app.py",
+      "size": 5664,
+      "sha256": "b871faaf074a2d5ce79c10944b32898e5da361be40a1f6d072e432402379d598"
+    },
+    {
+      "path": "backend/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "backend/bootstrap.py",
+      "size": 282,
+      "sha256": "85195b488c6ac9f585d2dd92455932d997d7333b7e0ae9bd9a328ce7f3f5cff2"
+    },
+    {
+      "path": "backend/config.py",
+      "size": 1045,
+      "sha256": "826c2acfc19518f8ba1753f701cda4773f5d1fd342a21ab0fed05e5b071c2ce9"
+    },
+    {
+      "path": "backend/runtime_candidate_worker.py",
+      "size": 2811,
+      "sha256": "9d0f73a2d22f94aeb0e6387b1254832aeefb791184306a92d6c8a7c64119293a"
+    },
+    {
+      "path": "backend/runtime_observability.py",
+      "size": 3355,
+      "sha256": "2a438e81e0dcb6a075857c50efb1a634bcff7ad54fb936fc0479c440ca6f5cf9"
+    },
+    {
+      "path": "backend/schemas.py",
+      "size": 1226,
+      "sha256": "c6865264c178872b74185e564906513de272cc042e9b7a8d4fcf0769c8674c6c"
+    },
+    {
+      "path": "backend/services/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "backend/services/candidate_service.py",
+      "size": 7039,
+      "sha256": "f630d9bdaa10556aaf27d2b7e62d5df5de613cfd8c8c958520a3c5faace3d6a9"
+    },
+    {
+      "path": "backend/services/job_catalog_service.py",
+      "size": 1396,
+      "sha256": "049fef8667fa98e08517cec749e63ae9584fca25083ace9a042166d3270ebda3"
+    },
+    {
+      "path": "backend/services/job_summary_service.py",
+      "size": 8240,
+      "sha256": "1f51c97ead01704eb6b9ad4d257e0da12353c53f12aa0d3ea6d6d30199671faf"
+    },
+    {
+      "path": "backend/services/learning_path_service.py",
+      "size": 6085,
+      "sha256": "8bffb3eb1dd1bdaa0b7266cac4b7484b78449cc3357761054218e94eebe9cf9d"
+    },
+    {
+      "path": "backend/services/matching_service.py",
+      "size": 2742,
+      "sha256": "7b612f727a5b913758b8cf42ddccc163baf0dbff8ee7ed365000c1b7af9b227b"
+    },
+    {
+      "path": "backend/services/proficiency_service.py",
+      "size": 3502,
+      "sha256": "5562d9f1df408c85f7a549215a7b0fc38fe00f945a3453a8f6197a0a3a43ab81"
+    },
+    {
+      "path": "backend/services/target_job_service.py",
+      "size": 1198,
+      "sha256": "17947765c447eb880017b501d66dea7d7fa11a7b2093a1a7c5c51a48375a7dc7"
+    },
+    {
+      "path": "candidate_core/config/ability_alias.json",
+      "size": 511,
+      "sha256": "da82ca518304f328581371344c40eb07715409a691c4c941c51cfee94b180d14"
+    },
+    {
+      "path": "candidate_core/config/ability_blocklist.json",
+      "size": 67,
+      "sha256": "6ae1ad0fabd47f691f82e4089a10f9d0176900dafb3c2c621a7812ee7b9c375c"
+    },
+    {
+      "path": "candidate_core/config/ability_pattern_alias.json",
+      "size": 517,
+      "sha256": "27a874b2afa942004f82f98fa25cd2b45531940e92805da36ae41bd3ddee4ad2"
+    },
+    {
+      "path": "candidate_core/config/ability_taxonomy.json",
+      "size": 1334,
+      "sha256": "037b432d3fa71fb6b27f0ecfd037c793379245192e87f72f11902f9ed64777aa"
+    },
+    {
+      "path": "candidate_core/config/ability_taxonomy_v2.json",
+      "size": 43455,
+      "sha256": "5b531eb1386275f1935566b3cccc4bd81a422ffd902cf0d06eb1de41dbcdb886"
+    },
+    {
+      "path": "candidate_core/config/agentic_ability_reviewer_prompt_v1.txt",
+      "size": 5663,
+      "sha256": "cd22869bf615e807dfd6578196cd0ab07efd3b759e5b6cbdf26d1dbd19312ea6"
+    },
+    {
+      "path": "candidate_core/config/agentic_ability_reviewer_prompt_v2.txt",
+      "size": 2786,
+      "sha256": "141af48d5066f9f62492ec5cb7f7d83abd8359b1c3730e2593ce93477a9c3ad1"
+    },
+    {
+      "path": "candidate_core/config/agentic_extractor_prompt.txt",
+      "size": 2020,
+      "sha256": "bed7505cfb2d640824335219b73985430bd8303cb3a7034075b42149afd040ab"
+    },
+    {
+      "path": "candidate_core/config/agentic_final_decision_prompt_v1.txt",
+      "size": 3720,
+      "sha256": "6a69f6c6b539377ccc4d31e9329888b3ad2ca6c4d7722f2fbd29a511fc29d5a3"
+    },
+    {
+      "path": "candidate_core/config/agentic_policy.json",
+      "size": 690,
+      "sha256": "f101207e7f76580e992e33fd125f10a5ca91f79f27b1945c6e920520c0e12c24"
+    },
+    {
+      "path": "candidate_core/config/agentic_reviewer_prompt.txt",
+      "size": 3179,
+      "sha256": "875531002d3c12a0671c10b1dd516907c12f93101b1784ae635f55d8108c0698"
+    },
+    {
+      "path": "candidate_core/config/agentic_reviewer_prompt_v2.txt",
+      "size": 6370,
+      "sha256": "06a01bf48ffbeb30294f7af77a8ad350adee81c10a4f4d0725b2e8fa381ecb34"
+    },
+    {
+      "path": "candidate_core/config/agentic_reviewer_prompt_v3.txt",
+      "size": 9034,
+      "sha256": "77258d8ad0301c1d1846f67536702e8a1ae24169d3bd0585465fc9ba88ac6410"
+    },
+    {
+      "path": "candidate_core/config/agentic_reviewer_prompt_v3_1.txt",
+      "size": 8510,
+      "sha256": "c020773557a3556af479ca3d150a5e96b2790b639a20805146df294a960e3ce7"
+    },
+    {
+      "path": "candidate_core/config/agentic_reviewer_prompt_v3_2.txt",
+      "size": 10455,
+      "sha256": "8917260b0a57f6c1dfad917a9eba6980e7b33e6df609b9c77f86b55984e8becc"
+    },
+    {
+      "path": "candidate_core/config/evidence_warrant_registry_v0.1.json",
+      "size": 35836,
+      "sha256": "77df9a31ed43c9efc244854392151306444d936334b9c8d04e28a76f713cb1e6"
+    },
+    {
+      "path": "candidate_core/config/llm_prompt.txt",
+      "size": 840,
+      "sha256": "0647a5e3b34c0bdd075c2addd4d500e5321e4a0638decb21db61a2105de5d78c"
+    },
+    {
+      "path": "candidate_core/config/llm_validator_prompt.txt",
+      "size": 991,
+      "sha256": "f0da89cc06faaf7b54e67cd726735b4cfeab7327263af89a23c90cafa3b16bfc"
+    },
+    {
+      "path": "candidate_core/config/proficiency_rubric.json",
+      "size": 4320,
+      "sha256": "b593c58daf4f6b79b8b5a7f37da03637a2e914e4c1b5516b26ae6928f0f733ad"
+    },
+    {
+      "path": "candidate_core/config/proficiency_v0.2.txt",
+      "size": 3626,
+      "sha256": "62898d22e455f1e8481c8fa4a10055b3e85f54fd2bd4badf6c23d24c208f53b1"
+    },
+    {
+      "path": "candidate_core/config/segmented_evidence_extractor_v4.txt",
+      "size": 1959,
+      "sha256": "aaabf6055019f2de980ddda95a47543eded2b509e78a6d4eb11d7f7c16c47d77"
+    },
+    {
+      "path": "candidate_core/config/skill_alias.json",
+      "size": 666,
+      "sha256": "db423fa04bb7009330de488b4132fd569c9b3bfcfbfb09aab8737d3ddcd6c493"
+    },
+    {
+      "path": "candidate_core/config/skill_development_graph_t_ai_01_ml_dl_curated_v1.json",
+      "size": 5471,
+      "sha256": "d78f9b61e07a6f10a0a2b60e02fd94e232390e11b698ecb74299e30041dad447"
+    },
+    {
+      "path": "candidate_core/config/skill_development_graph_t_ai_03_cv_multimodal_curated_v1.json",
+      "size": 5602,
+      "sha256": "8beb87a218211d54e6887a648d1781789b053bd5ca97a9b23bae3f5bb17881c9"
+    },
+    {
+      "path": "candidate_core/config/skill_development_graph_t_ai_07_rag_mvp_v1.json",
+      "size": 6462,
+      "sha256": "598fcead70227dd6cedee20eda60ad9607509f85b8107832f16ec8f61608d72d"
+    },
+    {
+      "path": "candidate_core/config/skill_development_graph_t_ai_08_agents_curated_v1.json",
+      "size": 5714,
+      "sha256": "76461946debc5a750d88ea136852e259565d2e6e4e1b6a97dd6a8914cfce83c3"
+    },
+    {
+      "path": "candidate_core/config/skill_development_graph_t_ai_10_llm_finetuning_curated_v1.json",
+      "size": 7784,
+      "sha256": "64dbb9c1c27bdfdb697a14589f7f5203e91463d31e73c06348293148dec46405"
+    },
+    {
+      "path": "candidate_core/config/skill_development_graph_t_da_02_data_database_curated_v1.json",
+      "size": 6275,
+      "sha256": "662ce7d2ff56ec6668d1daced20197343445b92d39136f07edebfdad485768c3"
+    },
+    {
+      "path": "candidate_core/config/taxonomy_crosswalk_v1.json",
+      "size": 16483,
+      "sha256": "6f21c41714f1a659d29af1b9c4a7a97dbc2afe29df17f80ab01f29485740a98b"
+    },
+    {
+      "path": "candidate_core/config/team_skill_adapter_v1.json",
+      "size": 18141,
+      "sha256": "6792df0a747b14fbe63412f14c29d0855aea99d5546a6b40e1906b8d8ca48df7"
+    },
+    {
+      "path": "candidate_core/config/team_skill_fallback_selector_v3.txt",
+      "size": 1842,
+      "sha256": "3d467ac9582002c493199abc7e89918481910c6349e5bb65ce50e07ffc3cca8c"
+    },
+    {
+      "path": "candidate_core/config/team_skill_fallback_selector_v4.txt",
+      "size": 1822,
+      "sha256": "8ab6c027718eeefb6f6e5a0ec44660af361292f29281ebeb37ae84d303188d88"
+    },
+    {
+      "path": "candidate_core/config/team_skill_output_schema_v3.json",
+      "size": 4919,
+      "sha256": "d0a70fa819d64d66ba3cd636ce8ec414bf30d130ba3104ca1e8c6d1748b0a176"
+    },
+    {
+      "path": "candidate_core/config/team_skill_verifier_v3.txt",
+      "size": 3206,
+      "sha256": "64b089663cd3dfc2089ea1357fc42d2e4f53fb5568310d48c59eb3f309af388e"
+    },
+    {
+      "path": "candidate_core/config/team_skill_verifier_v4.txt",
+      "size": 2053,
+      "sha256": "7dcd22bc756d0ff51c32fbee4e737eaf1976ab9aba73247b72fe0c47ac333630"
+    },
+    {
+      "path": "candidate_core/config/team_skills_v0.4.json",
+      "size": 20253,
+      "sha256": "154c7c85607cec8eacc19ba0ddff57168a81fd2abe4e93d71399e1e6a76d0399"
+    },
+    {
+      "path": "candidate_core/config/v3_data_split_registry.json",
+      "size": 10969,
+      "sha256": "f97705a63c21c33e80d481e032e48df5fcbb9e705beba9473e063ceb1271c2c9"
+    },
+    {
+      "path": "candidate_core/config/v3_design_manifest.json",
+      "size": 9142,
+      "sha256": "c52db7af225c1a342eaa7ca8b48bf06a78793490d8c621510a742eb279f6cc13"
+    },
+    {
+      "path": "candidate_core/config/v3_design_manifest_stage1.json",
+      "size": 5828,
+      "sha256": "a7959e6e6a1db3f1cac77882a1cff17549607dcfcbfefcf111b53af9bbfe33b0"
+    },
+    {
+      "path": "candidate_core/config/v4_runtime_manifest.json",
+      "size": 11188,
+      "sha256": "689ee4b6c752291fbe16105487453ba1c30531836f484323da5f071f14507158"
+    },
+    {
+      "path": "candidate_core/extractor/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate_core/extractor/ability_shadow_reviewer.py",
+      "size": 34582,
+      "sha256": "d7c63e2b135833a032d7776f60c068c9b3b28f4894b0f7bdb046d82d3cbb2bf7"
+    },
+    {
+      "path": "candidate_core/extractor/ability_shadow_schema.py",
+      "size": 28083,
+      "sha256": "5042e925c3c77debba22aca0d6665df6ea7273b741d7bc24538425caa6140231"
+    },
+    {
+      "path": "candidate_core/extractor/ability_taxonomy_v2.py",
+      "size": 38070,
+      "sha256": "9a415140b14e9f8e63bb39e9f0e7d72b3cebb7a0645022e81b7b5bad7d08d748"
+    },
+    {
+      "path": "candidate_core/extractor/agentic_controller.py",
+      "size": 21867,
+      "sha256": "dd2a4ab9cfe09c098661c13570d924552a8091d936ba52d1e82b0b73acf0b706"
+    },
+    {
+      "path": "candidate_core/extractor/agentic_llm_client.py",
+      "size": 23731,
+      "sha256": "1af681d59541622c5a04cf25361043ac29929342b03d3b48717ef35cdfa9fdfa"
+    },
+    {
+      "path": "candidate_core/extractor/agentic_schema.py",
+      "size": 15388,
+      "sha256": "5eb61ba32a44fb72f4771d96c1b84a7ae8fab5ca9fa3d47fc421dcdea05caa96"
+    },
+    {
+      "path": "candidate_core/extractor/cached_llm_extractor.py",
+      "size": 1526,
+      "sha256": "561bdd0ba9eeedcc635d205c49c1a3ec54056728d0dfc2b58b30060ac91b58a6"
+    },
+    {
+      "path": "candidate_core/extractor/candidate_matching_bridge_v1.py",
+      "size": 7386,
+      "sha256": "43049fda880d4cad8908d2238e02d1ab416d0b911ada29983a277b90f335c06f"
+    },
+    {
+      "path": "candidate_core/extractor/deterministic_evidence_auditor.py",
+      "size": 49121,
+      "sha256": "3f5785c7df476cdf8633029840547c13792f99081d1c942c2c2fd9e80013d0d9"
+    },
+    {
+      "path": "candidate_core/extractor/document_parser_v3.py",
+      "size": 5360,
+      "sha256": "9f9bf0f2a98af285a0b627da71ca061efda0e9a601e984fa8f05e5501b973da8"
+    },
+    {
+      "path": "candidate_core/extractor/evidence_coverage_v432.py",
+      "size": 9418,
+      "sha256": "c64251ef8cd0fbd7eeea611aae9645a2920907d7c5217987a1c406cbdd2571bc"
+    },
+    {
+      "path": "candidate_core/extractor/evidence_extraction_agent.py",
+      "size": 14049,
+      "sha256": "00c491f94de18ad6dc9ff2cfba4d009b4e12fb18070ca8a1f4d04dd3e4aac6f3"
+    },
+    {
+      "path": "candidate_core/extractor/evidence_grounding_v4.py",
+      "size": 5066,
+      "sha256": "93ae3d5d7ffb613a7ebe69af98e94e886e06cc003383327daff39d92793cccf2"
+    },
+    {
+      "path": "candidate_core/extractor/evidence_review_agent.py",
+      "size": 34613,
+      "sha256": "4e7e674dee2bbf35e5a3671018eb8e4e21f8b3ac6b5f831b576527073639a25f"
+    },
+    {
+      "path": "candidate_core/extractor/evidence_source_policy_v43.py",
+      "size": 4880,
+      "sha256": "e97e03dba5c10c5ed595de0c29eb3f2bcb0dbb75df4817ac446c51cd59d9bf91"
+    },
+    {
+      "path": "candidate_core/extractor/explicit_skill_mentions_v3.py",
+      "size": 3829,
+      "sha256": "966ceedcb02d403e85032f68f9f50d3b56052f12487d53761b723d4e917b6916"
+    },
+    {
+      "path": "candidate_core/extractor/explicit_skill_mentions_v4.py",
+      "size": 4933,
+      "sha256": "6869251558942e5cbc3512dc965e8fbe0cc5eefcbe5716953027347783abd54a"
+    },
+    {
+      "path": "candidate_core/extractor/extraction_reground_v4.py",
+      "size": 2586,
+      "sha256": "6252e172ee6f765995e2371083bfcb05a3d144b347abeae34c74247d2bbbd6b7"
+    },
+    {
+      "path": "candidate_core/extractor/file_parser.py",
+      "size": 1269,
+      "sha256": "6bad3d3cca67ad0e83875f01bdb6d48aa8d1a3b50a1eca1557246558457c06b5"
+    },
+    {
+      "path": "candidate_core/extractor/final_decision_agent.py",
+      "size": 17437,
+      "sha256": "31d8e1b21f5eab244d83a13b35a466cf5469bd582aafeee24d8ff060de648026"
+    },
+    {
+      "path": "candidate_core/extractor/final_decision_schema.py",
+      "size": 13317,
+      "sha256": "376f31ca80e38af3531e55cc33bbf7593125bccb46d3de9b4910241ca28f4803"
+    },
+    {
+      "path": "candidate_core/extractor/formal_evaluation_runner.py",
+      "size": 23121,
+      "sha256": "3520291f3b169c6804e580e039eee5627d85f020d7db6bf3e34b872f1193eada"
+    },
+    {
+      "path": "candidate_core/extractor/grounded_capability_trace_v3.py",
+      "size": 2636,
+      "sha256": "2b0a600aba2b791c6852458ca1db7a86252e388a821fa6f0b3a07e8a467df715"
+    },
+    {
+      "path": "candidate_core/extractor/grounded_capability_trace_v4.py",
+      "size": 2706,
+      "sha256": "52214187dca17b3a77d0ad8c5f222ec3c6f26508effa8eadd7b343b6577894ab"
+    },
+    {
+      "path": "candidate_core/extractor/hybrid_resume_extractor.py",
+      "size": 3881,
+      "sha256": "e0a11f361e375d4a8593e29bce0a9a9a575bad5367379e190623f6440009c72a"
+    },
+    {
+      "path": "candidate_core/extractor/hybrid_resume_extractor_backup.py",
+      "size": 2041,
+      "sha256": "2bce53f8432f937027cb28932e499fc37ddf83c7582bdf6bd726d7b80a3020f2"
+    },
+    {
+      "path": "candidate_core/extractor/hybrid_resume_extractor_backup2.py",
+      "size": 4101,
+      "sha256": "577653a19c4b06c0b5d939e0f9fe96c0c12d18ccb09dcbc53555b577071b3d9a"
+    },
+    {
+      "path": "candidate_core/extractor/internal_resume_record_v3.py",
+      "size": 5440,
+      "sha256": "14f3c0007f39a4577a3ea981315a2fa20eb87fb4e1fc85ebcf302b813f9e0725"
+    },
+    {
+      "path": "candidate_core/extractor/jd_extractor.py",
+      "size": 6591,
+      "sha256": "ab57bb3902b53dd8ae4ea707c1dd80f634817432083d2a0996fabd88ff92d5df"
+    },
+    {
+      "path": "candidate_core/extractor/learning_path_renderer.py",
+      "size": 13983,
+      "sha256": "707db1e402420ea7903e8adcc8a010423e78c1fa392c3b03f2973523227bd566"
+    },
+    {
+      "path": "candidate_core/extractor/learning_path_stage1.py",
+      "size": 51714,
+      "sha256": "240d8edf462572c351938a96b65c2f6f7193d637a26eecf3c5616a9cb7521ebc"
+    },
+    {
+      "path": "candidate_core/extractor/llm_extractor.py",
+      "size": 3542,
+      "sha256": "a073828d508887bca0bc7d388d769504375a159cfb1f861b0a8fc8485d7e535e"
+    },
+    {
+      "path": "candidate_core/extractor/llm_validator.py",
+      "size": 3055,
+      "sha256": "f08c214283f0fecd0caf0eb2215159e11c35fff191adc7ab817fd879498ade62"
+    },
+    {
+      "path": "candidate_core/extractor/matching_engine_v1.py",
+      "size": 7128,
+      "sha256": "9a8b78aee9b731a1f4b1d3632c733675941c903eb83aa4192916e5921cf70bfe"
+    },
+    {
+      "path": "candidate_core/extractor/matching_pipeline_v1.py",
+      "size": 2549,
+      "sha256": "41c96d34e84d5719d90dd97479f17f31ca5862fab97aff60bd28fb018e8c655d"
+    },
+    {
+      "path": "candidate_core/extractor/occupation_warrant_v431.py",
+      "size": 7899,
+      "sha256": "ee9be099471a224e283d126b0e20807846e155fb0640d8329c2550d71f6f12c1"
+    },
+    {
+      "path": "candidate_core/extractor/proficiency_evaluator.py",
+      "size": 15209,
+      "sha256": "19faa0300c396462ca20fda06b002b913efb71718af1ee8f16d66d68b86947b8"
+    },
+    {
+      "path": "candidate_core/extractor/proficiency_validator.py",
+      "size": 4536,
+      "sha256": "abf0099e9e921bc258c89cb02a9992b608cf6229fe950df0a43af9b0302e92dd"
+    },
+    {
+      "path": "candidate_core/extractor/resume_extractor.py",
+      "size": 6922,
+      "sha256": "ffc5bff15f41856043fb317724075973a79b2921125dfb7445ec8a01f32ac5cd"
+    },
+    {
+      "path": "candidate_core/extractor/resume_segmentation_v4.py",
+      "size": 6502,
+      "sha256": "1321a514b0d7345a1c90af64ecb418e45ef0136e5585b6155d913802d7f7f075"
+    },
+    {
+      "path": "candidate_core/extractor/review_assessment_schema.py",
+      "size": 21986,
+      "sha256": "bd8161b011f156a51f82587411ebf3dc8465e685a3377fa4256343a8dcb7412b"
+    },
+    {
+      "path": "candidate_core/extractor/segmented_evidence_extraction_v4.py",
+      "size": 23371,
+      "sha256": "0c46ea7675fa54ba727a3b2d9e3a7763be6db73d22f83739eb394407fe39bb0a"
+    },
+    {
+      "path": "candidate_core/extractor/semantic_shadow_assembler.py",
+      "size": 9605,
+      "sha256": "c66c7f9872fcdfa510610025d483e7cd0c5808b47380ebc82eb8b2bf03a39174"
+    },
+    {
+      "path": "candidate_core/extractor/semantic_shadow_pipeline_v2.py",
+      "size": 6861,
+      "sha256": "96f944445742075482eaa4af4040feb7996910955b94f5bb4500a4c8c80e48e0"
+    },
+    {
+      "path": "candidate_core/extractor/semantic_shadow_reviewer_v2.py",
+      "size": 22093,
+      "sha256": "8ff6d4536224c02ecaa0b2040f9fa9fdb23f2c7ad5f068f348c4c5d734050529"
+    },
+    {
+      "path": "candidate_core/extractor/semantic_shadow_runtime_v2.py",
+      "size": 14632,
+      "sha256": "4b4911826bb0e4cb37627ef0e0227d41874a9b3daceab6ede918fc2ca8c1ae5d"
+    },
+    {
+      "path": "candidate_core/extractor/semantic_shadow_schema_v2.py",
+      "size": 12536,
+      "sha256": "ed7334cd9fdaa7e71bf0e82490649dbd658c29a35ede6510537798bfa0257ece"
+    },
+    {
+      "path": "candidate_core/extractor/shadow_review_bundle.py",
+      "size": 18102,
+      "sha256": "c91ddaab98dec64bb5210a004402fd616f5ea5c30910b4878752bc64b46ee061"
+    },
+    {
+      "path": "candidate_core/extractor/shadow_review_mapper.py",
+      "size": 39608,
+      "sha256": "5127139bf9ae923d86831d0adb5ca3ac815f63d7547c631745d3690203352f78"
+    },
+    {
+      "path": "candidate_core/extractor/skill_normalizer.py",
+      "size": 1915,
+      "sha256": "b5eac94d1f65bcd01d8700cd2569f3b29c3f074fc1b0629a90ccf24287ad6f09"
+    },
+    {
+      "path": "candidate_core/extractor/target_job_profile_adapter.py",
+      "size": 17301,
+      "sha256": "efcb2a20b0b596f261484c7c2fa4245aa18b22672f645c0a8608fb4721938f9c"
+    },
+    {
+      "path": "candidate_core/extractor/target_job_profile_learning_bridge.py",
+      "size": 5017,
+      "sha256": "279bbe58f5ad68fcf6188a9be1483d48de42c048e7cdde66dd0774b2671ec3e7"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_auditor_v3.py",
+      "size": 7522,
+      "sha256": "75cab565062884b67d593a9f152646a724566e6e2b9896b69c765579a63aa4df"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_auditor_v4.py",
+      "size": 4678,
+      "sha256": "3dfade43eeb3b3b24a18a15c14518151e350aa69ed97c28092cf5ed92ec90619"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_candidate_generator_v3.py",
+      "size": 9357,
+      "sha256": "4020ff073e3b18dd5e9268e2cfa9f63c2463cc3ea07a430ae92362913da5a8f5"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_fallback_selector_v3.py",
+      "size": 10094,
+      "sha256": "7eb0c1fe65fc748e767b8b68618525964cdfc2a5cbb67579058e24644a73a617"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_fallback_selector_v4.py",
+      "size": 10523,
+      "sha256": "4c0a2f6cf3d6c3b18c12c72457044243d57eefa7915bdfc08d9a2236f58362a3"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_metric_v2.py",
+      "size": 5745,
+      "sha256": "2fc2d7cbf9494b024d1e3022d05a141d4f8ceda13db22c28298923991e3554d0"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_pipeline_v3.py",
+      "size": 12917,
+      "sha256": "d28dcbd8d2b3884455209974fb3596d1b7b78518fc55f0ed1c305a393837fe99"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_proficiency_bridge_v434.py",
+      "size": 7076,
+      "sha256": "3f962503373a289ee79132fb8ff87d4734fea0967fa18d74e8da5b2262671db3"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_profile_v3.py",
+      "size": 4311,
+      "sha256": "05f78e2be66a8f82558869b088cbb8b67e375d1a5c90f5cfa9b998eb14a00b9d"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_profile_v4.py",
+      "size": 7317,
+      "sha256": "88c3de6215b6ed8c381a0df73936043f3b63b04ae2219544e426d697c9e02add"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_registry.py",
+      "size": 10597,
+      "sha256": "5eaa64108f0c781b12c0e5926eef146b52666efd22c4e61a71244b5665e5a117"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_schema_v3.py",
+      "size": 7128,
+      "sha256": "4189b30591e0c52c8496c12ccfb65ecde5e1367bcb052af1e09256d0460d99ff"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_verifier_v3.py",
+      "size": 10995,
+      "sha256": "5ec133fd166d61b31baf6f7b2fc1d38aabf9fa309125bb4712a7016e2b65397b"
+    },
+    {
+      "path": "candidate_core/extractor/team_skill_verifier_v4.py",
+      "size": 13970,
+      "sha256": "c66e37a8a26f986fe9a8ba1bd2b41cd98d07277a5407ad467d2a406f2c52d21e"
+    },
+    {
+      "path": "candidate_core/extractor/v3_client_adapter.py",
+      "size": 1441,
+      "sha256": "82699fdb8363b3c25f43bddd6a4bcb9eff7d1b6808de93c2f69bba336ba09296"
+    },
+    {
+      "path": "candidate_core/extractor/v3_data_split_registry.py",
+      "size": 1891,
+      "sha256": "e11c018ed3d5cb81f21a3c0ca13502d335f5c8d0486fadbf1c678a3c121365ec"
+    },
+    {
+      "path": "candidate_core/extractor/validated_resume_extractor.py",
+      "size": 5255,
+      "sha256": "15de2cfaa16e32248180bbe1467bbd687fa9528d7d12694b458f2f689773f1d5"
+    },
+    {
+      "path": "candidate_core/run_v3.py",
+      "size": 23199,
+      "sha256": "5a16548f900cb79dc38538926856b0c507dc774646247d629f622543c7cf2295"
+    },
+    {
+      "path": "config/matching_threshold_v1.json",
+      "size": 530,
+      "sha256": "f12d437085e3d9e60db18339701d023dab22cd984e931f5be2d65f769cd49c39"
+    },
+    {
+      "path": "coverage.xml",
+      "size": 204627,
+      "sha256": "f3cb03371f19f2efc994e82e356ae33b2c36fd5ff620d1af8d531df27c8d50d0"
+    },
+    {
+      "path": "docs/matching_v1_contract_2026-09-01.md",
+      "size": 3545,
+      "sha256": "e4a0421afbae649e4670b806e1f119b81c6431ea91f709ec968e11f227848cd6"
+    },
+    {
+      "path": "docs/matching_v1_handoff_quickstart.md",
+      "size": 1204,
+      "sha256": "a116388c0369e4588b17aa1153324fb4417b25e67aeb33eb80e546cf31e92517"
+    },
+    {
+      "path": "examples/anonymous_dev_resume.pdf",
+      "size": 117348,
+      "sha256": "2ceb059f4325cbc621d7329f91261d0aec3e9cbf0ad4db9973a7ed85c297a4ba"
+    },
+    {
+      "path": "frontend/FRONTEND_API_REFERENCE.md",
+      "size": 15099,
+      "sha256": "f1eb93b22e609c58a967f8f669b53f643fb167e8438a13954c427570f6f2a7a9"
+    },
+    {
+      "path": "frontend/FRONTEND_INTEGRATION_CHECKLIST.md",
+      "size": 2177,
+      "sha256": "c5bdc29ce06bad138d052b85fd1a6777b2629d151bbf6f5c29f0f9b5dae1d61d"
+    },
+    {
+      "path": "frontend/FRONTEND_QUICKSTART.md",
+      "size": 3146,
+      "sha256": "fae386f7c58be68d92b2659fe959e35d4faf0a8395009b2fbb44f71ec68d41a6"
+    },
+    {
+      "path": "frontend/api_client_example.ts",
+      "size": 3480,
+      "sha256": "2780d46f34c18510781f2a792640dabc590c90cefe5bd809eaec80c286cbce29"
+    },
+    {
+      "path": "frontend/frontend_api_types.ts",
+      "size": 12661,
+      "sha256": "ffd724d4f76d0a4e024634e09a33a561f2efa87ef7d965a95afba08d55a376ee"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "size": 267,
+      "sha256": "8136cdc6d63ba4f5b215e10fb76958f9088c8e2d2f6d4f50de4b19d1b5ed0df5"
+    },
+    {
+      "path": "frontend_api_types.ts",
+      "size": 130,
+      "sha256": "05370650600f98a618ddb8d21ac75992b8b4fb1dafa06b4037172892df8a8f7e"
+    },
+    {
+      "path": "job_data/2022-10/jd_summary_2022-10.csv",
+      "size": 8049618,
+      "sha256": "972a76bfd2073f0c005aea4090151bd5ca9836035a060bf48892991e7009754e"
+    },
+    {
+      "path": "job_data/2022-10/job_skill_effective.json",
+      "size": 1172610,
+      "sha256": "80100ba89440f4835b54b1e7a0e91193ab9453a0b529dbd1549dde90982f34b7"
+    },
+    {
+      "path": "job_data/2022-10/jobs.json",
+      "size": 176047,
+      "sha256": "27f5c27e90446b7986e31df8f9f5028b6a935750dabd187da6140424c4e77524"
+    },
+    {
+      "path": "job_data/2022-10/provider_skills.json",
+      "size": 19071,
+      "sha256": "5387bb36b7bbb06258614b867354e57444347b2fce6c412c421c8c47fca948d1"
+    },
+    {
+      "path": "pytest.ini",
+      "size": 57,
+      "sha256": "8fa307d1ef787f3822b949dc90f1b3c405769c4eb97bb2e813b271109d9d8a90"
+    },
+    {
+      "path": "requirements-test.txt",
+      "size": 83,
+      "sha256": "eecd58151c7fd28ea7761fe6b348468255c07833095a73481c813b08597a5b11"
+    },
+    {
+      "path": "requirements.txt",
+      "size": 176,
+      "sha256": "bf01428a7f37cec415ebdfe80a917ee9f7441f5fb33538cf548aa56ed669bf6e"
+    },
+    {
+      "path": "start_backend.bat",
+      "size": 72,
+      "sha256": "13b7534790db5f3fe52f868945406c16c724c8a8d728b3159ba00ef69a153947"
+    },
+    {
+      "path": "start_backend.sh",
+      "size": 100,
+      "sha256": "9d18678abda27953582d0d0eeb28b3345c7531fb2aea9f5a7f629296d60c5655"
+    },
+    {
+      "path": "tests/conftest.py",
+      "size": 1334,
+      "sha256": "864fd2eb7e5cb81809807f69e07f11166c3aadb740c84eac7e575a61c64e62b0"
+    },
+    {
+      "path": "tests/test_agentic_schema.py",
+      "size": 8839,
+      "sha256": "3b0c0803ee4e63ed665400ff5520e9438f48ae0ebad8ef508310af8ea8d11c81"
+    },
+    {
+      "path": "tests/test_api.py",
+      "size": 13086,
+      "sha256": "d22bde4eb49e1959760cbfb286465be22b6574a6867ba079e6b648ac61b8b773"
+    },
+    {
+      "path": "tests/test_backend_closeout.py",
+      "size": 11498,
+      "sha256": "95af3a150c6ddd1e5b7c6174c0a4b2c07c8b27ae110ccb824efe9128326071f3"
+    },
+    {
+      "path": "tests/test_candidate_runtime_contracts.py",
+      "size": 5511,
+      "sha256": "dc5443adb3927755a749bdca44a0fa37ae2001adcc398cac98ae79b6071a1953"
+    },
+    {
+      "path": "tests/test_document_parser_v3.py",
+      "size": 3489,
+      "sha256": "d30b21eb5d518e5a5022633667c7a4a0d33394c742d506c03ae1d2ab127666e0"
+    },
+    {
+      "path": "tests/test_frontend_integration.py",
+      "size": 4132,
+      "sha256": "dde3e36ae57c02858753ae69bbf244f0a4d3eb2ff452fd55914ca67b7b2f35cb"
+    },
+    {
+      "path": "tests/test_internal_resume_record_v3.py",
+      "size": 3773,
+      "sha256": "e982e4611f791fa976c0b366af4bd6e2ad51c525026853f3d29ad319b2f5cf49"
+    },
+    {
+      "path": "tests/test_learning_path_api_compatibility.py",
+      "size": 5572,
+      "sha256": "17b135947a9a7251223bc28e1a53843fbcebfcec24d498f0df298d16f920655e"
+    },
+    {
+      "path": "tests/test_learning_path_renderer.py",
+      "size": 12818,
+      "sha256": "6f33e5e737683ec9fc15f7be8a99f57458179a35e09b9fa4bfef0801fa3982ad"
+    },
+    {
+      "path": "tests/test_learning_path_stage1.py",
+      "size": 23691,
+      "sha256": "5a5efe542f903196786c193cff93840b815a31cba9e708995aff5001854ed09d"
+    },
+    {
+      "path": "tests/test_learning_path_stage2b2.py",
+      "size": 22118,
+      "sha256": "d4f1427b275d4a4f1b3fc48cab352393a0d62ba54dd4f7e1096ec16558c2b56d"
+    },
+    {
+      "path": "tests/test_occupation_warrant_v431.py",
+      "size": 3889,
+      "sha256": "bd1445cd44f11fc80749a3757e113c3f6d96c6c5f4d32db5a76723ccfdc91ca0"
+    },
+    {
+      "path": "tests/test_proficiency_evaluator.py",
+      "size": 6194,
+      "sha256": "25dd72ddf1e95c4db0e0ec43b585a63982914d9494153b8f4eb1fc2dc56bdcc1"
+    },
+    {
+      "path": "tests/test_r432_coverage_and_boundaries.py",
+      "size": 4761,
+      "sha256": "bf3d4fac72ab3b76242c2e3e60bed7eb87fcec13ef6b060aeb0e8786ce28456f"
+    },
+    {
+      "path": "tests/test_r433_selector_recovery.py",
+      "size": 6293,
+      "sha256": "d0b98e8aaabda35280f7ca1fa86f508272be9db329cf9257f4ff0a628b294888"
+    },
+    {
+      "path": "tests/test_r434_fc_patch.py",
+      "size": 7518,
+      "sha256": "5af77bd7f08ebe48df3f56cbc15809a1e02aa8ae6e98228e25e194b7e375d725"
+    },
+    {
+      "path": "tests/test_r43_policy_and_multilabel.py",
+      "size": 5337,
+      "sha256": "c4c57b88330e27398fe6bd1befd56b45a264e8364626de5deb0bffa5a23dd8ce"
+    },
+    {
+      "path": "tests/test_review_assessment_schema.py",
+      "size": 12800,
+      "sha256": "0f719a7ee24d0f9b548340b455e56a46c66453ba2f813d7eb2700e4255497893"
+    },
+    {
+      "path": "tests/test_runtime_observability.py",
+      "size": 3450,
+      "sha256": "bee05724c4b90d3f530316e3b1c541ee5382fec1c9fb7c7aa14c4f317186227f"
+    },
+    {
+      "path": "tests/test_target_job_profile_adapter_v11.py",
+      "size": 7707,
+      "sha256": "4d1daaf63610ab74abd095365089575df498fbb164fffd60b9f3e18510e44ce2"
+    },
+    {
+      "path": "tests/test_team_skill_auditor_v3.py",
+      "size": 3790,
+      "sha256": "aeb8dc13971c40d1d0b4496ebeda7d2d7dd0d74797d02150dcc6530d68d476d3"
+    },
+    {
+      "path": "tests/test_team_skill_candidate_generator_v3.py",
+      "size": 1728,
+      "sha256": "2a47b27e9c17d76cf3e93067481cd67dce0aad946d7ba5db045891e33b7ffb75"
+    },
+    {
+      "path": "tests/test_team_skill_fallback_selector_v3.py",
+      "size": 3429,
+      "sha256": "701fe8044f0955fb48acc6213d9dc37ddca7f3c23eee95c6f9540f296a10447f"
+    },
+    {
+      "path": "tests/test_team_skill_fallback_selector_v4_reliability.py",
+      "size": 1675,
+      "sha256": "98393ebdacd810bb4e89e84859eb7e2ad7b4a9de6152fec9665fc7e27c12905a"
+    },
+    {
+      "path": "tests/test_team_skill_proficiency_bridge_v434.py",
+      "size": 5428,
+      "sha256": "350b14305ba5985411bf56af2e671f95db50071489dc46eacccbe8a06f36d545"
+    },
+    {
+      "path": "tests/test_team_skill_registry_v3.py",
+      "size": 2610,
+      "sha256": "8c9bd328490ff276f7e5d0af19c8386b2dd18308f294cf26b905de3aab66f803"
+    },
+    {
+      "path": "tests/test_team_skill_schema_v3.py",
+      "size": 1276,
+      "sha256": "e3e0bb8fc261215ced25516834cf9550c4871c0cca54f8b1925375c5302cc524"
+    },
+    {
+      "path": "tests/test_team_skill_verifier_v3.py",
+      "size": 4541,
+      "sha256": "fb474af208a8bdf500df02bd39d5ddd11cbdbebabf2968149f29bfab1f3a4518"
+    },
+    {
+      "path": "validation/E2E_RUNTIME_DIAGNOSIS.md",
+      "size": 9614,
+      "sha256": "bb824569cca72c1c3bdaf43e2aec9c721dc165b9357fca9237a4e74c28f37dab"
+    },
+    {
+      "path": "validation/FINAL_API_ACCEPTANCE.md",
+      "size": 2831,
+      "sha256": "065bac946066db0454d4f917577c73f195e252ff40a6a5f9e460f54a283df2ee"
+    },
+    {
+      "path": "validation/FINAL_BACKEND_ACCEPTANCE.md",
+      "size": 2001,
+      "sha256": "b2836326f047665e80ab71e1c88147f0b4f356d698175f535ca527e0a7c6be1d"
+    },
+    {
+      "path": "validation/FINAL_COVERAGE_REPORT.md",
+      "size": 1387,
+      "sha256": "68745fd0485e8cc2ff2ede0fd456f67d8fdfc1ad6fec977bf844a56cff4e955b"
+    },
+    {
+      "path": "validation/FINAL_E2E_SUMMARY.md",
+      "size": 2179,
+      "sha256": "b58972ea58e5817d0d0259341809ef59d381ce284afc667fa4bed8056e4d3e91"
+    },
+    {
+      "path": "validation/api_acceptance_v1.json",
+      "size": 2430,
+      "sha256": "d33b46ea97b3bb4f9e6e2cd398d05ebd671f32c561dc10cc0f43cf809dc6d258"
+    },
+    {
+      "path": "validation/e2e_runtime_acceptance_final/learning_path_replay_summary.json",
+      "size": 421,
+      "sha256": "2b8aee1d273b91781a06c64e7e36ffe3cd3ff7cc8896a15f03c092effc8f6843"
+    },
+    {
+      "path": "validation/e2e_runtime_acceptance_final/proficiency_timing.jsonl",
+      "size": 3131,
+      "sha256": "31fd0872a02932ef96b813c5fe5c3523c41aa7006db50a2a4c7bf42aed0060a6"
+    },
+    {
+      "path": "validation/e2e_runtime_acceptance_final/stage_timing.json",
+      "size": 12603,
+      "sha256": "df2b4c9bd70155a6c7a12619eaeecfb6796d36b96b9f903affa760ea7fad3ddb"
+    },
+    {
+      "path": "validation/e2e_runtime_acceptance_final/validation_result.json",
+      "size": 3630,
+      "sha256": "0a0eace17daf851778c01fd825ad7e4d68700fb3a7aa90144559fb9e90b98718"
+    },
+    {
+      "path": "validation/e2e_runtime_acceptance_v1/proficiency_timing.jsonl",
+      "size": 2304,
+      "sha256": "ccfd896560698fb9944c052be0187ae7ce0dcaf7604dd55055f80de12085a605"
+    },
+    {
+      "path": "validation/e2e_runtime_acceptance_v1/stage_timing.json",
+      "size": 10965,
+      "sha256": "ff1610662d7940e0b747d85917a686aeaaf95454b7b04b4c77464bc7d86b2905"
+    },
+    {
+      "path": "validation/e2e_runtime_acceptance_v1/validation_result.json",
+      "size": 3461,
+      "sha256": "315fa620a04c7d39c4f49fcb2b31295068a659b7f4547c5bc7f13b9059b0aa9a"
+    },
+    {
+      "path": "validation/e2e_smoke_v1/health_response.json",
+      "size": 460,
+      "sha256": "37fb0e3e5b3b7146efee24f9ee6c0fe9ea01e5706b4a22333be984de00e95a8f"
+    },
+    {
+      "path": "validation/e2e_smoke_v1/job_summary_response.json",
+      "size": 34375,
+      "sha256": "d25c457b679ac2360dab2a77f4c6cebed32b57d600891103b1b5c7ad6353db7c"
+    },
+    {
+      "path": "validation/e2e_smoke_v1/jobs_response.json",
+      "size": 1022,
+      "sha256": "8773a0c547681351cf002f7160d987870ec5fef774a4eab3c1a72f8b889a8abb"
+    },
+    {
+      "path": "validation/e2e_smoke_v1/pdf_preflight.json",
+      "size": 420,
+      "sha256": "eb93b7e6f7e460b7c78521e5d5393fca59ec44a4d087c7df02ccc9b0414cd437"
+    },
+    {
+      "path": "validation/e2e_smoke_v1/request_summary.json",
+      "size": 633,
+      "sha256": "99748a4d2cc474bb7676bd0081d386236f5daffabf3133ff0c6f0c5b080b40df"
+    },
+    {
+      "path": "validation/e2e_smoke_v1/validation_result.json",
+      "size": 584,
+      "sha256": "1159b7f6e7377223d9e909b1e965b8201150f579935fe34492176ca77b7e0c8b"
+    },
+    {
+      "path": "validation/frontend_readiness_checks.json",
+      "size": 1646,
+      "sha256": "80ac3201125b505381f6a849f569ad850175405e9b4d40af9bb3acce80a339de"
+    },
+    {
+      "path": "validation/learning_path_contract_diagnosis.json",
+      "size": 70738,
+      "sha256": "0e3950627ce7ba4eb3cf0b96e1987d10e910a84851e122a5ecdf3454cdfc99c9"
+    },
+    {
+      "path": "validation/pytest_results.xml",
+      "size": 44780,
+      "sha256": "b6ae527e5e9d44960db1615fa8badfec7ef66f4d1d937e0d794c1c00d8f93dc6"
+    },
+    {
+      "path": "validation/run_e2e_smoke.py",
+      "size": 11585,
+      "sha256": "9f50933596176351ab1da909834bc7122c95bcbe60ce9b3dcaa36f0ead4b5b51"
+    }
+  ],
+  "limitations": [
+    "Browser React Integration PENDING",
+    "deployment LLM credentials deliberately absent",
+    "not a new real E2E run",
+    "unit fixtures are not matching accuracy evidence",
+    "CORS is not authentication",
+    "3 source runtime documentation/test freeze entries not bundled",
+    "Candidate/Match remain synchronous long-running calls"
+  ]
+}
